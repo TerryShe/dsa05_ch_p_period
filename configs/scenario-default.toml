@@ -1,0 +1,58 @@
+# DSA05 periodic uplink scenario, draft 0.1. Numerical values are calibration
+# candidates, not a frozen research working point.
+[experiment]
+id = "scenario-default"
+scenario_id = "DES-DSA05-PERIODIC"
+scenario_version = "0.1"
+
+[physical]
+num_ues = 12
+num_subchannels = 4
+slot_duration_s = 0.001
+subchannel_bandwidth_hz = 1000000.0
+noise_psd_dbm_per_hz = -174.0
+noise_figure_db = 7.0
+max_tx_power_dbm = 23.0
+
+[spatial]
+radius_m = 100.0
+reference_distance_m = 1.0
+reference_path_loss_db = 40.0
+path_loss_exponent = 4.0
+topology_seed = 20260924
+
+[power]
+power_dbm = ["OFF", 0.0, 5.0, 10.0, 15.0, 20.0, 23.0]
+
+# Offered load 7.37 Mbit/s. In the informal heuristic sweep (2026-09-24) this is
+# the point where max-power access meets a 5% per-UE violation cap while local
+# power saving does not; 4/3 of these sizes is the tighter candidate.
+[traffic]
+phase_seed = 5240000
+
+[[traffic.classes]]
+name = "fast"
+period_slots = 10
+packet_bits = 6144.0
+num_ues = 4
+
+[[traffic.classes]]
+name = "medium"
+period_slots = 20
+packet_bits = 12288.0
+num_ues = 4
+
+[[traffic.classes]]
+name = "slow"
+period_slots = 40
+packet_bits = 24576.0
+num_ues = 4
+
+[run]
+horizon_slots = 2000
+warmup_slots = 200
+
+# Consumed by learners/evaluators, not by the environment.
+[objective]
+kind = "min-energy-subject-to-per-ue-violation"
+max_violation_rate = 0.05

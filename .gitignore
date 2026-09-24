@@ -1,0 +1,15 @@
+# Local Python environment and caches
+/.venv/
+/.uv-cache/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+
+# Raw experiment outputs, checkpoints and dense traces
+/outputs/
+*.pt
+
+# Operating-system temporary files
+.DS_Store
