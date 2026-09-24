@@ -1,0 +1,60 @@
+# DSA05 periodic uplink scenario v1.0, N=8 variant -- FROZEN research working point.
+# Parameters and assumptions confirmed by the user on 2026-09-24; see
+# docs/research/scenario.md and scenario-v1-freeze.json. The four variants
+# N=4/6/8/12 differ only in num_ues and the per-class UE counts. Do not edit:
+# any change is a new scenario version in new files.
+[experiment]
+id = "scenario-v1-n8"
+scenario_id = "DES-DSA05-PERIODIC"
+scenario_version = "1.0"
+
+[physical]
+num_ues = 8
+num_subchannels = 4
+slot_duration_s = 0.001
+subchannel_bandwidth_hz = 1000000.0
+noise_psd_dbm_per_hz = -174.0
+noise_figure_db = 7.0
+max_tx_power_dbm = 23.0
+
+[spatial]
+radius_m = 100.0
+reference_distance_m = 1.0
+reference_path_loss_db = 40.0
+path_loss_exponent = 4.0
+topology_seed = 20260924
+
+[power]
+power_dbm = ["OFF", 5.0, 10.0, 15.0, 19.0, 23.0]
+
+# Every class offers 614.4 bit/slot per UE, so the total load is N * 614.4
+# bit/slot (4.92 Mbit/s here). UEs are dealt to classes round-robin.
+[traffic]
+phase_seed = 5240000
+
+[[traffic.classes]]
+name = "fast"
+period_slots = 10
+packet_bits = 6144.0
+num_ues = 3
+
+[[traffic.classes]]
+name = "medium"
+period_slots = 20
+packet_bits = 12288.0
+num_ues = 3
+
+[[traffic.classes]]
+name = "slow"
+period_slots = 40
+packet_bits = 24576.0
+num_ues = 2
+
+[run]
+horizon_slots = 2000
+warmup_slots = 200
+
+# Consumed by learners/evaluators, not by the environment.
+[objective]
+kind = "min-energy-subject-to-per-ue-violation"
+max_violation_rate = 0.05

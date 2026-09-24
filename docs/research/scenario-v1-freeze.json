@@ -1,0 +1,145 @@
+{
+  "schema_version": 2,
+  "scenario_id": "DES-DSA05-PERIODIC",
+  "scenario_version": "1.0",
+  "status": "frozen",
+  "frozen_on": "2026-09-24",
+  "confirmed_by": "user",
+  "confirmed_assumptions": [
+    "AP feeds back each UE's own per-slot mutual information as an exact float (UEObservation.previous_service_bits); public per-subchannel RSSI is delayed one slot",
+    "the parameters below are the research working point",
+    "transmit energy only: no circuit power; Shannon mutual information with SNR gap 0 dB"
+  ],
+  "decisions": [
+    "N variants 4/6/8/12 with K=4; UEs dealt to classes round-robin; every class offers 614.4 bit/slot per UE, so total load is N * 614.4 bit/slot",
+    "power menu [OFF,5,10,15,19,23] dBm (21 joint actions) chosen over the proposed [OFF,5,10,15,23]: equal idealized energy quantization loss for N<=8 and 1.435 vs 2.115 at N=12 (scripts/analyze_power_menu_quantization.py)"
+  ],
+  "shared_parameters": {
+    "physical": {
+      "num_subchannels": 4,
+      "slot_duration_s": 0.001,
+      "subchannel_bandwidth_hz": 1000000.0,
+      "noise_psd_dbm_per_hz": -174.0,
+      "noise_figure_db": 7.0,
+      "max_tx_power_dbm": 23.0
+    },
+    "spatial": {
+      "radius_m": 100.0,
+      "reference_distance_m": 1.0,
+      "reference_path_loss_db": 40.0,
+      "path_loss_exponent": 4.0,
+      "topology_seed": 20260924
+    },
+    "power": {
+      "power_dbm": [
+        "OFF",
+        5.0,
+        10.0,
+        15.0,
+        19.0,
+        23.0
+      ]
+    },
+    "traffic": {
+      "phase_seed": 5240000,
+      "classes": [
+        {
+          "name": "fast",
+          "period_slots": 10,
+          "packet_bits": 6144.0
+        },
+        {
+          "name": "medium",
+          "period_slots": 20,
+          "packet_bits": 12288.0
+        },
+        {
+          "name": "slow",
+          "period_slots": 40,
+          "packet_bits": 24576.0
+        }
+      ]
+    },
+    "run": {
+      "horizon_slots": 2000,
+      "warmup_slots": 200
+    },
+    "objective": {
+      "kind": "min-energy-subject-to-per-ue-violation",
+      "max_violation_rate": 0.05
+    }
+  },
+  "shared_derived": {
+    "noise_power_dbm": -107.0,
+    "num_joint_actions": 21,
+    "per_ue_offered_bits_per_slot": 614.4,
+    "evaluation_slots": 1800
+  },
+  "variants": [
+    {
+      "num_ues": 4,
+      "config_path": "configs/scenario-v1-n4.toml",
+      "config_sha256": "2da5c463cfe0dc0cf6bf88f57cdce2e26f4734de78b5d1c3727a0d53f826e965",
+      "class_ue_counts": {
+        "fast": 2,
+        "medium": 1,
+        "slow": 1
+      },
+      "offered_bits_per_slot": 2457.6,
+      "offered_mbit_per_s": 2.4576
+    },
+    {
+      "num_ues": 6,
+      "config_path": "configs/scenario-v1-n6.toml",
+      "config_sha256": "e139bb3b691db38216c46ac20d5f7e77d8f341d27ad385d238ffe2a811a7654f",
+      "class_ue_counts": {
+        "fast": 2,
+        "medium": 2,
+        "slow": 2
+      },
+      "offered_bits_per_slot": 3686.4,
+      "offered_mbit_per_s": 3.6864
+    },
+    {
+      "num_ues": 8,
+      "config_path": "configs/scenario-v1-n8.toml",
+      "config_sha256": "64d7085be24ee0025d3f072fd12cd804b07b291bda7a8e3540779cb78c79b692",
+      "class_ue_counts": {
+        "fast": 3,
+        "medium": 3,
+        "slow": 2
+      },
+      "offered_bits_per_slot": 4915.2,
+      "offered_mbit_per_s": 4.9152
+    },
+    {
+      "num_ues": 12,
+      "config_path": "configs/scenario-v1-n12.toml",
+      "config_sha256": "6ab9cf1881692a5af8ce9277e73caa011d0c0dd657e6830a38df7effb75bda93",
+      "class_ue_counts": {
+        "fast": 4,
+        "medium": 4,
+        "slow": 4
+      },
+      "offered_bits_per_slot": 7372.799999999998,
+      "offered_mbit_per_s": 7.372799999999998
+    }
+  ],
+  "implementation": {
+    "semantics_commit": "f38457c",
+    "source_sha256": {
+      "src/dsa_period/topology.py": "af759d8ccdc68cabc88a4724dfcbba5baf44895939c3b5b64d589adafad3c7b5",
+      "src/dsa_period/channel.py": "f45a82167af1c34d55976c9d4a102bc25a1049b062a0bbbc1d0be155c582f55f",
+      "src/dsa_period/physics.py": "d474ea2de2204ef0630237b06cf2c7196c7c1ad65e89d49d3644f57f2e7433eb",
+      "src/dsa_period/traffic.py": "671893af58a1adab238a25b9eb230de8797622a62f55f81979215202fb1547a0",
+      "src/dsa_period/env.py": "5ad8849f6fe43fd415984091b0537265dfe562e9ed92b3338db4450db11b0ccb",
+      "src/dsa_period/metrics.py": "19bfcaabc1ce8187e1958ee156af8c90b6e20a22bd5d536918aeb267e48e84ef",
+      "src/dsa_period/config.py": "45b338b8312eafe4211ee2c6eff1b7b6280feb9c5ca0ffd791431c85d1c7763a"
+    },
+    "note": "source hashes record provenance only; behaviour is guarded by the test suite"
+  },
+  "not_frozen": [
+    "train/validation/test instance index splits (set by each experiment protocol)",
+    "policy seeds and training budgets"
+  ]
+}

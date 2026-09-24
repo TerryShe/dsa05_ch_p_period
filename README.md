@@ -5,7 +5,7 @@
 - **速率**：由 Shannon 公式给出（HARQ-IR 累积互信息），MCS 不再是动作。
 - **目标**：在每 UE 违约率 ≤ ε 的约束下，最小化发射能耗。
 
-规范见 [场景 v0.1](docs/research/scenario.md)。当前状态：环境已实现并通过测试，**数值参数尚未冻结，MARL 训练尚未接入**。
+规范见 [场景 v1.0](docs/research/scenario.md)。**场景参数与建模假设已于 2026-09-24 冻结**：N=4/6/8/12 四个变体（K=4，功率档 OFF/5/10/15/19/23 dBm，21 类动作），见 [配置](configs/) 与 [冻结清单](docs/research/scenario-v1-freeze.json)；MARL 训练尚未接入。
 
 ## 环境
 
@@ -14,24 +14,26 @@ Python 3.12 + uv：
 ```bash
 uv sync --locked
 uv run --locked pytest -q
-uv run --locked ruff check src tests
-uv run --locked ruff format --check src tests
+uv run --locked ruff check src tests scripts
+uv run --locked ruff format --check src tests scripts
 ```
 
 ## 场景烟测与负载扫描
 
 ```bash
-uv run --locked python -m dsa_period.experiments.scenario_smoke --instances 4
+uv run --locked python -m dsa_period.experiments.scenario_smoke --instances 4   # 默认 N=12
+uv run --locked python -m dsa_period.experiments.scenario_smoke --config configs/scenario-v1-n8.toml
 uv run --locked python -m dsa_period.experiments.scenario_smoke --instances 6 --packet-scale 4 \
   --output outputs/smoke-scale4
 ```
 
-在默认配置下，对若干实例运行三个本地启发式（`random_max`、`sticky_max`、`lazy_pacing`），输出固定窗口内的按期完成率、最差 UE 完成率、每 UE 功率、每个按期包的能耗和时延。`--packet-scale` 按比例放大所有包长，用于调节负载。输出目录已存在时，程序会拒绝写入。结果标记为 `formal=false`，只作为集成检查。
+在冻结配置下，对若干实例运行三个本地启发式（`random_max`、`sticky_max`、`lazy_pacing`），输出固定窗口内的按期完成率、最差 UE 完成率、每 UE 功率、每个按期包的能耗和时延。`--packet-scale` 按比例放大所有包长，用于调节负载。输出目录已存在时，程序会拒绝写入。结果标记为 `formal=false`，只作为集成检查。
 
 ## 目录
 
 ```text
-configs/scenario-default.toml   # 默认候选参数
+configs/scenario-v1-n{4,6,8,12}.toml  # 冻结的 v1.0 工作点（勿改，变更另立新版本）
+scripts/analyze_power_menu_quantization.py  # 功率档选型分析
 src/dsa_period/
   topology.py    # 圆盘拓扑与路损（复制自 dsa04）
   channel.py     # ChannelModel 接口与 StaticChannel；衰落模型在此扩展
@@ -42,7 +44,8 @@ src/dsa_period/
   baselines.py   # 本地启发式与本地链路估计
   config.py      # TOML 加载与实例生成
   experiments/scenario_smoke.py
-docs/research/scenario.md
+docs/research/scenario.md       # 场景规范
+docs/research/scenario-v1-freeze.json  # 冻结清单：配置 SHA-256、确认的假设、派生量
 tests/
 ```
 

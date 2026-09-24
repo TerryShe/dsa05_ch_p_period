@@ -37,7 +37,7 @@ def run_policy(scenario: Scenario, index: int, policy: str, policy_seed: int) ->
 
 def main(argv: list[str] | None = None) -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--config", default="configs/scenario-default.toml")
+    parser.add_argument("--config", default="configs/scenario-v1-n12.toml")
     parser.add_argument("--instances", type=int, default=4)
     parser.add_argument("--policy-seed", type=int, default=0)
     parser.add_argument("--packet-scale", type=float, default=1.0)

@@ -10,7 +10,7 @@ from dsa_period.config import load_scenario
 from dsa_period.experiments import scenario_smoke
 from dsa_period.physics import shannon_bits
 
-CONFIG = str(Path(__file__).parents[1] / "configs" / "scenario-default.toml")
+CONFIG = str(Path(__file__).parents[1] / "configs" / "scenario-v1-n12.toml")
 
 
 def rngs(n, seed=0):

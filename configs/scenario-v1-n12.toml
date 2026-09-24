@@ -1,9 +1,12 @@
-# DSA05 periodic uplink scenario, draft 0.1. Numerical values are calibration
-# candidates, not a frozen research working point.
+# DSA05 periodic uplink scenario v1.0, N=12 variant -- FROZEN research working point.
+# Parameters and assumptions confirmed by the user on 2026-09-24; see
+# docs/research/scenario.md and scenario-v1-freeze.json. The four variants
+# N=4/6/8/12 differ only in num_ues and the per-class UE counts. Do not edit:
+# any change is a new scenario version in new files.
 [experiment]
-id = "scenario-default"
+id = "scenario-v1-n12"
 scenario_id = "DES-DSA05-PERIODIC"
-scenario_version = "0.1"
+scenario_version = "1.0"
 
 [physical]
 num_ues = 12
@@ -22,11 +25,10 @@ path_loss_exponent = 4.0
 topology_seed = 20260924
 
 [power]
-power_dbm = ["OFF", 0.0, 5.0, 10.0, 15.0, 20.0, 23.0]
+power_dbm = ["OFF", 5.0, 10.0, 15.0, 19.0, 23.0]
 
-# Offered load 7.37 Mbit/s. In the informal heuristic sweep (2026-09-24) this is
-# the point where max-power access meets a 5% per-UE violation cap while local
-# power saving does not; 4/3 of these sizes is the tighter candidate.
+# Every class offers 614.4 bit/slot per UE, so the total load is N * 614.4
+# bit/slot (7.37 Mbit/s here). UEs are dealt to classes round-robin.
 [traffic]
 phase_seed = 5240000
 
