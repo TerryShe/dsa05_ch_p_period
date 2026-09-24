@@ -142,13 +142,15 @@ class CentralReference:
         }
 
 
-def central_reference(
+def solo_reference(
     config: PhysicalConfig, menu: PowerMenu, topology: Topology, traffic: TrafficPattern
 ) -> CentralReference:
-    if config.num_ues > config.num_subchannels:
-        raise NotImplementedError(
-            "N > K needs time sharing; the orthogonal reference is exact only for N <= K"
-        )
+    """Per-UE interference-free optimum over each full packet window, for any N.
+
+    Exact when N <= K. For N > K it is a lower bound on every schedule: a UE's
+    SINR never exceeds its SNR alone, so each of its packets costs at least the
+    solo optimum in any feasible schedule, with or without co-channel sharing.
+    """
     if topology.num_ues != config.num_ues or traffic.num_ues != config.num_ues:
         raise ValueError("topology and traffic must match num_ues")
     power = np.asarray(menu.power_w[1:])
@@ -169,6 +171,17 @@ def central_reference(
         tuple(int(p) for p in traffic.period_slots),
         config.slot_duration_s,
     )
+
+
+def central_reference(
+    config: PhysicalConfig, menu: PowerMenu, topology: Topology, traffic: TrafficPattern
+) -> CentralReference:
+    """Exact optimum for N <= K (dedicated subchannels); see the module docstring."""
+    if config.num_ues > config.num_subchannels:
+        raise NotImplementedError(
+            "N > K needs time sharing; the orthogonal reference is exact only for N <= K"
+        )
+    return solo_reference(config, menu, topology, traffic)
 
 
 def act_central(

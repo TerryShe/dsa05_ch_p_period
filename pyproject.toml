@@ -27,3 +27,10 @@ dev = [
     "pytest>=9.1.1",
     "ruff>=0.16.6",
 ]
+# MILP (HiGHS) and max-flow for the central time-sharing bounds.
+analysis = [
+    "scipy>=1.15,<2",
+]
+
+[tool.uv]
+default-groups = ["dev", "analysis"]
