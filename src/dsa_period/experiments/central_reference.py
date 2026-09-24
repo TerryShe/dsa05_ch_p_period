@@ -104,6 +104,8 @@ def evaluate_instance(scenario, index: int, policy_seed: int) -> dict:
                 "packet_energy_j": s["packet_energy_j"],
                 "energy_ratio_to_strict_reference": s["packet_energy_j"] / energy["strict_j"],
                 "average_power_per_ue_w": s["average_power_per_ue_w"],
+                "per_ue_average_power_w": [row["average_power_w"] for row in s["per_ue"]],
+                "per_ue_ocr": [row["ocr"] for row in s["per_ue"]],
             }
             for policy, s in heuristics.items()
         },
