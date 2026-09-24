@@ -7,6 +7,12 @@
 
 规范见 [场景 v1.0](docs/research/scenario.md)。**场景参数与建模假设已于 2026-09-24 冻结**：N=4/6/8/12 四个变体（K=4，功率档 OFF/5/10/15/19/23 dBm，21 类动作），见 [配置](configs/) 与 [冻结清单](docs/research/scenario-v1-freeze.json)；MARL 训练尚未接入。
 
+## 结果
+
+| 报告 | 内容 |
+|---|---|
+| [N=4 中央最小能耗参照](docs/results/central-reference-n4_20260924/report.md) | 精确最优 3.70 mW/UE，100 实例环境重放核验；本地启发式能耗为最优的 5.5–11 倍 |
+
 ## 环境
 
 Python 3.12 + uv：
@@ -43,7 +49,9 @@ src/dsa_period/
   metrics.py     # 固定窗口 OCR/能耗统计
   baselines.py   # 本地启发式与本地链路估计
   config.py      # TOML 加载与实例生成
+  central.py     # N<=K 精确中央最小能耗参照与环境重放
   experiments/scenario_smoke.py
+  experiments/central_reference.py
 docs/research/scenario.md       # 场景规范
 docs/research/scenario-v1-freeze.json  # 冻结清单：配置 SHA-256、确认的假设、派生量
 tests/
