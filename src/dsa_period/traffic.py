@@ -95,6 +95,17 @@ class TrafficPattern:
     def offered_bits_per_slot(self) -> float:
         return float(np.sum(self.packet_bits / self.period_slots))
 
+    def packets_due(self, after_slot: int, through_slot: int) -> NDArray[np.int64]:
+        """Per-UE count of packets with after_slot < deadline <= through_slot.
+
+        Deadlines are phi_i + k * P_i for k >= 1 (packet k-1 ends at the next arrival).
+        """
+        if through_slot < after_slot:
+            raise ValueError("through_slot must not precede after_slot")
+        first = np.maximum((after_slot - self.phase_slots) // self.period_slots + 1, 1)
+        last = (through_slot - self.phase_slots) // self.period_slots
+        return np.maximum(last - first + 1, 0).astype(np.int64)
+
     def to_record(self) -> dict:
         return {
             "schema_version": 1,
