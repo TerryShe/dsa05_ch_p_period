@@ -52,6 +52,8 @@ src/dsa_period/
   env.py         # 连续运行的环境：完成、截止期结算、逾期丢弃、新到达
   metrics.py     # 固定窗口 OCR/能耗统计
   baselines.py   # 本地启发式与本地链路估计
+  policies.py    # 统一策略接口；强本地基线 paced_sticky（记住增益、粘住子信道、按节奏选功率）
+  evaluation.py  # 协议 v1 评估：逐回合可行判定、E/UB 归一化、两层 bootstrap、选模规则
   config.py      # TOML 加载与实例生成
   splits.py      # 协议 v1 冻结的实例划分与评估执行种子
   central.py     # 逐 UE 单独最优：N<=K 时精确，任意 N 下为下界
@@ -59,6 +61,7 @@ src/dsa_period/
   experiments/scenario_smoke.py
   experiments/central_reference.py
   experiments/central_bounds.py
+  experiments/evaluate_policies.py  # 按协议在 dev/validation/test 上评估本地策略
 docs/research/scenario.md       # 场景规范
 docs/research/scenario-v1-freeze.json  # 冻结清单：配置 SHA-256、确认的假设、派生量
 docs/research/marl-protocol-v1.md   # MARL 实验协议：划分、选模、测试、指标与判读
