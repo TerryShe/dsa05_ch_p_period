@@ -14,6 +14,7 @@
 | [N=4 中央最小能耗参照](docs/results/central-reference-n4_20260924/report.md) | 精确最优 3.70 mW/UE，100 实例环境重放核验；本地启发式能耗为最优的 5.5–11 倍 |
 | [N=4/6/8/12 中央最小能耗上下界](docs/results/central-bounds_20260924/report.md) | N=4 全部精确、N=6 上界/下界均值 1.02、N=8 为 1.12、N=12 为 1.42；启发式能耗为上界的 8–10 倍 |
 | [协议 v1 验证集与测试集参照](docs/results/protocol-v1-references_20260924/report.md) | 四个 N 逐实例上下界（验证 64、测试 200），作为 MARL 的 E/LB、E/UB 分母 |
+| [本地基线验证集校准](docs/results/baseline-calibration_20260924/report.md) | 最强可行基线 paced_sticky：N=4 已最优，N=6/8/12 能耗/上界为 1.78/2.87/5.50 |
 
 ## 环境
 
@@ -43,6 +44,7 @@ uv run --locked python -m dsa_period.experiments.scenario_smoke --instances 6 --
 configs/scenario-v1-n{4,6,8,12}.toml  # 冻结的 v1.0 工作点（勿改，变更另立新版本）
 scripts/analyze_power_menu_quantization.py  # 功率档选型分析
 scripts/summarize_central_*.py  # 中央参照结果汇总
+scripts/summarize_policy_evaluation.py  # 协议评估结果汇总
 scripts/explore_mac_sum_rate_bound.py  # MAC 和速率下界探索（负面结果）
 src/dsa_period/
   topology.py    # 圆盘拓扑与路损（复制自 dsa04）

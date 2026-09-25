@@ -12,18 +12,18 @@ protocol: marl-protocol-v1
 
 状态：**已定稿**。2026-09-24 用户确认 §7 的四项决定，进入第 0 阶段（实现与验收）。按 [MARL 实验协议 v1](../research/marl-protocol-v1.md) 执行。
 
-定稿时 §1 的基线数字来自草案校准；正式的验证集基线校准扩大了 paced_sticky 的 margin 网格（至 32），结果以校准报告为准。
+§1 的基线数字已替换为正式校准结果。正式校准把 paced_sticky 的 margin 网格扩到 32；草案校准中 N=12 的最好可行基线是 random_max（8.74），扩大网格后为 paced_sticky margin=8（5.50）。
 
 ## 1. 研究问题
 
-基线校准（验证集，协议流程）显示，负载越高，本地规则离最优越远：
+[基线校准报告](../results/baseline-calibration_20260924/report.md)（验证集，协议流程，正式运行）显示，负载越高，本地规则离最优越远：
 
 | N | 满足约束的最好本地基线 | 能耗/上界 |
 |---|---|---|
 | 4 | paced_sticky（margin=0） | 1.00，已是最优 |
 | 6 | paced_sticky（margin=0.25） | 1.78 |
 | 8 | paced_sticky（margin=0.5） | 2.87 |
-| 12 | random_max（paced_sticky 全部不可行） | 8.74 |
+| 12 | paced_sticky（margin=8） | 5.50 |
 
 本实验回答两个问题：
 
