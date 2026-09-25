@@ -48,10 +48,11 @@ class MarlPolicy:
         duals: DualSettings,
         mu0: float = 0.0,
         name: str = "marl",
+        lags: tuple[int, ...] = (),
     ) -> None:
         self.actor, self.config, self.menu, self.duals = actor, config, menu, duals
         self.mu0, self.name = mu0, name
-        self._memory = LocalMemory(config, menu, config.num_ues, duals)
+        self._memory = LocalMemory(config, menu, config.num_ues, duals, lags)
 
     def reset(self, rngs: Sequence[np.random.Generator]) -> None:
         if len(rngs) != self.config.num_ues:

@@ -22,9 +22,9 @@ from dsa_period.config import Scenario
 from dsa_period.env import PeriodicUplinkEnv
 from dsa_period.evaluation import aggregate, evaluate_policy, load_references, select
 from dsa_period.marl.features import (
-    CONTEXT_DIM,
     DualSettings,
     LocalMemory,
+    context_dim,
     critic_dim,
     critic_state,
     decode_actions,
@@ -32,6 +32,7 @@ from dsa_period.marl.features import (
     num_actions,
     stack,
     token_dim,
+    validate_lags,
 )
 from dsa_period.marl.networks import CentralCritic, ChannelSetActor, masked_log_probs
 from dsa_period.marl.policy import MarlPolicy
@@ -52,6 +53,10 @@ class TrainingSettings:
     torch_threads: int = 1
     hidden: int = 64
     critic_hidden: int = 256
+    periodic_lags: tuple[int, ...] = ()  # EXP-DSA05-002 periodic memory; empty = off
+
+    def __post_init__(self) -> None:
+        object.__setattr__(self, "periodic_lags", validate_lags(self.periodic_lags))
 
 
 @dataclass(frozen=True)
@@ -89,10 +94,15 @@ def candidate_name(checkpoint: str, variant: str, mu0: float) -> str:
 
 def build_models(scenario: Scenario, settings: TrainingSettings) -> tuple:
     config, menu = scenario.physical, scenario.menu
+    lags = settings.periodic_lags
     actor = ChannelSetActor(
-        token_dim(menu), CONTEXT_DIM, config.num_subchannels, menu.num_levels - 1, settings.hidden
+        token_dim(menu, lags),
+        context_dim(lags),
+        config.num_subchannels,
+        menu.num_levels - 1,
+        settings.hidden,
     )
-    critic = CentralCritic(critic_dim(config, menu), settings.critic_hidden)
+    critic = CentralCritic(critic_dim(config, menu, lags), settings.critic_hidden)
     return actor, critic
 
 
@@ -128,16 +138,19 @@ class Trainer:
         )
         self.references = load_references("validation", self.config.num_ues)
         n, e = self.config.num_ues, settings.num_envs
-        self.memories = [LocalMemory(self.config, self.menu, n, self.duals) for _ in range(e)]
+        self.lags = settings.periodic_lags
+        self.memories = [
+            LocalMemory(self.config, self.menu, n, self.duals, self.lags) for _ in range(e)
+        ]
         self.envs: list[PeriodicUplinkEnv] = [None] * e  # type: ignore[list-item]
         self.true_gain = np.zeros((e, n))
         self.obs = [None] * e
         self.tokens = np.zeros(
-            (e, n, self.config.num_subchannels, token_dim(self.menu)), np.float32
+            (e, n, self.config.num_subchannels, token_dim(self.menu, self.lags)), np.float32
         )
-        self.context = np.zeros((e, n, CONTEXT_DIM), np.float32)
+        self.context = np.zeros((e, n, context_dim(self.lags)), np.float32)
         self.legal = np.zeros((e, n, self.actions), np.bool_)
-        self.state = np.zeros((e, critic_dim(self.config, self.menu)), np.float32)
+        self.state = np.zeros((e, critic_dim(self.config, self.menu, self.lags)), np.float32)
         self.starts = np.zeros(e, np.bool_)
         self.hidden = actor.initial_hidden(e * n)
         self.instances_drawn: list[int] = []
@@ -190,10 +203,11 @@ class Trainer:
     # ------------------------------------------------------------------ rollout
     def collect(self) -> tuple[Rollout, dict]:
         steps, envs, n = self.settings.rollout_slots, self.settings.num_envs, self.config.num_ues
-        k, dt = self.config.num_subchannels, token_dim(self.menu)
+        k, dt = self.config.num_subchannels, token_dim(self.menu, self.lags)
+        dc = context_dim(self.lags)
         buf = {
             "tokens": np.zeros((steps, envs, n, k, dt), np.float32),
-            "context": np.zeros((steps, envs, n, CONTEXT_DIM), np.float32),
+            "context": np.zeros((steps, envs, n, dc), np.float32),
             "legal": np.zeros((steps, envs, n, self.actions), np.bool_),
             "actions": np.zeros((steps, envs, n), np.int64),
             "log_probs": np.zeros((steps, envs, n), np.float32),
@@ -220,7 +234,7 @@ class Trainer:
             with torch.no_grad():
                 logits, self.hidden = actor.step(
                     torch.from_numpy(self.tokens.reshape(envs * n, k, dt)),
-                    torch.from_numpy(self.context.reshape(envs * n, CONTEXT_DIM)),
+                    torch.from_numpy(self.context.reshape(envs * n, dc)),
                     self.hidden,
                 )
                 log_probs = masked_log_probs(
@@ -276,7 +290,7 @@ class Trainer:
 
     # --------------------------------------------------------------- validation
     def policy(self, mu0: float) -> MarlPolicy:
-        return MarlPolicy(self.ppo.actor, self.config, self.menu, self.duals, mu0)
+        return MarlPolicy(self.ppo.actor, self.config, self.menu, self.duals, mu0, lags=self.lags)
 
     def validate(self) -> dict[float, tuple[dict, list[dict]]]:
         """Protocol validation of the current actor, once per evaluation mu0."""
@@ -303,12 +317,12 @@ class Trainer:
             "duals": asdict(self.duals),
             "mu_global": self.mu_global,
             "model": {
-                "token_dim": token_dim(self.menu),
-                "context_dim": CONTEXT_DIM,
+                "token_dim": token_dim(self.menu, self.lags),
+                "context_dim": context_dim(self.lags),
                 "num_channels": self.config.num_subchannels,
                 "num_levels": self.menu.num_levels - 1,
                 "hidden": self.settings.hidden,
-                "critic_dim": critic_dim(self.config, self.menu),
+                "critic_dim": critic_dim(self.config, self.menu, self.lags),
                 "critic_hidden": self.settings.critic_hidden,
             },
             "ppo": self.ppo.state_dict(),
@@ -443,8 +457,9 @@ def load_policy_factory(path: Path, scenario: Scenario, mu0: float | None = None
     actor.load_state_dict(checkpoint["ppo"]["actor"])
     duals = DualSettings(**checkpoint["duals"])
     mu0 = checkpoint["constraint"]["mu0"] if mu0 is None else mu0
+    lags = tuple(checkpoint["settings"].get("periodic_lags", ()))
 
     def make() -> MarlPolicy:
-        return MarlPolicy(actor, scenario.physical, scenario.menu, duals, mu0)
+        return MarlPolicy(actor, scenario.physical, scenario.menu, duals, mu0, lags=lags)
 
     return make, checkpoint

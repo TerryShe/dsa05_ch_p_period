@@ -327,3 +327,63 @@ def test_profiles_override_only_their_own_variant(tmp_path):
     manifest = json.loads((output / "manifest.json").read_text())
     assert manifest["profile"] == "fixed-w30"
     assert manifest["resolved"]["constraint"]["weight"] == 30.0
+
+
+def test_periodic_memory_reports_exactly_lagged_local_history():
+    sc = scenario(4)
+    topology, traffic = sc.instance(5)
+    env = sc.make_env(topology, traffic)
+    lags = (1, 3)
+    memory = LocalMemory(sc.physical, sc.menu, 4, LOCAL, lags)
+    plain = LocalMemory(sc.physical, sc.menu, 4, LOCAL)
+    rng = np.random.default_rng(1)
+    obs = stack(env.reset())
+    history = []
+    base_dt = token_dim(sc.menu)
+    for call in range(12):
+        memory.observe(obs)
+        plain.observe(obs)
+        tokens, context = memory.features(obs)
+        plain_tokens, plain_context = plain.features(obs)
+        np.testing.assert_array_equal(tokens[:, :, :base_dt], plain_tokens)
+        np.testing.assert_array_equal(context[:, :CONTEXT_DIM], plain_context)
+        history.append(tokens)
+        for j, lag in enumerate(lags):
+            lagged = tokens[:, :, base_dt + 2 * j : base_dt + 2 * j + 2]
+            if call < lag:
+                assert np.all(lagged == 0) and np.all(context[:, CONTEXT_DIM + j] == 0)
+            else:
+                # Slot (call - lag) was described by the observation of call (call - lag + 1).
+                source = history[call - lag + 1]
+                np.testing.assert_array_equal(lagged[:, :, 0], source[:, :, 1])
+                np.testing.assert_array_equal(lagged[:, :, 1], source[:, :, 2])
+                assert np.all(context[:, CONTEXT_DIM + j] == 1)
+        index = np.where(rng.random(4) < 0.5, 0, rng.integers(1, 21, size=4))
+        obs = stack(env.step(decode_actions(index, sc.menu)).observations)
+
+
+def test_invalid_periodic_lags_are_rejected():
+    sc = scenario(4)
+    for lags in ((0,), (2, 2), (-1,)):
+        with pytest.raises(ValueError):
+            LocalMemory(sc.physical, sc.menu, 4, LOCAL, lags)
+        with pytest.raises(ValueError):
+            tiny_settings(periodic_lags=lags)
+
+
+def test_trainer_with_periodic_memory_replays_and_reloads(tmp_path):
+    sc = scenario(4)
+    constraint = ConstraintSettings("fixed", weight=10.0)
+    settings = tiny_settings(budget_slots=32, periodic_lags=(2, 4))
+    trainer = Trainer(sc, settings, PPOSettings(), constraint, seed=9, validation_indices=[10_000])
+    rollout, _ = trainer.collect()
+    assert rollout.tokens.shape[-1] == token_dim(sc.menu, (2, 4))
+    assert trainer.ppo.update(rollout, 0.01)["replay_log_prob_error"] == 0.0
+    trainer.run(tmp_path / "run", log=lambda *_: None)
+    make, checkpoint = load_policy_factory(
+        tmp_path / "run" / "checkpoints" / "step-000000032.pt", sc
+    )
+    assert tuple(checkpoint["settings"]["periodic_lags"]) == (2, 4)
+    recorded = json.loads((tmp_path / "run" / "validation" / "step-000000032.json").read_text())
+    replayed = run_episode(sc, make(), "validation", 10_000, 0, load_references("validation", 4))
+    assert replayed == recorded["by_mu0"][0]["episodes"][0]

@@ -7,6 +7,12 @@ topology, UE identifier, clock or other UE's private state enters the actor.
 
 Action index 0 is OFF; index 1 + k * L + (l - 1) is (subchannel k, power ID l)
 with L active power levels, matching the actor's channel-major logits.
+
+Optional periodic memory (EXP-DSA05-002): for each lag l in ``lags`` the token of
+subchannel k also carries the interference the UE inferred on k in the slot l
+slots before the one being decided, and whether the UE itself transmitted on k
+then. The UE keeps these in a local ring buffer of its own past observations;
+the context carries one flag per lag telling whether that much history exists.
 """
 
 from collections.abc import Sequence
@@ -31,8 +37,19 @@ def num_actions(config: PhysicalConfig, menu: PowerMenu) -> int:
     return 1 + config.num_subchannels * (menu.num_levels - 1)
 
 
-def token_dim(menu: PowerMenu) -> int:
-    return TOKEN_DIM_EXTRA + 2 * (menu.num_levels - 1)
+def token_dim(menu: PowerMenu, lags: tuple[int, ...] = ()) -> int:
+    return TOKEN_DIM_EXTRA + 2 * (menu.num_levels - 1) + 2 * len(lags)
+
+
+def context_dim(lags: tuple[int, ...] = ()) -> int:
+    return CONTEXT_DIM + len(lags)
+
+
+def validate_lags(lags) -> tuple[int, ...]:
+    values = tuple(int(lag) for lag in lags)
+    if any(lag < 1 for lag in values) or len(set(values)) != len(values):
+        raise ValueError("periodic lags must be distinct positive integers")
+    return values
 
 
 def decode_actions(indices: NDArray, menu: PowerMenu) -> NDArray[np.int64]:
@@ -124,9 +141,15 @@ class LocalMemory:
     """
 
     def __init__(
-        self, config: PhysicalConfig, menu: PowerMenu, num_ues: int, duals: DualSettings
+        self,
+        config: PhysicalConfig,
+        menu: PowerMenu,
+        num_ues: int,
+        duals: DualSettings,
+        lags: tuple[int, ...] = (),
     ) -> None:
         self.config, self.menu, self.num_ues, self.duals = config, menu, num_ues, duals
+        self.lags = validate_lags(lags)
         self._power = np.asarray(menu.power_w)
         self._noise_db = 10.0 * np.log10(config.noise_power_w)
         self.reset(np.zeros(num_ues))
@@ -140,6 +163,12 @@ class LocalMemory:
         self.interference = np.zeros((self.num_ues, self.config.num_subchannels))
         self._released = np.zeros(self.num_ues, dtype=np.bool_)
         self._prev_remaining = np.zeros(self.num_ues)
+        # Ring buffer of per-slot local history: slot s lives at row s % depth.
+        depth = max(self.lags, default=1)
+        shape = (depth, self.num_ues, self.config.num_subchannels)
+        self._history_interference = np.zeros(shape)
+        self._history_tx = np.zeros(shape)
+        self._observations = 0  # observe() calls since reset; the next slot's index
 
     def observe(self, obs: ObsArrays) -> Settlement:
         """Update gain/interference estimates and detect this boundary's settlements.
@@ -160,6 +189,14 @@ class LocalMemory:
             interference[ues, channels] = obs.rssi[channels] / (1.0 + sinr)
             self.gain[ues] = own / self._power[obs.prev_power[ues]]
         self.interference = interference
+        if self.lags and self._observations > 0:
+            # This observation describes slot (calls - 1).
+            row = (self._observations - 1) % self._history_tx.shape[0]
+            self._history_interference[row] = interference
+            self._history_tx[row] = 0.0
+            ues = np.flatnonzero(obs.prev_power > 0)
+            self._history_tx[row, ues, obs.prev_channel[ues]] = 1.0
+        self._observations += 1
         boundary = obs.to_deadline == obs.period
         settled = boundary & self._released
         violated = settled & (self._prev_remaining > 0) & (obs.prev_outcome != Outcome.DECODED)
@@ -213,7 +250,29 @@ class LocalMemory:
         context[:, 11] = np.log2(1.0 + per_slot / self.config.channel_uses_per_slot) / 4.0
         if self.duals.variant == "local":
             context[:, 12] = self.mu / self.duals.mu_max
+        if self.lags:
+            tokens, context = self._periodic_features(tokens, context)
         return tokens.astype(np.float32), context.astype(np.float32)
+
+    def _periodic_features(self, tokens, context):
+        """Append lagged interference / own-transmission per subchannel and validity flags."""
+        levels = self.menu.num_levels - 1
+        start = TOKEN_DIM_EXTRA + 2 * levels
+        wide = np.zeros((*tokens.shape[:2], start + 2 * len(self.lags)))
+        wide[:, :, :start] = tokens
+        flags = np.zeros((self.num_ues, len(self.lags)))
+        decided = self._observations - 1  # index of the slot about to be decided
+        depth = self._history_tx.shape[0]
+        for j, lag in enumerate(self.lags):
+            slot = decided - lag
+            if slot < 0:
+                continue
+            row = slot % depth
+            interference = self._history_interference[row]
+            wide[:, :, start + 2 * j] = (10.0 * np.log10(interference) - self._noise_db) / DB_SCALE
+            wide[:, :, start + 2 * j + 1] = self._history_tx[row]
+            flags[:, j] = 1.0
+        return wide, np.concatenate((context, flags), axis=1)
 
 
 def legal_mask(obs: ObsArrays, actions: int) -> NDArray[np.bool_]:
@@ -239,5 +298,5 @@ def critic_state(
     return per_ue.reshape(-1).astype(np.float32)
 
 
-def critic_dim(config: PhysicalConfig, menu: PowerMenu) -> int:
-    return config.num_ues * (config.num_subchannels * token_dim(menu) + CONTEXT_DIM + 2)
+def critic_dim(config: PhysicalConfig, menu: PowerMenu, lags: tuple[int, ...] = ()) -> int:
+    return config.num_ues * (config.num_subchannels * token_dim(menu, lags) + context_dim(lags) + 2)

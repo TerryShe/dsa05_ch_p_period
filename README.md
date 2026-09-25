@@ -55,6 +55,8 @@ uv run --locked python -m dsa_period.experiments.train_constrained_mappo \
 ```text
 configs/scenario-v1-n{4,6,8,12}.toml  # 冻结的 v1.0 工作点（勿改，变更另立新版本）
 configs/exp001-constrained-mappo.toml  # EXP-DSA05-001 训练与约束参数
+configs/exp001-constrained-mappo-long.toml  # EXP-DSA05-001 第 2 阶段长训
+configs/exp002-periodic-memory.toml  # EXP-DSA05-002 周期记忆（滞后 10/20/40 的逐子信道干扰特征）
 scripts/analyze_power_menu_quantization.py  # 功率档选型分析
 scripts/summarize_central_*.py  # 中央参照结果汇总
 scripts/summarize_policy_evaluation.py  # 协议评估结果汇总
