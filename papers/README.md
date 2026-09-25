@@ -1,6 +1,6 @@
 # 文献库
 
-每篇论文一个子文件夹，文件夹名是论文的缩写加年份。文件夹里有论文 PDF（从 arXiv 下载）和 `analysis.md`（针对本课题的阅读分析）。阶段性的综合阅读笔记放在 `docs/research/`，例如 [变体 C 的相关工作与新颖性判断](../docs/research/literature-variant-c_20260925.md)。
+每篇论文一个子文件夹，文件夹名是论文的缩写加年份。文件夹里有论文 PDF（从 arXiv 下载）和 `analysis.md`（针对本课题的阅读分析）。阶段性的综合阅读笔记放在 `docs/research/`：[变体 C 的相关工作与新颖性判断](../docs/research/literature-variant-c_20260925.md)、[反事实信用分配的相关工作](../docs/research/literature-counterfactual-credit_20260925.md)。
 
 | 文件夹 | 论文 | 来源 | 与本课题的关系 |
 |---|---|---|---|
@@ -13,6 +13,9 @@
 | [LyMARL-DS-2024](LyMARL-DS-2024/analysis.md) | Zhang 等，Lyapunov-guided MARL for Delay-Sensitive Wireless Scheduling | arXiv:2411.01766 | 约束类型最接近：逐用户时延违约概率与虚拟队列；有集中调度器 |
 | [DPD-CMARL-2024](DPD-CMARL-2024/analysis.md) | Kahe 与 Kebriaei，Distributed Primal-Dual Method for Constrained MARL | arXiv:2410.15335 | 共享约束、乘子共识、完全分布式学习；关系较远 |
 | [DePAint-2023](DePAint-2023/analysis.md) | Hassan 等，DePAint | Applied Intelligence（arXiv 标注已接收） | 逐智能体的峰值与平均约束、邻居通信；关系较远 |
+| [COMA-2018](COMA-2018/analysis.md) | Foerster 等，Counterfactual Multi-Agent Policy Gradients | AAAI 2018 | 反事实基线的起点；学联合 Q，按自己的策略边缘化 |
+| [DrReinforce-2021](DrReinforce-2021/analysis.md) | Castellini 等，Difference Rewards Policy Gradients | AAMAS 2021 / NCA 2022 | 奖励已知时的即时奖励差分；最接近 EXP-DSA05-003 的对照 |
+| [GPAE-2026](GPAE-2026/analysis.md) | Kim 等，Generalized Per-Agent Advantage Estimation | AAMAS 2026 | 不依赖模型的逐智能体多步优势 |
 
 ## 尚缺的文献
 
