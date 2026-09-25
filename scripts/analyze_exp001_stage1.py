@@ -23,7 +23,9 @@ import numpy as np
 from dsa_period.config import load_scenario
 from dsa_period.evaluation import FEASIBLE_EPISODE_RATE, select
 
-BASELINE_E_OVER_UB = {8: 2.871}  # paced_sticky margin 0.5, validation calibration
+# Strongest feasible local baseline per N (validation calibration, 2026-09-24):
+# paced_sticky margin 0.5 at N=8 and margin 8 at N=12.
+BASELINE_E_OVER_UB = {8: 2.871, 12: 5.498}
 FAR_M = 75.0
 WINDOW_SLOTS = 1800
 
@@ -210,7 +212,7 @@ def main() -> None:
         args.output.parent.mkdir(parents=True, exist_ok=True)
         args.output.write_text(json.dumps(summary, indent=2) + "\n")
     if args.figure is not None:
-        plot(runs, decision, baseline, args.figure)
+        plot(runs, decision, baseline, args.figure, n)
     if args.tuning_figure is not None:
         plot_tuning(runs, baseline, args.tuning_figure)
 
@@ -271,7 +273,7 @@ def _reference_lines(axes, baseline: float) -> None:
     )
 
 
-def plot(runs: list[dict], decision: dict, baseline: float, path: Path) -> None:
+def plot(runs: list[dict], decision: dict, baseline: float, path: Path, num_ues: int) -> None:
     """Selected setting of each variant: seed curves (thin) and seed mean (thick)."""
     import matplotlib
 
@@ -280,7 +282,8 @@ def plot(runs: list[dict], decision: dict, baseline: float, path: Path) -> None:
 
     fig, axes = plt.subplots(1, 2, figsize=(11, 4.2), constrained_layout=True)
     fig.patch.set_facecolor(SURFACE)
-    for slot, variant in enumerate(VARIANT_ORDER):
+    for variant in (v for v in VARIANT_ORDER if v in decision):
+        slot = VARIANT_ORDER.index(variant)  # color follows the variant across figures
         profile = decision[variant]["profile"]
         chosen = [r for r in runs if r["manifest"]["profile"] == profile]
         curves = [_points(r) for r in chosen]
@@ -307,10 +310,10 @@ def plot(runs: list[dict], decision: dict, baseline: float, path: Path) -> None:
     _axes_style(axes[0], "validation feasibility F")
     _axes_style(axes[1], "validation E / UB")
     axes[0].set_ylim(-0.02, 1.04)
-    axes[1].set_ylim(1.5, 6.0)
+    axes[1].set_ylim(1.0, 6.0)
     axes[1].legend(fontsize=8, frameon=False, labelcolor=INK, loc="upper right")
     fig.suptitle(
-        "N=8, selected setting per variant: seeds 101/202/303 (thin) and their mean (thick)",
+        f"N={num_ues}, selected setting per variant: seeds 101/202/303 (thin) and their mean (thick)",
         color=INK,
         fontsize=10,
     )
