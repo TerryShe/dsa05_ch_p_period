@@ -1,0 +1,6028 @@
+{
+  "runs": [
+    {
+      "source": "outputs/protocol-v1-bounds-test-n4_20260924/summary.json",
+      "source_sha256": "131616e22baa29f4b519e6acc628f95fc80c8c87508ee47c4a74700bdf2df1cb",
+      "formal": true,
+      "provenance": {
+        "commit": "dbc0889875c6ed7eae284743dd5bcc5cf785750b",
+        "dirty": false
+      },
+      "config": "configs/scenario-v1-n4.toml",
+      "split": "test",
+      "first_instance": 20000,
+      "policy_seed": 0,
+      "num_ues": 4,
+      "instances": 200,
+      "upper_solved": 200,
+      "exact_instances": 200,
+      "all_checks_passed": true,
+      "mip_status_counts": {
+        "0": 200
+      },
+      "mip_seconds": {
+        "mean": 0.023195219783810898,
+        "median": 0.02011579694226384,
+        "p10": 0.008885639556683601,
+        "p90": 0.039058700669556856,
+        "min": 0.006858201930299401,
+        "max": 0.049573014955967665
+      },
+      "early_completions": 0,
+      "lower_mw_per_ue": {
+        "mean": 3.8228073989768983,
+        "median": 3.699724242340504,
+        "p10": 1.6799600069644516,
+        "p90": 6.113879936490925,
+        "min": 0.6917482381618331,
+        "max": 7.988732240947614
+      },
+      "upper_mw_per_ue": {
+        "mean": 3.8228073989768983,
+        "median": 3.699724242340503,
+        "p10": 1.6799600069644518,
+        "p90": 6.113879936490927,
+        "min": 0.6917482381618331,
+        "max": 7.988732240947615
+      },
+      "upper_over_lower": {
+        "mean": 1.0,
+        "median": 1.0,
+        "p10": 0.9999999999999997,
+        "p90": 1.0000000000000002,
+        "min": 0.9999999999999992,
+        "max": 1.0000000000000007
+      },
+      "capped_over_strict_lower": 0.9527880857994444,
+      "capped_over_strict_upper": 0.9527880857994444,
+      "upper_slot_utilization": {
+        "mean": 0.67853125,
+        "median": 0.684375,
+        "p10": 0.43125,
+        "p90": 0.9,
+        "min": 0.21875,
+        "max": 1.0
+      },
+      "upper_slot_share_by_power_dbm": {
+        "5": 0.6698962615303684,
+        "10": 0.3273730387097604,
+        "15": 0.0027306997598709,
+        "19": 0.0,
+        "23": 0.0
+      },
+      "upper_vs_lower_by_distance": [
+        {
+          "distance_m": [
+            0,
+            50
+          ],
+          "ues": 219,
+          "upper_over_lower": 0.9999999999999999,
+          "share_of_extra_energy": 0.0,
+          "upper_duty_cycle": 0.22751141552511417
+        },
+        {
+          "distance_m": [
+            50,
+            75
+          ],
+          "ues": 241,
+          "upper_over_lower": 0.9999999999999997,
+          "share_of_extra_energy": 0.0,
+          "upper_duty_cycle": 0.6654564315352697
+        },
+        {
+          "distance_m": [
+            75,
+            100.0
+          ],
+          "ues": 340,
+          "upper_over_lower": 1.0,
+          "share_of_extra_energy": 0.0,
+          "upper_duty_cycle": 0.9783088235294117
+        }
+      ],
+      "heuristics": {},
+      "per_instance": [
+        {
+          "instance": 20000,
+          "lower_j": 0.019580317039559206,
+          "upper_j": 0.019580317039559206,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20001,
+          "lower_j": 0.04709959458719101,
+          "upper_j": 0.04709959458719102,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20002,
+          "lower_j": 0.014841897081898588,
+          "upper_j": 0.014841897081898587,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20003,
+          "lower_j": 0.032657156954880445,
+          "upper_j": 0.032657156954880445,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20004,
+          "lower_j": 0.034330452177162206,
+          "upper_j": 0.03433045217716219,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20005,
+          "lower_j": 0.028722619534266785,
+          "upper_j": 0.02872261953426679,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20006,
+          "lower_j": 0.0248804521771622,
+          "upper_j": 0.024880452177162216,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20007,
+          "lower_j": 0.028430519745963705,
+          "upper_j": 0.0284305197459637,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20008,
+          "lower_j": 0.030942032219501585,
+          "upper_j": 0.030942032219501585,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20009,
+          "lower_j": 0.055999729724794015,
+          "upper_j": 0.055999729724794015,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20010,
+          "lower_j": 0.018484334714209162,
+          "upper_j": 0.018484334714209166,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20011,
+          "lower_j": 0.01669182951309709,
+          "upper_j": 0.01669182951309709,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20012,
+          "lower_j": 0.01967268710306828,
+          "upper_j": 0.019672687103068284,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20013,
+          "lower_j": 0.03713031703955921,
+          "upper_j": 0.037130317039559234,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20014,
+          "lower_j": 0.04839216735710458,
+          "upper_j": 0.04839216735710458,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20015,
+          "lower_j": 0.019853679830642467,
+          "upper_j": 0.019853679830642464,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20016,
+          "lower_j": 0.021419007272425815,
+          "upper_j": 0.021419007272425815,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20017,
+          "lower_j": 0.017349662155992512,
+          "upper_j": 0.017349662155992516,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20018,
+          "lower_j": 0.028014854460172864,
+          "upper_j": 0.02801485446017287,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20019,
+          "lower_j": 0.04036893970362432,
+          "upper_j": 0.04036893970362432,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20020,
+          "lower_j": 0.007115124735378854,
+          "upper_j": 0.007115124735378854,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20021,
+          "lower_j": 0.0368613097671334,
+          "upper_j": 0.03686130976713339,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20022,
+          "lower_j": 0.042364922028974364,
+          "upper_j": 0.04236492202897436,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20023,
+          "lower_j": 0.040465057166577355,
+          "upper_j": 0.040465057166577355,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20024,
+          "lower_j": 0.03345729209248344,
+          "upper_j": 0.03345729209248344,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20025,
+          "lower_j": 0.021757292092483435,
+          "upper_j": 0.02175729209248343,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20026,
+          "lower_j": 0.035922619534266786,
+          "upper_j": 0.03592261953426678,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20027,
+          "lower_j": 0.03994577961894555,
+          "upper_j": 0.03994577961894555,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20028,
+          "lower_j": 0.028103477124237972,
+          "upper_j": 0.028103477124237976,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20029,
+          "lower_j": 0.021145644481342558,
+          "upper_j": 0.021145644481342558,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20030,
+          "lower_j": 0.04093004676435322,
+          "upper_j": 0.04093004676435321,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20031,
+          "lower_j": 0.020953409555436474,
+          "upper_j": 0.020953409555436477,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20032,
+          "lower_j": 0.043999527018389516,
+          "upper_j": 0.04399952701838953,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20033,
+          "lower_j": 0.03037656964011524,
+          "upper_j": 0.030376569640115238,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20034,
+          "lower_j": 0.014749527018389514,
+          "upper_j": 0.014749527018389514,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20035,
+          "lower_j": 0.02166492202897436,
+          "upper_j": 0.02166492202897436,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20036,
+          "lower_j": 0.03525354469303948,
+          "upper_j": 0.035253544693039464,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20037,
+          "lower_j": 0.024261309767133393,
+          "upper_j": 0.024261309767133393,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20038,
+          "lower_j": 0.025330452177162205,
+          "upper_j": 0.025330452177162222,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20039,
+          "lower_j": 0.028391829513097093,
+          "upper_j": 0.028391829513097093,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20040,
+          "lower_j": 0.01423024947075771,
+          "upper_j": 0.014230249470757707,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20041,
+          "lower_j": 0.03175340955543648,
+          "upper_j": 0.03175340955543648,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20042,
+          "lower_j": 0.03714216735710458,
+          "upper_j": 0.0371421673571046,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20043,
+          "lower_j": 0.01924577961894555,
+          "upper_j": 0.01924577961894555,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20044,
+          "lower_j": 0.0271111070607289,
+          "upper_j": 0.027111107060728893,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20045,
+          "lower_j": 0.012807224523681937,
+          "upper_j": 0.012807224523681937,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20046,
+          "lower_j": 0.03023801454485163,
+          "upper_j": 0.030238014544851633,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20047,
+          "lower_j": 0.03604993243119851,
+          "upper_j": 0.0360499324311985,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20048,
+          "lower_j": 0.03506880456602132,
+          "upper_j": 0.03506880456602132,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20049,
+          "lower_j": 0.025591964650700086,
+          "upper_j": 0.025591964650700086,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20050,
+          "lower_j": 0.029533996870201674,
+          "upper_j": 0.029533996870201674,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20051,
+          "lower_j": 0.006403612261840969,
+          "upper_j": 0.0064036122618409685,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20052,
+          "lower_j": 0.015453544693039471,
+          "upper_j": 0.015453544693039476,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20053,
+          "lower_j": 0.012095712050144052,
+          "upper_j": 0.012095712050144052,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20054,
+          "lower_j": 0.052518939703624326,
+          "upper_j": 0.052518939703624326,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20055,
+          "lower_j": 0.028649594587191015,
+          "upper_j": 0.02864959458719101,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20056,
+          "lower_j": 0.02109196465070009,
+          "upper_j": 0.021091964650700085,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20057,
+          "lower_j": 0.019999729724794007,
+          "upper_j": 0.019999729724794014,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20058,
+          "lower_j": 0.038645712050144054,
+          "upper_j": 0.03864571205014407,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20059,
+          "lower_j": 0.026826502071313745,
+          "upper_j": 0.026826502071313745,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20060,
+          "lower_j": 0.014557292092483435,
+          "upper_j": 0.014557292092483435,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20061,
+          "lower_j": 0.007684334714209162,
+          "upper_j": 0.007684334714209163,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20062,
+          "lower_j": 0.007826637208916739,
+          "upper_j": 0.00782663720891674,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20063,
+          "lower_j": 0.027968669428418327,
+          "upper_j": 0.027968669428418313,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20064,
+          "lower_j": 0.04179196465070009,
+          "upper_j": 0.04179196465070009,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20065,
+          "lower_j": 0.02023440228301066,
+          "upper_j": 0.02023440228301066,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20066,
+          "lower_j": 0.0364612421983319,
+          "upper_j": 0.03646124219833189,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20067,
+          "lower_j": 0.029307427230086433,
+          "upper_j": 0.029307427230086426,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20068,
+          "lower_j": 0.04945756236768943,
+          "upper_j": 0.04945756236768943,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20069,
+          "lower_j": 0.0190610394919274,
+          "upper_j": 0.019061039491927396,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20070,
+          "lower_j": 0.025930249470757706,
+          "upper_j": 0.0259302494707577,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20071,
+          "lower_j": 0.012707359661284934,
+          "upper_j": 0.012707359661284933,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20072,
+          "lower_j": 0.032838149682454625,
+          "upper_j": 0.032838149682454625,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20073,
+          "lower_j": 0.02084604989415154,
+          "upper_j": 0.020846049894151543,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20074,
+          "lower_j": 0.02373018190195621,
+          "upper_j": 0.023730181901956207,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20075,
+          "lower_j": 0.04261893970362432,
+          "upper_j": 0.04261893970362431,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20076,
+          "lower_j": 0.014007427230086432,
+          "upper_j": 0.014007427230086422,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20077,
+          "lower_j": 0.020330519745963702,
+          "upper_j": 0.0203305197459637,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20078,
+          "lower_j": 0.02523808211365313,
+          "upper_j": 0.02523808211365312,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20079,
+          "lower_j": 0.047757427230086434,
+          "upper_j": 0.047757427230086434,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20080,
+          "lower_j": 0.0396917619442956,
+          "upper_j": 0.03969176194429559,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20081,
+          "lower_j": 0.01763801454485163,
+          "upper_j": 0.017638014544851626,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20082,
+          "lower_j": 0.04243419957660617,
+          "upper_j": 0.042434199576606185,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20083,
+          "lower_j": 0.030968872134822818,
+          "upper_j": 0.03096887213482282,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20084,
+          "lower_j": 0.018941829513097093,
+          "upper_j": 0.018941829513097096,
+          "exact": true,
+          "mip_gap": 1.922650010271913e-07
+        },
+        {
+          "instance": 20085,
+          "lower_j": 0.03661478689137137,
+          "upper_j": 0.03661478689137136,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20086,
+          "lower_j": 0.028391829513097093,
+          "upper_j": 0.02839182951309708,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20087,
+          "lower_j": 0.010814989597775859,
+          "upper_j": 0.010814989597775857,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20088,
+          "lower_j": 0.01313801454485163,
+          "upper_j": 0.013138014544851629,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20089,
+          "lower_j": 0.04795340955543648,
+          "upper_j": 0.04795340955543648,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20090,
+          "lower_j": 0.021618736997219827,
+          "upper_j": 0.02161873699721983,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20091,
+          "lower_j": 0.029903477124237975,
+          "upper_j": 0.02990347712423798,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20092,
+          "lower_j": 0.010245779618945551,
+          "upper_j": 0.01024577961894555,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20093,
+          "lower_j": 0.020349256743183525,
+          "upper_j": 0.020349256743183525,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20094,
+          "lower_j": 0.03364577961894555,
+          "upper_j": 0.03364577961894555,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20095,
+          "lower_j": 0.015830519745963702,
+          "upper_j": 0.0158305197459637,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20096,
+          "lower_j": 0.032653409555436476,
+          "upper_j": 0.032653409555436476,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20097,
+          "lower_j": 0.033495982325350046,
+          "upper_j": 0.033495982325350046,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20098,
+          "lower_j": 0.02340749479888793,
+          "upper_j": 0.023407494798887946,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20099,
+          "lower_j": 0.023645914756548547,
+          "upper_j": 0.023645914756548547,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20100,
+          "lower_j": 0.04773808211365313,
+          "upper_j": 0.04773808211365312,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20101,
+          "lower_j": 0.03038031703955921,
+          "upper_j": 0.03038031703955921,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20102,
+          "lower_j": 0.03421498959777586,
+          "upper_j": 0.03421498959777588,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20103,
+          "lower_j": 0.04582636693371075,
+          "upper_j": 0.045826366933710755,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20104,
+          "lower_j": 0.04200354469303948,
+          "upper_j": 0.04200354469303949,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20105,
+          "lower_j": 0.04928031703955921,
+          "upper_j": 0.04928031703955922,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20106,
+          "lower_j": 0.02678406443900317,
+          "upper_j": 0.02678406443900316,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20107,
+          "lower_j": 0.026284132007804672,
+          "upper_j": 0.026284132007804654,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20108,
+          "lower_j": 0.0482111746295304,
+          "upper_j": 0.04821117462953038,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20109,
+          "lower_j": 0.03906512473537886,
+          "upper_j": 0.039065124735378855,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20110,
+          "lower_j": 0.02323024947075771,
+          "upper_j": 0.023230249470757698,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20111,
+          "lower_j": 0.01446492202897436,
+          "upper_j": 0.014464922028974361,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20112,
+          "lower_j": 0.041272687103068285,
+          "upper_j": 0.041272687103068285,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20113,
+          "lower_j": 0.008538149682454624,
+          "upper_j": 0.008538149682454624,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20114,
+          "lower_j": 0.01734591475654855,
+          "upper_j": 0.01734591475654855,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20115,
+          "lower_j": 0.04098808211365313,
+          "upper_j": 0.040988082113653124,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20116,
+          "lower_j": 0.02649196465070009,
+          "upper_j": 0.026491964650700087,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20117,
+          "lower_j": 0.03365327441783348,
+          "upper_j": 0.033653274417833466,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20118,
+          "lower_j": 0.025499594587191015,
+          "upper_j": 0.025499594587191015,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20119,
+          "lower_j": 0.03130715695488044,
+          "upper_j": 0.03130715695488044,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20120,
+          "lower_j": 0.030853409555436473,
+          "upper_j": 0.03085340955543647,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20121,
+          "lower_j": 0.006261309767133391,
+          "upper_j": 0.006261309767133391,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20122,
+          "lower_j": 0.019522889809472775,
+          "upper_j": 0.01952288980947278,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20123,
+          "lower_j": 0.039853409555436474,
+          "upper_j": 0.039853409555436474,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20124,
+          "lower_j": 0.008538149682454624,
+          "upper_j": 0.008538149682454626,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20125,
+          "lower_j": 0.011099594587191012,
+          "upper_j": 0.011099594587191014,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20126,
+          "lower_j": 0.01801873699721982,
+          "upper_j": 0.01801873699721982,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20127,
+          "lower_j": 0.012095712050144052,
+          "upper_j": 0.012095712050144054,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20128,
+          "lower_j": 0.010530384608360702,
+          "upper_j": 0.010530384608360704,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20129,
+          "lower_j": 0.019391829513097092,
+          "upper_j": 0.01939182951309708,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20130,
+          "lower_j": 0.03244182951309709,
+          "upper_j": 0.03244182951309708,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20131,
+          "lower_j": 0.03224959458719101,
+          "upper_j": 0.032249594587191004,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20132,
+          "lower_j": 0.038338014544851626,
+          "upper_j": 0.03833801454485163,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20133,
+          "lower_j": 0.03258413200780467,
+          "upper_j": 0.03258413200780467,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20134,
+          "lower_j": 0.013803341986634977,
+          "upper_j": 0.013803341986634979,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20135,
+          "lower_j": 0.056688149682454635,
+          "upper_j": 0.056688149682454655,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20136,
+          "lower_j": 0.019626502071313744,
+          "upper_j": 0.01962650207131375,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20137,
+          "lower_j": 0.01920334198663498,
+          "upper_j": 0.019203341986634974,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20138,
+          "lower_j": 0.023799459449588018,
+          "upper_j": 0.023799459449588008,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20139,
+          "lower_j": 0.04420361226184097,
+          "upper_j": 0.044203612261840976,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20140,
+          "lower_j": 0.028630249470757707,
+          "upper_j": 0.02863024947075771,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20141,
+          "lower_j": 0.016645644481342557,
+          "upper_j": 0.016645644481342554,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20142,
+          "lower_j": 0.023249594587191013,
+          "upper_j": 0.023249594587191013,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20143,
+          "lower_j": 0.03533841995766062,
+          "upper_j": 0.03533841995766062,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20144,
+          "lower_j": 0.04894952701838952,
+          "upper_j": 0.04894952701838952,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20145,
+          "lower_j": 0.018434402283010663,
+          "upper_j": 0.018434402283010666,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20146,
+          "lower_j": 0.02238018190195621,
+          "upper_j": 0.022380181901956203,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20147,
+          "lower_j": 0.009676569640115242,
+          "upper_j": 0.009676569640115242,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20148,
+          "lower_j": 0.027868804566021324,
+          "upper_j": 0.027868804566021314,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20149,
+          "lower_j": 0.042453544693039476,
+          "upper_j": 0.042453544693039476,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20150,
+          "lower_j": 0.021991964650700087,
+          "upper_j": 0.021991964650700087,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20151,
+          "lower_j": 0.02880749479888793,
+          "upper_j": 0.02880749479888795,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20152,
+          "lower_j": 0.029980249470757708,
+          "upper_j": 0.0299802494707577,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20153,
+          "lower_j": 0.044661107060728907,
+          "upper_j": 0.044661107060728907,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20154,
+          "lower_j": 0.030803477124237977,
+          "upper_j": 0.030803477124237963,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20155,
+          "lower_j": 0.01062275467186978,
+          "upper_j": 0.010622754671869778,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20156,
+          "lower_j": 0.04712268710306828,
+          "upper_j": 0.04712268710306827,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20157,
+          "lower_j": 0.05751887213482282,
+          "upper_j": 0.05751887213482283,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20158,
+          "lower_j": 0.012138149682454625,
+          "upper_j": 0.012138149682454623,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20159,
+          "lower_j": 0.023080452177162206,
+          "upper_j": 0.023080452177162203,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20160,
+          "lower_j": 0.0343610394919274,
+          "upper_j": 0.034361039491927405,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20161,
+          "lower_j": 0.026876434502512248,
+          "upper_j": 0.026876434502512245,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20162,
+          "lower_j": 0.03461130976713339,
+          "upper_j": 0.034611309767133384,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20163,
+          "lower_j": 0.03582275467186978,
+          "upper_j": 0.03582275467186978,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20164,
+          "lower_j": 0.020895982325350046,
+          "upper_j": 0.020895982325350046,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20165,
+          "lower_j": 0.013803341986634975,
+          "upper_j": 0.013803341986634979,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20166,
+          "lower_j": 0.01853801454485163,
+          "upper_j": 0.018538014544851617,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20167,
+          "lower_j": 0.03221900727242582,
+          "upper_j": 0.03221900727242582,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20168,
+          "lower_j": 0.05148787940724864,
+          "upper_j": 0.05148787940724863,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20169,
+          "lower_j": 0.043122619534266785,
+          "upper_j": 0.043122619534266785,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20170,
+          "lower_j": 0.014891829513097091,
+          "upper_j": 0.014891829513097093,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20171,
+          "lower_j": 0.01204577961894555,
+          "upper_j": 0.01204577961894555,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20172,
+          "lower_j": 0.021515124735378855,
+          "upper_j": 0.02151512473537885,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20173,
+          "lower_j": 0.0384110394919274,
+          "upper_j": 0.0384110394919274,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20174,
+          "lower_j": 0.04884216735710458,
+          "upper_j": 0.0488421673571046,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20175,
+          "lower_j": 0.024407359661284933,
+          "upper_j": 0.024407359661284926,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20176,
+          "lower_j": 0.026353409555436476,
+          "upper_j": 0.026353409555436476,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20177,
+          "lower_j": 0.008253544693039471,
+          "upper_j": 0.008253544693039471,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20178,
+          "lower_j": 0.02454966215599251,
+          "upper_j": 0.024549662155992507,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20179,
+          "lower_j": 0.024688217251256125,
+          "upper_j": 0.024688217251256122,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20180,
+          "lower_j": 0.023514854460172863,
+          "upper_j": 0.023514854460172863,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20181,
+          "lower_j": 0.028580317039559204,
+          "upper_j": 0.028580317039559208,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20182,
+          "lower_j": 0.007968939703624316,
+          "upper_j": 0.007968939703624316,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20183,
+          "lower_j": 0.01104966215599251,
+          "upper_j": 0.01104966215599251,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20184,
+          "lower_j": 0.0333917619442956,
+          "upper_j": 0.03339176194429559,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20185,
+          "lower_j": 0.034768601859616825,
+          "upper_j": 0.03476860185961683,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20186,
+          "lower_j": 0.004980587314765198,
+          "upper_j": 0.004980587314765198,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20187,
+          "lower_j": 0.01807241682786229,
+          "upper_j": 0.01807241682786229,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20188,
+          "lower_j": 0.047568939703624316,
+          "upper_j": 0.04756893970362432,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20189,
+          "lower_j": 0.022838284820057623,
+          "upper_j": 0.022838284820057623,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20190,
+          "lower_j": 0.032226502071313744,
+          "upper_j": 0.03222650207131376,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20191,
+          "lower_j": 0.010103477124237972,
+          "upper_j": 0.010103477124237974,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20192,
+          "lower_j": 0.02217670477771824,
+          "upper_j": 0.02217670477771824,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20193,
+          "lower_j": 0.0185611070607289,
+          "upper_j": 0.018561107060728905,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20194,
+          "lower_j": 0.042811174629530394,
+          "upper_j": 0.04281117462953039,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20195,
+          "lower_j": 0.03542643450251225,
+          "upper_j": 0.03542643450251224,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20196,
+          "lower_j": 0.02408781183844714,
+          "upper_j": 0.024087811838447142,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20197,
+          "lower_j": 0.020622619534266782,
+          "upper_j": 0.020622619534266775,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20198,
+          "lower_j": 0.020568939703624316,
+          "upper_j": 0.02056893970362432,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20199,
+          "lower_j": 0.017680452177162204,
+          "upper_j": 0.0176804521771622,
+          "exact": true,
+          "mip_gap": 0.0
+        }
+      ]
+    },
+    {
+      "source": "outputs/protocol-v1-bounds-test-n6_20260924/summary.json",
+      "source_sha256": "905dd134f01480b420831c41d40e66b1aced05ab21335abae9635889b07e60d2",
+      "formal": true,
+      "provenance": {
+        "commit": "dbc0889875c6ed7eae284743dd5bcc5cf785750b",
+        "dirty": false
+      },
+      "config": "configs/scenario-v1-n6.toml",
+      "split": "test",
+      "first_instance": 20000,
+      "policy_seed": 0,
+      "num_ues": 6,
+      "instances": 200,
+      "upper_solved": 200,
+      "exact_instances": 94,
+      "all_checks_passed": true,
+      "mip_status_counts": {
+        "0": 200
+      },
+      "mip_seconds": {
+        "mean": 0.1225671193585731,
+        "median": 0.05144921352621168,
+        "p10": 0.01565443656872958,
+        "p90": 0.2464908997295424,
+        "min": 0.0077140298672020435,
+        "max": 1.6432464660611004
+      },
+      "early_completions": 0,
+      "lower_mw_per_ue": {
+        "mean": 3.8278336812772635,
+        "median": 3.7261047098425313,
+        "p10": 2.0533760675956336,
+        "p90": 5.709068538812034,
+        "min": 0.9882117688026185,
+        "max": 7.878873103064545
+      },
+      "upper_mw_per_ue": {
+        "mean": 3.943940391532497,
+        "median": 3.7538731030645445,
+        "p10": 2.0533760675956336,
+        "p90": 6.078849666388463,
+        "min": 0.9882117688026185,
+        "max": 8.9852669953589
+      },
+      "upper_over_lower": {
+        "mean": 1.022207647659151,
+        "median": 1.0022314899105067,
+        "p10": 0.9999999999999998,
+        "p90": 1.0725494230766415,
+        "min": 0.9999999999999993,
+        "max": 1.144513628932439
+      },
+      "capped_over_strict_lower": 0.9537129983389497,
+      "capped_over_strict_upper": 0.9534532437193548,
+      "upper_slot_utilization": {
+        "mean": 0.916875,
+        "median": 0.99375,
+        "p10": 0.7375,
+        "p90": 1.0,
+        "min": 0.46875,
+        "max": 1.0
+      },
+      "upper_slot_share_by_power_dbm": {
+        "5": 0.5570718831750401,
+        "10": 0.4366810154824979,
+        "15": 0.006247101342462046,
+        "19": 0.0,
+        "23": 0.0
+      },
+      "upper_vs_lower_by_distance": [
+        {
+          "distance_m": [
+            0,
+            50
+          ],
+          "ues": 329,
+          "upper_over_lower": 1.0089049570382247,
+          "share_of_extra_energy": 0.014324726354838165,
+          "upper_duty_cycle": 0.21405775075987846
+        },
+        {
+          "distance_m": [
+            50,
+            75
+          ],
+          "ues": 359,
+          "upper_over_lower": 1.0539149506773524,
+          "share_of_extra_energy": 0.29455749393343833,
+          "upper_duty_cycle": 0.6142061281337048
+        },
+        {
+          "distance_m": [
+            75,
+            100.0
+          ],
+          "ues": 512,
+          "upper_over_lower": 1.0266879573140173,
+          "share_of_extra_energy": 0.6911177797117236,
+          "upper_duty_cycle": 0.864404296875
+        }
+      ],
+      "heuristics": {},
+      "per_instance": [
+        {
+          "instance": 20000,
+          "lower_j": 0.033487879407248636,
+          "upper_j": 0.03348787940724862,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20001,
+          "lower_j": 0.06740327441783348,
+          "upper_j": 0.07466130976713341,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20002,
+          "lower_j": 0.028183996870201674,
+          "upper_j": 0.028183996870201667,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20003,
+          "lower_j": 0.0510416268066926,
+          "upper_j": 0.05339584718774706,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20004,
+          "lower_j": 0.05804564448134256,
+          "upper_j": 0.06047288980947279,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20005,
+          "lower_j": 0.06211873699721983,
+          "upper_j": 0.06615374739944399,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20006,
+          "lower_j": 0.026161174629530395,
+          "upper_j": 0.026161174629530395,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20007,
+          "lower_j": 0.047426637208916746,
+          "upper_j": 0.04742663720891676,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20008,
+          "lower_j": 0.0333611746295304,
+          "upper_j": 0.033361174629530393,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20009,
+          "lower_j": 0.07431866942841833,
+          "upper_j": 0.08306090435432441,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20010,
+          "lower_j": 0.020476569640115242,
+          "upper_j": 0.020476569640115246,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20011,
+          "lower_j": 0.018399459449588016,
+          "upper_j": 0.018399459449588016,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20012,
+          "lower_j": 0.04705715695488045,
+          "upper_j": 0.04738419957660617,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20013,
+          "lower_j": 0.04469544177493806,
+          "upper_j": 0.04518787940724864,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20014,
+          "lower_j": 0.07218038460836071,
+          "upper_j": 0.07665729209248345,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20015,
+          "lower_j": 0.027395712050144055,
+          "upper_j": 0.02739571205014405,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20016,
+          "lower_j": 0.028107224523681938,
+          "upper_j": 0.028107224523681938,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20017,
+          "lower_j": 0.04473413200780467,
+          "upper_j": 0.04478031703955921,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20018,
+          "lower_j": 0.03057629936490925,
+          "upper_j": 0.030576299364909253,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20019,
+          "lower_j": 0.06053406443900317,
+          "upper_j": 0.06492295737827428,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20020,
+          "lower_j": 0.034049594587191014,
+          "upper_j": 0.034049594587191014,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20021,
+          "lower_j": 0.04155729209248344,
+          "upper_j": 0.04155729209248343,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20022,
+          "lower_j": 0.05251083678552291,
+          "upper_j": 0.05507663720891674,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20023,
+          "lower_j": 0.05634176194429559,
+          "upper_j": 0.059076704777718245,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20024,
+          "lower_j": 0.03900708938607895,
+          "upper_j": 0.03924176194429559,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20025,
+          "lower_j": 0.025741761944295595,
+          "upper_j": 0.02574176194429559,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20026,
+          "lower_j": 0.0484414916690896,
+          "upper_j": 0.0516919646507001,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20027,
+          "lower_j": 0.046491694375494094,
+          "upper_j": 0.04799959458719102,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20028,
+          "lower_j": 0.05702643450251225,
+          "upper_j": 0.05938440228301068,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20029,
+          "lower_j": 0.022710971923125906,
+          "upper_j": 0.02271097192312591,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20030,
+          "lower_j": 0.0457914241002881,
+          "upper_j": 0.046968534290815336,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20031,
+          "lower_j": 0.038268736997219825,
+          "upper_j": 0.03826873699721983,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20032,
+          "lower_j": 0.05227241682786229,
+          "upper_j": 0.05281478689137136,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20033,
+          "lower_j": 0.047414786891371366,
+          "upper_j": 0.049088082113653134,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20034,
+          "lower_j": 0.029991491669089605,
+          "upper_j": 0.030460836785522902,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20035,
+          "lower_j": 0.03664537420613657,
+          "upper_j": 0.03801097192312591,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20036,
+          "lower_j": 0.04748406443900318,
+          "upper_j": 0.047999594587191004,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20037,
+          "lower_j": 0.0334111070607289,
+          "upper_j": 0.033411107060728897,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20038,
+          "lower_j": 0.035457021817277445,
+          "upper_j": 0.03545702181727745,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20039,
+          "lower_j": 0.043799189174382025,
+          "upper_j": 0.04563787940724863,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20040,
+          "lower_j": 0.027152936573825993,
+          "upper_j": 0.028472349259060788,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20041,
+          "lower_j": 0.06846866942841832,
+          "upper_j": 0.07542650207131378,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20042,
+          "lower_j": 0.058345847187747046,
+          "upper_j": 0.058345847187747074,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20043,
+          "lower_j": 0.0402110394919274,
+          "upper_j": 0.04021103949192741,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20044,
+          "lower_j": 0.03337241682786229,
+          "upper_j": 0.033395509343739554,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20045,
+          "lower_j": 0.016791694375494094,
+          "upper_j": 0.016791694375494097,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20046,
+          "lower_j": 0.061645644481342556,
+          "upper_j": 0.06615374739944399,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20047,
+          "lower_j": 0.04458808211365313,
+          "upper_j": 0.04458808211365313,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20048,
+          "lower_j": 0.04616465175376837,
+          "upper_j": 0.04892268710306828,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20049,
+          "lower_j": 0.04570715695488044,
+          "upper_j": 0.045707156954880444,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20050,
+          "lower_j": 0.04167589395210026,
+          "upper_j": 0.0464611070607289,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20051,
+          "lower_j": 0.021568804566021317,
+          "upper_j": 0.021568804566021314,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20052,
+          "lower_j": 0.01687656964011524,
+          "upper_j": 0.016876569640115247,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20053,
+          "lower_j": 0.03148004676435322,
+          "upper_j": 0.03154932431198502,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20054,
+          "lower_j": 0.0850918295130971,
+          "upper_j": 0.09632562367689429,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20055,
+          "lower_j": 0.037395576912541056,
+          "upper_j": 0.037395576912541056,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20056,
+          "lower_j": 0.03798038460836071,
+          "upper_j": 0.03798038460836071,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20057,
+          "lower_j": 0.03414945944958801,
+          "upper_j": 0.03414945944958801,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20058,
+          "lower_j": 0.04450320684903198,
+          "upper_j": 0.0460111070607289,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20059,
+          "lower_j": 0.04506866942841832,
+          "upper_j": 0.045845712050144066,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20060,
+          "lower_j": 0.04163406443900317,
+          "upper_j": 0.04184564448134256,
+          "exact": false,
+          "mip_gap": 1.2225663532924478e-16
+        },
+        {
+          "instance": 20061,
+          "lower_j": 0.010672687103068281,
+          "upper_j": 0.010672687103068281,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20062,
+          "lower_j": 0.018918736997219823,
+          "upper_j": 0.018918736997219812,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20063,
+          "lower_j": 0.0348222816902593,
+          "upper_j": 0.035999391880786526,
+          "exact": false,
+          "mip_gap": 1.4211094771862428e-16
+        },
+        {
+          "instance": 20064,
+          "lower_j": 0.059445576912541064,
+          "upper_j": 0.06050722452368194,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20065,
+          "lower_j": 0.02165742723008643,
+          "upper_j": 0.02165742723008643,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20066,
+          "lower_j": 0.053476366933710745,
+          "upper_j": 0.055999729724794015,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20067,
+          "lower_j": 0.05743024947075771,
+          "upper_j": 0.05856117462953042,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20068,
+          "lower_j": 0.06623051974596371,
+          "upper_j": 0.06809979729359553,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20069,
+          "lower_j": 0.03936846672201383,
+          "upper_j": 0.04061485446017286,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20070,
+          "lower_j": 0.037264516616165366,
+          "upper_j": 0.039384064439003164,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20071,
+          "lower_j": 0.019680181901956213,
+          "upper_j": 0.019680181901956213,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20072,
+          "lower_j": 0.035684199576606165,
+          "upper_j": 0.035684199576606165,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20073,
+          "lower_j": 0.04023038460836071,
+          "upper_j": 0.040230384608360696,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20074,
+          "lower_j": 0.03751853429081533,
+          "upper_j": 0.038153274417833484,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20075,
+          "lower_j": 0.06910340955543648,
+          "upper_j": 0.07414577961894557,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20076,
+          "lower_j": 0.032160971923125906,
+          "upper_j": 0.032160971923125906,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20077,
+          "lower_j": 0.023176569640115247,
+          "upper_j": 0.02317656964011524,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20078,
+          "lower_j": 0.03521485446017287,
+          "upper_j": 0.03521485446017286,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20079,
+          "lower_j": 0.06898794697605014,
+          "upper_j": 0.07219972972479402,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20080,
+          "lower_j": 0.05222623179610776,
+          "upper_j": 0.05524203221950159,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20081,
+          "lower_j": 0.024895441774938062,
+          "upper_j": 0.02489544177493806,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20082,
+          "lower_j": 0.0693917619442956,
+          "upper_j": 0.07579972972479403,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20083,
+          "lower_j": 0.03483413200780467,
+          "upper_j": 0.03483413200780466,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20084,
+          "lower_j": 0.031995576912541054,
+          "upper_j": 0.031995576912541054,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20085,
+          "lower_j": 0.052537676700844145,
+          "upper_j": 0.05373787940724864,
+          "exact": false,
+          "mip_gap": 1.9040229178759303e-16
+        },
+        {
+          "instance": 20086,
+          "lower_j": 0.044714786891371365,
+          "upper_j": 0.04584571205014406,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20087,
+          "lower_j": 0.02513386173259868,
+          "upper_j": 0.025133861732598673,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20088,
+          "lower_j": 0.02110695424847595,
+          "upper_j": 0.02110695424847595,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20089,
+          "lower_j": 0.06789945944958803,
+          "upper_j": 0.07291498959777587,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20090,
+          "lower_j": 0.03623781183844714,
+          "upper_j": 0.036472484396663785,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20091,
+          "lower_j": 0.04133011433315471,
+          "upper_j": 0.042626434502512245,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20092,
+          "lower_j": 0.02673413200780467,
+          "upper_j": 0.02673413200780467,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20093,
+          "lower_j": 0.023622214121457794,
+          "upper_j": 0.0236914916690896,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20094,
+          "lower_j": 0.0376302494707577,
+          "upper_j": 0.03763024947075771,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20095,
+          "lower_j": 0.03596505716657736,
+          "upper_j": 0.03596505716657737,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20096,
+          "lower_j": 0.03706478689137136,
+          "upper_j": 0.037230181901956205,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20097,
+          "lower_j": 0.047876637208916745,
+          "upper_j": 0.04787663720891673,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20098,
+          "lower_j": 0.028957292092483433,
+          "upper_j": 0.028957292092483437,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20099,
+          "lower_j": 0.029764922028974364,
+          "upper_j": 0.029764922028974364,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20100,
+          "lower_j": 0.06176860185961683,
+          "upper_j": 0.06471512473537885,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20101,
+          "lower_j": 0.0379223492590608,
+          "upper_j": 0.038153274417833484,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20102,
+          "lower_j": 0.05913787940724863,
+          "upper_j": 0.062153679830642475,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20103,
+          "lower_j": 0.06259932431198502,
+          "upper_j": 0.06559577961894557,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20104,
+          "lower_j": 0.04705715695488044,
+          "upper_j": 0.04705715695488044,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20105,
+          "lower_j": 0.0524109719231259,
+          "upper_j": 0.05363801454485163,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20106,
+          "lower_j": 0.05298767670084414,
+          "upper_j": 0.057280452177162225,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20107,
+          "lower_j": 0.04083018190195622,
+          "upper_j": 0.040922551965465286,
+          "exact": false,
+          "mip_gap": 1.2501438575458483e-16
+        },
+        {
+          "instance": 20108,
+          "lower_j": 0.053072551965465294,
+          "upper_j": 0.054011242198331894,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20109,
+          "lower_j": 0.07030735966128494,
+          "upper_j": 0.07599196465070011,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20110,
+          "lower_j": 0.0509224168278623,
+          "upper_j": 0.05323045217716222,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20111,
+          "lower_j": 0.026149324311985023,
+          "upper_j": 0.026149324311985012,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20112,
+          "lower_j": 0.04625327441783347,
+          "upper_j": 0.04769189708189859,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20113,
+          "lower_j": 0.02640708938607894,
+          "upper_j": 0.026407089386078924,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20114,
+          "lower_j": 0.03357650207131375,
+          "upper_j": 0.03357650207131374,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20115,
+          "lower_j": 0.06375708938607895,
+          "upper_j": 0.0692307224523682,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20116,
+          "lower_j": 0.043691829513097094,
+          "upper_j": 0.0436918295130971,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20117,
+          "lower_j": 0.047937811838447135,
+          "upper_j": 0.049845779618945554,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20118,
+          "lower_j": 0.04175702181727745,
+          "upper_j": 0.043241829513097095,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20119,
+          "lower_j": 0.05239537420613656,
+          "upper_j": 0.05661512473537886,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20120,
+          "lower_j": 0.04234557691254106,
+          "upper_j": 0.0424610394919274,
+          "exact": false,
+          "mip_gap": 4.819389971312733e-16
+        },
+        {
+          "instance": 20121,
+          "lower_j": 0.036822619534266784,
+          "upper_j": 0.0368226195342668,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20122,
+          "lower_j": 0.026638014544851627,
+          "upper_j": 0.026638014544851634,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20123,
+          "lower_j": 0.04625702181727744,
+          "upper_j": 0.047341761944295596,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20124,
+          "lower_j": 0.021572551965465283,
+          "upper_j": 0.021572551965465276,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20125,
+          "lower_j": 0.0213609719231259,
+          "upper_j": 0.021360971923125895,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20126,
+          "lower_j": 0.02929932431198502,
+          "upper_j": 0.02929932431198501,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20127,
+          "lower_j": 0.025580114333154713,
+          "upper_j": 0.025580114333154703,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20128,
+          "lower_j": 0.048168736997219824,
+          "upper_j": 0.04816873699721986,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20129,
+          "lower_j": 0.021526366933710746,
+          "upper_j": 0.021526366933710756,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20130,
+          "lower_j": 0.03388794697605013,
+          "upper_j": 0.03388794697605013,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20131,
+          "lower_j": 0.03497643450251225,
+          "upper_j": 0.03497643450251225,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20132,
+          "lower_j": 0.05101853429081533,
+          "upper_j": 0.05507663720891674,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20133,
+          "lower_j": 0.05568392930140018,
+          "upper_j": 0.059076704777718245,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20134,
+          "lower_j": 0.031664786891371366,
+          "upper_j": 0.03166478689137137,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20135,
+          "lower_j": 0.08478787940724863,
+          "upper_j": 0.09704088354987614,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20136,
+          "lower_j": 0.02560320684903198,
+          "upper_j": 0.02560320684903199,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20137,
+          "lower_j": 0.05468781183844714,
+          "upper_j": 0.056572687103068314,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20138,
+          "lower_j": 0.031768399153212334,
+          "upper_j": 0.03323011433315472,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20139,
+          "lower_j": 0.05794952701838951,
+          "upper_j": 0.05969209978830308,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20140,
+          "lower_j": 0.04580327441783348,
+          "upper_j": 0.04580327441783349,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20141,
+          "lower_j": 0.034130114333154715,
+          "upper_j": 0.03415320684903199,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20142,
+          "lower_j": 0.05761873699721983,
+          "upper_j": 0.06035742723008646,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20143,
+          "lower_j": 0.04330735966128493,
+          "upper_j": 0.04330735966128494,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20144,
+          "lower_j": 0.05136866942841833,
+          "upper_j": 0.05136866942841833,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20145,
+          "lower_j": 0.02384189708189859,
+          "upper_j": 0.023841897081898596,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20146,
+          "lower_j": 0.02721846672201383,
+          "upper_j": 0.027241559237891105,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20147,
+          "lower_j": 0.0136610394919274,
+          "upper_j": 0.013661039491927401,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20148,
+          "lower_j": 0.039364719322569866,
+          "upper_j": 0.03985715695488044,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20149,
+          "lower_j": 0.04843024947075771,
+          "upper_j": 0.049538082113653126,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20150,
+          "lower_j": 0.04618399687020167,
+          "upper_j": 0.0462532744178335,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20151,
+          "lower_j": 0.05436887213482282,
+          "upper_j": 0.05476893970362432,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20152,
+          "lower_j": 0.03185327441783348,
+          "upper_j": 0.031853274417833484,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20153,
+          "lower_j": 0.057622484396663794,
+          "upper_j": 0.058045644481342556,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20154,
+          "lower_j": 0.039480181901956214,
+          "upper_j": 0.039691761944295585,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20155,
+          "lower_j": 0.019018601859616825,
+          "upper_j": 0.01901860185961683,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20156,
+          "lower_j": 0.06517261953426678,
+          "upper_j": 0.06866525987298186,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20157,
+          "lower_j": 0.07251492202897436,
+          "upper_j": 0.07291498959777587,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20158,
+          "lower_j": 0.02093406443900317,
+          "upper_j": 0.02093406443900317,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20159,
+          "lower_j": 0.040703477124237976,
+          "upper_j": 0.04070347712423798,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20160,
+          "lower_j": 0.043418466722013827,
+          "upper_j": 0.045538014544851624,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20161,
+          "lower_j": 0.03171471932256987,
+          "upper_j": 0.03171471932256988,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20162,
+          "lower_j": 0.040468804566021324,
+          "upper_j": 0.04046880456602132,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20163,
+          "lower_j": 0.05160334198663498,
+          "upper_j": 0.053845847187747056,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20164,
+          "lower_j": 0.03099196465070009,
+          "upper_j": 0.03099196465070008,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20165,
+          "lower_j": 0.03702234925906079,
+          "upper_j": 0.03784557691254105,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20166,
+          "lower_j": 0.03931478689137137,
+          "upper_j": 0.03931478689137139,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20167,
+          "lower_j": 0.04091880456602133,
+          "upper_j": 0.04091880456602132,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20168,
+          "lower_j": 0.05521083678552291,
+          "upper_j": 0.056364854460172864,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20169,
+          "lower_j": 0.0569609043543244,
+          "upper_j": 0.05979196465070009,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20170,
+          "lower_j": 0.030583794163797178,
+          "upper_j": 0.03154932431198501,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20171,
+          "lower_j": 0.018591694375494097,
+          "upper_j": 0.0185916943754941,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20172,
+          "lower_j": 0.043738014544851635,
+          "upper_j": 0.04373801454485165,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20173,
+          "lower_j": 0.044268534290815335,
+          "upper_j": 0.04615340955543648,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20174,
+          "lower_j": 0.06737268710306828,
+          "upper_j": 0.07245749479888794,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20175,
+          "lower_j": 0.02853413200780467,
+          "upper_j": 0.028534132007804663,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20176,
+          "lower_j": 0.040995576912541055,
+          "upper_j": 0.04139564448134255,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20177,
+          "lower_j": 0.02514945944958802,
+          "upper_j": 0.02514945944958801,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20178,
+          "lower_j": 0.03488406443900317,
+          "upper_j": 0.03488406443900316,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20179,
+          "lower_j": 0.04021478689137137,
+          "upper_j": 0.04078024947075771,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20180,
+          "lower_j": 0.027499324311985023,
+          "upper_j": 0.02749932431198502,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20181,
+          "lower_j": 0.04476846672201383,
+          "upper_j": 0.04799959458719102,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20182,
+          "lower_j": 0.021403409555436473,
+          "upper_j": 0.02140340955543647,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20183,
+          "lower_j": 0.016314854460172862,
+          "upper_j": 0.016314854460172865,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20184,
+          "lower_j": 0.036972416827862294,
+          "upper_j": 0.03723018190195621,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20185,
+          "lower_j": 0.06077997919555172,
+          "upper_j": 0.06769223492590609,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20186,
+          "lower_j": 0.0306611746295304,
+          "upper_j": 0.030661174629530413,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20187,
+          "lower_j": 0.050830046764353216,
+          "upper_j": 0.05446124219833192,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20188,
+          "lower_j": 0.05956853429081533,
+          "upper_j": 0.06492295737827428,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20189,
+          "lower_j": 0.029099594587191014,
+          "upper_j": 0.029099594587191017,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20190,
+          "lower_j": 0.03464564448134256,
+          "upper_j": 0.03464564448134256,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20191,
+          "lower_j": 0.018357021817277445,
+          "upper_j": 0.018357021817277448,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20192,
+          "lower_j": 0.02701498959777586,
+          "upper_j": 0.02701498959777586,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20193,
+          "lower_j": 0.029626366933710752,
+          "upper_j": 0.029626366933710745,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20194,
+          "lower_j": 0.06176860185961683,
+          "upper_j": 0.06646144490473639,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20195,
+          "lower_j": 0.055799391880786524,
+          "upper_j": 0.05851124219833191,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20196,
+          "lower_j": 0.0407222141214578,
+          "upper_j": 0.04399952701838952,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20197,
+          "lower_j": 0.051749391880786526,
+          "upper_j": 0.05328038460836072,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20198,
+          "lower_j": 0.04025347712423798,
+          "upper_j": 0.040253477124238,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20199,
+          "lower_j": 0.022234132007804667,
+          "upper_j": 0.02223413200780467,
+          "exact": true,
+          "mip_gap": 0.0
+        }
+      ]
+    },
+    {
+      "source": "outputs/protocol-v1-bounds-test-n8_20260924/summary.json",
+      "source_sha256": "e85ac9ee2f78e894a76b452147911d4dcc62907dccda3a6aaaf7504ce5e33331",
+      "formal": true,
+      "provenance": {
+        "commit": "dbc0889875c6ed7eae284743dd5bcc5cf785750b",
+        "dirty": false
+      },
+      "config": "configs/scenario-v1-n8.toml",
+      "split": "test",
+      "first_instance": 20000,
+      "policy_seed": 0,
+      "num_ues": 8,
+      "instances": 200,
+      "upper_solved": 200,
+      "exact_instances": 9,
+      "all_checks_passed": true,
+      "mip_status_counts": {
+        "0": 200
+      },
+      "mip_seconds": {
+        "mean": 0.32475367053528315,
+        "median": 0.18376988754607737,
+        "p10": 0.05602614337112755,
+        "p90": 0.7565508646192028,
+        "min": 0.011177500942721963,
+        "max": 3.256458363030106
+      },
+      "early_completions": 0,
+      "lower_mw_per_ue": {
+        "mean": 3.8679183530820502,
+        "median": 3.9093939481204387,
+        "p10": 2.4603906059894283,
+        "p90": 5.383734911839008,
+        "min": 1.4209008279948543,
+        "max": 7.259579651114594
+      },
+      "upper_mw_per_ue": {
+        "mean": 4.381676622295068,
+        "median": 4.261053180014265,
+        "p10": 2.516224228273433,
+        "p90": 6.475947351881243,
+        "min": 1.4209008279948536,
+        "max": 9.235616261144523
+      },
+      "upper_over_lower": {
+        "mean": 1.1128477501022345,
+        "median": 1.1127391945648593,
+        "p10": 1.0114342653623205,
+        "p90": 1.2318191265678065,
+        "min": 0.9999999999999994,
+        "max": 1.2838383050860254
+      },
+      "capped_over_strict_lower": 0.9534485345235294,
+      "capped_over_strict_upper": 0.9527402315360215,
+      "upper_slot_utilization": {
+        "mean": 0.99421875,
+        "median": 1.0,
+        "p10": 0.99375,
+        "p90": 1.0,
+        "min": 0.75,
+        "max": 1.0
+      },
+      "upper_slot_share_by_power_dbm": {
+        "5": 0.3275977296220286,
+        "10": 0.6248077342144495,
+        "15": 0.04759453616352202,
+        "19": 0.0,
+        "23": 0.0
+      },
+      "upper_vs_lower_by_distance": [
+        {
+          "distance_m": [
+            0,
+            50
+          ],
+          "ues": 424,
+          "upper_over_lower": 1.1054906156674567,
+          "share_of_extra_energy": 0.03673698853033328,
+          "upper_duty_cycle": 0.19675707547169813
+        },
+        {
+          "distance_m": [
+            50,
+            75
+          ],
+          "ues": 485,
+          "upper_over_lower": 1.2668089608445514,
+          "share_of_extra_energy": 0.3351478459990456,
+          "upper_duty_cycle": 0.46087628865979374
+        },
+        {
+          "distance_m": [
+            75,
+            100.0
+          ],
+          "ues": 691,
+          "upper_over_lower": 1.1060236918040742,
+          "share_of_extra_energy": 0.6281151654706211,
+          "upper_duty_cycle": 0.7068379160636759
+        }
+      ],
+      "heuristics": {},
+      "per_instance": [
+        {
+          "instance": 20000,
+          "lower_j": 0.037922349259060795,
+          "upper_j": 0.03907636693371075,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20001,
+          "lower_j": 0.077453071711429,
+          "upper_j": 0.09590995839110343,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20002,
+          "lower_j": 0.04723379416379719,
+          "upper_j": 0.051384267145407676,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20003,
+          "lower_j": 0.06765668397326996,
+          "upper_j": 0.08377616422730626,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20004,
+          "lower_j": 0.059372551965465294,
+          "upper_j": 0.06262677234651974,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20005,
+          "lower_j": 0.07633774426964564,
+          "upper_j": 0.09422167357104581,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20006,
+          "lower_j": 0.03557248439666379,
+          "upper_j": 0.03557248439666379,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20007,
+          "lower_j": 0.0724918295130971,
+          "upper_j": 0.08233754156324116,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20008,
+          "lower_j": 0.040049391880786524,
+          "upper_j": 0.04030715695488045,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20009,
+          "lower_j": 0.0818837941637972,
+          "upper_j": 0.10482508312648228,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20010,
+          "lower_j": 0.03851090435432441,
+          "upper_j": 0.039076366933710756,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20011,
+          "lower_j": 0.022383929301400173,
+          "upper_j": 0.022383929301400176,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20012,
+          "lower_j": 0.06307616422730626,
+          "upper_j": 0.07214979729359551,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20013,
+          "lower_j": 0.06869523906853356,
+          "upper_j": 0.08034155923789112,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20014,
+          "lower_j": 0.10261873699721984,
+          "upper_j": 0.12648939703624318,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20015,
+          "lower_j": 0.04298406443900317,
+          "upper_j": 0.0432418295130971,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20016,
+          "lower_j": 0.03043024947075771,
+          "upper_j": 0.03043024947075771,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20017,
+          "lower_j": 0.07841485446017286,
+          "upper_j": 0.09442140329583985,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20018,
+          "lower_j": 0.0385414916690896,
+          "upper_j": 0.040307156954880435,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20019,
+          "lower_j": 0.07243004676435323,
+          "upper_j": 0.08643747399443964,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20020,
+          "lower_j": 0.062049459449588014,
+          "upper_j": 0.06717670477771825,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20021,
+          "lower_j": 0.06368781183844714,
+          "upper_j": 0.06850735966128495,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20022,
+          "lower_j": 0.056256886679674455,
+          "upper_j": 0.06307677234651975,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20023,
+          "lower_j": 0.08313392930140018,
+          "upper_j": 0.10287903323233076,
+          "exact": false,
+          "mip_gap": 6.844363607699763e-08
+        },
+        {
+          "instance": 20024,
+          "lower_j": 0.057514516616165384,
+          "upper_j": 0.06615374739944396,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20025,
+          "lower_j": 0.030722349259060793,
+          "upper_j": 0.030768534290815327,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20026,
+          "lower_j": 0.06564510393093058,
+          "upper_j": 0.08085708938607895,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20027,
+          "lower_j": 0.07245688667967445,
+          "upper_j": 0.08859135653148663,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20028,
+          "lower_j": 0.07255300414262748,
+          "upper_j": 0.08874115382508212,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20029,
+          "lower_j": 0.034733659026194186,
+          "upper_j": 0.03723018190195621,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20030,
+          "lower_j": 0.053664246340959385,
+          "upper_j": 0.06173801454485164,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20031,
+          "lower_j": 0.0564222816902593,
+          "upper_j": 0.06307677234651975,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20032,
+          "lower_j": 0.06883754156324114,
+          "upper_j": 0.07808781183844714,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20033,
+          "lower_j": 0.05455300414262749,
+          "upper_j": 0.06246137733593489,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20034,
+          "lower_j": 0.052310498941515425,
+          "upper_j": 0.06061519230418037,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20035,
+          "lower_j": 0.04290668397326996,
+          "upper_j": 0.04892268710306828,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20036,
+          "lower_j": 0.07053767670084415,
+          "upper_j": 0.08408386173259869,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20037,
+          "lower_j": 0.055230181901956214,
+          "upper_j": 0.058461309767133415,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20038,
+          "lower_j": 0.045437541563241146,
+          "upper_j": 0.04933024947075771,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20039,
+          "lower_j": 0.06526812887800634,
+          "upper_j": 0.07921063407911842,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20040,
+          "lower_j": 0.056856683973269956,
+          "upper_j": 0.06814972972479404,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20041,
+          "lower_j": 0.0946223492590608,
+          "upper_j": 0.12003585234320371,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20042,
+          "lower_j": 0.0803109719231259,
+          "upper_j": 0.09289101868747913,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20043,
+          "lower_j": 0.051845509343739556,
+          "upper_j": 0.05476893970362432,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20044,
+          "lower_j": 0.0588414241002881,
+          "upper_j": 0.06784203221950161,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20045,
+          "lower_j": 0.029656954248475944,
+          "upper_j": 0.029703139280230478,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20046,
+          "lower_j": 0.09080702181727744,
+          "upper_j": 0.11434749995434458,
+          "exact": false,
+          "mip_gap": 9.834421470886986e-07
+        },
+        {
+          "instance": 20047,
+          "lower_j": 0.06641090435432441,
+          "upper_j": 0.0746613097671334,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20048,
+          "lower_j": 0.05057602908970326,
+          "upper_j": 0.05784591475654855,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20049,
+          "lower_j": 0.07501458418496687,
+          "upper_j": 0.08790982325350045,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20050,
+          "lower_j": 0.04324122139388361,
+          "upper_j": 0.04923038460836071,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20051,
+          "lower_j": 0.04036083678552291,
+          "upper_j": 0.04184564448134256,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20052,
+          "lower_j": 0.03072234925906079,
+          "upper_j": 0.03107623179610775,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20053,
+          "lower_j": 0.04994128896268511,
+          "upper_j": 0.05753821725125613,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20054,
+          "lower_j": 0.10453794697605015,
+          "upper_j": 0.13299287416048114,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20055,
+          "lower_j": 0.04000320684903199,
+          "upper_j": 0.04061485446017287,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20056,
+          "lower_j": 0.05719182951309709,
+          "upper_j": 0.060049729724794026,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20057,
+          "lower_j": 0.04566471932256987,
+          "upper_j": 0.04693419957660617,
+          "exact": false,
+          "mip_gap": 4.3600681325117884e-16
+        },
+        {
+          "instance": 20058,
+          "lower_j": 0.046495441774938064,
+          "upper_j": 0.050153477124237976,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20059,
+          "lower_j": 0.05194537420613656,
+          "upper_j": 0.059384402283010666,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20060,
+          "lower_j": 0.06127241682786229,
+          "upper_j": 0.0690228898094728,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20061,
+          "lower_j": 0.020460971923125904,
+          "upper_j": 0.020460971923125893,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20062,
+          "lower_j": 0.036903139280230486,
+          "upper_j": 0.03770327441783349,
+          "exact": false,
+          "mip_gap": 4.0706605273410305e-16
+        },
+        {
+          "instance": 20063,
+          "lower_j": 0.0389721465526563,
+          "upper_j": 0.04215334198663498,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20064,
+          "lower_j": 0.062030114333154716,
+          "upper_j": 0.0654303846083607,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20065,
+          "lower_j": 0.027207224523681937,
+          "upper_j": 0.02720722452368194,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20066,
+          "lower_j": 0.06804550934373955,
+          "upper_j": 0.07906083678552292,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20067,
+          "lower_j": 0.06984550934373956,
+          "upper_j": 0.07797984405794872,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20068,
+          "lower_j": 0.07818018190195622,
+          "upper_j": 0.09329858105516854,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20069,
+          "lower_j": 0.06249135653148661,
+          "upper_j": 0.07378814968245466,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20070,
+          "lower_j": 0.05496431390976087,
+          "upper_j": 0.06492295737827429,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20071,
+          "lower_j": 0.03550695424847594,
+          "upper_j": 0.03630708938607895,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20072,
+          "lower_j": 0.04469544177493807,
+          "upper_j": 0.04799959458719102,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20073,
+          "lower_j": 0.044261039491927404,
+          "upper_j": 0.044307224523681944,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20074,
+          "lower_j": 0.057510769216721415,
+          "upper_j": 0.06189591475654857,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20075,
+          "lower_j": 0.08914557691254106,
+          "upper_j": 0.1117860550496082,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20076,
+          "lower_j": 0.043564516616165366,
+          "upper_j": 0.047076502071313746,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20077,
+          "lower_j": 0.03953011433315472,
+          "upper_j": 0.04030715695488044,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20078,
+          "lower_j": 0.06903787940724865,
+          "upper_j": 0.07813774426964568,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20079,
+          "lower_j": 0.09415300414262749,
+          "upper_j": 0.11690894485908097,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20080,
+          "lower_j": 0.06081056651031692,
+          "upper_j": 0.072199729724794,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20081,
+          "lower_j": 0.04330675154207145,
+          "upper_j": 0.04923038460836071,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20082,
+          "lower_j": 0.07311471932256988,
+          "upper_j": 0.0857721465526563,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20083,
+          "lower_j": 0.04223386173259868,
+          "upper_j": 0.04492261953426678,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20084,
+          "lower_j": 0.036026231796107755,
+          "upper_j": 0.03661478689137136,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20085,
+          "lower_j": 0.07381063407911842,
+          "upper_j": 0.08633760913204266,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20086,
+          "lower_j": 0.05362991162675022,
+          "upper_j": 0.06215367983064247,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20087,
+          "lower_j": 0.04654912160558053,
+          "upper_j": 0.05199966215599253,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20088,
+          "lower_j": 0.0313221465526563,
+          "upper_j": 0.03308781183844713,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20089,
+          "lower_j": 0.07321458418496689,
+          "upper_j": 0.0858220789838548,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20090,
+          "lower_j": 0.039864651753768375,
+          "upper_j": 0.04123024947075771,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20091,
+          "lower_j": 0.05284912160558053,
+          "upper_j": 0.05938440228301066,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20092,
+          "lower_j": 0.05073392930140018,
+          "upper_j": 0.05476893970362433,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20093,
+          "lower_j": 0.046225826383298765,
+          "upper_j": 0.05323045217716221,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20094,
+          "lower_j": 0.05720307171142898,
+          "upper_j": 0.06584604989415155,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20095,
+          "lower_j": 0.04108794697605013,
+          "upper_j": 0.04108794697605013,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20096,
+          "lower_j": 0.06348372659499568,
+          "upper_j": 0.07383808211365316,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20097,
+          "lower_j": 0.05612643450251225,
+          "upper_j": 0.057395914756548545,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20098,
+          "lower_j": 0.05153781183844714,
+          "upper_j": 0.05476893970362432,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20099,
+          "lower_j": 0.04156853429081533,
+          "upper_j": 0.04338413200780467,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20100,
+          "lower_j": 0.07877997919555171,
+          "upper_j": 0.09125266629862001,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20101,
+          "lower_j": 0.05716063407911842,
+          "upper_j": 0.06563821725125614,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20102,
+          "lower_j": 0.06748379416379718,
+          "upper_j": 0.08003386173259867,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20103,
+          "lower_j": 0.06886063407911841,
+          "upper_j": 0.08003386173259867,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20104,
+          "lower_j": 0.0716723492590608,
+          "upper_j": 0.08233754156324116,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20105,
+          "lower_j": 0.06410286900502449,
+          "upper_j": 0.07224966215599252,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20106,
+          "lower_j": 0.05877589395210026,
+          "upper_j": 0.06840749479888793,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20107,
+          "lower_j": 0.051383659026194184,
+          "upper_j": 0.05815361226184097,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20108,
+          "lower_j": 0.08696485446017287,
+          "upper_j": 0.106155738010049,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20109,
+          "lower_j": 0.0956802494707577,
+          "upper_j": 0.1224393970362432,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20110,
+          "lower_j": 0.05265313928023049,
+          "upper_j": 0.057845914756548544,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20111,
+          "lower_j": 0.047826096658504756,
+          "upper_j": 0.0529726871030683,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20112,
+          "lower_j": 0.06192214655265629,
+          "upper_j": 0.07296492202897437,
+          "exact": false,
+          "mip_gap": 1.4022923769975918e-16
+        },
+        {
+          "instance": 20113,
+          "lower_j": 0.0479222141214578,
+          "upper_j": 0.05199966215599252,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20114,
+          "lower_j": 0.046134064439003176,
+          "upper_j": 0.04662650207131374,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20115,
+          "lower_j": 0.06719544177493808,
+          "upper_j": 0.07870320684903198,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20116,
+          "lower_j": 0.056706886679674454,
+          "upper_j": 0.063999864862397,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20117,
+          "lower_j": 0.06175300414262749,
+          "upper_j": 0.0692806548835667,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20118,
+          "lower_j": 0.049156751542071456,
+          "upper_j": 0.05661512473537886,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20119,
+          "lower_j": 0.05654523906853357,
+          "upper_j": 0.0652306548835667,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20120,
+          "lower_j": 0.06444925674318353,
+          "upper_j": 0.074553341986635,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20121,
+          "lower_j": 0.056891626806692595,
+          "upper_j": 0.05948426714540767,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20122,
+          "lower_j": 0.04401076921672141,
+          "upper_j": 0.04676880456602132,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20123,
+          "lower_j": 0.05633365902619418,
+          "upper_j": 0.06098031703955921,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20124,
+          "lower_j": 0.030253004142627486,
+          "upper_j": 0.03138392930140018,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20125,
+          "lower_j": 0.03685320684903198,
+          "upper_j": 0.03708787940724865,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20126,
+          "lower_j": 0.036318331584410835,
+          "upper_j": 0.03907636693371075,
+          "exact": false,
+          "mip_gap": 1.1521026971143958e-14
+        },
+        {
+          "instance": 20127,
+          "lower_j": 0.04957991162675022,
+          "upper_j": 0.05661512473537888,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20128,
+          "lower_j": 0.06671485446017286,
+          "upper_j": 0.07398787940724864,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20129,
+          "lower_j": 0.025083929301400174,
+          "upper_j": 0.02508392930140018,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20130,
+          "lower_j": 0.04931839915321234,
+          "upper_j": 0.05353814968245463,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20131,
+          "lower_j": 0.04081083678552291,
+          "upper_j": 0.04170334198663497,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20132,
+          "lower_j": 0.07148760913204263,
+          "upper_j": 0.08761833158441086,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20133,
+          "lower_j": 0.06625675154207146,
+          "upper_j": 0.08059932431198502,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20134,
+          "lower_j": 0.03451083678552291,
+          "upper_j": 0.035076299364909254,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20135,
+          "lower_j": 0.09382596152090177,
+          "upper_j": 0.1201357172056007,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20136,
+          "lower_j": 0.0326222141214578,
+          "upper_j": 0.03415320684903198,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20137,
+          "lower_j": 0.07347984405794873,
+          "upper_j": 0.08807582638329876,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20138,
+          "lower_j": 0.04754898646797753,
+          "upper_j": 0.0544612421983319,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20139,
+          "lower_j": 0.07493406443900318,
+          "upper_j": 0.0883835238885912,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20140,
+          "lower_j": 0.06259932431198503,
+          "upper_j": 0.06604577961894556,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20141,
+          "lower_j": 0.03744925674318352,
+          "upper_j": 0.038460971923125906,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20142,
+          "lower_j": 0.0618416268066926,
+          "upper_j": 0.0694304521771622,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20143,
+          "lower_j": 0.04643801454485163,
+          "upper_j": 0.046768804566021324,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20144,
+          "lower_j": 0.05819918917438203,
+          "upper_j": 0.06296880456602133,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20145,
+          "lower_j": 0.039672416827862295,
+          "upper_j": 0.04061485446017287,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20146,
+          "lower_j": 0.0551028690050245,
+          "upper_j": 0.06281900727242583,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20147,
+          "lower_j": 0.039483929301400184,
+          "upper_j": 0.04078024947075773,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20148,
+          "lower_j": 0.05805313928023048,
+          "upper_j": 0.0649728898094728,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20149,
+          "lower_j": 0.06762609665850476,
+          "upper_j": 0.0789609719231259,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20150,
+          "lower_j": 0.058718466722013835,
+          "upper_j": 0.0625612421983319,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20151,
+          "lower_j": 0.05671498959777587,
+          "upper_j": 0.05753821725125612,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20152,
+          "lower_j": 0.05182991162675022,
+          "upper_j": 0.055692032219501586,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20153,
+          "lower_j": 0.07171853429081533,
+          "upper_j": 0.07844544177493806,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20154,
+          "lower_j": 0.04588379416379718,
+          "upper_j": 0.04892268710306829,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20155,
+          "lower_j": 0.029329911626750218,
+          "upper_j": 0.030460836785522902,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20156,
+          "lower_j": 0.08488774426964565,
+          "upper_j": 0.1062056704412475,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20157,
+          "lower_j": 0.07728392930140018,
+          "upper_j": 0.08279503636212908,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20158,
+          "lower_j": 0.04374925674318353,
+          "upper_j": 0.044972551965465304,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20159,
+          "lower_j": 0.05310313928023049,
+          "upper_j": 0.05753821725125612,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20160,
+          "lower_j": 0.06516826401560934,
+          "upper_j": 0.07926866942841834,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20161,
+          "lower_j": 0.039587541563241145,
+          "upper_j": 0.04307643450251225,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20162,
+          "lower_j": 0.057476434502512254,
+          "upper_j": 0.06092288980947279,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20163,
+          "lower_j": 0.06794939188078652,
+          "upper_j": 0.07829564448134256,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20164,
+          "lower_j": 0.04265327441783348,
+          "upper_j": 0.043076434502512244,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20165,
+          "lower_j": 0.0403414916690896,
+          "upper_j": 0.04338413200780467,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20166,
+          "lower_j": 0.05708011433315472,
+          "upper_j": 0.06009966215599253,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20167,
+          "lower_j": 0.06153018190195622,
+          "upper_j": 0.06738453742061368,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20168,
+          "lower_j": 0.06251444904736388,
+          "upper_j": 0.06886498959777586,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20169,
+          "lower_j": 0.060568399153212334,
+          "upper_j": 0.06604577961894555,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20170,
+          "lower_j": 0.062133726594995685,
+          "upper_j": 0.07281512473537888,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20171,
+          "lower_j": 0.024283794163797178,
+          "upper_j": 0.02430688667967445,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20172,
+          "lower_j": 0.06918392930140019,
+          "upper_j": 0.07911076921672142,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20173,
+          "lower_j": 0.04910681911087296,
+          "upper_j": 0.055384334714209164,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20174,
+          "lower_j": 0.08734182951309709,
+          "upper_j": 0.10779409039890811,
+          "exact": false,
+          "mip_gap": 7.919829208294015e-07
+        },
+        {
+          "instance": 20175,
+          "lower_j": 0.0434914916690896,
+          "upper_j": 0.046461107060728896,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20176,
+          "lower_j": 0.05756070164791991,
+          "upper_j": 0.06558828482005763,
+          "exact": false,
+          "mip_gap": 5.77202423651744e-15
+        },
+        {
+          "instance": 20177,
+          "lower_j": 0.029726231796107755,
+          "upper_j": 0.029726231796107748,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20178,
+          "lower_j": 0.04218767670084414,
+          "upper_j": 0.04447261953426679,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20179,
+          "lower_j": 0.0460722816902593,
+          "upper_j": 0.050153477124237976,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20180,
+          "lower_j": 0.030060769216721406,
+          "upper_j": 0.03062623179610775,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20181,
+          "lower_j": 0.0722028690050245,
+          "upper_j": 0.09002187627745031,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20182,
+          "lower_j": 0.025695576912541058,
+          "upper_j": 0.025695576912541054,
+          "exact": true,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20183,
+          "lower_j": 0.030114449047363875,
+          "upper_j": 0.03230702181727744,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20184,
+          "lower_j": 0.04038767670084414,
+          "upper_j": 0.04215334198663498,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20185,
+          "lower_j": 0.06293760913204265,
+          "upper_j": 0.07224966215599252,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20186,
+          "lower_j": 0.037207089386078945,
+          "upper_j": 0.03739557691254106,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20187,
+          "lower_j": 0.07454523906853357,
+          "upper_j": 0.09324864862397006,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20188,
+          "lower_j": 0.08188754156324114,
+          "upper_j": 0.10477515069528379,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20189,
+          "lower_j": 0.03737623179610775,
+          "upper_j": 0.038460971923125906,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20190,
+          "lower_j": 0.06451478689137137,
+          "upper_j": 0.07127663720891676,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20191,
+          "lower_j": 0.027106751542071452,
+          "upper_j": 0.029230046764353212,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20192,
+          "lower_j": 0.0429609719231259,
+          "upper_j": 0.0436918295130971,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20193,
+          "lower_j": 0.03745300414262749,
+          "upper_j": 0.03938406443900317,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20194,
+          "lower_j": 0.08368379416379718,
+          "upper_j": 0.10743646046241719,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20195,
+          "lower_j": 0.08529155923789111,
+          "upper_j": 0.10584804050475659,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20196,
+          "lower_j": 0.053564381478562385,
+          "upper_j": 0.061845982325350046,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20197,
+          "lower_j": 0.06842997919555172,
+          "upper_j": 0.07911076921672142,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20198,
+          "lower_j": 0.058803341986634984,
+          "upper_j": 0.06071505716657737,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20199,
+          "lower_j": 0.04426853429081533,
+          "upper_j": 0.04676880456602133,
+          "exact": false,
+          "mip_gap": 0.0
+        }
+      ]
+    },
+    {
+      "source": "outputs/protocol-v1-bounds-test-n12_20260924/summary.json",
+      "source_sha256": "33b7a5ba9555e51b5be9175d9edc1ea3c87d24c9e2b96d2c8272f09915f80e83",
+      "formal": true,
+      "provenance": {
+        "commit": "dbc0889875c6ed7eae284743dd5bcc5cf785750b",
+        "dirty": false
+      },
+      "config": "configs/scenario-v1-n12.toml",
+      "split": "test",
+      "first_instance": 20000,
+      "policy_seed": 0,
+      "num_ues": 12,
+      "instances": 200,
+      "upper_solved": 200,
+      "exact_instances": 0,
+      "all_checks_passed": true,
+      "mip_status_counts": {
+        "0": 200
+      },
+      "mip_seconds": {
+        "mean": 0.4044125297188293,
+        "median": 0.314760601031594,
+        "p10": 0.14794281953945757,
+        "p90": 0.7522231402574107,
+        "min": 0.03556801099330187,
+        "max": 2.125206343829632
+      },
+      "early_completions": 0,
+      "lower_mw_per_ue": {
+        "mean": 3.837804796616173,
+        "median": 3.830618357939195,
+        "p10": 2.620620884355253,
+        "p90": 5.032176045265199,
+        "min": 1.894534437326472,
+        "max": 6.500665809192703
+      },
+      "upper_mw_per_ue": {
+        "mean": 5.494454222954837,
+        "median": 5.401485858404425,
+        "p10": 3.2941644760915185,
+        "p90": 7.702442341692543,
+        "min": 2.0939961592388525,
+        "max": 10.185319392605955
+      },
+      "upper_over_lower": {
+        "mean": 1.4131497446911436,
+        "median": 1.4167121887628344,
+        "p10": 1.272768934109535,
+        "p90": 1.55413778631286,
+        "min": 1.092338030373136,
+        "max": 1.6241231330630628
+      },
+      "capped_over_strict_lower": 0.9536801318859992,
+      "capped_over_strict_upper": 0.9529288709287822,
+      "upper_slot_utilization": {
+        "mean": 1.0,
+        "median": 1.0,
+        "p10": 1.0,
+        "p90": 1.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "upper_slot_share_by_power_dbm": {
+        "5": 0.1307812499999999,
+        "10": 0.5297499999999998,
+        "15": 0.3386875,
+        "19": 0.0007812500000000002,
+        "23": 0.0
+      },
+      "upper_vs_lower_by_distance": [
+        {
+          "distance_m": [
+            0,
+            50
+          ],
+          "ues": 631,
+          "upper_over_lower": 1.4383687092008428,
+          "share_of_extra_energy": 0.046519485401829395,
+          "upper_duty_cycle": 0.15919175911251982
+        },
+        {
+          "distance_m": [
+            50,
+            75
+          ],
+          "ues": 742,
+          "upper_over_lower": 1.560591747152201,
+          "share_of_extra_energy": 0.22238715918491334,
+          "upper_duty_cycle": 0.32388814016172507
+        },
+        {
+          "distance_m": [
+            75,
+            100.0
+          ],
+          "ues": 1027,
+          "upper_over_lower": 1.4030758165996609,
+          "share_of_extra_energy": 0.7310933554132572,
+          "upper_duty_cycle": 0.44715189873417716
+        }
+      ],
+      "heuristics": {},
+      "per_instance": [
+        {
+          "instance": 20000,
+          "lower_j": 0.05866043137271392,
+          "upper_j": 0.07496090435432441,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20001,
+          "lower_j": 0.09431029623511093,
+          "upper_j": 0.14061917352539038,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20002,
+          "lower_j": 0.08661036380391242,
+          "upper_j": 0.13011562883235092,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20003,
+          "lower_j": 0.07365648126686548,
+          "upper_j": 0.10825158519779603,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20004,
+          "lower_j": 0.09747214655265632,
+          "upper_j": 0.13799969327135408,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20005,
+          "lower_j": 0.10579496879332757,
+          "upper_j": 0.16504466206468169,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20006,
+          "lower_j": 0.055552869005024486,
+          "upper_j": 0.0694722816902593,
+          "exact": false,
+          "mip_gap": 1.711195825024022e-07
+        },
+        {
+          "instance": 20007,
+          "lower_j": 0.1181222141214578,
+          "upper_j": 0.17385181901956212,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20008,
+          "lower_j": 0.06512957378274273,
+          "upper_j": 0.08960621099165948,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20009,
+          "lower_j": 0.10612575881449729,
+          "upper_j": 0.16627545208585137,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20010,
+          "lower_j": 0.056214449047363876,
+          "upper_j": 0.06962207898385481,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20011,
+          "lower_j": 0.05708760913204264,
+          "upper_j": 0.07126043137271394,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20012,
+          "lower_j": 0.07870259872981851,
+          "upper_j": 0.11593591991200519,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20013,
+          "lower_j": 0.0941717411398473,
+          "upper_j": 0.13697673589307982,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20014,
+          "lower_j": 0.1404143814785624,
+          "upper_j": 0.22000289888028865,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20015,
+          "lower_j": 0.08454510393093058,
+          "upper_j": 0.11972005191980989,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20016,
+          "lower_j": 0.08936839915321233,
+          "upper_j": 0.11915458934042354,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20017,
+          "lower_j": 0.10308747399443965,
+          "upper_j": 0.1503494229961481,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20018,
+          "lower_j": 0.053591221393883615,
+          "upper_j": 0.06512268710306829,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20019,
+          "lower_j": 0.08127589395210028,
+          "upper_j": 0.11275097707858255,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20020,
+          "lower_j": 0.08626458418496688,
+          "upper_j": 0.11715860701507348,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20021,
+          "lower_j": 0.0844527338674215,
+          "upper_j": 0.11224354984849613,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20022,
+          "lower_j": 0.0812833887509882,
+          "upper_j": 0.12203183466855375,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20023,
+          "lower_j": 0.0995336590261942,
+          "upper_j": 0.14609969327135408,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20024,
+          "lower_j": 0.09632187627745031,
+          "upper_j": 0.14835344067079806,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20025,
+          "lower_j": 0.07925681911087296,
+          "upper_j": 0.10527447500726883,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20026,
+          "lower_j": 0.08474108625628063,
+          "upper_j": 0.12597386688805534,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20027,
+          "lower_j": 0.09551799374040335,
+          "upper_j": 0.14507673589307982,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20028,
+          "lower_j": 0.10368352388859119,
+          "upper_j": 0.1558798751733103,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20029,
+          "lower_j": 0.06020641369806396,
+          "upper_j": 0.08187194384625182,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20030,
+          "lower_j": 0.05982943864513974,
+          "upper_j": 0.0776222141214578,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20031,
+          "lower_j": 0.10683727128803516,
+          "upper_j": 0.16084486477108617,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20032,
+          "lower_j": 0.09066785860280036,
+          "upper_j": 0.1284772764434918,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20033,
+          "lower_j": 0.07119115382508212,
+          "upper_j": 0.09892889809472777,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20034,
+          "lower_j": 0.09644108625628062,
+          "upper_j": 0.1460416579220542,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20035,
+          "lower_j": 0.06445614342285798,
+          "upper_j": 0.09785600828525498,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20036,
+          "lower_j": 0.09796397606575341,
+          "upper_j": 0.15255323796439357,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20037,
+          "lower_j": 0.07894912160558053,
+          "upper_j": 0.1037359874808067,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20038,
+          "lower_j": 0.06072943864513974,
+          "upper_j": 0.07812964135154424,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20039,
+          "lower_j": 0.10852930350753673,
+          "upper_j": 0.16914459449588018,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20040,
+          "lower_j": 0.09294095111867762,
+          "upper_j": 0.1456897004758012,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20041,
+          "lower_j": 0.12740681911087293,
+          "upper_j": 0.18973358816830482,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20042,
+          "lower_j": 0.11667984405794875,
+          "upper_j": 0.16724847703292714,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20043,
+          "lower_j": 0.10059530663733507,
+          "upper_j": 0.14189179305965718,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20044,
+          "lower_j": 0.08669463094932008,
+          "upper_j": 0.13529412356326015,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20045,
+          "lower_j": 0.0409219438462518,
+          "upper_j": 0.05169196465070009,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20046,
+          "lower_j": 0.13110668397327,
+          "upper_j": 0.2045875390830463,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20047,
+          "lower_j": 0.08836417877215788,
+          "upper_j": 0.13027352904404785,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20048,
+          "lower_j": 0.08024858105516854,
+          "upper_j": 0.12095084194097956,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20049,
+          "lower_j": 0.10338332118218668,
+          "upper_j": 0.1516800778797148,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20050,
+          "lower_j": 0.08645621099165947,
+          "upper_j": 0.13380799889586,
+          "exact": false,
+          "mip_gap": 1.507315611188485e-07
+        },
+        {
+          "instance": 20051,
+          "lower_j": 0.06335266629862,
+          "upper_j": 0.08883291576937771,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20052,
+          "lower_j": 0.054087406425638154,
+          "upper_j": 0.0652805873147652,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20053,
+          "lower_j": 0.08303720371923366,
+          "upper_j": 0.12075111221618555,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20054,
+          "lower_j": 0.1314374739944397,
+          "upper_j": 0.2042266670841809,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20055,
+          "lower_j": 0.061568264015609345,
+          "upper_j": 0.07921063407911842,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20056,
+          "lower_j": 0.1042914241002881,
+          "upper_j": 0.1515221776680179,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20057,
+          "lower_j": 0.07256049894151542,
+          "upper_j": 0.09872106545183235,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20058,
+          "lower_j": 0.06926444904736388,
+          "upper_j": 0.09216765589639586,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20059,
+          "lower_j": 0.0796718762774503,
+          "upper_j": 0.11629354984849613,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20060,
+          "lower_j": 0.08359517149973207,
+          "upper_j": 0.11485492718443101,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20061,
+          "lower_j": 0.041406886679674446,
+          "upper_j": 0.04523031703955922,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20062,
+          "lower_j": 0.08207602908970327,
+          "upper_j": 0.1133663720891674,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20063,
+          "lower_j": 0.05731043137271393,
+          "upper_j": 0.07254925674318354,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20064,
+          "lower_j": 0.09904122139388362,
+          "upper_j": 0.13713463610477675,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20065,
+          "lower_j": 0.04911431390976088,
+          "upper_j": 0.05984189708189859,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20066,
+          "lower_j": 0.08519108625628061,
+          "upper_j": 0.12612366418165083,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20067,
+          "lower_j": 0.09803760913204267,
+          "upper_j": 0.13405766105185252,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20068,
+          "lower_j": 0.10266056651031692,
+          "upper_j": 0.15111461530032846,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20069,
+          "lower_j": 0.0854831860445837,
+          "upper_j": 0.1281196465070009,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20070,
+          "lower_j": 0.0766754209704898,
+          "upper_j": 0.1201856496367992,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20071,
+          "lower_j": 0.07703740642563814,
+          "upper_j": 0.10435948540949296,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20072,
+          "lower_j": 0.06261806130920486,
+          "upper_j": 0.08597187627745032,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20073,
+          "lower_j": 0.06642214655265631,
+          "upper_j": 0.08361016109750792,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20074,
+          "lower_j": 0.08057187627745031,
+          "upper_j": 0.11019763509194758,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20075,
+          "lower_j": 0.1279835238885912,
+          "upper_j": 0.20786100179839007,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20076,
+          "lower_j": 0.06472950621394123,
+          "upper_j": 0.08986397606575339,
+          "exact": false,
+          "mip_gap": 6.941669634600536e-08
+        },
+        {
+          "instance": 20077,
+          "lower_j": 0.049348986467977536,
+          "upper_j": 0.06138038460836071,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20078,
+          "lower_j": 0.11745313928023049,
+          "upper_j": 0.1710326090407318,
+          "exact": false,
+          "mip_gap": 1.6259826317385967e-07
+        },
+        {
+          "instance": 20079,
+          "lower_j": 0.11571056651031694,
+          "upper_j": 0.1602794021916998,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20080,
+          "lower_j": 0.09938700101282918,
+          "upper_j": 0.15628743754099975,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20081,
+          "lower_j": 0.057879641351544234,
+          "upper_j": 0.07393794697605013,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20082,
+          "lower_j": 0.12485286900502451,
+          "upper_j": 0.1873276130474019,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20083,
+          "lower_j": 0.08656417877215788,
+          "upper_j": 0.125508269171066,
+          "exact": false,
+          "mip_gap": 4.891382279043123e-16
+        },
+        {
+          "instance": 20084,
+          "lower_j": 0.050825691245695775,
+          "upper_j": 0.06471512473537885,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20085,
+          "lower_j": 0.10059095111867761,
+          "upper_j": 0.14896883568138292,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20086,
+          "lower_j": 0.08459878376157305,
+          "upper_j": 0.1254583367398675,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20087,
+          "lower_j": 0.07847167357104581,
+          "upper_j": 0.11634348227969463,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20088,
+          "lower_j": 0.05191417877215788,
+          "upper_j": 0.06921451661616539,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20089,
+          "lower_j": 0.10179490122452609,
+          "upper_j": 0.14932646561787383,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20090,
+          "lower_j": 0.08544885133037454,
+          "upper_j": 0.12346235441451746,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20091,
+          "lower_j": 0.0719719438462518,
+          "upper_j": 0.10066711534598388,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20092,
+          "lower_j": 0.05901056651031692,
+          "upper_j": 0.07699871619277154,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20093,
+          "lower_j": 0.06232910080113224,
+          "upper_j": 0.0941137057905474,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20094,
+          "lower_j": 0.09736792617160185,
+          "upper_j": 0.15398375771035727,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20095,
+          "lower_j": 0.07299925674318353,
+          "upper_j": 0.09518659560002021,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20096,
+          "lower_j": 0.09866424634095938,
+          "upper_j": 0.14056924109419192,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20097,
+          "lower_j": 0.09584128896268512,
+          "upper_j": 0.1393303481549208,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20098,
+          "lower_j": 0.08852207898385481,
+          "upper_j": 0.12709668912872663,
+          "exact": false,
+          "mip_gap": 1.610083703216283e-16
+        },
+        {
+          "instance": 20099,
+          "lower_j": 0.08026043137271392,
+          "upper_j": 0.10594790536715358,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20100,
+          "lower_j": 0.09582569124569577,
+          "upper_j": 0.1353464864223221,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20101,
+          "lower_j": 0.06584108625628063,
+          "upper_j": 0.09150232845461251,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20102,
+          "lower_j": 0.08057562367689428,
+          "upper_j": 0.12070117978498704,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20103,
+          "lower_j": 0.10317548853929126,
+          "upper_j": 0.15511468286912997,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20104,
+          "lower_j": 0.09141431390976089,
+          "upper_j": 0.12448531179279172,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20105,
+          "lower_j": 0.09949496879332759,
+          "upper_j": 0.14016167872650248,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20106,
+          "lower_j": 0.09978706858163067,
+          "upper_j": 0.14553423069196778,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20107,
+          "lower_j": 0.06959088354987612,
+          "upper_j": 0.1037440903989081,
+          "exact": false,
+          "mip_gap": 3.9450210052844147e-16
+        },
+        {
+          "instance": 20108,
+          "lower_j": 0.11679530663733509,
+          "upper_j": 0.1750326766095333,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20109,
+          "lower_j": 0.12227582638329877,
+          "upper_j": 0.19444405475436122,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20110,
+          "lower_j": 0.07907582638329878,
+          "upper_j": 0.1118859199120052,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20111,
+          "lower_j": 0.07072555610809277,
+          "upper_j": 0.09898693344402767,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20112,
+          "lower_j": 0.08402957378274273,
+          "upper_j": 0.12356221927691445,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20113,
+          "lower_j": 0.0753834563197897,
+          "upper_j": 0.10261316524013542,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20114,
+          "lower_j": 0.09401444904736388,
+          "upper_j": 0.13488088870533277,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20115,
+          "lower_j": 0.09654905403677905,
+          "upper_j": 0.14097680346188132,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20116,
+          "lower_j": 0.07911016109750793,
+          "upper_j": 0.11660124735378855,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20117,
+          "lower_j": 0.09422977648914724,
+          "upper_j": 0.1348808887053328,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20118,
+          "lower_j": 0.06975253116101701,
+          "upper_j": 0.1038439552613051,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20119,
+          "lower_j": 0.09452187627745032,
+          "upper_j": 0.14292285335603286,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20120,
+          "lower_j": 0.09439517149973209,
+          "upper_j": 0.13569601344071164,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20121,
+          "lower_j": 0.07559878376157304,
+          "upper_j": 0.10277106545183233,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20122,
+          "lower_j": 0.07796424634095939,
+          "upper_j": 0.10942433986966583,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20123,
+          "lower_j": 0.06522569124569577,
+          "upper_j": 0.08110675154207146,
+          "exact": false,
+          "mip_gap": 6.141846293048157e-07
+        },
+        {
+          "instance": 20124,
+          "lower_j": 0.06139101868747912,
+          "upper_j": 0.08535648126686547,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20125,
+          "lower_j": 0.06843747399443965,
+          "upper_j": 0.09032147086464133,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20126,
+          "lower_j": 0.06949851348636704,
+          "upper_j": 0.1036941579677096,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20127,
+          "lower_j": 0.06702943864513974,
+          "upper_j": 0.09611779103399885,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20128,
+          "lower_j": 0.07411458418496687,
+          "upper_j": 0.09446323280893691,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20129,
+          "lower_j": 0.046414313909760876,
+          "upper_j": 0.054818872134822824,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20130,
+          "lower_j": 0.062479506213941244,
+          "upper_j": 0.08914871619277154,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20131,
+          "lower_j": 0.07133345631978968,
+          "upper_j": 0.0994363253248142,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20132,
+          "lower_j": 0.09845266629862,
+          "upper_j": 0.1516301454485163,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20133,
+          "lower_j": 0.08119851348636703,
+          "upper_j": 0.12786998435100835,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20134,
+          "lower_j": 0.05497180870864881,
+          "upper_j": 0.06973814968245463,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20135,
+          "lower_j": 0.1351947660869231,
+          "upper_j": 0.21457555362789796,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20136,
+          "lower_j": 0.08274510393093057,
+          "upper_j": 0.11198578477440221,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20137,
+          "lower_j": 0.08645246359221552,
+          "upper_j": 0.12633149682454625,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20138,
+          "lower_j": 0.06788325361338521,
+          "upper_j": 0.09729054570586863,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20139,
+          "lower_j": 0.10763740642563814,
+          "upper_j": 0.1626411173716422,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20140,
+          "lower_j": 0.08312957378274274,
+          "upper_j": 0.11433939703624317,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20141,
+          "lower_j": 0.0538527338674215,
+          "upper_j": 0.06870708938607895,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20142,
+          "lower_j": 0.11734517149973207,
+          "upper_j": 0.17303669428418328,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20143,
+          "lower_j": 0.07562623179610777,
+          "upper_j": 0.09631752075879288,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20144,
+          "lower_j": 0.07086411120335638,
+          "upper_j": 0.09462923593873525,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20145,
+          "lower_j": 0.06002228169025929,
+          "upper_j": 0.0718839293014002,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20146,
+          "lower_j": 0.08289864862397006,
+          "upper_j": 0.12448531179279172,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20147,
+          "lower_j": 0.06493733885683665,
+          "upper_j": 0.08863318604458371,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20148,
+          "lower_j": 0.07549891889917604,
+          "upper_j": 0.10440941784069147,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20149,
+          "lower_j": 0.09454871619277154,
+          "upper_j": 0.14251529098834342,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20150,
+          "lower_j": 0.09087569124569578,
+          "upper_j": 0.132011746295304,
+          "exact": false,
+          "mip_gap": 7.37464433548278e-07
+        },
+        {
+          "instance": 20151,
+          "lower_j": 0.06994537420613658,
+          "upper_j": 0.08683693344402767,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20152,
+          "lower_j": 0.07277582638329877,
+          "upper_j": 0.09882903323233075,
+          "exact": false,
+          "mip_gap": 2.0706092249009727e-16
+        },
+        {
+          "instance": 20153,
+          "lower_j": 0.11694885133037454,
+          "upper_j": 0.17144827432652263,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20154,
+          "lower_j": 0.07245627856046097,
+          "upper_j": 0.10430955297829446,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20155,
+          "lower_j": 0.06507964135154423,
+          "upper_j": 0.08776002595990495,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20156,
+          "lower_j": 0.12125661640446847,
+          "upper_j": 0.19019351339505622,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20157,
+          "lower_j": 0.08273760913204267,
+          "upper_j": 0.09615151762899453,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20158,
+          "lower_j": 0.08431417877215788,
+          "upper_j": 0.11388190223735525,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20159,
+          "lower_j": 0.08013747399443966,
+          "upper_j": 0.1090167775019764,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20160,
+          "lower_j": 0.09082950621394123,
+          "upper_j": 0.13698483881118123,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20161,
+          "lower_j": 0.0575831860445837,
+          "upper_j": 0.08084898646797753,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20162,
+          "lower_j": 0.083303071711429,
+          "upper_j": 0.10890880972147798,
+          "exact": false,
+          "mip_gap": 4.2929673497583704e-07
+        },
+        {
+          "instance": 20163,
+          "lower_j": 0.10412228169025932,
+          "upper_j": 0.1474802805861193,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20164,
+          "lower_j": 0.07357970892034571,
+          "upper_j": 0.09928652803121868,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20165,
+          "lower_j": 0.061125758814497264,
+          "upper_j": 0.08469115382508212,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20166,
+          "lower_j": 0.09522214655265632,
+          "upper_j": 0.1268807535677298,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20167,
+          "lower_j": 0.09514912160558055,
+          "upper_j": 0.13170404879001155,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20168,
+          "lower_j": 0.10856424634095939,
+          "upper_j": 0.15685290012038608,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20169,
+          "lower_j": 0.08784490122452608,
+          "upper_j": 0.12320458934042353,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20170,
+          "lower_j": 0.11374891889917604,
+          "upper_j": 0.17170603940061657,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20171,
+          "lower_j": 0.0462333211821867,
+          "upper_j": 0.05999979729359551,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20172,
+          "lower_j": 0.09194483365572458,
+          "upper_j": 0.13549628371591763,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20173,
+          "lower_j": 0.06418713615043216,
+          "upper_j": 0.09467916836993374,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20174,
+          "lower_j": 0.11656438147856238,
+          "upper_j": 0.18107622850701988,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20175,
+          "lower_j": 0.07765280143622301,
+          "upper_j": 0.106255602872446,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20176,
+          "lower_j": 0.07679088354987611,
+          "upper_j": 0.11992788456270528,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20177,
+          "lower_j": 0.07244503636212908,
+          "upper_j": 0.09964415796770962,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20178,
+          "lower_j": 0.062360296235110926,
+          "upper_j": 0.0858139760657534,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20179,
+          "lower_j": 0.06562950621394124,
+          "upper_j": 0.09344837834876406,
+          "exact": false,
+          "mip_gap": 4.379665255081772e-16
+        },
+        {
+          "instance": 20180,
+          "lower_j": 0.05664885133037453,
+          "upper_j": 0.07275708938607897,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20181,
+          "lower_j": 0.09377167357104582,
+          "upper_j": 0.1451766007554768,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20182,
+          "lower_j": 0.04905688667967445,
+          "upper_j": 0.05604966215599253,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20183,
+          "lower_j": 0.05891009352870643,
+          "upper_j": 0.0816222816902593,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20184,
+          "lower_j": 0.046268264015609344,
+          "upper_j": 0.055384334714209164,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20185,
+          "lower_j": 0.08900266629862001,
+          "upper_j": 0.13058122654934026,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20186,
+          "lower_j": 0.05376036380391243,
+          "upper_j": 0.06844932431198503,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20187,
+          "lower_j": 0.10987180870864881,
+          "upper_j": 0.17288446656272427,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20188,
+          "lower_j": 0.10641036380391243,
+          "upper_j": 0.161260530056877,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20189,
+          "lower_j": 0.05359122139388361,
+          "upper_j": 0.06798372659499569,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20190,
+          "lower_j": 0.0872338617325987,
+          "upper_j": 0.11674294172928264,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20191,
+          "lower_j": 0.0504524635922155,
+          "upper_j": 0.07019564448134256,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20192,
+          "lower_j": 0.06419898646797753,
+          "upper_j": 0.08392596152090176,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20193,
+          "lower_j": 0.050402531161017006,
+          "upper_j": 0.06507275467186978,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20194,
+          "lower_j": 0.10189101868747912,
+          "upper_j": 0.1611026298451801,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20195,
+          "lower_j": 0.1115756912456958,
+          "upper_j": 0.1715538116791576,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20196,
+          "lower_j": 0.0783137733593489,
+          "upper_j": 0.12258919432983867,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20197,
+          "lower_j": 0.10662943864513974,
+          "upper_j": 0.16340630967582256,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20198,
+          "lower_j": 0.08419122139388363,
+          "upper_j": 0.11245138249139154,
+          "exact": false,
+          "mip_gap": 0.0
+        },
+        {
+          "instance": 20199,
+          "lower_j": 0.0638332536133852,
+          "upper_j": 0.08909878376157304,
+          "exact": false,
+          "mip_gap": 0.0
+        }
+      ]
+    }
+  ]
+}

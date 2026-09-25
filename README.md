@@ -13,6 +13,7 @@
 |---|---|
 | [N=4 中央最小能耗参照](docs/results/central-reference-n4_20260924/report.md) | 精确最优 3.70 mW/UE，100 实例环境重放核验；本地启发式能耗为最优的 5.5–11 倍 |
 | [N=4/6/8/12 中央最小能耗上下界](docs/results/central-bounds_20260924/report.md) | N=4 全部精确、N=6 上界/下界均值 1.02、N=8 为 1.12、N=12 为 1.42；启发式能耗为上界的 8–10 倍 |
+| [协议 v1 验证集与测试集参照](docs/results/protocol-v1-references_20260924/report.md) | 四个 N 逐实例上下界（验证 64、测试 200），作为 MARL 的 E/LB、E/UB 分母 |
 
 ## 环境
 

@@ -71,7 +71,7 @@ scenario: DES-DSA05-PERIODIC v1.0
 
 ## 6. 参照与基线
 
-- **中央参照**：在验证集和测试集上，逐实例计算下界（逐 UE 单独最优）和上界（正交分时循环调度，经环境重放核验），作为 E/LB、E/UB 的分母。参照只算一次并存档，由 `central_bounds --split {validation,test} --skip-heuristics --formal` 生成。计算时不运行启发式，以免提前看到基线在测试集上的表现。
+- **中央参照**：在验证集和测试集上，逐实例计算下界（逐 UE 单独最优）和上界（正交分时循环调度，经环境重放核验），作为 E/LB、E/UB 的分母。参照只算一次并存档，由 `central_bounds --split {validation,test} --skip-heuristics --formal` 生成，存档见[协议 v1 参照](../results/protocol-v1-references_20260924/report.md)。计算时不运行启发式，以免提前看到基线在测试集上的表现。
 - **基线**：random_max、sticky_max、lazy_pacing，以及以后加入的强本地基线（跨包记住自身增益）。所有基线都按本协议的同一流程和执行种子评估，与 MARL 一起报告。
 - 每份 MARL 报告的主表必须包含：同 N 的下界、上界、全部基线，以及方法名称、训练类型、训练预算、训练种子、选中/最后检查点。
 
