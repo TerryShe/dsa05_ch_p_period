@@ -311,7 +311,7 @@ def plot(runs: list[dict], decision: dict, baseline: float, path: Path, num_ues:
     _axes_style(axes[1], "validation E / UB")
     axes[0].set_ylim(-0.02, 1.04)
     axes[1].set_ylim(1.0, 6.0)
-    axes[1].legend(fontsize=8, frameon=False, labelcolor=INK, loc="upper right")
+    axes[1].legend(fontsize=8, frameon=False, labelcolor=INK, loc="center right")
     fig.suptitle(
         f"N={num_ues}, selected setting per variant: seeds 101/202/303 (thin) and their mean (thick)",
         color=INK,
