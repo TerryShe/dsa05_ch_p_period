@@ -5,7 +5,7 @@
 - **速率**：由 Shannon 公式给出（HARQ-IR 累积互信息），MCS 不再是动作。
 - **目标**：在每 UE 违约率 ≤ ε 的约束下，最小化发射能耗。
 
-规范见 [场景 v1.0](docs/research/scenario.md)。**场景参数与建模假设已于 2026-09-24 冻结**：N=4/6/8/12 四个变体（K=4，功率档 OFF/5/10/15/19/23 dBm，21 类动作），见 [配置](configs/) 与 [冻结清单](docs/research/scenario-v1-freeze.json)；MARL 训练尚未接入。所有 MARL 实验遵守 [MARL 实验协议 v1](docs/research/marl-protocol-v1.md)：训练、验证、测试实例划分与执行种子已冻结。
+规范见 [场景 v1.0](docs/research/scenario.md)。**场景参数与建模假设已于 2026-09-24 冻结**：N=4/6/8/12 四个变体（K=4，功率档 OFF/5/10/15/19/23 dBm，21 类动作），见 [配置](configs/) 与 [冻结清单](docs/research/scenario-v1-freeze.json)；约束式 MAPPO（[EXP-DSA05-001](docs/experiment-designs/001-constrained-mappo_20260924.md)）已实现，第 1 阶段训练待启动。所有 MARL 实验遵守 [MARL 实验协议 v1](docs/research/marl-protocol-v1.md)：训练、验证、测试实例划分与执行种子已冻结。
 
 ## 结果
 
@@ -38,10 +38,21 @@ uv run --locked python -m dsa_period.experiments.scenario_smoke --instances 6 --
 
 在冻结配置下，对若干实例运行三个本地启发式（`random_max`、`sticky_max`、`lazy_pacing`），输出固定窗口内的按期完成率、最差 UE 完成率、每 UE 功率、每个按期包的能耗和时延。`--packet-scale` 按比例放大所有包长，用于调节负载。输出目录已存在时，程序会拒绝写入。结果标记为 `formal=false`，只作为集成检查。
 
+## 约束式 MAPPO 训练
+
+```bash
+uv run --locked python -m dsa_period.experiments.train_constrained_mappo \
+  --scenario configs/scenario-v1-n8.toml --variant local --seed 101 \
+  --output outputs/exp001-n8-local-seed101 --formal
+```
+
+`--variant` 为 `fixed`（固定惩罚）、`global`（全局拉格朗日）或 `local`（逐 UE 局部对偶）。每次验证都保存检查点，结束时按协议规则选模并写入 `result.json`。`--budget-slots`、`--validation-instances`、`--set` 只用于非正式的冒烟和诊断，与 `--formal` 互斥。
+
 ## 目录
 
 ```text
 configs/scenario-v1-n{4,6,8,12}.toml  # 冻结的 v1.0 工作点（勿改，变更另立新版本）
+configs/exp001-constrained-mappo.toml  # EXP-DSA05-001 训练与约束参数
 scripts/analyze_power_menu_quantization.py  # 功率档选型分析
 scripts/summarize_central_*.py  # 中央参照结果汇总
 scripts/summarize_policy_evaluation.py  # 协议评估结果汇总
@@ -64,6 +75,12 @@ src/dsa_period/
   experiments/central_reference.py
   experiments/central_bounds.py
   experiments/evaluate_policies.py  # 按协议在 dev/validation/test 上评估本地策略
+  experiments/train_constrained_mappo.py  # EXP-DSA05-001 单次训练（场景、约束变体、种子）
+  marl/features.py  # Actor 本地特征、截止期结算、逐 UE 对偶变量 μ_i
+  marl/networks.py  # CSG Actor（逐子信道共享 GRU）与集中式 Critic
+  marl/ppo.py       # 循环 MAPPO，折扣 GAE，截断 bootstrap
+  marl/policy.py    # 训练好的 Actor 的协议评估包装（逐 UE RNG 随机执行）
+  marl/trainer.py   # 采样、奖励与代价、验证、检查点、协议选模
 docs/research/scenario.md       # 场景规范
 docs/research/scenario-v1-freeze.json  # 冻结清单：配置 SHA-256、确认的假设、派生量
 docs/research/marl-protocol-v1.md   # MARL 实验协议：划分、选模、测试、指标与判读

@@ -1,0 +1,94 @@
+"""Channel-shared GRU actor (CSG, adapted from dsa04) and the centralized critic.
+
+The actor runs one GRU stream per subchannel with weights shared across
+subchannels and UEs, pools the streams of the same UE (DeepSets mean), and
+scores OFF plus every (subchannel, power level). Logits are channel-major:
+index 1 + k * L + (l - 1) for subchannel k and power ID l.
+"""
+
+import torch
+from torch import Tensor, nn
+
+
+def _init(module: nn.Module, output_layers: tuple[nn.Linear, ...]) -> None:
+    for layer in module.modules():
+        if isinstance(layer, nn.Linear):
+            nn.init.orthogonal_(layer.weight, gain=0.01 if layer in output_layers else 1.0)
+            nn.init.zeros_(layer.bias)
+        elif isinstance(layer, nn.GRUCell):
+            for name, parameter in layer.named_parameters():
+                if "weight" in name:
+                    for gate in parameter.chunk(3, dim=0):
+                        nn.init.orthogonal_(gate)
+                else:
+                    nn.init.zeros_(parameter)
+
+
+class ChannelSetActor(nn.Module):
+    def __init__(
+        self, token_dim: int, context_dim: int, num_channels: int, num_levels: int, hidden: int
+    ) -> None:
+        super().__init__()
+        self.num_channels, self.num_levels, self.hidden = num_channels, num_levels, hidden
+        h, u = hidden, context_dim
+        self.encoder = nn.Sequential(nn.Linear(token_dim + u, h), nn.Tanh())
+        self.memory = nn.GRUCell(h, h)
+        self.phi = nn.Sequential(nn.Linear(h, h), nn.Tanh())
+        self.eta = nn.Sequential(nn.Linear(h + u, h), nn.Tanh())
+        self.psi = nn.Sequential(nn.Linear(2 * h + u, h), nn.Tanh(), nn.Linear(h, num_levels))
+        self.omega = nn.Sequential(nn.Linear(h + u, h), nn.Tanh(), nn.Linear(h, 1))
+        _init(self, (self.psi[-1], self.omega[-1]))
+
+    @property
+    def num_actions(self) -> int:
+        return 1 + self.num_channels * self.num_levels
+
+    def initial_hidden(self, batch: int) -> Tensor:
+        return torch.zeros(batch, self.num_channels, self.hidden)
+
+    def step(self, tokens: Tensor, context: Tensor, hidden: Tensor) -> tuple[Tensor, Tensor]:
+        """tokens (B, K, Dt), context (B, Du), hidden (B, K, h) -> logits (B, A), hidden."""
+        batch, k = tokens.shape[0], self.num_channels
+        expanded = context.unsqueeze(1).expand(batch, k, context.shape[-1])
+        encoded = self.encoder(torch.cat((tokens, expanded), dim=-1))
+        hidden = self.memory(
+            encoded.reshape(-1, self.hidden), hidden.reshape(-1, self.hidden)
+        ).reshape(batch, k, self.hidden)
+        pooled = self.eta(torch.cat((self.phi(hidden).mean(dim=1), context), dim=-1))
+        summary = torch.cat((pooled, context), dim=-1)
+        per_channel = self.psi(
+            torch.cat((hidden, summary.unsqueeze(1).expand(batch, k, summary.shape[-1])), dim=-1)
+        )
+        logits = torch.cat((self.omega(summary), per_channel.reshape(batch, -1)), dim=-1)
+        return logits, hidden
+
+    def sequence(
+        self, tokens: Tensor, context: Tensor, hidden: Tensor, starts: Tensor
+    ) -> tuple[Tensor, Tensor]:
+        """Ordered replay: tokens (T, B, K, Dt), starts (T, B) clear memory first."""
+        outputs = []
+        for t in range(tokens.shape[0]):
+            hidden = hidden * (~starts[t]).to(hidden.dtype)[:, None, None]
+            logits, hidden = self.step(tokens[t], context[t], hidden)
+            outputs.append(logits)
+        return torch.stack(outputs), hidden
+
+
+class CentralCritic(nn.Module):
+    def __init__(self, state_dim: int, hidden: int) -> None:
+        super().__init__()
+        self.network = nn.Sequential(
+            nn.Linear(state_dim, hidden),
+            nn.Tanh(),
+            nn.Linear(hidden, hidden),
+            nn.Tanh(),
+            nn.Linear(hidden, 1),
+        )
+        _init(self, ())
+
+    def forward(self, state: Tensor) -> Tensor:
+        return self.network(state).squeeze(-1)
+
+
+def masked_log_probs(logits: Tensor, legal: Tensor) -> Tensor:
+    return torch.log_softmax(logits.masked_fill(~legal, -torch.inf), dim=-1)

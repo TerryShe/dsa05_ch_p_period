@@ -31,6 +31,17 @@ dev = [
 analysis = [
     "scipy>=1.15,<2",
 ]
+training = [
+    "torch>=2.6,<3",
+]
 
 [tool.uv]
-default-groups = ["dev", "analysis"]
+default-groups = ["dev", "analysis", "training"]
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-cpu" }
