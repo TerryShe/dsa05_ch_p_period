@@ -17,6 +17,7 @@
 | [本地基线验证集校准](docs/results/baseline-calibration_20260924/report.md) | 最强可行基线 paced_sticky：N=4 已最优，N=6/8/12 能耗/上界为 1.78/2.87/5.50 |
 | [EXP-DSA05-001 第 1 阶段](docs/results/exp001-phase1_20260925/report.md) | N=8 短训：固定惩罚与逐 UE 对偶满足约束，能耗/上界 2.34/2.40（基线 2.87）；全局拉格朗日放弃长周期远端 UE 而失败 |
 | [能耗损失诊断](docs/results/exp001-efficiency-diagnosis_20260925/report.md) | 学到的策略约 70% 的发送与他人撞在同一子信道、损失约 40% 互信息；中央最优靠分时完全错开 |
+| [EXP-DSA05-002 周期记忆](docs/results/exp002-periodic-memory_20260925/report.md) | 不采纳：滞后 10/20/40 的干扰特征没有让 UE 学会错开，冲突率和能耗无实质改善 |
 
 ## 环境
 
