@@ -29,6 +29,7 @@ dev = [
 ]
 # MILP (HiGHS) and max-flow for the central time-sharing bounds.
 analysis = [
+    "matplotlib>=3.9,<4",
     "scipy>=1.15,<2",
 ]
 training = [
