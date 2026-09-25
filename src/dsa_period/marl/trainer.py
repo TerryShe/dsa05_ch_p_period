@@ -56,7 +56,11 @@ class TrainingSettings:
 
 @dataclass(frozen=True)
 class ConstraintSettings:
-    """Variant parameters: fixed uses weight; global eta/mu_init/mu_max; local eta/mu_max/mu0."""
+    """Variant parameters: fixed uses weight; global eta/mu_init/mu_max; local eta/mu_max/mu0.
+
+    For the local variant, ``mu0_candidates`` lists the initial duals evaluated at
+    every validation; the protocol rule then selects over (checkpoint, mu0).
+    """
 
     variant: str
     weight: float = 0.0
@@ -64,9 +68,23 @@ class ConstraintSettings:
     mu_max: float = 1.0
     mu_init: float = 0.0
     mu0: float = 0.0
+    mu0_candidates: tuple[float, ...] = ()
 
     def duals(self, epsilon: float) -> DualSettings:
         return DualSettings(self.variant, epsilon, self.weight, self.eta, self.mu_max)
+
+    @property
+    def evaluation_mu0(self) -> tuple[float, ...]:
+        if self.variant != "local":
+            return (0.0,)
+        values = tuple(float(v) for v in (self.mu0_candidates or (self.mu0,)))
+        if any(not 0 <= v <= self.mu_max for v in values):
+            raise ValueError("every mu0 candidate must lie in [0, mu_max]")
+        return values
+
+
+def candidate_name(checkpoint: str, variant: str, mu0: float) -> str:
+    return f"{checkpoint}@mu0={mu0:g}" if variant == "local" else checkpoint
 
 
 def build_models(scenario: Scenario, settings: TrainingSettings) -> tuple:
@@ -246,7 +264,7 @@ class Trainer:
         rollout = Rollout(**buf, initial_hidden=initial_hidden)
         slots = steps * envs
         stats.update(
-            slots=slots,
+            iteration_slots=slots,
             mw_per_ue=1e3 * stats["energy_j"] / (slots * n * self.config.slot_duration_s),
             violation_rate=stats["violations"] / max(stats["settled"], 1),
             tx_fraction_of_active=stats["tx"] / max(stats["active_decisions"], 1),
@@ -257,15 +275,22 @@ class Trainer:
         return rollout, stats
 
     # --------------------------------------------------------------- validation
-    def policy(self) -> MarlPolicy:
-        return MarlPolicy(self.ppo.actor, self.config, self.menu, self.duals, self.constraint.mu0)
+    def policy(self, mu0: float) -> MarlPolicy:
+        return MarlPolicy(self.ppo.actor, self.config, self.menu, self.duals, mu0)
 
-    def validate(self) -> tuple[dict, list[dict]]:
-        eval_scenario = self.scenario
-        episodes = evaluate_policy(
-            eval_scenario, self.policy, "validation", self.validation_indices, self.references
-        )
-        return aggregate({str(self.seed): episodes}), episodes
+    def validate(self) -> dict[float, tuple[dict, list[dict]]]:
+        """Protocol validation of the current actor, once per evaluation mu0."""
+        results = {}
+        for mu0 in self.constraint.evaluation_mu0:
+            episodes = evaluate_policy(
+                self.scenario,
+                lambda mu0=mu0: self.policy(mu0),
+                "validation",
+                self.validation_indices,
+                self.references,
+            )
+            results[mu0] = (aggregate({str(self.seed): episodes}), episodes)
+        return results
 
     def checkpoint(self, slots: int, iteration: int) -> dict:
         return {
@@ -308,25 +333,25 @@ class Trainer:
                 if slots >= next_validation or slots >= s.budget_slots:
                     name = f"step-{slots:09d}"
                     tick = time.perf_counter()
-                    summary, episodes = self.validate()
-                    summaries[name] = summary
+                    results = self.validate()
                     torch.save(
                         self.checkpoint(slots, iteration), output / "checkpoints" / f"{name}.pt"
                     )
-                    record = {
-                        "checkpoint": name,
-                        "slots": slots,
-                        "summary": summary,
-                        "episodes": episodes,
-                    }
+                    record = {"checkpoint": name, "slots": slots, "by_mu0": []}
+                    for mu0, (summary, episodes) in results.items():
+                        summaries[candidate_name(name, self.duals.variant, mu0)] = summary
+                        record["by_mu0"].append(
+                            {"mu0": mu0, "summary": summary, "episodes": episodes}
+                        )
+                        m = summary["metrics"]
+                        log(
+                            f"[validate {candidate_name(name, self.duals.variant, mu0)}] "
+                            f"F {m['feasible']['mean']:.3f} E/UB {m['e_over_ub']['mean']:.3f} "
+                            f"worst-UE OCR {m['worst_ue_ocr']['mean']:.4f} "
+                            f"mW {m['mw_per_ue']['mean']:.2f}"
+                        )
                     (output / "validation" / f"{name}.json").write_text(json.dumps(record))
-                    m = summary["metrics"]
-                    log(
-                        f"[validate {name}] F {m['feasible']['mean']:.3f} "
-                        f"E/UB {m['e_over_ub']['mean']:.3f} worst-UE OCR "
-                        f"{m['worst_ue_ocr']['mean']:.4f} mW {m['mw_per_ue']['mean']:.2f} "
-                        f"({time.perf_counter() - tick:.0f}s)"
-                    )
+                    log(f"[validate {name}] {time.perf_counter() - tick:.0f}s")
                     while next_validation <= slots:
                         next_validation += s.validation_every_slots
                 if slots >= s.budget_slots:
@@ -369,12 +394,18 @@ class Trainer:
                         f"mu {stats['mu_mean']:.2f} {line['slots_per_s']:.0f} slot/s"
                     )
         names = sorted(summaries)
+        selected = select(summaries)
+        final_checkpoint = f"step-{slots:09d}"
         result = {
             "slots": slots,
             "iterations": iteration,
             "wall_s": time.perf_counter() - started,
-            "selected": select(summaries),
-            "final": names[-1],
+            "selected": selected,
+            "selected_checkpoint": selected.split("@")[0],
+            "selected_mu0": self._mu0_of(selected),
+            "final_checkpoint": final_checkpoint,
+            # The final checkpoint is reported with the mu0 selected for the run.
+            "final": candidate_name(final_checkpoint, self.duals.variant, self._mu0_of(selected)),
             "candidates": {
                 name: {
                     "feasible": summaries[name]["metrics"]["feasible"]["mean"],
@@ -387,9 +418,17 @@ class Trainer:
         (output / "result.json").write_text(json.dumps(result, indent=2))
         return result
 
+    def _mu0_of(self, candidate: str) -> float:
+        if "@mu0=" in candidate:
+            return float(candidate.split("@mu0=")[1])
+        return self.constraint.evaluation_mu0[0]
 
-def load_policy_factory(path: Path, scenario: Scenario):
-    """Rebuild a checkpoint's actor and return a factory of protocol policies."""
+
+def load_policy_factory(path: Path, scenario: Scenario, mu0: float | None = None):
+    """Rebuild a checkpoint's actor and return a factory of protocol policies.
+
+    ``mu0`` overrides the checkpoint's default initial dual (local variant only).
+    """
     checkpoint = torch.load(path, map_location="cpu", weights_only=False)
     if checkpoint["schema"] != CHECKPOINT_SCHEMA:
         raise ValueError("unsupported checkpoint schema")
@@ -403,7 +442,7 @@ def load_policy_factory(path: Path, scenario: Scenario):
     )
     actor.load_state_dict(checkpoint["ppo"]["actor"])
     duals = DualSettings(**checkpoint["duals"])
-    mu0 = checkpoint["constraint"]["mu0"]
+    mu0 = checkpoint["constraint"]["mu0"] if mu0 is None else mu0
 
     def make() -> MarlPolicy:
         return MarlPolicy(actor, scenario.physical, scenario.menu, duals, mu0)

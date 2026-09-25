@@ -236,6 +236,7 @@ def test_trainer_run_selects_checkpoints_that_reload_to_the_same_policy(tmp_path
     assert names == ["step-000000000", "step-000000032", "step-000000064"]
     assert result["final"] == names[-1] and result["selected"] in names
     lines = [json.loads(line) for line in (tmp_path / "run" / "training.jsonl").open()]
+    assert [line["slots"] for line in lines] == [32, 64]
     mu = 5.0
     for line in lines:
         mu = float(np.clip(mu + 5.0 * (line["violation_rate"] - 0.05), 0.0, 50.0))
@@ -243,7 +244,39 @@ def test_trainer_run_selects_checkpoints_that_reload_to_the_same_policy(tmp_path
     make, _ = load_policy_factory(tmp_path / "run" / "checkpoints" / f"{names[-1]}.pt", sc)
     recorded = json.loads((tmp_path / "run" / "validation" / f"{names[-1]}.json").read_text())
     replayed = run_episode(sc, make(), "validation", 10_000, 0, load_references("validation", 4))
-    assert replayed == recorded["episodes"][0]
+    assert replayed == recorded["by_mu0"][0]["episodes"][0]
+
+
+def test_local_variant_selects_over_checkpoints_and_initial_duals(tmp_path):
+    sc = scenario(4)
+    constraint = ConstraintSettings(
+        "local", eta=2.0, mu_max=10.0, mu0=2.0, mu0_candidates=(0.0, 4.0)
+    )
+    trainer = Trainer(
+        sc,
+        tiny_settings(budget_slots=32),
+        PPOSettings(),
+        constraint,
+        seed=7,
+        validation_indices=[10_000],
+    )
+    result = trainer.run(tmp_path / "run", log=lambda *_: None)
+    assert set(result["candidates"]) == {
+        f"step-{s:09d}@mu0={m}" for s in (0, 32) for m in ("0", "4")
+    }
+    assert result["selected"] == f"{result['selected_checkpoint']}@mu0={result['selected_mu0']:g}"
+    assert result["final"] == f"step-000000032@mu0={result['selected_mu0']:g}"
+    record = json.loads((tmp_path / "run" / "validation" / "step-000000032.json").read_text())
+    for entry in record["by_mu0"]:
+        make, _ = load_policy_factory(
+            tmp_path / "run" / "checkpoints" / "step-000000032.pt", sc, mu0=entry["mu0"]
+        )
+        replayed = run_episode(
+            sc, make(), "validation", 10_000, 0, load_references("validation", 4)
+        )
+        assert replayed == entry["episodes"][0]
+    with pytest.raises(ValueError):
+        ConstraintSettings("local", mu_max=1.0, mu0_candidates=(2.0,)).evaluation_mu0
 
 
 def test_cli_refuses_formal_overrides_and_existing_outputs(tmp_path):
@@ -264,3 +297,33 @@ def test_cli_refuses_formal_overrides_and_existing_outputs(tmp_path):
     (tmp_path / "b").mkdir()
     with pytest.raises(SystemExit):
         train_constrained_mappo.main(base + ["--output", str(tmp_path / "b")])
+
+
+def test_profiles_override_only_their_own_variant(tmp_path):
+    base = [
+        "--config",
+        str(EXPERIMENT),
+        "--scenario",
+        str(CONFIGS / "scenario-v1-n4.toml"),
+        "--seed",
+        "1",
+        "--budget-slots",
+        "32",
+        "--validation-instances",
+        "1",
+        "--set",
+        "training.num_envs=2",
+        "--set",
+        "training.rollout_slots=16",
+    ]
+    with pytest.raises(SystemExit):
+        train_constrained_mappo.main(
+            base + ["--variant", "local", "--profile", "fixed-w1", "--output", str(tmp_path / "a")]
+        )
+    output = tmp_path / "b"
+    train_constrained_mappo.main(
+        base + ["--variant", "fixed", "--profile", "fixed-w30", "--output", str(output)]
+    )
+    manifest = json.loads((output / "manifest.json").read_text())
+    assert manifest["profile"] == "fixed-w30"
+    assert manifest["resolved"]["constraint"]["weight"] == 30.0

@@ -28,8 +28,15 @@ def load_experiment(
     raw = tomllib.loads(path.read_text())
     training = TrainingSettings(**raw["training"], **raw["model"])
     ppo = PPOSettings(**raw["ppo"])
-    constraint = ConstraintSettings(variant=variant, **raw["constraint"][variant])
+    constraint = make_constraint(variant, raw["constraint"][variant])
     return raw, training, ppo, constraint
+
+
+def make_constraint(variant: str, table: dict) -> ConstraintSettings:
+    values = dict(table)
+    if "mu0_candidates" in values:
+        values["mu0_candidates"] = tuple(values["mu0_candidates"])
+    return ConstraintSettings(variant=variant, **values)
 
 
 def main(argv: list[str] | None = None) -> None:
@@ -39,6 +46,7 @@ def main(argv: list[str] | None = None) -> None:
     )
     parser.add_argument("--scenario", type=Path, required=True)
     parser.add_argument("--variant", choices=("fixed", "global", "local"), required=True)
+    parser.add_argument("--profile", help="named constraint profile from the config file")
     parser.add_argument("--seed", type=int, required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--formal", action="store_true")
@@ -59,6 +67,18 @@ def main(argv: list[str] | None = None) -> None:
     if args.formal and (provenance["dirty"] or overrides):
         parser.error("--formal requires a clean tree and no overrides")
     raw, training, ppo, constraint = load_experiment(args.config, args.variant)
+    if args.profile is not None:
+        profile = dict(raw.get("profiles", {}).get(args.profile, {}))
+        if not profile:
+            parser.error(f"unknown profile {args.profile}")
+        if profile.pop("variant") != args.variant:
+            parser.error(f"profile {args.profile} belongs to another variant")
+        table = raw["constraint"][args.variant]
+        unknown = set(profile) - set(table)
+        if unknown:
+            parser.error(f"profile {args.profile} sets unknown keys {sorted(unknown)}")
+        table.update(profile)
+        constraint = make_constraint(args.variant, table)
     changes = {}
     if args.budget_slots is not None:
         changes["training.budget_slots"] = args.budget_slots
@@ -74,7 +94,7 @@ def main(argv: list[str] | None = None) -> None:
             table[name] = value
         training = TrainingSettings(**raw["training"], **raw["model"])
         ppo = PPOSettings(**raw["ppo"])
-        constraint = ConstraintSettings(variant=args.variant, **raw["constraint"][args.variant])
+        constraint = make_constraint(args.variant, raw["constraint"][args.variant])
     scenario = load_scenario(args.scenario)
     validation = list(splits.indices("validation"))
     if args.validation_instances is not None:
@@ -90,6 +110,7 @@ def main(argv: list[str] | None = None) -> None:
         "scenario": str(args.scenario),
         "scenario_sha256": hashlib.sha256(args.scenario.read_bytes()).hexdigest(),
         "variant": args.variant,
+        "profile": args.profile,
         "seed": args.seed,
         "overrides": changes
         | (

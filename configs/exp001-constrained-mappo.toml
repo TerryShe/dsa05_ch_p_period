@@ -42,3 +42,44 @@ mu_max = 100.0
 eta = 2.0
 mu_max = 50.0
 mu0 = 5.0
+# Initial duals evaluated at every validation; the protocol rule picks (checkpoint, mu0).
+mu0_candidates = [0.0, 5.0, 25.0]
+
+# Phase 1 stage 1a tuning grid (N=8, seed 101), pre-registered in the design's
+# phase-1 addendum. A profile overrides its variant's constraint table and is
+# allowed in formal runs because it is part of this committed file.
+[profiles.fixed-w1]
+variant = "fixed"
+weight = 1.0
+
+[profiles.fixed-w3]
+variant = "fixed"
+weight = 3.0
+
+[profiles.fixed-w10]
+variant = "fixed"
+weight = 10.0
+
+[profiles.fixed-w30]
+variant = "fixed"
+weight = 30.0
+
+[profiles.global-eta5]
+variant = "global"
+eta = 5.0
+mu_init = 5.0
+
+[profiles.global-eta20]
+variant = "global"
+eta = 20.0
+mu_init = 5.0
+
+[profiles.local-eta2]
+variant = "local"
+eta = 2.0
+mu_max = 50.0
+
+[profiles.local-eta5]
+variant = "local"
+eta = 5.0
+mu_max = 50.0
