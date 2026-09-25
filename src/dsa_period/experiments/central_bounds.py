@@ -21,6 +21,7 @@ from dsa_period.config import load_scenario
 from dsa_period.experiments.central_reference import git_provenance
 from dsa_period.experiments.scenario_smoke import run_policy
 from dsa_period.metrics import window_summary
+from dsa_period.splits import indices
 
 RTOL = 1e-9
 EXACT_RTOL = 1e-9
@@ -35,7 +36,9 @@ def _capped(energies_by_ue: list[list[float]], cap: float) -> float:
     return total
 
 
-def evaluate_instance(scenario, index: int, policy_seed: int, time_limit_s: float) -> dict:
+def evaluate_instance(
+    scenario, index: int, policy_seed: int, time_limit_s: float, heuristics: bool = True
+) -> dict:
     config, menu = scenario.physical, scenario.menu
     cap = scenario.objective["max_violation_rate"]
     topology, traffic = scenario.instance(index)
@@ -127,10 +130,10 @@ def evaluate_instance(scenario, index: int, policy_seed: int, time_limit_s: floa
         }
         row["upper_over_lower"] = strict / lower_energy["strict_j"]
         row["exact"] = strict <= lower_energy["strict_j"] * (1 + EXACT_RTOL)
-    heuristics = {}
-    for policy in POLICIES:
+    results = {}
+    for policy in POLICIES if heuristics else ():
         s = run_policy(scenario, index, policy, policy_seed)["summary"]
-        heuristics[policy] = {
+        results[policy] = {
             "ocr": s["ocr"],
             "worst_ue_ocr": s["worst_ue_ocr"],
             "packet_energy_j": s["packet_energy_j"],
@@ -140,7 +143,7 @@ def evaluate_instance(scenario, index: int, policy_seed: int, time_limit_s: floa
                 None if row["upper"] is None else s["packet_energy_j"] / row["upper"]["strict_j"]
             ),
         }
-    row["heuristics"] = heuristics
+    row["heuristics"] = results
     return row
 
 
@@ -149,6 +152,12 @@ def main(argv: list[str] | None = None) -> None:
     parser.add_argument("--config", required=True)
     parser.add_argument("--first-instance", type=int, default=0)
     parser.add_argument("--instances", type=int, default=20)
+    parser.add_argument(
+        "--split", choices=("validation", "test"), help="use a frozen protocol split instead"
+    )
+    parser.add_argument(
+        "--skip-heuristics", action="store_true", help="bounds only; do not run baselines"
+    )
     parser.add_argument("--policy-seed", type=int, default=0)
     parser.add_argument("--time-limit-s", type=float, default=120.0)
     parser.add_argument("--output", type=Path)
@@ -160,8 +169,13 @@ def main(argv: list[str] | None = None) -> None:
     if args.formal and provenance["dirty"]:
         parser.error("--formal requires a clean, committed working tree")
     scenario = load_scenario(args.config)
+    if args.split is not None:
+        chosen = indices(args.split)
+        args.first_instance, args.instances = chosen.start, len(chosen)
     rows = [
-        evaluate_instance(scenario, index, args.policy_seed, args.time_limit_s)
+        evaluate_instance(
+            scenario, index, args.policy_seed, args.time_limit_s, not args.skip_heuristics
+        )
         for index in range(args.first_instance, args.first_instance + args.instances)
     ]
     solved = [r for r in rows if r["upper"] is not None]
@@ -177,7 +191,7 @@ def main(argv: list[str] | None = None) -> None:
             f"MILP max {max(r['upper']['solve_seconds'] for r in solved):.2f} s"
         )
     print(f"{'policy':<12} {'OCR':>7} {'worst-UE':>9} {'E/LB':>7} {'E/UB':>7}")
-    for policy in POLICIES:
+    for policy in POLICIES if not args.skip_heuristics else ():
         h = [r["heuristics"][policy] for r in rows]
         upper = [x["energy_over_upper"] for x in h if x["energy_over_upper"] is not None]
         print(
@@ -192,8 +206,10 @@ def main(argv: list[str] | None = None) -> None:
             "formal": args.formal,
             "provenance": provenance,
             "config": args.config,
+            "split": args.split,
             "first_instance": args.first_instance,
             "instances": args.instances,
+            "heuristics": not args.skip_heuristics,
             "policy_seed": args.policy_seed,
             "time_limit_s": args.time_limit_s,
             "runs": rows,

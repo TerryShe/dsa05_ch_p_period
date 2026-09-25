@@ -5,7 +5,7 @@
 - **速率**：由 Shannon 公式给出（HARQ-IR 累积互信息），MCS 不再是动作。
 - **目标**：在每 UE 违约率 ≤ ε 的约束下，最小化发射能耗。
 
-规范见 [场景 v1.0](docs/research/scenario.md)。**场景参数与建模假设已于 2026-09-24 冻结**：N=4/6/8/12 四个变体（K=4，功率档 OFF/5/10/15/19/23 dBm，21 类动作），见 [配置](configs/) 与 [冻结清单](docs/research/scenario-v1-freeze.json)；MARL 训练尚未接入。
+规范见 [场景 v1.0](docs/research/scenario.md)。**场景参数与建模假设已于 2026-09-24 冻结**：N=4/6/8/12 四个变体（K=4，功率档 OFF/5/10/15/19/23 dBm，21 类动作），见 [配置](configs/) 与 [冻结清单](docs/research/scenario-v1-freeze.json)；MARL 训练尚未接入。所有 MARL 实验遵守 [MARL 实验协议 v1](docs/research/marl-protocol-v1.md)：训练、验证、测试实例划分与执行种子已冻结。
 
 ## 结果
 
@@ -52,6 +52,7 @@ src/dsa_period/
   metrics.py     # 固定窗口 OCR/能耗统计
   baselines.py   # 本地启发式与本地链路估计
   config.py      # TOML 加载与实例生成
+  splits.py      # 协议 v1 冻结的实例划分与评估执行种子
   central.py     # 逐 UE 单独最优：N<=K 时精确，任意 N 下为下界
   central_timeshare.py  # 正交分时循环调度 MILP：任意 N 下的上界
   experiments/scenario_smoke.py
@@ -59,6 +60,8 @@ src/dsa_period/
   experiments/central_bounds.py
 docs/research/scenario.md       # 场景规范
 docs/research/scenario-v1-freeze.json  # 冻结清单：配置 SHA-256、确认的假设、派生量
+docs/research/marl-protocol-v1.md   # MARL 实验协议：划分、选模、测试、指标与判读
+docs/research/marl-protocol-v1.json # 协议清单：划分区间、执行种子、实例哈希
 tests/
 ```
 

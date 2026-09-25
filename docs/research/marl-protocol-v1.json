@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "protocol_id": "marl-protocol-v1",
+  "status": "frozen",
+  "frozen_on": "2026-09-24",
+  "scenario_id": "DES-DSA05-PERIODIC",
+  "scenario_version": "1.0",
+  "instance_seeds": "topology_seed = spatial.topology_seed + i; phase_seed = traffic.phase_seed + i",
+  "splits": {
+    "dev": {
+      "start": 0,
+      "stop": 10000,
+      "count": 10000
+    },
+    "validation": {
+      "start": 10000,
+      "stop": 10064,
+      "count": 64
+    },
+    "test": {
+      "start": 20000,
+      "stop": 20200,
+      "count": 200
+    },
+    "reserve": {
+      "start": 30000,
+      "stop": 40000,
+      "count": 10000
+    },
+    "train": {
+      "start": 1000000,
+      "stop": 2000000,
+      "count": 1000000
+    }
+  },
+  "evaluation_repeats": {
+    "validation": 1,
+    "test": 2
+  },
+  "execution_seeds": {
+    "base": 20260925,
+    "split_codes": {
+      "dev": 0,
+      "validation": 1,
+      "test": 2,
+      "reserve": 3,
+      "train": 4
+    },
+    "scheme": "SeedSequence([base, split_code, N, instance, repeat]).spawn(N) -> one PCG64 per UE"
+  },
+  "train_probe_indices": [
+    1000000,
+    1000001,
+    1000002,
+    1000003,
+    1000004,
+    1000005,
+    1000006,
+    1000007,
+    1999992,
+    1999993,
+    1999994,
+    1999995,
+    1999996,
+    1999997,
+    1999998,
+    1999999
+  ],
+  "digest_scheme": "splits.instance_digest: SHA-256 over topology array hashes and traffic arrays, in index order",
+  "variants": [
+    {
+      "num_ues": 4,
+      "config_path": "configs/scenario-v1-n4.toml",
+      "config_sha256": "2da5c463cfe0dc0cf6bf88f57cdce2e26f4734de78b5d1c3727a0d53f826e965",
+      "validation_digest": "ba6c58c9aa66b223fa42758940e02d627a21dc6a31073ceee661fa3f61622eea",
+      "test_digest": "cf88cfcfe595aa29d9f4af0554ae2eb356188dd05dc311a9aabfb9fc03724ef4",
+      "train_probe_digest": "0102968e9f88b7fbbe3c24a3bd98af68e152d081c3a2562971597478772759de"
+    },
+    {
+      "num_ues": 6,
+      "config_path": "configs/scenario-v1-n6.toml",
+      "config_sha256": "e139bb3b691db38216c46ac20d5f7e77d8f341d27ad385d238ffe2a811a7654f",
+      "validation_digest": "bc63584ffc3f2ae2835a86a29476f3399cee0252b615d53a7605b0ba5187084e",
+      "test_digest": "2a72e29b6f8ffae57d4476e5b35bd017ece774895071265c382e66e18ddf3744",
+      "train_probe_digest": "cfa934f682b1d0e4429b08fbb5a6b64a160d3554e8ee03b38759add0cdce64d5"
+    },
+    {
+      "num_ues": 8,
+      "config_path": "configs/scenario-v1-n8.toml",
+      "config_sha256": "64d7085be24ee0025d3f072fd12cd804b07b291bda7a8e3540779cb78c79b692",
+      "validation_digest": "bdb8431a4217f40f29e62831a6860aaafd39744bc22662cbdbd4315f52025025",
+      "test_digest": "822ee98ed8c36d556d14bad5ec2f3a02c7dc8340f68ef2bb846eca8ec07536a2",
+      "train_probe_digest": "3bc685e1c72187db96f36dafbd5b398ea0b5a41f19a81946802cbf35036ae956"
+    },
+    {
+      "num_ues": 12,
+      "config_path": "configs/scenario-v1-n12.toml",
+      "config_sha256": "6ab9cf1881692a5af8ce9277e73caa011d0c0dd657e6830a38df7effb75bda93",
+      "validation_digest": "6c8fdeb3bd0b2e65faa881bbaeac8a418e9d3e9e007c16d7461a590afde81b2f",
+      "test_digest": "b0ee421ef9b115ca4c0ff3b6261cae92c8898e4c67851a4fd9ce02867365aa6c",
+      "train_probe_digest": "bd2c454d19aaf071ecb37f931e61455be019f37569900141c382f0b2922fd4a5"
+    }
+  ]
+}

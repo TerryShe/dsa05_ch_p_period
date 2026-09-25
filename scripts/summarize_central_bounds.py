@@ -74,7 +74,7 @@ def summarize(path: Path) -> dict:
             }
         )
     heuristics = {}
-    for policy in POLICIES:
+    for policy in POLICIES if all(r["heuristics"] for r in runs) else ():
         h = [r["heuristics"][policy] for r in runs]
         heuristics[policy] = {
             "ocr_mean": float(np.mean([x["ocr"] for x in h])),
@@ -90,6 +90,7 @@ def summarize(path: Path) -> dict:
         "formal": record["formal"],
         "provenance": record["provenance"],
         "config": record["config"],
+        "split": record.get("split"),
         "first_instance": record["first_instance"],
         "policy_seed": record["policy_seed"],
         "num_ues": num_ues,

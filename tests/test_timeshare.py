@@ -111,3 +111,21 @@ def test_bounds_runner_brackets_and_verifies_a_loaded_instance(tmp_path):
     assert run["upper"]["slot_utilization"] <= 1.0
     with pytest.raises(SystemExit):
         central_bounds.main(["--config", config, "--instances", "1", "--output", str(output)])
+
+
+def test_bounds_runner_uses_frozen_splits_and_can_skip_baselines(tmp_path, monkeypatch):
+    # Shrink the validation split to its first instance to keep the test fast.
+    monkeypatch.setattr(central_bounds, "indices", lambda split: range(10_000, 10_001))
+    output = tmp_path / "validation"
+    config = str(CONFIGS / "scenario-v1-n4.toml")
+    central_bounds.main(
+        ["--config", config, "--split", "validation", "--skip-heuristics", "--output", str(output)]
+    )
+    record = json.loads((output / "summary.json").read_text())
+    assert (record["split"], record["first_instance"], record["instances"]) == (
+        "validation",
+        10_000,
+        1,
+    )
+    assert record["heuristics"] is False and record["runs"][0]["heuristics"] == {}
+    assert record["runs"][0]["exact"]
