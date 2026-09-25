@@ -13,6 +13,7 @@ import numpy as np
 
 POLICIES = ("random_max", "sticky_max", "lazy_pacing")
 POWER_DBM = (5, 10, 15, 19, 23)
+DISTANCE_BINS = ((0, 50), (50, 75), (75, 100.0001))
 SLOT_S = 1e-3
 WINDOW_SLOTS = 1800
 
@@ -42,6 +43,36 @@ def summarize(path: Path) -> dict:
         [[r["upper"]["slot_share_by_power_id"][str(i)] for i in range(1, 6)] for r in solved],
         axis=0,
     )
+    # Per-UE cycle energy: lower bound from the solo plans, upper bound from the schedule.
+    # Power ID 0 is OFF: exactly 0 W (numeric 0 dBm would be an active 1 mW).
+    watts = np.concatenate(([0.0], 10 ** ((np.asarray(POWER_DBM, dtype=float) - 30) / 10)))
+    distance, lower_ue, upper_ue, duty = [], [], [], []
+    for r in solved:
+        ids = np.asarray(r["upper"]["power_ids"])
+        cycle = ids.shape[0]
+        for ue in range(num_ues):
+            period = r["traffic"]["period_slots"][ue]
+            distance.append(r["topology"]["ue_ap_distances_m"][ue])
+            lower_ue.append(r["lower"]["per_ue_packet_energy_j"][ue] * cycle / period)
+            upper_ue.append(SLOT_S * watts[ids[:, ue]].sum())
+            duty.append(float(np.mean(ids[:, ue] > 0)))
+    distance, lower_ue, upper_ue = map(np.asarray, (distance, lower_ue, upper_ue))
+    duty = np.asarray(duty)
+    extra = upper_ue - lower_ue
+    by_distance = []
+    for lo, hi in DISTANCE_BINS:
+        mask = (distance >= lo) & (distance < hi)
+        by_distance.append(
+            {
+                "distance_m": [lo, min(hi, 100.0)],
+                "ues": int(mask.sum()),
+                "upper_over_lower": float(upper_ue[mask].sum() / lower_ue[mask].sum()),
+                "share_of_extra_energy": float(extra[mask].sum() / extra.sum())
+                if extra.sum() > 0
+                else 0.0,
+                "upper_duty_cycle": float(duty[mask].mean()),
+            }
+        )
     heuristics = {}
     for policy in POLICIES:
         h = [r["heuristics"][policy] for r in runs]
@@ -86,6 +117,7 @@ def summarize(path: Path) -> dict:
         "upper_slot_share_by_power_dbm": dict(
             zip(map(str, POWER_DBM), shares.tolist(), strict=True)
         ),
+        "upper_vs_lower_by_distance": by_distance,
         "heuristics": heuristics,
         "per_instance": [
             {

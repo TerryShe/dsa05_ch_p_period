@@ -12,6 +12,7 @@
 | 报告 | 内容 |
 |---|---|
 | [N=4 中央最小能耗参照](docs/results/central-reference-n4_20260924/report.md) | 精确最优 3.70 mW/UE，100 实例环境重放核验；本地启发式能耗为最优的 5.5–11 倍 |
+| [N=4/6/8/12 中央最小能耗上下界](docs/results/central-bounds_20260924/report.md) | N=4 全部精确、N=6 上界/下界均值 1.02、N=8 为 1.12、N=12 为 1.42；启发式能耗为上界的 8–10 倍 |
 
 ## 环境
 
@@ -40,6 +41,8 @@ uv run --locked python -m dsa_period.experiments.scenario_smoke --instances 6 --
 ```text
 configs/scenario-v1-n{4,6,8,12}.toml  # 冻结的 v1.0 工作点（勿改，变更另立新版本）
 scripts/analyze_power_menu_quantization.py  # 功率档选型分析
+scripts/summarize_central_*.py  # 中央参照结果汇总
+scripts/explore_mac_sum_rate_bound.py  # MAC 和速率下界探索（负面结果）
 src/dsa_period/
   topology.py    # 圆盘拓扑与路损（复制自 dsa04）
   channel.py     # ChannelModel 接口与 StaticChannel；衰落模型在此扩展
@@ -49,9 +52,11 @@ src/dsa_period/
   metrics.py     # 固定窗口 OCR/能耗统计
   baselines.py   # 本地启发式与本地链路估计
   config.py      # TOML 加载与实例生成
-  central.py     # N<=K 精确中央最小能耗参照与环境重放
+  central.py     # 逐 UE 单独最优：N<=K 时精确，任意 N 下为下界
+  central_timeshare.py  # 正交分时循环调度 MILP：任意 N 下的上界
   experiments/scenario_smoke.py
   experiments/central_reference.py
+  experiments/central_bounds.py
 docs/research/scenario.md       # 场景规范
 docs/research/scenario-v1-freeze.json  # 冻结清单：配置 SHA-256、确认的假设、派生量
 tests/
