@@ -1,0 +1,2589 @@
+{
+  "num_ues": 8,
+  "baseline_e_over_ub": 2.871,
+  "runs": [
+    {
+      "path": "outputs/exp001-stage1a/n8-fixed-w10-seed101",
+      "variant": "fixed",
+      "profile": "fixed-w10",
+      "seed": 101,
+      "commit": "73d7305a2d5838514f2db60615bd8ec8e97c9eb4",
+      "result_sha256": "bb2e41e05910104ebb7634ed51dadd3366c61719b036d69c9f12fff88f4ac207",
+      "wall_s": 2602.612460017903,
+      "selected": "step-002000896",
+      "curve": [
+        {
+          "checkpoint": "step-000000000",
+          "slots": 0,
+          "mu0": 0.0,
+          "feasible": 0.640625,
+          "e_over_ub": 5.475426717954937,
+          "worst_ue_ocr": 0.9573784722222223,
+          "mw_per_ue": 22.211887638446402
+        },
+        {
+          "checkpoint": "step-000251904",
+          "slots": 251904,
+          "mu0": 0.0,
+          "feasible": 0.421875,
+          "e_over_ub": 2.8775470021086154,
+          "worst_ue_ocr": 0.9154513888888889,
+          "mw_per_ue": 11.931347382195073
+        },
+        {
+          "checkpoint": "step-000501760",
+          "slots": 501760,
+          "mu0": 0.0,
+          "feasible": 0.859375,
+          "e_over_ub": 2.525520856556959,
+          "worst_ue_ocr": 0.9700520833333334,
+          "mw_per_ue": 10.853230970971964
+        },
+        {
+          "checkpoint": "step-000751616",
+          "slots": 751616,
+          "mu0": 0.0,
+          "feasible": 0.9375,
+          "e_over_ub": 2.4443485087728947,
+          "worst_ue_ocr": 0.9790798611111111,
+          "mw_per_ue": 10.525187738330217
+        },
+        {
+          "checkpoint": "step-001001472",
+          "slots": 1001472,
+          "mu0": 0.0,
+          "feasible": 0.734375,
+          "e_over_ub": 2.4595307820751504,
+          "worst_ue_ocr": 0.9524305555555556,
+          "mw_per_ue": 10.699907825887722
+        },
+        {
+          "checkpoint": "step-001251328",
+          "slots": 1251328,
+          "mu0": 0.0,
+          "feasible": 0.828125,
+          "e_over_ub": 2.412354406938203,
+          "worst_ue_ocr": 0.9721354166666667,
+          "mw_per_ue": 10.482031467615624
+        },
+        {
+          "checkpoint": "step-001501184",
+          "slots": 1501184,
+          "mu0": 0.0,
+          "feasible": 0.890625,
+          "e_over_ub": 2.363435142241963,
+          "worst_ue_ocr": 0.9828993055555556,
+          "mw_per_ue": 10.272695508118927
+        },
+        {
+          "checkpoint": "step-001751040",
+          "slots": 1751040,
+          "mu0": 0.0,
+          "feasible": 1.0,
+          "e_over_ub": 2.3454167583511842,
+          "worst_ue_ocr": 0.9952256944444445,
+          "mw_per_ue": 10.195462679398887
+        },
+        {
+          "checkpoint": "step-002000896",
+          "slots": 2000896,
+          "mu0": 0.0,
+          "feasible": 1.0,
+          "e_over_ub": 2.304788959272412,
+          "worst_ue_ocr": 0.9887152777777779,
+          "mw_per_ue": 10.027149078338399
+        }
+      ],
+      "final_violation_breakdown": {
+        "checkpoint": "step-002000896",
+        "mu0": 0.0,
+        "per_ue_mean": 0.0016384548611111114,
+        "packet_weighted": 0.0011631944444444443,
+        "far_mean": 0.003051643192488263,
+        "near_mean": 0.00063173541434411,
+        "by_period": {
+          "10": {
+            "ue_episodes": 192,
+            "mean_violation": 0.0009548611111111112,
+            "far_mean_violation": 0.0018274853801169592,
+            "starved_ue_episodes": 0
+          },
+          "20": {
+            "ue_episodes": 192,
+            "mean_violation": 0.0005208333333333333,
+            "far_mean_violation": 0.00107095046854083,
+            "starved_ue_episodes": 0
+          },
+          "40": {
+            "ue_episodes": 128,
+            "mean_violation": 0.004340277777777778,
+            "far_mean_violation": 0.007818930041152264,
+            "starved_ue_episodes": 0
+          }
+        }
+      }
+    },
+    {
+      "path": "outputs/exp001-stage1a/n8-fixed-w1-seed101",
+      "variant": "fixed",
+      "profile": "fixed-w1",
+      "seed": 101,
+      "commit": "73d7305a2d5838514f2db60615bd8ec8e97c9eb4",
+      "result_sha256": "774e12a82bf049ba655f16f62a4c552ba378fb1d8b2872457d6b0683af615dd4",
+      "wall_s": 2591.5966709791683,
+      "selected": "step-000000000",
+      "curve": [
+        {
+          "checkpoint": "step-000000000",
+          "slots": 0,
+          "mu0": 0.0,
+          "feasible": 0.640625,
+          "e_over_ub": 5.475426717954937,
+          "worst_ue_ocr": 0.9573784722222223,
+          "mw_per_ue": 22.211887638446402
+        },
+        {
+          "checkpoint": "step-000251904",
+          "slots": 251904,
+          "mu0": 0.0,
+          "feasible": 0.0,
+          "e_over_ub": 1.5469904821701561,
+          "worst_ue_ocr": 0.06961805555555556,
+          "mw_per_ue": 6.29409845065388
+        },
+        {
+          "checkpoint": "step-000501760",
+          "slots": 501760,
+          "mu0": 0.0,
+          "feasible": 0.0,
+          "e_over_ub": 1.2503852190562705,
+          "worst_ue_ocr": 0.01918402777777778,
+          "mw_per_ue": 5.042695344977373
+        },
+        {
+          "checkpoint": "step-000751616",
+          "slots": 751616,
+          "mu0": 0.0,
+          "feasible": 0.0,
+          "e_over_ub": 1.3252730133151305,
+          "worst_ue_ocr": 0.03480902777777778,
+          "mw_per_ue": 5.342360291428852
+        },
+        {
+          "checkpoint": "step-001001472",
+          "slots": 1001472,
+          "mu0": 0.0,
+          "feasible": 0.0,
+          "e_over_ub": 0.7872198421044445,
+          "worst_ue_ocr": 0.01796875,
+          "mw_per_ue": 2.9826729511808088
+        },
+        {
+          "checkpoint": "step-001251328",
+          "slots": 1251328,
+          "mu0": 0.0,
+          "feasible": 0.0,
+          "e_over_ub": 0.5681829371826422,
+          "worst_ue_ocr": 0.0,
+          "mw_per_ue": 2.14864516121707
+        },
+        {
+          "checkpoint": "step-001501184",
+          "slots": 1501184,
+          "mu0": 0.0,
+          "feasible": 0.0,
+          "e_over_ub": 0.6245911344623734,
+          "worst_ue_ocr": 0.0,
+          "mw_per_ue": 2.3409821008602383
+        },
+        {
+          "checkpoint": "step-001751040",
+          "slots": 1751040,
+          "mu0": 0.0,
+          "feasible": 0.0,
+          "e_over_ub": 0.5210992701174977,
+          "worst_ue_ocr": 0.0,
+          "mw_per_ue": 1.9514575781681214
+        },
+        {
+          "checkpoint": "step-002000896",
+          "slots": 2000896,
+          "mu0": 0.0,
+          "feasible": 0.0,
+          "e_over_ub": 0.6474457078249742,
+          "worst_ue_ocr": 0.0,
+          "mw_per_ue": 2.437858346375446
+        }
+      ],
+      "final_violation_breakdown": {
+        "checkpoint": "step-002000896",
+        "mu0": 0.0,
+        "per_ue_mean": 0.43108723958333334,
+        "packet_weighted": 0.30578125,
+        "far_mean": 0.7288471570161712,
+        "near_mean": 0.2189706428836864,
+        "by_period": {
+          "10": {
+            "ue_episodes": 192,
+            "mean_violation": 0.1677951388888889,
+            "far_mean_violation": 0.4238304093567251,
+            "starved_ue_episodes": 25
+          },
+          "20": {
+            "ue_episodes": 192,
+            "mean_violation": 0.38559027777777777,
+            "far_mean_violation": 0.831726907630522,
+            "starved_ue_episodes": 74
+          },
+          "40": {
+            "ue_episodes": 128,
+            "mean_violation": 0.8942708333333332,
+            "far_mean_violation": 1.0,
+            "starved_ue_episodes": 104
+          }
+        }
+      }
+    },
+    {
+      "path": "outputs/exp001-stage1a/n8-fixed-w30-seed101",
+      "variant": "fixed",
+      "profile": "fixed-w30",
+      "seed": 101,
+      "commit": "73d7305a2d5838514f2db60615bd8ec8e97c9eb4",
+      "result_sha256": "ae55f95e26efe4a1b01a938252deb6e91f1b2d508033800217457eccd9c03627",
+      "wall_s": 2603.473709946964,
+      "selected": "step-001501184",
+      "curve": [
+        {
+          "checkpoint": "step-000000000",
+          "slots": 0,
+          "mu0": 0.0,
+          "feasible": 0.640625,
+          "e_over_ub": 5.475426717954937,
+          "worst_ue_ocr": 0.9573784722222223,
+          "mw_per_ue": 22.211887638446402
+        },
+        {
+          "checkpoint": "step-000251904",
+          "slots": 251904,
+          "mu0": 0.0,
+          "feasible": 0.984375,
+          "e_over_ub": 2.831765655638814,
+          "worst_ue_ocr": 0.9905381944444445,
+          "mw_per_ue": 12.095090273968555
+        },
+        {
+          "checkpoint": "step-000501760",
+          "slots": 501760,
+          "mu0": 0.0,
+          "feasible": 0.65625,
+          "e_over_ub": 2.6446138860170665,
+          "worst_ue_ocr": 0.9550347222222222,
+          "mw_per_ue": 11.39536146764613
+        },
+        {
+          "checkpoint": "step-000751616",
+          "slots": 751616,
+          "mu0": 0.0,
+          "feasible": 0.953125,
+          "e_over_ub": 2.4967593451208083,
+          "worst_ue_ocr": 0.9884548611111111,
+          "mw_per_ue": 10.814688263432018
+        },
+        {
+          "checkpoint": "step-001001472",
+          "slots": 1001472,
+          "mu0": 0.0,
+          "feasible": 0.9375,
+          "e_over_ub": 2.463575747166079,
+          "worst_ue_ocr": 0.98515625,
+          "mw_per_ue": 10.693757952707227
+        },
+        {
+          "checkpoint": "step-001251328",
+          "slots": 1251328,
+          "mu0": 0.0,
+          "feasible": 1.0,
+          "e_over_ub": 2.366596368810191,
+          "worst_ue_ocr": 0.9901041666666668,
+          "mw_per_ue": 10.310078096901956
+        },
+        {
+          "checkpoint": "step-001501184",
+          "slots": 1501184,
+          "mu0": 0.0,
+          "feasible": 0.984375,
+          "e_over_ub": 2.329916050648666,
+          "worst_ue_ocr": 0.9891493055555556,
+          "mw_per_ue": 10.12215272455833
+        },
+        {
+          "checkpoint": "step-001751040",
+          "slots": 1751040,
+          "mu0": 0.0,
+          "feasible": 1.0,
+          "e_over_ub": 2.34901532155429,
+          "worst_ue_ocr": 0.9963541666666667,
+          "mw_per_ue": 10.219012636356238
+        },
+        {
+          "checkpoint": "step-002000896",
+          "slots": 2000896,
+          "mu0": 0.0,
+          "feasible": 0.921875,
+          "e_over_ub": 2.3540056909784557,
+          "worst_ue_ocr": 0.9828993055555556,
+          "mw_per_ue": 10.279606367692622
+        }
+      ],
+      "final_violation_breakdown": {
+        "checkpoint": "step-002000896",
+        "mu0": 0.0,
+        "per_ue_mean": 0.0027235243055555554,
+        "packet_weighted": 0.001857638888888889,
+        "far_mean": 0.005790297339593115,
+        "near_mean": 0.0005388331475287997,
+        "by_period": {
+          "10": {
+            "ue_episodes": 192,
+            "mean_violation": 0.0014178240740740742,
+            "far_mean_violation": 0.002631578947368421,
+            "starved_ue_episodes": 0
+          },
+          "20": {
+            "ue_episodes": 192,
+            "mean_violation": 0.0008680555555555555,
+            "far_mean_violation": 0.0012048192771084336,
+            "starved_ue_episodes": 0
+          },
+          "40": {
+            "ue_episodes": 128,
+            "mean_violation": 0.007465277777777777,
+            "far_mean_violation": 0.017283950617283952,
+            "starved_ue_episodes": 0
+          }
+        }
+      }
+    },
+    {
+      "path": "outputs/exp001-stage1a/n8-fixed-w3-seed101",
+      "variant": "fixed",
+      "profile": "fixed-w3",
+      "seed": 101,
+      "commit": "73d7305a2d5838514f2db60615bd8ec8e97c9eb4",
+      "result_sha256": "b59ea3914fbfbc5f1e60a52af94d9b409a65770109a1e4499d80f51eb7e0d7d1",
+      "wall_s": 2587.638045523083,
+      "selected": "step-000000000",
+      "curve": [
+        {
+          "checkpoint": "step-000000000",
+          "slots": 0,
+          "mu0": 0.0,
+          "feasible": 0.640625,
+          "e_over_ub": 5.475426717954937,
+          "worst_ue_ocr": 0.9573784722222223,
+          "mw_per_ue": 22.211887638446402
+        },
+        {
+          "checkpoint": "step-000251904",
+          "slots": 251904,
+          "mu0": 0.0,
+          "feasible": 0.171875,
+          "e_over_ub": 2.6753369355924845,
+          "worst_ue_ocr": 0.7573784722222222,
+          "mw_per_ue": 11.051910975272184
+        },
+        {
+          "checkpoint": "step-000501760",
+          "slots": 501760,
+          "mu0": 0.0,
+          "feasible": 0.546875,
+          "e_over_ub": 2.857945726347252,
+          "worst_ue_ocr": 0.9283854166666667,
+          "mw_per_ue": 11.785870290878595
+        },
+        {
+          "checkpoint": "step-000751616",
+          "slots": 751616,
+          "mu0": 0.0,
+          "feasible": 0.359375,
+          "e_over_ub": 2.7487965079251726,
+          "worst_ue_ocr": 0.8600694444444446,
+          "mw_per_ue": 11.3477723222028
+        },
+        {
+          "checkpoint": "step-001001472",
+          "slots": 1001472,
+          "mu0": 0.0,
+          "feasible": 0.59375,
+          "e_over_ub": 2.8752687701312567,
+          "worst_ue_ocr": 0.9371527777777778,
+          "mw_per_ue": 11.845711990026615
+        },
+        {
+          "checkpoint": "step-001251328",
+          "slots": 1251328,
+          "mu0": 0.0,
+          "feasible": 0.421875,
+          "e_over_ub": 2.789627821455192,
+          "worst_ue_ocr": 0.9003472222222222,
+          "mw_per_ue": 11.509637339666167
+        },
+        {
+          "checkpoint": "step-001501184",
+          "slots": 1501184,
+          "mu0": 0.0,
+          "feasible": 0.3125,
+          "e_over_ub": 2.5024891049325046,
+          "worst_ue_ocr": 0.8791666666666667,
+          "mw_per_ue": 10.556916271301118
+        },
+        {
+          "checkpoint": "step-001751040",
+          "slots": 1751040,
+          "mu0": 0.0,
+          "feasible": 0.453125,
+          "e_over_ub": 2.346264231739548,
+          "worst_ue_ocr": 0.9144965277777778,
+          "mw_per_ue": 10.046947033818162
+        },
+        {
+          "checkpoint": "step-002000896",
+          "slots": 2000896,
+          "mu0": 0.0,
+          "feasible": 0.625,
+          "e_over_ub": 2.3559222779555546,
+          "worst_ue_ocr": 0.9482638888888889,
+          "mw_per_ue": 10.138980787330022
+        }
+      ],
+      "final_violation_breakdown": {
+        "checkpoint": "step-002000896",
+        "mu0": 0.0,
+        "per_ue_mean": 0.01044921875,
+        "packet_weighted": 0.008993055555555556,
+        "far_mean": 0.02399582681272822,
+        "near_mean": 0.0007989594946116686,
+        "by_period": {
+          "10": {
+            "ue_episodes": 192,
+            "mean_violation": 0.009519675925925926,
+            "far_mean_violation": 0.022076023391812864,
+            "starved_ue_episodes": 0
+          },
+          "20": {
+            "ue_episodes": 192,
+            "mean_violation": 0.003530092592592593,
+            "far_mean_violation": 0.007362784471218207,
+            "starved_ue_episodes": 0
+          },
+          "40": {
+            "ue_episodes": 128,
+            "mean_violation": 0.022222222222222223,
+            "far_mean_violation": 0.0522633744855967,
+            "starved_ue_episodes": 0
+          }
+        }
+      }
+    },
+    {
+      "path": "outputs/exp001-stage1a/n8-global-eta20-seed101",
+      "variant": "global",
+      "profile": "global-eta20",
+      "seed": 101,
+      "commit": "73d7305a2d5838514f2db60615bd8ec8e97c9eb4",
+      "result_sha256": "e5daea399594568dc715857792b3e318dce0ecc334859321bff2c8de56eacbc0",
+      "wall_s": 2604.360036859056,
+      "selected": "step-000000000",
+      "curve": [
+        {
+          "checkpoint": "step-000000000",
+          "slots": 0,
+          "mu0": 0.0,
+          "feasible": 0.640625,
+          "e_over_ub": 5.475426717954937,
+          "worst_ue_ocr": 0.9573784722222223,
+          "mw_per_ue": 22.211887638446402
+        },
+        {
+          "checkpoint": "step-000251904",
+          "slots": 251904,
+          "mu0": 0.0,
+          "feasible": 0.09375,
+          "e_over_ub": 2.4921166951222333,
+          "worst_ue_ocr": 0.5953993055555555,
+          "mw_per_ue": 10.293982804902988
+        },
+        {
+          "checkpoint": "step-000501760",
+          "slots": 501760,
+          "mu0": 0.0,
+          "feasible": 0.390625,
+          "e_over_ub": 2.7916527919005603,
+          "worst_ue_ocr": 0.8944444444444444,
+          "mw_per_ue": 11.507338234537023
+        },
+        {
+          "checkpoint": "step-000751616",
+          "slots": 751616,
+          "mu0": 0.0,
+          "feasible": 0.046875,
+          "e_over_ub": 2.1516934136016124,
+          "worst_ue_ocr": 0.2904513888888889,
+          "mw_per_ue": 8.838767588746695
+        },
+        {
+          "checkpoint": "step-001001472",
+          "slots": 1001472,
+          "mu0": 0.0,
+          "feasible": 0.1875,
+          "e_over_ub": 2.3742889102666593,
+          "worst_ue_ocr": 0.7470486111111112,
+          "mw_per_ue": 10.023643186942635
+        },
+        {
+          "checkpoint": "step-001251328",
+          "slots": 1251328,
+          "mu0": 0.0,
+          "feasible": 0.109375,
+          "e_over_ub": 2.3043140179888906,
+          "worst_ue_ocr": 0.8417534722222222,
+          "mw_per_ue": 9.91534072369868
+        },
+        {
+          "checkpoint": "step-001501184",
+          "slots": 1501184,
+          "mu0": 0.0,
+          "feasible": 0.125,
+          "e_over_ub": 2.2179991724559187,
+          "worst_ue_ocr": 0.5658854166666667,
+          "mw_per_ue": 9.49339107430582
+        },
+        {
+          "checkpoint": "step-001751040",
+          "slots": 1751040,
+          "mu0": 0.0,
+          "feasible": 0.15625,
+          "e_over_ub": 2.0956365933545964,
+          "worst_ue_ocr": 0.5107638888888888,
+          "mw_per_ue": 8.84282208836257
+        },
+        {
+          "checkpoint": "step-002000896",
+          "slots": 2000896,
+          "mu0": 0.0,
+          "feasible": 0.09375,
+          "e_over_ub": 1.7200741055508808,
+          "worst_ue_ocr": 0.25538194444444445,
+          "mw_per_ue": 7.074826184569753
+        }
+      ],
+      "final_violation_breakdown": {
+        "checkpoint": "step-002000896",
+        "mu0": 0.0,
+        "per_ue_mean": 0.13891059027777777,
+        "packet_weighted": 0.08904513888888889,
+        "far_mean": 0.33249869587897757,
+        "near_mean": 0.001003344481605351,
+        "by_period": {
+          "10": {
+            "ue_episodes": 192,
+            "mean_violation": 0.030266203703703698,
+            "far_mean_violation": 0.07383040935672514,
+            "starved_ue_episodes": 0
+          },
+          "20": {
+            "ue_episodes": 192,
+            "mean_violation": 0.13240740740740742,
+            "far_mean_violation": 0.3056224899598394,
+            "starved_ue_episodes": 7
+          },
+          "40": {
+            "ue_episodes": 128,
+            "mean_violation": 0.3116319444444444,
+            "far_mean_violation": 0.7378600823045268,
+            "starved_ue_episodes": 27
+          }
+        }
+      }
+    },
+    {
+      "path": "outputs/exp001-stage1a/n8-global-eta5-seed101",
+      "variant": "global",
+      "profile": "global-eta5",
+      "seed": 101,
+      "commit": "73d7305a2d5838514f2db60615bd8ec8e97c9eb4",
+      "result_sha256": "86ceb0accc2c481b9c3ff11ad8c7a1904c1b98acd7e177158a99f858aa2e5522",
+      "wall_s": 2603.569071681937,
+      "selected": "step-000000000",
+      "curve": [
+        {
+          "checkpoint": "step-000000000",
+          "slots": 0,
+          "mu0": 0.0,
+          "feasible": 0.640625,
+          "e_over_ub": 5.475426717954937,
+          "worst_ue_ocr": 0.9573784722222223,
+          "mw_per_ue": 22.211887638446402
+        },
+        {
+          "checkpoint": "step-000251904",
+          "slots": 251904,
+          "mu0": 0.0,
+          "feasible": 0.171875,
+          "e_over_ub": 2.6588078438137774,
+          "worst_ue_ocr": 0.7329861111111111,
+          "mw_per_ue": 10.984955202355525
+        },
+        {
+          "checkpoint": "step-000501760",
+          "slots": 501760,
+          "mu0": 0.0,
+          "feasible": 0.40625,
+          "e_over_ub": 2.8220630617394926,
+          "worst_ue_ocr": 0.906076388888889,
+          "mw_per_ue": 11.649528810291198
+        },
+        {
+          "checkpoint": "step-000751616",
+          "slots": 751616,
+          "mu0": 0.0,
+          "feasible": 0.375,
+          "e_over_ub": 2.7967550133567074,
+          "worst_ue_ocr": 0.8993923611111111,
+          "mw_per_ue": 11.548325690523553
+        },
+        {
+          "checkpoint": "step-001001472",
+          "slots": 1001472,
+          "mu0": 0.0,
+          "feasible": 0.46875,
+          "e_over_ub": 2.5428311303194646,
+          "worst_ue_ocr": 0.9230034722222222,
+          "mw_per_ue": 10.73393123979945
+        },
+        {
+          "checkpoint": "step-001251328",
+          "slots": 1251328,
+          "mu0": 0.0,
+          "feasible": 0.25,
+          "e_over_ub": 2.312462645905955,
+          "worst_ue_ocr": 0.8799479166666666,
+          "mw_per_ue": 9.911950876240738
+        },
+        {
+          "checkpoint": "step-001501184",
+          "slots": 1501184,
+          "mu0": 0.0,
+          "feasible": 0.28125,
+          "e_over_ub": 2.1763529622005686,
+          "worst_ue_ocr": 0.4040798611111111,
+          "mw_per_ue": 9.245487598103342
+        },
+        {
+          "checkpoint": "step-001751040",
+          "slots": 1751040,
+          "mu0": 0.0,
+          "feasible": 0.203125,
+          "e_over_ub": 2.0836580276467096,
+          "worst_ue_ocr": 0.3914930555555556,
+          "mw_per_ue": 8.817211448103743
+        },
+        {
+          "checkpoint": "step-002000896",
+          "slots": 2000896,
+          "mu0": 0.0,
+          "feasible": 0.078125,
+          "e_over_ub": 1.9652577293388145,
+          "worst_ue_ocr": 0.31180555555555556,
+          "mw_per_ue": 8.260111728398105
+        }
+      ],
+      "final_violation_breakdown": {
+        "checkpoint": "step-002000896",
+        "mu0": 0.0,
+        "per_ue_mean": 0.1315646701388889,
+        "packet_weighted": 0.07524305555555555,
+        "far_mean": 0.31387584767866455,
+        "near_mean": 0.0016908212560386472,
+        "by_period": {
+          "10": {
+            "ue_episodes": 192,
+            "mean_violation": 0.020920138888888884,
+            "far_mean_violation": 0.04912280701754385,
+            "starved_ue_episodes": 0
+          },
+          "20": {
+            "ue_episodes": 192,
+            "mean_violation": 0.08802083333333333,
+            "far_mean_violation": 0.20147255689424362,
+            "starved_ue_episodes": 0
+          },
+          "40": {
+            "ue_episodes": 128,
+            "mean_violation": 0.3628472222222222,
+            "far_mean_violation": 0.8592592592592594,
+            "starved_ue_episodes": 37
+          }
+        }
+      }
+    },
+    {
+      "path": "outputs/exp001-stage1a/n8-local-eta2-seed101",
+      "variant": "local",
+      "profile": "local-eta2",
+      "seed": 101,
+      "commit": "73d7305a2d5838514f2db60615bd8ec8e97c9eb4",
+      "result_sha256": "cce6404d9416cc83c8bb8cc8da2d7e3cb6ee8d69f4fd917af2c8e975b4fc7a18",
+      "wall_s": 3249.4857394278515,
+      "selected": "step-001251328@mu0=5",
+      "curve": [
+        {
+          "checkpoint": "step-000000000",
+          "slots": 0,
+          "mu0": 0.0,
+          "feasible": 0.640625,
+          "e_over_ub": 5.474684757712513,
+          "worst_ue_ocr": 0.9575520833333334,
+          "mw_per_ue": 22.208850318130906
+        },
+        {
+          "checkpoint": "step-000000000",
+          "slots": 0,
+          "mu0": 5.0,
+          "feasible": 0.65625,
+          "e_over_ub": 5.475055576835276,
+          "worst_ue_ocr": 0.9580729166666666,
+          "mw_per_ue": 22.210188910000205
+        },
+        {
+          "checkpoint": "step-000000000",
+          "slots": 0,
+          "mu0": 25.0,
+          "feasible": 0.71875,
+          "e_over_ub": 5.479059086884308,
+          "worst_ue_ocr": 0.9569444444444445,
+          "mw_per_ue": 22.2193806627617
+        },
+        {
+          "checkpoint": "step-000251904",
+          "slots": 251904,
+          "mu0": 0.0,
+          "feasible": 0.296875,
+          "e_over_ub": 2.6404880378481,
+          "worst_ue_ocr": 0.9085069444444445,
+          "mw_per_ue": 11.338917139640552
+        },
+        {
+          "checkpoint": "step-000251904",
+          "slots": 251904,
+          "mu0": 5.0,
+          "feasible": 0.375,
+          "e_over_ub": 2.651422257763307,
+          "worst_ue_ocr": 0.9203993055555556,
+          "mw_per_ue": 11.394986806896215
+        },
+        {
+          "checkpoint": "step-000251904",
+          "slots": 251904,
+          "mu0": 25.0,
+          "feasible": 0.796875,
+          "e_over_ub": 2.687921093738442,
+          "worst_ue_ocr": 0.965625,
+          "mw_per_ue": 11.532145433780498
+        },
+        {
+          "checkpoint": "step-000501760",
+          "slots": 501760,
+          "mu0": 0.0,
+          "feasible": 0.453125,
+          "e_over_ub": 2.595222826297984,
+          "worst_ue_ocr": 0.9284722222222223,
+          "mw_per_ue": 11.26310950656623
+        },
+        {
+          "checkpoint": "step-000501760",
+          "slots": 501760,
+          "mu0": 5.0,
+          "feasible": 0.59375,
+          "e_over_ub": 2.5932152268994497,
+          "worst_ue_ocr": 0.9447048611111112,
+          "mw_per_ue": 11.253971152490625
+        },
+        {
+          "checkpoint": "step-000501760",
+          "slots": 501760,
+          "mu0": 25.0,
+          "feasible": 0.96875,
+          "e_over_ub": 2.5999375571935435,
+          "worst_ue_ocr": 0.9814236111111112,
+          "mw_per_ue": 11.25676172870918
+        },
+        {
+          "checkpoint": "step-000751616",
+          "slots": 751616,
+          "mu0": 0.0,
+          "feasible": 0.859375,
+          "e_over_ub": 2.446568593623373,
+          "worst_ue_ocr": 0.9697048611111111,
+          "mw_per_ue": 10.594275690136083
+        },
+        {
+          "checkpoint": "step-000751616",
+          "slots": 751616,
+          "mu0": 5.0,
+          "feasible": 0.84375,
+          "e_over_ub": 2.4359969967401263,
+          "worst_ue_ocr": 0.9730902777777779,
+          "mw_per_ue": 10.553841671703756
+        },
+        {
+          "checkpoint": "step-000751616",
+          "slots": 751616,
+          "mu0": 25.0,
+          "feasible": 0.96875,
+          "e_over_ub": 2.451277904331523,
+          "worst_ue_ocr": 0.9848958333333333,
+          "mw_per_ue": 10.589436764752312
+        },
+        {
+          "checkpoint": "step-001001472",
+          "slots": 1001472,
+          "mu0": 0.0,
+          "feasible": 0.921875,
+          "e_over_ub": 2.408954217519529,
+          "worst_ue_ocr": 0.9828993055555556,
+          "mw_per_ue": 10.429341930657895
+        },
+        {
+          "checkpoint": "step-001001472",
+          "slots": 1001472,
+          "mu0": 5.0,
+          "feasible": 0.953125,
+          "e_over_ub": 2.413259223041589,
+          "worst_ue_ocr": 0.9856770833333335,
+          "mw_per_ue": 10.440041910984796
+        },
+        {
+          "checkpoint": "step-001001472",
+          "slots": 1001472,
+          "mu0": 25.0,
+          "feasible": 1.0,
+          "e_over_ub": 2.423880766115241,
+          "worst_ue_ocr": 0.9902777777777778,
+          "mw_per_ue": 10.487374088134512
+        },
+        {
+          "checkpoint": "step-001251328",
+          "slots": 1251328,
+          "mu0": 0.0,
+          "feasible": 0.984375,
+          "e_over_ub": 2.4065045287889193,
+          "worst_ue_ocr": 0.9934027777777779,
+          "mw_per_ue": 10.401277626420145
+        },
+        {
+          "checkpoint": "step-001251328",
+          "slots": 1251328,
+          "mu0": 5.0,
+          "feasible": 1.0,
+          "e_over_ub": 2.404271577030844,
+          "worst_ue_ocr": 0.9916666666666667,
+          "mw_per_ue": 10.389106595182593
+        },
+        {
+          "checkpoint": "step-001251328",
+          "slots": 1251328,
+          "mu0": 25.0,
+          "feasible": 1.0,
+          "e_over_ub": 2.4138572787279715,
+          "worst_ue_ocr": 0.9922743055555556,
+          "mw_per_ue": 10.44077143710702
+        },
+        {
+          "checkpoint": "step-001501184",
+          "slots": 1501184,
+          "mu0": 0.0,
+          "feasible": 0.96875,
+          "e_over_ub": 2.445375154650103,
+          "worst_ue_ocr": 0.9861111111111112,
+          "mw_per_ue": 10.594280937863012
+        },
+        {
+          "checkpoint": "step-001501184",
+          "slots": 1501184,
+          "mu0": 5.0,
+          "feasible": 1.0,
+          "e_over_ub": 2.4455758092392355,
+          "worst_ue_ocr": 0.9874131944444444,
+          "mw_per_ue": 10.61873832724179
+        },
+        {
+          "checkpoint": "step-001501184",
+          "slots": 1501184,
+          "mu0": 25.0,
+          "feasible": 1.0,
+          "e_over_ub": 2.4408864855306387,
+          "worst_ue_ocr": 0.9932291666666667,
+          "mw_per_ue": 10.576017343157986
+        },
+        {
+          "checkpoint": "step-001751040",
+          "slots": 1751040,
+          "mu0": 0.0,
+          "feasible": 0.90625,
+          "e_over_ub": 2.4343355993794815,
+          "worst_ue_ocr": 0.9696180555555556,
+          "mw_per_ue": 10.529850454119824
+        },
+        {
+          "checkpoint": "step-001751040",
+          "slots": 1751040,
+          "mu0": 5.0,
+          "feasible": 0.90625,
+          "e_over_ub": 2.4282259979156873,
+          "worst_ue_ocr": 0.971875,
+          "mw_per_ue": 10.502661802418933
+        },
+        {
+          "checkpoint": "step-001751040",
+          "slots": 1751040,
+          "mu0": 25.0,
+          "feasible": 1.0,
+          "e_over_ub": 2.409692438374765,
+          "worst_ue_ocr": 0.9896701388888889,
+          "mw_per_ue": 10.403504142141639
+        },
+        {
+          "checkpoint": "step-002000896",
+          "slots": 2000896,
+          "mu0": 0.0,
+          "feasible": 0.609375,
+          "e_over_ub": 2.5757091399277074,
+          "worst_ue_ocr": 0.95234375,
+          "mw_per_ue": 11.13629113934584
+        },
+        {
+          "checkpoint": "step-002000896",
+          "slots": 2000896,
+          "mu0": 5.0,
+          "feasible": 0.78125,
+          "e_over_ub": 2.560742429548528,
+          "worst_ue_ocr": 0.9576388888888889,
+          "mw_per_ue": 11.068070154292569
+        },
+        {
+          "checkpoint": "step-002000896",
+          "slots": 2000896,
+          "mu0": 25.0,
+          "feasible": 1.0,
+          "e_over_ub": 2.4557977146160055,
+          "worst_ue_ocr": 0.9877604166666667,
+          "mw_per_ue": 10.59711692984959
+        }
+      ],
+      "final_violation_breakdown": {
+        "checkpoint": "step-002000896",
+        "mu0": 5.0,
+        "per_ue_mean": 0.010970052083333334,
+        "packet_weighted": 0.008541666666666666,
+        "far_mean": 0.01585811163275952,
+        "near_mean": 0.00748792270531401,
+        "by_period": {
+          "10": {
+            "ue_episodes": 192,
+            "mean_violation": 0.007378472222222221,
+            "far_mean_violation": 0.011403508771929825,
+            "starved_ue_episodes": 0
+          },
+          "20": {
+            "ue_episodes": 192,
+            "mean_violation": 0.005555555555555556,
+            "far_mean_violation": 0.006157965194109772,
+            "starved_ue_episodes": 0
+          },
+          "40": {
+            "ue_episodes": 128,
+            "mean_violation": 0.024479166666666663,
+            "far_mean_violation": 0.037037037037037035,
+            "starved_ue_episodes": 0
+          }
+        }
+      }
+    },
+    {
+      "path": "outputs/exp001-stage1a/n8-local-eta5-seed101",
+      "variant": "local",
+      "profile": "local-eta5",
+      "seed": 101,
+      "commit": "73d7305a2d5838514f2db60615bd8ec8e97c9eb4",
+      "result_sha256": "1cb34003266859a8761c5432354208f04977fbd57104966690f166f9ccc316eb",
+      "wall_s": 3260.5863708709367,
+      "selected": "step-001251328@mu0=25",
+      "curve": [
+        {
+          "checkpoint": "step-000000000",
+          "slots": 0,
+          "mu0": 0.0,
+          "feasible": 0.65625,
+          "e_over_ub": 5.477549025578714,
+          "worst_ue_ocr": 0.9566840277777778,
+          "mw_per_ue": 22.220812354739483
+        },
+        {
+          "checkpoint": "step-000000000",
+          "slots": 0,
+          "mu0": 5.0,
+          "feasible": 0.671875,
+          "e_over_ub": 5.4789106241323715,
+          "worst_ue_ocr": 0.9571180555555556,
+          "mw_per_ue": 22.22844651471254
+        },
+        {
+          "checkpoint": "step-000000000",
+          "slots": 0,
+          "mu0": 25.0,
+          "feasible": 0.71875,
+          "e_over_ub": 5.472864468308456,
+          "worst_ue_ocr": 0.9582465277777779,
+          "mw_per_ue": 22.190204788676915
+        },
+        {
+          "checkpoint": "step-000251904",
+          "slots": 251904,
+          "mu0": 0.0,
+          "feasible": 0.421875,
+          "e_over_ub": 2.6084653823038084,
+          "worst_ue_ocr": 0.9217013888888889,
+          "mw_per_ue": 11.091101928579164
+        },
+        {
+          "checkpoint": "step-000251904",
+          "slots": 251904,
+          "mu0": 5.0,
+          "feasible": 0.4375,
+          "e_over_ub": 2.606561902735229,
+          "worst_ue_ocr": 0.9269097222222222,
+          "mw_per_ue": 11.08380705568047
+        },
+        {
+          "checkpoint": "step-000251904",
+          "slots": 251904,
+          "mu0": 25.0,
+          "feasible": 0.71875,
+          "e_over_ub": 2.626708849881292,
+          "worst_ue_ocr": 0.9547743055555555,
+          "mw_per_ue": 11.166922024346894
+        },
+        {
+          "checkpoint": "step-000501760",
+          "slots": 501760,
+          "mu0": 0.0,
+          "feasible": 0.78125,
+          "e_over_ub": 2.540499023741171,
+          "worst_ue_ocr": 0.96484375,
+          "mw_per_ue": 10.925244873405395
+        },
+        {
+          "checkpoint": "step-000501760",
+          "slots": 501760,
+          "mu0": 5.0,
+          "feasible": 0.796875,
+          "e_over_ub": 2.5210918903438455,
+          "worst_ue_ocr": 0.963888888888889,
+          "mw_per_ue": 10.852446463887361
+        },
+        {
+          "checkpoint": "step-000501760",
+          "slots": 501760,
+          "mu0": 25.0,
+          "feasible": 0.953125,
+          "e_over_ub": 2.534963702220048,
+          "worst_ue_ocr": 0.9799479166666667,
+          "mw_per_ue": 10.908918042252374
+        },
+        {
+          "checkpoint": "step-000751616",
+          "slots": 751616,
+          "mu0": 0.0,
+          "feasible": 0.78125,
+          "e_over_ub": 2.4397445106750197,
+          "worst_ue_ocr": 0.96640625,
+          "mw_per_ue": 10.569550730531109
+        },
+        {
+          "checkpoint": "step-000751616",
+          "slots": 751616,
+          "mu0": 5.0,
+          "feasible": 0.84375,
+          "e_over_ub": 2.448365186447131,
+          "worst_ue_ocr": 0.96640625,
+          "mw_per_ue": 10.609953434859895
+        },
+        {
+          "checkpoint": "step-000751616",
+          "slots": 751616,
+          "mu0": 25.0,
+          "feasible": 0.96875,
+          "e_over_ub": 2.448233280221295,
+          "worst_ue_ocr": 0.9759548611111112,
+          "mw_per_ue": 10.589461384438458
+        },
+        {
+          "checkpoint": "step-001001472",
+          "slots": 1001472,
+          "mu0": 0.0,
+          "feasible": 0.96875,
+          "e_over_ub": 2.4561108713762057,
+          "worst_ue_ocr": 0.9748263888888888,
+          "mw_per_ue": 10.687386434388273
+        },
+        {
+          "checkpoint": "step-001001472",
+          "slots": 1001472,
+          "mu0": 5.0,
+          "feasible": 0.984375,
+          "e_over_ub": 2.432203112782941,
+          "worst_ue_ocr": 0.9817708333333334,
+          "mw_per_ue": 10.588426299477362
+        },
+        {
+          "checkpoint": "step-001001472",
+          "slots": 1001472,
+          "mu0": 25.0,
+          "feasible": 0.984375,
+          "e_over_ub": 2.4444664622181778,
+          "worst_ue_ocr": 0.9835069444444445,
+          "mw_per_ue": 10.612966408661386
+        },
+        {
+          "checkpoint": "step-001251328",
+          "slots": 1251328,
+          "mu0": 0.0,
+          "feasible": 0.734375,
+          "e_over_ub": 2.43834582204712,
+          "worst_ue_ocr": 0.9626736111111112,
+          "mw_per_ue": 10.58890104619012
+        },
+        {
+          "checkpoint": "step-001251328",
+          "slots": 1251328,
+          "mu0": 5.0,
+          "feasible": 0.8125,
+          "e_over_ub": 2.4234779267770015,
+          "worst_ue_ocr": 0.964670138888889,
+          "mw_per_ue": 10.52249911139392
+        },
+        {
+          "checkpoint": "step-001251328",
+          "slots": 1251328,
+          "mu0": 25.0,
+          "feasible": 0.953125,
+          "e_over_ub": 2.4225992956550555,
+          "worst_ue_ocr": 0.9770833333333334,
+          "mw_per_ue": 10.504930991010223
+        },
+        {
+          "checkpoint": "step-001501184",
+          "slots": 1501184,
+          "mu0": 0.0,
+          "feasible": 0.609375,
+          "e_over_ub": 2.640640227066675,
+          "worst_ue_ocr": 0.9453125,
+          "mw_per_ue": 11.425700899732341
+        },
+        {
+          "checkpoint": "step-001501184",
+          "slots": 1501184,
+          "mu0": 5.0,
+          "feasible": 0.75,
+          "e_over_ub": 2.637838168950573,
+          "worst_ue_ocr": 0.9579861111111112,
+          "mw_per_ue": 11.430979100931218
+        },
+        {
+          "checkpoint": "step-001501184",
+          "slots": 1501184,
+          "mu0": 25.0,
+          "feasible": 0.84375,
+          "e_over_ub": 2.6245837478554845,
+          "worst_ue_ocr": 0.9644097222222223,
+          "mw_per_ue": 11.333069329229133
+        },
+        {
+          "checkpoint": "step-001751040",
+          "slots": 1751040,
+          "mu0": 0.0,
+          "feasible": 0.234375,
+          "e_over_ub": 2.5435115720235633,
+          "worst_ue_ocr": 0.8994791666666667,
+          "mw_per_ue": 11.003367114175902
+        },
+        {
+          "checkpoint": "step-001751040",
+          "slots": 1751040,
+          "mu0": 5.0,
+          "feasible": 0.25,
+          "e_over_ub": 2.521358604368319,
+          "worst_ue_ocr": 0.9107638888888889,
+          "mw_per_ue": 10.908259094866855
+        },
+        {
+          "checkpoint": "step-001751040",
+          "slots": 1751040,
+          "mu0": 25.0,
+          "feasible": 0.625,
+          "e_over_ub": 2.5341351047873357,
+          "worst_ue_ocr": 0.9479166666666667,
+          "mw_per_ue": 10.95227604976139
+        },
+        {
+          "checkpoint": "step-002000896",
+          "slots": 2000896,
+          "mu0": 0.0,
+          "feasible": 0.84375,
+          "e_over_ub": 2.539781308500724,
+          "worst_ue_ocr": 0.9670138888888888,
+          "mw_per_ue": 11.096509655438256
+        },
+        {
+          "checkpoint": "step-002000896",
+          "slots": 2000896,
+          "mu0": 5.0,
+          "feasible": 0.8125,
+          "e_over_ub": 2.551614345215576,
+          "worst_ue_ocr": 0.9622395833333334,
+          "mw_per_ue": 11.13258516136283
+        },
+        {
+          "checkpoint": "step-002000896",
+          "slots": 2000896,
+          "mu0": 25.0,
+          "feasible": 0.984375,
+          "e_over_ub": 2.531497464197119,
+          "worst_ue_ocr": 0.9786458333333334,
+          "mw_per_ue": 11.051729980914141
+        }
+      ],
+      "final_violation_breakdown": {
+        "checkpoint": "step-002000896",
+        "mu0": 25.0,
+        "per_ue_mean": 0.005327690972222222,
+        "packet_weighted": 0.006024305555555555,
+        "far_mean": 0.010328638497652582,
+        "near_mean": 0.0017651430694908957,
+        "by_period": {
+          "10": {
+            "ue_episodes": 192,
+            "mean_violation": 0.008015046296296296,
+            "far_mean_violation": 0.015935672514619886,
+            "starved_ue_episodes": 0
+          },
+          "20": {
+            "ue_episodes": 192,
+            "mean_violation": 0.0019097222222222224,
+            "far_mean_violation": 0.0033467202141900937,
+            "starved_ue_episodes": 0
+          },
+          "40": {
+            "ue_episodes": 128,
+            "mean_violation": 0.006423611111111111,
+            "far_mean_violation": 0.01316872427983539,
+            "starved_ue_episodes": 0
+          }
+        }
+      }
+    },
+    {
+      "path": "outputs/exp001-stage1b/n8-fixed-w10-seed202",
+      "variant": "fixed",
+      "profile": "fixed-w10",
+      "seed": 202,
+      "commit": "7fbf36bf4e9d6b3a90820bf53e174518f0af5f56",
+      "result_sha256": "9256474e0c7c02b5c431e2bdc73cf33028bb4ba3d85d34aca1fd727b57e96422",
+      "wall_s": 2424.8628204721026,
+      "selected": "step-002000896",
+      "curve": [
+        {
+          "checkpoint": "step-000000000",
+          "slots": 0,
+          "mu0": 0.0,
+          "feasible": 0.640625,
+          "e_over_ub": 5.519664872005144,
+          "worst_ue_ocr": 0.95625,
+          "mw_per_ue": 22.378975204164888
+        },
+        {
+          "checkpoint": "step-000251904",
+          "slots": 251904,
+          "mu0": 0.0,
+          "feasible": 1.0,
+          "e_over_ub": 2.7049801945047536,
+          "worst_ue_ocr": 0.9911458333333334,
+          "mw_per_ue": 11.581372839843976
+        },
+        {
+          "checkpoint": "step-000501760",
+          "slots": 501760,
+          "mu0": 0.0,
+          "feasible": 0.984375,
+          "e_over_ub": 2.527808397814222,
+          "worst_ue_ocr": 0.9870659722222224,
+          "mw_per_ue": 10.923824889132755
+        },
+        {
+          "checkpoint": "step-000751616",
+          "slots": 751616,
+          "mu0": 0.0,
+          "feasible": 0.921875,
+          "e_over_ub": 2.5111783002831727,
+          "worst_ue_ocr": 0.97265625,
+          "mw_per_ue": 10.916560642787319
+        },
+        {
+          "checkpoint": "step-001001472",
+          "slots": 1001472,
+          "mu0": 0.0,
+          "feasible": 0.734375,
+          "e_over_ub": 2.360591119429439,
+          "worst_ue_ocr": 0.9542534722222222,
+          "mw_per_ue": 10.263756403503628
+        },
+        {
+          "checkpoint": "step-001251328",
+          "slots": 1251328,
+          "mu0": 0.0,
+          "feasible": 1.0,
+          "e_over_ub": 2.382472581684479,
+          "worst_ue_ocr": 0.9858506944444445,
+          "mw_per_ue": 10.372766093432507
+        },
+        {
+          "checkpoint": "step-001501184",
+          "slots": 1501184,
+          "mu0": 0.0,
+          "feasible": 0.984375,
+          "e_over_ub": 2.393536640602989,
+          "worst_ue_ocr": 0.9889756944444446,
+          "mw_per_ue": 10.421194024628747
+        },
+        {
+          "checkpoint": "step-001751040",
+          "slots": 1751040,
+          "mu0": 0.0,
+          "feasible": 0.828125,
+          "e_over_ub": 2.3482627519562045,
+          "worst_ue_ocr": 0.9701388888888889,
+          "mw_per_ue": 10.238729069327796
+        },
+        {
+          "checkpoint": "step-002000896",
+          "slots": 2000896,
+          "mu0": 0.0,
+          "feasible": 0.984375,
+          "e_over_ub": 2.3462846184940087,
+          "worst_ue_ocr": 0.9875,
+          "mw_per_ue": 10.219786528859377
+        }
+      ],
+      "final_violation_breakdown": {
+        "checkpoint": "step-002000896",
+        "mu0": 0.0,
+        "per_ue_mean": 0.0019205729166666666,
+        "packet_weighted": 0.0014583333333333334,
+        "far_mean": 0.0032863849765258214,
+        "near_mean": 0.000947603121516165,
+        "by_period": {
+          "10": {
+            "ue_episodes": 192,
+            "mean_violation": 0.0012442129629629628,
+            "far_mean_violation": 0.0021929824561403508,
+            "starved_ue_episodes": 0
+          },
+          "20": {
+            "ue_episodes": 192,
+            "mean_violation": 0.0008680555555555556,
+            "far_mean_violation": 0.0013386880856760374,
+            "starved_ue_episodes": 0
+          },
+          "40": {
+            "ue_episodes": 128,
+            "mean_violation": 0.0045138888888888885,
+            "far_mean_violation": 0.007818930041152264,
+            "starved_ue_episodes": 0
+          }
+        }
+      }
+    },
+    {
+      "path": "outputs/exp001-stage1b/n8-fixed-w10-seed303",
+      "variant": "fixed",
+      "profile": "fixed-w10",
+      "seed": 303,
+      "commit": "7fbf36bf4e9d6b3a90820bf53e174518f0af5f56",
+      "result_sha256": "a96bb7102c65e3df839af8d2c7d03287fa84de92f90ab0c4c6fe97de1670eaaf",
+      "wall_s": 2418.068336340133,
+      "selected": "step-002000896",
+      "curve": [
+        {
+          "checkpoint": "step-000000000",
+          "slots": 0,
+          "mu0": 0.0,
+          "feasible": 0.59375,
+          "e_over_ub": 5.503974972001484,
+          "worst_ue_ocr": 0.9546006944444445,
+          "mw_per_ue": 22.294201884859856
+        },
+        {
+          "checkpoint": "step-000251904",
+          "slots": 251904,
+          "mu0": 0.0,
+          "feasible": 0.5625,
+          "e_over_ub": 2.9875990238315016,
+          "worst_ue_ocr": 0.940451388888889,
+          "mw_per_ue": 12.286797814814028
+        },
+        {
+          "checkpoint": "step-000501760",
+          "slots": 501760,
+          "mu0": 0.0,
+          "feasible": 0.90625,
+          "e_over_ub": 2.7408324406213906,
+          "worst_ue_ocr": 0.9789062500000001,
+          "mw_per_ue": 11.625580432042634
+        },
+        {
+          "checkpoint": "step-000751616",
+          "slots": 751616,
+          "mu0": 0.0,
+          "feasible": 1.0,
+          "e_over_ub": 2.4768090583743625,
+          "worst_ue_ocr": 0.9895833333333333,
+          "mw_per_ue": 10.695944890730576
+        },
+        {
+          "checkpoint": "step-001001472",
+          "slots": 1001472,
+          "mu0": 0.0,
+          "feasible": 1.0,
+          "e_over_ub": 2.422579326096187,
+          "worst_ue_ocr": 0.990451388888889,
+          "mw_per_ue": 10.497422614095623
+        },
+        {
+          "checkpoint": "step-001251328",
+          "slots": 1251328,
+          "mu0": 0.0,
+          "feasible": 1.0,
+          "e_over_ub": 2.3974946917819295,
+          "worst_ue_ocr": 0.9907986111111111,
+          "mw_per_ue": 10.423696677639814
+        },
+        {
+          "checkpoint": "step-001501184",
+          "slots": 1501184,
+          "mu0": 0.0,
+          "feasible": 0.890625,
+          "e_over_ub": 2.3777438760579193,
+          "worst_ue_ocr": 0.9689236111111112,
+          "mw_per_ue": 10.336364435383073
+        },
+        {
+          "checkpoint": "step-001751040",
+          "slots": 1751040,
+          "mu0": 0.0,
+          "feasible": 0.96875,
+          "e_over_ub": 2.3606440206921833,
+          "worst_ue_ocr": 0.9836805555555557,
+          "mw_per_ue": 10.273825708319837
+        },
+        {
+          "checkpoint": "step-002000896",
+          "slots": 2000896,
+          "mu0": 0.0,
+          "feasible": 1.0,
+          "e_over_ub": 2.3596820026703873,
+          "worst_ue_ocr": 0.9887152777777778,
+          "mw_per_ue": 10.262246173857484
+        }
+      ],
+      "final_violation_breakdown": {
+        "checkpoint": "step-002000896",
+        "mu0": 0.0,
+        "per_ue_mean": 0.002170138888888889,
+        "packet_weighted": 0.0022569444444444442,
+        "far_mean": 0.003625456442357851,
+        "near_mean": 0.0011334076551467857,
+        "by_period": {
+          "10": {
+            "ue_episodes": 192,
+            "mean_violation": 0.002662037037037037,
+            "far_mean_violation": 0.0037280701754385972,
+            "starved_ue_episodes": 0
+          },
+          "20": {
+            "ue_episodes": 192,
+            "mean_violation": 0.001273148148148148,
+            "far_mean_violation": 0.0021419009370816596,
+            "starved_ue_episodes": 0
+          },
+          "40": {
+            "ue_episodes": 128,
+            "mean_violation": 0.0027777777777777775,
+            "far_mean_violation": 0.005761316872427983,
+            "starved_ue_episodes": 0
+          }
+        }
+      }
+    },
+    {
+      "path": "outputs/exp001-stage1b/n8-global-eta20-seed202",
+      "variant": "global",
+      "profile": "global-eta20",
+      "seed": 202,
+      "commit": "7fbf36bf4e9d6b3a90820bf53e174518f0af5f56",
+      "result_sha256": "b18539c9530d9f1db824013838d4b334c9f1d891a08a8ed11ba089f5cb50e800",
+      "wall_s": 2418.8865046917927,
+      "selected": "step-000000000",
+      "curve": [
+        {
+          "checkpoint": "step-000000000",
+          "slots": 0,
+          "mu0": 0.0,
+          "feasible": 0.640625,
+          "e_over_ub": 5.519664872005144,
+          "worst_ue_ocr": 0.95625,
+          "mw_per_ue": 22.378975204164888
+        },
+        {
+          "checkpoint": "step-000251904",
+          "slots": 251904,
+          "mu0": 0.0,
+          "feasible": 0.09375,
+          "e_over_ub": 2.3847782742868207,
+          "worst_ue_ocr": 0.8049479166666667,
+          "mw_per_ue": 10.138864161535796
+        },
+        {
+          "checkpoint": "step-000501760",
+          "slots": 501760,
+          "mu0": 0.0,
+          "feasible": 0.171875,
+          "e_over_ub": 2.3518901591292507,
+          "worst_ue_ocr": 0.8503472222222223,
+          "mw_per_ue": 10.08101062211329
+        },
+        {
+          "checkpoint": "step-000751616",
+          "slots": 751616,
+          "mu0": 0.0,
+          "feasible": 0.15625,
+          "e_over_ub": 2.3162765768085074,
+          "worst_ue_ocr": 0.7744791666666667,
+          "mw_per_ue": 9.940578222146561
+        },
+        {
+          "checkpoint": "step-001001472",
+          "slots": 1001472,
+          "mu0": 0.0,
+          "feasible": 0.234375,
+          "e_over_ub": 2.3670358914909126,
+          "worst_ue_ocr": 0.8024305555555555,
+          "mw_per_ue": 10.208874228644373
+        },
+        {
+          "checkpoint": "step-001251328",
+          "slots": 1251328,
+          "mu0": 0.0,
+          "feasible": 0.25,
+          "e_over_ub": 2.3362948973981448,
+          "worst_ue_ocr": 0.7698784722222223,
+          "mw_per_ue": 10.085718079510587
+        },
+        {
+          "checkpoint": "step-001501184",
+          "slots": 1501184,
+          "mu0": 0.0,
+          "feasible": 0.09375,
+          "e_over_ub": 2.0571672218181263,
+          "worst_ue_ocr": 0.40173611111111107,
+          "mw_per_ue": 8.694147541935264
+        },
+        {
+          "checkpoint": "step-001751040",
+          "slots": 1751040,
+          "mu0": 0.0,
+          "feasible": 0.140625,
+          "e_over_ub": 2.076606134978447,
+          "worst_ue_ocr": 0.46675347222222224,
+          "mw_per_ue": 8.784041594609752
+        },
+        {
+          "checkpoint": "step-002000896",
+          "slots": 2000896,
+          "mu0": 0.0,
+          "feasible": 0.140625,
+          "e_over_ub": 1.9353677978259078,
+          "worst_ue_ocr": 0.41050347222222217,
+          "mw_per_ue": 8.053643353206102
+        }
+      ],
+      "final_violation_breakdown": {
+        "checkpoint": "step-002000896",
+        "mu0": 0.0,
+        "per_ue_mean": 0.09560546875,
+        "packet_weighted": 0.047760416666666666,
+        "far_mean": 0.22775169535732914,
+        "near_mean": 0.0014678558156819026,
+        "by_period": {
+          "10": {
+            "ue_episodes": 192,
+            "mean_violation": 0.01328125,
+            "far_mean_violation": 0.029093567251461984,
+            "starved_ue_episodes": 0
+          },
+          "20": {
+            "ue_episodes": 192,
+            "mean_violation": 0.02361111111111111,
+            "far_mean_violation": 0.053413654618473895,
+            "starved_ue_episodes": 2
+          },
+          "40": {
+            "ue_episodes": 128,
+            "mean_violation": 0.3270833333333333,
+            "far_mean_violation": 0.7753086419753085,
+            "starved_ue_episodes": 30
+          }
+        }
+      }
+    },
+    {
+      "path": "outputs/exp001-stage1b/n8-global-eta20-seed303",
+      "variant": "global",
+      "profile": "global-eta20",
+      "seed": 303,
+      "commit": "7fbf36bf4e9d6b3a90820bf53e174518f0af5f56",
+      "result_sha256": "db7ce426cf93ae5fb3118a377c194560f308d59ed03bd9a967ea57549a85a2b2",
+      "wall_s": 2406.578219540883,
+      "selected": "step-000000000",
+      "curve": [
+        {
+          "checkpoint": "step-000000000",
+          "slots": 0,
+          "mu0": 0.0,
+          "feasible": 0.59375,
+          "e_over_ub": 5.503974972001484,
+          "worst_ue_ocr": 0.9546006944444445,
+          "mw_per_ue": 22.294201884859856
+        },
+        {
+          "checkpoint": "step-000251904",
+          "slots": 251904,
+          "mu0": 0.0,
+          "feasible": 0.46875,
+          "e_over_ub": 2.8663401137982003,
+          "worst_ue_ocr": 0.9151041666666667,
+          "mw_per_ue": 11.809478735358853
+        },
+        {
+          "checkpoint": "step-000501760",
+          "slots": 501760,
+          "mu0": 0.0,
+          "feasible": 0.25,
+          "e_over_ub": 2.7143059696197374,
+          "worst_ue_ocr": 0.8223958333333333,
+          "mw_per_ue": 11.209890206390668
+        },
+        {
+          "checkpoint": "step-000751616",
+          "slots": 751616,
+          "mu0": 0.0,
+          "feasible": 0.390625,
+          "e_over_ub": 2.811240333118311,
+          "worst_ue_ocr": 0.9040798611111112,
+          "mw_per_ue": 11.598176405387967
+        },
+        {
+          "checkpoint": "step-001001472",
+          "slots": 1001472,
+          "mu0": 0.0,
+          "feasible": 0.046875,
+          "e_over_ub": 2.03270573053205,
+          "worst_ue_ocr": 0.24678819444444441,
+          "mw_per_ue": 8.354801067860521
+        },
+        {
+          "checkpoint": "step-001251328",
+          "slots": 1251328,
+          "mu0": 0.0,
+          "feasible": 0.5,
+          "e_over_ub": 2.857191478948783,
+          "worst_ue_ocr": 0.9355902777777778,
+          "mw_per_ue": 11.771703289509595
+        },
+        {
+          "checkpoint": "step-001501184",
+          "slots": 1501184,
+          "mu0": 0.0,
+          "feasible": 0.546875,
+          "e_over_ub": 2.8841684926331848,
+          "worst_ue_ocr": 0.9427951388888889,
+          "mw_per_ue": 11.892180062037724
+        },
+        {
+          "checkpoint": "step-001751040",
+          "slots": 1751040,
+          "mu0": 0.0,
+          "feasible": 0.328125,
+          "e_over_ub": 2.737491021204698,
+          "worst_ue_ocr": 0.8640625,
+          "mw_per_ue": 11.309465507254048
+        },
+        {
+          "checkpoint": "step-002000896",
+          "slots": 2000896,
+          "mu0": 0.0,
+          "feasible": 0.359375,
+          "e_over_ub": 2.7491306916590563,
+          "worst_ue_ocr": 0.8598090277777778,
+          "mw_per_ue": 11.357630438305568
+        }
+      ],
+      "final_violation_breakdown": {
+        "checkpoint": "step-002000896",
+        "mu0": 0.0,
+        "per_ue_mean": 0.025065104166666664,
+        "packet_weighted": 0.029652777777777778,
+        "far_mean": 0.0599113197704747,
+        "near_mean": 0.00024154589371980673,
+        "by_period": {
+          "10": {
+            "ue_episodes": 192,
+            "mean_violation": 0.037037037037037035,
+            "far_mean_violation": 0.09261695906432747,
+            "starved_ue_episodes": 0
+          },
+          "20": {
+            "ue_episodes": 192,
+            "mean_violation": 0.019733796296296298,
+            "far_mean_violation": 0.045649263721552875,
+            "starved_ue_episodes": 0
+          },
+          "40": {
+            "ue_episodes": 128,
+            "mean_violation": 0.015104166666666667,
+            "far_mean_violation": 0.03580246913580246,
+            "starved_ue_episodes": 0
+          }
+        }
+      }
+    },
+    {
+      "path": "outputs/exp001-stage1b/n8-local-eta2-seed202",
+      "variant": "local",
+      "profile": "local-eta2",
+      "seed": 202,
+      "commit": "7fbf36bf4e9d6b3a90820bf53e174518f0af5f56",
+      "result_sha256": "0bba4419e82e3655e17108460cd385af3ce3de42703612b9ddaf554ceb4092ca",
+      "wall_s": 3093.77125558001,
+      "selected": "step-001251328@mu0=0",
+      "curve": [
+        {
+          "checkpoint": "step-000000000",
+          "slots": 0,
+          "mu0": 0.0,
+          "feasible": 0.640625,
+          "e_over_ub": 5.515141328671153,
+          "worst_ue_ocr": 0.9565972222222223,
+          "mw_per_ue": 22.356955432972654
+        },
+        {
+          "checkpoint": "step-000000000",
+          "slots": 0,
+          "mu0": 5.0,
+          "feasible": 0.640625,
+          "e_over_ub": 5.514711195425613,
+          "worst_ue_ocr": 0.9567708333333333,
+          "mw_per_ue": 22.354887953081665
+        },
+        {
+          "checkpoint": "step-000000000",
+          "slots": 0,
+          "mu0": 25.0,
+          "feasible": 0.65625,
+          "e_over_ub": 5.511074074515324,
+          "worst_ue_ocr": 0.9572916666666667,
+          "mw_per_ue": 22.350906683060355
+        },
+        {
+          "checkpoint": "step-000251904",
+          "slots": 251904,
+          "mu0": 0.0,
+          "feasible": 0.890625,
+          "e_over_ub": 2.715823391239528,
+          "worst_ue_ocr": 0.9783854166666668,
+          "mw_per_ue": 11.595949198870892
+        },
+        {
+          "checkpoint": "step-000251904",
+          "slots": 251904,
+          "mu0": 5.0,
+          "feasible": 0.921875,
+          "e_over_ub": 2.7050671437691873,
+          "worst_ue_ocr": 0.9799479166666667,
+          "mw_per_ue": 11.546149902258783
+        },
+        {
+          "checkpoint": "step-000251904",
+          "slots": 251904,
+          "mu0": 25.0,
+          "feasible": 1.0,
+          "e_over_ub": 2.75845038632718,
+          "worst_ue_ocr": 0.9899305555555555,
+          "mw_per_ue": 11.768099264259721
+        },
+        {
+          "checkpoint": "step-000501760",
+          "slots": 501760,
+          "mu0": 0.0,
+          "feasible": 0.40625,
+          "e_over_ub": 2.5423845864315355,
+          "worst_ue_ocr": 0.9197916666666667,
+          "mw_per_ue": 10.91409143636267
+        },
+        {
+          "checkpoint": "step-000501760",
+          "slots": 501760,
+          "mu0": 5.0,
+          "feasible": 0.484375,
+          "e_over_ub": 2.544764161582746,
+          "worst_ue_ocr": 0.9321180555555556,
+          "mw_per_ue": 10.916605281013155
+        },
+        {
+          "checkpoint": "step-000501760",
+          "slots": 501760,
+          "mu0": 25.0,
+          "feasible": 0.875,
+          "e_over_ub": 2.6094892953062905,
+          "worst_ue_ocr": 0.9782986111111112,
+          "mw_per_ue": 11.157964083896424
+        },
+        {
+          "checkpoint": "step-000751616",
+          "slots": 751616,
+          "mu0": 0.0,
+          "feasible": 0.484375,
+          "e_over_ub": 2.441443183200293,
+          "worst_ue_ocr": 0.9252604166666667,
+          "mw_per_ue": 10.566648061025703
+        },
+        {
+          "checkpoint": "step-000751616",
+          "slots": 751616,
+          "mu0": 5.0,
+          "feasible": 0.375,
+          "e_over_ub": 2.438928630770956,
+          "worst_ue_ocr": 0.9283854166666667,
+          "mw_per_ue": 10.571994727498808
+        },
+        {
+          "checkpoint": "step-000751616",
+          "slots": 751616,
+          "mu0": 25.0,
+          "feasible": 0.90625,
+          "e_over_ub": 2.4495427089476403,
+          "worst_ue_ocr": 0.9725694444444445,
+          "mw_per_ue": 10.59446271798176
+        },
+        {
+          "checkpoint": "step-001001472",
+          "slots": 1001472,
+          "mu0": 0.0,
+          "feasible": 0.828125,
+          "e_over_ub": 2.458842830451399,
+          "worst_ue_ocr": 0.9609375,
+          "mw_per_ue": 10.675607726321978
+        },
+        {
+          "checkpoint": "step-001001472",
+          "slots": 1001472,
+          "mu0": 5.0,
+          "feasible": 0.8125,
+          "e_over_ub": 2.4603650704937206,
+          "worst_ue_ocr": 0.9630208333333334,
+          "mw_per_ue": 10.679611242066304
+        },
+        {
+          "checkpoint": "step-001001472",
+          "slots": 1001472,
+          "mu0": 25.0,
+          "feasible": 0.984375,
+          "e_over_ub": 2.461000739204734,
+          "worst_ue_ocr": 0.9835069444444445,
+          "mw_per_ue": 10.66672627090843
+        },
+        {
+          "checkpoint": "step-001251328",
+          "slots": 1251328,
+          "mu0": 0.0,
+          "feasible": 0.984375,
+          "e_over_ub": 2.4560056513018513,
+          "worst_ue_ocr": 0.9900173611111112,
+          "mw_per_ue": 10.659215468374335
+        },
+        {
+          "checkpoint": "step-001251328",
+          "slots": 1251328,
+          "mu0": 5.0,
+          "feasible": 0.96875,
+          "e_over_ub": 2.460387807293992,
+          "worst_ue_ocr": 0.9877604166666667,
+          "mw_per_ue": 10.67225120140777
+        },
+        {
+          "checkpoint": "step-001251328",
+          "slots": 1251328,
+          "mu0": 25.0,
+          "feasible": 1.0,
+          "e_over_ub": 2.4597656715005525,
+          "worst_ue_ocr": 0.9949652777777778,
+          "mw_per_ue": 10.642856281527136
+        },
+        {
+          "checkpoint": "step-001501184",
+          "slots": 1501184,
+          "mu0": 0.0,
+          "feasible": 0.71875,
+          "e_over_ub": 2.64113314608231,
+          "worst_ue_ocr": 0.9500000000000001,
+          "mw_per_ue": 11.491765512153904
+        },
+        {
+          "checkpoint": "step-001501184",
+          "slots": 1501184,
+          "mu0": 5.0,
+          "feasible": 0.765625,
+          "e_over_ub": 2.6494503004106496,
+          "worst_ue_ocr": 0.9572916666666667,
+          "mw_per_ue": 11.522350397394076
+        },
+        {
+          "checkpoint": "step-001501184",
+          "slots": 1501184,
+          "mu0": 25.0,
+          "feasible": 0.984375,
+          "e_over_ub": 2.6244661304033814,
+          "worst_ue_ocr": 0.9803819444444445,
+          "mw_per_ue": 11.40139083852447
+        },
+        {
+          "checkpoint": "step-001751040",
+          "slots": 1751040,
+          "mu0": 0.0,
+          "feasible": 0.90625,
+          "e_over_ub": 2.611651327573811,
+          "worst_ue_ocr": 0.9722222222222223,
+          "mw_per_ue": 11.351780249370893
+        },
+        {
+          "checkpoint": "step-001751040",
+          "slots": 1751040,
+          "mu0": 5.0,
+          "feasible": 0.90625,
+          "e_over_ub": 2.6258600780391097,
+          "worst_ue_ocr": 0.9739583333333335,
+          "mw_per_ue": 11.401968369145365
+        },
+        {
+          "checkpoint": "step-001751040",
+          "slots": 1751040,
+          "mu0": 25.0,
+          "feasible": 0.921875,
+          "e_over_ub": 2.6446335330570396,
+          "worst_ue_ocr": 0.9750000000000001,
+          "mw_per_ue": 11.450491005044846
+        },
+        {
+          "checkpoint": "step-002000896",
+          "slots": 2000896,
+          "mu0": 0.0,
+          "feasible": 0.828125,
+          "e_over_ub": 2.7577691793970542,
+          "worst_ue_ocr": 0.9674479166666667,
+          "mw_per_ue": 11.954809811778105
+        },
+        {
+          "checkpoint": "step-002000896",
+          "slots": 2000896,
+          "mu0": 5.0,
+          "feasible": 0.78125,
+          "e_over_ub": 2.747986700383344,
+          "worst_ue_ocr": 0.9675347222222224,
+          "mw_per_ue": 11.907893091627084
+        },
+        {
+          "checkpoint": "step-002000896",
+          "slots": 2000896,
+          "mu0": 25.0,
+          "feasible": 0.890625,
+          "e_over_ub": 2.724284297629995,
+          "worst_ue_ocr": 0.9754340277777778,
+          "mw_per_ue": 11.824592877765939
+        }
+      ],
+      "final_violation_breakdown": {
+        "checkpoint": "step-002000896",
+        "mu0": 0.0,
+        "per_ue_mean": 0.0077148437499999995,
+        "packet_weighted": 0.006145833333333333,
+        "far_mean": 0.011424100156494522,
+        "near_mean": 0.005072463768115942,
+        "by_period": {
+          "10": {
+            "ue_episodes": 192,
+            "mean_violation": 0.005584490740740741,
+            "far_mean_violation": 0.009064327485380117,
+            "starved_ue_episodes": 0
+          },
+          "20": {
+            "ue_episodes": 192,
+            "mean_violation": 0.003645833333333333,
+            "far_mean_violation": 0.005756358768406961,
+            "starved_ue_episodes": 0
+          },
+          "40": {
+            "ue_episodes": 128,
+            "mean_violation": 0.01701388888888889,
+            "far_mean_violation": 0.02345679012345679,
+            "starved_ue_episodes": 0
+          }
+        }
+      }
+    },
+    {
+      "path": "outputs/exp001-stage1b/n8-local-eta2-seed303",
+      "variant": "local",
+      "profile": "local-eta2",
+      "seed": 303,
+      "commit": "7fbf36bf4e9d6b3a90820bf53e174518f0af5f56",
+      "result_sha256": "9e712a9c68a982de89cf56f56f0800bdb5268072e030ec2e5d1876b81088c8bc",
+      "wall_s": 3094.224618809065,
+      "selected": "step-002000896@mu0=25",
+      "curve": [
+        {
+          "checkpoint": "step-000000000",
+          "slots": 0,
+          "mu0": 0.0,
+          "feasible": 0.59375,
+          "e_over_ub": 5.505345646937211,
+          "worst_ue_ocr": 0.9546006944444445,
+          "mw_per_ue": 22.29982346924163
+        },
+        {
+          "checkpoint": "step-000000000",
+          "slots": 0,
+          "mu0": 5.0,
+          "feasible": 0.59375,
+          "e_over_ub": 5.505887968155502,
+          "worst_ue_ocr": 0.9544270833333334,
+          "mw_per_ue": 22.300127569602935
+        },
+        {
+          "checkpoint": "step-000000000",
+          "slots": 0,
+          "mu0": 25.0,
+          "feasible": 0.625,
+          "e_over_ub": 5.5129372377116,
+          "worst_ue_ocr": 0.9553819444444445,
+          "mw_per_ue": 22.359106146746097
+        },
+        {
+          "checkpoint": "step-000251904",
+          "slots": 251904,
+          "mu0": 0.0,
+          "feasible": 0.265625,
+          "e_over_ub": 2.5830059608667115,
+          "worst_ue_ocr": 0.9098090277777778,
+          "mw_per_ue": 11.111972590698166
+        },
+        {
+          "checkpoint": "step-000251904",
+          "slots": 251904,
+          "mu0": 5.0,
+          "feasible": 0.4375,
+          "e_over_ub": 2.5774383192733623,
+          "worst_ue_ocr": 0.9211805555555557,
+          "mw_per_ue": 11.08450353509506
+        },
+        {
+          "checkpoint": "step-000251904",
+          "slots": 251904,
+          "mu0": 25.0,
+          "feasible": 0.921875,
+          "e_over_ub": 2.6073165115733516,
+          "worst_ue_ocr": 0.9761284722222222,
+          "mw_per_ue": 11.191981566269186
+        },
+        {
+          "checkpoint": "step-000501760",
+          "slots": 501760,
+          "mu0": 0.0,
+          "feasible": 0.140625,
+          "e_over_ub": 2.65844830967216,
+          "worst_ue_ocr": 0.8771701388888888,
+          "mw_per_ue": 11.658254650491791
+        },
+        {
+          "checkpoint": "step-000501760",
+          "slots": 501760,
+          "mu0": 5.0,
+          "feasible": 0.171875,
+          "e_over_ub": 2.6526734523744206,
+          "worst_ue_ocr": 0.9011284722222223,
+          "mw_per_ue": 11.61393886908331
+        },
+        {
+          "checkpoint": "step-000501760",
+          "slots": 501760,
+          "mu0": 25.0,
+          "feasible": 0.6875,
+          "e_over_ub": 2.6464228237778205,
+          "worst_ue_ocr": 0.9555555555555556,
+          "mw_per_ue": 11.53773063249411
+        },
+        {
+          "checkpoint": "step-000751616",
+          "slots": 751616,
+          "mu0": 0.0,
+          "feasible": 0.75,
+          "e_over_ub": 2.6071457316249322,
+          "worst_ue_ocr": 0.9596354166666667,
+          "mw_per_ue": 11.347111653968856
+        },
+        {
+          "checkpoint": "step-000751616",
+          "slots": 751616,
+          "mu0": 5.0,
+          "feasible": 0.828125,
+          "e_over_ub": 2.621888063059914,
+          "worst_ue_ocr": 0.9657986111111112,
+          "mw_per_ue": 11.417955731607819
+        },
+        {
+          "checkpoint": "step-000751616",
+          "slots": 751616,
+          "mu0": 25.0,
+          "feasible": 1.0,
+          "e_over_ub": 2.5483824507735573,
+          "worst_ue_ocr": 0.9843750000000001,
+          "mw_per_ue": 11.08134223483429
+        },
+        {
+          "checkpoint": "step-001001472",
+          "slots": 1001472,
+          "mu0": 0.0,
+          "feasible": 0.6875,
+          "e_over_ub": 2.514368295954692,
+          "worst_ue_ocr": 0.9543402777777779,
+          "mw_per_ue": 10.988467137029215
+        },
+        {
+          "checkpoint": "step-001001472",
+          "slots": 1001472,
+          "mu0": 5.0,
+          "feasible": 0.8125,
+          "e_over_ub": 2.4984804505880245,
+          "worst_ue_ocr": 0.9649305555555556,
+          "mw_per_ue": 10.918910007919198
+        },
+        {
+          "checkpoint": "step-001001472",
+          "slots": 1001472,
+          "mu0": 25.0,
+          "feasible": 0.984375,
+          "e_over_ub": 2.4842326455563954,
+          "worst_ue_ocr": 0.9853298611111112,
+          "mw_per_ue": 10.829962804594633
+        },
+        {
+          "checkpoint": "step-001251328",
+          "slots": 1251328,
+          "mu0": 0.0,
+          "feasible": 0.828125,
+          "e_over_ub": 2.391776390445781,
+          "worst_ue_ocr": 0.9696180555555556,
+          "mw_per_ue": 10.433195412123439
+        },
+        {
+          "checkpoint": "step-001251328",
+          "slots": 1251328,
+          "mu0": 5.0,
+          "feasible": 0.90625,
+          "e_over_ub": 2.3947302432077446,
+          "worst_ue_ocr": 0.974045138888889,
+          "mw_per_ue": 10.44088570407925
+        },
+        {
+          "checkpoint": "step-001251328",
+          "slots": 1251328,
+          "mu0": 25.0,
+          "feasible": 0.953125,
+          "e_over_ub": 2.3819524969851242,
+          "worst_ue_ocr": 0.9822048611111112,
+          "mw_per_ue": 10.36827641468923
+        },
+        {
+          "checkpoint": "step-001501184",
+          "slots": 1501184,
+          "mu0": 0.0,
+          "feasible": 0.90625,
+          "e_over_ub": 2.370339816310694,
+          "worst_ue_ocr": 0.9734375,
+          "mw_per_ue": 10.353971203025326
+        },
+        {
+          "checkpoint": "step-001501184",
+          "slots": 1501184,
+          "mu0": 5.0,
+          "feasible": 0.9375,
+          "e_over_ub": 2.3693689950009906,
+          "worst_ue_ocr": 0.9745659722222223,
+          "mw_per_ue": 10.352570188664327
+        },
+        {
+          "checkpoint": "step-001501184",
+          "slots": 1501184,
+          "mu0": 25.0,
+          "feasible": 1.0,
+          "e_over_ub": 2.3561153901209675,
+          "worst_ue_ocr": 0.9886284722222223,
+          "mw_per_ue": 10.286396739929772
+        },
+        {
+          "checkpoint": "step-001751040",
+          "slots": 1751040,
+          "mu0": 0.0,
+          "feasible": 0.953125,
+          "e_over_ub": 2.3814673091925886,
+          "worst_ue_ocr": 0.9755208333333334,
+          "mw_per_ue": 10.400326371925614
+        },
+        {
+          "checkpoint": "step-001751040",
+          "slots": 1751040,
+          "mu0": 5.0,
+          "feasible": 0.953125,
+          "e_over_ub": 2.3663376286375275,
+          "worst_ue_ocr": 0.9786458333333334,
+          "mw_per_ue": 10.327090281104397
+        },
+        {
+          "checkpoint": "step-001751040",
+          "slots": 1751040,
+          "mu0": 25.0,
+          "feasible": 1.0,
+          "e_over_ub": 2.354883376390167,
+          "worst_ue_ocr": 0.9856770833333334,
+          "mw_per_ue": 10.26746874565956
+        },
+        {
+          "checkpoint": "step-002000896",
+          "slots": 2000896,
+          "mu0": 0.0,
+          "feasible": 0.8125,
+          "e_over_ub": 2.399336736404311,
+          "worst_ue_ocr": 0.9643229166666667,
+          "mw_per_ue": 10.46246113525179
+        },
+        {
+          "checkpoint": "step-002000896",
+          "slots": 2000896,
+          "mu0": 5.0,
+          "feasible": 0.90625,
+          "e_over_ub": 2.387464244677239,
+          "worst_ue_ocr": 0.9713541666666667,
+          "mw_per_ue": 10.417586454558787
+        },
+        {
+          "checkpoint": "step-002000896",
+          "slots": 2000896,
+          "mu0": 25.0,
+          "feasible": 0.96875,
+          "e_over_ub": 2.3508633005573327,
+          "worst_ue_ocr": 0.986545138888889,
+          "mw_per_ue": 10.243004764667647
+        }
+      ],
+      "final_violation_breakdown": {
+        "checkpoint": "step-002000896",
+        "mu0": 25.0,
+        "per_ue_mean": 0.0020833333333333333,
+        "packet_weighted": 0.0015277777777777779,
+        "far_mean": 0.0019300991131977047,
+        "near_mean": 0.002192493496841323,
+        "by_period": {
+          "10": {
+            "ue_episodes": 192,
+            "mean_violation": 0.001388888888888889,
+            "far_mean_violation": 0.002631578947368421,
+            "starved_ue_episodes": 0
+          },
+          "20": {
+            "ue_episodes": 192,
+            "mean_violation": 0.0004629629629629629,
+            "far_mean_violation": 0.0006693440428380188,
+            "starved_ue_episodes": 0
+          },
+          "40": {
+            "ue_episodes": 128,
+            "mean_violation": 0.005555555555555557,
+            "far_mean_violation": 0.002880658436213992,
+            "starved_ue_episodes": 0
+          }
+        }
+      }
+    }
+  ],
+  "tuning": {
+    "fixed": {
+      "settings": {
+        "fixed-w10": {
+          "selected": "step-002000896",
+          "selected_point": {
+            "checkpoint": "step-002000896",
+            "slots": 2000896,
+            "mu0": 0.0,
+            "feasible": 1.0,
+            "e_over_ub": 2.304788959272412,
+            "worst_ue_ocr": 0.9887152777777779,
+            "mw_per_ue": 10.027149078338399
+          }
+        },
+        "fixed-w1": {
+          "selected": "step-000000000",
+          "selected_point": {
+            "checkpoint": "step-000000000",
+            "slots": 0,
+            "mu0": 0.0,
+            "feasible": 0.640625,
+            "e_over_ub": 5.475426717954937,
+            "worst_ue_ocr": 0.9573784722222223,
+            "mw_per_ue": 22.211887638446402
+          }
+        },
+        "fixed-w30": {
+          "selected": "step-001501184",
+          "selected_point": {
+            "checkpoint": "step-001501184",
+            "slots": 1501184,
+            "mu0": 0.0,
+            "feasible": 0.984375,
+            "e_over_ub": 2.329916050648666,
+            "worst_ue_ocr": 0.9891493055555556,
+            "mw_per_ue": 10.12215272455833
+          }
+        },
+        "fixed-w3": {
+          "selected": "step-000000000",
+          "selected_point": {
+            "checkpoint": "step-000000000",
+            "slots": 0,
+            "mu0": 0.0,
+            "feasible": 0.640625,
+            "e_over_ub": 5.475426717954937,
+            "worst_ue_ocr": 0.9573784722222223,
+            "mw_per_ue": 22.211887638446402
+          }
+        }
+      },
+      "pooled_winner": "fixed-w10/seed101/step-002000896",
+      "selected_profile": "fixed-w10"
+    },
+    "global": {
+      "settings": {
+        "global-eta20": {
+          "selected": "step-000000000",
+          "selected_point": {
+            "checkpoint": "step-000000000",
+            "slots": 0,
+            "mu0": 0.0,
+            "feasible": 0.640625,
+            "e_over_ub": 5.475426717954937,
+            "worst_ue_ocr": 0.9573784722222223,
+            "mw_per_ue": 22.211887638446402
+          }
+        },
+        "global-eta5": {
+          "selected": "step-000000000",
+          "selected_point": {
+            "checkpoint": "step-000000000",
+            "slots": 0,
+            "mu0": 0.0,
+            "feasible": 0.640625,
+            "e_over_ub": 5.475426717954937,
+            "worst_ue_ocr": 0.9573784722222223,
+            "mw_per_ue": 22.211887638446402
+          }
+        }
+      },
+      "pooled_winner": "global-eta20/seed101/step-000000000",
+      "selected_profile": "global-eta20"
+    },
+    "local": {
+      "settings": {
+        "local-eta2": {
+          "selected": "step-001251328@mu0=5",
+          "selected_point": {
+            "checkpoint": "step-001251328",
+            "slots": 1251328,
+            "mu0": 5.0,
+            "feasible": 1.0,
+            "e_over_ub": 2.404271577030844,
+            "worst_ue_ocr": 0.9916666666666667,
+            "mw_per_ue": 10.389106595182593
+          }
+        },
+        "local-eta5": {
+          "selected": "step-001251328@mu0=25",
+          "selected_point": {
+            "checkpoint": "step-001251328",
+            "slots": 1251328,
+            "mu0": 25.0,
+            "feasible": 0.953125,
+            "e_over_ub": 2.4225992956550555,
+            "worst_ue_ocr": 0.9770833333333334,
+            "mw_per_ue": 10.504930991010223
+          }
+        }
+      },
+      "pooled_winner": "local-eta2/seed101/step-001251328@mu0=5",
+      "selected_profile": "local-eta2"
+    }
+  },
+  "decision": {
+    "fixed": {
+      "profile": "fixed-w10",
+      "seeds": [
+        101,
+        202,
+        303
+      ],
+      "per_seed": {
+        "101": {
+          "checkpoint": "step-002000896",
+          "slots": 2000896,
+          "mu0": 0.0,
+          "feasible": 1.0,
+          "e_over_ub": 2.304788959272412,
+          "worst_ue_ocr": 0.9887152777777779,
+          "mw_per_ue": 10.027149078338399
+        },
+        "202": {
+          "checkpoint": "step-002000896",
+          "slots": 2000896,
+          "mu0": 0.0,
+          "feasible": 0.984375,
+          "e_over_ub": 2.3462846184940087,
+          "worst_ue_ocr": 0.9875,
+          "mw_per_ue": 10.219786528859377
+        },
+        "303": {
+          "checkpoint": "step-002000896",
+          "slots": 2000896,
+          "mu0": 0.0,
+          "feasible": 1.0,
+          "e_over_ub": 2.3596820026703873,
+          "worst_ue_ocr": 0.9887152777777778,
+          "mw_per_ue": 10.262246173857484
+        }
+      },
+      "mean_feasible": 0.9947916666666666,
+      "mean_e_over_ub": 2.336918526812269,
+      "complete": true,
+      "passes": true
+    },
+    "global": {
+      "profile": "global-eta20",
+      "seeds": [
+        101,
+        202,
+        303
+      ],
+      "per_seed": {
+        "101": {
+          "checkpoint": "step-000000000",
+          "slots": 0,
+          "mu0": 0.0,
+          "feasible": 0.640625,
+          "e_over_ub": 5.475426717954937,
+          "worst_ue_ocr": 0.9573784722222223,
+          "mw_per_ue": 22.211887638446402
+        },
+        "202": {
+          "checkpoint": "step-000000000",
+          "slots": 0,
+          "mu0": 0.0,
+          "feasible": 0.640625,
+          "e_over_ub": 5.519664872005144,
+          "worst_ue_ocr": 0.95625,
+          "mw_per_ue": 22.378975204164888
+        },
+        "303": {
+          "checkpoint": "step-000000000",
+          "slots": 0,
+          "mu0": 0.0,
+          "feasible": 0.59375,
+          "e_over_ub": 5.503974972001484,
+          "worst_ue_ocr": 0.9546006944444445,
+          "mw_per_ue": 22.294201884859856
+        }
+      },
+      "mean_feasible": 0.625,
+      "mean_e_over_ub": 5.499688853987188,
+      "complete": true,
+      "passes": false
+    },
+    "local": {
+      "profile": "local-eta2",
+      "seeds": [
+        101,
+        202,
+        303
+      ],
+      "per_seed": {
+        "101": {
+          "checkpoint": "step-001251328",
+          "slots": 1251328,
+          "mu0": 5.0,
+          "feasible": 1.0,
+          "e_over_ub": 2.404271577030844,
+          "worst_ue_ocr": 0.9916666666666667,
+          "mw_per_ue": 10.389106595182593
+        },
+        "202": {
+          "checkpoint": "step-001251328",
+          "slots": 1251328,
+          "mu0": 0.0,
+          "feasible": 0.984375,
+          "e_over_ub": 2.4560056513018513,
+          "worst_ue_ocr": 0.9900173611111112,
+          "mw_per_ue": 10.659215468374335
+        },
+        "303": {
+          "checkpoint": "step-002000896",
+          "slots": 2000896,
+          "mu0": 25.0,
+          "feasible": 0.96875,
+          "e_over_ub": 2.3508633005573327,
+          "worst_ue_ocr": 0.986545138888889,
+          "mw_per_ue": 10.243004764667647
+        }
+      },
+      "mean_feasible": 0.984375,
+      "mean_e_over_ub": 2.403713509630009,
+      "complete": true,
+      "passes": true
+    }
+  }
+}

@@ -5,7 +5,7 @@
 - **速率**：由 Shannon 公式给出（HARQ-IR 累积互信息），MCS 不再是动作。
 - **目标**：在每 UE 违约率 ≤ ε 的约束下，最小化发射能耗。
 
-规范见 [场景 v1.0](docs/research/scenario.md)。**场景参数与建模假设已于 2026-09-24 冻结**：N=4/6/8/12 四个变体（K=4，功率档 OFF/5/10/15/19/23 dBm，21 类动作），见 [配置](configs/) 与 [冻结清单](docs/research/scenario-v1-freeze.json)；约束式 MAPPO（[EXP-DSA05-001](docs/experiment-designs/001-constrained-mappo_20260924.md)）已实现，第 1 阶段训练待启动。所有 MARL 实验遵守 [MARL 实验协议 v1](docs/research/marl-protocol-v1.md)：训练、验证、测试实例划分与执行种子已冻结。
+规范见 [场景 v1.0](docs/research/scenario.md)。**场景参数与建模假设已于 2026-09-24 冻结**：N=4/6/8/12 四个变体（K=4，功率档 OFF/5/10/15/19/23 dBm，21 类动作），见 [配置](configs/) 与 [冻结清单](docs/research/scenario-v1-freeze.json)；约束式 MAPPO（[EXP-DSA05-001](docs/experiment-designs/001-constrained-mappo_20260924.md)）已实现，第 1 阶段（N=8 短训）已完成，见结果表。所有 MARL 实验遵守 [MARL 实验协议 v1](docs/research/marl-protocol-v1.md)：训练、验证、测试实例划分与执行种子已冻结。
 
 ## 结果
 
@@ -15,6 +15,7 @@
 | [N=4/6/8/12 中央最小能耗上下界](docs/results/central-bounds_20260924/report.md) | N=4 全部精确、N=6 上界/下界均值 1.02、N=8 为 1.12、N=12 为 1.42；启发式能耗为上界的 8–10 倍 |
 | [协议 v1 验证集与测试集参照](docs/results/protocol-v1-references_20260924/report.md) | 四个 N 逐实例上下界（验证 64、测试 200），作为 MARL 的 E/LB、E/UB 分母 |
 | [本地基线验证集校准](docs/results/baseline-calibration_20260924/report.md) | 最强可行基线 paced_sticky：N=4 已最优，N=6/8/12 能耗/上界为 1.78/2.87/5.50 |
+| [EXP-DSA05-001 第 1 阶段](docs/results/exp001-phase1_20260925/report.md) | N=8 短训：固定惩罚与逐 UE 对偶满足约束，能耗/上界 2.34/2.40（基线 2.87）；全局拉格朗日放弃长周期远端 UE 而失败 |
 
 ## 环境
 

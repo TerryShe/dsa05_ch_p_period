@@ -8,20 +8,24 @@ verifies provenance, and applies the rules written in the design's §9:
 * 1b: per variant, the three seeds' selected candidates; the variant proceeds
   to long training iff mean F >= 0.95 and mean E/UB < the baseline's.
 
-Writes a compact JSON (curves and selections) and, if requested, a figure.
+Writes a compact JSON (curves and selections) and, if requested, two figures.
 """
 
 import argparse
 import hashlib
 import json
+import re
 from collections import defaultdict
 from pathlib import Path
 
 import numpy as np
 
+from dsa_period.config import load_scenario
 from dsa_period.evaluation import FEASIBLE_EPISODE_RATE, select
 
 BASELINE_E_OVER_UB = {8: 2.871}  # paced_sticky margin 0.5, validation calibration
+FAR_M = 75.0
+WINDOW_SLOTS = 1800
 
 
 def load_run(path: Path) -> dict:
@@ -53,6 +57,45 @@ def load_run(path: Path) -> dict:
     }
 
 
+def violation_breakdown(run: dict, scenario) -> dict:
+    """Where the final checkpoint's validation violations fall, by class and distance.
+
+    ``packet_weighted`` is what a single global multiplier sees (every settled
+    packet counts once); ``per_ue_mean`` weights every UE equally, as the
+    per-UE constraint does.
+    """
+    path = Path(run["path"]) / "validation" / f"{run['result']['final_checkpoint']}.json"
+    record = json.loads(path.read_text())
+    mu0 = run["result"].get("selected_mu0", 0.0)
+    entry = next(e for e in record["by_mu0"] if e["mu0"] == mu0)
+    rows = []
+    for episode in entry["episodes"]:
+        _, traffic = scenario.instance(episode["instance"])
+        for ue, rate in enumerate(episode["per_ue_violation_rate"]):
+            rows.append((int(traffic.period_slots[ue]), episode["distance_m"][ue], rate))
+    rows = np.array(rows)
+    weights = WINDOW_SLOTS / rows[:, 0]
+    by_period = {}
+    for period in sorted(set(rows[:, 0].astype(int))):
+        mask = rows[:, 0] == period
+        far = mask & (rows[:, 1] >= FAR_M)
+        by_period[str(period)] = {
+            "ue_episodes": int(mask.sum()),
+            "mean_violation": float(rows[mask, 2].mean()),
+            "far_mean_violation": float(rows[far, 2].mean()) if far.any() else None,
+            "starved_ue_episodes": int((rows[mask, 2] == 1.0).sum()),
+        }
+    return {
+        "checkpoint": run["result"]["final_checkpoint"],
+        "mu0": mu0,
+        "per_ue_mean": float(rows[:, 2].mean()),
+        "packet_weighted": float(np.sum(weights * rows[:, 2]) / np.sum(weights)),
+        "far_mean": float(rows[rows[:, 1] >= FAR_M, 2].mean()),
+        "near_mean": float(rows[rows[:, 1] < FAR_M, 2].mean()),
+        "by_period": by_period,
+    }
+
+
 def candidate_key(run: dict, point: dict) -> str:
     suffix = f"@mu0={point['mu0']:g}" if run["manifest"]["variant"] == "local" else ""
     return (
@@ -79,7 +122,8 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("runs", type=Path, nargs="+")
     parser.add_argument("--output", type=Path)
-    parser.add_argument("--figure", type=Path)
+    parser.add_argument("--figure", type=Path, help="selected settings, all seeds")
+    parser.add_argument("--tuning-figure", type=Path, help="stage 1a settings, seed 101")
     args = parser.parse_args()
     runs = [load_run(path) for path in args.runs]
     for run in runs:
@@ -91,6 +135,7 @@ def main() -> None:
         raise SystemExit("runs mix scenario variants")
     n = num_ues.pop()
     baseline = BASELINE_E_OVER_UB[n]
+    scenario = load_scenario(runs[0]["manifest"]["scenario"])
 
     by_variant: dict[str, list[dict]] = defaultdict(list)
     for run in runs:
@@ -146,6 +191,7 @@ def main() -> None:
                 "wall_s": run["result"]["wall_s"],
                 "selected": run["result"]["selected"],
                 "curve": [brief(point) for point in run["curve"]],
+                "final_violation_breakdown": violation_breakdown(run, scenario),
             }
             for run in runs
         ],
@@ -164,32 +210,161 @@ def main() -> None:
         args.output.parent.mkdir(parents=True, exist_ok=True)
         args.output.write_text(json.dumps(summary, indent=2) + "\n")
     if args.figure is not None:
-        plot(runs, baseline, args.figure)
+        plot(runs, decision, baseline, args.figure)
+    if args.tuning_figure is not None:
+        plot_tuning(runs, baseline, args.tuning_figure)
 
 
-def plot(runs: list[dict], baseline: float, path: Path) -> None:
+# Reference categorical palette (dataviz skill), validated: the first three slots
+# all-pairs and the first four adjacent-pairs on the light surface.
+SERIES = ("#2a78d6", "#eb6834", "#1baf7a", "#eda100")
+INK, MUTED, GRID, SURFACE = "#0b0b0b", "#52514e", "#e4e2dc", "#fcfcfb"
+VARIANT_ORDER = ("fixed", "global", "local")
+VARIANT_LABEL = {
+    "fixed": "A fixed penalty",
+    "global": "B global Lagrangian",
+    "local": "C local duals",
+}
+
+
+def _points(run: dict) -> list[dict]:
+    """Validation curve at the run's selected mu0 (local variant) or its only curve."""
+    mu0 = run["result"].get("selected_mu0", 0.0)
+    local = run["manifest"]["variant"] == "local"
+    return [p for p in run["curve"] if not local or p["mu0"] == mu0]
+
+
+def _axes_style(ax, ylabel: str) -> None:
+    ax.set_facecolor(SURFACE)
+    ax.grid(axis="y", color=GRID, linewidth=0.8)
+    ax.set_axisbelow(True)
+    for side in ("top", "right"):
+        ax.spines[side].set_visible(False)
+    for side in ("left", "bottom"):
+        ax.spines[side].set_color(MUTED)
+    ax.tick_params(colors=MUTED, labelsize=8)
+    ax.set_xlabel("training slots (M)", color=MUTED, fontsize=9)
+    ax.set_ylabel(ylabel, color=MUTED, fontsize=9)
+
+
+def _reference_lines(axes, baseline: float) -> None:
+    axes[0].axhline(FEASIBLE_EPISODE_RATE, color=MUTED, linestyle="--", linewidth=1)
+    axes[0].annotate(
+        "F = 0.95",
+        (0.02, FEASIBLE_EPISODE_RATE),
+        xycoords=("axes fraction", "data"),
+        xytext=(0, 3),
+        textcoords="offset points",
+        color=MUTED,
+        fontsize=7,
+    )
+    axes[1].axhline(baseline, color=MUTED, linestyle="--", linewidth=1)
+    axes[1].annotate(
+        f"paced_sticky {baseline:.3f}",
+        (0.98, baseline),
+        xycoords=("axes fraction", "data"),
+        xytext=(0, 3),
+        textcoords="offset points",
+        color=MUTED,
+        fontsize=7,
+        ha="right",
+    )
+
+
+def plot(runs: list[dict], decision: dict, baseline: float, path: Path) -> None:
+    """Selected setting of each variant: seed curves (thin) and seed mean (thick)."""
     import matplotlib
 
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
 
-    fig, axes = plt.subplots(1, 2, figsize=(11, 4), constrained_layout=True)
-    colors = {"fixed": "#4C72B0", "global": "#DD8452", "local": "#55A868"}
-    for run in sorted(runs, key=lambda r: (r["manifest"]["variant"], r["manifest"]["profile"])):
-        variant = run["manifest"]["variant"]
-        mu0 = run["result"].get("selected_mu0", 0.0)
-        points = [p for p in run["curve"] if variant != "local" or p["mu0"] == mu0]
-        slots = [p["slots"] / 1e6 for p in points]
-        label = f"{run['manifest']['profile']} s{run['manifest']['seed']}"
-        style = dict(color=colors[variant], alpha=0.8, marker="o", markersize=3, label=label)
-        axes[0].plot(slots, [p["feasible"] for p in points], **style)
-        axes[1].plot(slots, [p["e_over_ub"] for p in points], **style)
-    axes[0].axhline(FEASIBLE_EPISODE_RATE, color="gray", linestyle="--", linewidth=1)
-    axes[0].set(xlabel="training slots (M)", ylabel="validation feasibility F", ylim=(-0.02, 1.02))
-    axes[1].axhline(baseline, color="gray", linestyle="--", linewidth=1, label="paced_sticky")
-    axes[1].set(xlabel="training slots (M)", ylabel="validation E/UB")
-    axes[1].legend(fontsize=7, ncol=2)
-    fig.savefig(path, dpi=150)
+    fig, axes = plt.subplots(1, 2, figsize=(11, 4.2), constrained_layout=True)
+    fig.patch.set_facecolor(SURFACE)
+    for slot, variant in enumerate(VARIANT_ORDER):
+        profile = decision[variant]["profile"]
+        chosen = [r for r in runs if r["manifest"]["profile"] == profile]
+        curves = [_points(r) for r in chosen]
+        slots = np.array([p["slots"] / 1e6 for p in curves[0]])
+        color = SERIES[slot]
+        for column, key in enumerate(("feasible", "e_over_ub")):
+            values = np.array([[p[key] for p in curve] for curve in curves])
+            for row in values:
+                axes[column].plot(slots, row, color=color, linewidth=1, alpha=0.45)
+            mean = values.mean(axis=0)
+            axes[column].plot(
+                slots, mean, color=color, linewidth=2, label=f"{VARIANT_LABEL[variant]} ({profile})"
+            )
+            axes[column].annotate(
+                VARIANT_LABEL[variant].split()[0],
+                (slots[-1], mean[-1]),
+                xytext=(5, 0),
+                textcoords="offset points",
+                color=INK,
+                fontsize=8,
+                va="center",
+            )
+    _reference_lines(axes, baseline)
+    _axes_style(axes[0], "validation feasibility F")
+    _axes_style(axes[1], "validation E / UB")
+    axes[0].set_ylim(-0.02, 1.04)
+    axes[1].set_ylim(1.5, 6.0)
+    axes[1].legend(fontsize=8, frameon=False, labelcolor=INK, loc="upper right")
+    fig.suptitle(
+        "N=8, selected setting per variant: seeds 101/202/303 (thin) and their mean (thick)",
+        color=INK,
+        fontsize=10,
+    )
+    fig.savefig(path, dpi=150, facecolor=SURFACE)
+
+
+def plot_tuning(runs: list[dict], baseline: float, path: Path) -> None:
+    """Stage 1a tuning at seed 101: one column per variant, one line per setting."""
+    import matplotlib
+
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+
+    fig, grid = plt.subplots(2, 3, figsize=(13, 6.5), constrained_layout=True, sharex=True)
+    fig.patch.set_facecolor(SURFACE)
+    for column, variant in enumerate(VARIANT_ORDER):
+        members = sorted(
+            (
+                r
+                for r in runs
+                if r["manifest"]["variant"] == variant and r["manifest"]["seed"] == 101
+            ),
+            # Numeric order of the tuned value: fixed-w1 < fixed-w3 < fixed-w10 < fixed-w30.
+            key=lambda r: float(re.sub(r"[^0-9.]", "", r["manifest"]["profile"].split("-")[-1])),
+        )
+        for slot, run in enumerate(members):
+            points = _points(run)
+            slots = [p["slots"] / 1e6 for p in points]
+            label = run["manifest"]["profile"]
+            if variant == "local":
+                label += f" (mu0={run['result']['selected_mu0']:g})"
+            for row, key in enumerate(("feasible", "e_over_ub")):
+                grid[row, column].plot(
+                    slots,
+                    [p[key] for p in points],
+                    color=SERIES[slot],
+                    linewidth=1.5,
+                    marker="o",
+                    markersize=3,
+                    label=label,
+                )
+        grid[0, column].set_title(VARIANT_LABEL[variant], color=INK, fontsize=10)
+        _reference_lines(grid[:, column], baseline)
+        _axes_style(grid[0, column], "validation feasibility F")
+        _axes_style(grid[1, column], "validation E / UB")
+        grid[0, column].set_ylim(-0.02, 1.04)
+        grid[1, column].set_ylim(0, 6.0)
+        grid[0, column].legend(fontsize=7, frameon=False, labelcolor=INK, loc="best")
+    fig.suptitle(
+        "Stage 1a tuning, N=8, seed 101 (local variant shown at its selected mu0)",
+        color=INK,
+        fontsize=10,
+    )
+    fig.savefig(path, dpi=150, facecolor=SURFACE)
 
 
 if __name__ == "__main__":
