@@ -19,6 +19,7 @@
 | [能耗损失诊断](docs/results/exp001-efficiency-diagnosis_20260925/report.md) | 学到的策略约 70% 的发送与他人撞在同一子信道、损失约 40% 互信息；中央最优靠分时完全错开 |
 | [EXP-DSA05-002 周期记忆](docs/results/exp002-periodic-memory_20260925/report.md) | 不采纳：滞后 10/20/40 的干扰特征没有让 UE 学会错开，冲突率和能耗无实质改善 |
 | [EXP-DSA05-001 第 2a 阶段：N=12 长训](docs/results/exp001-phase2a_20260925/report.md) | A、C 都可行，能耗/上界 1.61、1.51（基线 5.50）；长训后学会错开发送，冲突率 0.30–0.51 |
+| [EXP-DSA05-001 第 2b 阶段：N=8 长训](docs/results/exp001-phase2b_20260925/report.md) | A 能耗/上界 1.213（3 种子一致），C 1.464（一个种子陷入局部解）；短训的冲突问题主要是训练不足 |
 
 ## 环境
 
