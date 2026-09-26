@@ -1,0 +1,294 @@
+{
+  "provenance": {
+    "commit": "e80c5fe8ac1d83a0e24dca9a6ff7b8ef333b1f2b",
+    "dirty": false
+  },
+  "scenario": "configs/scenario-v1-n4.toml",
+  "instances": [
+    10000,
+    10001,
+    10002,
+    10003,
+    10004,
+    10005,
+    10006,
+    10007,
+    10008,
+    10009,
+    10010,
+    10011,
+    10012,
+    10013,
+    10014,
+    10015,
+    10016,
+    10017,
+    10018,
+    10019,
+    10020,
+    10021,
+    10022,
+    10023,
+    10024,
+    10025,
+    10026,
+    10027,
+    10028,
+    10029,
+    10030,
+    10031,
+    10032,
+    10033,
+    10034,
+    10035,
+    10036,
+    10037,
+    10038,
+    10039,
+    10040,
+    10041,
+    10042,
+    10043,
+    10044,
+    10045,
+    10046,
+    10047,
+    10048,
+    10049,
+    10050,
+    10051,
+    10052,
+    10053,
+    10054,
+    10055,
+    10056,
+    10057,
+    10058,
+    10059,
+    10060,
+    10061,
+    10062,
+    10063
+  ],
+  "checkpoints": [
+    "A-s101=outputs/exp001-phase2c/n4-fixed-w10-seed101/checkpoints/step-016001024.pt",
+    "A-s202=outputs/exp001-phase2c/n4-fixed-w10-seed202/checkpoints/step-011001856.pt",
+    "A-s303=outputs/exp001-phase2c/n4-fixed-w10-seed303/checkpoints/step-015001600.pt",
+    "C-s101=outputs/exp001-phase2c/n4-local-eta2-seed101/checkpoints/step-016001024.pt@0",
+    "C-s202=outputs/exp001-phase2c/n4-local-eta2-seed202/checkpoints/step-016001024.pt@25",
+    "C-s303=outputs/exp001-phase2c/n4-local-eta2-seed303/checkpoints/step-015001600.pt@25"
+  ],
+  "baselines": [
+    "paced_sticky:margin=0"
+  ],
+  "results": {
+    "A-s101": {
+      "episodes": 64,
+      "energy_over_lower": 1.008360957457205,
+      "duty": 0.7283681257614336,
+      "collision_share": 0.00010746172517122498,
+      "interference_loss": 0.00015209293298727722,
+      "overshoot_share": 0.06885186075256541,
+      "completion_slack": 0.08641129315677012,
+      "power_level_share": [
+        0.6702633760602003,
+        0.3263663031694407,
+        0.003341623620942542,
+        2.8697149416491295e-05,
+        0.0
+      ],
+      "energy_over_solo_by_distance": {
+        "0-50": 1.0,
+        "50-75": 1.0000000000000002,
+        "75-100": 1.0005262063134976
+      },
+      "energy_over_solo_by_period": {
+        "10": 1.0,
+        "20": 1.0000000000000002,
+        "40": 1.0019285378217773
+      }
+    },
+    "A-s202": {
+      "episodes": 64,
+      "energy_over_lower": 1.001828465931151,
+      "duty": 0.9999808045568076,
+      "collision_share": 2.0559943767416838e-05,
+      "interference_loss": 1.5343963807853966e-05,
+      "overshoot_share": 0.06829948191950426,
+      "completion_slack": 0.31985583951866847,
+      "power_level_share": [
+        0.6840502486293109,
+        0.31289817692833366,
+        0.003051574442355475,
+        0.0,
+        0.0
+      ],
+      "energy_over_solo_by_distance": {
+        "0-50": 1.0,
+        "50-75": 1.0,
+        "75-100": 1.0
+      },
+      "energy_over_solo_by_period": {
+        "10": 1.0,
+        "20": 1.0,
+        "40": 1.0
+      }
+    },
+    "A-s303": {
+      "episodes": 64,
+      "energy_over_lower": 1.005544987554166,
+      "duty": 0.8925819704317779,
+      "collision_share": 0.003490382213863678,
+      "interference_loss": 0.003030106808921542,
+      "overshoot_share": 0.0692822744390435,
+      "completion_slack": 0.2623497267759563,
+      "power_level_share": [
+        0.6840947152372918,
+        0.31199554251608597,
+        0.00390974224662226,
+        0.0,
+        0.0
+      ],
+      "energy_over_solo_by_distance": {
+        "0-50": 1.0000000000000002,
+        "50-75": 1.0000000000000002,
+        "75-100": 1.0003198220462075
+      },
+      "energy_over_solo_by_period": {
+        "10": 1.0,
+        "20": 1.000303379434323,
+        "40": 1.001175252325937
+      }
+    },
+    "C-s101": {
+      "episodes": 64,
+      "energy_over_lower": 1.0035113154076272,
+      "duty": 0.7201087353535767,
+      "collision_share": 0.00047229336038094117,
+      "interference_loss": 0.0004132082846087931,
+      "overshoot_share": 0.06840557635060163,
+      "completion_slack": 0.053753736440825255,
+      "power_level_share": [
+        0.6785814733236212,
+        0.3188303664822194,
+        0.0025881601941594168,
+        0.0,
+        0.0
+      ],
+      "energy_over_solo_by_distance": {
+        "0-50": 1.0,
+        "50-75": 1.0,
+        "75-100": 1.0001923256493153
+      },
+      "energy_over_solo_by_period": {
+        "10": 1.0,
+        "20": 1.0,
+        "40": 1.0042174912677184
+      }
+    },
+    "C-s202": {
+      "episodes": 64,
+      "energy_over_lower": 1.0069506794637821,
+      "duty": 0.7869048434952329,
+      "collision_share": 0.00015723222650927053,
+      "interference_loss": 0.00012177173924411352,
+      "overshoot_share": 0.06879181757236189,
+      "completion_slack": 0.17042376893939393,
+      "power_level_share": [
+        0.6777503011857207,
+        0.31824868429395725,
+        0.003997844144315516,
+        0.0,
+        3.1703760065943822e-06
+      ],
+      "energy_over_solo_by_distance": {
+        "0-50": 1.0,
+        "50-75": 1.0000000000000002,
+        "75-100": 1.0007331785912608
+      },
+      "energy_over_solo_by_period": {
+        "10": 1.0,
+        "20": 1.0000000000000002,
+        "40": 1.0019077059877
+      }
+    },
+    "C-s303": {
+      "episodes": 64,
+      "energy_over_lower": 1.0103702501081946,
+      "duty": 0.7504321919478295,
+      "collision_share": 0.0004869798618143871,
+      "interference_loss": 0.00029873206930313215,
+      "overshoot_share": 0.0685801831267994,
+      "completion_slack": 0.11579384431358117,
+      "power_level_share": [
+        0.6776861344992395,
+        0.316551157951009,
+        0.005762707549751481,
+        0.0,
+        0.0
+      ],
+      "energy_over_solo_by_distance": {
+        "0-50": 1.0,
+        "50-75": 1.0000000000000002,
+        "75-100": 1.0008983345592417
+      },
+      "energy_over_solo_by_period": {
+        "10": 1.0,
+        "20": 1.0000000000000002,
+        "40": 1.0054448882322728
+      }
+    },
+    "paced_sticky:margin=0": {
+      "episodes": 64,
+      "energy_over_lower": 1.0000000000000002,
+      "duty": 1.0,
+      "collision_share": 0.0,
+      "interference_loss": 0.0,
+      "overshoot_share": 0.0680327461119189,
+      "completion_slack": 0.3203125,
+      "power_level_share": [
+        0.6823079104054437,
+        0.3155656365182875,
+        0.0021264530762687838,
+        0.0,
+        0.0
+      ],
+      "energy_over_solo_by_distance": {
+        "0-50": 1.0,
+        "50-75": 1.0,
+        "75-100": 1.0
+      },
+      "energy_over_solo_by_period": {
+        "10": 1.0,
+        "20": 1.0,
+        "40": 1.0
+      }
+    },
+    "central-upper-bound": {
+      "episodes": 64,
+      "energy_over_lower": 1.0000000000000002,
+      "duty": 0.8688880586547074,
+      "collision_share": 0.0,
+      "interference_loss": 0.0,
+      "overshoot_share": 0.0680327461119189,
+      "completion_slack": 0.2490767045454545,
+      "power_level_share": [
+        0.6823079104054437,
+        0.3155656365182875,
+        0.0021264530762687838,
+        0.0,
+        0.0
+      ],
+      "energy_over_solo_by_distance": {
+        "0-50": 1.0,
+        "50-75": 1.0,
+        "75-100": 1.0
+      },
+      "energy_over_solo_by_period": {
+        "10": 1.0,
+        "20": 1.0,
+        "40": 1.0
+      }
+    }
+  }
+}

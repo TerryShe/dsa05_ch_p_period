@@ -5,7 +5,7 @@
 - **速率**：由 Shannon 公式给出（HARQ-IR 累积互信息），MCS 不再是动作。
 - **目标**：在每 UE 违约率 ≤ ε 的约束下，最小化发射能耗。
 
-规范见 [场景 v1.0](docs/research/scenario.md)。**场景参数与建模假设已于 2026-09-24 冻结**：N=4/6/8/12 四个变体（K=4，功率档 OFF/5/10/15/19/23 dBm，21 类动作），见 [配置](configs/) 与 [冻结清单](docs/research/scenario-v1-freeze.json)；约束式 MAPPO（[EXP-DSA05-001](docs/experiment-designs/001-constrained-mappo_20260924.md)）已实现，第 1 阶段（N=8 短训）已完成，见结果表。所有 MARL 实验遵守 [MARL 实验协议 v1](docs/research/marl-protocol-v1.md)：训练、验证、测试实例划分与执行种子已冻结。
+规范见 [场景 v1.0](docs/research/scenario.md)。**场景参数与建模假设已于 2026-09-24 冻结**：N=4/6/8/12 四个变体（K=4，功率档 OFF/5/10/15/19/23 dBm，21 类动作），见 [配置](configs/) 与 [冻结清单](docs/research/scenario-v1-freeze.json)；约束式 MAPPO（[EXP-DSA05-001](docs/experiment-designs/001-constrained-mappo_20260924.md)）已实现，第 1 阶段（N=8 短训）和第 2 阶段（N=4/6/8/12 长训）已完成，见结果表；测试集尚未评估。所有 MARL 实验遵守 [MARL 实验协议 v1](docs/research/marl-protocol-v1.md)：训练、验证、测试实例划分与执行种子已冻结。
 
 ## 结果
 
@@ -20,6 +20,7 @@
 | [EXP-DSA05-002 周期记忆](docs/results/exp002-periodic-memory_20260925/report.md) | 不采纳：滞后 10/20/40 的干扰特征没有让 UE 学会错开，冲突率和能耗无实质改善 |
 | [EXP-DSA05-001 第 2a 阶段：N=12 长训](docs/results/exp001-phase2a_20260925/report.md) | A、C 都可行，能耗/上界 1.61、1.51（基线 5.50）；长训后学会错开发送，冲突率 0.30–0.51 |
 | [EXP-DSA05-001 第 2b 阶段：N=8 长训](docs/results/exp001-phase2b_20260925/report.md) | A 能耗/上界 1.213（3 种子一致），C 1.464（一个种子陷入局部解）；短训的冲突问题主要是训练不足 |
+| [EXP-DSA05-001 第 2c 阶段：N=4/N=6 长训](docs/results/exp001-phase2c_20260926/report.md) | N=4 与精确最优相差 1% 以内（A 1.005、C 1.007）；N=6 能耗/上界 1.096、1.108（基线 1.78）；含四个 N 的汇总 |
 
 ## 环境
 
