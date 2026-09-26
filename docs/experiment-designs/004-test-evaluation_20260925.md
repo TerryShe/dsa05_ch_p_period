@@ -1,16 +1,17 @@
 ---
 doc_id: EXP-DSA05-004
 type: evaluation-plan
-status: draft
+status: approved
 created: 2026-09-25
+approved: 2026-09-26
 scenario: DES-DSA05-PERIODIC v1.0
 protocol: marl-protocol-v1
 depends_on: EXP-DSA05-001
 ---
 
-# EXP-DSA05-004：冻结模型的测试集评估计划（草案）
+# EXP-DSA05-004：冻结模型的测试集评估计划
 
-状态：**草案，待用户确认**。N=4、N=6 长训（EXP-DSA05-001 第 2c 阶段）已于 2026-09-26 完成（[报告](../results/exp001-phase2c_20260926/report.md)），四个 N 的长训模型全部就绪。用户确认后定稿。定稿后才读取测试集，此后不再根据测试结果修改任何方法、超参数或选模规则（[MARL 实验协议 v1](../research/marl-protocol-v1.md) §7）。
+状态：**已定稿**。2026-09-26 用户确认 §4 的三项决定。N=4、N=6 长训（EXP-DSA05-001 第 2c 阶段）已于同日完成（[报告](../results/exp001-phase2c_20260926/report.md)），四个 N 的长训模型全部就绪。定稿后才读取测试集，此后不再根据测试结果修改任何方法、超参数或选模规则（[MARL 实验协议 v1](../research/marl-protocol-v1.md) §7）。
 
 ## 1. 评估对象
 
@@ -51,8 +52,17 @@ depends_on: EXP-DSA05-001
 
 所有结果都报告，不做事后挑选。选中检查点与最后检查点分别列出。
 
-## 4. 需要确认的决定
+## 4. 已确认的决定（2026-09-26）
 
 1. 主结果为长训的 A 与 C（选中检查点），最后检查点作辅助；次要结果为 N=8 短训的 A、B、C。
 2. 参照基线为验证集校准选出的 paced_sticky；random_max、sticky_max、lazy_pacing 一并报告。
 3. 判读规则如 §3，其中 N=4 不判读"显著节能"。
+
+## 5. 执行细则（2026-09-26，运行前写定）
+
+- **提交**：全部评估从本节所在的提交运行，工作区干净，`--formal --confirm-test`，每个 worker 单线程（`OMP_NUM_THREADS=1`）。
+- **长训（每个 N 一次调用）**：`--runs` 为该 N 的 6 个长训运行（`outputs/exp001-phase2{a,b,c}/`），`--checkpoints both`；`--baselines` 为该 N 的参照 paced_sticky 与 `random_max sticky_max lazy_pacing`，`--reference` 为参照 paced_sticky。
+- **短训（N=8 一次调用）**：`--runs` 为第 1 阶段 A（fixed-w10）、B（global-eta20）、C（local-eta2）各 3 个种子（`outputs/exp001-stage1{a,b}/`），`--checkpoints selected`；`--baselines` 与 `--reference` 只用 `paced_sticky:margin=0.5`。基线评估是确定性的，与长训调用中的同一基线结果应逐位相同，作为一致性检查。
+- **B 的选中候选是初始策略**：第 1 阶段 B 的 3 个种子都没有可行的训练检查点，选模规则退而选了可行率最高的候选，即未训练的初始策略 `step-000000000`（见[第 1 阶段报告](../results/exp001-phase1_20260925/report.md)）。按 §1 只评估选中的候选，所以 B 的次要结果评估的是初始策略，只能说明 B 的选中结果在测试集上仍不可行，不能单独说明训练过程如何失败。这一局限在测试报告中说明。
+- **短训检查点的兼容性**：第 1 阶段的运行来自较早的提交（`73d7305`、`7fbf36b`）。读取测试集之前，先在验证集上以非正式方式重放这 9 个选中候选，F 与能耗/上界须与各运行 `result.json` 中存档的数值一致，否则停止并报告。
+- **输出**：原始结果写入 `outputs/exp004-test/`（Git 忽略）；汇总、图与报告写入 `docs/results/exp004-test_20260926/`。A 与 C 的比较用协议的配对 bootstrap（`paired_difference`，实例联合重抽样，两者的训练种子各自重抽样）。
