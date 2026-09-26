@@ -24,8 +24,8 @@ from dsa_period.config import load_scenario
 from dsa_period.evaluation import FEASIBLE_EPISODE_RATE, select
 
 # Strongest feasible local baseline per N (validation calibration, 2026-09-24):
-# paced_sticky margin 0.5 at N=8 and margin 8 at N=12.
-BASELINE_E_OVER_UB = {8: 2.871, 12: 5.498}
+# paced_sticky with margin 0 (N=4, exactly optimal), 0.25 (N=6), 0.5 (N=8), 8 (N=12).
+BASELINE_E_OVER_UB = {4: 1.000, 6: 1.782, 8: 2.871, 12: 5.498}
 FAR_M = 75.0
 WINDOW_SLOTS = 1800
 
