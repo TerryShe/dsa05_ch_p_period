@@ -53,6 +53,17 @@ uv run --locked python -m dsa_period.experiments.train_constrained_mappo \
 
 `--variant` 为 `fixed`（固定惩罚）、`global`（全局拉格朗日）或 `local`（逐 UE 局部对偶）。每次验证都保存检查点，结束时按协议规则选模并写入 `result.json`。`--budget-slots`、`--validation-instances`、`--set` 只用于非正式的冒烟和诊断，与 `--formal` 互斥。
 
+## 冻结模型的协议评估
+
+```bash
+uv run --locked python -m dsa_period.experiments.evaluate_marl \
+  --scenario configs/scenario-v1-n8.toml --runs outputs/exp001-phase2b/n8-* \
+  --baselines paced_sticky:margin=0.5 random_max --reference paced_sticky:margin=0.5 \
+  --split test --confirm-test --formal --output <路径>/test.json
+```
+
+对每个正式训练运行，按协议规则选中的检查点和最后一个检查点（各自带选中的 μ0）都在指定集合上评估：冻结的实例，冻结的执行种子，测试集为 200 个实例 × 2 次执行。结果按训练种子做两层 bootstrap 汇总，并与参照基线逐实例配对。评估测试集必须同时加 `--confirm-test` 和 `--formal`。
+
 ## 目录
 
 ```text
@@ -82,6 +93,7 @@ src/dsa_period/
   experiments/central_reference.py
   experiments/central_bounds.py
   experiments/evaluate_policies.py  # 按协议在 dev/validation/test 上评估本地策略
+  experiments/evaluate_marl.py      # 按协议评估冻结的 MARL 检查点与基线（多进程）
   experiments/train_constrained_mappo.py  # EXP-DSA05-001 单次训练（场景、约束变体、种子）
   marl/features.py  # Actor 本地特征、截止期结算、逐 UE 对偶变量 μ_i
   marl/networks.py  # CSG Actor（逐子信道共享 GRU）与集中式 Critic
