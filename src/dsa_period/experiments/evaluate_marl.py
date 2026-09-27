@@ -5,7 +5,9 @@ checkpoint (each with its selected mu0) is replayed on the split with the frozen
 instances and execution seeds. Methods are grouped by constraint profile and
 checkpoint choice across training seeds and summarized with the protocol's
 two-level bootstrap; each is also paired instance-by-instance with a reference
-baseline. The test split requires --confirm-test and --formal (protocol §7).
+baseline. The test split requires --confirm-test and --formal (protocol §7); the
+confirmation set confirm1 (EXP-DSA05-005) requires --confirm-c1 and --formal.
+Runs may be MAPPO or SAC baselines; the checkpoint loader tells them apart.
 """
 
 import argparse
@@ -82,12 +84,13 @@ def main(argv: list[str] | None = None) -> None:
     parser.add_argument("--baselines", nargs="*", default=[])
     parser.add_argument("--reference", help="baseline spec that methods are paired against")
     parser.add_argument("--checkpoints", choices=("selected", "final", "both"), default="both")
-    parser.add_argument("--split", choices=("validation", "test"), required=True)
+    parser.add_argument("--split", choices=("validation", *splits.HELD_OUT), required=True)
     parser.add_argument("--instances", type=int, help="non-formal: first K instances only")
     parser.add_argument("--workers", type=int, default=8)
     parser.add_argument("--output", type=Path)
     parser.add_argument("--formal", action="store_true")
     parser.add_argument("--confirm-test", action="store_true")
+    parser.add_argument("--confirm-c1", action="store_true")
     args = parser.parse_args(argv)
     if args.output is not None and args.output.exists():
         parser.error(f"output {args.output} already exists")
@@ -96,6 +99,8 @@ def main(argv: list[str] | None = None) -> None:
         parser.error("--formal requires a clean tree and the whole split")
     if args.split == "test" and not (args.confirm_test and args.formal):
         parser.error("test evaluation requires --confirm-test and --formal")
+    if args.split == "confirm1" and not (args.confirm_c1 and args.formal):
+        parser.error("confirm1 evaluation requires --confirm-c1 and --formal")
     if args.reference is not None and args.reference not in args.baselines:
         parser.error("--reference must be one of --baselines")
     instances = list(splits.indices(args.split))

@@ -1,0 +1,60 @@
+# EXP-DSA05-005: XR-SBPC-style SAC-Discrete baseline (design §2). Training budget,
+# episodes, environments and validation cadence match EXP-DSA05-001's long runs;
+# the SAC values are XR-SBPC §V-A (PER parameters: Schaul et al. defaults).
+[experiment]
+id = "exp005-xr-sbpc-baseline"
+design = "docs/experiment-designs/005-xr-sbpc-baseline_20260926.md"
+
+[training]
+budget_slots = 20000000
+episode_slots = 600
+num_envs = 16
+validation_every_slots = 1000000
+torch_threads = 1
+log_every_steps = 1000
+
+[sac]
+lr = 1e-4
+batch_size = 512
+buffer_size = 10000
+tau = 0.005
+target_entropy = 0.05
+alpha_init = 1.0
+per_alpha = 0.6
+per_beta_start = 0.4
+per_eps = 1e-6
+hidden = [400, 300, 200, 100]
+
+# XR-SBPC eq. (7) magnitudes (v1, v1s); v2 is EXP-DSA05-001's team reward with the
+# violation weight in units of E0 = tau * p_max (profile fixed-w10).
+[reward]
+success = 50.0
+failure = 100.0
+progress = 5.0
+lag = 10.0
+weight = 10.0
+
+# Design §3.1: 3 rewards x gamma in {0.5, 0.99}; seeds 101, 202, 303 on the command line.
+[profiles.v1-g05]
+reward = "v1"
+gamma = 0.5
+
+[profiles.v1-g099]
+reward = "v1"
+gamma = 0.99
+
+[profiles.v1s-g05]
+reward = "v1s"
+gamma = 0.5
+
+[profiles.v1s-g099]
+reward = "v1s"
+gamma = 0.99
+
+[profiles.v2-g05]
+reward = "v2"
+gamma = 0.5
+
+[profiles.v2-g099]
+reward = "v2"
+gamma = 0.99

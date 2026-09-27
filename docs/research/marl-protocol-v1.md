@@ -80,3 +80,15 @@ scenario: DES-DSA05-PERIODIC v1.0
 - 测试集只用于冻结后的最终评估，不得根据测试结果调整方法、超参数或选模规则。如果开发中确实查看了测试集，报告必须说明，并在备用池中另取一个确认集。
 - 本协议冻结后，任何修改（划分、重复次数、执行种子、判读规则）都要另立 v2，并使用新的清单；v1 的结果保持原样。
 - 实验设计可以在不违反本协议的前提下增加指标或诊断，但不能替换主判读。
+
+## 附录：确认集（按 §7 从备用池中取出）
+
+§7 规定：测试集被查看过之后，需要在备用池中另取确认集。确认集不修改上面冻结的划分、重复次数、执行种子与判读规则，只是从 `reserve` 中划出一段，按测试集的规则评估。
+
+| 名称 | 实例 | 执行次数 | 执行种子 | 参照 | 首次使用 |
+|---|---|---|---|---|---|
+| `confirm1` | 30,000–30,199（200 个） | 每个实例 2 次 | SeedSequence([20260925, 3, N, 实例, 重复序号])，3 为备用池的编码 | `docs/results/confirm1-references_20260927/`，由 `central_bounds --split confirm1 --skip-heuristics --formal` 生成 | [EXP-DSA05-005](../experiment-designs/005-xr-sbpc-baseline_20260926.md)（2026-09-27） |
+
+- 代码：`splits.CONFIRMATION_SETS`、`splits.evaluation_repeats`、`splits.seed_code`。`split_of` 仍把这些实例报告为 `reserve`，训练代码照旧不能读取。
+- 评估：`evaluate_marl --split confirm1` 必须同时带 `--formal` 与 `--confirm-c1`。
+- 备用池中下一段未用的实例从 30,200 开始。

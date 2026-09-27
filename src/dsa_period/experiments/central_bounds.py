@@ -153,7 +153,9 @@ def main(argv: list[str] | None = None) -> None:
     parser.add_argument("--first-instance", type=int, default=0)
     parser.add_argument("--instances", type=int, default=20)
     parser.add_argument(
-        "--split", choices=("validation", "test"), help="use a frozen protocol split instead"
+        "--split",
+        choices=("validation", "test", "confirm1"),
+        help="use a frozen protocol split or confirmation set instead",
     )
     parser.add_argument(
         "--skip-heuristics", action="store_true", help="bounds only; do not run baselines"

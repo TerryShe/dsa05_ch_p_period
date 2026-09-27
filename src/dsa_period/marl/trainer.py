@@ -442,8 +442,15 @@ def load_policy_factory(path: Path, scenario: Scenario, mu0: float | None = None
     """Rebuild a checkpoint's actor and return a factory of protocol policies.
 
     ``mu0`` overrides the checkpoint's default initial dual (local variant only).
+    SAC baseline checkpoints (EXP-DSA05-005) are recognised and have no dual.
     """
     checkpoint = torch.load(path, map_location="cpu", weights_only=False)
+    if checkpoint.get("kind") == "sac":
+        from dsa_period.marl.sac import sac_policy_factory
+
+        if mu0 not in (None, 0.0):
+            raise ValueError("SAC checkpoints have no dual; mu0 must be 0")
+        return sac_policy_factory(checkpoint, scenario), checkpoint
     if checkpoint["schema"] != CHECKPOINT_SCHEMA:
         raise ValueError("unsupported checkpoint schema")
     model = checkpoint["model"]

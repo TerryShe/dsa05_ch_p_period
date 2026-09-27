@@ -11,7 +11,10 @@ of several policies and measures, over the evaluation window [W, H):
   completing slots, as a share of all delivered mutual information;
 * completion slack: (deadline - completion) / period of on-time packets;
 * power-level shares; energy over the per-UE solo optimum (the lower bound), by
-  distance band and traffic class.
+  distance band and traffic class;
+* per packet (EXP-DSA05-005 §3.3): transmitting slots, completion time as a share
+  of the period, the XR-SBPC v1 shaping reward it accumulated, and R / phi of
+  transmitting slots that did not complete it (see ``marl.xr_sbpc``).
 
 Validation-only diagnosis (protocol v1 §1); no training and no test data.
 """
@@ -29,6 +32,7 @@ from dsa_period.central_timeshare import act_cycle, solve_orthogonal_cycle
 from dsa_period.config import load_scenario
 from dsa_period.experiments.central_reference import git_provenance
 from dsa_period.marl.trainer import load_policy_factory
+from dsa_period.marl.xr_sbpc import PacketTracker, packet_summary
 from dsa_period.physics import shannon_bits
 from dsa_period.policies import make_policy
 
@@ -62,11 +66,21 @@ def episode_metrics(scenario, policy, instance: int) -> dict:
     w, h = scenario.warmup_slots, scenario.horizon_slots
     acc = dict(tx=0, busy=0, collided=0, mi=0.0, mi_alone=0.0, overshoot=0.0)
     level_counts = np.zeros(levels, dtype=np.int64)
+    tracker = PacketTracker(traffic.period_slots)
     while not env.truncated:
         t = env.elapsed_steps
         holding = np.array([o.remaining_bits > 0 for o in observations])
         before = np.array([o.remaining_bits for o in observations])
+        to_deadline = np.array([o.slots_to_deadline for o in observations])
         step = env.step(policy.act(observations))
+        tracker.observe(
+            t,
+            before,
+            to_deadline,
+            step.physical.service_bits,
+            step.completed,
+            step.violations.astype(bool),
+        )
         if t >= w:
             phys = step.physical
             active = phys.active
@@ -120,6 +134,7 @@ def episode_metrics(scenario, policy, instance: int) -> dict:
             sum(len([j for j in jobs if j["ue"] == u]) * lower.plans[u].energy_j for u in range(n))
         ),
         "per_ue": per_ue,
+        "packets": tracker.collect(jobs),
     }
 
 
@@ -156,6 +171,7 @@ def aggregate(rows: list[dict]) -> dict:
         "energy_over_solo_by_period": {
             str(p): float(np.median(ratio[period == p])) for p in sorted(set(period.tolist()))
         },
+        "packets": packet_summary([r["packets"] for r in rows]),
     }
     return out
 
@@ -201,6 +217,22 @@ def main() -> None:
             f"{name:<24} {r['energy_over_lower']:6.3f} {r['duty']:6.3f} {r['collision_share']:6.3f} "
             f"{r['interference_loss']:7.3f} {r['overshoot_share']:6.3f} {r['completion_slack']:6.3f}  "
             f"{levels}  {dist}  {per}"
+        )
+    print(
+        f"\n{'policy':<24} {'tx/pkt':>6} {'done@':>6} {'expired':>7} "
+        f"{'shaping':>8} {'R/phi p50':>9} {'p90':>6} {'>=1':>5}"
+    )
+    for name, r in results.items():
+        k = r["packets"]
+
+        def fmt(value, spec):
+            return format(value, spec) if value is not None else "-"
+
+        print(
+            f"{name:<24} {fmt(k['tx_slots_per_packet'], '6.2f')} "
+            f"{fmt(k['completion_fraction_mean'], '6.3f')} {fmt(k['expired_share'], '7.4f')} "
+            f"{fmt(k['shaping_per_packet_mean'], '8.1f')} {fmt(k['noncompleting_ratio_p50'], '9.2f')} "
+            f"{fmt(k['noncompleting_ratio_p90'], '6.2f')} {fmt(k['noncompleting_ratio_ge_1'], '5.2f')}"
         )
     if args.output is not None:
         args.output.parent.mkdir(parents=True, exist_ok=True)

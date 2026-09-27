@@ -20,14 +20,20 @@ from dsa_period.metrics import window_summary
 from dsa_period.policies import Policy
 
 REFERENCE_DIR = Path(__file__).parents[2] / "docs" / "results" / "protocol-v1-references_20260924"
+# Confirmation sets keep their references in their own archive (EXP-DSA05-005).
+CONFIRMATION_REFERENCE_DIRS = {
+    "confirm1": Path(__file__).parents[2] / "docs" / "results" / "confirm1-references_20260927"
+}
 FEASIBLE_EPISODE_RATE = 0.95
 BOOTSTRAP_RESAMPLES = 10_000
 BOOTSTRAP_SEED = 20_260_926
 METRICS = ("feasible", "e_over_ub", "e_over_lb", "ocr", "worst_ue_ocr", "mw_per_ue")
 
 
-def load_references(split: str, num_ues: int, directory: Path = REFERENCE_DIR) -> dict:
+def load_references(split: str, num_ues: int, directory: Path | None = None) -> dict:
     """Per-instance strict window energies {instance: (lower_j, upper_j)} of a split."""
+    if directory is None:
+        directory = CONFIRMATION_REFERENCE_DIRS.get(split, REFERENCE_DIR)
     record = json.loads((directory / f"{split}.json").read_text())
     runs = [run for run in record["runs"] if run["num_ues"] == num_ues]
     if len(runs) != 1:
@@ -100,7 +106,7 @@ def evaluate_policy(
 ) -> list[dict]:
     """All protocol episodes of one policy (one training seed) on a split."""
     chosen = splits.indices(split) if instance_indices is None else instance_indices
-    repeats = splits.EVALUATION_REPEATS.get(split, 1)
+    repeats = splits.evaluation_repeats(split)
     return [
         run_episode(scenario, make(), split, instance, repeat, references)
         for instance in chosen

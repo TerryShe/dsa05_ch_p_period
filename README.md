@@ -55,6 +55,16 @@ uv run --locked python -m dsa_period.experiments.train_constrained_mappo \
 
 `--variant` 为 `fixed`（固定惩罚）、`global`（全局拉格朗日）或 `local`（逐 UE 局部对偶）。每次验证都保存检查点，结束时按协议规则选模并写入 `result.json`。`--budget-slots`、`--validation-instances`、`--set` 只用于非正式的冒烟和诊断，与 `--formal` 互斥。
 
+## XR-SBPC 式 SAC 基线（EXP-DSA05-005）
+
+```bash
+uv run --locked python -m dsa_period.experiments.train_sac_baseline \
+  --scenario configs/scenario-v1-n8.toml --profile v2-g099 --seed 101 \
+  --output outputs/exp005/n8-v2-g099-seed101 --formal
+```
+
+按 [EXP-DSA05-005](docs/experiment-designs/005-xr-sbpc-baseline_20260926.md) 实现的 SAC-Discrete 基线：前馈网络、双 Q、优先经验回放，输入与约束式 MAPPO 的 Actor 特征相同。profile 决定奖励（`v1` 原文奖励、`v1s` 仅完成与过期、`v2` 与 A 相同的团队奖励）和折扣因子（`g05`、`g099`）。输出目录的格式与 MAPPO 运行相同，`evaluate_marl` 和诊断脚本可以直接读取。
+
 ## 冻结模型的协议评估
 
 ```bash
@@ -64,7 +74,7 @@ uv run --locked python -m dsa_period.experiments.evaluate_marl \
   --split test --confirm-test --formal --output <路径>/test.json
 ```
 
-对每个正式训练运行，按协议规则选中的检查点和最后一个检查点（各自带选中的 μ0）都在指定集合上评估：冻结的实例，冻结的执行种子，测试集为 200 个实例 × 2 次执行。结果按训练种子做两层 bootstrap 汇总，并与参照基线逐实例配对。评估测试集必须同时加 `--confirm-test` 和 `--formal`。
+对每个正式训练运行，按协议规则选中的检查点和最后一个检查点（各自带选中的 μ0）都在指定集合上评估：冻结的实例，冻结的执行种子，测试集为 200 个实例 × 2 次执行。结果按训练种子做两层 bootstrap 汇总，并与参照基线逐实例配对。评估测试集必须同时加 `--confirm-test` 和 `--formal`；评估确认集 `confirm1`（备用池 30,000–30,199，见[协议附录](docs/research/marl-protocol-v1.md)）必须同时加 `--confirm-c1` 和 `--formal`。
 
 ## 目录
 
@@ -73,6 +83,7 @@ configs/scenario-v1-n{4,6,8,12}.toml  # 冻结的 v1.0 工作点（勿改，变�
 configs/exp001-constrained-mappo.toml  # EXP-DSA05-001 训练与约束参数
 configs/exp001-constrained-mappo-long.toml  # EXP-DSA05-001 第 2 阶段长训
 configs/exp002-periodic-memory.toml  # EXP-DSA05-002 周期记忆（滞后 10/20/40 的逐子信道干扰特征）
+configs/exp005-xr-sbpc-baseline.toml  # EXP-DSA05-005 XR-SBPC 式 SAC 基线（3 种奖励 × 2 个折扣因子）
 scripts/analyze_power_menu_quantization.py  # 功率档选型分析
 scripts/summarize_central_*.py  # 中央参照结果汇总
 scripts/summarize_policy_evaluation.py  # 协议评估结果汇总
@@ -97,11 +108,15 @@ src/dsa_period/
   experiments/evaluate_policies.py  # 按协议在 dev/validation/test 上评估本地策略
   experiments/evaluate_marl.py      # 按协议评估冻结的 MARL 检查点与基线（多进程）
   experiments/train_constrained_mappo.py  # EXP-DSA05-001 单次训练（场景、约束变体、种子）
+  experiments/train_sac_baseline.py  # EXP-DSA05-005 XR-SBPC 式 SAC 基线单次训练（profile、种子）
   marl/features.py  # Actor 本地特征、截止期结算、逐 UE 对偶变量 μ_i
   marl/networks.py  # CSG Actor（逐子信道共享 GRU）与集中式 Critic
   marl/ppo.py       # 循环 MAPPO，折扣 GAE，截断 bootstrap
   marl/policy.py    # 训练好的 Actor 的协议评估包装（逐 UE RNG 随机执行）
   marl/trainer.py   # 采样、奖励与代价、验证、检查点、协议选模
+  marl/sac.py       # SAC-Discrete：前馈双 Q、优先经验回放、空闲转移屏蔽、协议评估包装
+  marl/sac_trainer.py  # SAC 基线的采样、奖励、验证与协议选模
+  marl/xr_sbpc.py   # XR-SBPC 奖励（v1、v1s）与逐包塑形诊断
 docs/research/scenario.md       # 场景规范
 docs/research/scenario-v1-freeze.json  # 冻结清单：配置 SHA-256、确认的假设、派生量
 docs/research/marl-protocol-v1.md   # MARL 实验协议：划分、选模、测试、指标与判读
