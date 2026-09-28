@@ -1,0 +1,17 @@
+comparison,a,b,energy_comparison_valid,metric,mean,ci95_lower,ci95_upper
+training_scheme,v2-g099:selected,fixed-w10:selected,True,feasible,-0.01416666666666666,-0.035833333333333384,0.007499999999999951
+training_scheme,v2-g099:selected,fixed-w10:selected,True,e_over_ub,1.811131614060495,1.647616119996119,1.9992373319410723
+mappo_f_minus_d,fixed-w10:selected,local-eta2:selected,True,feasible,0.01333333333333342,-0.00666666666666671,0.036666666666666625
+mappo_f_minus_d,fixed-w10:selected,local-eta2:selected,True,e_over_ub,-0.2507294886659759,-0.7336652360217425,0.002638476105806105
+q1_main:v1_minus_v2,v1-g099:selected,v2-g099:selected,True,feasible,0.0008333333333332416,-0.03500000000000003,0.03166666666666662
+q1_main:v1_minus_v2,v1-g099:selected,v2-g099:selected,True,e_over_ub,4.072936834589524,2.8383982765633804,5.634462934255262
+q1_main:v1s_minus_v2,v1s-g099:selected,v2-g099:selected,True,feasible,0.009166666666666656,-0.008333333333333304,0.02749999999999997
+q1_main:v1s_minus_v2,v1s-g099:selected,v2-g099:selected,True,e_over_ub,4.459070320034529,2.6893702048259773,5.736898074418436
+q1_main:v1_minus_v1s,v1-g099:selected,v1s-g099:selected,True,feasible,-0.008333333333333415,-0.04250000000000009,0.020000000000000018
+q1_main:v1_minus_v1s,v1-g099:selected,v1s-g099:selected,True,e_over_ub,-0.38613348544500514,-2.347255746496929,1.6506154889351836
+q1_sensitivity:v1_minus_v2,v1-g05:selected,v2-g05:selected,False,feasible,0.3666666666666667,0.3058333333333333,0.42833333333333323
+q1_sensitivity:v1_minus_v2,v1-g05:selected,v2-g05:selected,False,e_over_ub,1.8324066373034293,1.109678101932012,2.4391494782588268
+q1_sensitivity:v1s_minus_v2,v1s-g05:selected,v2-g05:selected,False,feasible,0.37916666666666665,0.31999999999999995,0.43833333333333335
+q1_sensitivity:v1s_minus_v2,v1s-g05:selected,v2-g05:selected,False,e_over_ub,2.2646979399788147,1.8819270833534516,2.650743168078576
+q1_sensitivity:v1_minus_v1s,v1-g05:selected,v1s-g05:selected,True,feasible,-0.012499999999999956,-0.03500000000000003,0.0
+q1_sensitivity:v1_minus_v1s,v1-g05:selected,v1s-g05:selected,True,e_over_ub,-0.4322913026753854,-1.1566518317496346,0.2008509719892431

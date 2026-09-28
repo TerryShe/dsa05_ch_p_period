@@ -61,6 +61,8 @@ def canvas(width, height):
 def save(fig, name):
     for extension in ("pdf", "svg", "png"):
         fig.savefig(OUT / f"{name}.{extension}", dpi=240, facecolor="white")
+    svg = OUT / f"{name}.svg"
+    svg.write_text("\n".join(line.rstrip() for line in svg.read_text().splitlines()) + "\n")
     plt.close(fig)
 
 
@@ -133,55 +135,30 @@ def scenario():
 
 
 def framework():
-    fig, ax = canvas(7.05, 2.90)
-    label(ax, 3.525, 2.78,
-          "(a) Distributed execution: shared actor weights, private memory at each UE", 8.5,
+    fig, ax = canvas(3.45, 2.72)
+    label(ax, 1.725, 2.62, "Shared actor; private memory at each UE", 8.2,
           fontweight="bold")
-    # One branch represents every k; encoder, GRU and channel head share weights.
-    box(ax, .05, 1.96, .88, .56, "Local features\n$x_{ik}$: 13, $u_i$: 13", size=7.3)
-    box(ax, 1.12, 1.96, .77, .56, "Encoder $f$\n26 $\\to$ 64\ntanh", size=7.3)
-    box(ax, 2.10, 1.96, .82, .56, "Shared GRU\n64 units\n$h_{ik}(t)$", size=7.3)
-    box(ax, 3.15, 1.96, 1.12, .56,
-        "$\\phi$ $\\to$ mean over $K$\nconcat $u_i$ $\\to$ $g$\n$v_i(t)$: 64", size=7.1)
-    box(ax, 4.56, 1.99, 1.03, .53,
-        "Channel head $\\psi$\n$[h_{ik},v_i,u_i]$\n5 logits / channel", size=7.1)
-    box(ax, 4.56, 1.25, 1.03, .48,
-        "OFF head $\\omega$\n$[v_i,u_i]$ $\\to$ 1 logit", size=7.3)
-    box(ax, 5.95, 1.56, 1.02, .90,
-        "Concat: 21 logits\nLegal-action mask\nSoftmax + sample\nOFF or $(k_i,p_i)$",
-        face="#EAF6F1", edge=GREEN, size=7.5)
-    for x1, x2 in ((.93, 1.12), (1.89, 2.10), (2.92, 3.15), (4.27, 4.56)):
-        arrow(ax, (x1, 2.23), (x2, 2.23))
-    wire(ax, [(4.39, 2.23), (4.39, 1.49), (4.56, 1.49)])
-    wire(ax, [(5.59, 2.24), (5.76, 2.24), (5.95, 2.24)])
-    wire(ax, [(5.59, 1.49), (5.77, 1.49), (5.77, 1.77), (5.95, 1.77)])
-    # Local h_ik reaches the power head in addition to the pooled summary.
-    wire(ax, [(2.79, 2.52), (2.79, 2.63), (5.07, 2.63), (5.07, 2.52)])
-    label(ax, 3.86, 2.64, "$h_{ik}$", 7,
-          bbox=dict(facecolor="white", edgecolor="none", pad=1))
-    # Explicit private recurrent state from one slot to the next.
-    box(ax, 2.09, 1.31, .84, .32, "$h_{ik}(t-1)$", face="white", edge=GRAY, size=7.4)
-    arrow(ax, (2.51, 1.63), (2.51, 1.96), color=GRAY)
-    wire(ax, [(2.80, 1.96), (2.80, 1.79), (3.07, 1.79),
-              (3.07, 1.47), (2.93, 1.47)], color=GRAY)
-    label(ax, 3.28, 1.48, "$z^{-1}$", 7)
-    # The raw UE context is supplied to the encoder, pooling map and both heads.
-    wire(ax, [(.14, 1.96), (.14, 1.08), (3.71, 1.08), (3.71, 1.96)], color=BLUE)
-    wire(ax, [(3.71, 1.08), (5.08, 1.08), (5.08, 1.25)], color=BLUE)
-    label(ax, 1.00, 1.09, "$u_i$", 7.5,
-          bbox=dict(facecolor="white", edgecolor="none", pad=1))
-    label(ax, .71, 1.57, "One stream per\nsubchannel $k$", 7)
-    label(ax, 3.525, .90,
-          "GRU updates during idle slots; empty queues are masked to OFF.  $K=4$, $|\\mathcal{P}|=5$.", 7.2)
-    ax.plot([.04, 7.01], [.76, .76], color=GRAY, lw=.7, linestyle=(0, (4, 3)))
-    # Training data do not enter the execution actor as global observations.
-    label(ax, 3.525, .64, "(b) Centralized training only", 8.2, fontweight="bold")
-    box(ax, .05, .09, 1.72, .37, "All UE features, true gains,\npenalty weights", face="#F1F3F5", edge=GRAY, size=7.3)
-    box(ax, 1.98, .09, 1.42, .37, "Critic: 256 $\\to$ 256 $\\to$ $V$\ntanh MLP", face="#F1F3F5", edge=GRAY, size=7.3)
-    box(ax, 3.61, .09, 1.43, .37, "Team reward + rollouts\n$V$ $\\to$ GAE advantages", face="#F1F3F5", edge=GRAY, size=7.3)
-    box(ax, 5.25, .09, 1.72, .37, "Clipped PPO actor update\nand critic value loss", face="#F1F3F5", edge=GRAY, size=7.3)
-    for x1, x2 in ((1.77, 1.98), (3.4, 3.61), (5.04, 5.25)):
-        arrow(ax, (x1, .275), (x2, .275), color=GRAY)
+    box(ax, .05, 2.08, .91, .34, "Local input\n$[x_{ik},u_i]$: 26", size=7)
+    box(ax, 1.13, 2.08, .96, .34, "Encoder + GRU\n$h_{ik}$: 64", size=7)
+    box(ax, 2.31, 2.08, 1.09, .34, "$\\phi$; mean over $K$\n$g(\\cdot,u_i)$: $v_i$", size=7)
+    arrow(ax, (.96, 2.25), (1.13, 2.25))
+    arrow(ax, (2.09, 2.25), (2.31, 2.25))
+    # Recurrent input comes from the previous slot of this UE/subchannel.
+    label(ax, 1.60, 1.88, "$h_{ik}(t-1)$", 7)
+    arrow(ax, (1.60, 1.96), (1.60, 2.08), color=GRAY)
+    box(ax, .05, 1.17, 1.63, .46,
+        "Shared power head $\\psi$\n$[h_{ik},v_i,u_i]$ $\\to$ 5 logits / $k$", size=7)
+    box(ax, 1.90, 1.17, 1.50, .46,
+        "OFF head $\\omega$\n$[v_i,u_i]$ $\\to$ 1 logit", size=7)
+    wire(ax, [(2.85, 2.08), (2.85, 1.76), (.86, 1.76), (.86, 1.63)])
+    arrow(ax, (2.65, 1.76), (2.65, 1.63))
+    box(ax, .38, .60, 2.69, .32,
+        "21 logits: mask $\\to$ softmax $\\to$ sample", face="#EAF6F1", edge=GREEN, size=7.4)
+    wire(ax, [(.86, 1.17), (.86, 1.04), (1.32, 1.04), (1.32, .92)])
+    wire(ax, [(2.65, 1.17), (2.65, 1.04), (2.13, 1.04), (2.13, .92)])
+    ax.plot([.04, 3.41], [.47, .47], color=GRAY, lw=.7, linestyle=(0, (4, 3)))
+    label(ax, 1.725, .33, "Training only: global features + true gains", 7.2)
+    label(ax, 1.725, .12, "Critic $\\to$ GAE + team reward $\\to$ clipped PPO", 7.2)
     save(fig, "mappo_framework")
 
 

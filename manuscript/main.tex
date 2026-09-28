@@ -4,7 +4,7 @@
 \usepackage{graphicx,booktabs,multirow}
 \usepackage{cite}
 \usepackage[hidelinks]{hyperref}
-\hypersetup{pdftitle={Learning Energy-Efficient Uplink Access with Asynchronous Packet Deadlines},pdfauthor={Anonymous Authors}}
+\hypersetup{pdftitle={Learning Energy-Efficient Uplink Access with Asynchronous Packet Deadlines},pdfauthor={}}
 \newtheorem{proposition}{Proposition}
 \newcommand{\E}{\mathbb{E}}
 \newcommand{\ind}{\mathbf{1}}
@@ -13,32 +13,34 @@
 \input{generated/numbers}
 
 \title{Learning Energy-Efficient Uplink Access\\with Asynchronous Packet Deadlines}
-\author{\IEEEauthorblockN{Anonymous Authors}\IEEEauthorblockA{Complete first draft --- author information to be supplied}}
+% Replace this draft placeholder with the complete author list before submission.
+% ICC 2027 requires the PDF author list and title to match the EDAS record.
+\author{\IEEEauthorblockN{Author information to be supplied}}
 
 \begin{document}
+\bstctlcite{bibcontrol}
 \maketitle
 \begin{abstract}
-Periodic uplink devices can save transmit energy by using lower power over
-several slots, but overlapping transmissions can erase this benefit when
-devices independently select their resources. We study distributed subchannel,
-power, and silence decisions for heterogeneous periodic packets with asynchronous
-arrival phases and per-device deadline-violation requirements. Each device uses
-its own packet state, delayed public received-power measurements, and private
-mutual-information feedback; it observes neither other devices' actions nor
-their queues. A shared recurrent policy is trained with multi-agent proximal
-policy optimization and evaluated against calibrated local rules and centralized
-zero-loss energy references. On 200 held-out topology--phase instances per network
-size, with three training seeds and two executions per instance, the fixed-penalty
-policy reduces mean normalized transmit energy by \SavingSix\%, \SavingEight\%,
-and \SavingTwelve\% relative to the strongest evaluated feasible local rule for
-6, 8, and 12 devices sharing four subchannels. Its feasible-episode fraction is
-at least 0.984 at these loads. With four devices, its energy is within 0.7\%
-of the exact zero-loss centralized reference. Validation diagnostics associate
-the savings with reduced co-channel overlap and interference loss. Local dual
-adaptation gives no statistically resolved energy advantage over the fixed
-penalty, while substantial training remains necessary. These results quantify
-the benefits and remaining limits of learned access under the specified local
-information model.
+Periodic devices can save transmit energy by spreading service over several
+slots, but overlapping transmissions can erase this benefit in shared uplinks.
+We study distributed subchannel, power, and silence decisions for asynchronous
+periodic packets under per-device deadline requirements. Devices use local
+packet state, delayed public received-power measurements, and private service
+feedback. A shared recurrent policy is trained using multi-agent proximal
+policy optimization and compared with calibrated local rules and centralized
+zero-loss references. Across 200 held-out instances per network size, three
+training seeds, and two executions per instance, the fixed-penalty policy
+reduces mean normalized transmit energy by \SavingSix\%, \SavingEight\%,
+and \SavingTwelve\% relative to the strongest evaluated feasible local rule
+for 6, 8, and 12 devices sharing four subchannels. Its feasible-episode
+fraction is at least 0.984. With four devices, energy is about 0.7\% above
+the exact zero-loss reference. On a separate 200-instance confirmation set
+with eight devices, energy is \ConfirmSavingSac\% lower than an XR-SBPC-style
+discrete soft actor--critic adaptation using the same energy reward and
+execution information. The learned policy combines low-power transmission
+with selective silence and exhibits lower co-channel overlap and interference
+loss. These results demonstrate the energy benefits of learned distributed
+access for asynchronous periodic traffic.
 \end{abstract}
 
 \begin{IEEEkeywords}

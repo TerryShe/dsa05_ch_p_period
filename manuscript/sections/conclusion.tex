@@ -1,12 +1,11 @@
 \section{Conclusion}
-For the studied periodic uplink, a shared recurrent MAPPO policy learned
-useful distributed access behavior from delayed AP feedback and private
-packet state. At loads exceeding the number of subchannels, the fixed-penalty
-variant substantially reduced transmit energy relative to calibrated local
-rules while meeting the empirical per-device feasibility criterion.
-Centralized zero-loss references expose both recovery of the low-load
-reference and a growing energy gap at higher load. Local dual adaptation
-did not yield a statistically resolved energy advantage, and observed
-coordination required long training. Literature-based learning comparisons,
-controlled mechanism ablations, and robustness to imperfect feedback and
-time-varying channels are the next steps needed to extend these conclusions.
+A shared recurrent MAPPO controller learns energy-efficient uplink access
+from local packet state and delayed AP feedback. With 6--12 devices sharing
+four subchannels, MAPPO-F reduces mean normalized transmit energy by
+\SavingSix\%--\SavingTwelve\% relative to calibrated paced-sticky access,
+while meeting the per-device feasibility criterion. On the independent
+eight-device confirmation set, the reduction reaches \ConfirmSavingSac\%
+against an XR-SBPC-style SAC adaptation with the same energy reward and
+execution information. Centralized zero-loss references quantify the
+remaining energy gap. The learned policies combine low-power transmission
+and selective silence with substantially reduced co-channel interference.

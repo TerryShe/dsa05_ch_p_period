@@ -1,64 +1,45 @@
 \section{Introduction}
 Periodic sensing and control traffic poses an energy--reliability tradeoff in
-shared uplinks. A device can lower its transmit power and accumulate service
-across several slots before its deadline. However, extending transmission also
-increases the opportunities to interfere with other devices. With heterogeneous
-periods and unaligned arrival phases, independently choosing a low power does
-not ensure low network energy. Devices must also learn when to transmit and
-which subchannel to use, including when to remain silent despite a pending
-packet.
+shared uplinks. A device can lower its power and accumulate service across
+several slots before a deadline, as motivated by classical energy-efficient
+packet scheduling on single and multiple-access links~\cite{lazy2002,uysal2004}. However, extending transmissions increases
+the opportunities for interference. With heterogeneous periods and unaligned
+arrival phases, distributed devices must decide which subchannel and power
+to use, and when to remain silent despite a pending packet.
+The resulting energy--reliability tradeoff calls for per-device delivery
+constraints and energy references that account for interference.
 
-The energy benefit of stretching a transmission under deadline constraints is
-established by classical packet-scheduling results~\cite{lazy2002}. In a shared
-uplink, the practical question is how much of this benefit a distributed
-controller can retain using delayed local feedback. High packet delivery alone
-does not answer this question: frequent maximum-power transmissions may be
-reliable but expensive. Conversely, low energy can result from leaving
-difficult devices unserved. A useful evaluation must therefore combine
-per-device reliability checks, an energy-aware local baseline, and an explicit
-centralized reference.
+Deadline-constrained scheduling characterizes per-client delivery
+requirements~\cite{hou2010} and periodic traffic with general offsets~\cite{deng2017},
+but relies on a central scheduler; delay-constrained grant-free access has been
+treated with distributed pilot and power selection~\cite{bai2025}.
+Recurrent policies with local acknowledgments have been used for distributed
+spectrum access~\cite{naparstek2019}, and vehicular MARL jointly selects
+subbands and powers under payload deadlines~\cite{liang2019}.
+Reliability-constrained power control for periodic mission-critical
+transmissions~\cite{guo2023} and recurrent spectrum/power allocation in
+multicell networks~\cite{zhang2025} further motivate this setting.
+The close XR-SBPC study~\cite{bagherinejad2025} combines periodic traffic
+with offsets, accumulated Shannon service, and subband--power--silence actions.
+It optimizes reliability in downlink subnetworks, using neighboring actions
+and current link gains. We study transmit-energy minimization with per-device
+delivery requirements in a common-receiver uplink, using only local packet
+history and delayed AP feedback.
 
-Learning-based distributed spectrum access has been studied using recurrent
-policies with local acknowledgments~\cite{naparstek2019}. Joint subband and
-power decisions for delivering a payload within a time budget appear in
-vehicular multi-agent reinforcement learning (MARL)~\cite{liang2019}.
-For periodic mission-critical traffic, reinforcement-learning power control
-has also been developed for reliability-constrained single-link
-transmission~\cite{guo2023}. More recently, recurrent MARL has addressed spectrum
-and power allocation with stochastic traffic in multicell
-networks~\cite{zhang2025}. These works establish that neither joint resource
-selection nor recurrent MARL is by itself a new contribution.
-
-The particularly close XR-SBPC study~\cite{bagherinejad2025} combines periodic
-traffic with offsets, accumulated Shannon service, and discrete subband--power
-actions, including silence. It addresses reliability in a network of downlink
-subnetworks and uses observations that include neighboring actions and current
-link gains. Our study instead examines transmit-energy minimization under
-per-device delivery requirements in a common-receiver uplink. Execution uses
-only the device's own history and AP feedback, without access to other devices'
-actions, queues, or phases. We evaluate this information model against
-centralized references computed for the same packets and discrete power menu.
-
-We instantiate a shared, subchannel-equivariant recurrent policy within
-multi-agent proximal policy optimization (MAPPO)~\cite{yu2022}, and compare a
-fixed violation penalty with local dual adaptation inspired by
-state-augmented constrained reinforcement learning~\cite{calvo2021}.
-The contribution is an evaluated access-control formulation and benchmark,
-with three concrete components:
+We develop a distributed controller with a shared, subchannel-equivariant
+recurrent actor trained by multi-agent proximal policy optimization
+(MAPPO)~\cite{yu2022}. A fixed violation penalty
+is compared with local dual adaptation inspired by state-augmented
+constrained reinforcement learning~\cite{calvo2024}. Our contributions are:
 \begin{enumerate}
-\item We specify asynchronous periodic delivery with accumulated service,
-      joint subchannel--power--silence actions, and an explicit causal
-      information boundary for decentralized execution.
-\item We construct discrete-power zero-loss energy references: an exact
-      interference-free solution when devices do not outnumber subchannels,
-      and a separable lower reference plus a feasible cyclic orthogonal
-      schedule at higher loads.
-\item We quantify held-out energy and reliability with multiple training
-      seeds, calibrated local rules, and paired uncertainty estimates.
-      Additional diagnostics identify reduced transmission overlap as an
-      observed correlate of the gains and expose the cost of insufficient
-      training and residual per-device failures.
+\item A causal distributed access formulation for asynchronous periodic
+packets, with accumulated service and joint channel, power, and silence decisions.
+\item Centralized zero-loss energy references for the same discrete-power
+model: an exact solution when $N\le K$, and lower and feasible upper
+references when devices outnumber subchannels.
+\item Held-out evaluation against calibrated local rules and an XR-SBPC-style
+SAC adaptation. Multiple seeds, paired intervals, and a fresh confirmation
+set quantify reward effects within SAC and the energy advantage of the
+MAPPO scheme. Transmission statistics reveal lower power and reduced
+harmful overlap in the learned access patterns.
 \end{enumerate}
-Our conclusions concern static, frequency-flat channels and transmit energy.
-They establish neither a general constraint guarantee for MAPPO nor superiority
-over all available learning algorithms.

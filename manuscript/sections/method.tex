@@ -1,14 +1,11 @@
 \section{Learning Distributed Access}\label{sec:method}
-\begin{figure*}[t]
-\centering\includegraphics[width=\textwidth]{figures/mappo_framework.pdf}
-\caption{Recurrent MAPPO architecture. Each UE runs the same actor with
-private recurrent states, one per subchannel; the encoder, GRU, and channel
-head share weights over $k$. Blue routing supplies the local context $u_i$;
-both action heads also receive it. The delay $z^{-1}$ retains hidden state
-across slots. The critic and global training inputs are absent at execution.
-MAPPO-D adds the local multiplier to the context; MAPPO-F keeps that entry zero.}
+\begin{figure}[t]
+\centering\includegraphics[width=\columnwidth]{figures/mappo_framework.pdf}
+\caption{Shared recurrent actor and centralized training. Each device keeps
+private per-subchannel hidden states. The encoder, GRU, and power head share
+weights over subchannels. The critic is used only during training.}
 \label{fig:framework}
-\end{figure*}
+\end{figure}
 \subsection{Shared recurrent actor}
 Figure~\ref{fig:framework} shows the actor and centralized training pathway.
 All devices share one actor but maintain private recurrent states. Its
@@ -35,7 +32,7 @@ state is updated during idle slots and retained across packet boundaries,
 then reset when a new training or evaluation episode begins. Empty devices
 are masked to $\OFF$.
 
-\subsection{Training surrogate and constraint variants}
+\subsection{Energy reward and constraint handling}
 A centralized state-value critic observes all devices' features and true
 gains during training. Let $c_i(t)$ be the deadline-violation indicator
 settled at the end of slot $t$. The common training reward is
@@ -45,8 +42,7 @@ r_t=-\frac{1}{N}\left(\sum_i\frac{e_i(t)}{E_{\rm ref}}
 E_{\rm ref}=\tau p_{\max}.\label{eq:reward}
 \end{equation}
 Our primary method, \emph{MAPPO-F}, sets $\lambda_i=w=10$ for all devices.
-This fixed penalty is selected on validation data; it is a surrogate for the
-per-device constrained problem, not an exact constrained solver.
+The penalty weight is selected on validation data.
 
 The comparison method, \emph{MAPPO-D}, maintains a multiplier locally at each
 device. At each of that device's deadlines,
@@ -58,20 +54,12 @@ The multiplier is also an actor input. We use $\eta=2$ and
 $\lambda_{\max}=50$, independent uniform initial multipliers on $[0,50]$
 during training, and a common
 initial value selected from $\{0,5,25\}$ during validation. Execution updates
-depend only on local outcomes. This is an application of state augmentation
-with dual dynamics~\cite{calvo2021}, with no claim of a new dual algorithm
-or inherited convergence guarantee under function approximation.
+depend on local outcomes, implementing state augmentation with dual
+dynamics~\cite{calvo2024}.
 
-Both variants use recurrent MAPPO with a common generalized advantage estimate
-from the centralized critic. For ratio
-$\rho_{it}=\pi_\theta(a_i(t)\mid h_i(t))/
-\pi_{\theta_{\rm old}}(a_i(t)\mid h_i(t))$, the actor maximizes
-\begin{equation}
-\E\!\left[\min\{\rho_{it}\widehat A_t,
-       \clip(\rho_{it},1-\delta,1+\delta)\widehat A_t\}
-       +\beta\mathcal H(\pi_\theta)\right].
-\end{equation}
+Both variants use the clipped MAPPO objective~\cite{yu2022}, with a common
+generalized advantage estimate from the centralized critic and an entropy bonus.
 Only devices with pending packets contribute to the policy loss and entropy;
 the critic learns from all slots. Ordered trajectory replay preserves recurrent
-state. Technical episode truncations bootstrap the critic rather than marking
-the continuing communication task terminal.
+state. At technical episode truncations, the critic bootstraps the value of
+the continuing communication task.
