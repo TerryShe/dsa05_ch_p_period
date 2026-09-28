@@ -1,0 +1,357 @@
+{
+  "provenance": {
+    "commit": "70fbe810c6649fd7cb92e55cb38111bafbcf6730",
+    "dirty": false
+  },
+  "scenario": "configs/scenario-v1-n8.toml",
+  "instances": [
+    10000,
+    10001,
+    10002,
+    10003,
+    10004,
+    10005,
+    10006,
+    10007,
+    10008,
+    10009,
+    10010,
+    10011,
+    10012,
+    10013,
+    10014,
+    10015,
+    10016,
+    10017,
+    10018,
+    10019,
+    10020,
+    10021,
+    10022,
+    10023,
+    10024,
+    10025,
+    10026,
+    10027,
+    10028,
+    10029,
+    10030,
+    10031,
+    10032,
+    10033,
+    10034,
+    10035,
+    10036,
+    10037,
+    10038,
+    10039,
+    10040,
+    10041,
+    10042,
+    10043,
+    10044,
+    10045,
+    10046,
+    10047,
+    10048,
+    10049,
+    10050,
+    10051,
+    10052,
+    10053,
+    10054,
+    10055,
+    10056,
+    10057,
+    10058,
+    10059,
+    10060,
+    10061,
+    10062,
+    10063
+  ],
+  "checkpoints": [
+    "v1s-g05-s101=outputs/exp005/n8-v1s-g05-seed101/checkpoints/step-005000000.pt",
+    "v1s-g05-s202=outputs/exp005/n8-v1s-g05-seed202/checkpoints/step-007000000.pt",
+    "v1s-g05-s303=outputs/exp005/n8-v1s-g05-seed303/checkpoints/step-003000000.pt",
+    "v1s-g099-s101=outputs/exp005/n8-v1s-g099-seed101/checkpoints/step-020000000.pt",
+    "v1s-g099-s202=outputs/exp005/n8-v1s-g099-seed202/checkpoints/step-004000000.pt",
+    "v1s-g099-s303=outputs/exp005/n8-v1s-g099-seed303/checkpoints/step-020000000.pt"
+  ],
+  "baselines": [],
+  "results": {
+    "v1s-g05-s101": {
+      "episodes": 64,
+      "energy_over_lower": 8.163713741927946,
+      "duty": 0.9993257871344576,
+      "collision_share": 0.1264389001483069,
+      "interference_loss": 0.09243733831237223,
+      "overshoot_share": 0.21725038208291364,
+      "completion_slack": 0.8334283854166668,
+      "power_level_share": [
+        0.0,
+        0.010039455194033077,
+        0.0,
+        0.030429142795373475,
+        0.9595314020105935
+      ],
+      "energy_over_solo_by_distance": {
+        "0-50": 31.547867224009664,
+        "50-75": 13.671859677451764,
+        "75-100": 5.6140398798173825
+      },
+      "energy_over_solo_by_period": {
+        "10": 12.689253261212775,
+        "20": 10.53542973345014,
+        "40": 9.602448474917418
+      },
+      "packets": {
+        "packets": 57600,
+        "expired_share": 0.0,
+        "tx_slots_per_packet": 2.569565972222222,
+        "completion_fraction_mean": 0.16657161458333336,
+        "completion_fraction_p90": 0.2,
+        "shaping_per_packet_mean": 70.0013818640997,
+        "shaping_per_packet_p90": 166.49662939084416,
+        "noncompleting_tx_slots": 90407,
+        "noncompleting_ratio_p50": 8.146098038753307,
+        "noncompleting_ratio_p90": 16.49826784915768,
+        "noncompleting_ratio_ge_1": 0.9240987976594732
+      }
+    },
+    "v1s-g05-s202": {
+      "episodes": 64,
+      "energy_over_lower": 8.137026076513697,
+      "duty": 0.9975648937309647,
+      "collision_share": 0.11407041446689246,
+      "interference_loss": 0.08783386027243176,
+      "overshoot_share": 0.21524561626085842,
+      "completion_slack": 0.8359483506944445,
+      "power_level_share": [
+        0.0,
+        0.0,
+        0.0,
+        0.02748367985078721,
+        0.9725163201492127
+      ],
+      "energy_over_solo_by_distance": {
+        "0-50": 31.547867224009664,
+        "50-75": 13.191682257743299,
+        "75-100": 5.738487509557178
+      },
+      "energy_over_solo_by_period": {
+        "10": 12.619146889603867,
+        "20": 11.158590204261731,
+        "40": 9.568559392448899
+      },
+      "packets": {
+        "packets": 57600,
+        "expired_share": 0.0,
+        "tx_slots_per_packet": 2.5316145833333334,
+        "completion_fraction_mean": 0.16405164930555555,
+        "completion_fraction_p90": 0.2,
+        "shaping_per_packet_mean": 70.77371369267928,
+        "shaping_per_packet_p90": 166.49662939084416,
+        "noncompleting_tx_slots": 88221,
+        "noncompleting_ratio_p50": 8.207378340972442,
+        "noncompleting_ratio_p90": 16.760777345721056,
+        "noncompleting_ratio_ge_1": 0.9392888314573627
+      }
+    },
+    "v1s-g05-s303": {
+      "episodes": 64,
+      "energy_over_lower": 7.732615154691486,
+      "duty": 1.0,
+      "collision_share": 0.17819557229641483,
+      "interference_loss": 0.13645788686664106,
+      "overshoot_share": 0.17699662137672856,
+      "completion_slack": 0.8292708333333334,
+      "power_level_share": [
+        0.0,
+        0.0,
+        0.0,
+        0.19805192706683816,
+        0.8019480729331618
+      ],
+      "energy_over_solo_by_distance": {
+        "0-50": 25.118864315095795,
+        "50-75": 12.805323134034307,
+        "75-100": 5.439278975331608
+      },
+      "energy_over_solo_by_period": {
+        "10": 8.958266825502314,
+        "20": 11.471951717821698,
+        "40": 11.214281427382765
+      },
+      "packets": {
+        "packets": 57600,
+        "expired_share": 0.0,
+        "tx_slots_per_packet": 2.686111111111111,
+        "completion_fraction_mean": 0.1707291666666667,
+        "completion_fraction_p90": 0.25,
+        "shaping_per_packet_mean": 71.37331751799157,
+        "shaping_per_packet_p90": 167.0300429857075,
+        "noncompleting_tx_slots": 97120,
+        "noncompleting_ratio_p50": 7.778652732273416,
+        "noncompleting_ratio_p90": 16.33581780870513,
+        "noncompleting_ratio_ge_1": 0.9194192751235585
+      }
+    },
+    "v1s-g099-s101": {
+      "episodes": 64,
+      "energy_over_lower": 8.925794880217891,
+      "duty": 1.0,
+      "collision_share": 0.3915269201566,
+      "interference_loss": 0.28629783582471996,
+      "overshoot_share": 0.18370979579151991,
+      "completion_slack": 0.7586019826863453,
+      "power_level_share": [
+        0.0,
+        0.0,
+        0.0,
+        0.48239195163764326,
+        0.5176080483623567
+      ],
+      "energy_over_solo_by_distance": {
+        "0-50": 21.03191148267311,
+        "50-75": 12.619146889603867,
+        "75-100": 5.729014708377641
+      },
+      "energy_over_solo_by_period": {
+        "10": 15.46936696911612,
+        "20": 8.076112296183375,
+        "40": 10.814109275765253
+      },
+      "packets": {
+        "packets": 57600,
+        "expired_share": 0.00038194444444444446,
+        "tx_slots_per_packet": 3.8485243055555554,
+        "completion_fraction_mean": 0.24131221994511795,
+        "completion_fraction_p90": 0.5,
+        "shaping_per_packet_mean": 77.86670063707955,
+        "shaping_per_packet_p90": 190.58794882583737,
+        "noncompleting_tx_slots": 164075,
+        "noncompleting_ratio_p50": 4.626617521330036,
+        "noncompleting_ratio_p90": 12.904167816886295,
+        "noncompleting_ratio_ge_1": 0.8514277007466098
+      }
+    },
+    "v1s-g099-s202": {
+      "episodes": 64,
+      "energy_over_lower": 6.053495945178196,
+      "duty": 1.0,
+      "collision_share": 0.32688617319550617,
+      "interference_loss": 0.23854584130980144,
+      "overshoot_share": 0.17695960195789928,
+      "completion_slack": 0.7589137275224332,
+      "power_level_share": [
+        0.0,
+        0.0,
+        0.2936064824003521,
+        0.48621454397970365,
+        0.22017897361994426
+      ],
+      "energy_over_solo_by_distance": {
+        "0-50": 12.559432157547896,
+        "50-75": 8.487307029354488,
+        "75-100": 4.488202645917604
+      },
+      "energy_over_solo_by_period": {
+        "10": 9.827596163565019,
+        "20": 7.12365675814357,
+        "40": 3.0559350907256095
+      },
+      "packets": {
+        "packets": 57600,
+        "expired_share": 0.0009201388888888889,
+        "tx_slots_per_packet": 4.023888888888889,
+        "completion_fraction_mean": 0.24095869463221367,
+        "completion_fraction_p90": 0.425,
+        "shaping_per_packet_mean": 82.33925312663219,
+        "shaping_per_packet_p90": 208.9095852921535,
+        "noncompleting_tx_slots": 174176,
+        "noncompleting_ratio_p50": 4.708223958093037,
+        "noncompleting_ratio_p90": 11.979485818977876,
+        "noncompleting_ratio_ge_1": 0.8807470604446077
+      }
+    },
+    "v1s-g099-s303": {
+      "episodes": 64,
+      "energy_over_lower": 8.714374200539632,
+      "duty": 1.0,
+      "collision_share": 0.3516716115055605,
+      "interference_loss": 0.26075899665626223,
+      "overshoot_share": 0.18894654673914676,
+      "completion_slack": 0.7560534686151298,
+      "power_level_share": [
+        0.0,
+        0.0,
+        0.0,
+        0.4153937807641222,
+        0.5846062192358779
+      ],
+      "energy_over_solo_by_distance": {
+        "0-50": 25.118864315095795,
+        "50-75": 12.619146889603865,
+        "75-100": 5.920096981524762
+      },
+      "energy_over_solo_by_period": {
+        "10": 8.372954771698598,
+        "20": 12.34316073657392,
+        "40": 12.020825636125391
+      },
+      "packets": {
+        "packets": 57600,
+        "expired_share": 0.0011805555555555556,
+        "tx_slots_per_packet": 3.555364583333333,
+        "completion_fraction_mean": 0.24373348745046236,
+        "completion_fraction_p90": 0.5,
+        "shaping_per_packet_mean": 79.16787768295649,
+        "shaping_per_packet_p90": 171.78449196079717,
+        "noncompleting_tx_slots": 147189,
+        "noncompleting_ratio_p50": 5.720213551890077,
+        "noncompleting_ratio_p90": 13.855408369650926,
+        "noncompleting_ratio_ge_1": 0.872381767659268
+      }
+    },
+    "central-upper-bound": {
+      "episodes": 64,
+      "energy_over_lower": 1.1385122613894687,
+      "duty": 0.6871121701901615,
+      "collision_share": 0.0,
+      "interference_loss": 0.0,
+      "overshoot_share": 0.056861103943766034,
+      "completion_slack": 0.33535156250000003,
+      "power_level_share": [
+        0.3154276735736031,
+        0.6432289109299814,
+        0.0413434154964156,
+        0.0,
+        0.0
+      ],
+      "energy_over_solo_by_distance": {
+        "0-50": 1.0,
+        "50-75": 1.3291192768013844,
+        "75-100": 1.0794314841841761
+      },
+      "energy_over_solo_by_period": {
+        "10": 1.0737073218802073,
+        "20": 1.102655131672949,
+        "40": 1.100215163443658
+      },
+      "packets": {
+        "packets": 57600,
+        "expired_share": 0.0,
+        "tx_slots_per_packet": 7.95546875,
+        "completion_fraction_mean": 0.6646484375,
+        "completion_fraction_p90": 1.0,
+        "shaping_per_packet_mean": 50.85404358628376,
+        "shaping_per_packet_p90": 119.07295660629352,
+        "noncompleting_tx_slots": 400635,
+        "noncompleting_ratio_p50": 1.9440715227188408,
+        "noncompleting_ratio_p90": 4.696320403446011,
+        "noncompleting_ratio_ge_1": 1.0
+      }
+    }
+  }
+}

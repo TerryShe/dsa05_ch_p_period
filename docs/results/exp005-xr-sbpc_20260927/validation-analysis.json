@@ -1,0 +1,2317 @@
+{
+  "commit": "4e38cbae6b0d6841d824c8e85b6c0efd444d7f78",
+  "baseline_e_over_ub": 2.871,
+  "runs": [
+    {
+      "path": "outputs/exp005/n8-v1-g05-seed101",
+      "profile": "v1-g05",
+      "seed": 101,
+      "commit": "4e38cbae6b0d6841d824c8e85b6c0efd444d7f78",
+      "result_sha256": "cf423ae5ae25973dd9ec484fa68cb1931abfb0923672364ff72eeb21da78d013",
+      "wall_h": 18.067822805889495,
+      "selected": "step-018000000",
+      "selected_feasible": 1.0,
+      "selected_e_over_ub": 7.554633122945976,
+      "final_feasible": 0.984375,
+      "final_e_over_ub": 7.6923828334129665,
+      "efficiency": {
+        "feasible_below_baseline": null,
+        "e_over_ub_at_most_1_5": null
+      },
+      "curve": [
+        {
+          "slots": 0,
+          "feasible": 0.65625,
+          "e_over_ub": 5.592303602119363
+        },
+        {
+          "slots": 1000000,
+          "feasible": 0.96875,
+          "e_over_ub": 8.625986958358686
+        },
+        {
+          "slots": 2000000,
+          "feasible": 0.96875,
+          "e_over_ub": 8.906445334986442
+        },
+        {
+          "slots": 3000000,
+          "feasible": 0.96875,
+          "e_over_ub": 8.577613523372136
+        },
+        {
+          "slots": 4000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.137026900175446
+        },
+        {
+          "slots": 5000000,
+          "feasible": 0.984375,
+          "e_over_ub": 7.990697329197954
+        },
+        {
+          "slots": 6000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.14655881607803
+        },
+        {
+          "slots": 7000000,
+          "feasible": 0.984375,
+          "e_over_ub": 8.225749480028982
+        },
+        {
+          "slots": 8000000,
+          "feasible": 0.984375,
+          "e_over_ub": 8.4745389407345
+        },
+        {
+          "slots": 9000000,
+          "feasible": 0.984375,
+          "e_over_ub": 8.62417337197509
+        },
+        {
+          "slots": 10000000,
+          "feasible": 0.984375,
+          "e_over_ub": 9.224306075852741
+        },
+        {
+          "slots": 11000000,
+          "feasible": 0.984375,
+          "e_over_ub": 8.703679788276153
+        },
+        {
+          "slots": 12000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.453967525201985
+        },
+        {
+          "slots": 13000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.5203018248076
+        },
+        {
+          "slots": 14000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.45389159420431
+        },
+        {
+          "slots": 15000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.16491799182415
+        },
+        {
+          "slots": 16000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.305128374921077
+        },
+        {
+          "slots": 17000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.089092356174636
+        },
+        {
+          "slots": 18000000,
+          "feasible": 1.0,
+          "e_over_ub": 7.554633122945976
+        },
+        {
+          "slots": 19000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.540316677925865
+        },
+        {
+          "slots": 20000000,
+          "feasible": 0.984375,
+          "e_over_ub": 7.6923828334129665
+        }
+      ]
+    },
+    {
+      "path": "outputs/exp005/n8-v1-g05-seed202",
+      "profile": "v1-g05",
+      "seed": 202,
+      "commit": "4e38cbae6b0d6841d824c8e85b6c0efd444d7f78",
+      "result_sha256": "c79c5065a7018f19361d355b8605bd4c247592e975e9bea92d520ed7c2791b83",
+      "wall_h": 17.575667747880605,
+      "selected": "step-001000000",
+      "selected_feasible": 1.0,
+      "selected_e_over_ub": 6.780866537354251,
+      "final_feasible": 1.0,
+      "final_e_over_ub": 8.163980794687077,
+      "efficiency": {
+        "feasible_below_baseline": null,
+        "e_over_ub_at_most_1_5": null
+      },
+      "curve": [
+        {
+          "slots": 0,
+          "feasible": 0.671875,
+          "e_over_ub": 5.521133072623262
+        },
+        {
+          "slots": 1000000,
+          "feasible": 1.0,
+          "e_over_ub": 6.780866537354251
+        },
+        {
+          "slots": 2000000,
+          "feasible": 1.0,
+          "e_over_ub": 6.789709313995559
+        },
+        {
+          "slots": 3000000,
+          "feasible": 1.0,
+          "e_over_ub": 7.1866141236389485
+        },
+        {
+          "slots": 4000000,
+          "feasible": 1.0,
+          "e_over_ub": 7.370971282024231
+        },
+        {
+          "slots": 5000000,
+          "feasible": 1.0,
+          "e_over_ub": 7.467373665222603
+        },
+        {
+          "slots": 6000000,
+          "feasible": 1.0,
+          "e_over_ub": 7.546473600217988
+        },
+        {
+          "slots": 7000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.46238780613866
+        },
+        {
+          "slots": 8000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.474447879485531
+        },
+        {
+          "slots": 9000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.516637070820764
+        },
+        {
+          "slots": 10000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.189986471971835
+        },
+        {
+          "slots": 11000000,
+          "feasible": 1.0,
+          "e_over_ub": 7.898396250097209
+        },
+        {
+          "slots": 12000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.185049926877038
+        },
+        {
+          "slots": 13000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.143769960290152
+        },
+        {
+          "slots": 14000000,
+          "feasible": 0.984375,
+          "e_over_ub": 8.016657170048891
+        },
+        {
+          "slots": 15000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.375990054195045
+        },
+        {
+          "slots": 16000000,
+          "feasible": 0.984375,
+          "e_over_ub": 8.586674439970746
+        },
+        {
+          "slots": 17000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.367356759755651
+        },
+        {
+          "slots": 18000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.332210387512376
+        },
+        {
+          "slots": 19000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.029658461587582
+        },
+        {
+          "slots": 20000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.163980794687077
+        }
+      ]
+    },
+    {
+      "path": "outputs/exp005/n8-v1-g05-seed303",
+      "profile": "v1-g05",
+      "seed": 303,
+      "commit": "4e38cbae6b0d6841d824c8e85b6c0efd444d7f78",
+      "result_sha256": "c537ce95b6a486801402928e6df155ace3cfc27059a2d1f6235b55bd257efa99",
+      "wall_h": 17.47515979340727,
+      "selected": "step-001000000",
+      "selected_feasible": 1.0,
+      "selected_e_over_ub": 8.100596503276547,
+      "final_feasible": 1.0,
+      "final_e_over_ub": 8.758405629427408,
+      "efficiency": {
+        "feasible_below_baseline": null,
+        "e_over_ub_at_most_1_5": null
+      },
+      "curve": [
+        {
+          "slots": 0,
+          "feasible": 0.6875,
+          "e_over_ub": 5.565123293549613
+        },
+        {
+          "slots": 1000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.100596503276547
+        },
+        {
+          "slots": 2000000,
+          "feasible": 0.984375,
+          "e_over_ub": 9.398271897454212
+        },
+        {
+          "slots": 3000000,
+          "feasible": 0.953125,
+          "e_over_ub": 10.501799400364993
+        },
+        {
+          "slots": 4000000,
+          "feasible": 0.953125,
+          "e_over_ub": 10.793207520017368
+        },
+        {
+          "slots": 5000000,
+          "feasible": 0.90625,
+          "e_over_ub": 10.813492008032366
+        },
+        {
+          "slots": 6000000,
+          "feasible": 0.96875,
+          "e_over_ub": 10.448169948781924
+        },
+        {
+          "slots": 7000000,
+          "feasible": 1.0,
+          "e_over_ub": 9.075716102266854
+        },
+        {
+          "slots": 8000000,
+          "feasible": 0.984375,
+          "e_over_ub": 9.193722209802289
+        },
+        {
+          "slots": 9000000,
+          "feasible": 0.984375,
+          "e_over_ub": 9.270201729312927
+        },
+        {
+          "slots": 10000000,
+          "feasible": 0.984375,
+          "e_over_ub": 9.0674945453575
+        },
+        {
+          "slots": 11000000,
+          "feasible": 0.984375,
+          "e_over_ub": 8.82853721971146
+        },
+        {
+          "slots": 12000000,
+          "feasible": 1.0,
+          "e_over_ub": 9.016735831752195
+        },
+        {
+          "slots": 13000000,
+          "feasible": 0.984375,
+          "e_over_ub": 8.961961660836693
+        },
+        {
+          "slots": 14000000,
+          "feasible": 1.0,
+          "e_over_ub": 9.073077471344192
+        },
+        {
+          "slots": 15000000,
+          "feasible": 0.984375,
+          "e_over_ub": 9.071580433756523
+        },
+        {
+          "slots": 16000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.857977365257177
+        },
+        {
+          "slots": 17000000,
+          "feasible": 0.984375,
+          "e_over_ub": 9.251944556328574
+        },
+        {
+          "slots": 18000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.800196318662621
+        },
+        {
+          "slots": 19000000,
+          "feasible": 0.984375,
+          "e_over_ub": 9.263852379824908
+        },
+        {
+          "slots": 20000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.758405629427408
+        }
+      ]
+    },
+    {
+      "path": "outputs/exp005/n8-v1-g099-seed101",
+      "profile": "v1-g099",
+      "seed": 101,
+      "commit": "4e38cbae6b0d6841d824c8e85b6c0efd444d7f78",
+      "result_sha256": "f01a335c7e67e08796d6d753f25cb00be10d0bd9de814df354627a3e498f4eb2",
+      "wall_h": 17.729447938004743,
+      "selected": "step-010000000",
+      "selected_feasible": 0.953125,
+      "selected_e_over_ub": 9.494117642772189,
+      "final_feasible": 0.875,
+      "final_e_over_ub": 11.330783614415926,
+      "efficiency": {
+        "feasible_below_baseline": null,
+        "e_over_ub_at_most_1_5": null
+      },
+      "curve": [
+        {
+          "slots": 0,
+          "feasible": 0.65625,
+          "e_over_ub": 5.592303602119363
+        },
+        {
+          "slots": 1000000,
+          "feasible": 0.140625,
+          "e_over_ub": 24.07752455405926
+        },
+        {
+          "slots": 2000000,
+          "feasible": 0.75,
+          "e_over_ub": 10.448945236410978
+        },
+        {
+          "slots": 3000000,
+          "feasible": 0.84375,
+          "e_over_ub": 10.189740173464902
+        },
+        {
+          "slots": 4000000,
+          "feasible": 0.875,
+          "e_over_ub": 9.228919381081234
+        },
+        {
+          "slots": 5000000,
+          "feasible": 0.890625,
+          "e_over_ub": 10.259973678922183
+        },
+        {
+          "slots": 6000000,
+          "feasible": 0.828125,
+          "e_over_ub": 10.179314803247225
+        },
+        {
+          "slots": 7000000,
+          "feasible": 0.90625,
+          "e_over_ub": 10.07182625371798
+        },
+        {
+          "slots": 8000000,
+          "feasible": 0.90625,
+          "e_over_ub": 9.892808245456497
+        },
+        {
+          "slots": 9000000,
+          "feasible": 0.84375,
+          "e_over_ub": 9.97298378474048
+        },
+        {
+          "slots": 10000000,
+          "feasible": 0.953125,
+          "e_over_ub": 9.494117642772189
+        },
+        {
+          "slots": 11000000,
+          "feasible": 0.875,
+          "e_over_ub": 9.645368931020194
+        },
+        {
+          "slots": 12000000,
+          "feasible": 0.90625,
+          "e_over_ub": 9.707635829672416
+        },
+        {
+          "slots": 13000000,
+          "feasible": 0.90625,
+          "e_over_ub": 10.26188746859016
+        },
+        {
+          "slots": 14000000,
+          "feasible": 0.921875,
+          "e_over_ub": 10.270862388164225
+        },
+        {
+          "slots": 15000000,
+          "feasible": 0.921875,
+          "e_over_ub": 9.706494434502673
+        },
+        {
+          "slots": 16000000,
+          "feasible": 0.953125,
+          "e_over_ub": 9.828291945833351
+        },
+        {
+          "slots": 17000000,
+          "feasible": 0.8125,
+          "e_over_ub": 10.886451447104228
+        },
+        {
+          "slots": 18000000,
+          "feasible": 0.9375,
+          "e_over_ub": 9.739308017344012
+        },
+        {
+          "slots": 19000000,
+          "feasible": 0.90625,
+          "e_over_ub": 10.261069771424625
+        },
+        {
+          "slots": 20000000,
+          "feasible": 0.875,
+          "e_over_ub": 11.330783614415926
+        }
+      ]
+    },
+    {
+      "path": "outputs/exp005/n8-v1-g099-seed202",
+      "profile": "v1-g099",
+      "seed": 202,
+      "commit": "4e38cbae6b0d6841d824c8e85b6c0efd444d7f78",
+      "result_sha256": "893f99a0c20dd2a6efda7967327d8a6b30434686a9b560440f5b0dd62c56aa35",
+      "wall_h": 16.97656457722226,
+      "selected": "step-018000000",
+      "selected_feasible": 1.0,
+      "selected_e_over_ub": 5.920825945667799,
+      "final_feasible": 0.984375,
+      "final_e_over_ub": 6.311572992066432,
+      "efficiency": {
+        "feasible_below_baseline": null,
+        "e_over_ub_at_most_1_5": null
+      },
+      "curve": [
+        {
+          "slots": 0,
+          "feasible": 0.671875,
+          "e_over_ub": 5.521133072623262
+        },
+        {
+          "slots": 1000000,
+          "feasible": 0.9375,
+          "e_over_ub": 8.876744214194586
+        },
+        {
+          "slots": 2000000,
+          "feasible": 0.9375,
+          "e_over_ub": 7.389141626690673
+        },
+        {
+          "slots": 3000000,
+          "feasible": 0.953125,
+          "e_over_ub": 6.995123988311326
+        },
+        {
+          "slots": 4000000,
+          "feasible": 0.984375,
+          "e_over_ub": 7.337348866568076
+        },
+        {
+          "slots": 5000000,
+          "feasible": 0.984375,
+          "e_over_ub": 6.371113013138167
+        },
+        {
+          "slots": 6000000,
+          "feasible": 0.953125,
+          "e_over_ub": 6.103899070311279
+        },
+        {
+          "slots": 7000000,
+          "feasible": 1.0,
+          "e_over_ub": 6.175474742755421
+        },
+        {
+          "slots": 8000000,
+          "feasible": 0.953125,
+          "e_over_ub": 6.356247932027304
+        },
+        {
+          "slots": 9000000,
+          "feasible": 1.0,
+          "e_over_ub": 6.204755368740844
+        },
+        {
+          "slots": 10000000,
+          "feasible": 0.984375,
+          "e_over_ub": 6.046629610889937
+        },
+        {
+          "slots": 11000000,
+          "feasible": 0.9375,
+          "e_over_ub": 6.8852888245194475
+        },
+        {
+          "slots": 12000000,
+          "feasible": 0.984375,
+          "e_over_ub": 6.156917552257852
+        },
+        {
+          "slots": 13000000,
+          "feasible": 0.96875,
+          "e_over_ub": 6.199284326497917
+        },
+        {
+          "slots": 14000000,
+          "feasible": 0.984375,
+          "e_over_ub": 6.1390719188690515
+        },
+        {
+          "slots": 15000000,
+          "feasible": 0.921875,
+          "e_over_ub": 6.188128808319158
+        },
+        {
+          "slots": 16000000,
+          "feasible": 1.0,
+          "e_over_ub": 5.985292526761214
+        },
+        {
+          "slots": 17000000,
+          "feasible": 0.953125,
+          "e_over_ub": 6.344529912340066
+        },
+        {
+          "slots": 18000000,
+          "feasible": 1.0,
+          "e_over_ub": 5.920825945667799
+        },
+        {
+          "slots": 19000000,
+          "feasible": 1.0,
+          "e_over_ub": 6.264903368093108
+        },
+        {
+          "slots": 20000000,
+          "feasible": 0.984375,
+          "e_over_ub": 6.311572992066432
+        }
+      ]
+    },
+    {
+      "path": "outputs/exp005/n8-v1-g099-seed303",
+      "profile": "v1-g099",
+      "seed": 303,
+      "commit": "4e38cbae6b0d6841d824c8e85b6c0efd444d7f78",
+      "result_sha256": "2da5c835feaab3a10c002b26b5c61105fdee96687c228bebe2396731150df72a",
+      "wall_h": 16.59448230765275,
+      "selected": "step-015000000",
+      "selected_feasible": 0.96875,
+      "selected_e_over_ub": 6.780010653868039,
+      "final_feasible": 0.984375,
+      "final_e_over_ub": 7.148766769445711,
+      "efficiency": {
+        "feasible_below_baseline": null,
+        "e_over_ub_at_most_1_5": null
+      },
+      "curve": [
+        {
+          "slots": 0,
+          "feasible": 0.6875,
+          "e_over_ub": 5.565123293549613
+        },
+        {
+          "slots": 1000000,
+          "feasible": 0.953125,
+          "e_over_ub": 9.442147390095464
+        },
+        {
+          "slots": 2000000,
+          "feasible": 0.921875,
+          "e_over_ub": 8.78908370240148
+        },
+        {
+          "slots": 3000000,
+          "feasible": 0.953125,
+          "e_over_ub": 7.886100998987775
+        },
+        {
+          "slots": 4000000,
+          "feasible": 0.9375,
+          "e_over_ub": 7.651009406089663
+        },
+        {
+          "slots": 5000000,
+          "feasible": 0.9375,
+          "e_over_ub": 7.396869564597613
+        },
+        {
+          "slots": 6000000,
+          "feasible": 0.921875,
+          "e_over_ub": 7.554429440708413
+        },
+        {
+          "slots": 7000000,
+          "feasible": 0.921875,
+          "e_over_ub": 7.70694090576667
+        },
+        {
+          "slots": 8000000,
+          "feasible": 0.984375,
+          "e_over_ub": 7.495042845152082
+        },
+        {
+          "slots": 9000000,
+          "feasible": 0.96875,
+          "e_over_ub": 7.286391252277243
+        },
+        {
+          "slots": 10000000,
+          "feasible": 0.984375,
+          "e_over_ub": 7.220385580712675
+        },
+        {
+          "slots": 11000000,
+          "feasible": 1.0,
+          "e_over_ub": 6.947689371696471
+        },
+        {
+          "slots": 12000000,
+          "feasible": 1.0,
+          "e_over_ub": 7.000920573208363
+        },
+        {
+          "slots": 13000000,
+          "feasible": 1.0,
+          "e_over_ub": 6.940655603517662
+        },
+        {
+          "slots": 14000000,
+          "feasible": 1.0,
+          "e_over_ub": 7.032461552793288
+        },
+        {
+          "slots": 15000000,
+          "feasible": 0.96875,
+          "e_over_ub": 6.780010653868039
+        },
+        {
+          "slots": 16000000,
+          "feasible": 0.984375,
+          "e_over_ub": 7.075225671183395
+        },
+        {
+          "slots": 17000000,
+          "feasible": 0.96875,
+          "e_over_ub": 7.112857172749357
+        },
+        {
+          "slots": 18000000,
+          "feasible": 1.0,
+          "e_over_ub": 7.265795352113843
+        },
+        {
+          "slots": 19000000,
+          "feasible": 1.0,
+          "e_over_ub": 7.111193677281773
+        },
+        {
+          "slots": 20000000,
+          "feasible": 0.984375,
+          "e_over_ub": 7.148766769445711
+        }
+      ]
+    },
+    {
+      "path": "outputs/exp005/n8-v1s-g05-seed101",
+      "profile": "v1s-g05",
+      "seed": 101,
+      "commit": "4e38cbae6b0d6841d824c8e85b6c0efd444d7f78",
+      "result_sha256": "ca51ba1b845727f7620e7124902d46ab442f343ccb1079285af4d16770cecf43",
+      "wall_h": 17.08169212388748,
+      "selected": "step-005000000",
+      "selected_feasible": 1.0,
+      "selected_e_over_ub": 7.96711490385041,
+      "final_feasible": 0.96875,
+      "final_e_over_ub": 8.297844212922376,
+      "efficiency": {
+        "feasible_below_baseline": null,
+        "e_over_ub_at_most_1_5": null
+      },
+      "curve": [
+        {
+          "slots": 0,
+          "feasible": 0.65625,
+          "e_over_ub": 5.592303602119363
+        },
+        {
+          "slots": 1000000,
+          "feasible": 0.984375,
+          "e_over_ub": 8.44351981765655
+        },
+        {
+          "slots": 2000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.254007020229613
+        },
+        {
+          "slots": 3000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.040341733554799
+        },
+        {
+          "slots": 4000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.168049145619406
+        },
+        {
+          "slots": 5000000,
+          "feasible": 1.0,
+          "e_over_ub": 7.96711490385041
+        },
+        {
+          "slots": 6000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.094428726467108
+        },
+        {
+          "slots": 7000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.207211130867936
+        },
+        {
+          "slots": 8000000,
+          "feasible": 0.984375,
+          "e_over_ub": 8.470882405522367
+        },
+        {
+          "slots": 9000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.362771255541011
+        },
+        {
+          "slots": 10000000,
+          "feasible": 0.984375,
+          "e_over_ub": 8.326750711109376
+        },
+        {
+          "slots": 11000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.291009205886205
+        },
+        {
+          "slots": 12000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.345573714583086
+        },
+        {
+          "slots": 13000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.368218265327108
+        },
+        {
+          "slots": 14000000,
+          "feasible": 0.953125,
+          "e_over_ub": 8.851956989786732
+        },
+        {
+          "slots": 15000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.188746836478028
+        },
+        {
+          "slots": 16000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.170545640867473
+        },
+        {
+          "slots": 17000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.42434600929922
+        },
+        {
+          "slots": 18000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.175903571850013
+        },
+        {
+          "slots": 19000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.228066088324347
+        },
+        {
+          "slots": 20000000,
+          "feasible": 0.96875,
+          "e_over_ub": 8.297844212922376
+        }
+      ]
+    },
+    {
+      "path": "outputs/exp005/n8-v1s-g05-seed202",
+      "profile": "v1s-g05",
+      "seed": 202,
+      "commit": "4e38cbae6b0d6841d824c8e85b6c0efd444d7f78",
+      "result_sha256": "0442b9a7f4d8187a8ac38aa6d292c48ea23186cb9b7bee0298fd6021c260df6d",
+      "wall_h": 18.550044171951658,
+      "selected": "step-007000000",
+      "selected_feasible": 1.0,
+      "selected_e_over_ub": 7.885101470897153,
+      "final_feasible": 0.984375,
+      "final_e_over_ub": 8.252417045453665,
+      "efficiency": {
+        "feasible_below_baseline": null,
+        "e_over_ub_at_most_1_5": null
+      },
+      "curve": [
+        {
+          "slots": 0,
+          "feasible": 0.671875,
+          "e_over_ub": 5.521133072623262
+        },
+        {
+          "slots": 1000000,
+          "feasible": 0.90625,
+          "e_over_ub": 9.942904963542196
+        },
+        {
+          "slots": 2000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.483111051351672
+        },
+        {
+          "slots": 3000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.486561169923863
+        },
+        {
+          "slots": 4000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.195656847969648
+        },
+        {
+          "slots": 5000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.214191542870108
+        },
+        {
+          "slots": 6000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.036985259174505
+        },
+        {
+          "slots": 7000000,
+          "feasible": 1.0,
+          "e_over_ub": 7.885101470897153
+        },
+        {
+          "slots": 8000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.125483692030706
+        },
+        {
+          "slots": 9000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.014660420844965
+        },
+        {
+          "slots": 10000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.099031150351905
+        },
+        {
+          "slots": 11000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.091530503805238
+        },
+        {
+          "slots": 12000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.008884669673314
+        },
+        {
+          "slots": 13000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.070202844599361
+        },
+        {
+          "slots": 14000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.094574637399472
+        },
+        {
+          "slots": 15000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.042428758956166
+        },
+        {
+          "slots": 16000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.225412101174317
+        },
+        {
+          "slots": 17000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.062316778989597
+        },
+        {
+          "slots": 18000000,
+          "feasible": 0.984375,
+          "e_over_ub": 8.336350740738805
+        },
+        {
+          "slots": 19000000,
+          "feasible": 1.0,
+          "e_over_ub": 7.970324104810328
+        },
+        {
+          "slots": 20000000,
+          "feasible": 0.984375,
+          "e_over_ub": 8.252417045453665
+        }
+      ]
+    },
+    {
+      "path": "outputs/exp005/n8-v1s-g05-seed303",
+      "profile": "v1s-g05",
+      "seed": 303,
+      "commit": "4e38cbae6b0d6841d824c8e85b6c0efd444d7f78",
+      "result_sha256": "b99e53ea8bf9e1014ee8ddb282b52061d777f626d45e58a59933a2f1e185a711",
+      "wall_h": 17.339979771861948,
+      "selected": "step-003000000",
+      "selected_feasible": 1.0,
+      "selected_e_over_ub": 7.4027246220083045,
+      "final_feasible": 1.0,
+      "final_e_over_ub": 8.028509836570972,
+      "efficiency": {
+        "feasible_below_baseline": null,
+        "e_over_ub_at_most_1_5": null
+      },
+      "curve": [
+        {
+          "slots": 0,
+          "feasible": 0.6875,
+          "e_over_ub": 5.565123293549613
+        },
+        {
+          "slots": 1000000,
+          "feasible": 0.921875,
+          "e_over_ub": 9.403406188047589
+        },
+        {
+          "slots": 2000000,
+          "feasible": 0.984375,
+          "e_over_ub": 7.672752461572811
+        },
+        {
+          "slots": 3000000,
+          "feasible": 1.0,
+          "e_over_ub": 7.4027246220083045
+        },
+        {
+          "slots": 4000000,
+          "feasible": 1.0,
+          "e_over_ub": 7.591007645420396
+        },
+        {
+          "slots": 5000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.265694823677832
+        },
+        {
+          "slots": 6000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.351836323837396
+        },
+        {
+          "slots": 7000000,
+          "feasible": 0.984375,
+          "e_over_ub": 8.320695476422948
+        },
+        {
+          "slots": 8000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.110932366059634
+        },
+        {
+          "slots": 9000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.344945427443285
+        },
+        {
+          "slots": 10000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.45175811841927
+        },
+        {
+          "slots": 11000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.18942987053663
+        },
+        {
+          "slots": 12000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.134591073606662
+        },
+        {
+          "slots": 13000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.153687447203993
+        },
+        {
+          "slots": 14000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.03906303598929
+        },
+        {
+          "slots": 15000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.081722157394854
+        },
+        {
+          "slots": 16000000,
+          "feasible": 0.984375,
+          "e_over_ub": 8.320943798436339
+        },
+        {
+          "slots": 17000000,
+          "feasible": 0.984375,
+          "e_over_ub": 8.169665398309725
+        },
+        {
+          "slots": 18000000,
+          "feasible": 0.984375,
+          "e_over_ub": 8.08532366808168
+        },
+        {
+          "slots": 19000000,
+          "feasible": 0.984375,
+          "e_over_ub": 8.111465541395262
+        },
+        {
+          "slots": 20000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.028509836570972
+        }
+      ]
+    },
+    {
+      "path": "outputs/exp005/n8-v1s-g099-seed101",
+      "profile": "v1s-g099",
+      "seed": 101,
+      "commit": "4e38cbae6b0d6841d824c8e85b6c0efd444d7f78",
+      "result_sha256": "a720027948f5fb409cd2e58ab01d63da63239fa642aa44f5693c83bb8e0d47cb",
+      "wall_h": 16.916297708554453,
+      "selected": "step-020000000",
+      "selected_feasible": 0.984375,
+      "selected_e_over_ub": 8.640974440376635,
+      "final_feasible": 0.984375,
+      "final_e_over_ub": 8.640974440376635,
+      "efficiency": {
+        "feasible_below_baseline": null,
+        "e_over_ub_at_most_1_5": null
+      },
+      "curve": [
+        {
+          "slots": 0,
+          "feasible": 0.65625,
+          "e_over_ub": 5.592303602119363
+        },
+        {
+          "slots": 1000000,
+          "feasible": 0.765625,
+          "e_over_ub": 9.645659848783895
+        },
+        {
+          "slots": 2000000,
+          "feasible": 0.921875,
+          "e_over_ub": 10.669558986355456
+        },
+        {
+          "slots": 3000000,
+          "feasible": 0.828125,
+          "e_over_ub": 10.089635217909667
+        },
+        {
+          "slots": 4000000,
+          "feasible": 0.875,
+          "e_over_ub": 10.053347342177943
+        },
+        {
+          "slots": 5000000,
+          "feasible": 0.96875,
+          "e_over_ub": 9.663045753265209
+        },
+        {
+          "slots": 6000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.678268466645982
+        },
+        {
+          "slots": 7000000,
+          "feasible": 1.0,
+          "e_over_ub": 9.04408201958467
+        },
+        {
+          "slots": 8000000,
+          "feasible": 0.984375,
+          "e_over_ub": 8.727502079407154
+        },
+        {
+          "slots": 9000000,
+          "feasible": 0.984375,
+          "e_over_ub": 9.115848440527424
+        },
+        {
+          "slots": 10000000,
+          "feasible": 1.0,
+          "e_over_ub": 9.33036719337463
+        },
+        {
+          "slots": 11000000,
+          "feasible": 0.921875,
+          "e_over_ub": 11.073997471595533
+        },
+        {
+          "slots": 12000000,
+          "feasible": 0.9375,
+          "e_over_ub": 10.23668086975074
+        },
+        {
+          "slots": 13000000,
+          "feasible": 0.90625,
+          "e_over_ub": 10.77552989664716
+        },
+        {
+          "slots": 14000000,
+          "feasible": 0.875,
+          "e_over_ub": 10.339736371930988
+        },
+        {
+          "slots": 15000000,
+          "feasible": 0.8125,
+          "e_over_ub": 12.44856431474515
+        },
+        {
+          "slots": 16000000,
+          "feasible": 0.828125,
+          "e_over_ub": 11.578159210898216
+        },
+        {
+          "slots": 17000000,
+          "feasible": 0.953125,
+          "e_over_ub": 8.792090664379664
+        },
+        {
+          "slots": 18000000,
+          "feasible": 0.8125,
+          "e_over_ub": 11.2805250973828
+        },
+        {
+          "slots": 19000000,
+          "feasible": 0.96875,
+          "e_over_ub": 9.015306800955381
+        },
+        {
+          "slots": 20000000,
+          "feasible": 0.984375,
+          "e_over_ub": 8.640974440376635
+        }
+      ]
+    },
+    {
+      "path": "outputs/exp005/n8-v1s-g099-seed202",
+      "profile": "v1s-g099",
+      "seed": 202,
+      "commit": "4e38cbae6b0d6841d824c8e85b6c0efd444d7f78",
+      "result_sha256": "1e0dc4ab75673715250b36658273f0431015c7d1a78efa06a864b19f7e7e262e",
+      "wall_h": 16.751316465177805,
+      "selected": "step-004000000",
+      "selected_feasible": 0.984375,
+      "selected_e_over_ub": 5.854677392520886,
+      "final_feasible": 1.0,
+      "final_e_over_ub": 7.978141718829453,
+      "efficiency": {
+        "feasible_below_baseline": null,
+        "e_over_ub_at_most_1_5": null
+      },
+      "curve": [
+        {
+          "slots": 0,
+          "feasible": 0.671875,
+          "e_over_ub": 5.521133072623262
+        },
+        {
+          "slots": 1000000,
+          "feasible": 0.765625,
+          "e_over_ub": 8.870151579435152
+        },
+        {
+          "slots": 2000000,
+          "feasible": 0.90625,
+          "e_over_ub": 7.87234210735541
+        },
+        {
+          "slots": 3000000,
+          "feasible": 0.953125,
+          "e_over_ub": 7.224183298016623
+        },
+        {
+          "slots": 4000000,
+          "feasible": 0.984375,
+          "e_over_ub": 5.854677392520886
+        },
+        {
+          "slots": 5000000,
+          "feasible": 0.921875,
+          "e_over_ub": 6.898208048816771
+        },
+        {
+          "slots": 6000000,
+          "feasible": 0.953125,
+          "e_over_ub": 7.350419662288731
+        },
+        {
+          "slots": 7000000,
+          "feasible": 0.9375,
+          "e_over_ub": 8.216670276232655
+        },
+        {
+          "slots": 8000000,
+          "feasible": 0.96875,
+          "e_over_ub": 7.111799558340055
+        },
+        {
+          "slots": 9000000,
+          "feasible": 0.890625,
+          "e_over_ub": 7.514477903346895
+        },
+        {
+          "slots": 10000000,
+          "feasible": 0.953125,
+          "e_over_ub": 7.90111729409058
+        },
+        {
+          "slots": 11000000,
+          "feasible": 0.96875,
+          "e_over_ub": 8.185424896062333
+        },
+        {
+          "slots": 12000000,
+          "feasible": 0.984375,
+          "e_over_ub": 8.003066776012018
+        },
+        {
+          "slots": 13000000,
+          "feasible": 0.984375,
+          "e_over_ub": 7.972114677785087
+        },
+        {
+          "slots": 14000000,
+          "feasible": 0.90625,
+          "e_over_ub": 7.692227404814326
+        },
+        {
+          "slots": 15000000,
+          "feasible": 1.0,
+          "e_over_ub": 7.835520207947081
+        },
+        {
+          "slots": 16000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.073648490385427
+        },
+        {
+          "slots": 17000000,
+          "feasible": 1.0,
+          "e_over_ub": 7.8521381044581124
+        },
+        {
+          "slots": 18000000,
+          "feasible": 0.984375,
+          "e_over_ub": 7.380048346491085
+        },
+        {
+          "slots": 19000000,
+          "feasible": 0.984375,
+          "e_over_ub": 7.937829306383268
+        },
+        {
+          "slots": 20000000,
+          "feasible": 1.0,
+          "e_over_ub": 7.978141718829453
+        }
+      ]
+    },
+    {
+      "path": "outputs/exp005/n8-v1s-g099-seed303",
+      "profile": "v1s-g099",
+      "seed": 303,
+      "commit": "4e38cbae6b0d6841d824c8e85b6c0efd444d7f78",
+      "result_sha256": "0dbcdd2a2ec44737ebda1d593279fa24a3ec1a99df719c5dea2d72131f4833ce",
+      "wall_h": 17.16222667807584,
+      "selected": "step-020000000",
+      "selected_feasible": 0.984375,
+      "selected_e_over_ub": 8.17408177149888,
+      "final_feasible": 0.984375,
+      "final_e_over_ub": 8.17408177149888,
+      "efficiency": {
+        "feasible_below_baseline": null,
+        "e_over_ub_at_most_1_5": null
+      },
+      "curve": [
+        {
+          "slots": 0,
+          "feasible": 0.6875,
+          "e_over_ub": 5.565123293549613
+        },
+        {
+          "slots": 1000000,
+          "feasible": 0.640625,
+          "e_over_ub": 12.224264377210634
+        },
+        {
+          "slots": 2000000,
+          "feasible": 0.703125,
+          "e_over_ub": 11.791173014640403
+        },
+        {
+          "slots": 3000000,
+          "feasible": 0.921875,
+          "e_over_ub": 9.837442448578242
+        },
+        {
+          "slots": 4000000,
+          "feasible": 0.9375,
+          "e_over_ub": 9.60287405127395
+        },
+        {
+          "slots": 5000000,
+          "feasible": 0.84375,
+          "e_over_ub": 10.092008252719774
+        },
+        {
+          "slots": 6000000,
+          "feasible": 0.96875,
+          "e_over_ub": 8.642513265581542
+        },
+        {
+          "slots": 7000000,
+          "feasible": 0.96875,
+          "e_over_ub": 8.785154991680326
+        },
+        {
+          "slots": 8000000,
+          "feasible": 0.984375,
+          "e_over_ub": 9.174215897783295
+        },
+        {
+          "slots": 9000000,
+          "feasible": 0.953125,
+          "e_over_ub": 8.556509026031138
+        },
+        {
+          "slots": 10000000,
+          "feasible": 0.875,
+          "e_over_ub": 10.577001713551137
+        },
+        {
+          "slots": 11000000,
+          "feasible": 0.96875,
+          "e_over_ub": 8.413904866437932
+        },
+        {
+          "slots": 12000000,
+          "feasible": 0.96875,
+          "e_over_ub": 8.619239127323269
+        },
+        {
+          "slots": 13000000,
+          "feasible": 0.96875,
+          "e_over_ub": 9.05024220150203
+        },
+        {
+          "slots": 14000000,
+          "feasible": 0.96875,
+          "e_over_ub": 8.780966107815203
+        },
+        {
+          "slots": 15000000,
+          "feasible": 0.984375,
+          "e_over_ub": 9.197325566398892
+        },
+        {
+          "slots": 16000000,
+          "feasible": 0.984375,
+          "e_over_ub": 10.063816038875299
+        },
+        {
+          "slots": 17000000,
+          "feasible": 0.96875,
+          "e_over_ub": 10.074258301723221
+        },
+        {
+          "slots": 18000000,
+          "feasible": 0.953125,
+          "e_over_ub": 8.941400875238749
+        },
+        {
+          "slots": 19000000,
+          "feasible": 1.0,
+          "e_over_ub": 8.917623234019462
+        },
+        {
+          "slots": 20000000,
+          "feasible": 0.984375,
+          "e_over_ub": 8.17408177149888
+        }
+      ]
+    },
+    {
+      "path": "outputs/exp005/n8-v2-g05-seed101",
+      "profile": "v2-g05",
+      "seed": 101,
+      "commit": "4e38cbae6b0d6841d824c8e85b6c0efd444d7f78",
+      "result_sha256": "cf46279a1f7b3e6199fd397da4c77e7ad2a2c2051d1f4e2ea5a0b066d986510f",
+      "wall_h": 18.285358974714956,
+      "selected": "step-000000000",
+      "selected_feasible": 0.65625,
+      "selected_e_over_ub": 5.592303602119363,
+      "final_feasible": 0.0,
+      "final_e_over_ub": 2.972387198413135,
+      "efficiency": {
+        "feasible_below_baseline": null,
+        "e_over_ub_at_most_1_5": 6000000
+      },
+      "curve": [
+        {
+          "slots": 0,
+          "feasible": 0.65625,
+          "e_over_ub": 5.592303602119363
+        },
+        {
+          "slots": 1000000,
+          "feasible": 0.0,
+          "e_over_ub": 1.5669567356778364
+        },
+        {
+          "slots": 2000000,
+          "feasible": 0.0,
+          "e_over_ub": 2.054828648266047
+        },
+        {
+          "slots": 3000000,
+          "feasible": 0.015625,
+          "e_over_ub": 3.2045177154459745
+        },
+        {
+          "slots": 4000000,
+          "feasible": 0.0,
+          "e_over_ub": 1.8391103073196322
+        },
+        {
+          "slots": 5000000,
+          "feasible": 0.0,
+          "e_over_ub": 2.9200724691505537
+        },
+        {
+          "slots": 6000000,
+          "feasible": 0.0,
+          "e_over_ub": 1.486822807109527
+        },
+        {
+          "slots": 7000000,
+          "feasible": 0.0,
+          "e_over_ub": 2.946100821488691
+        },
+        {
+          "slots": 8000000,
+          "feasible": 0.0,
+          "e_over_ub": 2.6092285588853343
+        },
+        {
+          "slots": 9000000,
+          "feasible": 0.0,
+          "e_over_ub": 3.237104703005233
+        },
+        {
+          "slots": 10000000,
+          "feasible": 0.0,
+          "e_over_ub": 2.848973336611145
+        },
+        {
+          "slots": 11000000,
+          "feasible": 0.0,
+          "e_over_ub": 2.9778575306769075
+        },
+        {
+          "slots": 12000000,
+          "feasible": 0.0,
+          "e_over_ub": 2.297652723213446
+        },
+        {
+          "slots": 13000000,
+          "feasible": 0.0,
+          "e_over_ub": 2.9027756578269917
+        },
+        {
+          "slots": 14000000,
+          "feasible": 0.0,
+          "e_over_ub": 2.7997591915326696
+        },
+        {
+          "slots": 15000000,
+          "feasible": 0.015625,
+          "e_over_ub": 3.2415798225090504
+        },
+        {
+          "slots": 16000000,
+          "feasible": 0.0,
+          "e_over_ub": 3.0172559919861497
+        },
+        {
+          "slots": 17000000,
+          "feasible": 0.0,
+          "e_over_ub": 2.770004049923984
+        },
+        {
+          "slots": 18000000,
+          "feasible": 0.0,
+          "e_over_ub": 3.220394850529098
+        },
+        {
+          "slots": 19000000,
+          "feasible": 0.0,
+          "e_over_ub": 2.7078957369531205
+        },
+        {
+          "slots": 20000000,
+          "feasible": 0.0,
+          "e_over_ub": 2.972387198413135
+        }
+      ]
+    },
+    {
+      "path": "outputs/exp005/n8-v2-g05-seed202",
+      "profile": "v2-g05",
+      "seed": 202,
+      "commit": "4e38cbae6b0d6841d824c8e85b6c0efd444d7f78",
+      "result_sha256": "f61ba27dc06b4ff355fb7752c68ff0c7fa71fcb8ea3f76931115bef5c9154869",
+      "wall_h": 18.792472554823036,
+      "selected": "step-000000000",
+      "selected_feasible": 0.671875,
+      "selected_e_over_ub": 5.521133072623262,
+      "final_feasible": 0.0,
+      "final_e_over_ub": 3.212220653517205,
+      "efficiency": {
+        "feasible_below_baseline": null,
+        "e_over_ub_at_most_1_5": null
+      },
+      "curve": [
+        {
+          "slots": 0,
+          "feasible": 0.671875,
+          "e_over_ub": 5.521133072623262
+        },
+        {
+          "slots": 1000000,
+          "feasible": 0.015625,
+          "e_over_ub": 3.3663107185946597
+        },
+        {
+          "slots": 2000000,
+          "feasible": 0.0,
+          "e_over_ub": 2.001797253423797
+        },
+        {
+          "slots": 3000000,
+          "feasible": 0.0,
+          "e_over_ub": 1.751870560977666
+        },
+        {
+          "slots": 4000000,
+          "feasible": 0.0,
+          "e_over_ub": 2.2575498772488354
+        },
+        {
+          "slots": 5000000,
+          "feasible": 0.0,
+          "e_over_ub": 2.5650546124582294
+        },
+        {
+          "slots": 6000000,
+          "feasible": 0.0,
+          "e_over_ub": 2.561937621375904
+        },
+        {
+          "slots": 7000000,
+          "feasible": 0.0,
+          "e_over_ub": 2.9590823899695016
+        },
+        {
+          "slots": 8000000,
+          "feasible": 0.0,
+          "e_over_ub": 2.3052416358324597
+        },
+        {
+          "slots": 9000000,
+          "feasible": 0.0,
+          "e_over_ub": 3.2671889200647017
+        },
+        {
+          "slots": 10000000,
+          "feasible": 0.0,
+          "e_over_ub": 3.3608050156509663
+        },
+        {
+          "slots": 11000000,
+          "feasible": 0.0,
+          "e_over_ub": 2.842533719587223
+        },
+        {
+          "slots": 12000000,
+          "feasible": 0.0,
+          "e_over_ub": 2.911859892128385
+        },
+        {
+          "slots": 13000000,
+          "feasible": 0.0,
+          "e_over_ub": 2.9979348164267776
+        },
+        {
+          "slots": 14000000,
+          "feasible": 0.0,
+          "e_over_ub": 2.8068036797002183
+        },
+        {
+          "slots": 15000000,
+          "feasible": 0.0,
+          "e_over_ub": 3.493854988090547
+        },
+        {
+          "slots": 16000000,
+          "feasible": 0.0,
+          "e_over_ub": 2.733354543503114
+        },
+        {
+          "slots": 17000000,
+          "feasible": 0.0,
+          "e_over_ub": 4.23084898633407
+        },
+        {
+          "slots": 18000000,
+          "feasible": 0.0,
+          "e_over_ub": 2.9638515764315345
+        },
+        {
+          "slots": 19000000,
+          "feasible": 0.0,
+          "e_over_ub": 2.8476725162769934
+        },
+        {
+          "slots": 20000000,
+          "feasible": 0.0,
+          "e_over_ub": 3.212220653517205
+        }
+      ]
+    },
+    {
+      "path": "outputs/exp005/n8-v2-g05-seed303",
+      "profile": "v2-g05",
+      "seed": 303,
+      "commit": "4e38cbae6b0d6841d824c8e85b6c0efd444d7f78",
+      "result_sha256": "afbfd2661b525cdd08d3c332c5dd1655234cb57b1bb04950cb338245ff0f77f2",
+      "wall_h": 17.870187481240784,
+      "selected": "step-000000000",
+      "selected_feasible": 0.6875,
+      "selected_e_over_ub": 5.565123293549613,
+      "final_feasible": 0.0,
+      "final_e_over_ub": 2.8919723930106045,
+      "efficiency": {
+        "feasible_below_baseline": null,
+        "e_over_ub_at_most_1_5": null
+      },
+      "curve": [
+        {
+          "slots": 0,
+          "feasible": 0.6875,
+          "e_over_ub": 5.565123293549613
+        },
+        {
+          "slots": 1000000,
+          "feasible": 0.0,
+          "e_over_ub": 3.9659687913802752
+        },
+        {
+          "slots": 2000000,
+          "feasible": 0.09375,
+          "e_over_ub": 2.7691490538835635
+        },
+        {
+          "slots": 3000000,
+          "feasible": 0.0,
+          "e_over_ub": 2.406060344342511
+        },
+        {
+          "slots": 4000000,
+          "feasible": 0.0,
+          "e_over_ub": 2.665663000128518
+        },
+        {
+          "slots": 5000000,
+          "feasible": 0.0,
+          "e_over_ub": 1.9890261268101455
+        },
+        {
+          "slots": 6000000,
+          "feasible": 0.0,
+          "e_over_ub": 2.8304667126615257
+        },
+        {
+          "slots": 7000000,
+          "feasible": 0.0,
+          "e_over_ub": 2.677807214051549
+        },
+        {
+          "slots": 8000000,
+          "feasible": 0.0,
+          "e_over_ub": 3.2974283814159193
+        },
+        {
+          "slots": 9000000,
+          "feasible": 0.0,
+          "e_over_ub": 2.7440405669656203
+        },
+        {
+          "slots": 10000000,
+          "feasible": 0.0,
+          "e_over_ub": 3.27860089445777
+        },
+        {
+          "slots": 11000000,
+          "feasible": 0.0,
+          "e_over_ub": 3.6022209559737552
+        },
+        {
+          "slots": 12000000,
+          "feasible": 0.0,
+          "e_over_ub": 3.777582257912798
+        },
+        {
+          "slots": 13000000,
+          "feasible": 0.0,
+          "e_over_ub": 3.609838902427878
+        },
+        {
+          "slots": 14000000,
+          "feasible": 0.0,
+          "e_over_ub": 2.8166039777304848
+        },
+        {
+          "slots": 15000000,
+          "feasible": 0.0,
+          "e_over_ub": 2.707244140459691
+        },
+        {
+          "slots": 16000000,
+          "feasible": 0.0,
+          "e_over_ub": 3.540300929812097
+        },
+        {
+          "slots": 17000000,
+          "feasible": 0.0,
+          "e_over_ub": 3.347632943496466
+        },
+        {
+          "slots": 18000000,
+          "feasible": 0.0,
+          "e_over_ub": 3.2374758451421486
+        },
+        {
+          "slots": 19000000,
+          "feasible": 0.0,
+          "e_over_ub": 3.634796880626973
+        },
+        {
+          "slots": 20000000,
+          "feasible": 0.0,
+          "e_over_ub": 2.8919723930106045
+        }
+      ]
+    },
+    {
+      "path": "outputs/exp005/n8-v2-g099-seed101",
+      "profile": "v2-g099",
+      "seed": 101,
+      "commit": "4e38cbae6b0d6841d824c8e85b6c0efd444d7f78",
+      "result_sha256": "64d8221e2f9c49a049c163245f67b899f218b28137149d7d7b51213b8349482e",
+      "wall_h": 17.762611846018633,
+      "selected": "step-005000000",
+      "selected_feasible": 1.0,
+      "selected_e_over_ub": 3.067729732052832,
+      "final_feasible": 0.546875,
+      "final_e_over_ub": 3.7298505201923993,
+      "efficiency": {
+        "feasible_below_baseline": null,
+        "e_over_ub_at_most_1_5": null
+      },
+      "curve": [
+        {
+          "slots": 0,
+          "feasible": 0.65625,
+          "e_over_ub": 5.592303602119363
+        },
+        {
+          "slots": 1000000,
+          "feasible": 0.328125,
+          "e_over_ub": 6.44897085163942
+        },
+        {
+          "slots": 2000000,
+          "feasible": 0.953125,
+          "e_over_ub": 4.361045376587562
+        },
+        {
+          "slots": 3000000,
+          "feasible": 0.984375,
+          "e_over_ub": 4.229964462328555
+        },
+        {
+          "slots": 4000000,
+          "feasible": 0.9375,
+          "e_over_ub": 3.1040126389249316
+        },
+        {
+          "slots": 5000000,
+          "feasible": 1.0,
+          "e_over_ub": 3.067729732052832
+        },
+        {
+          "slots": 6000000,
+          "feasible": 0.8125,
+          "e_over_ub": 3.0766290722616465
+        },
+        {
+          "slots": 7000000,
+          "feasible": 0.640625,
+          "e_over_ub": 4.3554464413964205
+        },
+        {
+          "slots": 8000000,
+          "feasible": 0.71875,
+          "e_over_ub": 4.524232272393995
+        },
+        {
+          "slots": 9000000,
+          "feasible": 0.8125,
+          "e_over_ub": 4.257721165652435
+        },
+        {
+          "slots": 10000000,
+          "feasible": 1.0,
+          "e_over_ub": 4.031812969461234
+        },
+        {
+          "slots": 11000000,
+          "feasible": 1.0,
+          "e_over_ub": 3.805974703282458
+        },
+        {
+          "slots": 12000000,
+          "feasible": 0.984375,
+          "e_over_ub": 4.8183109432192595
+        },
+        {
+          "slots": 13000000,
+          "feasible": 0.984375,
+          "e_over_ub": 3.960514764205474
+        },
+        {
+          "slots": 14000000,
+          "feasible": 1.0,
+          "e_over_ub": 4.686441936854072
+        },
+        {
+          "slots": 15000000,
+          "feasible": 0.90625,
+          "e_over_ub": 3.9377651679452583
+        },
+        {
+          "slots": 16000000,
+          "feasible": 0.984375,
+          "e_over_ub": 4.406302021221769
+        },
+        {
+          "slots": 17000000,
+          "feasible": 0.890625,
+          "e_over_ub": 3.619594069659134
+        },
+        {
+          "slots": 18000000,
+          "feasible": 0.984375,
+          "e_over_ub": 3.451745922787378
+        },
+        {
+          "slots": 19000000,
+          "feasible": 0.9375,
+          "e_over_ub": 3.151050356827024
+        },
+        {
+          "slots": 20000000,
+          "feasible": 0.546875,
+          "e_over_ub": 3.7298505201923993
+        }
+      ]
+    },
+    {
+      "path": "outputs/exp005/n8-v2-g099-seed202",
+      "profile": "v2-g099",
+      "seed": 202,
+      "commit": "4e38cbae6b0d6841d824c8e85b6c0efd444d7f78",
+      "result_sha256": "cb5572c13433c657200dc947f93c462ceeed03a1ebbaa2d8c2bd3ffbbbf9332d",
+      "wall_h": 17.313770241904162,
+      "selected": "step-003000000",
+      "selected_feasible": 1.0,
+      "selected_e_over_ub": 2.9146466188504734,
+      "final_feasible": 0.46875,
+      "final_e_over_ub": 10.831177596232127,
+      "efficiency": {
+        "feasible_below_baseline": null,
+        "e_over_ub_at_most_1_5": null
+      },
+      "curve": [
+        {
+          "slots": 0,
+          "feasible": 0.671875,
+          "e_over_ub": 5.521133072623262
+        },
+        {
+          "slots": 1000000,
+          "feasible": 0.984375,
+          "e_over_ub": 4.110297913126711
+        },
+        {
+          "slots": 2000000,
+          "feasible": 0.9375,
+          "e_over_ub": 3.691139777424783
+        },
+        {
+          "slots": 3000000,
+          "feasible": 1.0,
+          "e_over_ub": 2.9146466188504734
+        },
+        {
+          "slots": 4000000,
+          "feasible": 0.984375,
+          "e_over_ub": 2.960239606433131
+        },
+        {
+          "slots": 5000000,
+          "feasible": 0.96875,
+          "e_over_ub": 4.266437748741657
+        },
+        {
+          "slots": 6000000,
+          "feasible": 1.0,
+          "e_over_ub": 3.78949131671794
+        },
+        {
+          "slots": 7000000,
+          "feasible": 0.625,
+          "e_over_ub": 7.000719408673644
+        },
+        {
+          "slots": 8000000,
+          "feasible": 0.984375,
+          "e_over_ub": 4.035629898475802
+        },
+        {
+          "slots": 9000000,
+          "feasible": 0.953125,
+          "e_over_ub": 4.682266479972835
+        },
+        {
+          "slots": 10000000,
+          "feasible": 1.0,
+          "e_over_ub": 4.427102534920985
+        },
+        {
+          "slots": 11000000,
+          "feasible": 0.96875,
+          "e_over_ub": 4.76745143110373
+        },
+        {
+          "slots": 12000000,
+          "feasible": 0.765625,
+          "e_over_ub": 3.6948006565735767
+        },
+        {
+          "slots": 13000000,
+          "feasible": 0.921875,
+          "e_over_ub": 3.968319528867563
+        },
+        {
+          "slots": 14000000,
+          "feasible": 0.953125,
+          "e_over_ub": 4.228506589569081
+        },
+        {
+          "slots": 15000000,
+          "feasible": 1.0,
+          "e_over_ub": 3.884064777366749
+        },
+        {
+          "slots": 16000000,
+          "feasible": 0.890625,
+          "e_over_ub": 5.158012547045685
+        },
+        {
+          "slots": 17000000,
+          "feasible": 0.984375,
+          "e_over_ub": 4.0000620223830845
+        },
+        {
+          "slots": 18000000,
+          "feasible": 1.0,
+          "e_over_ub": 4.02656526853445
+        },
+        {
+          "slots": 19000000,
+          "feasible": 1.0,
+          "e_over_ub": 4.1419878437213455
+        },
+        {
+          "slots": 20000000,
+          "feasible": 0.46875,
+          "e_over_ub": 10.831177596232127
+        }
+      ]
+    },
+    {
+      "path": "outputs/exp005/n8-v2-g099-seed303",
+      "profile": "v2-g099",
+      "seed": 303,
+      "commit": "4e38cbae6b0d6841d824c8e85b6c0efd444d7f78",
+      "result_sha256": "60611447d37da64d2132c0b6d4017ef12dc7508673541c73c9f5cba6e3163362",
+      "wall_h": 17.834907294762736,
+      "selected": "step-007000000",
+      "selected_feasible": 0.96875,
+      "selected_e_over_ub": 3.179377783124932,
+      "final_feasible": 0.953125,
+      "final_e_over_ub": 4.587890865782848,
+      "efficiency": {
+        "feasible_below_baseline": null,
+        "e_over_ub_at_most_1_5": null
+      },
+      "curve": [
+        {
+          "slots": 0,
+          "feasible": 0.6875,
+          "e_over_ub": 5.565123293549613
+        },
+        {
+          "slots": 1000000,
+          "feasible": 0.734375,
+          "e_over_ub": 3.6927146658612826
+        },
+        {
+          "slots": 2000000,
+          "feasible": 0.09375,
+          "e_over_ub": 4.722981361399249
+        },
+        {
+          "slots": 3000000,
+          "feasible": 1.0,
+          "e_over_ub": 3.7796551067673976
+        },
+        {
+          "slots": 4000000,
+          "feasible": 1.0,
+          "e_over_ub": 3.8136933809746916
+        },
+        {
+          "slots": 5000000,
+          "feasible": 0.828125,
+          "e_over_ub": 2.912333309723142
+        },
+        {
+          "slots": 6000000,
+          "feasible": 0.84375,
+          "e_over_ub": 3.553574153098552
+        },
+        {
+          "slots": 7000000,
+          "feasible": 0.96875,
+          "e_over_ub": 3.179377783124932
+        },
+        {
+          "slots": 8000000,
+          "feasible": 0.96875,
+          "e_over_ub": 3.750623973087821
+        },
+        {
+          "slots": 9000000,
+          "feasible": 0.921875,
+          "e_over_ub": 4.2579381522591575
+        },
+        {
+          "slots": 10000000,
+          "feasible": 1.0,
+          "e_over_ub": 3.396717772621091
+        },
+        {
+          "slots": 11000000,
+          "feasible": 0.859375,
+          "e_over_ub": 5.309311151303665
+        },
+        {
+          "slots": 12000000,
+          "feasible": 0.9375,
+          "e_over_ub": 3.483877868778045
+        },
+        {
+          "slots": 13000000,
+          "feasible": 0.953125,
+          "e_over_ub": 4.058153383933361
+        },
+        {
+          "slots": 14000000,
+          "feasible": 0.59375,
+          "e_over_ub": 4.189058826603684
+        },
+        {
+          "slots": 15000000,
+          "feasible": 0.921875,
+          "e_over_ub": 4.0202886678282646
+        },
+        {
+          "slots": 16000000,
+          "feasible": 1.0,
+          "e_over_ub": 4.166235469750848
+        },
+        {
+          "slots": 17000000,
+          "feasible": 0.96875,
+          "e_over_ub": 4.211673587758753
+        },
+        {
+          "slots": 18000000,
+          "feasible": 0.734375,
+          "e_over_ub": 5.456535901758273
+        },
+        {
+          "slots": 19000000,
+          "feasible": 0.953125,
+          "e_over_ub": 4.926795600240347
+        },
+        {
+          "slots": 20000000,
+          "feasible": 0.953125,
+          "e_over_ub": 4.587890865782848
+        }
+      ]
+    }
+  ],
+  "tuned": {
+    "v1": {
+      "profile": "v1-g05",
+      "gamma": 0.5,
+      "candidate": "v1-g05/step-018000000",
+      "feasible": 1.0,
+      "e_over_ub": 7.554633122945976
+    },
+    "v1s": {
+      "profile": "v1s-g05",
+      "gamma": 0.5,
+      "candidate": "v1s-g05/step-005000000",
+      "feasible": 1.0,
+      "e_over_ub": 7.96711490385041
+    },
+    "v2": {
+      "profile": "v2-g099",
+      "gamma": 0.99,
+      "candidate": "v2-g099/step-005000000",
+      "feasible": 1.0,
+      "e_over_ub": 3.067729732052832
+    }
+  },
+  "reference_efficiency": [
+    {
+      "path": "outputs/exp001-phase2b/n8-fixed-w10-seed101",
+      "profile": "fixed-w10",
+      "seed": 101,
+      "efficiency": {
+        "feasible_below_baseline": 2000896,
+        "e_over_ub_at_most_1_5": 7000064
+      }
+    },
+    {
+      "path": "outputs/exp001-phase2b/n8-fixed-w10-seed202",
+      "profile": "fixed-w10",
+      "seed": 202,
+      "efficiency": {
+        "feasible_below_baseline": 4001792,
+        "e_over_ub_at_most_1_5": 9000960
+      }
+    },
+    {
+      "path": "outputs/exp001-phase2b/n8-fixed-w10-seed303",
+      "profile": "fixed-w10",
+      "seed": 303,
+      "efficiency": {
+        "feasible_below_baseline": 1001472,
+        "e_over_ub_at_most_1_5": 12001280
+      }
+    },
+    {
+      "path": "outputs/exp001-phase2b/n8-local-eta2-seed101",
+      "profile": "local-eta2",
+      "seed": 101,
+      "efficiency": {
+        "feasible_below_baseline": 2000896,
+        "e_over_ub_at_most_1_5": null
+      }
+    },
+    {
+      "path": "outputs/exp001-phase2b/n8-local-eta2-seed202",
+      "profile": "local-eta2",
+      "seed": 202,
+      "efficiency": {
+        "feasible_below_baseline": 5001216,
+        "e_over_ub_at_most_1_5": 10000384
+      }
+    },
+    {
+      "path": "outputs/exp001-phase2b/n8-local-eta2-seed303",
+      "profile": "local-eta2",
+      "seed": 303,
+      "efficiency": {
+        "feasible_below_baseline": 5001216,
+        "e_over_ub_at_most_1_5": 9000960
+      }
+    }
+  ]
+}

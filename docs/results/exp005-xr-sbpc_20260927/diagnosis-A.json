@@ -1,0 +1,278 @@
+{
+  "provenance": {
+    "commit": "70fbe810c6649fd7cb92e55cb38111bafbcf6730",
+    "dirty": false
+  },
+  "scenario": "configs/scenario-v1-n8.toml",
+  "instances": [
+    10000,
+    10001,
+    10002,
+    10003,
+    10004,
+    10005,
+    10006,
+    10007,
+    10008,
+    10009,
+    10010,
+    10011,
+    10012,
+    10013,
+    10014,
+    10015,
+    10016,
+    10017,
+    10018,
+    10019,
+    10020,
+    10021,
+    10022,
+    10023,
+    10024,
+    10025,
+    10026,
+    10027,
+    10028,
+    10029,
+    10030,
+    10031,
+    10032,
+    10033,
+    10034,
+    10035,
+    10036,
+    10037,
+    10038,
+    10039,
+    10040,
+    10041,
+    10042,
+    10043,
+    10044,
+    10045,
+    10046,
+    10047,
+    10048,
+    10049,
+    10050,
+    10051,
+    10052,
+    10053,
+    10054,
+    10055,
+    10056,
+    10057,
+    10058,
+    10059,
+    10060,
+    10061,
+    10062,
+    10063
+  ],
+  "checkpoints": [
+    "fixed-w10-s101=outputs/exp001-phase2b/n8-fixed-w10-seed101/checkpoints/step-017000448.pt",
+    "fixed-w10-s202=outputs/exp001-phase2b/n8-fixed-w10-seed202/checkpoints/step-015001600.pt",
+    "fixed-w10-s303=outputs/exp001-phase2b/n8-fixed-w10-seed303/checkpoints/step-018001920.pt"
+  ],
+  "baselines": [
+    "paced_sticky:margin=0.5"
+  ],
+  "results": {
+    "fixed-w10-s101": {
+      "episodes": 64,
+      "energy_over_lower": 1.3751802609102068,
+      "duty": 0.6095652059898586,
+      "collision_share": 0.2055663370636226,
+      "interference_loss": 0.06410579557571584,
+      "overshoot_share": 0.0703116225403396,
+      "completion_slack": 0.24610831338032096,
+      "power_level_share": [
+        0.40160761397539263,
+        0.43547913486518414,
+        0.16194267551616467,
+        0.0008450508487493471,
+        0.00012552479450918683
+      ],
+      "energy_over_solo_by_distance": {
+        "0-50": 1.1194444444444445,
+        "50-75": 1.4336876788119088,
+        "75-100": 1.362875280834034
+      },
+      "energy_over_solo_by_period": {
+        "10": 1.2949257179861418,
+        "20": 1.3465744404784197,
+        "40": 1.4519235851813908
+      },
+      "packets": {
+        "packets": 57600,
+        "expired_share": 0.0008680555555555555,
+        "tx_slots_per_packet": 7.745190972222222,
+        "completion_fraction_mean": 0.7538688097306688,
+        "completion_fraction_p90": 0.95,
+        "shaping_per_packet_mean": -4.173402044434209,
+        "shaping_per_packet_p90": 67.63417802647791,
+        "noncompleting_tx_slots": 388525,
+        "noncompleting_ratio_p50": 1.7177127828042298,
+        "noncompleting_ratio_p90": 3.760185050841512,
+        "noncompleting_ratio_ge_1": 0.7510636381185252
+      }
+    },
+    "fixed-w10-s202": {
+      "episodes": 64,
+      "energy_over_lower": 1.3686334715186208,
+      "duty": 0.7602346226290161,
+      "collision_share": 0.23875951595078337,
+      "interference_loss": 0.0718131076333467,
+      "overshoot_share": 0.06940778595539238,
+      "completion_slack": 0.38446805254134997,
+      "power_level_share": [
+        0.4035057036547988,
+        0.4463016968864909,
+        0.14957173400724927,
+        0.0005880732621232724,
+        3.279218933772895e-05
+      ],
+      "energy_over_solo_by_distance": {
+        "0-50": 1.0681703681301915,
+        "50-75": 1.4321988541219546,
+        "75-100": 1.3667731517994628
+      },
+      "energy_over_solo_by_period": {
+        "10": 1.34221265499114,
+        "20": 1.3286016428935585,
+        "40": 1.377146161313525
+      },
+      "packets": {
+        "packets": 57600,
+        "expired_share": 0.0002951388888888889,
+        "tx_slots_per_packet": 7.942152777777777,
+        "completion_fraction_mean": 0.615514995745272,
+        "completion_fraction_p90": 0.875,
+        "shaping_per_packet_mean": 45.46786880647521,
+        "shaping_per_packet_p90": 139.01624162791563,
+        "noncompleting_tx_slots": 399868,
+        "noncompleting_ratio_p50": 2.144280377112996,
+        "noncompleting_ratio_p90": 5.178402169727493,
+        "noncompleting_ratio_ge_1": 0.7774340532375684
+      }
+    },
+    "fixed-w10-s303": {
+      "episodes": 64,
+      "energy_over_lower": 1.3864048912976332,
+      "duty": 0.6797448700663498,
+      "collision_share": 0.18803677006520503,
+      "interference_loss": 0.055911145372626384,
+      "overshoot_share": 0.07021630391364993,
+      "completion_slack": 0.3619072060780848,
+      "power_level_share": [
+        0.38153613987857504,
+        0.43750713202810426,
+        0.17996464842885787,
+        0.0009711202349319168,
+        2.095942953090468e-05
+      ],
+      "energy_over_solo_by_distance": {
+        "0-50": 1.0685185185185184,
+        "50-75": 1.4202508145057675,
+        "75-100": 1.3812648056994408
+      },
+      "energy_over_solo_by_period": {
+        "10": 1.305194336277434,
+        "20": 1.3582126760752868,
+        "40": 1.487902861719028
+      },
+      "packets": {
+        "packets": 57600,
+        "expired_share": 0.00019097222222222223,
+        "tx_slots_per_packet": 7.455902777777778,
+        "completion_fraction_mean": 0.638084095921096,
+        "completion_fraction_p90": 0.9,
+        "shaping_per_packet_mean": 26.9847837272763,
+        "shaping_per_packet_p90": 95.2317933337723,
+        "noncompleting_tx_slots": 371860,
+        "noncompleting_ratio_p50": 1.9602883460566678,
+        "noncompleting_ratio_p90": 4.838446945675853,
+        "noncompleting_ratio_ge_1": 0.7905851664604959
+      }
+    },
+    "paced_sticky:margin=0.5": {
+      "episodes": 64,
+      "energy_over_lower": 3.192086263594997,
+      "duty": 1.0,
+      "collision_share": 0.593765615511952,
+      "interference_loss": 0.367014101937272,
+      "overshoot_share": 0.06959925527262648,
+      "completion_slack": 0.36932950130681275,
+      "power_level_share": [
+        0.4420987669094782,
+        0.3025149029067293,
+        0.1797768367715013,
+        0.049956150323188356,
+        0.025653343089102887
+      ],
+      "energy_over_solo_by_distance": {
+        "0-50": 1.5799868243062742,
+        "50-75": 3.2621197059221503,
+        "75-100": 3.1848275073231833
+      },
+      "energy_over_solo_by_period": {
+        "10": 3.1858801906460785,
+        "20": 2.9770154470042547,
+        "40": 2.8529617322102614
+      },
+      "packets": {
+        "packets": 57600,
+        "expired_share": 0.006579861111111111,
+        "tx_slots_per_packet": 10.15484375,
+        "completion_fraction_mean": 0.6305032243407143,
+        "completion_fraction_p90": 0.9,
+        "shaping_per_packet_mean": 100.13556254118869,
+        "shaping_per_packet_p90": 201.92380699347953,
+        "noncompleting_tx_slots": 527319,
+        "noncompleting_ratio_p50": 2.106667547973363,
+        "noncompleting_ratio_p90": 4.889561740816291,
+        "noncompleting_ratio_ge_1": 0.8294163494962252
+      }
+    },
+    "central-upper-bound": {
+      "episodes": 64,
+      "energy_over_lower": 1.1385122613894687,
+      "duty": 0.6871121701901615,
+      "collision_share": 0.0,
+      "interference_loss": 0.0,
+      "overshoot_share": 0.056861103943766034,
+      "completion_slack": 0.33535156250000003,
+      "power_level_share": [
+        0.3154276735736031,
+        0.6432289109299814,
+        0.0413434154964156,
+        0.0,
+        0.0
+      ],
+      "energy_over_solo_by_distance": {
+        "0-50": 1.0,
+        "50-75": 1.3291192768013844,
+        "75-100": 1.0794314841841761
+      },
+      "energy_over_solo_by_period": {
+        "10": 1.0737073218802073,
+        "20": 1.102655131672949,
+        "40": 1.100215163443658
+      },
+      "packets": {
+        "packets": 57600,
+        "expired_share": 0.0,
+        "tx_slots_per_packet": 7.95546875,
+        "completion_fraction_mean": 0.6646484375,
+        "completion_fraction_p90": 1.0,
+        "shaping_per_packet_mean": 50.85404358628376,
+        "shaping_per_packet_p90": 119.07295660629352,
+        "noncompleting_tx_slots": 400635,
+        "noncompleting_ratio_p50": 1.9440715227188408,
+        "noncompleting_ratio_p90": 4.696320403446011,
+        "noncompleting_ratio_ge_1": 1.0
+      }
+    }
+  }
+}
