@@ -1,0 +1,58 @@
+\documentclass[conference,10pt]{IEEEtran}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx,booktabs,multirow}
+\usepackage{cite}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={Learning Energy-Efficient Uplink Access with Asynchronous Packet Deadlines},pdfauthor={Anonymous Authors}}
+\newtheorem{proposition}{Proposition}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\ind}{\mathbf{1}}
+\newcommand{\OFF}{\mathsf{OFF}}
+\newcommand{\clip}{\operatorname{clip}}
+\input{generated/numbers}
+
+\title{Learning Energy-Efficient Uplink Access\\with Asynchronous Packet Deadlines}
+\author{\IEEEauthorblockN{Anonymous Authors}\IEEEauthorblockA{Complete first draft --- author information to be supplied}}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+Periodic uplink devices can save transmit energy by using lower power over
+several slots, but overlapping transmissions can erase this benefit when
+devices independently select their resources. We study distributed subchannel,
+power, and silence decisions for heterogeneous periodic packets with asynchronous
+arrival phases and per-device deadline-violation requirements. Each device uses
+its own packet state, delayed public received-power measurements, and private
+mutual-information feedback; it observes neither other devices' actions nor
+their queues. A shared recurrent policy is trained with multi-agent proximal
+policy optimization and evaluated against calibrated local rules and centralized
+zero-loss energy references. On 200 held-out topology--phase instances per network
+size, with three training seeds and two executions per instance, the fixed-penalty
+policy reduces mean normalized transmit energy by \SavingSix\%, \SavingEight\%,
+and \SavingTwelve\% relative to the strongest evaluated feasible local rule for
+6, 8, and 12 devices sharing four subchannels. Its feasible-episode fraction is
+at least 0.984 at these loads. With four devices, its energy is within 0.7\%
+of the exact zero-loss centralized reference. Validation diagnostics associate
+the savings with reduced co-channel overlap and interference loss. Local dual
+adaptation gives no statistically resolved energy advantage over the fixed
+penalty, while substantial training remains necessary. These results quantify
+the benefits and remaining limits of learned access under the specified local
+information model.
+\end{abstract}
+
+\begin{IEEEkeywords}
+distributed access, periodic traffic, deadline constraints, power control,
+multi-agent reinforcement learning
+\end{IEEEkeywords}
+
+\input{sections/introduction}
+\input{sections/model}
+\input{sections/references}
+\input{sections/method}
+\input{sections/results}
+\input{sections/conclusion}
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+\end{document}
