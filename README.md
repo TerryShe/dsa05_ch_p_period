@@ -25,6 +25,18 @@
 | [确认集 C1 的中央参照](docs/results/confirm1-references_20260927/report.md) | 备用池 30,000–30,199、N=8 的逐实例上下界，上界/下界均值 1.124；EXP-DSA05-005 在 C1 上的分母 |
 | [EXP-DSA05-005 与 XR-SBPC 的正面比较](docs/results/exp005-xr-sbpc_20260927/report.md) | 在确认集 C1 上：XR-SBPC 式 SAC 用原文奖励能耗/上界约 7.1–7.7，用我们的奖励 3.03，都高于基线 2.82；A 为 1.22，显著最好；EXP-004 结论在 C1 上复现 |
 
+## 论文版本控制
+
+`manuscript/` 使用独立的 Git 仓库维护，主仓库通过 `.gitignore` 忽略整个目录。论文的历史提交已提取到独立仓库；论文修改应在该仓库中单独提交：
+
+```bash
+git -C manuscript status
+git -C manuscript add .
+git -C manuscript commit -m "docs: update manuscript"
+```
+
+克隆本工程不会自动取得论文目录，需要另外获取论文仓库并放到 `manuscript/`。论文编译与图表生成说明见该仓库的 `README.md`。
+
 ## 环境
 
 Python 3.12 + uv：

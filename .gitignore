@@ -11,5 +11,8 @@ __pycache__/
 /outputs/
 *.pt
 
+# Independently versioned manuscript repository
+/manuscript/
+
 # Operating-system temporary files
 .DS_Store
