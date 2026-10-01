@@ -90,5 +90,41 @@ class CentralCritic(nn.Module):
         return self.network(state).squeeze(-1)
 
 
+class SetCritic(nn.Module):
+    """N-independent centralized critic (scenario v2.0, EXP-DSA05-006).
+
+    Every UE's input is encoded by a shared network phi; the encodings of each
+    environment (segment) are pooled by mean and max and joined with N / 32
+    before the value head. Permuting the UEs of an environment, or changing their
+    number, needs no change of weights.
+    """
+
+    COUNT_SCALE = 32.0
+
+    def __init__(self, ue_dim: int, hidden: int) -> None:
+        super().__init__()
+        self.hidden = hidden
+        self.phi = nn.Sequential(
+            nn.Linear(ue_dim, hidden), nn.Tanh(), nn.Linear(hidden, hidden), nn.Tanh()
+        )
+        self.rho = nn.Sequential(nn.Linear(2 * hidden + 1, hidden), nn.Tanh(), nn.Linear(hidden, 1))
+        _init(self, ())
+
+    def forward(self, ue_features: Tensor, segment: Tensor, num_segments: int) -> Tensor:
+        """ue_features (U, D), segment (U,) in [0, S) -> values (S,)."""
+        encoded = self.phi(ue_features)
+        count = torch.zeros(num_segments, dtype=encoded.dtype).index_add_(
+            0, segment, torch.ones_like(segment, dtype=encoded.dtype)
+        )
+        mean = torch.zeros(num_segments, self.hidden, dtype=encoded.dtype).index_add(
+            0, segment, encoded
+        ) / count.clamp(min=1.0).unsqueeze(-1)
+        top = torch.full((num_segments, self.hidden), -1.0, dtype=encoded.dtype).scatter_reduce(
+            0, segment.unsqueeze(-1).expand_as(encoded), encoded, reduce="amax", include_self=False
+        )
+        pooled = torch.cat((mean, top, (count / self.COUNT_SCALE).unsqueeze(-1)), dim=-1)
+        return self.rho(pooled).squeeze(-1)
+
+
 def masked_log_probs(logits: Tensor, legal: Tensor) -> Tensor:
     return torch.log_softmax(logits.masked_fill(~legal, -torch.inf), dim=-1)

@@ -28,6 +28,10 @@ from dsa_period.rules_v2 import make_policy_v2
 
 def _episode(job: tuple) -> tuple:
     config, spec, n, split, instance = job
+    if spec.startswith("marl:"):
+        import torch
+
+        torch.set_num_threads(1)  # one core per worker process
     scenario = load_scenario(config, n)
     policy = make_policy_v2(spec, scenario.physical, scenario.menu)
     return spec, n, run_capacity_episode(scenario, policy, split, instance)

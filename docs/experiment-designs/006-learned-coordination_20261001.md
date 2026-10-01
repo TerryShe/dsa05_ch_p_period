@@ -201,3 +201,42 @@ v1 的评论家把所有 UE 的特征拼成一个定长向量，只能用于固�
 6. **无 CSI 消融**：推迟，不在本实验内。
 7. **XR-SBPC 式 SAC**：推迟。先看 MAPPO 能否超过本地规则，再决定在哪些 N 上训练。
 8. **判读**：H1、H2 如 §6 所写，只在测试集上判读一次。
+
+## 12. 第 0 阶段验收（2026-10-01）
+
+**实现**（§9 的全部条目）：
+- `marl/features.py`：观测带 `own_gain_w` 时，token 末尾加自身当前增益，覆盖比按当前增益计算，上下文的增益位置为"已知"与最好子信道的当前增益；`critic_ue_features`、`critic_ue_dim`。
+- `marl/networks.py`：`SetCritic`（逐 UE 编码，按环境取均值与最大值，加 N / 32）。
+- `marl/trainer_v2.py`：
+  - `CapacityTrainer`：固定 N 的多环境，拼接 UE 批次，只含违约项的奖励，按 `splits_v2` 抽取训练实例与衰落，只存检查点；
+  - `RaggedMAPPO`：按环境分段的 PPO 更新；
+  - `load_capacity_policy`：任意 N 的执行策略。
+- `experiments/train_capacity_mappo.py`；配置 `configs/exp006-capacity-mappo.toml`（第 1 阶段）、`configs/exp006-capacity-mappo-long.toml`（第 2 阶段）。
+- `rules_v2.make_policy_v2` 新增三种策略规格：
+  - `marl:<检查点>`；
+  - `calibrated:<规则类>`（按 `calibration.json` 的逐 N 参数）；
+  - `best_local`（每个 N 最好的校准本地规则，§2）。
+- `experiments/select_capacity_checkpoints.py`：§5 的得分 S、逐运行选检查点、§4.1 的变体选择与学习信号判据。
+
+**测试**（`tests/test_marl_v2.py`，全部测试 197 个通过）：
+- v2 token 中的自身增益与覆盖比；
+- 集合评论家的排列不变性与任意 N；
+- 拼接批次与逐环境计算一致；
+- 拼接 rollout 的形状、奖励非正、PPO 回放的对数概率误差 < 1e-5、训练实例全部来自训练池；
+- 检查点策略能在训练时没有的 N（= 5）上运行；
+- 校准规格与 `best_local` 和 `calibration.json` 一致；
+- 选模得分与变体规则。
+
+v1 的特征与全部原有测试不变。
+
+**吞吐实测**（4 个运行并行，即第 1 阶段的布局；A、C 各 2 个种子，各 20 万时隙）：
+
+| 项目 | 结果 |
+|---|---|
+| 每个运行的吞吐 | 614–621 时隙/秒；每次迭代采样 0.66 s、PPO 更新 2.24 s |
+| 内存 | 每个运行约 520 MB |
+| PPO 回放误差 | 最大 9.5 × 10⁻⁷ |
+| 第 1 阶段（500 万时隙） | 约 2.3 小时（4 个运行并行） |
+| 第 2 阶段（2,000 万时隙） | 约 9 小时（3 个运行并行），低于 24 小时，按 §10 的预算执行 |
+
+20 万时隙时的训练违约率（按包计）已在 N ≤ 8 上降到 0–2%，N = 16、20 时为 7–41%。这只说明学习在进行，不作为任何判读。

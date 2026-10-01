@@ -13,6 +13,13 @@ subchannel k also carries the interference the UE inferred on k in the slot l
 slots before the one being decided, and whether the UE itself transmitted on k
 then. The UE keeps these in a local ring buffer of its own past observations;
 the context carries one flag per lag telling whether that much history exists.
+
+Scenario v2.0 (EXP-DSA05-006): when the observation carries ``own_gain_w`` (the
+UE's current gain on every subchannel), the per-level coverage ratios use that
+current gain instead of the gain estimated from the UE's own feedback, each
+token gains a last entry with the current gain (dB), and the context's gain
+slots hold "known" = 1 and the best current gain. Without ``own_gain_w`` (v1.0)
+the features are exactly as before.
 """
 
 from collections.abc import Sequence
@@ -25,6 +32,7 @@ from dsa_period.env import Outcome, UEObservation
 from dsa_period.physics import LN2, PhysicalConfig, PowerMenu
 
 TOKEN_DIM_EXTRA = 3  # RSSI, interference, own-transmission flag; plus 2 * L level entries
+OWN_CSI_TOKEN_EXTRA = 1  # scenario v2.0: current own gain, last token entry
 CONTEXT_DIM = 13
 DB_SCALE = 30.0  # dB above the noise floor per unit feature
 GAIN_DB_OFFSET, GAIN_DB_SCALE = 120.0, 40.0
@@ -37,8 +45,9 @@ def num_actions(config: PhysicalConfig, menu: PowerMenu) -> int:
     return 1 + config.num_subchannels * (menu.num_levels - 1)
 
 
-def token_dim(menu: PowerMenu, lags: tuple[int, ...] = ()) -> int:
-    return TOKEN_DIM_EXTRA + 2 * (menu.num_levels - 1) + 2 * len(lags)
+def token_dim(menu: PowerMenu, lags: tuple[int, ...] = (), own_csi: bool = False) -> int:
+    base = TOKEN_DIM_EXTRA + 2 * (menu.num_levels - 1) + 2 * len(lags)
+    return base + (OWN_CSI_TOKEN_EXTRA if own_csi else 0)
 
 
 def context_dim(lags: tuple[int, ...] = ()) -> int:
@@ -82,9 +91,11 @@ class ObsArrays:
     prev_outcome: NDArray[np.int64]
     prev_service: NDArray[np.float64]
     rssi: NDArray[np.float64]  # (K,) public, identical for every UE
+    own_gain: NDArray[np.float64] | None = None  # (N, K) current own gains (v2.0 only)
 
 
 def stack(observations: Sequence[UEObservation]) -> ObsArrays:
+    own = observations[0].own_gain_w is not None
     return ObsArrays(
         remaining=np.array([o.remaining_bits for o in observations]),
         packet=np.array([o.packet_bits for o in observations]),
@@ -95,6 +106,7 @@ def stack(observations: Sequence[UEObservation]) -> ObsArrays:
         prev_outcome=np.array([int(o.previous_outcome) for o in observations], dtype=np.int64),
         prev_service=np.array([o.previous_service_bits for o in observations]),
         rssi=np.array(observations[0].previous_rssi_w, dtype=np.float64),
+        own_gain=np.array([o.own_gain_w for o in observations], dtype=np.float64) if own else None,
     )
 
 
@@ -217,7 +229,8 @@ class LocalMemory:
         n, k = self.num_ues, self.config.num_subchannels
         levels = self.menu.num_levels - 1
         has_packet = obs.remaining > 0
-        known = ~np.isnan(self.gain)
+        own = obs.own_gain  # (N, K) current own gains in v2.0, else None
+        known = np.ones(n, dtype=np.bool_) if own is not None else ~np.isnan(self.gain)
         tokens = np.zeros((n, k, token_dim(self.menu)))
         tokens[:, :, 0] = (10.0 * np.log10(obs.rssi) - self._noise_db) / DB_SCALE
         tokens[:, :, 1] = (10.0 * np.log10(self.interference) - self._noise_db) / DB_SCALE
@@ -228,11 +241,8 @@ class LocalMemory:
         ready = known & has_packet
         if ready.any():
             required = obs.remaining[ready] / obs.to_deadline[ready]
-            snr = (
-                self._power[1:][None, None, :]
-                * self.gain[ready][:, None, None]
-                / self.interference[ready][:, :, None]
-            )
+            gain = own[ready][:, :, None] if own is not None else self.gain[ready][:, None, None]
+            snr = self._power[1:][None, None, :] * gain / self.interference[ready][:, :, None]
             bits = self.config.channel_uses_per_slot * np.log1p(snr) / LN2
             ratio = np.log2(np.maximum(bits, 1e-300) / required[:, None, None])
             tokens[ready, :, 3 + levels :] = np.clip(ratio, -COVERAGE_CLIP, COVERAGE_CLIP) / 4.0
@@ -244,7 +254,8 @@ class LocalMemory:
         context[np.arange(n), 4 + obs.prev_outcome] = 1.0
         context[:, 8] = np.minimum(obs.prev_service / obs.packet, 4.0)
         context[:, 9] = known
-        gain_db = 10.0 * np.log10(np.where(known, self.gain, 1.0))
+        best = own.max(axis=1) if own is not None else self.gain
+        gain_db = 10.0 * np.log10(np.where(known, best, 1.0))
         context[:, 10] = np.where(known, (gain_db + GAIN_DB_OFFSET) / GAIN_DB_SCALE, 0.0)
         per_slot = np.where(has_packet, obs.remaining / obs.to_deadline, 0.0)
         context[:, 11] = np.log2(1.0 + per_slot / self.config.channel_uses_per_slot) / 4.0
@@ -252,6 +263,9 @@ class LocalMemory:
             context[:, 12] = self.mu / self.duals.mu_max
         if self.lags:
             tokens, context = self._periodic_features(tokens, context)
+        if own is not None:
+            own_db = (10.0 * np.log10(own) + GAIN_DB_OFFSET) / GAIN_DB_SCALE
+            tokens = np.concatenate((tokens, own_db[:, :, None]), axis=2)
         return tokens.astype(np.float32), context.astype(np.float32)
 
     def _periodic_features(self, tokens, context):
@@ -300,3 +314,21 @@ def critic_state(
 
 def critic_dim(config: PhysicalConfig, menu: PowerMenu, lags: tuple[int, ...] = ()) -> int:
     return config.num_ues * (config.num_subchannels * token_dim(menu, lags) + context_dim(lags) + 2)
+
+
+def critic_ue_features(
+    tokens: NDArray, context: NDArray, mu: NDArray[np.float64], mu_scale: float
+) -> NDArray[np.float32]:
+    """Per-UE input of the set critic (scenario v2.0): actor features and mu.
+
+    The v2.0 actor features already hold each UE's true current gains, so the
+    critic adds only the dual in force; its pooling makes it independent of N.
+    """
+    per_ue = np.concatenate(
+        (tokens.reshape(tokens.shape[0], -1), context, (mu / mu_scale)[:, None]), axis=1
+    )
+    return per_ue.astype(np.float32)
+
+
+def critic_ue_dim(config: PhysicalConfig, menu: PowerMenu) -> int:
+    return config.num_subchannels * token_dim(menu, own_csi=True) + context_dim() + 1

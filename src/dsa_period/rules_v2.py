@@ -17,8 +17,11 @@ Common quantities of one UE, all local:
 current gains at once, so it is not a local rule.
 """
 
+import json
 import math
 from collections.abc import Sequence
+from functools import lru_cache
+from pathlib import Path
 
 import numpy as np
 from numpy.typing import NDArray
@@ -308,9 +311,59 @@ RULES = {
 }
 
 
+CALIBRATION_PATH = (
+    Path(__file__).parents[2] / "docs" / "results" / "v2-calibration_20261001" / "calibration.json"
+)
+
+
+@lru_cache(maxsize=4)
+def _calibration(path: str) -> dict:
+    return json.loads(Path(path).read_text())
+
+
+def calibrated_spec(family: str, num_ues: int, path: Path = CALIBRATION_PATH) -> str:
+    """The frozen per-N parameter of a rule family (protocol v2 §5)."""
+    per_n = _calibration(str(path))["families"][family]["per_n"]
+    if str(num_ues) not in per_n:
+        raise ValueError(f"no calibration of {family} for N={num_ues}")
+    return per_n[str(num_ues)]["spec"]
+
+
+def best_local_spec(num_ues: int, path: Path = CALIBRATION_PATH) -> str:
+    """Best calibrated local rule at N (EXP-DSA05-006 §2), fixed by the calibration.
+
+    Highest validation F at eps = 0.01, then at 0.05, then the lower mean
+    worst-UE violation rate, then the family order of ``CALIBRATION_TABLE``.
+    """
+    families = _calibration(str(path))["families"]
+
+    def key(position: int) -> tuple:
+        row = families[tuple(CALIBRATION_TABLE)[position]]["per_n"][str(num_ues)]
+        share = row["feasible_share"]
+        return (-share["0.01"], -share["0.05"], row["worst_ue_violation_rate_mean"], position)
+
+    best = min(range(len(CALIBRATION_TABLE)), key=key)
+    return calibrated_spec(tuple(CALIBRATION_TABLE)[best], num_ues, path)
+
+
 def make_policy_v2(spec: str, config: PhysicalConfig, menu: PowerMenu) -> Policy:
-    """``random_max``, ``sticky_max``, or ``name:key=value,...`` of ``RULES``."""
+    """A scenario v2.0 policy for ``config.num_ues`` UEs.
+
+    ``random_max``, ``sticky_max``, ``name:key=value,...`` of ``RULES``,
+    ``calibrated:<family>`` (frozen per-N parameters), ``best_local`` (the best
+    calibrated rule at that N) or ``marl:<checkpoint path>`` (EXP-DSA05-006).
+    """
     name, _, raw = spec.partition(":")
+    if name == "calibrated":
+        return make_policy_v2(calibrated_spec(raw, config.num_ues), config, menu)
+    if name == "best_local":
+        if raw:
+            raise ValueError("best_local takes no parameters")
+        return make_policy_v2(best_local_spec(config.num_ues), config, menu)
+    if name == "marl":
+        from dsa_period.marl.trainer_v2 import load_capacity_policy
+
+        return load_capacity_policy(Path(raw), config, menu)
     if name in ("random_max", "sticky_max"):
         if raw:
             raise ValueError(f"{name} takes no parameters")
