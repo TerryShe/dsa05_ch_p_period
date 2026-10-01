@@ -251,3 +251,116 @@ def topology_from_record(record: Mapping) -> Topology:
         if not isinstance(hashes[name], str) or hashes[name] != _array_hash(array):
             raise ValueError(f"topology record {name} hash mismatch")
     return Topology(spatial=spatial, source=source, **arrays)
+
+
+# ----------------------------------------------------------------- scenario v2.0
+_SHADOWED_SAMPLING = (
+    "per UE in order: r=radius_m*sqrt(U), phi=2*pi*V, S_dB=sigma_db*Z (U,V~U[0,1), Z~N(0,1)); "
+    "redraw (r, phi, S_dB) until the coverage predicate holds; one PCG64(topology_seed) stream"
+)
+
+
+@dataclass(frozen=True)
+class ShadowingConfig:
+    """Static log-normal shadowing and the coverage rule (scenario v2.0 §2.1)."""
+
+    sigma_db: float
+    coverage_window_fraction: float
+
+    def __post_init__(self) -> None:
+        sigma = _finite_real(self.sigma_db, "sigma_db")
+        fraction = _finite_real(self.coverage_window_fraction, "coverage_window_fraction")
+        if sigma < 0 or not 0 < fraction <= 1:
+            raise ValueError("sigma_db must be >= 0 and coverage_window_fraction in (0, 1]")
+        object.__setattr__(self, "sigma_db", sigma)
+        object.__setattr__(self, "coverage_window_fraction", fraction)
+
+
+@dataclass(frozen=True, eq=False)
+class ShadowedTopology:
+    """Path-loss topology plus per-UE static shadowing, identical on every subchannel.
+
+    ``ue_ap_gain_linear`` is the mean channel gain PL(d_i) * S_i that the fading
+    model multiplies; ``path.ue_ap_gain_linear`` is path loss alone. ``redraws``
+    counts how often each UE was redrawn by the coverage rule.
+    """
+
+    path: Topology
+    shadowing_db: NDArray[np.float64]
+    redraws: NDArray[np.int64]
+
+    def __post_init__(self) -> None:
+        shadowing = _array(self.shadowing_db, "shadowing_db")
+        redraws = np.asarray(self.redraws)
+        if shadowing.shape != (self.path.num_ues,) or redraws.shape != (self.path.num_ues,):
+            raise ValueError("shadowing_db and redraws need one entry per UE")
+        if redraws.dtype.kind not in "iu" or np.any(redraws < 0):
+            raise ValueError("redraws must be nonnegative integers")
+        object.__setattr__(self, "shadowing_db", _immutable(shadowing))
+        frozen = np.asarray(redraws, dtype=np.int64)
+        object.__setattr__(
+            self, "redraws", np.frombuffer(frozen.tobytes(), np.int64).reshape(frozen.shape)
+        )
+
+    @property
+    def num_ues(self) -> int:
+        return self.path.num_ues
+
+    @property
+    def ue_positions_m(self) -> NDArray[np.float64]:
+        return self.path.ue_positions_m
+
+    @property
+    def ue_ap_distances_m(self) -> NDArray[np.float64]:
+        return self.path.ue_ap_distances_m
+
+    @property
+    def ue_ap_gain_linear(self) -> NDArray[np.float64]:
+        return self.path.ue_ap_gain_linear * 10 ** (self.shadowing_db / 10.0)
+
+    def to_record(self) -> dict:
+        return {
+            "schema_version": 1,
+            "sampling_method": _SHADOWED_SAMPLING,
+            "numpy_version": np.__version__,
+            "path": self.path.to_record(),
+            "shadowing_db": self.shadowing_db.tolist(),
+            "redraws": self.redraws.tolist(),
+            "shadowing_sha256": _array_hash(self.shadowing_db),
+        }
+
+
+def generate_shadowed_topology(
+    spatial: SpatialConfig,
+    shadowing: ShadowingConfig,
+    num_ues: int,
+    covered,
+    max_draws: int = 10_000,
+) -> ShadowedTopology:
+    """Sample UEs one at a time with shadowing; redraw a UE until ``covered(ue, gain)``.
+
+    ``covered(ue, mean_gain_linear) -> bool`` is the coverage rule; it may depend
+    on the UE's traffic class but not on other UEs. UE i consumes the stream only
+    after UEs 0..i-1, so the first n UEs of a larger deployment equal the
+    deployment with n UEs (deployments are nested across N).
+    """
+    if not isinstance(spatial, SpatialConfig) or not isinstance(shadowing, ShadowingConfig):
+        raise ValueError("spatial and shadowing must be SpatialConfig and ShadowingConfig")
+    count = _integer(num_ues, "num_ues", 1)
+    rng = np.random.Generator(np.random.PCG64(spatial.topology_seed))
+    positions = np.empty((count, 2))
+    shadow = np.empty(count)
+    redraws = np.zeros(count, dtype=np.int64)
+    for ue in range(count):
+        for draw in range(max_draws):
+            radius = spatial.radius_m * np.sqrt(rng.random())
+            angle = 2.0 * np.pi * rng.random()
+            value = shadowing.sigma_db * rng.standard_normal()
+            position = [radius * np.cos(angle), radius * np.sin(angle)]
+            _, _, gain = _derive(spatial, [position])
+            if covered(ue, float(gain[0]) * 10 ** (value / 10.0)):
+                positions[ue], shadow[ue], redraws[ue] = position, value, draw
+                break
+        else:
+            raise RuntimeError(f"UE {ue} not covered after {max_draws} draws")
+    return ShadowedTopology(topology_from_positions(spatial, positions), shadow, redraws)

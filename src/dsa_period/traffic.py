@@ -139,6 +139,32 @@ def build_pattern(classes: Sequence[TrafficClass], phase_seed: int) -> TrafficPa
     return TrafficPattern(tuple(c.name for c in classes), index, periods, bits, phases, seed)
 
 
+def round_robin_counts(num_classes: int, num_ues: int) -> list[int]:
+    """UE counts per class when UE j joins class j mod num_classes (scenario v2.0 §3)."""
+    classes, ues = _int(num_classes, "num_classes", 1), _int(num_ues, "num_ues", 1)
+    return [len(range(k, ues, classes)) for k in range(classes)]
+
+
+def build_round_robin_pattern(
+    classes: Sequence[TrafficClass], num_ues: int, phase_seed: int
+) -> TrafficPattern:
+    """UE j joins class j mod C (C listed classes); phases are drawn in UE order.
+
+    Class counts in ``classes`` are ignored. UE j's class and phase do not depend
+    on how many UEs follow it, so patterns are nested across N.
+    """
+    classes = tuple(classes)
+    if not classes or any(not isinstance(c, TrafficClass) for c in classes):
+        raise ValueError("classes must be a nonempty sequence of TrafficClass")
+    count, seed = _int(num_ues, "num_ues", 1), _int(phase_seed, "phase_seed", 0)
+    index = np.arange(count, dtype=np.int64) % len(classes)
+    periods = np.array([classes[k].period_slots for k in index], dtype=np.int64)
+    bits = np.array([classes[k].packet_bits for k in index], dtype=np.float64)
+    rng = np.random.Generator(np.random.PCG64(seed))
+    phases = np.array([rng.integers(period) for period in periods], dtype=np.int64)
+    return TrafficPattern(tuple(c.name for c in classes), index, periods, bits, phases, seed)
+
+
 def pattern_from_record(record: Mapping) -> TrafficPattern:
     """Replay saved per-UE arrays; never re-sample from the seed."""
     return TrafficPattern(

@@ -1,0 +1,138 @@
+{
+  "schema_version": 1,
+  "scenario_id": "DES-DSA05-PERIODIC",
+  "scenario_version": "2.0",
+  "status": "frozen",
+  "frozen_on": "2026-10-01",
+  "confirmed_by": "user",
+  "specification": "docs/research/scenario-v2.md (draft 6)",
+  "phase0_report": "docs/results/v2-phase0_20260930/report.md",
+  "config_path": "configs/scenario-v2.toml",
+  "config_sha256": "74e3fadc6626abebe681ed43c487a8e3781e0dfb65494ace72db730f58550afc",
+  "parameters": {
+    "experiment": {
+      "id": "scenario-v2",
+      "scenario_id": "DES-DSA05-PERIODIC",
+      "scenario_version": "2.0"
+    },
+    "physical": {
+      "num_subchannels": 4,
+      "slot_duration_s": 0.001,
+      "subchannel_bandwidth_hz": 1000000.0,
+      "noise_psd_dbm_per_hz": -174.0,
+      "noise_figure_db": 7.0,
+      "max_tx_power_dbm": 23.0
+    },
+    "spatial": {
+      "radius_m": 100.0,
+      "reference_distance_m": 1.0,
+      "reference_path_loss_db": 40.0,
+      "path_loss_exponent": 4.0,
+      "topology_seed": 40000000
+    },
+    "shadowing": {
+      "sigma_db": 6.0,
+      "coverage_window_fraction": 0.5
+    },
+    "fading": {
+      "model": "jakes-sos",
+      "doppler_hz": 10.0,
+      "sinusoids": 32,
+      "carrier_hz": 2400000000.0
+    },
+    "power": {
+      "power_dbm": [
+        "OFF",
+        5.0,
+        10.0,
+        15.0,
+        19.0,
+        23.0
+      ]
+    },
+    "traffic": {
+      "assignment": "round-robin",
+      "phase_seed": 60000000,
+      "classes": [
+        {
+          "name": "fast",
+          "period_slots": 10,
+          "packet_bits": 6144.0
+        },
+        {
+          "name": "medium",
+          "period_slots": 20,
+          "packet_bits": 12288.0
+        },
+        {
+          "name": "slow",
+          "period_slots": 40,
+          "packet_bits": 24576.0
+        }
+      ]
+    },
+    "run": {
+      "horizon_slots": 20200,
+      "warmup_slots": 200
+    },
+    "objective": {
+      "kind": "max-ues-subject-to-per-ue-reliability",
+      "max_violation_rate": 0.01,
+      "comparison_violation_rates": [
+        0.05
+      ],
+      "feasible_episode_share": 0.95
+    },
+    "capacity": {
+      "grid": [
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        16,
+        20,
+        24,
+        28,
+        32
+      ],
+      "reference_extra": [
+        36,
+        40
+      ]
+    }
+  },
+  "derived": {
+    "noise_power_dbm": -107.0,
+    "num_joint_actions": 21,
+    "per_ue_offered_bits_per_slot": 614.4,
+    "evaluation_slots": 20000,
+    "packets_per_ue": {
+      "fast": 2000,
+      "medium": 1000,
+      "slow": 500
+    },
+    "allowance": {
+      "0.01": {
+        "fast": 20,
+        "medium": 10,
+        "slow": 5
+      },
+      "0.05": {
+        "fast": 100,
+        "medium": 50,
+        "slow": 25
+      }
+    }
+  },
+  "decisions": [
+    "capacity N*: grid point before the first N with F(N) < 0.95, F at eps = 0.01 (0.05 as comparison)",
+    "energy is not an objective, reward, reference or metric",
+    "grid {2,4,6,8,10,12,16,20,24,28,32}; N_EDF also at 36, 40 (draft 6, local rules fall below N = 4)",
+    "deployments nested across N; fading and execution seeds per UE, without N (draft 6)",
+    "main central reference N_EDF (slack order); LP upper bounds optional offline analysis (draft 6)",
+    "packet sizes of v1.0 kept: phase-0 magnitude check met the section-11 criteria (N_EDF = 20)",
+    "no arrival jitter; own current CSI per subchannel; shadowing 6 dB with coverage rule; Jakes SoS fD = 10 Hz"
+  ]
+}

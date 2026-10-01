@@ -1,0 +1,120 @@
+"""Evaluate policies over the N grid of scenario v2.0 under protocol v2.
+
+Every (policy, N, instance) episode is independent and runs in a process pool.
+For each policy the output holds F(N) with its interval, per-UE violation
+statistics, the capacity N* at every eps and the bootstrap distribution of N*.
+``dev`` takes an explicit index range; test evaluation needs ``--confirm-test``
+and ``--formal`` (protocol v2 reads the test split only for frozen methods).
+"""
+
+import argparse
+import json
+import time
+from concurrent.futures import ProcessPoolExecutor
+from pathlib import Path
+
+from dsa_period import splits_v2
+from dsa_period.capacity import (
+    EPSILONS,
+    capacity_label,
+    eps_key,
+    run_capacity_episode,
+    summarize,
+)
+from dsa_period.config import load_scenario
+from dsa_period.experiments.central_reference import git_provenance
+from dsa_period.rules_v2 import make_policy_v2
+
+
+def _episode(job: tuple) -> tuple:
+    config, spec, n, split, instance = job
+    scenario = load_scenario(config, n)
+    policy = make_policy_v2(spec, scenario.physical, scenario.menu)
+    return spec, n, run_capacity_episode(scenario, policy, split, instance)
+
+
+def instances_for(split: str, first: int | None, count: int | None) -> list[int]:
+    if split == "dev":
+        if first is None or count is None:
+            raise ValueError("dev evaluation needs --first-instance and --instances")
+        return [splits_v2.require("dev", i) for i in range(first, first + count)]
+    if first is not None or count is not None:
+        raise ValueError("validation/test always use the whole split")
+    return list(splits_v2.indices(split))
+
+
+def print_summary(name: str, summary: dict) -> None:
+    for eps in EPSILONS:
+        block = summary["per_eps"][eps_key(eps)]
+        point = block["capacity"]
+        star = capacity_label(point, summary["grid"])
+        shares = " ".join(f"{r['num_ues']}:{r['feasible_share']:.2f}" for r in block["rows"])
+        print(f"  {name:<44} eps={eps:<5} N*={star:<4} F(N) {shares}")
+
+
+def main(argv: list[str] | None = None) -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--config", required=True)
+    parser.add_argument("--split", choices=("dev", "validation", "test"), required=True)
+    parser.add_argument("--first-instance", type=int, help="dev split only")
+    parser.add_argument("--instances", type=int, help="dev split only")
+    parser.add_argument("--grid", type=int, nargs="+", help="default: the config's capacity grid")
+    parser.add_argument("--policies", nargs="+", required=True)
+    parser.add_argument("--workers", type=int, default=8)
+    parser.add_argument("--output", type=Path)
+    parser.add_argument("--formal", action="store_true")
+    parser.add_argument("--confirm-test", action="store_true")
+    args = parser.parse_args(argv)
+    if args.output is not None and args.output.exists():
+        parser.error(f"output {args.output} already exists")
+    provenance = git_provenance()
+    if args.formal and provenance["dirty"]:
+        parser.error("--formal requires a clean, committed working tree")
+    if args.split == "test" and not (args.confirm_test and args.formal):
+        parser.error("test evaluation requires --confirm-test and --formal")
+    try:
+        chosen = instances_for(args.split, args.first_instance, args.instances)
+    except ValueError as exc:
+        parser.error(str(exc))
+    base = load_scenario(args.config, 4)
+    grid = sorted(args.grid or base.capacity["grid"])
+    for spec in args.policies:
+        make_policy_v2(spec, base.physical, base.menu)  # validate before running
+    jobs = [
+        (args.config, spec, n, args.split, i)
+        for spec in args.policies
+        for n in grid
+        for i in chosen
+    ]
+    results: dict = {spec: {n: {"-": []} for n in grid} for spec in args.policies}
+    start = time.time()
+    with ProcessPoolExecutor(args.workers) as pool:
+        for done, (spec, n, episode) in enumerate(pool.map(_episode, jobs, chunksize=1), 1):
+            results[spec][n]["-"].append(episode)
+            if done % max(1, len(jobs) // 20) == 0:
+                print(f"{done}/{len(jobs)} episodes, {time.time() - start:.0f}s", flush=True)
+    print(f"{base.experiment['id']} {args.split}: {len(chosen)} instances, grid {grid}")
+    summaries = {}
+    for spec in args.policies:
+        summaries[spec] = summarize(results[spec])
+        print_summary(spec, summaries[spec])
+    if args.output is not None:
+        args.output.mkdir(parents=True)
+        record = {
+            "protocol_id": splits_v2.PROTOCOL_ID,
+            "formal": args.formal,
+            "provenance": provenance,
+            "config": args.config,
+            "split": args.split,
+            "instances": chosen,
+            "grid": grid,
+            "policies": args.policies,
+            "summaries": summaries,
+        }
+        (args.output / "summary.json").write_text(json.dumps(record, indent=2))
+        episodes = {spec: {str(n): results[spec][n]["-"] for n in grid} for spec in args.policies}
+        (args.output / "episodes.json").write_text(json.dumps(episodes))
+
+
+if __name__ == "__main__":
+    main()

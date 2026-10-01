@@ -55,6 +55,9 @@ class UEObservation:
     ``previous_service_bits`` is the AP-reported mutual information of the UE's
     own last transmission (0 when OFF). ``previous_rssi_w`` is the public
     per-subchannel received power (noise included) of the last slot.
+    ``own_gain_w`` (scenario v2.0 only, None otherwise) is the UE's own gain on
+    every subchannel in the slot being decided, measured from the AP's downlink
+    reference signal at the slot start (TDD reciprocity, no error).
     """
 
     remaining_bits: float
@@ -65,6 +68,7 @@ class UEObservation:
     previous_outcome: Outcome
     previous_service_bits: float
     previous_rssi_w: NDArray[np.float64]
+    own_gain_w: NDArray[np.float64] | None = None
 
 
 @dataclass
@@ -109,6 +113,8 @@ class PeriodicUplinkEnv:
         channel: ChannelModel,
         traffic: TrafficPattern,
         horizon_slots: int,
+        *,
+        own_csi: bool = False,
     ) -> None:
         if not isinstance(config, PhysicalConfig) or not isinstance(menu, PowerMenu):
             raise ValueError("config and menu must be PhysicalConfig and PowerMenu")
@@ -126,6 +132,7 @@ class PeriodicUplinkEnv:
         self.channel = channel
         self.traffic = traffic
         self.horizon_slots = int(horizon_slots)
+        self.own_csi = bool(own_csi)
         self.reset()
 
     # ------------------------------------------------------------------ state
@@ -174,6 +181,7 @@ class PeriodicUplinkEnv:
 
     def observe(self) -> tuple[UEObservation, ...]:
         rssi = _frozen(self._previous_rssi)
+        own = _frozen(self.channel.gains(self._t)) if self.own_csi else None
         return tuple(
             UEObservation(
                 remaining_bits=float(self._remaining[ue]),
@@ -187,6 +195,7 @@ class PeriodicUplinkEnv:
                 previous_outcome=Outcome(int(self._previous_outcome[ue])),
                 previous_service_bits=float(self._previous_service[ue]),
                 previous_rssi_w=rssi,
+                own_gain_w=None if own is None else own[ue],
             )
             for ue in range(self.config.num_ues)
         )

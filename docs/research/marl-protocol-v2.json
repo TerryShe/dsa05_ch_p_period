@@ -1,0 +1,206 @@
+{
+  "schema_version": 1,
+  "protocol_id": "marl-protocol-v2",
+  "status": "frozen",
+  "frozen_on": "2026-10-01",
+  "scenario_id": "DES-DSA05-PERIODIC",
+  "scenario_version": "2.0",
+  "document": "docs/research/marl-protocol-v2.md",
+  "instance_seeds": "topology_seed = spatial.topology_seed + i; phase_seed = traffic.phase_seed + i; UEs drawn in order (nested across N)",
+  "splits": {
+    "dev": {
+      "start": 0,
+      "stop": 10000,
+      "count": 10000
+    },
+    "validation": {
+      "start": 10000,
+      "stop": 10064,
+      "count": 64
+    },
+    "test": {
+      "start": 20000,
+      "stop": 20200,
+      "count": 200
+    },
+    "reserve": {
+      "start": 30000,
+      "stop": 40000,
+      "count": 10000
+    },
+    "train": {
+      "start": 1000000,
+      "stop": 2000000,
+      "count": 1000000
+    }
+  },
+  "evaluation_repeats": {
+    "dev": 1,
+    "validation": 1,
+    "test": 1
+  },
+  "split_codes": {
+    "dev": 0,
+    "validation": 1,
+    "test": 2,
+    "reserve": 3,
+    "train": 4
+  },
+  "execution_seeds": {
+    "base": 20260930,
+    "scheme": "SeedSequence([base, split_code, instance, repeat]).spawn(N)[j] -> PCG64 of UE j"
+  },
+  "fading_seeds": {
+    "base": 20261001,
+    "scheme": "SeedSequence([base, split_code, instance, repeat]).spawn(N)[j] -> SoS parameters of UE j"
+  },
+  "epsilons": [
+    0.01,
+    0.05
+  ],
+  "feasible_episode_share": 0.95,
+  "bootstrap": {
+    "resamples": 10000,
+    "seed": 20260930
+  },
+  "grid": [
+    2,
+    4,
+    6,
+    8,
+    10,
+    12,
+    16,
+    20,
+    24,
+    28,
+    32
+  ],
+  "reference_extra": [
+    36,
+    40
+  ],
+  "calibration_table": {
+    "random_max": [
+      "random_max"
+    ],
+    "sticky_max": [
+      "sticky_max"
+    ],
+    "p_persistent": [
+      "p_persistent:a=2",
+      "p_persistent:a=4",
+      "p_persistent:a=8",
+      "p_persistent:a=16",
+      "p_persistent:a=32",
+      "p_persistent:a=64"
+    ],
+    "opportunistic": [
+      "opportunistic:theta=1",
+      "opportunistic:theta=1.5",
+      "opportunistic:theta=2",
+      "opportunistic:theta=3",
+      "opportunistic:theta=4"
+    ],
+    "reservation": [
+      "reservation:offset=0.25,failures=1",
+      "reservation:offset=0.25,failures=2",
+      "reservation:offset=0.25,failures=4",
+      "reservation:offset=0.5,failures=1",
+      "reservation:offset=0.5,failures=2",
+      "reservation:offset=0.5,failures=4"
+    ],
+    "paced_sticky_csi": [
+      "paced_sticky_csi:margin=0.5",
+      "paced_sticky_csi:margin=1",
+      "paced_sticky_csi:margin=2",
+      "paced_sticky_csi:margin=4",
+      "paced_sticky_csi:margin=8"
+    ]
+  },
+  "train_probe_indices": [
+    1000000,
+    1000001,
+    1000002,
+    1000003,
+    1000004,
+    1000005,
+    1000006,
+    1000007,
+    1999992,
+    1999993,
+    1999994,
+    1999995,
+    1999996,
+    1999997,
+    1999998,
+    1999999
+  ],
+  "digests": {
+    "2": {
+      "validation": "e15e0efc76e723c4b75920a80647bfdd26522c742b0332fde3f607623d2a2e25",
+      "test": "c9a7d26f368183816e3453571ee0429a2ed25828fbb57fd31380d7d72a7453dd",
+      "train_probe": "92c429d440575b9afa88792e5312003cd60dcec22ce8aa42e7fe4ff07202acfc"
+    },
+    "4": {
+      "validation": "1b5cfd922d1d015ddf926b9c0106d26124d2fb2a0dc24cf3f5141d385fccc5ad",
+      "test": "a34640559dca07136f47954ddbf57c3e381ebf5e5ddf912afe764862f856694d",
+      "train_probe": "ece0358dfb2a9245eb2e40261673aa0f7c005128afe5b781de7d0a9874ccbfd1"
+    },
+    "6": {
+      "validation": "ab8927f9c97ce959277b1562eb66961251b837917887979c24c8a4de8b912d0f",
+      "test": "6d7a53a18d72c16234713bbb5f8acecc75913ac0f13ddc3f31b803a81213be19",
+      "train_probe": "a009e7dc3d4fac58992dd25310a8d3cf6988a9db51448571810b71aa22754d33"
+    },
+    "8": {
+      "validation": "d79c1227b291b2f1524dadbfe754ba2312f7c371b4f07253a8ab4b1fbd32d26b",
+      "test": "c03c024b25f11470341bf15c5079cbe8c6adc5ac867a51d2bcc6a2228d94fc63",
+      "train_probe": "32da35a946b38b6f5ab1d96047c4c5387460f166fbf88f9cae000324ecde4ffc"
+    },
+    "10": {
+      "validation": "b3b4ece59a00bbbd72ce40746d5c7d9be60bb826517a089b923c052039be1acf",
+      "test": "ed1e891922f85055bcbdd64724b678299f8ed97909ce00f5ecb3b73fd157c63b",
+      "train_probe": "3a1f10a1227ebf913ccd9463c0d0a553c29bd75c85cc254cf82a30b1364c8f26"
+    },
+    "12": {
+      "validation": "404c16066a4a353049226d39e14394c0ae8d67a71d71aed81515d520af34a51d",
+      "test": "fe6155a163c72c792f49e4558ec0e8e748cb695e597219b8b13404e7610dfa17",
+      "train_probe": "346d56e7ef540a08eafce8d1542f65d9c7a9639855f55244aafeedab65b0d962"
+    },
+    "16": {
+      "validation": "6c50005e65184e8bfcba681f24d5ecf8a94aa35c4908c9f47032b58672ced2ed",
+      "test": "75dd1072140aec5e852fed34c10cf758ece7d46753080ad3fee56105e03cc337",
+      "train_probe": "b6680b76b1e39ffc8567e1ac8d367030d57b7d263dc82785a6e56f56b7d14321"
+    },
+    "20": {
+      "validation": "faef0a47687b87c5763a8a931f08bb512485e1e36d39dae861267eaa7430af38",
+      "test": "061d4ce88547e9216660662a4852016421ebeccea436d8804509e53c5a8d0a9d",
+      "train_probe": "45aaacd8b513b037d5362e001a929d9fbc03a2008946986d72e53f7d2ae166a2"
+    },
+    "24": {
+      "validation": "0d88a886e7fb09b09b0cdbfaf68332b38f998b311bbbeecbebacf03a7173c694",
+      "test": "afa034707ae414bffff2314cdd049bea019bad6d38aa359bd5ed6f48ef9719d6",
+      "train_probe": "490ed4cca3ced478eb4e4e5c9c437f62959c78964bfb0a1929e48ee1cd399210"
+    },
+    "28": {
+      "validation": "80e4db7e011ae7399c82c987a2bbfd1493b4f4629feff3caa00e3295b4341b36",
+      "test": "1eaf997043f467a6978ae7f3986624ce79b1ab3d2c0015cecc9250335ab46784",
+      "train_probe": "b89ea6c4baf80bc614346997d0a98f3e63f8e21e9fa359ae99a6986b781e1d3d"
+    },
+    "32": {
+      "validation": "9def578a8aeb6dcfad6b157fdc9996f4e20eb5aac091ceecc4e3ebd53c577b98",
+      "test": "a0933d4dd118c4815ea30e1f0c3b4993c87c760720c20d28c4c0099fdbfea675",
+      "train_probe": "a94e3396cf2a0fed3521a534b598c1f2b7003f4f2e86cafe95be4404ed10add1"
+    },
+    "36": {
+      "validation": "e6f3db283f35322de7a49bce0ceabd68f46705fe00b68e2cc0212736697d824e",
+      "test": "c3dc21510afe2b7f1b3a9db6739c8ee4767981bc7868459d4bf6deb37287d939",
+      "train_probe": "5ec5304580cdac12814e528c3ecd48840ab827a4570035cf576795e6d037670a"
+    },
+    "40": {
+      "validation": "ca903d584a029a7a22d4b87f5252c5c18aac89550c11e6fa129964f0e25edfba",
+      "test": "5e463ffd65d73f9bd3ffe939977cd5a961b5fbc7b9456c33035b955a83431a04",
+      "train_probe": "71d63a257e9e80e5ea081f75896501f816769ebe3b84b920c2850278de06b3e1"
+    }
+  }
+}
