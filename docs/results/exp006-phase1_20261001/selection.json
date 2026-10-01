@@ -1,0 +1,84 @@
+{
+  "selection_grid": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    16
+  ],
+  "runs": {
+    "outputs/exp006-phase1/fixed-seed101": {
+      "variant": "fixed",
+      "seed": 101,
+      "scores": {
+        "marl:outputs/exp006-phase1/fixed-seed101/checkpoints/step-001001728.pt": 0.4010416666666667,
+        "marl:outputs/exp006-phase1/fixed-seed101/checkpoints/step-002001664.pt": 0.6484375,
+        "marl:outputs/exp006-phase1/fixed-seed101/checkpoints/step-003001600.pt": 0.7395833333333334,
+        "marl:outputs/exp006-phase1/fixed-seed101/checkpoints/step-004001536.pt": 0.75,
+        "marl:outputs/exp006-phase1/fixed-seed101/checkpoints/step-005001472.pt": 0.78125
+      },
+      "selected": "marl:outputs/exp006-phase1/fixed-seed101/checkpoints/step-005001472.pt",
+      "selected_score": 0.78125,
+      "last": "marl:outputs/exp006-phase1/fixed-seed101/checkpoints/step-005001472.pt",
+      "last_score": 0.78125
+    },
+    "outputs/exp006-phase1/fixed-seed202": {
+      "variant": "fixed",
+      "seed": 202,
+      "scores": {
+        "marl:outputs/exp006-phase1/fixed-seed202/checkpoints/step-001001728.pt": 0.5130208333333334,
+        "marl:outputs/exp006-phase1/fixed-seed202/checkpoints/step-002001664.pt": 0.6979166666666666,
+        "marl:outputs/exp006-phase1/fixed-seed202/checkpoints/step-003001600.pt": 0.7552083333333334,
+        "marl:outputs/exp006-phase1/fixed-seed202/checkpoints/step-004001536.pt": 0.7005208333333334,
+        "marl:outputs/exp006-phase1/fixed-seed202/checkpoints/step-005001472.pt": 0.7369791666666666
+      },
+      "selected": "marl:outputs/exp006-phase1/fixed-seed202/checkpoints/step-003001600.pt",
+      "selected_score": 0.7552083333333334,
+      "last": "marl:outputs/exp006-phase1/fixed-seed202/checkpoints/step-005001472.pt",
+      "last_score": 0.7369791666666666
+    },
+    "outputs/exp006-phase1/local-seed101": {
+      "variant": "local",
+      "seed": 101,
+      "scores": {
+        "marl:outputs/exp006-phase1/local-seed101/checkpoints/step-001001728.pt": 0.3125,
+        "marl:outputs/exp006-phase1/local-seed101/checkpoints/step-002001664.pt": 0.4973958333333333,
+        "marl:outputs/exp006-phase1/local-seed101/checkpoints/step-003001600.pt": 0.5260416666666666,
+        "marl:outputs/exp006-phase1/local-seed101/checkpoints/step-004001536.pt": 0.6927083333333334,
+        "marl:outputs/exp006-phase1/local-seed101/checkpoints/step-005001472.pt": 0.7057291666666666
+      },
+      "selected": "marl:outputs/exp006-phase1/local-seed101/checkpoints/step-005001472.pt",
+      "selected_score": 0.7057291666666666,
+      "last": "marl:outputs/exp006-phase1/local-seed101/checkpoints/step-005001472.pt",
+      "last_score": 0.7057291666666666
+    },
+    "outputs/exp006-phase1/local-seed202": {
+      "variant": "local",
+      "seed": 202,
+      "scores": {
+        "marl:outputs/exp006-phase1/local-seed202/checkpoints/step-001001728.pt": 0.3932291666666667,
+        "marl:outputs/exp006-phase1/local-seed202/checkpoints/step-002001664.pt": 0.5572916666666666,
+        "marl:outputs/exp006-phase1/local-seed202/checkpoints/step-003001600.pt": 0.6145833333333334,
+        "marl:outputs/exp006-phase1/local-seed202/checkpoints/step-004001536.pt": 0.5130208333333334,
+        "marl:outputs/exp006-phase1/local-seed202/checkpoints/step-005001472.pt": 0.59375
+      },
+      "selected": "marl:outputs/exp006-phase1/local-seed202/checkpoints/step-003001600.pt",
+      "selected_score": 0.6145833333333334,
+      "last": "marl:outputs/exp006-phase1/local-seed202/checkpoints/step-005001472.pt",
+      "last_score": 0.59375
+    }
+  },
+  "variants": {
+    "means": {
+      "fixed": 0.7682291666666667,
+      "local": 0.66015625
+    },
+    "chosen": "fixed"
+  },
+  "local_rule_score": 0.6744791666666666,
+  "learning_signal": {
+    "fixed": true,
+    "local": false
+  }
+}
