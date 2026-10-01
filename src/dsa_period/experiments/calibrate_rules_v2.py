@@ -1,9 +1,10 @@
 """Per-N calibration of the local rules of scenario v2.0 (protocol v2 §5).
 
-Reads the validation output of ``evaluate_capacity`` for every spec of
-``rules_v2.CALIBRATION_TABLE`` and selects, for each rule family and each N, one
-parameter by ``capacity.select_per_n``. The selection is written to
-``calibration.json`` and frozen before any test evaluation.
+Reads the validation outputs of ``evaluate_capacity`` (one or several runs,
+which together cover every spec of ``rules_v2.CALIBRATION_TABLE`` on the same
+instances and grid) and selects, for each rule family and each N, one parameter
+by ``capacity.select_per_n``. The selection is written to ``calibration.json``
+and frozen before any test evaluation.
 """
 
 import argparse
@@ -12,6 +13,27 @@ from pathlib import Path
 
 from dsa_period.capacity import EPSILONS, capacity, capacity_label, eps_key, select_per_n
 from dsa_period.rules_v2 import CALIBRATION_TABLE
+
+
+def merge(records: list[dict]) -> dict:
+    """One record from several runs on the same split, instances and grid."""
+    first = records[0]
+    for record in records[1:]:
+        for key in ("protocol_id", "split", "instances", "grid", "config", "formal"):
+            if record[key] != first[key]:
+                raise ValueError(f"runs differ in {key}")
+    summaries: dict = {}
+    for record in records:
+        overlap = set(summaries) & set(record["summaries"])
+        if overlap:
+            raise ValueError(f"specs evaluated twice: {sorted(overlap)}")
+        summaries.update(record["summaries"])
+    return {
+        **{key: first[key] for key in ("protocol_id", "split", "instances", "grid", "config")},
+        "formal": all(r["formal"] for r in records),
+        "provenance": [r["provenance"] for r in records],
+        "summaries": summaries,
+    }
 
 
 def calibrate(record: dict) -> dict:
@@ -40,12 +62,14 @@ def calibrate(record: dict) -> dict:
 
 def main(argv: list[str] | None = None) -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--evaluation", type=Path, required=True, help="evaluate_capacity output")
+    parser.add_argument(
+        "--evaluation", type=Path, nargs="+", required=True, help="evaluate_capacity outputs"
+    )
     parser.add_argument("--output", type=Path, required=True, help="calibration.json to write")
     args = parser.parse_args(argv)
     if args.output.exists():
         parser.error(f"output {args.output} already exists")
-    record = json.loads((args.evaluation / "summary.json").read_text())
+    record = merge([json.loads((path / "summary.json").read_text()) for path in args.evaluation])
     families = calibrate(record)
     grid = sorted(int(n) for n in next(iter(families.values()))["per_n"])
     print(f"validation calibration, {len(record['instances'])} instances, grid {grid}")

@@ -100,7 +100,9 @@
       "opportunistic:theta=1.5",
       "opportunistic:theta=2",
       "opportunistic:theta=3",
-      "opportunistic:theta=4"
+      "opportunistic:theta=4",
+      "opportunistic:theta=0.5",
+      "opportunistic:theta=0.75"
     ],
     "reservation": [
       "reservation:offset=0.25,failures=1",
@@ -115,9 +117,21 @@
       "paced_sticky_csi:margin=1",
       "paced_sticky_csi:margin=2",
       "paced_sticky_csi:margin=4",
-      "paced_sticky_csi:margin=8"
+      "paced_sticky_csi:margin=8",
+      "paced_sticky_csi:margin=16",
+      "paced_sticky_csi:margin=32",
+      "paced_sticky_csi:margin=inf"
     ]
   },
+  "amendments": [
+    {
+      "date": "2026-10-01",
+      "approved_by": "user",
+      "change": "calibration table: opportunistic theta 0.5, 0.75 and paced_sticky_csi margin 16, 32, inf appended after the original values",
+      "reason": "the first validation run selected the ends of both ranges",
+      "uses": "validation split only"
+    }
+  ],
   "train_probe_indices": [
     1000000,
     1000001,

@@ -323,14 +323,19 @@ def make_policy_v2(spec: str, config: PhysicalConfig, menu: PowerMenu) -> Policy
 
 
 # Per-N calibration of the local rules on the validation split (protocol v2 §5),
-# pre-registered on 2026-10-01. Order matters: it breaks the last tie.
+# pre-registered on 2026-10-01. Order matters: it breaks the last tie. The
+# amendment of 2026-10-01 (after the first validation run selected the ends of
+# the opportunistic and paced_sticky_csi ranges) appends values, keeping the
+# original order in front; margin = inf always uses max power.
 CALIBRATION_TABLE: dict[str, tuple[str, ...]] = {
     "random_max": ("random_max",),
     "sticky_max": ("sticky_max",),
     "p_persistent": tuple(f"p_persistent:a={a:g}" for a in (2, 4, 8, 16, 32, 64)),
-    "opportunistic": tuple(f"opportunistic:theta={t:g}" for t in (1, 1.5, 2, 3, 4)),
+    "opportunistic": tuple(f"opportunistic:theta={t:g}" for t in (1, 1.5, 2, 3, 4, 0.5, 0.75)),
     "reservation": tuple(
         f"reservation:offset={o:g},failures={f}" for o in (0.25, 0.5) for f in (1, 2, 4)
     ),
-    "paced_sticky_csi": tuple(f"paced_sticky_csi:margin={m:g}" for m in (0.5, 1, 2, 4, 8)),
+    "paced_sticky_csi": tuple(
+        f"paced_sticky_csi:margin={m:g}" for m in (0.5, 1, 2, 4, 8, 16, 32, float("inf"))
+    ),
 }

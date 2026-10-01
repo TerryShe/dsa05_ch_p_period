@@ -1,0 +1,752 @@
+{
+  "protocol_id": "marl-protocol-v2",
+  "formal": true,
+  "evaluation_provenance": [
+    {
+      "commit": "c973eb4362dded0b61eef4116b098f4266820dbf",
+      "dirty": false
+    },
+    {
+      "commit": "c973eb4362dded0b61eef4116b098f4266820dbf",
+      "dirty": false
+    }
+  ],
+  "evaluation_config": "configs/scenario-v2.toml",
+  "split": "validation",
+  "instances": [
+    10000,
+    10001,
+    10002,
+    10003,
+    10004,
+    10005,
+    10006,
+    10007,
+    10008,
+    10009,
+    10010,
+    10011,
+    10012,
+    10013,
+    10014,
+    10015,
+    10016,
+    10017,
+    10018,
+    10019,
+    10020,
+    10021,
+    10022,
+    10023,
+    10024,
+    10025,
+    10026,
+    10027,
+    10028,
+    10029,
+    10030,
+    10031,
+    10032,
+    10033,
+    10034,
+    10035,
+    10036,
+    10037,
+    10038,
+    10039,
+    10040,
+    10041,
+    10042,
+    10043,
+    10044,
+    10045,
+    10046,
+    10047,
+    10048,
+    10049,
+    10050,
+    10051,
+    10052,
+    10053,
+    10054,
+    10055,
+    10056,
+    10057,
+    10058,
+    10059,
+    10060,
+    10061,
+    10062,
+    10063
+  ],
+  "grid": [
+    2,
+    4,
+    6,
+    8,
+    10,
+    12,
+    16,
+    20,
+    24,
+    28,
+    32
+  ],
+  "table": {
+    "random_max": [
+      "random_max"
+    ],
+    "sticky_max": [
+      "sticky_max"
+    ],
+    "p_persistent": [
+      "p_persistent:a=2",
+      "p_persistent:a=4",
+      "p_persistent:a=8",
+      "p_persistent:a=16",
+      "p_persistent:a=32",
+      "p_persistent:a=64"
+    ],
+    "opportunistic": [
+      "opportunistic:theta=1",
+      "opportunistic:theta=1.5",
+      "opportunistic:theta=2",
+      "opportunistic:theta=3",
+      "opportunistic:theta=4",
+      "opportunistic:theta=0.5",
+      "opportunistic:theta=0.75"
+    ],
+    "reservation": [
+      "reservation:offset=0.25,failures=1",
+      "reservation:offset=0.25,failures=2",
+      "reservation:offset=0.25,failures=4",
+      "reservation:offset=0.5,failures=1",
+      "reservation:offset=0.5,failures=2",
+      "reservation:offset=0.5,failures=4"
+    ],
+    "paced_sticky_csi": [
+      "paced_sticky_csi:margin=0.5",
+      "paced_sticky_csi:margin=1",
+      "paced_sticky_csi:margin=2",
+      "paced_sticky_csi:margin=4",
+      "paced_sticky_csi:margin=8",
+      "paced_sticky_csi:margin=16",
+      "paced_sticky_csi:margin=32",
+      "paced_sticky_csi:margin=inf"
+    ]
+  },
+  "families": {
+    "random_max": {
+      "per_n": {
+        "2": {
+          "spec": "random_max",
+          "feasible_share": {
+            "0.01": 0.890625,
+            "0.05": 0.984375
+          },
+          "worst_ue_violation_rate_mean": 0.0043828124999999996
+        },
+        "4": {
+          "spec": "random_max",
+          "feasible_share": {
+            "0.01": 0.8125,
+            "0.05": 0.90625
+          },
+          "worst_ue_violation_rate_mean": 0.0152265625
+        },
+        "6": {
+          "spec": "random_max",
+          "feasible_share": {
+            "0.01": 0.65625,
+            "0.05": 0.828125
+          },
+          "worst_ue_violation_rate_mean": 0.025125
+        },
+        "8": {
+          "spec": "random_max",
+          "feasible_share": {
+            "0.01": 0.421875,
+            "0.05": 0.703125
+          },
+          "worst_ue_violation_rate_mean": 0.04903125
+        },
+        "10": {
+          "spec": "random_max",
+          "feasible_share": {
+            "0.01": 0.1875,
+            "0.05": 0.5625
+          },
+          "worst_ue_violation_rate_mean": 0.08712500000000001
+        },
+        "12": {
+          "spec": "random_max",
+          "feasible_share": {
+            "0.01": 0.0625,
+            "0.05": 0.359375
+          },
+          "worst_ue_violation_rate_mean": 0.1574140625
+        },
+        "16": {
+          "spec": "random_max",
+          "feasible_share": {
+            "0.01": 0.0,
+            "0.05": 0.015625
+          },
+          "worst_ue_violation_rate_mean": 0.5950546875
+        },
+        "20": {
+          "spec": "random_max",
+          "feasible_share": {
+            "0.01": 0.0,
+            "0.05": 0.0
+          },
+          "worst_ue_violation_rate_mean": 0.9841953125
+        },
+        "24": {
+          "spec": "random_max",
+          "feasible_share": {
+            "0.01": 0.0,
+            "0.05": 0.0
+          },
+          "worst_ue_violation_rate_mean": 0.9999765625
+        },
+        "28": {
+          "spec": "random_max",
+          "feasible_share": {
+            "0.01": 0.0,
+            "0.05": 0.0
+          },
+          "worst_ue_violation_rate_mean": 1.0
+        },
+        "32": {
+          "spec": "random_max",
+          "feasible_share": {
+            "0.01": 0.0,
+            "0.05": 0.0
+          },
+          "worst_ue_violation_rate_mean": 1.0
+        }
+      },
+      "capacity": {
+        "0.01": {
+          "n_star": 0,
+          "at_least": false
+        },
+        "0.05": {
+          "n_star": 2,
+          "at_least": false
+        }
+      }
+    },
+    "sticky_max": {
+      "per_n": {
+        "2": {
+          "spec": "sticky_max",
+          "feasible_share": {
+            "0.01": 0.96875,
+            "0.05": 1.0
+          },
+          "worst_ue_violation_rate_mean": 0.0011640625000000002
+        },
+        "4": {
+          "spec": "sticky_max",
+          "feasible_share": {
+            "0.01": 0.875,
+            "0.05": 0.953125
+          },
+          "worst_ue_violation_rate_mean": 0.005859375
+        },
+        "6": {
+          "spec": "sticky_max",
+          "feasible_share": {
+            "0.01": 0.796875,
+            "0.05": 0.9375
+          },
+          "worst_ue_violation_rate_mean": 0.0098359375
+        },
+        "8": {
+          "spec": "sticky_max",
+          "feasible_share": {
+            "0.01": 0.53125,
+            "0.05": 0.875
+          },
+          "worst_ue_violation_rate_mean": 0.023757812500000003
+        },
+        "10": {
+          "spec": "sticky_max",
+          "feasible_share": {
+            "0.01": 0.25,
+            "0.05": 0.65625
+          },
+          "worst_ue_violation_rate_mean": 0.04816406250000001
+        },
+        "12": {
+          "spec": "sticky_max",
+          "feasible_share": {
+            "0.01": 0.0625,
+            "0.05": 0.421875
+          },
+          "worst_ue_violation_rate_mean": 0.091703125
+        },
+        "16": {
+          "spec": "sticky_max",
+          "feasible_share": {
+            "0.01": 0.0,
+            "0.05": 0.0
+          },
+          "worst_ue_violation_rate_mean": 0.45889843750000003
+        },
+        "20": {
+          "spec": "sticky_max",
+          "feasible_share": {
+            "0.01": 0.0,
+            "0.05": 0.0
+          },
+          "worst_ue_violation_rate_mean": 0.9551875
+        },
+        "24": {
+          "spec": "sticky_max",
+          "feasible_share": {
+            "0.01": 0.0,
+            "0.05": 0.0
+          },
+          "worst_ue_violation_rate_mean": 0.9994765624999999
+        },
+        "28": {
+          "spec": "sticky_max",
+          "feasible_share": {
+            "0.01": 0.0,
+            "0.05": 0.0
+          },
+          "worst_ue_violation_rate_mean": 1.0
+        },
+        "32": {
+          "spec": "sticky_max",
+          "feasible_share": {
+            "0.01": 0.0,
+            "0.05": 0.0
+          },
+          "worst_ue_violation_rate_mean": 1.0
+        }
+      },
+      "capacity": {
+        "0.01": {
+          "n_star": 2,
+          "at_least": false
+        },
+        "0.05": {
+          "n_star": 4,
+          "at_least": false
+        }
+      }
+    },
+    "p_persistent": {
+      "per_n": {
+        "2": {
+          "spec": "p_persistent:a=8",
+          "feasible_share": {
+            "0.01": 1.0,
+            "0.05": 1.0
+          },
+          "worst_ue_violation_rate_mean": 0.000125
+        },
+        "4": {
+          "spec": "p_persistent:a=8",
+          "feasible_share": {
+            "0.01": 0.953125,
+            "0.05": 1.0
+          },
+          "worst_ue_violation_rate_mean": 0.0015859375
+        },
+        "6": {
+          "spec": "p_persistent:a=8",
+          "feasible_share": {
+            "0.01": 0.78125,
+            "0.05": 0.984375
+          },
+          "worst_ue_violation_rate_mean": 0.008046875000000002
+        },
+        "8": {
+          "spec": "p_persistent:a=8",
+          "feasible_share": {
+            "0.01": 0.203125,
+            "0.05": 0.828125
+          },
+          "worst_ue_violation_rate_mean": 0.030625000000000003
+        },
+        "10": {
+          "spec": "p_persistent:a=8",
+          "feasible_share": {
+            "0.01": 0.0,
+            "0.05": 0.34375
+          },
+          "worst_ue_violation_rate_mean": 0.080046875
+        },
+        "12": {
+          "spec": "p_persistent:a=8",
+          "feasible_share": {
+            "0.01": 0.0,
+            "0.05": 0.015625
+          },
+          "worst_ue_violation_rate_mean": 0.15810156250000001
+        },
+        "16": {
+          "spec": "p_persistent:a=8",
+          "feasible_share": {
+            "0.01": 0.0,
+            "0.05": 0.0
+          },
+          "worst_ue_violation_rate_mean": 0.5007578125
+        },
+        "20": {
+          "spec": "p_persistent:a=8",
+          "feasible_share": {
+            "0.01": 0.0,
+            "0.05": 0.0
+          },
+          "worst_ue_violation_rate_mean": 0.8232968749999999
+        },
+        "24": {
+          "spec": "p_persistent:a=4",
+          "feasible_share": {
+            "0.01": 0.0,
+            "0.05": 0.0
+          },
+          "worst_ue_violation_rate_mean": 0.94903125
+        },
+        "28": {
+          "spec": "p_persistent:a=2",
+          "feasible_share": {
+            "0.01": 0.0,
+            "0.05": 0.0
+          },
+          "worst_ue_violation_rate_mean": 0.9842187499999999
+        },
+        "32": {
+          "spec": "p_persistent:a=2",
+          "feasible_share": {
+            "0.01": 0.0,
+            "0.05": 0.0
+          },
+          "worst_ue_violation_rate_mean": 0.995140625
+        }
+      },
+      "capacity": {
+        "0.01": {
+          "n_star": 4,
+          "at_least": false
+        },
+        "0.05": {
+          "n_star": 6,
+          "at_least": false
+        }
+      }
+    },
+    "opportunistic": {
+      "per_n": {
+        "2": {
+          "spec": "opportunistic:theta=1",
+          "feasible_share": {
+            "0.01": 1.0,
+            "0.05": 1.0
+          },
+          "worst_ue_violation_rate_mean": 0.000109375
+        },
+        "4": {
+          "spec": "opportunistic:theta=1",
+          "feasible_share": {
+            "0.01": 0.96875,
+            "0.05": 1.0
+          },
+          "worst_ue_violation_rate_mean": 0.0015703125
+        },
+        "6": {
+          "spec": "opportunistic:theta=1",
+          "feasible_share": {
+            "0.01": 0.78125,
+            "0.05": 0.984375
+          },
+          "worst_ue_violation_rate_mean": 0.006453125
+        },
+        "8": {
+          "spec": "opportunistic:theta=1",
+          "feasible_share": {
+            "0.01": 0.265625,
+            "0.05": 0.65625
+          },
+          "worst_ue_violation_rate_mean": 0.04485937499999999
+        },
+        "10": {
+          "spec": "opportunistic:theta=1.5",
+          "feasible_share": {
+            "0.01": 0.0,
+            "0.05": 0.078125
+          },
+          "worst_ue_violation_rate_mean": 0.3980625
+        },
+        "12": {
+          "spec": "opportunistic:theta=4",
+          "feasible_share": {
+            "0.01": 0.0,
+            "0.05": 0.0
+          },
+          "worst_ue_violation_rate_mean": 0.7222109375000001
+        },
+        "16": {
+          "spec": "opportunistic:theta=4",
+          "feasible_share": {
+            "0.01": 0.0,
+            "0.05": 0.0
+          },
+          "worst_ue_violation_rate_mean": 0.9865234375
+        },
+        "20": {
+          "spec": "opportunistic:theta=4",
+          "feasible_share": {
+            "0.01": 0.0,
+            "0.05": 0.0
+          },
+          "worst_ue_violation_rate_mean": 0.99896875
+        },
+        "24": {
+          "spec": "opportunistic:theta=1",
+          "feasible_share": {
+            "0.01": 0.0,
+            "0.05": 0.0
+          },
+          "worst_ue_violation_rate_mean": 1.0
+        },
+        "28": {
+          "spec": "opportunistic:theta=1",
+          "feasible_share": {
+            "0.01": 0.0,
+            "0.05": 0.0
+          },
+          "worst_ue_violation_rate_mean": 1.0
+        },
+        "32": {
+          "spec": "opportunistic:theta=1",
+          "feasible_share": {
+            "0.01": 0.0,
+            "0.05": 0.0
+          },
+          "worst_ue_violation_rate_mean": 1.0
+        }
+      },
+      "capacity": {
+        "0.01": {
+          "n_star": 4,
+          "at_least": false
+        },
+        "0.05": {
+          "n_star": 6,
+          "at_least": false
+        }
+      }
+    },
+    "reservation": {
+      "per_n": {
+        "2": {
+          "spec": "reservation:offset=0.25,failures=1",
+          "feasible_share": {
+            "0.01": 0.46875,
+            "0.05": 0.71875
+          },
+          "worst_ue_violation_rate_mean": 0.0407421875
+        },
+        "4": {
+          "spec": "reservation:offset=0.25,failures=1",
+          "feasible_share": {
+            "0.01": 0.21875,
+            "0.05": 0.5
+          },
+          "worst_ue_violation_rate_mean": 0.07909374999999999
+        },
+        "6": {
+          "spec": "reservation:offset=0.25,failures=1",
+          "feasible_share": {
+            "0.01": 0.09375,
+            "0.05": 0.296875
+          },
+          "worst_ue_violation_rate_mean": 0.1170859375
+        },
+        "8": {
+          "spec": "reservation:offset=0.25,failures=1",
+          "feasible_share": {
+            "0.01": 0.015625,
+            "0.05": 0.109375
+          },
+          "worst_ue_violation_rate_mean": 0.173421875
+        },
+        "10": {
+          "spec": "reservation:offset=0.25,failures=1",
+          "feasible_share": {
+            "0.01": 0.0,
+            "0.05": 0.046875
+          },
+          "worst_ue_violation_rate_mean": 0.2443984375
+        },
+        "12": {
+          "spec": "reservation:offset=0.25,failures=4",
+          "feasible_share": {
+            "0.01": 0.0,
+            "0.05": 0.0
+          },
+          "worst_ue_violation_rate_mean": 0.342359375
+        },
+        "16": {
+          "spec": "reservation:offset=0.5,failures=4",
+          "feasible_share": {
+            "0.01": 0.0,
+            "0.05": 0.0
+          },
+          "worst_ue_violation_rate_mean": 0.6883359375
+        },
+        "20": {
+          "spec": "reservation:offset=0.5,failures=1",
+          "feasible_share": {
+            "0.01": 0.0,
+            "0.05": 0.0
+          },
+          "worst_ue_violation_rate_mean": 0.8997734374999999
+        },
+        "24": {
+          "spec": "reservation:offset=0.5,failures=2",
+          "feasible_share": {
+            "0.01": 0.0,
+            "0.05": 0.0
+          },
+          "worst_ue_violation_rate_mean": 0.9688671875
+        },
+        "28": {
+          "spec": "reservation:offset=0.5,failures=2",
+          "feasible_share": {
+            "0.01": 0.0,
+            "0.05": 0.0
+          },
+          "worst_ue_violation_rate_mean": 0.9906640624999999
+        },
+        "32": {
+          "spec": "reservation:offset=0.5,failures=2",
+          "feasible_share": {
+            "0.01": 0.0,
+            "0.05": 0.0
+          },
+          "worst_ue_violation_rate_mean": 0.9972421874999999
+        }
+      },
+      "capacity": {
+        "0.01": {
+          "n_star": 0,
+          "at_least": false
+        },
+        "0.05": {
+          "n_star": 0,
+          "at_least": false
+        }
+      }
+    },
+    "paced_sticky_csi": {
+      "per_n": {
+        "2": {
+          "spec": "paced_sticky_csi:margin=8",
+          "feasible_share": {
+            "0.01": 1.0,
+            "0.05": 1.0
+          },
+          "worst_ue_violation_rate_mean": 0.00028125
+        },
+        "4": {
+          "spec": "paced_sticky_csi:margin=16",
+          "feasible_share": {
+            "0.01": 0.953125,
+            "0.05": 1.0
+          },
+          "worst_ue_violation_rate_mean": 0.0013750000000000001
+        },
+        "6": {
+          "spec": "paced_sticky_csi:margin=inf",
+          "feasible_share": {
+            "0.01": 0.9375,
+            "0.05": 1.0
+          },
+          "worst_ue_violation_rate_mean": 0.0022187500000000002
+        },
+        "8": {
+          "spec": "paced_sticky_csi:margin=32",
+          "feasible_share": {
+            "0.01": 0.890625,
+            "0.05": 0.984375
+          },
+          "worst_ue_violation_rate_mean": 0.005
+        },
+        "10": {
+          "spec": "paced_sticky_csi:margin=32",
+          "feasible_share": {
+            "0.01": 0.71875,
+            "0.05": 0.921875
+          },
+          "worst_ue_violation_rate_mean": 0.011867187500000001
+        },
+        "12": {
+          "spec": "paced_sticky_csi:margin=32",
+          "feasible_share": {
+            "0.01": 0.53125,
+            "0.05": 0.875
+          },
+          "worst_ue_violation_rate_mean": 0.024929687500000002
+        },
+        "16": {
+          "spec": "paced_sticky_csi:margin=16",
+          "feasible_share": {
+            "0.01": 0.0,
+            "0.05": 0.046875
+          },
+          "worst_ue_violation_rate_mean": 0.3017578125
+        },
+        "20": {
+          "spec": "paced_sticky_csi:margin=32",
+          "feasible_share": {
+            "0.01": 0.0,
+            "0.05": 0.0
+          },
+          "worst_ue_violation_rate_mean": 0.9501953125
+        },
+        "24": {
+          "spec": "paced_sticky_csi:margin=32",
+          "feasible_share": {
+            "0.01": 0.0,
+            "0.05": 0.0
+          },
+          "worst_ue_violation_rate_mean": 0.9993125
+        },
+        "28": {
+          "spec": "paced_sticky_csi:margin=32",
+          "feasible_share": {
+            "0.01": 0.0,
+            "0.05": 0.0
+          },
+          "worst_ue_violation_rate_mean": 0.9999687500000001
+        },
+        "32": {
+          "spec": "paced_sticky_csi:margin=0.5",
+          "feasible_share": {
+            "0.01": 0.0,
+            "0.05": 0.0
+          },
+          "worst_ue_violation_rate_mean": 1.0
+        }
+      },
+      "capacity": {
+        "0.01": {
+          "n_star": 4,
+          "at_least": false
+        },
+        "0.05": {
+          "n_star": 8,
+          "at_least": false
+        }
+      }
+    }
+  }
+}

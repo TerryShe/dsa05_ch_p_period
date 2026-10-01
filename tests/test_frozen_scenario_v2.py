@@ -75,3 +75,13 @@ def test_validation_test_and_train_probe_instances_are_unchanged(num_ues):
             == (recorded[split])
         ), split
     assert _freeze_module().train_probe_digest(scenario) == recorded["train_probe"]
+
+
+def test_the_calibration_amendment_only_appends_to_the_preregistered_table():
+    original = {
+        "opportunistic": [f"opportunistic:theta={t:g}" for t in (1, 1.5, 2, 3, 4)],
+        "paced_sticky_csi": [f"paced_sticky_csi:margin={m:g}" for m in (0.5, 1, 2, 4, 8)],
+    }
+    for family, specs in original.items():
+        assert list(CALIBRATION_TABLE[family][: len(specs)]) == specs
+    assert [a["date"] for a in PROTOCOL["amendments"]] == ["2026-10-01"]

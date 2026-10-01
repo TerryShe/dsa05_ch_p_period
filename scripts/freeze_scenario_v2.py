@@ -123,6 +123,16 @@ def main() -> None:
         "grid": grid,
         "reference_extra": base.capacity["reference_extra"],
         "calibration_table": {family: list(specs) for family, specs in CALIBRATION_TABLE.items()},
+        "amendments": [
+            {
+                "date": "2026-10-01",
+                "approved_by": "user",
+                "change": "calibration table: opportunistic theta 0.5, 0.75 and paced_sticky_csi "
+                "margin 16, 32, inf appended after the original values",
+                "reason": "the first validation run selected the ends of both ranges",
+                "uses": "validation split only",
+            }
+        ],
         "train_probe_indices": TRAIN_PROBES,
         "digests": digests,
     }

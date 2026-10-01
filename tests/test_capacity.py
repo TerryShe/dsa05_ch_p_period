@@ -286,3 +286,26 @@ def test_per_n_selection_follows_the_tie_breaks():
     assert chosen[4]["spec"] == "b"  # equal F at 0.01: higher F at 0.05
     assert chosen[6]["spec"] == "a"  # all equal: table order
     assert chosen[4]["feasible_share"] == {"0.01": 0.9, "0.05": 1.0}
+
+
+def test_calibration_merges_runs_on_identical_instances_only():
+    from dsa_period.experiments.calibrate_rules_v2 import merge
+
+    def run(specs, instances=(10_000, 10_001)):
+        return {
+            "protocol_id": "marl-protocol-v2",
+            "split": "validation",
+            "instances": list(instances),
+            "grid": [2, 4],
+            "config": "configs/scenario-v2.toml",
+            "formal": True,
+            "provenance": {"commit": "x", "dirty": False},
+            "summaries": {spec: {} for spec in specs},
+        }
+
+    merged = merge([run(["a", "b"]), run(["c"])])
+    assert sorted(merged["summaries"]) == ["a", "b", "c"] and merged["formal"]
+    with pytest.raises(ValueError):
+        merge([run(["a"]), run(["a"])])
+    with pytest.raises(ValueError):
+        merge([run(["a"]), run(["c"], instances=(10_000,))])

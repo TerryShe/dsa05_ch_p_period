@@ -68,10 +68,11 @@ scenario: DES-DSA05-PERIODIC v2.0
 | random_max | 无 | 1 |
 | sticky_max | 无 | 1 |
 | p_persistent | a ∈ {2, 4, 8, 16, 32, 64} | 6 |
-| opportunistic | θ ∈ {1, 1.5, 2, 3, 4} | 5 |
+| opportunistic | θ ∈ {1, 1.5, 2, 3, 4}，补充 {0.5, 0.75} | 5 + 2 |
 | reservation | (offset, failures) ∈ {(0.25, 1), (0.25, 2), (0.25, 4), (0.5, 1), (0.5, 2), (0.5, 4)} | 6 |
-| paced_sticky_csi | margin ∈ {0.5, 1, 2, 4, 8}（switch_db = 3，switch_probability = 0.5） | 5 |
+| paced_sticky_csi | margin ∈ {0.5, 1, 2, 4, 8}，补充 {16, 32, ∞}（switch_db = 3，switch_probability = 0.5；∞ 即始终满功率） | 5 + 3 |
 
+  - **补充（2026-10-01，用户批准）**：第一次验证集运行后，paced_sticky_csi 在多数 N 上选中表的上端（margin = 8），机会式在 N ≤ 8 上选中表的下端（θ = 1），基线可能被低估。表中补充上述 5 个设置，按原顺序之后追加（"表中靠前"的平局规则下，原有设置优先）。补充只用验证集，不涉及测试集；见[校准报告](../results/v2-calibration_20261001/report.md)。
   - 代码：`rules_v2.CALIBRATION_TABLE`；选择由 `capacity.select_per_n` 实现。
 - N_EDF（规范版）与诊断用的 `defer_hopeless` 版也在验证集上评估，作为校准结果的参照。
 - 每份报告的主表必须包含：同一网格上的 N_EDF 与全部本地规则的 F(N) 和 N\*；算过 LP 上界时一并列出，并注明所用实例。
