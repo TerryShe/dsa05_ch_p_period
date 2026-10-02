@@ -1,0 +1,641 @@
+{
+  "grid": [
+    2,
+    4,
+    6,
+    8,
+    10,
+    12,
+    16,
+    20,
+    24,
+    28,
+    32
+  ],
+  "marl_specs": [
+    "marl:outputs/exp006-phase2/fixed-seed101/checkpoints/step-016000768.pt",
+    "marl:outputs/exp006-phase2/fixed-seed202/checkpoints/step-016000768.pt",
+    "marl:outputs/exp006-phase2/fixed-seed303/checkpoints/step-020000512.pt"
+  ],
+  "best_local": {
+    "2": "opportunistic:theta=1",
+    "4": "opportunistic:theta=1",
+    "6": "paced_sticky_csi:margin=inf",
+    "8": "paced_sticky_csi:margin=32",
+    "10": "paced_sticky_csi:margin=32",
+    "12": "paced_sticky_csi:margin=32",
+    "16": "paced_sticky_csi:margin=16",
+    "20": "p_persistent:a=8",
+    "24": "p_persistent:a=4",
+    "28": "p_persistent:a=2",
+    "32": "p_persistent:a=2"
+  },
+  "per_eps": {
+    "0.01": {
+      "rows": [
+        {
+          "num_ues": 2,
+          "marl": 1.0,
+          "marl_ci95": [
+            1.0,
+            1.0
+          ],
+          "marl_per_seed": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "best_local": 1.0,
+          "difference": 0.0,
+          "difference_ci95": [
+            0.0,
+            0.0
+          ],
+          "edf": 1.0
+        },
+        {
+          "num_ues": 4,
+          "marl": 0.96875,
+          "marl_ci95": [
+            0.9166666666666666,
+            1.0
+          ],
+          "marl_per_seed": [
+            0.953125,
+            0.96875,
+            0.984375
+          ],
+          "best_local": 0.96875,
+          "difference": 0.0,
+          "difference_ci95": [
+            -0.02604166666666663,
+            0.02604166666666663
+          ],
+          "edf": 1.0
+        },
+        {
+          "num_ues": 6,
+          "marl": 0.9479166666666666,
+          "marl_ci95": [
+            0.8854166666666666,
+            1.0
+          ],
+          "marl_per_seed": [
+            0.953125,
+            0.9375,
+            0.953125
+          ],
+          "best_local": 0.9375,
+          "difference": 0.01041666666666663,
+          "difference_ci95": [
+            0.0,
+            0.046875
+          ],
+          "edf": 1.0
+        },
+        {
+          "num_ues": 8,
+          "marl": 0.9375,
+          "marl_ci95": [
+            0.875,
+            0.984375
+          ],
+          "marl_per_seed": [
+            0.9375,
+            0.9375,
+            0.9375
+          ],
+          "best_local": 0.890625,
+          "difference": 0.046875,
+          "difference_ci95": [
+            0.0,
+            0.109375
+          ],
+          "edf": 1.0
+        },
+        {
+          "num_ues": 10,
+          "marl": 0.890625,
+          "marl_ci95": [
+            0.8072916666666666,
+            0.9583333333333334
+          ],
+          "marl_per_seed": [
+            0.90625,
+            0.890625,
+            0.875
+          ],
+          "best_local": 0.71875,
+          "difference": 0.171875,
+          "difference_ci95": [
+            0.08320312500000016,
+            0.27083333333333337
+          ],
+          "edf": 1.0
+        },
+        {
+          "num_ues": 12,
+          "marl": 0.7552083333333334,
+          "marl_ci95": [
+            0.640625,
+            0.859375
+          ],
+          "marl_per_seed": [
+            0.78125,
+            0.703125,
+            0.78125
+          ],
+          "best_local": 0.53125,
+          "difference": 0.22395833333333337,
+          "difference_ci95": [
+            0.125,
+            0.33333333333333337
+          ],
+          "edf": 1.0
+        },
+        {
+          "num_ues": 16,
+          "marl": 0.2708333333333333,
+          "marl_ci95": [
+            0.16666666666666666,
+            0.3802083333333333
+          ],
+          "marl_per_seed": [
+            0.28125,
+            0.28125,
+            0.25
+          ],
+          "best_local": 0.0,
+          "difference": 0.2708333333333333,
+          "difference_ci95": [
+            0.16666666666666666,
+            0.3802083333333333
+          ],
+          "edf": 1.0
+        },
+        {
+          "num_ues": 20,
+          "marl": 0.0,
+          "marl_ci95": [
+            0.0,
+            0.0
+          ],
+          "marl_per_seed": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "best_local": 0.0,
+          "difference": 0.0,
+          "difference_ci95": [
+            0.0,
+            0.0
+          ],
+          "edf": 1.0
+        },
+        {
+          "num_ues": 24,
+          "marl": 0.0,
+          "marl_ci95": [
+            0.0,
+            0.0
+          ],
+          "marl_per_seed": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "best_local": 0.0,
+          "difference": 0.0,
+          "difference_ci95": [
+            0.0,
+            0.0
+          ],
+          "edf": 0.828125
+        },
+        {
+          "num_ues": 28,
+          "marl": 0.0,
+          "marl_ci95": [
+            0.0,
+            0.0
+          ],
+          "marl_per_seed": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "best_local": 0.0,
+          "difference": 0.0,
+          "difference_ci95": [
+            0.0,
+            0.0
+          ],
+          "edf": 0.171875
+        },
+        {
+          "num_ues": 32,
+          "marl": 0.0,
+          "marl_ci95": [
+            0.0,
+            0.0
+          ],
+          "marl_per_seed": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "best_local": 0.0,
+          "difference": 0.0,
+          "difference_ci95": [
+            0.0,
+            0.0
+          ],
+          "edf": 0.0
+        }
+      ],
+      "marl_capacity": {
+        "n_star": 4,
+        "at_least": false
+      },
+      "marl_capacity_bootstrap": {
+        "10": 0.056,
+        "2": 0.1818,
+        "4": 0.2952,
+        "6": 0.1004,
+        "8": 0.3666
+      },
+      "best_local_capacity": {
+        "n_star": 4,
+        "at_least": false
+      },
+      "edf_capacity": {
+        "n_star": 20,
+        "at_least": false
+      }
+    },
+    "0.05": {
+      "rows": [
+        {
+          "num_ues": 2,
+          "marl": 1.0,
+          "marl_ci95": [
+            1.0,
+            1.0
+          ],
+          "marl_per_seed": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "best_local": 1.0,
+          "difference": 0.0,
+          "difference_ci95": [
+            0.0,
+            0.0
+          ],
+          "edf": 1.0
+        },
+        {
+          "num_ues": 4,
+          "marl": 1.0,
+          "marl_ci95": [
+            1.0,
+            1.0
+          ],
+          "marl_per_seed": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "best_local": 1.0,
+          "difference": 0.0,
+          "difference_ci95": [
+            0.0,
+            0.0
+          ],
+          "edf": 1.0
+        },
+        {
+          "num_ues": 6,
+          "marl": 1.0,
+          "marl_ci95": [
+            1.0,
+            1.0
+          ],
+          "marl_per_seed": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "best_local": 1.0,
+          "difference": 0.0,
+          "difference_ci95": [
+            0.0,
+            0.0
+          ],
+          "edf": 1.0
+        },
+        {
+          "num_ues": 8,
+          "marl": 1.0,
+          "marl_ci95": [
+            1.0,
+            1.0
+          ],
+          "marl_per_seed": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "best_local": 0.984375,
+          "difference": 0.015625,
+          "difference_ci95": [
+            0.0,
+            0.046875
+          ],
+          "edf": 1.0
+        },
+        {
+          "num_ues": 10,
+          "marl": 0.9947916666666666,
+          "marl_ci95": [
+            0.96875,
+            1.0
+          ],
+          "marl_per_seed": [
+            1.0,
+            0.984375,
+            1.0
+          ],
+          "best_local": 0.921875,
+          "difference": 0.07291666666666663,
+          "difference_ci95": [
+            0.015625,
+            0.140625
+          ],
+          "edf": 1.0
+        },
+        {
+          "num_ues": 12,
+          "marl": 0.953125,
+          "marl_ci95": [
+            0.890625,
+            1.0
+          ],
+          "marl_per_seed": [
+            0.96875,
+            0.921875,
+            0.96875
+          ],
+          "best_local": 0.875,
+          "difference": 0.078125,
+          "difference_ci95": [
+            0.015625,
+            0.15625
+          ],
+          "edf": 1.0
+        },
+        {
+          "num_ues": 16,
+          "marl": 0.5729166666666666,
+          "marl_ci95": [
+            0.4427083333333333,
+            0.703125
+          ],
+          "marl_per_seed": [
+            0.640625,
+            0.546875,
+            0.53125
+          ],
+          "best_local": 0.046875,
+          "difference": 0.5260416666666666,
+          "difference_ci95": [
+            0.3958333333333333,
+            0.65625
+          ],
+          "edf": 1.0
+        },
+        {
+          "num_ues": 20,
+          "marl": 0.005208333333333333,
+          "marl_ci95": [
+            0.0,
+            0.03125
+          ],
+          "marl_per_seed": [
+            0.0,
+            0.015625,
+            0.0
+          ],
+          "best_local": 0.0,
+          "difference": 0.005208333333333333,
+          "difference_ci95": [
+            0.0,
+            0.03125
+          ],
+          "edf": 1.0
+        },
+        {
+          "num_ues": 24,
+          "marl": 0.0,
+          "marl_ci95": [
+            0.0,
+            0.0
+          ],
+          "marl_per_seed": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "best_local": 0.0,
+          "difference": 0.0,
+          "difference_ci95": [
+            0.0,
+            0.0
+          ],
+          "edf": 0.859375
+        },
+        {
+          "num_ues": 28,
+          "marl": 0.0,
+          "marl_ci95": [
+            0.0,
+            0.0
+          ],
+          "marl_per_seed": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "best_local": 0.0,
+          "difference": 0.0,
+          "difference_ci95": [
+            0.0,
+            0.0
+          ],
+          "edf": 0.1875
+        },
+        {
+          "num_ues": 32,
+          "marl": 0.0,
+          "marl_ci95": [
+            0.0,
+            0.0
+          ],
+          "marl_per_seed": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "best_local": 0.0,
+          "difference": 0.0,
+          "difference_ci95": [
+            0.0,
+            0.0
+          ],
+          "edf": 0.0
+        }
+      ],
+      "marl_capacity": {
+        "n_star": 12,
+        "at_least": false
+      },
+      "marl_capacity_bootstrap": {
+        "10": 0.4031,
+        "12": 0.5954,
+        "8": 0.0015
+      },
+      "best_local_capacity": {
+        "n_star": 8,
+        "at_least": false
+      },
+      "edf_capacity": {
+        "n_star": 20,
+        "at_least": false
+      }
+    }
+  },
+  "failure_shape": {
+    "6": {
+      "marl": {
+        "ues_over_1pct": 0.008680555555555556,
+        "by_class": {
+          "fast": 0.018229166666666668,
+          "medium": 0.0078125,
+          "slow": 0.0
+        },
+        "far_ge_80m": 0.024875621890547265,
+        "near_lt_50m": 0.0,
+        "occupancy": 0.26351634114583333
+      },
+      "best_local": {
+        "ues_over_1pct": 0.013020833333333334,
+        "by_class": {
+          "fast": 0.03125,
+          "medium": 0.0078125,
+          "slow": 0.0
+        },
+        "far_ge_80m": 0.03731343283582089,
+        "near_lt_50m": 0.0,
+        "occupancy": 0.24802109375
+      }
+    },
+    "8": {
+      "marl": {
+        "ues_over_1pct": 0.008463541666666666,
+        "by_class": {
+          "fast": 0.017361111111111112,
+          "medium": 0.005208333333333333,
+          "slow": 0.0
+        },
+        "far_ge_80m": 0.023679417122040074,
+        "near_lt_50m": 0.0,
+        "occupancy": 0.3698830078125
+      },
+      "best_local": {
+        "ues_over_1pct": 0.015625,
+        "by_class": {
+          "fast": 0.036458333333333336,
+          "medium": 0.005208333333333333,
+          "slow": 0.0
+        },
+        "far_ge_80m": 0.03825136612021858,
+        "near_lt_50m": 0.0,
+        "occupancy": 0.35791484375
+      }
+    },
+    "10": {
+      "marl": {
+        "ues_over_1pct": 0.0125,
+        "by_class": {
+          "fast": 0.022135416666666668,
+          "medium": 0.005208333333333333,
+          "slow": 0.006944444444444444
+        },
+        "far_ge_80m": 0.028148148148148148,
+        "near_lt_50m": 0.0,
+        "occupancy": 0.4833971354166666
+      },
+      "best_local": {
+        "ues_over_1pct": 0.03125,
+        "by_class": {
+          "fast": 0.0625,
+          "medium": 0.015625,
+          "slow": 0.005208333333333333
+        },
+        "far_ge_80m": 0.057777777777777775,
+        "near_lt_50m": 0.0,
+        "occupancy": 0.48255429687500007
+      }
+    },
+    "12": {
+      "marl": {
+        "ues_over_1pct": 0.0234375,
+        "by_class": {
+          "fast": 0.041666666666666664,
+          "medium": 0.022135416666666668,
+          "slow": 0.006510416666666667
+        },
+        "far_ge_80m": 0.04316546762589928,
+        "near_lt_50m": 0.0,
+        "occupancy": 0.5974007812500001
+      },
+      "best_local": {
+        "ues_over_1pct": 0.05078125,
+        "by_class": {
+          "fast": 0.1015625,
+          "medium": 0.04296875,
+          "slow": 0.0078125
+        },
+        "far_ge_80m": 0.09352517985611511,
+        "near_lt_50m": 0.0,
+        "occupancy": 0.6185716796875
+      }
+    },
+    "16": {
+      "marl": {
+        "ues_over_1pct": 0.09733072916666667,
+        "by_class": {
+          "fast": 0.14756944444444445,
+          "medium": 0.07916666666666666,
+          "slow": 0.05520833333333333
+        },
+        "far_ge_80m": 0.17263544536271808,
+        "near_lt_50m": 0.0,
+        "occupancy": 0.9598668619791667
+      },
+      "best_local": {
+        "ues_over_1pct": 0.3466796875,
+        "by_class": {
+          "fast": 0.5078125,
+          "medium": 0.328125,
+          "slow": 0.171875
+        },
+        "far_ge_80m": 0.5619834710743802,
+        "near_lt_50m": 0.03802281368821293,
+        "occupancy": 1.3568923828125001
+      }
+    }
+  }
+}

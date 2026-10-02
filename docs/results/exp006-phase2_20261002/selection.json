@@ -1,0 +1,82 @@
+{
+  "selection_grid": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    16
+  ],
+  "runs": {
+    "outputs/exp006-phase2/fixed-seed101": {
+      "variant": "fixed",
+      "seed": 101,
+      "scores": {
+        "marl:outputs/exp006-phase2/fixed-seed101/checkpoints/step-002001664.pt": 0.5416666666666666,
+        "marl:outputs/exp006-phase2/fixed-seed101/checkpoints/step-004001536.pt": 0.5104166666666666,
+        "marl:outputs/exp006-phase2/fixed-seed101/checkpoints/step-006001408.pt": 0.6354166666666666,
+        "marl:outputs/exp006-phase2/fixed-seed101/checkpoints/step-008001280.pt": 0.7395833333333334,
+        "marl:outputs/exp006-phase2/fixed-seed101/checkpoints/step-010001152.pt": 0.7473958333333334,
+        "marl:outputs/exp006-phase2/fixed-seed101/checkpoints/step-012001024.pt": 0.6484375,
+        "marl:outputs/exp006-phase2/fixed-seed101/checkpoints/step-014000896.pt": 0.7994791666666666,
+        "marl:outputs/exp006-phase2/fixed-seed101/checkpoints/step-016000768.pt": 0.8020833333333334,
+        "marl:outputs/exp006-phase2/fixed-seed101/checkpoints/step-018000640.pt": 0.7916666666666666,
+        "marl:outputs/exp006-phase2/fixed-seed101/checkpoints/step-020000512.pt": 0.7604166666666666
+      },
+      "selected": "marl:outputs/exp006-phase2/fixed-seed101/checkpoints/step-016000768.pt",
+      "selected_score": 0.8020833333333334,
+      "last": "marl:outputs/exp006-phase2/fixed-seed101/checkpoints/step-020000512.pt",
+      "last_score": 0.7604166666666666
+    },
+    "outputs/exp006-phase2/fixed-seed202": {
+      "variant": "fixed",
+      "seed": 202,
+      "scores": {
+        "marl:outputs/exp006-phase2/fixed-seed202/checkpoints/step-002001664.pt": 0.5755208333333334,
+        "marl:outputs/exp006-phase2/fixed-seed202/checkpoints/step-004001536.pt": 0.6145833333333334,
+        "marl:outputs/exp006-phase2/fixed-seed202/checkpoints/step-006001408.pt": 0.7109375,
+        "marl:outputs/exp006-phase2/fixed-seed202/checkpoints/step-008001280.pt": 0.6979166666666666,
+        "marl:outputs/exp006-phase2/fixed-seed202/checkpoints/step-010001152.pt": 0.7421875,
+        "marl:outputs/exp006-phase2/fixed-seed202/checkpoints/step-012001024.pt": 0.7864583333333334,
+        "marl:outputs/exp006-phase2/fixed-seed202/checkpoints/step-014000896.pt": 0.7786458333333334,
+        "marl:outputs/exp006-phase2/fixed-seed202/checkpoints/step-016000768.pt": 0.7864583333333334,
+        "marl:outputs/exp006-phase2/fixed-seed202/checkpoints/step-018000640.pt": 0.7526041666666666,
+        "marl:outputs/exp006-phase2/fixed-seed202/checkpoints/step-020000512.pt": 0.7708333333333334
+      },
+      "selected": "marl:outputs/exp006-phase2/fixed-seed202/checkpoints/step-016000768.pt",
+      "selected_score": 0.7864583333333334,
+      "last": "marl:outputs/exp006-phase2/fixed-seed202/checkpoints/step-020000512.pt",
+      "last_score": 0.7708333333333334
+    },
+    "outputs/exp006-phase2/fixed-seed303": {
+      "variant": "fixed",
+      "seed": 303,
+      "scores": {
+        "marl:outputs/exp006-phase2/fixed-seed303/checkpoints/step-002001664.pt": 0.5520833333333334,
+        "marl:outputs/exp006-phase2/fixed-seed303/checkpoints/step-004001536.pt": 0.6145833333333334,
+        "marl:outputs/exp006-phase2/fixed-seed303/checkpoints/step-006001408.pt": 0.5807291666666666,
+        "marl:outputs/exp006-phase2/fixed-seed303/checkpoints/step-008001280.pt": 0.640625,
+        "marl:outputs/exp006-phase2/fixed-seed303/checkpoints/step-010001152.pt": 0.734375,
+        "marl:outputs/exp006-phase2/fixed-seed303/checkpoints/step-012001024.pt": 0.7291666666666666,
+        "marl:outputs/exp006-phase2/fixed-seed303/checkpoints/step-014000896.pt": 0.7473958333333334,
+        "marl:outputs/exp006-phase2/fixed-seed303/checkpoints/step-016000768.pt": 0.7708333333333334,
+        "marl:outputs/exp006-phase2/fixed-seed303/checkpoints/step-018000640.pt": 0.7942708333333334,
+        "marl:outputs/exp006-phase2/fixed-seed303/checkpoints/step-020000512.pt": 0.796875
+      },
+      "selected": "marl:outputs/exp006-phase2/fixed-seed303/checkpoints/step-020000512.pt",
+      "selected_score": 0.796875,
+      "last": "marl:outputs/exp006-phase2/fixed-seed303/checkpoints/step-020000512.pt",
+      "last_score": 0.796875
+    }
+  },
+  "variants": {
+    "means": {
+      "fixed": 0.795138888888889
+    },
+    "chosen": null
+  },
+  "local_rule_score": 0.6744791666666666,
+  "learning_signal": {
+    "fixed": true
+  }
+}

@@ -1,0 +1,762 @@
+{
+  "protocol_id": "marl-protocol-v2",
+  "formal": true,
+  "provenance": {
+    "commit": "2456a20d3793943424c20fc1dba75a0081cfe324",
+    "dirty": false
+  },
+  "config": "configs/scenario-v2.toml",
+  "split": "validation",
+  "instances": [
+    10000,
+    10001,
+    10002,
+    10003,
+    10004,
+    10005,
+    10006,
+    10007,
+    10008,
+    10009,
+    10010,
+    10011,
+    10012,
+    10013,
+    10014,
+    10015,
+    10016,
+    10017,
+    10018,
+    10019,
+    10020,
+    10021,
+    10022,
+    10023,
+    10024,
+    10025,
+    10026,
+    10027,
+    10028,
+    10029,
+    10030,
+    10031,
+    10032,
+    10033,
+    10034,
+    10035,
+    10036,
+    10037,
+    10038,
+    10039,
+    10040,
+    10041,
+    10042,
+    10043,
+    10044,
+    10045,
+    10046,
+    10047,
+    10048,
+    10049,
+    10050,
+    10051,
+    10052,
+    10053,
+    10054,
+    10055,
+    10056,
+    10057,
+    10058,
+    10059,
+    10060,
+    10061,
+    10062,
+    10063
+  ],
+  "grid": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    16
+  ],
+  "policies": [
+    "marl:outputs/exp006-phase2/fixed-seed101/checkpoints/step-018000640.pt",
+    "marl:outputs/exp006-phase2/fixed-seed202/checkpoints/step-018000640.pt",
+    "marl:outputs/exp006-phase2/fixed-seed303/checkpoints/step-018000640.pt"
+  ],
+  "summaries": {
+    "marl:outputs/exp006-phase2/fixed-seed101/checkpoints/step-018000640.pt": {
+      "grid": [
+        4,
+        6,
+        8,
+        10,
+        12,
+        16
+      ],
+      "training_seeds": [
+        "-"
+      ],
+      "per_eps": {
+        "0.01": {
+          "rows": [
+            {
+              "num_ues": 4,
+              "feasible_share": 0.984375,
+              "ci95": [
+                0.953125,
+                1.0
+              ],
+              "infeasible_for_all_share": 0.0,
+              "per_ue_violation_rate": {
+                "p50": 0.0,
+                "p95": 0.001,
+                "max": 0.02
+              },
+              "worst_ue_violation_rate_mean": 0.0009140624999999999
+            },
+            {
+              "num_ues": 6,
+              "feasible_share": 0.953125,
+              "ci95": [
+                0.890625,
+                1.0
+              ],
+              "infeasible_for_all_share": 0.0,
+              "per_ue_violation_rate": {
+                "p50": 0.0,
+                "p95": 0.0,
+                "max": 0.021
+              },
+              "worst_ue_violation_rate_mean": 0.0013203125
+            },
+            {
+              "num_ues": 8,
+              "feasible_share": 0.9375,
+              "ci95": [
+                0.875,
+                0.984375
+              ],
+              "infeasible_for_all_share": 0.0,
+              "per_ue_violation_rate": {
+                "p50": 0.0,
+                "p95": 0.0005,
+                "max": 0.0285
+              },
+              "worst_ue_violation_rate_mean": 0.0022109375000000002
+            },
+            {
+              "num_ues": 10,
+              "feasible_share": 0.890625,
+              "ci95": [
+                0.8125,
+                0.953125
+              ],
+              "infeasible_for_all_share": 0.0,
+              "per_ue_violation_rate": {
+                "p50": 0.0,
+                "p95": 0.001,
+                "max": 0.05
+              },
+              "worst_ue_violation_rate_mean": 0.0043046875
+            },
+            {
+              "num_ues": 12,
+              "feasible_share": 0.765625,
+              "ci95": [
+                0.65625,
+                0.859375
+              ],
+              "infeasible_for_all_share": 0.0,
+              "per_ue_violation_rate": {
+                "p50": 0.0,
+                "p95": 0.002,
+                "max": 0.081
+              },
+              "worst_ue_violation_rate_mean": 0.008375
+            },
+            {
+              "num_ues": 16,
+              "feasible_share": 0.21875,
+              "ci95": [
+                0.125,
+                0.328125
+              ],
+              "infeasible_for_all_share": 0.0,
+              "per_ue_violation_rate": {
+                "p50": 0.0,
+                "p95": 0.03312499999999977,
+                "max": 0.31
+              },
+              "worst_ue_violation_rate_mean": 0.06564062500000001
+            }
+          ],
+          "capacity": {
+            "n_star": 6,
+            "at_least": false
+          },
+          "capacity_bootstrap": {
+            "0": 0.0179,
+            "10": 0.0717,
+            "4": 0.3341,
+            "6": 0.2187,
+            "8": 0.3576
+          }
+        },
+        "0.05": {
+          "rows": [
+            {
+              "num_ues": 4,
+              "feasible_share": 1.0,
+              "ci95": [
+                1.0,
+                1.0
+              ],
+              "infeasible_for_all_share": 0.0,
+              "per_ue_violation_rate": {
+                "p50": 0.0,
+                "p95": 0.001,
+                "max": 0.02
+              },
+              "worst_ue_violation_rate_mean": 0.0009140624999999999
+            },
+            {
+              "num_ues": 6,
+              "feasible_share": 1.0,
+              "ci95": [
+                1.0,
+                1.0
+              ],
+              "infeasible_for_all_share": 0.0,
+              "per_ue_violation_rate": {
+                "p50": 0.0,
+                "p95": 0.0,
+                "max": 0.021
+              },
+              "worst_ue_violation_rate_mean": 0.0013203125
+            },
+            {
+              "num_ues": 8,
+              "feasible_share": 1.0,
+              "ci95": [
+                1.0,
+                1.0
+              ],
+              "infeasible_for_all_share": 0.0,
+              "per_ue_violation_rate": {
+                "p50": 0.0,
+                "p95": 0.0005,
+                "max": 0.0285
+              },
+              "worst_ue_violation_rate_mean": 0.0022109375000000002
+            },
+            {
+              "num_ues": 10,
+              "feasible_share": 1.0,
+              "ci95": [
+                1.0,
+                1.0
+              ],
+              "infeasible_for_all_share": 0.0,
+              "per_ue_violation_rate": {
+                "p50": 0.0,
+                "p95": 0.001,
+                "max": 0.05
+              },
+              "worst_ue_violation_rate_mean": 0.0043046875
+            },
+            {
+              "num_ues": 12,
+              "feasible_share": 0.953125,
+              "ci95": [
+                0.890625,
+                1.0
+              ],
+              "infeasible_for_all_share": 0.0,
+              "per_ue_violation_rate": {
+                "p50": 0.0,
+                "p95": 0.002,
+                "max": 0.081
+              },
+              "worst_ue_violation_rate_mean": 0.008375
+            },
+            {
+              "num_ues": 16,
+              "feasible_share": 0.59375,
+              "ci95": [
+                0.46875,
+                0.71875
+              ],
+              "infeasible_for_all_share": 0.0,
+              "per_ue_violation_rate": {
+                "p50": 0.0,
+                "p95": 0.03312499999999977,
+                "max": 0.31
+              },
+              "worst_ue_violation_rate_mean": 0.06564062500000001
+            }
+          ],
+          "capacity": {
+            "n_star": 12,
+            "at_least": false
+          },
+          "capacity_bootstrap": {
+            "10": 0.3518,
+            "12": 0.6482
+          }
+        }
+      },
+      "instances": 64
+    },
+    "marl:outputs/exp006-phase2/fixed-seed202/checkpoints/step-018000640.pt": {
+      "grid": [
+        4,
+        6,
+        8,
+        10,
+        12,
+        16
+      ],
+      "training_seeds": [
+        "-"
+      ],
+      "per_eps": {
+        "0.01": {
+          "rows": [
+            {
+              "num_ues": 4,
+              "feasible_share": 0.953125,
+              "ci95": [
+                0.890625,
+                1.0
+              ],
+              "infeasible_for_all_share": 0.0,
+              "per_ue_violation_rate": {
+                "p50": 0.0,
+                "p95": 0.000625,
+                "max": 0.02
+              },
+              "worst_ue_violation_rate_mean": 0.0013593750000000001
+            },
+            {
+              "num_ues": 6,
+              "feasible_share": 0.90625,
+              "ci95": [
+                0.828125,
+                0.96875
+              ],
+              "infeasible_for_all_share": 0.0,
+              "per_ue_violation_rate": {
+                "p50": 0.0,
+                "p95": 0.0009249999999999829,
+                "max": 0.026
+              },
+              "worst_ue_violation_rate_mean": 0.0021953125
+            },
+            {
+              "num_ues": 8,
+              "feasible_share": 0.890625,
+              "ci95": [
+                0.8125,
+                0.953125
+              ],
+              "infeasible_for_all_share": 0.0,
+              "per_ue_violation_rate": {
+                "p50": 0.0,
+                "p95": 0.001,
+                "max": 0.037
+              },
+              "worst_ue_violation_rate_mean": 0.0036484374999999998
+            },
+            {
+              "num_ues": 10,
+              "feasible_share": 0.84375,
+              "ci95": [
+                0.75,
+                0.921875
+              ],
+              "infeasible_for_all_share": 0.0,
+              "per_ue_violation_rate": {
+                "p50": 0.0,
+                "p95": 0.002,
+                "max": 0.054
+              },
+              "worst_ue_violation_rate_mean": 0.0062578124999999995
+            },
+            {
+              "num_ues": 12,
+              "feasible_share": 0.703125,
+              "ci95": [
+                0.59375,
+                0.8125
+              ],
+              "infeasible_for_all_share": 0.0,
+              "per_ue_violation_rate": {
+                "p50": 0.0,
+                "p95": 0.0035,
+                "max": 0.092
+              },
+              "worst_ue_violation_rate_mean": 0.011062500000000001
+            },
+            {
+              "num_ues": 16,
+              "feasible_share": 0.21875,
+              "ci95": [
+                0.125,
+                0.328125
+              ],
+              "infeasible_for_all_share": 0.0,
+              "per_ue_violation_rate": {
+                "p50": 0.0,
+                "p95": 0.03584999999999991,
+                "max": 0.316
+              },
+              "worst_ue_violation_rate_mean": 0.07200000000000001
+            }
+          ],
+          "capacity": {
+            "n_star": 4,
+            "at_least": false
+          },
+          "capacity_bootstrap": {
+            "0": 0.3498,
+            "10": 0.0071,
+            "4": 0.5129,
+            "6": 0.0714,
+            "8": 0.0588
+          }
+        },
+        "0.05": {
+          "rows": [
+            {
+              "num_ues": 4,
+              "feasible_share": 1.0,
+              "ci95": [
+                1.0,
+                1.0
+              ],
+              "infeasible_for_all_share": 0.0,
+              "per_ue_violation_rate": {
+                "p50": 0.0,
+                "p95": 0.000625,
+                "max": 0.02
+              },
+              "worst_ue_violation_rate_mean": 0.0013593750000000001
+            },
+            {
+              "num_ues": 6,
+              "feasible_share": 1.0,
+              "ci95": [
+                1.0,
+                1.0
+              ],
+              "infeasible_for_all_share": 0.0,
+              "per_ue_violation_rate": {
+                "p50": 0.0,
+                "p95": 0.0009249999999999829,
+                "max": 0.026
+              },
+              "worst_ue_violation_rate_mean": 0.0021953125
+            },
+            {
+              "num_ues": 8,
+              "feasible_share": 1.0,
+              "ci95": [
+                1.0,
+                1.0
+              ],
+              "infeasible_for_all_share": 0.0,
+              "per_ue_violation_rate": {
+                "p50": 0.0,
+                "p95": 0.001,
+                "max": 0.037
+              },
+              "worst_ue_violation_rate_mean": 0.0036484374999999998
+            },
+            {
+              "num_ues": 10,
+              "feasible_share": 0.96875,
+              "ci95": [
+                0.921875,
+                1.0
+              ],
+              "infeasible_for_all_share": 0.0,
+              "per_ue_violation_rate": {
+                "p50": 0.0,
+                "p95": 0.002,
+                "max": 0.054
+              },
+              "worst_ue_violation_rate_mean": 0.0062578124999999995
+            },
+            {
+              "num_ues": 12,
+              "feasible_share": 0.9375,
+              "ci95": [
+                0.875,
+                0.984375
+              ],
+              "infeasible_for_all_share": 0.0,
+              "per_ue_violation_rate": {
+                "p50": 0.0,
+                "p95": 0.0035,
+                "max": 0.092
+              },
+              "worst_ue_violation_rate_mean": 0.011062500000000001
+            },
+            {
+              "num_ues": 16,
+              "feasible_share": 0.53125,
+              "ci95": [
+                0.40625,
+                0.65625
+              ],
+              "infeasible_for_all_share": 0.0,
+              "per_ue_violation_rate": {
+                "p50": 0.0,
+                "p95": 0.03584999999999991,
+                "max": 0.316
+              },
+              "worst_ue_violation_rate_mean": 0.07200000000000001
+            }
+          ],
+          "capacity": {
+            "n_star": 10,
+            "at_least": false
+          },
+          "capacity_bootstrap": {
+            "10": 0.431,
+            "12": 0.4297,
+            "8": 0.1393
+          }
+        }
+      },
+      "instances": 64
+    },
+    "marl:outputs/exp006-phase2/fixed-seed303/checkpoints/step-018000640.pt": {
+      "grid": [
+        4,
+        6,
+        8,
+        10,
+        12,
+        16
+      ],
+      "training_seeds": [
+        "-"
+      ],
+      "per_eps": {
+        "0.01": {
+          "rows": [
+            {
+              "num_ues": 4,
+              "feasible_share": 0.96875,
+              "ci95": [
+                0.921875,
+                1.0
+              ],
+              "infeasible_for_all_share": 0.0,
+              "per_ue_violation_rate": {
+                "p50": 0.0,
+                "p95": 0.000125,
+                "max": 0.0155
+              },
+              "worst_ue_violation_rate_mean": 0.0008515625000000001
+            },
+            {
+              "num_ues": 6,
+              "feasible_share": 0.953125,
+              "ci95": [
+                0.890625,
+                1.0
+              ],
+              "infeasible_for_all_share": 0.0,
+              "per_ue_violation_rate": {
+                "p50": 0.0,
+                "p95": 0.0,
+                "max": 0.0185
+              },
+              "worst_ue_violation_rate_mean": 0.0012109375000000002
+            },
+            {
+              "num_ues": 8,
+              "feasible_share": 0.921875,
+              "ci95": [
+                0.84375,
+                0.984375
+              ],
+              "infeasible_for_all_share": 0.0,
+              "per_ue_violation_rate": {
+                "p50": 0.0,
+                "p95": 0.0,
+                "max": 0.029
+              },
+              "worst_ue_violation_rate_mean": 0.0021015625
+            },
+            {
+              "num_ues": 10,
+              "feasible_share": 0.90625,
+              "ci95": [
+                0.828125,
+                0.96875
+              ],
+              "infeasible_for_all_share": 0.0,
+              "per_ue_violation_rate": {
+                "p50": 0.0,
+                "p95": 0.001,
+                "max": 0.04
+              },
+              "worst_ue_violation_rate_mean": 0.0037656250000000003
+            },
+            {
+              "num_ues": 12,
+              "feasible_share": 0.8125,
+              "ci95": [
+                0.703125,
+                0.90625
+              ],
+              "infeasible_for_all_share": 0.0,
+              "per_ue_violation_rate": {
+                "p50": 0.0,
+                "p95": 0.002,
+                "max": 0.059
+              },
+              "worst_ue_violation_rate_mean": 0.0070546875
+            },
+            {
+              "num_ues": 16,
+              "feasible_share": 0.203125,
+              "ci95": [
+                0.109375,
+                0.3125
+              ],
+              "infeasible_for_all_share": 0.0,
+              "per_ue_violation_rate": {
+                "p50": 0.0,
+                "p95": 0.038399999999999636,
+                "max": 0.311
+              },
+              "worst_ue_violation_rate_mean": 0.0701328125
+            }
+          ],
+          "capacity": {
+            "n_star": 6,
+            "at_least": false
+          },
+          "capacity_bootstrap": {
+            "0": 0.1394,
+            "10": 0.1394,
+            "12": 0.0008,
+            "4": 0.2104,
+            "6": 0.3963,
+            "8": 0.1137
+          }
+        },
+        "0.05": {
+          "rows": [
+            {
+              "num_ues": 4,
+              "feasible_share": 1.0,
+              "ci95": [
+                1.0,
+                1.0
+              ],
+              "infeasible_for_all_share": 0.0,
+              "per_ue_violation_rate": {
+                "p50": 0.0,
+                "p95": 0.000125,
+                "max": 0.0155
+              },
+              "worst_ue_violation_rate_mean": 0.0008515625000000001
+            },
+            {
+              "num_ues": 6,
+              "feasible_share": 1.0,
+              "ci95": [
+                1.0,
+                1.0
+              ],
+              "infeasible_for_all_share": 0.0,
+              "per_ue_violation_rate": {
+                "p50": 0.0,
+                "p95": 0.0,
+                "max": 0.0185
+              },
+              "worst_ue_violation_rate_mean": 0.0012109375000000002
+            },
+            {
+              "num_ues": 8,
+              "feasible_share": 1.0,
+              "ci95": [
+                1.0,
+                1.0
+              ],
+              "infeasible_for_all_share": 0.0,
+              "per_ue_violation_rate": {
+                "p50": 0.0,
+                "p95": 0.0,
+                "max": 0.029
+              },
+              "worst_ue_violation_rate_mean": 0.0021015625
+            },
+            {
+              "num_ues": 10,
+              "feasible_share": 1.0,
+              "ci95": [
+                1.0,
+                1.0
+              ],
+              "infeasible_for_all_share": 0.0,
+              "per_ue_violation_rate": {
+                "p50": 0.0,
+                "p95": 0.001,
+                "max": 0.04
+              },
+              "worst_ue_violation_rate_mean": 0.0037656250000000003
+            },
+            {
+              "num_ues": 12,
+              "feasible_share": 0.96875,
+              "ci95": [
+                0.921875,
+                1.0
+              ],
+              "infeasible_for_all_share": 0.0,
+              "per_ue_violation_rate": {
+                "p50": 0.0,
+                "p95": 0.002,
+                "max": 0.059
+              },
+              "worst_ue_violation_rate_mean": 0.0070546875
+            },
+            {
+              "num_ues": 16,
+              "feasible_share": 0.5625,
+              "ci95": [
+                0.4375,
+                0.6875
+              ],
+              "infeasible_for_all_share": 0.0,
+              "per_ue_violation_rate": {
+                "p50": 0.0,
+                "p95": 0.038399999999999636,
+                "max": 0.311
+              },
+              "worst_ue_violation_rate_mean": 0.0701328125
+            }
+          ],
+          "capacity": {
+            "n_star": 12,
+            "at_least": false
+          },
+          "capacity_bootstrap": {
+            "10": 0.1393,
+            "12": 0.8607
+          }
+        }
+      },
+      "instances": 64
+    }
+  }
+}

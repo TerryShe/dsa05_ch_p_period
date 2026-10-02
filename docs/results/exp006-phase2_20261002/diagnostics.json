@@ -1,0 +1,470 @@
+{
+  "best_local|N=6": {
+    "tx_slots": 645079.0,
+    "collided_share": 0.12282061576954141,
+    "co_channel_per_tx": 0.12915007309182286,
+    "best_channel_share": 0.5187566174065502,
+    "max_power_share": 1.0,
+    "switch_share": 0.1514018513080205,
+    "yield": {
+      "near_tx_prob_when_far_fast_urgent": 1.0,
+      "near_tx_prob_otherwise": 1.0
+    },
+    "tx_prob_by_slack": {
+      "near": {
+        "<=0": null,
+        "1..2": null,
+        "3..5": 1.0,
+        "6..10": 1.0,
+        ">=11": 1.0
+      },
+      "far": {
+        "<=0": 1.0,
+        "1..2": 1.0,
+        "3..5": 1.0,
+        "6..10": 1.0,
+        ">=11": 1.0
+      }
+    }
+  },
+  "best_local|N=10": {
+    "tx_slots": 1259746.0,
+    "collided_share": 0.28789216238829096,
+    "co_channel_per_tx": 0.3358931086107834,
+    "best_channel_share": 0.47296518504523927,
+    "max_power_share": 0.885139544003315,
+    "switch_share": 0.2232753644188813,
+    "yield": {
+      "near_tx_prob_when_far_fast_urgent": 1.0,
+      "near_tx_prob_otherwise": 1.0
+    },
+    "tx_prob_by_slack": {
+      "near": {
+        "<=0": 1.0,
+        "1..2": 1.0,
+        "3..5": 1.0,
+        "6..10": 1.0,
+        ">=11": 1.0
+      },
+      "far": {
+        "<=0": 1.0,
+        "1..2": 1.0,
+        "3..5": 1.0,
+        "6..10": 1.0,
+        ">=11": 1.0
+      }
+    }
+  },
+  "best_local|N=16": {
+    "tx_slots": 3531663.0,
+    "collided_share": 0.7166080115798138,
+    "co_channel_per_tx": 1.3332172407163425,
+    "best_channel_share": 0.42555872403454126,
+    "max_power_share": 0.8467047960125301,
+    "switch_share": 0.30094922388083367,
+    "yield": {
+      "near_tx_prob_when_far_fast_urgent": 1.0,
+      "near_tx_prob_otherwise": 1.0
+    },
+    "tx_prob_by_slack": {
+      "near": {
+        "<=0": 1.0,
+        "1..2": 1.0,
+        "3..5": 1.0,
+        "6..10": 1.0,
+        ">=11": 1.0
+      },
+      "far": {
+        "<=0": 1.0,
+        "1..2": 1.0,
+        "3..5": 1.0,
+        "6..10": 1.0,
+        ">=11": 1.0
+      }
+    }
+  },
+  "central_edf|N=6": {
+    "tx_slots": 547201.0,
+    "collided_share": 0.0,
+    "co_channel_per_tx": 0.0,
+    "best_channel_share": 0.8997626100829494,
+    "max_power_share": 1.0,
+    "switch_share": 0.15948355096102018,
+    "yield": {
+      "near_tx_prob_when_far_fast_urgent": 1.0,
+      "near_tx_prob_otherwise": 1.0
+    },
+    "tx_prob_by_slack": {
+      "near": {
+        "<=0": null,
+        "1..2": null,
+        "3..5": null,
+        "6..10": 1.0,
+        ">=11": 1.0
+      },
+      "far": {
+        "<=0": 1.0,
+        "1..2": 1.0,
+        "3..5": 1.0,
+        "6..10": 1.0,
+        ">=11": 0.994423014360738
+      }
+    }
+  },
+  "central_edf|N=10": {
+    "tx_slots": 924232.0,
+    "collided_share": 0.0,
+    "co_channel_per_tx": 0.0,
+    "best_channel_share": 0.8373557721437908,
+    "max_power_share": 1.0,
+    "switch_share": 0.24144420181765058,
+    "yield": {
+      "near_tx_prob_when_far_fast_urgent": 0.9213483146067416,
+      "near_tx_prob_otherwise": 0.9882465694877058
+    },
+    "tx_prob_by_slack": {
+      "near": {
+        "<=0": null,
+        "1..2": null,
+        "3..5": null,
+        "6..10": 1.0,
+        ">=11": 0.978255720308873
+      },
+      "far": {
+        "<=0": 1.0,
+        "1..2": 1.0,
+        "3..5": 1.0,
+        "6..10": 1.0,
+        ">=11": 0.9860690061488782
+      }
+    }
+  },
+  "central_edf|N=16": {
+    "tx_slots": 1516303.0,
+    "collided_share": 0.0,
+    "co_channel_per_tx": 0.0,
+    "best_channel_share": 0.745090526101973,
+    "max_power_share": 1.0,
+    "switch_share": 0.34513156484005125,
+    "yield": {
+      "near_tx_prob_when_far_fast_urgent": 0.8884758364312267,
+      "near_tx_prob_otherwise": 0.9411728960071706
+    },
+    "tx_prob_by_slack": {
+      "near": {
+        "<=0": null,
+        "1..2": null,
+        "3..5": null,
+        "6..10": 0.9999910928217051,
+        ">=11": 0.8974017848322192
+      },
+      "far": {
+        "<=0": 1.0,
+        "1..2": 1.0,
+        "3..5": 1.0,
+        "6..10": 0.9999133496296837,
+        ">=11": 0.9181102653698787
+      }
+    }
+  },
+  "marl:outputs/exp006-phase2/fixed-seed101/checkpoints/step-016000768.pt|N=6": {
+    "tx_slots": 667107.0,
+    "collided_share": 0.08922706552322192,
+    "co_channel_per_tx": 0.09222508533113878,
+    "best_channel_share": 0.5580139317980474,
+    "max_power_share": 0.7790639282753741,
+    "switch_share": 0.10727044664263825,
+    "yield": {
+      "near_tx_prob_when_far_fast_urgent": 1.0,
+      "near_tx_prob_otherwise": 0.9957884014534912
+    },
+    "tx_prob_by_slack": {
+      "near": {
+        "<=0": null,
+        "1..2": null,
+        "3..5": 1.0,
+        "6..10": 0.9980677426687884,
+        ">=11": 0.9946116519305767
+      },
+      "far": {
+        "<=0": 0.9993686868686869,
+        "1..2": 0.9990243902439024,
+        "3..5": 0.9992686494392979,
+        "6..10": 0.9966367438788739,
+        ">=11": 0.9951790039031438
+      }
+    }
+  },
+  "marl:outputs/exp006-phase2/fixed-seed101/checkpoints/step-016000768.pt|N=10": {
+    "tx_slots": 1260445.0,
+    "collided_share": 0.22787507586606318,
+    "co_channel_per_tx": 0.2541991122183039,
+    "best_channel_share": 0.5089504103709405,
+    "max_power_share": 0.7525413643594128,
+    "switch_share": 0.16418100403411778,
+    "yield": {
+      "near_tx_prob_when_far_fast_urgent": 0.9955621301775148,
+      "near_tx_prob_otherwise": 0.9892085742782553
+    },
+    "tx_prob_by_slack": {
+      "near": {
+        "<=0": null,
+        "1..2": 1.0,
+        "3..5": 0.997289972899729,
+        "6..10": 0.9931647223098059,
+        ">=11": 0.9855235728874945
+      },
+      "far": {
+        "<=0": 0.9973272241313479,
+        "1..2": 0.9982595723520636,
+        "3..5": 0.9963555842598145,
+        "6..10": 0.991128131482368,
+        ">=11": 0.9745213924158018
+      }
+    }
+  },
+  "marl:outputs/exp006-phase2/fixed-seed101/checkpoints/step-016000768.pt|N=16": {
+    "tx_slots": 2480307.0,
+    "collided_share": 0.49332441508248775,
+    "co_channel_per_tx": 0.6486422850074608,
+    "best_channel_share": 0.5183330128084951,
+    "max_power_share": 0.7725761367443627,
+    "switch_share": 0.24500468357365587,
+    "yield": {
+      "near_tx_prob_when_far_fast_urgent": 0.8932450992633287,
+      "near_tx_prob_otherwise": 0.8852547430667725
+    },
+    "tx_prob_by_slack": {
+      "near": {
+        "<=0": 1.0,
+        "1..2": 0.9899244332493703,
+        "3..5": 0.9692989656870793,
+        "6..10": 0.8887231793377333,
+        ">=11": 0.8797656400410026
+      },
+      "far": {
+        "<=0": 0.9746819008049857,
+        "1..2": 0.9937253410657413,
+        "3..5": 0.9886979408577179,
+        "6..10": 0.9506559245223014,
+        ">=11": 0.8492624616088972
+      }
+    }
+  },
+  "marl:outputs/exp006-phase2/fixed-seed202/checkpoints/step-016000768.pt|N=6": {
+    "tx_slots": 715134.0,
+    "collided_share": 0.13211090508911616,
+    "co_channel_per_tx": 0.1398087631129271,
+    "best_channel_share": 0.5825118089756605,
+    "max_power_share": 0.5573696677825415,
+    "switch_share": 0.1777563234566184,
+    "yield": {
+      "near_tx_prob_when_far_fast_urgent": 1.0,
+      "near_tx_prob_otherwise": 0.9990676561440518
+    },
+    "tx_prob_by_slack": {
+      "near": {
+        "<=0": null,
+        "1..2": null,
+        "3..5": 1.0,
+        "6..10": 0.9999459152491955,
+        ">=11": 0.9986042562988331
+      },
+      "far": {
+        "<=0": 1.0,
+        "1..2": 1.0,
+        "3..5": 1.0,
+        "6..10": 1.0,
+        ">=11": 0.9995504092971964
+      }
+    }
+  },
+  "marl:outputs/exp006-phase2/fixed-seed202/checkpoints/step-016000768.pt|N=10": {
+    "tx_slots": 1261590.0,
+    "collided_share": 0.24834534198907726,
+    "co_channel_per_tx": 0.27952345849285426,
+    "best_channel_share": 0.5621160598926751,
+    "max_power_share": 0.6737569257841296,
+    "switch_share": 0.20246737951701863,
+    "yield": {
+      "near_tx_prob_when_far_fast_urgent": 1.0,
+      "near_tx_prob_otherwise": 0.9942596173445497
+    },
+    "tx_prob_by_slack": {
+      "near": {
+        "<=0": 1.0,
+        "1..2": 1.0,
+        "3..5": 1.0,
+        "6..10": 0.9994517359829032,
+        ">=11": 0.9892539445490552
+      },
+      "far": {
+        "<=0": 1.0,
+        "1..2": 1.0,
+        "3..5": 1.0,
+        "6..10": 0.9995872420262664,
+        ">=11": 0.99116598702327
+      }
+    }
+  },
+  "marl:outputs/exp006-phase2/fixed-seed202/checkpoints/step-016000768.pt|N=16": {
+    "tx_slots": 2410394.0,
+    "collided_share": 0.48924657130742943,
+    "co_channel_per_tx": 0.647857570173175,
+    "best_channel_share": 0.556469606213756,
+    "max_power_share": 0.8016523439736408,
+    "switch_share": 0.2960818756484659,
+    "yield": {
+      "near_tx_prob_when_far_fast_urgent": 0.9119111008218543,
+      "near_tx_prob_otherwise": 0.9301748485310145
+    },
+    "tx_prob_by_slack": {
+      "near": {
+        "<=0": 1.0,
+        "1..2": 0.9966666666666667,
+        "3..5": 0.9920398009950249,
+        "6..10": 0.9515752941814435,
+        ">=11": 0.9077102738463085
+      },
+      "far": {
+        "<=0": 0.9938891577928364,
+        "1..2": 0.9989697802197802,
+        "3..5": 0.9989775283451864,
+        "6..10": 0.969498922788241,
+        ">=11": 0.8902056096327623
+      }
+    }
+  },
+  "marl:outputs/exp006-phase2/fixed-seed303/checkpoints/step-020000512.pt|N=6": {
+    "tx_slots": 694332.0,
+    "collided_share": 0.12852785122967111,
+    "co_channel_per_tx": 0.1340626674271098,
+    "best_channel_share": 0.5852805286231947,
+    "max_power_share": 0.8199449254823341,
+    "switch_share": 0.16769993932816626,
+    "yield": {
+      "near_tx_prob_when_far_fast_urgent": 1.0,
+      "near_tx_prob_otherwise": 0.9838809950714948
+    },
+    "tx_prob_by_slack": {
+      "near": {
+        "<=0": null,
+        "1..2": 1.0,
+        "3..5": 1.0,
+        "6..10": 0.997426246748215,
+        ">=11": 0.9773987206823028
+      },
+      "far": {
+        "<=0": 1.0,
+        "1..2": 1.0,
+        "3..5": 0.9999068901303538,
+        "6..10": 0.9994574474796543,
+        ">=11": 0.9998401484842968
+      }
+    }
+  },
+  "marl:outputs/exp006-phase2/fixed-seed303/checkpoints/step-020000512.pt|N=10": {
+    "tx_slots": 1296449.0,
+    "collided_share": 0.27426454877901096,
+    "co_channel_per_tx": 0.3126895080330966,
+    "best_channel_share": 0.5300686721961296,
+    "max_power_share": 0.8049155809445647,
+    "switch_share": 0.21672274830270413,
+    "yield": {
+      "near_tx_prob_when_far_fast_urgent": 0.9721448467966574,
+      "near_tx_prob_otherwise": 0.9653177736978447
+    },
+    "tx_prob_by_slack": {
+      "near": {
+        "<=0": 1.0,
+        "1..2": 1.0,
+        "3..5": 0.9992481203007518,
+        "6..10": 0.9936057187827911,
+        ">=11": 0.9406869406307108
+      },
+      "far": {
+        "<=0": 1.0,
+        "1..2": 1.0,
+        "3..5": 0.9998330063040121,
+        "6..10": 0.9987694385154855,
+        ">=11": 0.9977695751623359
+      }
+    }
+  },
+  "marl:outputs/exp006-phase2/fixed-seed303/checkpoints/step-020000512.pt|N=16": {
+    "tx_slots": 2680069.0,
+    "collided_share": 0.5610400329245254,
+    "co_channel_per_tx": 0.7901483133456638,
+    "best_channel_share": 0.49574395286091516,
+    "max_power_share": 0.7788665142576553,
+    "switch_share": 0.32526587440971,
+    "yield": {
+      "near_tx_prob_when_far_fast_urgent": 0.8540458015267176,
+      "near_tx_prob_otherwise": 0.8531050337447424
+    },
+    "tx_prob_by_slack": {
+      "near": {
+        "<=0": 1.0,
+        "1..2": 0.9932885906040269,
+        "3..5": 0.9637555427029111,
+        "6..10": 0.903369900807988,
+        ">=11": 0.806743450605527
+      },
+      "far": {
+        "<=0": 0.999890560875513,
+        "1..2": 0.9993522529452249,
+        "3..5": 0.9942234291740157,
+        "6..10": 0.9818819925867744,
+        ">=11": 0.9615770679657738
+      }
+    }
+  },
+  "_meta": {
+    "instances": [
+      10000,
+      10001,
+      10002,
+      10003,
+      10004,
+      10005,
+      10006,
+      10007,
+      10008,
+      10009,
+      10010,
+      10011,
+      10012,
+      10013,
+      10014,
+      10015,
+      10016,
+      10017,
+      10018,
+      10019,
+      10020,
+      10021,
+      10022,
+      10023,
+      10024,
+      10025,
+      10026,
+      10027,
+      10028,
+      10029,
+      10030,
+      10031
+    ],
+    "grid": [
+      6,
+      10,
+      16
+    ],
+    "policies": [
+      "marl:outputs/exp006-phase2/fixed-seed101/checkpoints/step-016000768.pt",
+      "marl:outputs/exp006-phase2/fixed-seed202/checkpoints/step-016000768.pt",
+      "marl:outputs/exp006-phase2/fixed-seed303/checkpoints/step-020000512.pt",
+      "best_local",
+      "central_edf"
+    ]
+  }
+}
