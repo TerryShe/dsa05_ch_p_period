@@ -1,10 +1,29 @@
 # 文献库
 
-每篇论文一个子文件夹，文件夹名是论文的缩写加年份。文件夹里有论文 PDF（从 arXiv 或作者主页下载）和 `analysis.md`（针对本课题的阅读分析）。阶段性的综合阅读笔记放在 `docs/research/`：[变体 C 的相关工作与新颖性判断](../docs/research/literature-variant-c_20260925.md)、[反事实信用分配的相关工作](../docs/research/literature-counterfactual-credit_20260925.md)、[问题侧的相关工作与 DSA05 的定位](../docs/research/literature-problem-side_20260926.md)。
+每篇论文一个子文件夹，文件夹名是论文的缩写加年份。文件夹里有论文 PDF（从会议/出版社公开页面、arXiv 或作者主页下载）和 `analysis.md`（针对本课题的阅读分析）。阶段性的综合阅读笔记放在 `docs/research/`：[变体 C 的相关工作与新颖性判断](../docs/research/literature-variant-c_20260925.md)、[反事实信用分配的相关工作](../docs/research/literature-counterfactual-credit_20260925.md)、[问题侧的相关工作与 DSA05 的定位](../docs/research/literature-problem-side_20260926.md)、[固定 OBS 下的 MARL 路线与优先级](../docs/research/literature-fixed-obs-marl_20261002.md)。
 
 文件夹名中的年份：期刊或会议年份确定时用发表年份，否则用 arXiv 首次提交的年份。
 
 少数 PDF 的来源限制再分发（例如机构库封面或 IEEE 页脚注明仅限个人使用），这些 PDF 只保留本地副本，列在 [`.gitignore`](.gitignore) 中，不纳入 Git；对应的 `analysis.md` 注明了下载地址。
+
+## 固定 OBS 的 MARL 算法研究（2026-10-02 检索）
+
+新增 11 篇 PDF 与分析，并补读已有 GPAE。重点是训练目标、尾部覆盖、本地历史表示与信用分配；执行仍只使用现有本地信息。详细适配、阅读范围与实验建议见各篇笔记及[综合分析](../docs/research/literature-fixed-obs-marl_20261002.md)。SOTO 原方案需要执行通信，仅借鉴其公平目标；WCMASAC 需重新核对执行信息与共享参数结构。
+
+| 文件夹 | 论文/方法 | 来源 | 与本课题的关系 |
+|---|---|---|---|
+| [MAPPO-NeurIPS2022](MAPPO-NeurIPS2022/analysis.md) | Yu 等，The Surprising Effectiveness of PPO | NeurIPS 2022 | 价值归一化、Critic 和训练预算；先建立稳定基线 |
+| [CoherentPG-NeurIPS2015](CoherentPG-NeurIPS2015/analysis.md) | Tamar 等，Policy Gradient for Coherent Risk Measures | NIPS 2015 | 部署尾部目标与正确的风险梯度；区分 1% 包门槛和 5% 部署尾部 |
+| [LIAM-NeurIPS2021](LIAM-NeurIPS2021/analysis.md) | Papoudakis 等，Agent Modelling under Partial Observability | NeurIPS 2021 | 用训练监督改善本地历史表示；可只监督现有 GRU |
+| [PLR-ICML2021](PLR-ICML2021/analysis.md) | Jiang 等，Prioritized Level Replay | ICML 2021 | 优先采集有学习潜力的困难训练部署，保持 OBS |
+| [DAE-ICML2022](DAE-ICML2022/analysis.md) | Li 等，Difference Advantage Estimation | ICML 2022 | 多步逐 UE 信用与策略偏差权衡 |
+| [DOP-ICLR2021](DOP-ICLR2021/analysis.md) | Wang 等，Off-Policy Multi-Agent Decomposed Policy Gradients | ICLR 2021；本地 arXiv v2 | 分解式训练 Critic 与数据复用；预印本未逐项比对终版 |
+| [RiskQ-NeurIPS2023](RiskQ-NeurIPS2023/analysis.md) | Shen 等，Risk-sensitive MARL Value Factorization | NeurIPS 2023 | 风险敏感局部/联合价值一致性；风险价值型对照 |
+| [RMIX-NeurIPS2021](RMIX-NeurIPS2021/analysis.md) | Qiu 等，Learning Risk-Sensitive Policies | NeurIPS 2021 | 从本地历史动态调整风险偏好 |
+| [WCMASAC-AAAI2026](WCMASAC-AAAI2026/analysis.md) | Liu 等，Safe MARL via Distributional Safety Critic | AAAI 2026 | 分布成本 Critic 与 CVaR 约束；需改造适配 |
+| [SOTO-ICML2021](SOTO-ICML2021/analysis.md) | Zimmer 等，Learning Fair Policies in Decentralized Cooperative MARL | ICML 2021 | 公平福利梯度；原方案执行共享邻居回报，不能原样采用 |
+| [RUDDER-NeurIPS2019](RUDDER-NeurIPS2019/analysis.md) | Arjona-Medina 等，Return Decomposition for Delayed Rewards | NeurIPS 2019 | 截止期延迟信用；需区分时间/智能体归因与折扣守恒 |
+| [GPAE-2026](GPAE-2026/analysis.md)（本次补读） | Kim 等，Generalized Per-Agent Advantage Estimation | AAMAS 2026 | 逐 UE 训练 Critic 与多步优势；优先做 on-policy 对照 |
 
 ## 方法侧（约束处理、状态增广、信用分配）
 
