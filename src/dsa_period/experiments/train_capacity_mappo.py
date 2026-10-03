@@ -1,4 +1,7 @@
-"""Train one EXP-DSA05-006 run: one constraint variant (fixed = A, local = C) and seed.
+"""Train one EXP-DSA05-006/008 run: one constraint variant (fixed = A, local = C) and seed.
+
+The optional ``[update]`` section of the config holds the EXP-DSA05-008 update
+options (``trainer_v2.UpdateSettings``); without it the EXP-006 update runs.
 
 ``--formal`` requires a clean committed tree and no overrides; ``--budget-slots``
 and ``--set`` exist only for smoke tests and throughput checks. The output holds
@@ -11,6 +14,7 @@ import hashlib
 import json
 import platform
 import tomllib
+from dataclasses import asdict
 from pathlib import Path
 
 import torch
@@ -23,10 +27,12 @@ from dsa_period.marl.trainer_v2 import (
     CapacityConstraint,
     CapacityTrainer,
     CapacityTrainingSettings,
+    UpdateSettings,
 )
 
 
 def settings_from(raw: dict, variant: str):
+    """Training, PPO, constraint and update settings of one run from a parsed config."""
     training = CapacityTrainingSettings(
         **{k: tuple(v) if k == "env_ues" else v for k, v in raw["training"].items()},
         **raw["model"],
@@ -35,7 +41,17 @@ def settings_from(raw: dict, variant: str):
         training,
         PPOSettings(**raw["ppo"]),
         CapacityConstraint(variant, **raw["constraint"][variant]),
+        UpdateSettings(**raw.get("update", {})),
     )
+
+
+def parse_value(text: str) -> int | float | str:
+    for kind in (int, float):
+        try:
+            return kind(text)
+        except ValueError:
+            pass
+    return text
 
 
 def main(argv: list[str] | None = None) -> None:
@@ -61,19 +77,29 @@ def main(argv: list[str] | None = None) -> None:
     if args.formal and (provenance["dirty"] or args.budget_slots is not None or args.set):
         parser.error("--formal requires a clean tree and no overrides")
     raw = tomllib.loads(args.config.read_text())
+    declared = raw["experiment"]
+    if declared.get("variant", args.variant) != args.variant:
+        parser.error(f"{args.config} declares variant {declared['variant']}")
+    if args.formal and args.seed not in declared.get("seeds", [args.seed]):
+        parser.error(f"{args.config} declares seeds {declared['seeds']}")
     changes = {}
     if args.budget_slots is not None:
         changes["training.budget_slots"] = args.budget_slots
     for item in args.set:
         key, _, value = item.partition("=")
-        changes[key] = float(value) if "." in value or "e" in value else int(value)
+        changes[key] = parse_value(value)
     for key, value in changes.items():
         section, _, name = key.partition(".")
+        if section == "update":
+            if name not in UpdateSettings.__dataclass_fields__:
+                parser.error(f"unknown override {key}")
+            raw.setdefault("update", {})[name] = value
+            continue
         table = raw["constraint"][args.variant] if section == "constraint" else raw[section]
         if name not in table:
             parser.error(f"unknown override {key}")
         table[name] = value
-    training, ppo, constraint = settings_from(raw, args.variant)
+    training, ppo, constraint, update = settings_from(raw, args.variant)
     # Any N works: the trainer derives one scenario per environment from it.
     scenario = load_scenario(args.scenario, max(training.env_ues))
     args.output.mkdir(parents=True)
@@ -94,12 +120,13 @@ def main(argv: list[str] | None = None) -> None:
             "model": raw["model"],
             "ppo": raw["ppo"],
             "constraint": raw["constraint"][args.variant],
+            "update": asdict(update),
         },
         "torch": torch.__version__,
         "python": platform.python_version(),
     }
     (args.output / "manifest.json").write_text(json.dumps(manifest, indent=2))
-    trainer = CapacityTrainer(scenario, training, ppo, constraint, args.seed)
+    trainer = CapacityTrainer(scenario, training, ppo, constraint, args.seed, update)
     result = trainer.run(args.output)
     print(json.dumps(result, indent=2))
 

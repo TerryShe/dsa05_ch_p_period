@@ -13,6 +13,16 @@ the deployment with n UEs is the first n UEs of every larger deployment.
 
 Frozen on 2026-10-01 with scenario v2.0 (docs/research/marl-protocol-v2.md); the
 manifest marl-protocol-v2.json and tests/test_frozen_scenario_v2.py guard it.
+
+Sets registered after the freeze leave the frozen splits, codes and repeats
+untouched (EXP-DSA05-008, docs/research/exp008-registration.md and
+exp008-sets.json):
+
+* screening sets: fixed slices of ``dev`` that select checkpoints. They are
+  ordinary dev episodes (code 0), read only through ``screening_instances``;
+  ``check_dev_range`` refuses any other dev use that overlaps them.
+* confirmation sets: slices of ``reserve``, read once after a model is frozen.
+  Their seeds use the reserve code 3 and the same per-UE, N-free scheme.
 """
 
 import hashlib
@@ -29,26 +39,72 @@ EVALUATION_REPEATS = {"dev": 1, "validation": 1, "test": 1}
 EXECUTION_SEED_BASE = 20_260_930
 FADING_SEED_BASE = 20_261_001
 
+# EXP-DSA05-008 (design §4.1): checkpoint screening on dev 2000-2255 at N = 6, 8.
+SCREENING_SETS: dict[str, dict] = {"exp008-screen256": {"range": (2_000, 2_256), "grid": (6, 8)}}
+# EXP-DSA05-008 (design §7.1): v2-confirm1, reserve 30000-30499, one execution each.
+CONFIRMATION_SETS: dict[str, tuple[int, int]] = {"v2-confirm1": (30_000, 30_500)}
+CONFIRMATION_REPEATS = 1
+HELD_OUT = ("test", *CONFIRMATION_SETS)
+
+
+def _bounds(split: str) -> tuple[int, int]:
+    if split in CONFIRMATION_SETS:
+        return CONFIRMATION_SETS[split]
+    if split in SPLITS:
+        return SPLITS[split]
+    raise ValueError(f"unknown protocol-v2 split {split!r}")
+
 
 def indices(split: str) -> range:
-    return splits.indices(split)
+    start, stop = _bounds(split)
+    return range(start, stop)
 
 
 def require(split: str, index: int) -> int:
-    return splits.require(split, index)
+    start, stop = _bounds(split)
+    if not start <= index < stop:
+        raise ValueError(f"instance {index} is not in the {split} split")
+    return index
+
+
+def evaluation_repeats(split: str) -> int:
+    """Executions per evaluated instance of a frozen split or a confirmation set."""
+    if split in CONFIRMATION_SETS:
+        return CONFIRMATION_REPEATS
+    if split in EVALUATION_REPEATS:
+        return EVALUATION_REPEATS[split]
+    raise ValueError(f"protocol v2 evaluates only {(*EVALUATION_REPEATS, *CONFIRMATION_SETS)}")
+
+
+def screening_instances(name: str) -> list[int]:
+    """The dev instances of a registered screening set, in order."""
+    start, stop = SCREENING_SETS[name]["range"]
+    return [require("dev", i) for i in range(start, stop)]
+
+
+def check_dev_range(instances) -> None:
+    """Refuse a plain dev evaluation that touches a registered screening set."""
+    for name, entry in SCREENING_SETS.items():
+        start, stop = entry["range"]
+        hit = [i for i in instances if start <= i < stop]
+        if hit:
+            raise ValueError(
+                f"dev instances {hit[0]}..{hit[-1]} belong to the screening set {name}; "
+                "read it only through its registered entry point"
+            )
 
 
 def _ue_sequences(
     base: int, split: str, instance: int, repeat: int, num_ues: int
 ) -> list[np.random.SeedSequence]:
-    if split not in EVALUATION_REPEATS:
-        raise ValueError(f"protocol v2 evaluates only {tuple(EVALUATION_REPEATS)}")
+    repeats = evaluation_repeats(split)
     require(split, instance)
-    if not 0 <= repeat < EVALUATION_REPEATS[split]:
+    if not 0 <= repeat < repeats:
         raise ValueError(f"repeat {repeat} is outside the {split} evaluation contract")
     if num_ues < 1:
         raise ValueError("num_ues must be positive")
-    parent = np.random.SeedSequence([base, SPLIT_CODES[split], instance, repeat])
+    code = SPLIT_CODES["reserve"] if split in CONFIRMATION_SETS else SPLIT_CODES[split]
+    parent = np.random.SeedSequence([base, code, instance, repeat])
     return parent.spawn(num_ues)
 
 

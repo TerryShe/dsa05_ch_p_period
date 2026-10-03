@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "experiment": "EXP-DSA05-008",
+  "design": "docs/experiment-designs/008-training-signal_20261002.md",
+  "document": "docs/research/exp008-registration.md",
+  "protocol_id": "marl-protocol-v2",
+  "registered_on": "2026-10-03",
+  "scenario_config": "configs/scenario-v2.toml",
+  "scenario_config_sha256": "74e3fadc6626abebe681ed43c487a8e3781e0dfb65494ace72db730f58550afc",
+  "horizon_slots": 20200,
+  "warmup_slots": 200,
+  "execution_seeds": {
+    "base": 20260930,
+    "scheme": "SeedSequence([base, seed_code, instance, repeat]).spawn(N)[j]"
+  },
+  "fading_seeds": {
+    "base": 20261001,
+    "scheme": "SeedSequence([base, seed_code, instance, repeat]).spawn(N)[j]"
+  },
+  "screening": {
+    "exp008-screen256": {
+      "split": "dev",
+      "start": 2000,
+      "stop": 2256,
+      "count": 256,
+      "grid": [
+        6,
+        8
+      ],
+      "repeats": 1,
+      "seed_code": 0,
+      "score": "S_near = (F_0.01(6) + F_0.01(8)) / 2",
+      "selection": "per run: max (S_near, checkpoint slots); design \u00a74.1",
+      "entry_point": "evaluate_capacity --split dev --screen exp008-screen256 --formal",
+      "digests": {
+        "6": "e84583becc99840e923fcca47c9c32b07298635ed370fa8440e5d026126bf584",
+        "8": "5084dfa5fecf5c139922dcd30ef0d03ef064c41304563f2741bade7fa235a3f3"
+      }
+    }
+  },
+  "confirmation": {
+    "v2-confirm1": {
+      "pool": "reserve",
+      "start": 30000,
+      "stop": 30500,
+      "count": 500,
+      "repeats": 1,
+      "seed_code": 3,
+      "grid": [
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        16,
+        20,
+        24,
+        28,
+        32
+      ],
+      "reference_extra": [
+        36,
+        40
+      ],
+      "read_once": true,
+      "entry_point": "evaluate_capacity --split v2-confirm1 --confirm-c1 --formal",
+      "digests": {
+        "2": "8e2ad62f5eb4a594717acdb32c6282c44dd94501decddcf65154991826bde79c",
+        "4": "f340af1b4c4df414f4557c622511fa1715247eeaa253c77bec153616f69937e1",
+        "6": "7ba59813a04c36049e444a899cb9c088cbd2dbfaa2bde163e30a9d28a3ae4c29",
+        "8": "1c624988dd94c8b27f37c74ed6ec08155d8178732e5ce2f5e0e17c09813cfdfb",
+        "10": "45f2f189a00ddf89bb9d28fe0359bed1b873fc12e40645a04aef4f56034ee9bc",
+        "12": "5a659fc773c2fcf91912e2e89198c2fa6a2a35980c160d82b9e81c0e698b9ef0",
+        "16": "c6706e1d4c4fd191cd1602753a04ab87586f9e1c92ce1af8b83f4654e4a54d31",
+        "20": "7d66a529be38a850edc622dfe0d5376ab0c41f7537b1c6d630ea454a257b8636",
+        "24": "8c188f80d7a1c68a59e10c012c96c0027bd86339a2eaec8af0ba7519decb213d",
+        "28": "4e5d25f8f75daae6f4ee4f4438144ed8316559fc6aa068973b23b17e6a0849ba",
+        "32": "adc5adcb0a1651d13668c8ad5f4595a3fb10e88d6eaa36a32c19094871dbb506",
+        "36": "89e4b521ea68b8d27c16190c5218867ce53233d25e177ca37d634aef594290f7",
+        "40": "b6f53fbf1fe9d073da63f9032d851b1f8bb3edcc750e4428457cfa8e2d870df9"
+      }
+    }
+  },
+  "usage_checked_on_registration": {
+    "v2_dev_ranges_used": [
+      [
+        0,
+        64
+      ],
+      [
+        1000,
+        1400
+      ]
+    ],
+    "v2_reserve_ranges_read": []
+  }
+}

@@ -193,6 +193,7 @@ def main() -> None:
         splits_v2.require("dev", i)
         for i in range(args.first_instance, args.first_instance + args.instances)
     ]
+    splits_v2.check_dev_range(chosen)
     jobs = [(args.config, s, n, "dev", i) for s in args.policies for n in args.grid for i in chosen]
     with ProcessPoolExecutor(args.workers) as pool:
         results = list(pool.map(episode, jobs, chunksize=1))
