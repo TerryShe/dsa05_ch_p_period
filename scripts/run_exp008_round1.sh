@@ -76,6 +76,7 @@ for k in 1 2 3 4 5; do
     --candidate "$OUT/validation/summary.json" \
     --runs fixed-seed101=r0-seed101 fixed-seed202=r0-seed202 || true)
   echo "phase-1 validation batch $k: $verdict"
+  # "no common checkpoint" (status 2) only means R0 selected checkpoints of another batch.
   case "$verdict" in
     DIFFERENT*) echo "$(date) the evaluation path changed (design §4.4): stopping"; exit 1 ;;
   esac

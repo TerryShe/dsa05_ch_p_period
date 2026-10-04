@@ -1,0 +1,545 @@
+{
+  "conditions": {
+    "F1": {
+      "runs": {
+        "101": {
+          "run": "outputs/exp008-round1/f1-seed101",
+          "selected": "marl:outputs/exp008-round1/f1-seed101/checkpoints/step-003001600.pt",
+          "S_near": 0.94140625,
+          "screen_F": {
+            "F6": 0.96484375,
+            "F8": 0.91796875
+          },
+          "end_slots": [
+            4001536,
+            5001472
+          ],
+          "end_S_near": [
+            0.935546875,
+            0.8984375
+          ],
+          "validation": {
+            "F2": 1.0,
+            "F4": 0.984375,
+            "F6": 0.9375,
+            "F8": 0.9375,
+            "F10": 0.84375,
+            "F12": 0.703125,
+            "F16": 0.0625,
+            "S_thr": 0.85546875,
+            "S_006": 0.7447916666666666
+          }
+        },
+        "202": {
+          "run": "outputs/exp008-round1/f1-seed202",
+          "selected": "marl:outputs/exp008-round1/f1-seed202/checkpoints/step-002001664.pt",
+          "S_near": 0.93359375,
+          "screen_F": {
+            "F6": 0.96875,
+            "F8": 0.8984375
+          },
+          "end_slots": [
+            4001536,
+            5001472
+          ],
+          "end_S_near": [
+            0.904296875,
+            0.9296875
+          ],
+          "validation": {
+            "F2": 1.0,
+            "F4": 0.984375,
+            "F6": 0.953125,
+            "F8": 0.9375,
+            "F10": 0.796875,
+            "F12": 0.640625,
+            "F16": 0.03125,
+            "S_thr": 0.83203125,
+            "S_006": 0.7239583333333334
+          }
+        }
+      },
+      "mean": {
+        "S_near": 0.9375,
+        "F6_screen": 0.966796875,
+        "F8_screen": 0.908203125,
+        "end_S_near": 0.9169921875,
+        "F2": 1.0,
+        "F4": 0.984375,
+        "F6": 0.9453125,
+        "F8": 0.9375,
+        "F10": 0.8203125,
+        "F12": 0.671875,
+        "F16": 0.046875,
+        "S_thr": 0.84375,
+        "S_006": 0.734375
+      }
+    },
+    "F2": {
+      "runs": {
+        "101": {
+          "run": "outputs/exp008-round1/f2-seed101",
+          "selected": "marl:outputs/exp008-round1/f2-seed101/checkpoints/step-004001536.pt",
+          "S_near": 0.931640625,
+          "screen_F": {
+            "F6": 0.96484375,
+            "F8": 0.8984375
+          },
+          "end_slots": [
+            4001536,
+            5001472
+          ],
+          "end_S_near": [
+            0.931640625,
+            0.92578125
+          ],
+          "validation": {
+            "F2": 1.0,
+            "F4": 0.96875,
+            "F6": 0.9375,
+            "F8": 0.90625,
+            "F10": 0.8125,
+            "F12": 0.640625,
+            "F16": 0.046875,
+            "S_thr": 0.82421875,
+            "S_006": 0.71875
+          }
+        },
+        "202": {
+          "run": "outputs/exp008-round1/f2-seed202",
+          "selected": "marl:outputs/exp008-round1/f2-seed202/checkpoints/step-005001472.pt",
+          "S_near": 0.94921875,
+          "screen_F": {
+            "F6": 0.96875,
+            "F8": 0.9296875
+          },
+          "end_slots": [
+            4001536,
+            5001472
+          ],
+          "end_S_near": [
+            0.919921875,
+            0.94921875
+          ],
+          "validation": {
+            "F2": 1.0,
+            "F4": 0.96875,
+            "F6": 0.953125,
+            "F8": 0.9375,
+            "F10": 0.875,
+            "F12": 0.765625,
+            "F16": 0.140625,
+            "S_thr": 0.8828125,
+            "S_006": 0.7734375
+          }
+        }
+      },
+      "mean": {
+        "S_near": 0.9404296875,
+        "F6_screen": 0.966796875,
+        "F8_screen": 0.9140625,
+        "end_S_near": 0.931640625,
+        "F2": 1.0,
+        "F4": 0.96875,
+        "F6": 0.9453125,
+        "F8": 0.921875,
+        "F10": 0.84375,
+        "F12": 0.703125,
+        "F16": 0.09375,
+        "S_thr": 0.853515625,
+        "S_006": 0.74609375
+      }
+    },
+    "F3": {
+      "runs": {
+        "101": {
+          "run": "outputs/exp008-round1/f3-seed101",
+          "selected": "marl:outputs/exp008-round1/f3-seed101/checkpoints/step-005001472.pt",
+          "S_near": 0.94921875,
+          "screen_F": {
+            "F6": 0.96484375,
+            "F8": 0.93359375
+          },
+          "end_slots": [
+            4001536,
+            5001472
+          ],
+          "end_S_near": [
+            0.939453125,
+            0.94921875
+          ],
+          "validation": {
+            "F2": 1.0,
+            "F4": 0.984375,
+            "F6": 0.953125,
+            "F8": 0.9375,
+            "F10": 0.890625,
+            "F12": 0.703125,
+            "F16": 0.234375,
+            "S_thr": 0.87109375,
+            "S_006": 0.7838541666666666
+          }
+        },
+        "202": {
+          "run": "outputs/exp008-round1/f3-seed202",
+          "selected": "marl:outputs/exp008-round1/f3-seed202/checkpoints/step-003001600.pt",
+          "S_near": 0.9453125,
+          "screen_F": {
+            "F6": 0.96875,
+            "F8": 0.921875
+          },
+          "end_slots": [
+            4001536,
+            5001472
+          ],
+          "end_S_near": [
+            0.931640625,
+            0.93359375
+          ],
+          "validation": {
+            "F2": 1.0,
+            "F4": 0.984375,
+            "F6": 0.953125,
+            "F8": 0.9375,
+            "F10": 0.859375,
+            "F12": 0.703125,
+            "F16": 0.109375,
+            "S_thr": 0.86328125,
+            "S_006": 0.7578125
+          }
+        }
+      },
+      "mean": {
+        "S_near": 0.947265625,
+        "F6_screen": 0.966796875,
+        "F8_screen": 0.927734375,
+        "end_S_near": 0.9384765625,
+        "F2": 1.0,
+        "F4": 0.984375,
+        "F6": 0.953125,
+        "F8": 0.9375,
+        "F10": 0.875,
+        "F12": 0.703125,
+        "F16": 0.171875,
+        "S_thr": 0.8671875,
+        "S_006": 0.7708333333333333
+      }
+    },
+    "F4": {
+      "runs": {
+        "101": {
+          "run": "outputs/exp008-round1/f4-seed101",
+          "selected": "marl:outputs/exp008-round1/f4-seed101/checkpoints/step-003001600.pt",
+          "S_near": 0.931640625,
+          "screen_F": {
+            "F6": 0.9609375,
+            "F8": 0.90234375
+          },
+          "end_slots": [
+            4001536,
+            5001472
+          ],
+          "end_S_near": [
+            0.869140625,
+            0.927734375
+          ],
+          "validation": {
+            "F2": 1.0,
+            "F4": 0.96875,
+            "F6": 0.9375,
+            "F8": 0.9375,
+            "F10": 0.78125,
+            "F12": 0.625,
+            "F16": 0.03125,
+            "S_thr": 0.8203125,
+            "S_006": 0.7135416666666666
+          }
+        },
+        "202": {
+          "run": "outputs/exp008-round1/f4-seed202",
+          "selected": "marl:outputs/exp008-round1/f4-seed202/checkpoints/step-005001472.pt",
+          "S_near": 0.955078125,
+          "screen_F": {
+            "F6": 0.9765625,
+            "F8": 0.93359375
+          },
+          "end_slots": [
+            4001536,
+            5001472
+          ],
+          "end_S_near": [
+            0.953125,
+            0.955078125
+          ],
+          "validation": {
+            "F2": 1.0,
+            "F4": 0.984375,
+            "F6": 0.9375,
+            "F8": 0.9375,
+            "F10": 0.875,
+            "F12": 0.734375,
+            "F16": 0.109375,
+            "S_thr": 0.87109375,
+            "S_006": 0.7630208333333334
+          }
+        }
+      },
+      "mean": {
+        "S_near": 0.943359375,
+        "F6_screen": 0.96875,
+        "F8_screen": 0.91796875,
+        "end_S_near": 0.92626953125,
+        "F2": 1.0,
+        "F4": 0.9765625,
+        "F6": 0.9375,
+        "F8": 0.9375,
+        "F10": 0.828125,
+        "F12": 0.6796875,
+        "F16": 0.0703125,
+        "S_thr": 0.845703125,
+        "S_006": 0.73828125
+      }
+    },
+    "F5": {
+      "runs": {
+        "101": {
+          "run": "outputs/exp008-round1/f5-seed101",
+          "selected": "marl:outputs/exp008-round1/f5-seed101/checkpoints/step-004001536.pt",
+          "S_near": 0.94921875,
+          "screen_F": {
+            "F6": 0.96484375,
+            "F8": 0.93359375
+          },
+          "end_slots": [
+            4001536,
+            5001472
+          ],
+          "end_S_near": [
+            0.94921875,
+            0.9375
+          ],
+          "validation": {
+            "F2": 1.0,
+            "F4": 0.984375,
+            "F6": 0.96875,
+            "F8": 0.9375,
+            "F10": 0.84375,
+            "F12": 0.71875,
+            "F16": 0.078125,
+            "S_thr": 0.8671875,
+            "S_006": 0.7552083333333334
+          }
+        },
+        "202": {
+          "run": "outputs/exp008-round1/f5-seed202",
+          "selected": "marl:outputs/exp008-round1/f5-seed202/checkpoints/step-005001472.pt",
+          "S_near": 0.953125,
+          "screen_F": {
+            "F6": 0.96875,
+            "F8": 0.9375
+          },
+          "end_slots": [
+            4001536,
+            5001472
+          ],
+          "end_S_near": [
+            0.943359375,
+            0.953125
+          ],
+          "validation": {
+            "F2": 1.0,
+            "F4": 0.96875,
+            "F6": 0.9375,
+            "F8": 0.9375,
+            "F10": 0.890625,
+            "F12": 0.765625,
+            "F16": 0.15625,
+            "S_thr": 0.8828125,
+            "S_006": 0.7760416666666666
+          }
+        }
+      },
+      "mean": {
+        "S_near": 0.951171875,
+        "F6_screen": 0.966796875,
+        "F8_screen": 0.935546875,
+        "end_S_near": 0.94580078125,
+        "F2": 1.0,
+        "F4": 0.9765625,
+        "F6": 0.953125,
+        "F8": 0.9375,
+        "F10": 0.8671875,
+        "F12": 0.7421875,
+        "F16": 0.1171875,
+        "S_thr": 0.875,
+        "S_006": 0.765625
+      }
+    },
+    "R0": {
+      "runs": {
+        "101": {
+          "run": "outputs/exp008-round1/r0-seed101",
+          "selected": "marl:outputs/exp008-round1/r0-seed101/checkpoints/step-005001472.pt",
+          "S_near": 0.947265625,
+          "screen_F": {
+            "F6": 0.9609375,
+            "F8": 0.93359375
+          },
+          "end_slots": [
+            4001536,
+            5001472
+          ],
+          "end_S_near": [
+            0.9453125,
+            0.947265625
+          ],
+          "validation": {
+            "F2": 1.0,
+            "F4": 0.984375,
+            "F6": 0.953125,
+            "F8": 0.9375,
+            "F10": 0.875,
+            "F12": 0.765625,
+            "F16": 0.171875,
+            "S_thr": 0.8828125,
+            "S_006": 0.78125
+          }
+        },
+        "202": {
+          "run": "outputs/exp008-round1/r0-seed202",
+          "selected": "marl:outputs/exp008-round1/r0-seed202/checkpoints/step-005001472.pt",
+          "S_near": 0.94921875,
+          "screen_F": {
+            "F6": 0.96875,
+            "F8": 0.9296875
+          },
+          "end_slots": [
+            4001536,
+            5001472
+          ],
+          "end_S_near": [
+            0.861328125,
+            0.94921875
+          ],
+          "validation": {
+            "F2": 1.0,
+            "F4": 0.984375,
+            "F6": 0.953125,
+            "F8": 0.921875,
+            "F10": 0.828125,
+            "F12": 0.640625,
+            "F16": 0.09375,
+            "S_thr": 0.8359375,
+            "S_006": 0.7369791666666666
+          }
+        }
+      },
+      "mean": {
+        "S_near": 0.9482421875,
+        "F6_screen": 0.96484375,
+        "F8_screen": 0.931640625,
+        "end_S_near": 0.92578125,
+        "F2": 1.0,
+        "F4": 0.984375,
+        "F6": 0.953125,
+        "F8": 0.9296875,
+        "F10": 0.8515625,
+        "F12": 0.703125,
+        "F16": 0.1328125,
+        "S_thr": 0.859375,
+        "S_006": 0.7591145833333333
+      }
+    }
+  },
+  "retention": {
+    "F1": {
+      "delta_S_near": -0.0107421875,
+      "delta_S_near_per_seed": {
+        "101": -0.005859375,
+        "202": -0.015625
+      },
+      "delta_end_S_near": -0.0087890625,
+      "rules": {
+        "rule1_screen_improvement": false,
+        "rule2_validation_no_drop": false,
+        "rule3_end_segment": false,
+        "rule4_validation_F2": true,
+        "rule5_screen_per_n_no_drop": false
+      },
+      "retained": false
+    },
+    "F2": {
+      "delta_S_near": -0.0078125,
+      "delta_S_near_per_seed": {
+        "101": -0.015625,
+        "202": 0.0
+      },
+      "delta_end_S_near": 0.005859375,
+      "rules": {
+        "rule1_screen_improvement": false,
+        "rule2_validation_no_drop": false,
+        "rule3_end_segment": true,
+        "rule4_validation_F2": true,
+        "rule5_screen_per_n_no_drop": false
+      },
+      "retained": false
+    },
+    "F3": {
+      "delta_S_near": -0.0009765625,
+      "delta_S_near_per_seed": {
+        "101": 0.001953125,
+        "202": -0.00390625
+      },
+      "delta_end_S_near": 0.0126953125,
+      "rules": {
+        "rule1_screen_improvement": false,
+        "rule2_validation_no_drop": true,
+        "rule3_end_segment": true,
+        "rule4_validation_F2": true,
+        "rule5_screen_per_n_no_drop": true
+      },
+      "retained": false
+    },
+    "F4": {
+      "delta_S_near": -0.0048828125,
+      "delta_S_near_per_seed": {
+        "101": -0.015625,
+        "202": 0.005859375
+      },
+      "delta_end_S_near": 0.00048828125,
+      "rules": {
+        "rule1_screen_improvement": false,
+        "rule2_validation_no_drop": false,
+        "rule3_end_segment": true,
+        "rule4_validation_F2": true,
+        "rule5_screen_per_n_no_drop": false
+      },
+      "retained": false
+    },
+    "F5": {
+      "delta_S_near": 0.0029296875,
+      "delta_S_near_per_seed": {
+        "101": 0.001953125,
+        "202": 0.00390625
+      },
+      "delta_end_S_near": 0.02001953125,
+      "rules": {
+        "rule1_screen_improvement": false,
+        "rule2_validation_no_drop": true,
+        "rule3_end_segment": true,
+        "rule4_validation_F2": true,
+        "rule5_screen_per_n_no_drop": true
+      },
+      "retained": false
+    }
+  },
+  "retained": [],
+  "candidates": {
+    "R0": {
+      "S_near": 0.9482421875,
+      "S_thr": 0.859375,
+      "factors": 0
+    }
+  },
+  "B1": "R0"
+}

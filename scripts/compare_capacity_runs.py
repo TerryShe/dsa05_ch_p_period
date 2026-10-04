@@ -10,7 +10,8 @@ the timing fields; a candidate that is still running is compared over the rows
 it has. ``validation`` compares the rows of two validation summaries at the N
 both evaluated, for the checkpoints with the same name in paired runs (``--runs
 fixed-seed101=r0-seed101``). Each command prints the first difference and exits
-with status 1 when there is one.
+with status 1 when there is one; ``validation`` exits with status 2 and prints
+"no common checkpoint" when the summaries share no checkpoint of the paired runs.
 """
 
 import argparse
@@ -102,7 +103,7 @@ def compare_validation(reference: Path, candidate: Path, pairs: dict[str, str]) 
     specs_b = _by_run(b, {run: run for run in pairs.values()})
     common = sorted(set(specs_a) & set(specs_b))
     if not common:
-        return ["no checkpoint of the paired runs is in both summaries"]
+        raise LookupError("no common checkpoint")
     found = []
     for key in common:
         name = "/".join(key)
@@ -151,7 +152,11 @@ def main(argv: list[str] | None = None) -> None:
         print(f"{compared} rows compared: {'identical' if first is None else first}")
         sys.exit(1 if first else 0)
     pairs = dict(item.split("=", 1) for item in args.runs)
-    found = compare_validation(args.reference, args.candidate, pairs)
+    try:
+        found = compare_validation(args.reference, args.candidate, pairs)
+    except LookupError as exc:
+        print(exc)
+        sys.exit(2)
     print("identical" if not found else "DIFFERENT " + ", ".join(found[:5]))
     sys.exit(1 if found else 0)
 
