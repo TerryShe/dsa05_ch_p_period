@@ -711,3 +711,26 @@ def test_confirmation_analysis_verdicts():
     worse = {**episodes, "marl:m1": _episodes({**grid_f["M"], 6: 0.9}, 40, 1)}
     t2 = analyze.analyze(worse, methods, list(range(40)), 300)["tests"]["0.01"]
     assert not t2["H2"]["6"]["holds"] and not t2["H2"]["holds"]  # N = 6 guard fails
+
+
+ROUND2 = {
+    "a2400": ("A-2400", "fixed", 2400),
+    "c600": ("C-600", "local", 600),
+    "c2400": ("C-2400", "local", 2400),
+}
+
+
+def test_round2_configs_differ_from_r0_only_in_episode_length_and_variant():
+    base = tomllib.loads((ROOT / "configs" / "exp008-round1-r0.toml").read_text())
+    for key, (name, variant, episode) in ROUND2.items():
+        raw = tomllib.loads((ROOT / "configs" / f"exp008-round2-{key}.toml").read_text())
+        experiment = raw["experiment"]
+        assert (experiment["round"], experiment["condition"], experiment["variant"]) == (
+            2,
+            name,
+            variant,
+        )
+        assert experiment["seeds"] == [101, 202] and experiment["b1"] == "R0"
+        assert name in sel.ROUND2_ORDER
+        assert raw["constraint"] == base["constraint"]
+        assert _flat(raw) == _flat(base) | {("training", "episode_slots"): episode}, key
