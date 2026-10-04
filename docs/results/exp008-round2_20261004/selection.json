@@ -1,0 +1,365 @@
+{
+  "screen": "exp008-screen256",
+  "runs": {
+    "outputs/exp008-round2/a2400-seed101": {
+      "condition": "A-2400",
+      "round": 2,
+      "variant": "fixed",
+      "seed": 101,
+      "checkpoints": [
+        {
+          "spec": "marl:outputs/exp008-round2/a2400-seed101/checkpoints/step-001001728.pt",
+          "slots": 1001728,
+          "F6": 0.8984375,
+          "F8": 0.70703125,
+          "S_near": 0.802734375
+        },
+        {
+          "spec": "marl:outputs/exp008-round2/a2400-seed101/checkpoints/step-002001664.pt",
+          "slots": 2001664,
+          "F6": 0.9296875,
+          "F8": 0.859375,
+          "S_near": 0.89453125
+        },
+        {
+          "spec": "marl:outputs/exp008-round2/a2400-seed101/checkpoints/step-003001600.pt",
+          "slots": 3001600,
+          "F6": 0.96875,
+          "F8": 0.93359375,
+          "S_near": 0.951171875
+        },
+        {
+          "spec": "marl:outputs/exp008-round2/a2400-seed101/checkpoints/step-004001536.pt",
+          "slots": 4001536,
+          "F6": 0.96875,
+          "F8": 0.91796875,
+          "S_near": 0.943359375
+        },
+        {
+          "spec": "marl:outputs/exp008-round2/a2400-seed101/checkpoints/step-005001472.pt",
+          "slots": 5001472,
+          "F6": 0.97265625,
+          "F8": 0.9453125,
+          "S_near": 0.958984375
+        }
+      ],
+      "selected": "marl:outputs/exp008-round2/a2400-seed101/checkpoints/step-005001472.pt",
+      "selected_slots": 5001472,
+      "selected_S_near": 0.958984375,
+      "selected_F": {
+        "F6": 0.97265625,
+        "F8": 0.9453125
+      },
+      "last": "marl:outputs/exp008-round2/a2400-seed101/checkpoints/step-005001472.pt",
+      "last_S_near": 0.958984375,
+      "end_slots": [
+        4001536,
+        5001472
+      ],
+      "end_S_near": [
+        0.943359375,
+        0.958984375
+      ]
+    },
+    "outputs/exp008-round2/a2400-seed202": {
+      "condition": "A-2400",
+      "round": 2,
+      "variant": "fixed",
+      "seed": 202,
+      "checkpoints": [
+        {
+          "spec": "marl:outputs/exp008-round2/a2400-seed202/checkpoints/step-001001728.pt",
+          "slots": 1001728,
+          "F6": 0.90234375,
+          "F8": 0.78125,
+          "S_near": 0.841796875
+        },
+        {
+          "spec": "marl:outputs/exp008-round2/a2400-seed202/checkpoints/step-002001664.pt",
+          "slots": 2001664,
+          "F6": 0.9375,
+          "F8": 0.859375,
+          "S_near": 0.8984375
+        },
+        {
+          "spec": "marl:outputs/exp008-round2/a2400-seed202/checkpoints/step-003001600.pt",
+          "slots": 3001600,
+          "F6": 0.95703125,
+          "F8": 0.87890625,
+          "S_near": 0.91796875
+        },
+        {
+          "spec": "marl:outputs/exp008-round2/a2400-seed202/checkpoints/step-004001536.pt",
+          "slots": 4001536,
+          "F6": 0.9609375,
+          "F8": 0.91796875,
+          "S_near": 0.939453125
+        },
+        {
+          "spec": "marl:outputs/exp008-round2/a2400-seed202/checkpoints/step-005001472.pt",
+          "slots": 5001472,
+          "F6": 0.953125,
+          "F8": 0.90625,
+          "S_near": 0.9296875
+        }
+      ],
+      "selected": "marl:outputs/exp008-round2/a2400-seed202/checkpoints/step-004001536.pt",
+      "selected_slots": 4001536,
+      "selected_S_near": 0.939453125,
+      "selected_F": {
+        "F6": 0.9609375,
+        "F8": 0.91796875
+      },
+      "last": "marl:outputs/exp008-round2/a2400-seed202/checkpoints/step-005001472.pt",
+      "last_S_near": 0.9296875,
+      "end_slots": [
+        4001536,
+        5001472
+      ],
+      "end_S_near": [
+        0.939453125,
+        0.9296875
+      ]
+    },
+    "outputs/exp008-round2/c2400-seed101": {
+      "condition": "C-2400",
+      "round": 2,
+      "variant": "local",
+      "seed": 101,
+      "checkpoints": [
+        {
+          "spec": "marl:outputs/exp008-round2/c2400-seed101/checkpoints/step-001001728.pt",
+          "slots": 1001728,
+          "F6": 0.359375,
+          "F8": 0.19921875,
+          "S_near": 0.279296875
+        },
+        {
+          "spec": "marl:outputs/exp008-round2/c2400-seed101/checkpoints/step-002001664.pt",
+          "slots": 2001664,
+          "F6": 0.91015625,
+          "F8": 0.80078125,
+          "S_near": 0.85546875
+        },
+        {
+          "spec": "marl:outputs/exp008-round2/c2400-seed101/checkpoints/step-003001600.pt",
+          "slots": 3001600,
+          "F6": 0.77734375,
+          "F8": 0.65234375,
+          "S_near": 0.71484375
+        },
+        {
+          "spec": "marl:outputs/exp008-round2/c2400-seed101/checkpoints/step-004001536.pt",
+          "slots": 4001536,
+          "F6": 0.91796875,
+          "F8": 0.8203125,
+          "S_near": 0.869140625
+        },
+        {
+          "spec": "marl:outputs/exp008-round2/c2400-seed101/checkpoints/step-005001472.pt",
+          "slots": 5001472,
+          "F6": 0.94921875,
+          "F8": 0.8984375,
+          "S_near": 0.923828125
+        }
+      ],
+      "selected": "marl:outputs/exp008-round2/c2400-seed101/checkpoints/step-005001472.pt",
+      "selected_slots": 5001472,
+      "selected_S_near": 0.923828125,
+      "selected_F": {
+        "F6": 0.94921875,
+        "F8": 0.8984375
+      },
+      "last": "marl:outputs/exp008-round2/c2400-seed101/checkpoints/step-005001472.pt",
+      "last_S_near": 0.923828125,
+      "end_slots": [
+        4001536,
+        5001472
+      ],
+      "end_S_near": [
+        0.869140625,
+        0.923828125
+      ]
+    },
+    "outputs/exp008-round2/c2400-seed202": {
+      "condition": "C-2400",
+      "round": 2,
+      "variant": "local",
+      "seed": 202,
+      "checkpoints": [
+        {
+          "spec": "marl:outputs/exp008-round2/c2400-seed202/checkpoints/step-001001728.pt",
+          "slots": 1001728,
+          "F6": 0.38671875,
+          "F8": 0.1796875,
+          "S_near": 0.283203125
+        },
+        {
+          "spec": "marl:outputs/exp008-round2/c2400-seed202/checkpoints/step-002001664.pt",
+          "slots": 2001664,
+          "F6": 0.80078125,
+          "F8": 0.58203125,
+          "S_near": 0.69140625
+        },
+        {
+          "spec": "marl:outputs/exp008-round2/c2400-seed202/checkpoints/step-003001600.pt",
+          "slots": 3001600,
+          "F6": 0.953125,
+          "F8": 0.8828125,
+          "S_near": 0.91796875
+        },
+        {
+          "spec": "marl:outputs/exp008-round2/c2400-seed202/checkpoints/step-004001536.pt",
+          "slots": 4001536,
+          "F6": 0.94140625,
+          "F8": 0.84375,
+          "S_near": 0.892578125
+        },
+        {
+          "spec": "marl:outputs/exp008-round2/c2400-seed202/checkpoints/step-005001472.pt",
+          "slots": 5001472,
+          "F6": 0.92578125,
+          "F8": 0.8359375,
+          "S_near": 0.880859375
+        }
+      ],
+      "selected": "marl:outputs/exp008-round2/c2400-seed202/checkpoints/step-003001600.pt",
+      "selected_slots": 3001600,
+      "selected_S_near": 0.91796875,
+      "selected_F": {
+        "F6": 0.953125,
+        "F8": 0.8828125
+      },
+      "last": "marl:outputs/exp008-round2/c2400-seed202/checkpoints/step-005001472.pt",
+      "last_S_near": 0.880859375,
+      "end_slots": [
+        4001536,
+        5001472
+      ],
+      "end_S_near": [
+        0.892578125,
+        0.880859375
+      ]
+    },
+    "outputs/exp008-round2/c600-seed101": {
+      "condition": "C-600",
+      "round": 2,
+      "variant": "local",
+      "seed": 101,
+      "checkpoints": [
+        {
+          "spec": "marl:outputs/exp008-round2/c600-seed101/checkpoints/step-001001728.pt",
+          "slots": 1001728,
+          "F6": 0.63671875,
+          "F8": 0.3984375,
+          "S_near": 0.517578125
+        },
+        {
+          "spec": "marl:outputs/exp008-round2/c600-seed101/checkpoints/step-002001664.pt",
+          "slots": 2001664,
+          "F6": 0.82421875,
+          "F8": 0.71875,
+          "S_near": 0.771484375
+        },
+        {
+          "spec": "marl:outputs/exp008-round2/c600-seed101/checkpoints/step-003001600.pt",
+          "slots": 3001600,
+          "F6": 0.80078125,
+          "F8": 0.640625,
+          "S_near": 0.720703125
+        },
+        {
+          "spec": "marl:outputs/exp008-round2/c600-seed101/checkpoints/step-004001536.pt",
+          "slots": 4001536,
+          "F6": 0.9375,
+          "F8": 0.859375,
+          "S_near": 0.8984375
+        },
+        {
+          "spec": "marl:outputs/exp008-round2/c600-seed101/checkpoints/step-005001472.pt",
+          "slots": 5001472,
+          "F6": 0.9140625,
+          "F8": 0.8515625,
+          "S_near": 0.8828125
+        }
+      ],
+      "selected": "marl:outputs/exp008-round2/c600-seed101/checkpoints/step-004001536.pt",
+      "selected_slots": 4001536,
+      "selected_S_near": 0.8984375,
+      "selected_F": {
+        "F6": 0.9375,
+        "F8": 0.859375
+      },
+      "last": "marl:outputs/exp008-round2/c600-seed101/checkpoints/step-005001472.pt",
+      "last_S_near": 0.8828125,
+      "end_slots": [
+        4001536,
+        5001472
+      ],
+      "end_S_near": [
+        0.8984375,
+        0.8828125
+      ]
+    },
+    "outputs/exp008-round2/c600-seed202": {
+      "condition": "C-600",
+      "round": 2,
+      "variant": "local",
+      "seed": 202,
+      "checkpoints": [
+        {
+          "spec": "marl:outputs/exp008-round2/c600-seed202/checkpoints/step-001001728.pt",
+          "slots": 1001728,
+          "F6": 0.83203125,
+          "F8": 0.5078125,
+          "S_near": 0.669921875
+        },
+        {
+          "spec": "marl:outputs/exp008-round2/c600-seed202/checkpoints/step-002001664.pt",
+          "slots": 2001664,
+          "F6": 0.9140625,
+          "F8": 0.75,
+          "S_near": 0.83203125
+        },
+        {
+          "spec": "marl:outputs/exp008-round2/c600-seed202/checkpoints/step-003001600.pt",
+          "slots": 3001600,
+          "F6": 0.9140625,
+          "F8": 0.80859375,
+          "S_near": 0.861328125
+        },
+        {
+          "spec": "marl:outputs/exp008-round2/c600-seed202/checkpoints/step-004001536.pt",
+          "slots": 4001536,
+          "F6": 0.7578125,
+          "F8": 0.62109375,
+          "S_near": 0.689453125
+        },
+        {
+          "spec": "marl:outputs/exp008-round2/c600-seed202/checkpoints/step-005001472.pt",
+          "slots": 5001472,
+          "F6": 0.82421875,
+          "F8": 0.72265625,
+          "S_near": 0.7734375
+        }
+      ],
+      "selected": "marl:outputs/exp008-round2/c600-seed202/checkpoints/step-003001600.pt",
+      "selected_slots": 3001600,
+      "selected_S_near": 0.861328125,
+      "selected_F": {
+        "F6": 0.9140625,
+        "F8": 0.80859375
+      },
+      "last": "marl:outputs/exp008-round2/c600-seed202/checkpoints/step-005001472.pt",
+      "last_S_near": 0.7734375,
+      "end_slots": [
+        4001536,
+        5001472
+      ],
+      "end_S_near": [
+        0.689453125,
+        0.7734375
+      ]
+    }
+  }
+}
