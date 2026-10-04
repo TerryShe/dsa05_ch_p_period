@@ -1,7 +1,8 @@
 """Fixed-rollout training diagnostics of EXP-DSA05-008 (design §8). Descriptive only.
 
 For each checkpoint, a trainer with the checkpoint's networks, update options
-and ValueNorm statistics, but R0's mix of numbers of UEs, collects ``--rollouts``
+and ValueNorm statistics, but R0's mix of numbers of UEs (``--own-env-ues``: the
+checkpoint's own environments, e.g. 14 x N for an EXP-009 per-N run), collects ``--rollouts``
 rollouts of 128 slots from the training pool with a fixed seed (the same
 episodes and fading for every checkpoint; the actions differ). Nothing is
 trained and the ValueNorm statistics do not move. Per number of UEs N, over the
@@ -58,12 +59,15 @@ def decompose(rewards, values, next_values, truncated, gamma: float, lam: float)
     return reward_part, value_part
 
 
-def build_trainer(checkpoint: Path, seed: int = DIAGNOSTIC_SEED) -> CapacityTrainer:
+def build_trainer(
+    checkpoint: Path, seed: int = DIAGNOSTIC_SEED, own_env_ues: bool = False
+) -> CapacityTrainer:
     state = torch.load(checkpoint, map_location="cpu", weights_only=False)
     manifest = json.loads((checkpoint.parent.parent / "manifest.json").read_text())
-    settings = CapacityTrainingSettings(**{**state["settings"], "env_ues": R0_ENV_UES})
+    env_ues = tuple(state["settings"]["env_ues"]) if own_env_ues else R0_ENV_UES
+    settings = CapacityTrainingSettings(**{**state["settings"], "env_ues": env_ues})
     trainer = CapacityTrainer(
-        load_scenario(CONFIG, max(R0_ENV_UES)),
+        load_scenario(CONFIG, max(env_ues)),
         settings,
         PPOSettings(**manifest["resolved"]["ppo"]),
         CapacityConstraint(**state["constraint"]),
@@ -99,9 +103,9 @@ def surrogate_parts(trainer: CapacityTrainer, rollout, per_ue, active) -> dict[i
 
 
 def diagnose(job: tuple) -> tuple[str, dict]:
-    checkpoint, rollouts = job
+    checkpoint, rollouts, own_env_ues = job
     torch.set_num_threads(1)
-    trainer = build_trainer(Path(checkpoint))
+    trainer = build_trainer(Path(checkpoint), own_env_ues=own_env_ues)
     ppo, s = trainer.ppo, trainer.ppo.settings
     params = [p for p in ppo.actor.parameters()]
     moments = {n: np.zeros(7) for n in ppo.groups}  # n, sum r, sum v, rr, vv, rv, nonzero slots
@@ -182,11 +186,12 @@ def main() -> None:
     parser.add_argument("--checkpoints", type=Path, nargs="+", required=True)
     parser.add_argument("--rollouts", type=int, default=50)
     parser.add_argument("--workers", type=int, default=4)
+    parser.add_argument("--own-env-ues", action="store_true", help="the checkpoint's environments")
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     if args.output.exists():
         parser.error(f"output {args.output} already exists")
-    jobs = [(str(c), args.rollouts) for c in args.checkpoints]
+    jobs = [(str(c), args.rollouts, args.own_env_ues) for c in args.checkpoints]
     with ProcessPoolExecutor(args.workers) as pool:
         results = dict(pool.map(diagnose, jobs))
     args.output.parent.mkdir(parents=True, exist_ok=True)

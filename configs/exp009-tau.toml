@@ -1,0 +1,12 @@
+# EXP-DSA05-009 hard stratum (design §5.1), written by scripts/compute_exp009_tau.py.
+# tau_N = 10% quantile of the deployment hardness over 20000 distinct
+# train-pool instances drawn with seed 20261004. Frozen with the design; do not edit.
+[tau]
+"2" = 3.5470138046803963
+"4" = 2.9212198525440263
+"6" = 2.6487739515504347
+"8" = 2.519029717893554
+"10" = 2.4315962174293846
+"12" = 2.372875297249997
+"16" = 2.2831118347237895
+"20" = 2.2349918632173504

@@ -39,10 +39,19 @@ EVALUATION_REPEATS = {"dev": 1, "validation": 1, "test": 1}
 EXECUTION_SEED_BASE = 20_260_930
 FADING_SEED_BASE = 20_261_001
 
-# EXP-DSA05-008 (design §4.1): checkpoint screening on dev 2000-2255 at N = 6, 8.
-SCREENING_SETS: dict[str, dict] = {"exp008-screen256": {"range": (2_000, 2_256), "grid": (6, 8)}}
-# EXP-DSA05-008 (design §7.1): v2-confirm1, reserve 30000-30499, one execution each.
-CONFIRMATION_SETS: dict[str, tuple[int, int]] = {"v2-confirm1": (30_000, 30_500)}
+# Checkpoint screening sets: EXP-DSA05-008 (design §4.1) on dev 2000-2255 at N = 6, 8;
+# EXP-DSA05-009 (design §3) on dev 3000-3255 at every training N (an evaluation may
+# cover a subset of the registered grid: a per-N model is evaluated at its own N).
+SCREENING_SETS: dict[str, dict] = {
+    "exp008-screen256": {"range": (2_000, 2_256), "grid": (6, 8)},
+    "exp009-screen256": {"range": (3_000, 3_256), "grid": (2, 4, 6, 8, 10, 12, 16, 20)},
+}
+# Confirmation sets, one execution each: v2-confirm1 (EXP-008 §7.1, reserve 30000-30499)
+# and v2-confirm2 (EXP-009 §3, reserve 30500-30999).
+CONFIRMATION_SETS: dict[str, tuple[int, int]] = {
+    "v2-confirm1": (30_000, 30_500),
+    "v2-confirm2": (30_500, 31_000),
+}
 CONFIRMATION_REPEATS = 1
 HELD_OUT = ("test", *CONFIRMATION_SETS)
 

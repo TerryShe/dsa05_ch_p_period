@@ -18,6 +18,11 @@ EXP-DSA05-008 adds update options (``UpdateSettings``, design §3): advantage
 normalization per N, an environment-weighted actor loss and a global ValueNorm.
 Their defaults are the EXP-DSA05-006 update, bit for bit. The training log also
 carries per-N diagnostics (design §8); they consume no random numbers.
+
+EXP-DSA05-009 adds training-deployment samplers per N group
+(``level_sampler.SamplerSettings``: uniform, stratified, plr); the uniform default
+keeps the trainer's own draw. ``train_step`` runs the PPO update and then scores
+the episodes that ended in the rollout (PLR with the GAE-magnitude score).
 """
 
 import json
@@ -32,6 +37,7 @@ import torch
 from torch import Tensor, nn
 
 from dsa_period import splits, splits_v2
+from dsa_period.capacity import best_alone_bits, evaluated_packets, undeliverable
 from dsa_period.config import Scenario
 from dsa_period.marl.features import (
     DualSettings,
@@ -45,6 +51,7 @@ from dsa_period.marl.features import (
     stack,
     token_dim,
 )
+from dsa_period.marl.level_sampler import LevelSampler, SamplerSettings, deployment_hardness
 from dsa_period.marl.networks import ChannelSetActor, SetCritic, masked_log_probs
 from dsa_period.marl.policy import MarlPolicy
 from dsa_period.marl.ppo import PPOSettings, discounted_gae
@@ -316,6 +323,7 @@ class RaggedMAPPO:
     def update(self, rollout: RaggedRollout, entropy_coef: float) -> dict[str, float]:
         s = self.settings
         prepared = self.advantages(rollout)
+        self.last_advantages = prepared["advantages"]  # [T, E], reward units
         returns, targets = prepared["returns"], prepared["targets"]
         active, per_ue = prepared["active"], prepared["per_ue"]
         diagnostics = self._diagnostics(rollout, prepared)
@@ -522,6 +530,7 @@ class CapacityTrainer:
         constraint: CapacityConstraint,
         seed: int,
         update: UpdateSettings | None = None,
+        sampler: SamplerSettings | None = None,
     ) -> None:
         if not scenario.is_v2:
             raise ValueError("EXP-DSA05-006 trains on scenario v2.0")
@@ -566,6 +575,24 @@ class CapacityTrainer:
         self.class_index = [np.zeros(int(n), np.int64) for n in self.env_ues]
         self.episode_slot = np.zeros(self.env_ues.size, np.int64)
         self.ue_samples = 0
+        self.sampler_settings = sampler or SamplerSettings()
+        self.level_samplers: dict[int, LevelSampler] = {}
+        if self.sampler_settings.kind != "uniform":
+            for n in sorted({int(n) for n in self.env_ues}):
+                scenario_n = scenario.with_num_ues(n)
+                self.level_samplers[n] = LevelSampler(
+                    self.sampler_settings,
+                    n,
+                    seed,
+                    lambda index, sc=scenario_n: deployment_hardness(sc, *sc.instance(index)),
+                )
+        self.traffic = [None] * self.env_ues.size
+        self.level = [(0, 0)] * self.env_ues.size  # (instance index, sampler timestamp)
+        self.hardness_drawn: dict[str, list[float]] = {}
+        self.episode_ids = np.zeros(self.env_ues.size, np.int64)
+        self.next_episode_id = 0
+        self.rollout_episodes = np.zeros((settings.rollout_slots, self.env_ues.size), np.int64)
+        self.pending_gae: dict[int, list] = {}  # episode id -> [n, index, stamp, sum, count, ended]
         for env in range(self.env_ues.size):
             self._reset_env(env)
 
@@ -587,11 +614,21 @@ class CapacityTrainer:
         )
 
     def _reset_env(self, env: int) -> None:
-        index = splits.sample_train_index(self.rng)
+        group = self.level_samplers.get(int(self.env_ues[env]))
+        if group is None:
+            index, stamp = splits.sample_train_index(self.rng), 0
+        else:
+            index, _, stamp = group.next_level(lambda: splits.sample_train_index(self.rng))
         self.instances_drawn.append(index)
         scenario = self.scenarios[env]
         n = scenario.physical.num_ues
         topology, traffic = scenario.instance(index)
+        self.traffic[env], self.level[env] = traffic, (index, stamp)
+        self.hardness_drawn.setdefault(str(n), []).append(
+            deployment_hardness(scenario, topology, traffic)
+        )
+        self.episode_ids[env] = self.next_episode_id
+        self.next_episode_id += 1
         self.class_index[env] = np.asarray(traffic.class_index, np.int64)
         self.episodes_by_n[str(n)] = self.episodes_by_n.get(str(n), 0) + 1
         self.episode_slot[env] = 0
@@ -698,7 +735,9 @@ class CapacityTrainer:
                 tx += int(step.physical.active.sum())
                 active_decisions += int(buf["active"][t, rows].sum())
             buf["next_values"][t] = self._values()
+            self.rollout_episodes[t] = self.episode_ids
             for env in np.flatnonzero(buf["truncated"][t]):
+                self._finish_episode(int(env))
                 self._reset_env(int(env))
         rollout = RaggedRollout(**buf, initial_hidden=initial_hidden)
         self.ue_samples += int(buf["active"].sum())
@@ -719,6 +758,8 @@ class CapacityTrainer:
             "settled_by_n": settled_by_n,
             "violations_by_n": violations_by_n,
         }
+        if self.level_samplers:
+            stats["sampler"] = {str(n): s.diagnostics() for n, s in self.level_samplers.items()}
         if local:
             count = np.maximum(mu_stats[1], 1)
             stats["mu_by_class_quarter"] = {
@@ -729,9 +770,67 @@ class CapacityTrainer:
             }
         return rollout, stats
 
+    # ---------------------------------------------------------- level scoring
+    def _finish_episode(self, env: int) -> None:
+        """The episode of ``env`` ended at the current slot: score it for PLR."""
+        n = int(self.env_ues[env])
+        group = self.level_samplers.get(n)
+        if group is None or self.sampler_settings.kind != "plr":
+            return
+        index, stamp = self.level[env]
+        if self.sampler_settings.score == "avoidable":
+            group.record(index, self._avoidable_score(env), stamp)
+        else:  # GAE magnitude: final once the update of this rollout has run
+            entry = self.pending_gae.setdefault(
+                int(self.episode_ids[env]), [n, index, stamp, 0.0, 0, False]
+            )
+            entry[1], entry[2], entry[5] = index, stamp, True
+
+    def _avoidable_score(self, env: int) -> float:
+        """P2: worst UE's (violated - undeliverable) / settled packets of the episode."""
+        horizon = self.settings.episode_slots
+        scenario, traffic, environment = self.scenarios[env], self.traffic[env], self.envs[env]
+        n = scenario.physical.num_ues
+        packets = evaluated_packets(traffic, 0, horizon)
+        lost = undeliverable(
+            packets, best_alone_bits(scenario, environment.channel.gain_block(0, horizon))
+        )
+        count = np.bincount(packets["ue"], minlength=n)
+        lost_by_ue = np.bincount(packets["ue"], weights=lost, minlength=n)
+        missed = np.zeros(n)
+        for job in environment.job_records():
+            if 0 < job["deadline_slot"] <= horizon and not job["success"]:
+                missed[job["ue"]] += 1
+        return float(np.max(np.maximum(missed - lost_by_ue, 0.0) / np.maximum(count, 1)))
+
+    def train_step(self, rollout: RaggedRollout, entropy_coef: float) -> dict:
+        """PPO update, then the GAE-magnitude scores of episodes that ended (PLR, P1)."""
+        metrics = self.ppo.update(rollout, entropy_coef)
+        if self.level_samplers and self.sampler_settings.score == "gae":
+            magnitude = self.ppo.last_advantages.abs().numpy()
+            for env in range(self.env_ues.size):
+                for episode in np.unique(self.rollout_episodes[:, env]):
+                    slots = self.rollout_episodes[:, env] == episode
+                    entry = self.pending_gae.setdefault(
+                        int(episode), [int(self.env_ues[env]), None, None, 0.0, 0, False]
+                    )
+                    entry[3] += float(magnitude[slots, env].sum())
+                    entry[4] += int(slots.sum())
+            for episode in [e for e, v in self.pending_gae.items() if v[5]]:
+                n, index, stamp, total, count, _ = self.pending_gae.pop(episode)
+                self.level_samplers[n].record(index, total / max(count, 1), stamp)
+        return metrics
+
     # -------------------------------------------------------------- checkpoints
     def checkpoint(self, slots: int, iteration: int) -> dict:
+        extra = {}
+        if self.level_samplers:
+            extra = {
+                "sampler": asdict(self.sampler_settings),
+                "level_samplers": {str(n): s.state_dict() for n, s in self.level_samplers.items()},
+            }
         return {
+            **extra,
             "kind": CHECKPOINT_KIND,
             "schema": CHECKPOINT_SCHEMA,
             "slots": slots,
@@ -776,7 +875,7 @@ class CapacityTrainer:
                 progress = slots / (s.entropy_decay_fraction * s.budget_slots)
                 coef = s.entropy_start * max(0.0, 1.0 - progress)
                 tick = time.perf_counter()
-                metrics = self.ppo.update(rollout, coef)
+                metrics = self.train_step(rollout, coef)
                 update_s = time.perf_counter() - tick
                 line = {
                     "iteration": iteration,
@@ -814,6 +913,9 @@ class CapacityTrainer:
             "distinct_training_instances": len(set(self.instances_drawn)),
             "episodes_by_n": self.episodes_by_n,
             "ue_samples_with_packet": self.ue_samples,
+            "hardness_quantiles_by_n": {
+                n: np.quantile(h, [0.1, 0.5, 0.9]).tolist() for n, h in self.hardness_drawn.items()
+            },
             "peak_rss_mb": resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024,
         }
         (output / "result.json").write_text(json.dumps(result, indent=2))

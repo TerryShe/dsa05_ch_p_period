@@ -86,7 +86,7 @@ def exp006_trainer(seed: int) -> CapacityTrainer:
     from dsa_period.experiments.train_capacity_mappo import settings_from
 
     raw = tomllib.loads((ROOT / "configs" / "exp006-capacity-mappo.toml").read_text())
-    training, ppo, constraint, update = settings_from(raw, "fixed")
+    training, ppo, constraint, update, _ = settings_from(raw, "fixed")
     return CapacityTrainer(load_scenario(CONFIG, 20), training, ppo, constraint, seed, update)
 
 

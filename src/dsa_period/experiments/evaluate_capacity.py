@@ -5,9 +5,11 @@ For each policy the output holds F(N) with its interval, per-UE violation
 statistics, the capacity N* at every eps and the bootstrap distribution of N*.
 ``dev`` takes an explicit index range that must not touch a registered
 screening set; ``--screen NAME`` reads exactly such a set (its instances and
-grid, ``--formal`` only). Test evaluation needs ``--confirm-test`` and
-``--formal`` (protocol v2 reads the test split only for frozen methods); the
-EXP-DSA05-008 confirmation set v2-confirm1 needs ``--confirm-c1`` and ``--formal``.
+grid or a subset of it, ``--formal`` only). Test evaluation needs
+``--confirm-test`` and ``--formal`` (protocol v2 reads the test split only for
+frozen methods); the confirmation sets need ``--formal`` and their own switch:
+v2-confirm1 (EXP-DSA05-008) ``--confirm-c1``, v2-confirm2 (EXP-DSA05-009)
+``--confirm-c2``.
 """
 
 import argparse
@@ -84,6 +86,7 @@ def main(argv: list[str] | None = None) -> None:
     parser.add_argument("--formal", action="store_true")
     parser.add_argument("--confirm-test", action="store_true")
     parser.add_argument("--confirm-c1", action="store_true", help="read v2-confirm1 (EXP-008)")
+    parser.add_argument("--confirm-c2", action="store_true", help="read v2-confirm2 (EXP-009)")
     parser.add_argument("--screen", choices=tuple(splits_v2.SCREENING_SETS))
     args = parser.parse_args(argv)
     if args.output is not None and args.output.exists():
@@ -93,8 +96,10 @@ def main(argv: list[str] | None = None) -> None:
         parser.error("--formal requires a clean, committed working tree")
     if args.split == "test" and not (args.confirm_test and args.formal):
         parser.error("test evaluation requires --confirm-test and --formal")
-    if args.split == "v2-confirm1" and not (args.confirm_c1 and args.formal):
-        parser.error("v2-confirm1 evaluation requires --confirm-c1 and --formal")
+    switches = {"v2-confirm1": args.confirm_c1, "v2-confirm2": args.confirm_c2}
+    if args.split in switches and not (switches[args.split] and args.formal):
+        flag = "--confirm-c1" if args.split == "v2-confirm1" else "--confirm-c2"
+        parser.error(f"{args.split} evaluation requires {flag} and --formal")
     if args.screen is not None and not args.formal:
         parser.error("a screening set is read only with --formal")
     try:
@@ -105,9 +110,9 @@ def main(argv: list[str] | None = None) -> None:
     grid = sorted(args.grid or base.capacity["grid"])
     if args.screen is not None:
         registered = list(splits_v2.SCREENING_SETS[args.screen]["grid"])
-        if args.grid is not None and grid != registered:
-            parser.error(f"the screening set {args.screen} is evaluated at N = {registered}")
-        grid = registered
+        if args.grid is not None and not set(grid) <= set(registered):
+            parser.error(f"the screening set {args.screen} is registered at N = {registered}")
+        grid = grid if args.grid is not None else registered
     for spec in args.policies:
         make_policy_v2(spec, base.physical, base.menu)  # validate before running
     jobs = [

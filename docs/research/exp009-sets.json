@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "experiment": "EXP-DSA05-009",
+  "design": "docs/experiment-designs/009-per-n-training-hard-deployments_20261004.md",
+  "document": "docs/research/exp009-registration.md",
+  "protocol_id": "marl-protocol-v2",
+  "registered_on": "2026-10-04",
+  "scenario_config": "configs/scenario-v2.toml",
+  "scenario_config_sha256": "74e3fadc6626abebe681ed43c487a8e3781e0dfb65494ace72db730f58550afc",
+  "horizon_slots": 20200,
+  "warmup_slots": 200,
+  "execution_seeds": {
+    "base": 20260930,
+    "scheme": "SeedSequence([base, seed_code, instance, repeat]).spawn(N)[j]"
+  },
+  "fading_seeds": {
+    "base": 20261001,
+    "scheme": "SeedSequence([base, seed_code, instance, repeat]).spawn(N)[j]"
+  },
+  "screening": {
+    "exp009-screen256": {
+      "split": "dev",
+      "start": 3000,
+      "stop": 3256,
+      "count": 256,
+      "grid": [
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        16,
+        20
+      ],
+      "repeats": 1,
+      "seed_code": 0,
+      "score": "per N: F_0.01(N) of that N's model; S_near = (F_0.01(6) + F_0.01(8)) / 2",
+      "selection": "per (condition, seed, N): max (F_0.01(N), F_0.05(N), slots); design \u00a73",
+      "entry_point": "evaluate_capacity --split dev --screen exp009-screen256 --formal",
+      "digests": {
+        "2": "8482a20e130cf901bcf332351ab226cf69e30b83db4c3ea7659fbe261fddec6b",
+        "4": "2b0f052874f06ebf15475b421961533297d3219927dded331d25f73e869b1f12",
+        "6": "b883d81ccb310c0e5aefc9da54467f321df76cd47625fbd6a2622a202f2f86ff",
+        "8": "268a3b8f01e5341983f29f68694a862054e04869a8a45aaf7c8d77f8ea09ff36",
+        "10": "b338f35569422b2c91090d428cc4bd0d717ef3f8d922975f7c735ddf9893b2ae",
+        "12": "21887ec788e966fb6363864cab5a9dd442662f99acb72f43eb57829dac3b4707",
+        "16": "e23ef89d182585639a806cad1d908988d9bcb43f686bd02bcfe2a3e3136689eb",
+        "20": "7dc45dec5bda3a4bee355dfaae7d168866462d0f6d28d0c354c8481faa132a4b"
+      }
+    }
+  },
+  "confirmation": {
+    "v2-confirm2": {
+      "pool": "reserve",
+      "start": 30500,
+      "stop": 31000,
+      "count": 500,
+      "repeats": 1,
+      "seed_code": 3,
+      "grid": [
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        16,
+        20,
+        24,
+        28,
+        32
+      ],
+      "reference_extra": [
+        36,
+        40
+      ],
+      "read_once": true,
+      "entry_point": "evaluate_capacity --split v2-confirm2 --confirm-c2 --formal",
+      "digests": {
+        "2": "c6c9407a87a87f21ae5be978abf82bc39dd7d27e1486203e09529616413d88a9",
+        "4": "74f20fc264149e22457ff3cd1a1941ca97c57e77b1639982bc77cb88bdbb0e05",
+        "6": "fa1bffdbc5fdb99dc4b208325685f7fca8ef8374fab0dd91169ab9a862e1feba",
+        "8": "de4fc4d8d5723ad5365d85eb3fe8fd37bbc7b76163b6fe6383ef16b9dd354205",
+        "10": "d85fdc517ace52b439ed5a9cbba640cfbf164f5940d50c2fa6fd5ef28e4c2249",
+        "12": "c6de0ca6d37f638329e9a479f97a13a8bd02d493fd33248b98cf155091be5c57",
+        "16": "8a4e42745c18b3add1191c45b1fa23726b9356b2f290f8b9e4f94f86887f3a94",
+        "20": "2f320704a228bc9638d8e093daeb7d593d6a2147cc17174ae581ceaaefe798da",
+        "24": "c34bd6d5944dffae056b0c95326b0c3dcf8807b6addf6cf8f61f20faca1d2645",
+        "28": "a56db7541a8cbea7294f82fb4933768402abffd3cd630796be62545101ad3c58",
+        "32": "b1b823a7569e21f5e4042009f15a50e9ce1a6ba26861ef8e7cb32112bd0dee4d",
+        "36": "6b57eb20ea2cce9964b76216eaaebf6cf1735b22f9c94cfd4b9a9d9674200d9b",
+        "40": "8b32f41e91389fb1f896e1d9e0494e781f511e23e0e58e9597ced4c14821ed85"
+      }
+    }
+  },
+  "usage_checked_on_registration": {
+    "v2_dev_ranges_used": [
+      [
+        0,
+        64
+      ],
+      [
+        1000,
+        1400
+      ],
+      [
+        2000,
+        2256
+      ]
+    ],
+    "v2_reserve_ranges_read": []
+  }
+}

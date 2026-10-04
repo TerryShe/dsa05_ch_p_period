@@ -1,7 +1,11 @@
 """Train one EXP-DSA05-006/008 run: one constraint variant (fixed = A, local = C) and seed.
 
 The optional ``[update]`` section of the config holds the EXP-DSA05-008 update
-options (``trainer_v2.UpdateSettings``); without it the EXP-006 update runs.
+options (``trainer_v2.UpdateSettings``); without it the EXP-006 update runs. The
+optional ``[sampler]`` section holds the EXP-DSA05-009 deployment sampler
+(``level_sampler.SamplerSettings``). A per-N config (``experiment.per_n`` lists
+the allowed N, ``training.num_envs`` the environments) is run once per N with
+``--num-ues N``: all environments then have N UEs (EXP-009, protocol v2 §4).
 
 ``--formal`` requires a clean committed tree and no overrides; ``--budget-slots``
 and ``--set`` exist only for smoke tests and throughput checks. The output holds
@@ -22,6 +26,7 @@ import torch
 from dsa_period import splits_v2
 from dsa_period.config import load_scenario
 from dsa_period.experiments.central_reference import git_provenance
+from dsa_period.marl.level_sampler import SamplerSettings
 from dsa_period.marl.ppo import PPOSettings
 from dsa_period.marl.trainer_v2 import (
     CapacityConstraint,
@@ -31,10 +36,25 @@ from dsa_period.marl.trainer_v2 import (
 )
 
 
-def settings_from(raw: dict, variant: str):
-    """Training, PPO, constraint and update settings of one run from a parsed config."""
+def resolve_training(raw: dict, num_ues: int | None) -> dict:
+    """The [training] table with env_ues filled in for a per-N config."""
+    per_n = raw["experiment"].get("per_n")
+    table = dict(raw["training"])
+    if per_n is None:
+        if num_ues is not None:
+            raise ValueError("--num-ues needs a per-N config (experiment.per_n)")
+        return table
+    if num_ues not in per_n or "env_ues" in table:
+        raise ValueError(f"a per-N config runs at one N of {per_n}, given by --num-ues")
+    table["env_ues"] = [num_ues] * table.pop("num_envs")
+    return table
+
+
+def settings_from(raw: dict, variant: str, num_ues: int | None = None):
+    """Training, PPO, constraint, update and sampler settings of one run."""
+    table = resolve_training(raw, num_ues)
     training = CapacityTrainingSettings(
-        **{k: tuple(v) if k == "env_ues" else v for k, v in raw["training"].items()},
+        **{k: tuple(v) if k == "env_ues" else v for k, v in table.items()},
         **raw["model"],
     )
     return (
@@ -42,6 +62,7 @@ def settings_from(raw: dict, variant: str):
         PPOSettings(**raw["ppo"]),
         CapacityConstraint(variant, **raw["constraint"][variant]),
         UpdateSettings(**raw.get("update", {})),
+        SamplerSettings(**raw.get("sampler", {})),
     )
 
 
@@ -60,6 +81,7 @@ def main(argv: list[str] | None = None) -> None:
     parser.add_argument("--scenario", type=Path, default=Path("configs/scenario-v2.toml"))
     parser.add_argument("--variant", choices=("fixed", "local"), required=True)
     parser.add_argument("--seed", type=int, required=True)
+    parser.add_argument("--num-ues", type=int, help="N of a per-N config")
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--formal", action="store_true")
     parser.add_argument("--budget-slots", type=int, help="non-formal override")
@@ -99,7 +121,10 @@ def main(argv: list[str] | None = None) -> None:
         if name not in table:
             parser.error(f"unknown override {key}")
         table[name] = value
-    training, ppo, constraint, update = settings_from(raw, args.variant)
+    try:
+        training, ppo, constraint, update, sampler = settings_from(raw, args.variant, args.num_ues)
+    except ValueError as exc:
+        parser.error(str(exc))
     # Any N works: the trainer derives one scenario per environment from it.
     scenario = load_scenario(args.scenario, max(training.env_ues))
     args.output.mkdir(parents=True)
@@ -114,19 +139,21 @@ def main(argv: list[str] | None = None) -> None:
         "scenario_sha256": hashlib.sha256(args.scenario.read_bytes()).hexdigest(),
         "variant": args.variant,
         "seed": args.seed,
+        "num_ues": args.num_ues,
         "overrides": changes,
         "resolved": {
-            "training": raw["training"],
+            "training": resolve_training(raw, args.num_ues),
             "model": raw["model"],
             "ppo": raw["ppo"],
             "constraint": raw["constraint"][args.variant],
             "update": asdict(update),
+            "sampler": asdict(sampler),
         },
         "torch": torch.__version__,
         "python": platform.python_version(),
     }
     (args.output / "manifest.json").write_text(json.dumps(manifest, indent=2))
-    trainer = CapacityTrainer(scenario, training, ppo, constraint, args.seed, update)
+    trainer = CapacityTrainer(scenario, training, ppo, constraint, args.seed, update, sampler)
     result = trainer.run(args.output)
     print(json.dumps(result, indent=2))
 

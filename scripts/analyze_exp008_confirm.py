@@ -1,23 +1,32 @@
-"""EXP-DSA05-008 confirmation analysis exactly as pre-registered (design §7.2, §7.3).
+"""Confirmation analysis of EXP-DSA05-008/009 exactly as pre-registered.
 
-Inputs: the formal ``evaluate_capacity --split v2-confirm1`` outputs and a
-methods file frozen before the read, mapping each statistical group to its
-specs (a spec may serve several groups; its episodes are evaluated once):
+EXP-008 design §7.2-§7.3; EXP-009 design §6 (same rules, its own set and
+groups). Inputs: the formal ``evaluate_capacity --split <set>`` outputs and a
+methods file frozen before the read. Each learned group lists its training
+seeds; a seed is either one spec used at every N (a cross-N single policy) or a
+seed layer {"N": spec} with one model per N (EXP-009, protocol v2 §4; N >= 24
+map to the N = 20 model explicitly). A spec may serve several groups; its
+episodes are evaluated once:
 
-    {"M": [...3 selected EXP-008 checkpoints...], "M_last": [...],
-     "A_near": [...], "A_original": [...], "best_local": "best_local",
-     "rules": ["calibrated:...", ...], "edf": ["central_edf", ...]}
+    {"primary": "M", "baseline": "A_near",
+     "M": [...], "M_last": [...], "A_near": [...], "A_original": [...],
+     "best_local": "best_local", "rules": ["calibrated:...", ...],
+     "edf": ["central_edf", ...]}
+
+``primary`` and ``baseline`` default to "M" and "A_near" (EXP-008); EXP-009
+uses "A_mix" as its baseline. Every other list-valued key except rules and edf
+is a descriptive learned group.
 
 * Learned groups pool their training seeds: F(N) is the mean over seeds and
   instances, N* the first-drop point of the unrounded F (not a mean of N*).
-* H1: N*_0.01(M) > N*_0.01(A_near).  H3: N*_0.01(M) > N*_0.01(best_local).
-* H2 (joint): the two-sided 95% bootstrap interval of F_0.01(8; M) - F_0.01(8;
-  A_near) has a lower bound > 0, and that of N = 6 has a lower bound > -0.01.
+* H1: N*_0.01(primary) > N*_0.01(baseline).  H3: N*_0.01(primary) > N*_0.01(best_local).
+* H2 (joint): the two-sided 95% bootstrap interval of F_0.01(8; primary) -
+  F_0.01(8; baseline) has a lower bound > 0, and that of N = 6 a lower bound > -0.01.
 * Bootstrap: 10,000 draws, seed 20260930; instances are paired across methods
   and resampled jointly over N; the training seeds of each learned group are
   resampled on their own (``evaluation._bootstrap``). The joint distribution of
   N* and of the capacity differences comes from the same draws.
-* Descriptive: A_original, last checkpoints, per seed, S_near / S_thr / S_006,
+* Descriptive: other learned groups, per seed, S_near / S_thr / S_006,
   eps = 0.05, failure composition at N = 4, 6, 8, the gap to N_EDF.
 """
 
@@ -41,49 +50,65 @@ from dsa_period.capacity import (
 from dsa_period.evaluation import _bootstrap, _interval
 
 SET = "v2-confirm1"
-LEARNED = ("M", "M_last", "A_near", "A_original")
+NOT_LEARNED = ("primary", "baseline", "best_local", "rules", "edf")
 SCORES = {"S_near": (6, 8), "S_thr": (6, 8, 10, 12), "S_006": (4, 6, 8, 10, 12, 16)}
 FAILURE_GRID = (4, 6, 8)
 CLASSES = ("fast", "medium", "slow")
 H2_SUPERIORITY_N, H2_GUARD_N, H2_GUARD = 8, 6, -0.01
 
 
-def load(paths: list[Path], formal: bool = True) -> tuple[dict, dict, list[int]]:
+def load(
+    paths: list[Path], formal: bool = True, confirm_set: str = SET
+) -> tuple[dict, dict, list[int]]:
     """spec -> {N: episodes} over all evaluation outputs, their provenance, the instances."""
     episodes: dict[str, dict] = {}
     provenance, instances = {}, None
     for path in paths:
         record = json.loads((path / "summary.json").read_text())
-        if record["split"] != SET or record["protocol_id"] != splits_v2.PROTOCOL_ID:
-            raise ValueError(f"{path}: not a {SET} evaluation")
+        if record["split"] != confirm_set or record["protocol_id"] != splits_v2.PROTOCOL_ID:
+            raise ValueError(f"{path}: not a {confirm_set} evaluation")
         if formal and not record["formal"]:
             raise ValueError(f"{path}: not a formal evaluation")
-        if record["instances"] != list(splits_v2.indices(SET)):
+        if record["instances"] != list(splits_v2.indices(confirm_set)):
             raise ValueError(f"{path}: not the whole confirmation set")
         instances = record["instances"]
         provenance[str(path)] = record["provenance"]
         for spec, by_n in json.loads((path / "episodes.json").read_text()).items():
-            if spec in episodes:
-                raise ValueError(f"{spec} was evaluated twice")
-            episodes[spec] = {int(n): rows for n, rows in by_n.items()}
+            for n, rows in by_n.items():
+                if int(n) in episodes.get(spec, {}):
+                    raise ValueError(f"{spec} at N = {n} was evaluated twice")
+                episodes.setdefault(spec, {})[int(n)] = rows
     return episodes, provenance, instances
 
 
-def matrix(episodes: dict, specs: list[str], n: int, key: str, instances: list[int]) -> np.ndarray:
-    """[specs, instances] feasibility at N for one eps key."""
+def spec_at(member, n: int) -> str:
+    """The spec a seed uses at N: one spec for all N, or its layer's model for N."""
+    return member if isinstance(member, str) else member[str(n)]
+
+
+def grid_of(episodes: dict, member) -> list[int]:
+    return sorted(episodes[member]) if isinstance(member, str) else sorted(int(n) for n in member)
+
+
+def matrix(episodes: dict, members: list, n: int, key: str, instances: list[int]) -> np.ndarray:
+    """[seeds, instances] feasibility at N for one eps key."""
     rows = []
-    for spec in specs:
-        cells = {e["instance"]: float(e["feasible"][key]) for e in episodes[spec][n]}
+    for member in members:
+        cells = {e["instance"]: float(e["feasible"][key]) for e in episodes[spec_at(member, n)][n]}
         rows.append([cells[i] for i in instances])
     return np.array(rows)
 
 
-def pooled_summary(episodes: dict, specs: list[str], grid: list[int]) -> dict:
-    return summarize({n: {s: episodes[s][n] for s in specs} for n in grid})
+def pooled_summary(episodes: dict, members: list, grid: list[int]) -> dict:
+    return summarize(
+        {n: {f"seed{i}": episodes[spec_at(m, n)][n] for i, m in enumerate(members)} for n in grid}
+    )
 
 
-def joint_capacity(mats: dict[str, dict[int, np.ndarray]], grid: list[int], draws: int) -> dict:
-    """N* of every group and the differences M - other from the same bootstrap draws."""
+def joint_capacity(
+    mats: dict[str, dict[int, np.ndarray]], grid: list[int], draws: int, primary: str = "M"
+) -> dict:
+    """N* of every group and the differences primary - other from the same bootstrap draws."""
     rng = np.random.default_rng(BOOTSTRAP_SEED)
     names = list(mats)
     num_instances = mats[names[0]][grid[0]].shape[1]
@@ -100,11 +125,11 @@ def joint_capacity(mats: dict[str, dict[int, np.ndarray]], grid: list[int], draw
         values, counts = np.unique(stars[name], return_counts=True)
         out[name] = {str(int(v)): c / draws for v, c in zip(values, counts)}
     for other in names:
-        if other == "M":
+        if other == primary:
             continue
-        diff = np.array(stars["M"]) - np.array(stars[other])
+        diff = np.array(stars[primary]) - np.array(stars[other])
         values, counts = np.unique(diff, return_counts=True)
-        out[f"M-{other}"] = {
+        out[f"{primary}-{other}"] = {
             "distribution": {str(int(v)): c / draws for v, c in zip(values, counts)},
             "share_positive": float((diff > 0).mean()),
         }
@@ -137,17 +162,18 @@ def failures(episodes: dict, specs: dict[str, str], n: int) -> dict:
 
 
 def analyze(episodes: dict, methods: dict, instances: list[int], draws: int) -> dict:
-    learned = {g: list(methods[g]) for g in LEARNED}
-    singles = {"best_local": [methods["best_local"]]}
-    grid = sorted(episodes[learned["M"][0]])
-    groups = {**learned, **singles}
+    primary = methods.get("primary", "M")
+    baseline = methods.get("baseline", "A_near")
+    learned = {g: list(v) for g, v in methods.items() if g not in NOT_LEARNED}
+    groups = {**learned, "best_local": [methods["best_local"]]}
+    grid = grid_of(episodes, learned[primary][0])
     result: dict = {"grid": grid, "instances": len(instances), "methods": methods, "main": {}}
-    summaries = {g: pooled_summary(episodes, specs, grid) for g, specs in groups.items()}
+    summaries = {g: pooled_summary(episodes, members, grid) for g, members in groups.items()}
     for spec in (*methods["rules"], *methods["edf"]):
         summaries[spec] = pooled_summary(episodes, [spec], sorted(episodes[spec]))
-    for g, specs in learned.items():
-        for spec in specs:
-            summaries[f"{g} | {spec}"] = pooled_summary(episodes, [spec], grid)
+    for g, members in learned.items():
+        for i, member in enumerate(members):
+            summaries[f"{g} | seed {i}"] = pooled_summary(episodes, [member], grid)
     for eps in EPSILONS:
         key = eps_key(eps)
         result["main"][key] = {
@@ -159,31 +185,33 @@ def analyze(episodes: dict, methods: dict, instances: list[int], draws: int) -> 
             }
             for name, s in summaries.items()
         }
+    others = [g for g in groups if g != primary and g != f"{primary}_last"]
     tests = {}
     for eps in EPSILONS:
         key = eps_key(eps)
         mats = {
-            g: {n: matrix(episodes, specs, n, key, instances) for n in grid}
-            for g, specs in groups.items()
+            g: {n: matrix(episodes, members, n, key, instances) for n in grid}
+            for g, members in groups.items()
         }
         point = {g: capacity(grid, [mats[g][n].mean() for n in grid]) for g in groups}
         h2 = {}
         for n, bound in ((H2_SUPERIORITY_N, 0.0), (H2_GUARD_N, H2_GUARD)):
-            interval = _interval(_bootstrap(mats["M"][n], mats["A_near"][n], draws, BOOTSTRAP_SEED))
+            m, b = mats[primary][n], mats[baseline][n]
+            interval = _interval(_bootstrap(m, b, draws, BOOTSTRAP_SEED))
             h2[str(n)] = {
-                "difference": float(mats["M"][n].mean() - mats["A_near"][n].mean()),
+                "difference": float(m.mean() - b.mean()),
                 "ci95": interval,
                 "bound": bound,
                 "holds": interval[0] > bound,
             }
         scores = {}
         for score, score_grid in SCORES.items():
-            m = np.mean([mats["M"][n] for n in score_grid], axis=0)
-            row = {"M": float(m.mean())}
-            for other in ("A_near", "A_original", "best_local"):
+            m = np.mean([mats[primary][n] for n in score_grid], axis=0)
+            row = {primary: float(m.mean())}
+            for other in others:
                 o = np.mean([mats[other][n] for n in score_grid], axis=0)
                 row[other] = float(o.mean())
-                row[f"M-{other}"] = {
+                row[f"{primary}-{other}"] = {
                     "difference": float(m.mean() - o.mean()),
                     "ci95": _interval(_bootstrap(m, o, draws, BOOTSTRAP_SEED)),
                 }
@@ -191,30 +219,30 @@ def analyze(episodes: dict, methods: dict, instances: list[int], draws: int) -> 
         edf = summaries[methods["edf"][0]]["per_eps"][key]["capacity"]["n_star"]
         tests[key] = {
             "N_star": {g: capacity_label(point[g], grid) for g in groups},
-            "H1_M_greater_than_A_near": point["M"]["n_star"] > point["A_near"]["n_star"],
-            "H3_M_greater_than_best_local": point["M"]["n_star"] > point["best_local"]["n_star"],
+            "H1_primary_gt_baseline": point[primary]["n_star"] > point[baseline]["n_star"],
+            "H3_primary_gt_best_local": point[primary]["n_star"] > point["best_local"]["n_star"],
             "H2": {**h2, "holds": all(row["holds"] for row in h2.values())},
             "joint_capacity_bootstrap": joint_capacity(
-                {g: mats[g] for g in ("M", "A_near", "A_original", "best_local")}, grid, draws
+                {g: mats[g] for g in (primary, *others)}, grid, draws, primary
             ),
             "scores": scores,
             "gap_to_edf": {g: edf - point[g]["n_star"] for g in groups},
         }
     main = tests[eps_key(0.01)]
     result["tests"] = tests
-    result["verdict_eps_0.01"] = {
-        "H1": main["H1_M_greater_than_A_near"],
+    verdict = {
+        "H1": main["H1_primary_gt_baseline"],
         "H2": main["H2"]["holds"],
-        "H3": main["H3_M_greater_than_best_local"],
-        "all": main["H1_M_greater_than_A_near"]
-        and main["H2"]["holds"]
-        and main["H3_M_greater_than_best_local"],
+        "H3": main["H3_primary_gt_best_local"],
     }
-    labels = {f"M {i}": spec for i, spec in enumerate(learned["M"])}
-    labels.update({f"A_near {i}": spec for i, spec in enumerate(learned["A_near"])})
-    labels["best_local"] = methods["best_local"]
-    labels["edf"] = methods["edf"][0]
-    result["failure_composition"] = {str(n): failures(episodes, labels, n) for n in FAILURE_GRID}
+    result["verdict_eps_0.01"] = {**verdict, "all": all(verdict.values())}
+    result["failure_composition"] = {}
+    for n in FAILURE_GRID:
+        labels = {f"{primary} {i}": spec_at(m, n) for i, m in enumerate(learned[primary])}
+        labels.update({f"{baseline} {i}": spec_at(m, n) for i, m in enumerate(learned[baseline])})
+        labels["best_local"] = methods["best_local"]
+        labels["edf"] = methods["edf"][0]
+        result["failure_composition"][str(n)] = failures(episodes, labels, n)
     return result
 
 
@@ -222,6 +250,7 @@ def main(argv: list[str] | None = None) -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--evaluations", type=Path, nargs="+", required=True)
     parser.add_argument("--methods", type=Path, required=True)
+    parser.add_argument("--set", default=SET, choices=tuple(splits_v2.CONFIRMATION_SETS))
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--resamples", type=int, default=BOOTSTRAP_RESAMPLES)
     parser.add_argument("--allow-informal", action="store_true", help="smoke tests only")
@@ -230,7 +259,7 @@ def main(argv: list[str] | None = None) -> None:
         parser.error(f"output {args.output} already exists")
     if args.resamples != BOOTSTRAP_RESAMPLES and not args.allow_informal:
         parser.error("the formal analysis uses the protocol's bootstrap size")
-    episodes, provenance, instances = load(args.evaluations, not args.allow_informal)
+    episodes, provenance, instances = load(args.evaluations, not args.allow_informal, args.set)
     methods = json.loads(args.methods.read_text())
     result = analyze(episodes, methods, instances, args.resamples)
     result["provenance"] = provenance
