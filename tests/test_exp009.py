@@ -361,3 +361,26 @@ def test_confirmation_analysis_reads_seed_layers():
     assert result["verdict_eps_0.01"] == {"H1": True, "H2": True, "H3": True, "all": True}
     assert "M-A_mix" in t["joint_capacity_bootstrap"]
     assert result["grid"] == list(grid)
+
+
+def test_step2_configs_are_mixed_r0_with_the_designed_samplers():
+    r0 = tomllib.loads((ROOT / "configs" / "exp008-round1-r0.toml").read_text())
+    expected = {
+        "s1": {"kind": "stratified", "hard_share": 0.5, "tau": TAU},
+        "p1": {"kind": "plr", "score": "gae"},
+        "p2": {"kind": "plr", "score": "avoidable"},
+    }
+    plr = {"replay_probability": 0.5, "buffer_size": 500, "min_fill": 50, "beta": 0.1, "rho": 0.1}
+    for key, sampler in expected.items():
+        raw = tomllib.loads((ROOT / "configs" / f"exp009-step2-{key}.toml").read_text())
+        experiment = raw["experiment"]
+        assert (experiment["step"], experiment["condition"], experiment["base"]) == (
+            2,
+            key.upper(),
+            "M0",
+        )
+        assert experiment["seeds"] == [101, 202]
+        for section in ("training", "model", "ppo", "update", "constraint"):
+            assert raw[section] == r0[section], (key, section)
+        assert raw["sampler"] == (sampler | plr if sampler["kind"] == "plr" else sampler)
+        assert settings_from(raw, "fixed")[4] == SamplerSettings(**raw["sampler"])
