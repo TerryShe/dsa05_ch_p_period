@@ -1,0 +1,112 @@
+{
+  "primary": "M",
+  "baseline": "A_mix",
+  "M": [
+    {
+      "2": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+      "4": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+      "6": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+      "8": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+      "10": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+      "12": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+      "16": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+      "20": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-005001472.pt",
+      "24": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-005001472.pt",
+      "28": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-005001472.pt",
+      "32": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-005001472.pt"
+    },
+    {
+      "2": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+      "4": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+      "6": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+      "8": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+      "10": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+      "12": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+      "16": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-004001536.pt",
+      "20": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+      "24": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+      "28": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+      "32": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt"
+    },
+    {
+      "2": "marl:outputs/exp009-final/s1-seed303/checkpoints/step-004001536.pt",
+      "4": "marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt",
+      "6": "marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt",
+      "8": "marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt",
+      "10": "marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt",
+      "12": "marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt",
+      "16": "marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt",
+      "20": "marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt",
+      "24": "marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt",
+      "28": "marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt",
+      "32": "marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt"
+    }
+  ],
+  "M_last": [
+    "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-005001472.pt",
+    "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+    "marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt"
+  ],
+  "A_mix": [
+    {
+      "2": "marl:outputs/exp006-phase2/fixed-seed101/checkpoints/step-012001024.pt",
+      "4": "marl:outputs/exp006-phase2/fixed-seed101/checkpoints/step-020000512.pt",
+      "6": "marl:outputs/exp006-phase2/fixed-seed101/checkpoints/step-020000512.pt",
+      "8": "marl:outputs/exp006-phase2/fixed-seed101/checkpoints/step-018000640.pt",
+      "10": "marl:outputs/exp006-phase2/fixed-seed101/checkpoints/step-018000640.pt",
+      "12": "marl:outputs/exp006-phase2/fixed-seed101/checkpoints/step-016000768.pt",
+      "16": "marl:outputs/exp006-phase2/fixed-seed101/checkpoints/step-016000768.pt",
+      "20": "marl:outputs/exp006-phase2/fixed-seed101/checkpoints/step-020000512.pt",
+      "24": "marl:outputs/exp006-phase2/fixed-seed101/checkpoints/step-020000512.pt",
+      "28": "marl:outputs/exp006-phase2/fixed-seed101/checkpoints/step-020000512.pt",
+      "32": "marl:outputs/exp006-phase2/fixed-seed101/checkpoints/step-020000512.pt"
+    },
+    {
+      "2": "marl:outputs/exp006-phase2/fixed-seed202/checkpoints/step-012001024.pt",
+      "4": "marl:outputs/exp006-phase2/fixed-seed202/checkpoints/step-020000512.pt",
+      "6": "marl:outputs/exp006-phase2/fixed-seed202/checkpoints/step-012001024.pt",
+      "8": "marl:outputs/exp006-phase2/fixed-seed202/checkpoints/step-014000896.pt",
+      "10": "marl:outputs/exp006-phase2/fixed-seed202/checkpoints/step-016000768.pt",
+      "12": "marl:outputs/exp006-phase2/fixed-seed202/checkpoints/step-014000896.pt",
+      "16": "marl:outputs/exp006-phase2/fixed-seed202/checkpoints/step-016000768.pt",
+      "20": "marl:outputs/exp006-phase2/fixed-seed202/checkpoints/step-016000768.pt",
+      "24": "marl:outputs/exp006-phase2/fixed-seed202/checkpoints/step-016000768.pt",
+      "28": "marl:outputs/exp006-phase2/fixed-seed202/checkpoints/step-016000768.pt",
+      "32": "marl:outputs/exp006-phase2/fixed-seed202/checkpoints/step-016000768.pt"
+    },
+    {
+      "2": "marl:outputs/exp006-phase2/fixed-seed303/checkpoints/step-020000512.pt",
+      "4": "marl:outputs/exp006-phase2/fixed-seed303/checkpoints/step-020000512.pt",
+      "6": "marl:outputs/exp006-phase2/fixed-seed303/checkpoints/step-020000512.pt",
+      "8": "marl:outputs/exp006-phase2/fixed-seed303/checkpoints/step-020000512.pt",
+      "10": "marl:outputs/exp006-phase2/fixed-seed303/checkpoints/step-016000768.pt",
+      "12": "marl:outputs/exp006-phase2/fixed-seed303/checkpoints/step-020000512.pt",
+      "16": "marl:outputs/exp006-phase2/fixed-seed303/checkpoints/step-014000896.pt",
+      "20": "marl:outputs/exp006-phase2/fixed-seed303/checkpoints/step-016000768.pt",
+      "24": "marl:outputs/exp006-phase2/fixed-seed303/checkpoints/step-016000768.pt",
+      "28": "marl:outputs/exp006-phase2/fixed-seed303/checkpoints/step-016000768.pt",
+      "32": "marl:outputs/exp006-phase2/fixed-seed303/checkpoints/step-016000768.pt"
+    }
+  ],
+  "best_local": "best_local",
+  "rules": [
+    "calibrated:random_max",
+    "calibrated:sticky_max",
+    "calibrated:p_persistent",
+    "calibrated:opportunistic",
+    "calibrated:reservation",
+    "calibrated:paced_sticky_csi"
+  ],
+  "edf": [
+    "central_edf",
+    "central_edf:defer_hopeless=1"
+  ],
+  "_source": {
+    "condition": "S1",
+    "seeds": [
+      "101",
+      "202",
+      "303"
+    ]
+  }
+}
