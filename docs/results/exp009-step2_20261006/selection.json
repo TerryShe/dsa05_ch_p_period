@@ -1,0 +1,2107 @@
+{
+  "screen": "exp009-screen256",
+  "selection": {
+    "P1": {
+      "101": {
+        "2": {
+          "selected": "marl:outputs/exp009-step2/p1-seed101/checkpoints/step-003001600.pt",
+          "F01": 0.9921875,
+          "F05": 1.0,
+          "slots": 3001600,
+          "end_F01": [
+            0.98828125,
+            0.97265625
+          ],
+          "checkpoints": [
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed101/checkpoints/step-001001728.pt",
+              "slots": 1001728,
+              "F01": 0.9609375,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed101/checkpoints/step-002001664.pt",
+              "slots": 2001664,
+              "F01": 0.9765625,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed101/checkpoints/step-003001600.pt",
+              "slots": 3001600,
+              "F01": 0.9921875,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed101/checkpoints/step-004001536.pt",
+              "slots": 4001536,
+              "F01": 0.98828125,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed101/checkpoints/step-005001472.pt",
+              "slots": 5001472,
+              "F01": 0.97265625,
+              "F05": 1.0
+            }
+          ]
+        },
+        "4": {
+          "selected": "marl:outputs/exp009-step2/p1-seed101/checkpoints/step-004001536.pt",
+          "F01": 0.984375,
+          "F05": 1.0,
+          "slots": 4001536,
+          "end_F01": [
+            0.984375,
+            0.9453125
+          ],
+          "checkpoints": [
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed101/checkpoints/step-001001728.pt",
+              "slots": 1001728,
+              "F01": 0.9140625,
+              "F05": 0.9921875
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed101/checkpoints/step-002001664.pt",
+              "slots": 2001664,
+              "F01": 0.95703125,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed101/checkpoints/step-003001600.pt",
+              "slots": 3001600,
+              "F01": 0.984375,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed101/checkpoints/step-004001536.pt",
+              "slots": 4001536,
+              "F01": 0.984375,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed101/checkpoints/step-005001472.pt",
+              "slots": 5001472,
+              "F01": 0.9453125,
+              "F05": 1.0
+            }
+          ]
+        },
+        "6": {
+          "selected": "marl:outputs/exp009-step2/p1-seed101/checkpoints/step-003001600.pt",
+          "F01": 0.9765625,
+          "F05": 1.0,
+          "slots": 3001600,
+          "end_F01": [
+            0.96484375,
+            0.90234375
+          ],
+          "checkpoints": [
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed101/checkpoints/step-001001728.pt",
+              "slots": 1001728,
+              "F01": 0.81640625,
+              "F05": 0.94921875
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed101/checkpoints/step-002001664.pt",
+              "slots": 2001664,
+              "F01": 0.9296875,
+              "F05": 0.99609375
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed101/checkpoints/step-003001600.pt",
+              "slots": 3001600,
+              "F01": 0.9765625,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed101/checkpoints/step-004001536.pt",
+              "slots": 4001536,
+              "F01": 0.96484375,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed101/checkpoints/step-005001472.pt",
+              "slots": 5001472,
+              "F01": 0.90234375,
+              "F05": 1.0
+            }
+          ]
+        },
+        "8": {
+          "selected": "marl:outputs/exp009-step2/p1-seed101/checkpoints/step-004001536.pt",
+          "F01": 0.93359375,
+          "F05": 1.0,
+          "slots": 4001536,
+          "end_F01": [
+            0.93359375,
+            0.84375
+          ],
+          "checkpoints": [
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed101/checkpoints/step-001001728.pt",
+              "slots": 1001728,
+              "F01": 0.703125,
+              "F05": 0.8828125
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed101/checkpoints/step-002001664.pt",
+              "slots": 2001664,
+              "F01": 0.859375,
+              "F05": 0.984375
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed101/checkpoints/step-003001600.pt",
+              "slots": 3001600,
+              "F01": 0.93359375,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed101/checkpoints/step-004001536.pt",
+              "slots": 4001536,
+              "F01": 0.93359375,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed101/checkpoints/step-005001472.pt",
+              "slots": 5001472,
+              "F01": 0.84375,
+              "F05": 0.99609375
+            }
+          ]
+        },
+        "10": {
+          "selected": "marl:outputs/exp009-step2/p1-seed101/checkpoints/step-004001536.pt",
+          "F01": 0.81640625,
+          "F05": 0.98046875,
+          "slots": 4001536,
+          "end_F01": [
+            0.81640625,
+            0.74609375
+          ],
+          "checkpoints": [
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed101/checkpoints/step-001001728.pt",
+              "slots": 1001728,
+              "F01": 0.453125,
+              "F05": 0.7265625
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed101/checkpoints/step-002001664.pt",
+              "slots": 2001664,
+              "F01": 0.71875,
+              "F05": 0.9296875
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed101/checkpoints/step-003001600.pt",
+              "slots": 3001600,
+              "F01": 0.80078125,
+              "F05": 0.98046875
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed101/checkpoints/step-004001536.pt",
+              "slots": 4001536,
+              "F01": 0.81640625,
+              "F05": 0.98046875
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed101/checkpoints/step-005001472.pt",
+              "slots": 5001472,
+              "F01": 0.74609375,
+              "F05": 0.94921875
+            }
+          ]
+        },
+        "12": {
+          "selected": "marl:outputs/exp009-step2/p1-seed101/checkpoints/step-004001536.pt",
+          "F01": 0.69140625,
+          "F05": 0.9375,
+          "slots": 4001536,
+          "end_F01": [
+            0.69140625,
+            0.65234375
+          ],
+          "checkpoints": [
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed101/checkpoints/step-001001728.pt",
+              "slots": 1001728,
+              "F01": 0.23828125,
+              "F05": 0.52734375
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed101/checkpoints/step-002001664.pt",
+              "slots": 2001664,
+              "F01": 0.546875,
+              "F05": 0.83984375
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed101/checkpoints/step-003001600.pt",
+              "slots": 3001600,
+              "F01": 0.671875,
+              "F05": 0.921875
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed101/checkpoints/step-004001536.pt",
+              "slots": 4001536,
+              "F01": 0.69140625,
+              "F05": 0.9375
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed101/checkpoints/step-005001472.pt",
+              "slots": 5001472,
+              "F01": 0.65234375,
+              "F05": 0.859375
+            }
+          ]
+        },
+        "16": {
+          "selected": "marl:outputs/exp009-step2/p1-seed101/checkpoints/step-005001472.pt",
+          "F01": 0.1640625,
+          "F05": 0.47265625,
+          "slots": 5001472,
+          "end_F01": [
+            0.10546875,
+            0.1640625
+          ],
+          "checkpoints": [
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed101/checkpoints/step-001001728.pt",
+              "slots": 1001728,
+              "F01": 0.0,
+              "F05": 0.03125
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed101/checkpoints/step-002001664.pt",
+              "slots": 2001664,
+              "F01": 0.0390625,
+              "F05": 0.26953125
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed101/checkpoints/step-003001600.pt",
+              "slots": 3001600,
+              "F01": 0.05078125,
+              "F05": 0.26953125
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed101/checkpoints/step-004001536.pt",
+              "slots": 4001536,
+              "F01": 0.10546875,
+              "F05": 0.44140625
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed101/checkpoints/step-005001472.pt",
+              "slots": 5001472,
+              "F01": 0.1640625,
+              "F05": 0.47265625
+            }
+          ]
+        },
+        "20": {
+          "selected": "marl:outputs/exp009-step2/p1-seed101/checkpoints/step-005001472.pt",
+          "F01": 0.0,
+          "F05": 0.0,
+          "slots": 5001472,
+          "end_F01": [
+            0.0,
+            0.0
+          ],
+          "checkpoints": [
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed101/checkpoints/step-001001728.pt",
+              "slots": 1001728,
+              "F01": 0.0,
+              "F05": 0.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed101/checkpoints/step-002001664.pt",
+              "slots": 2001664,
+              "F01": 0.0,
+              "F05": 0.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed101/checkpoints/step-003001600.pt",
+              "slots": 3001600,
+              "F01": 0.0,
+              "F05": 0.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed101/checkpoints/step-004001536.pt",
+              "slots": 4001536,
+              "F01": 0.0,
+              "F05": 0.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed101/checkpoints/step-005001472.pt",
+              "slots": 5001472,
+              "F01": 0.0,
+              "F05": 0.0
+            }
+          ]
+        }
+      },
+      "202": {
+        "2": {
+          "selected": "marl:outputs/exp009-step2/p1-seed202/checkpoints/step-004001536.pt",
+          "F01": 0.99609375,
+          "F05": 1.0,
+          "slots": 4001536,
+          "end_F01": [
+            0.99609375,
+            0.9765625
+          ],
+          "checkpoints": [
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed202/checkpoints/step-001001728.pt",
+              "slots": 1001728,
+              "F01": 0.98046875,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed202/checkpoints/step-002001664.pt",
+              "slots": 2001664,
+              "F01": 0.98828125,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed202/checkpoints/step-003001600.pt",
+              "slots": 3001600,
+              "F01": 0.98828125,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed202/checkpoints/step-004001536.pt",
+              "slots": 4001536,
+              "F01": 0.99609375,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed202/checkpoints/step-005001472.pt",
+              "slots": 5001472,
+              "F01": 0.9765625,
+              "F05": 1.0
+            }
+          ]
+        },
+        "4": {
+          "selected": "marl:outputs/exp009-step2/p1-seed202/checkpoints/step-004001536.pt",
+          "F01": 0.98828125,
+          "F05": 1.0,
+          "slots": 4001536,
+          "end_F01": [
+            0.98828125,
+            0.95703125
+          ],
+          "checkpoints": [
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed202/checkpoints/step-001001728.pt",
+              "slots": 1001728,
+              "F01": 0.94921875,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed202/checkpoints/step-002001664.pt",
+              "slots": 2001664,
+              "F01": 0.96875,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed202/checkpoints/step-003001600.pt",
+              "slots": 3001600,
+              "F01": 0.984375,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed202/checkpoints/step-004001536.pt",
+              "slots": 4001536,
+              "F01": 0.98828125,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed202/checkpoints/step-005001472.pt",
+              "slots": 5001472,
+              "F01": 0.95703125,
+              "F05": 1.0
+            }
+          ]
+        },
+        "6": {
+          "selected": "marl:outputs/exp009-step2/p1-seed202/checkpoints/step-004001536.pt",
+          "F01": 0.98046875,
+          "F05": 1.0,
+          "slots": 4001536,
+          "end_F01": [
+            0.98046875,
+            0.9375
+          ],
+          "checkpoints": [
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed202/checkpoints/step-001001728.pt",
+              "slots": 1001728,
+              "F01": 0.91015625,
+              "F05": 0.98828125
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed202/checkpoints/step-002001664.pt",
+              "slots": 2001664,
+              "F01": 0.93359375,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed202/checkpoints/step-003001600.pt",
+              "slots": 3001600,
+              "F01": 0.97265625,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed202/checkpoints/step-004001536.pt",
+              "slots": 4001536,
+              "F01": 0.98046875,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed202/checkpoints/step-005001472.pt",
+              "slots": 5001472,
+              "F01": 0.9375,
+              "F05": 0.99609375
+            }
+          ]
+        },
+        "8": {
+          "selected": "marl:outputs/exp009-step2/p1-seed202/checkpoints/step-004001536.pt",
+          "F01": 0.94140625,
+          "F05": 1.0,
+          "slots": 4001536,
+          "end_F01": [
+            0.94140625,
+            0.88671875
+          ],
+          "checkpoints": [
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed202/checkpoints/step-001001728.pt",
+              "slots": 1001728,
+              "F01": 0.7734375,
+              "F05": 0.9375
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed202/checkpoints/step-002001664.pt",
+              "slots": 2001664,
+              "F01": 0.84375,
+              "F05": 0.98828125
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed202/checkpoints/step-003001600.pt",
+              "slots": 3001600,
+              "F01": 0.9375,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed202/checkpoints/step-004001536.pt",
+              "slots": 4001536,
+              "F01": 0.94140625,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed202/checkpoints/step-005001472.pt",
+              "slots": 5001472,
+              "F01": 0.88671875,
+              "F05": 0.98828125
+            }
+          ]
+        },
+        "10": {
+          "selected": "marl:outputs/exp009-step2/p1-seed202/checkpoints/step-004001536.pt",
+          "F01": 0.85546875,
+          "F05": 0.98828125,
+          "slots": 4001536,
+          "end_F01": [
+            0.85546875,
+            0.78125
+          ],
+          "checkpoints": [
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed202/checkpoints/step-001001728.pt",
+              "slots": 1001728,
+              "F01": 0.5390625,
+              "F05": 0.81640625
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed202/checkpoints/step-002001664.pt",
+              "slots": 2001664,
+              "F01": 0.71875,
+              "F05": 0.9453125
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed202/checkpoints/step-003001600.pt",
+              "slots": 3001600,
+              "F01": 0.84765625,
+              "F05": 0.98046875
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed202/checkpoints/step-004001536.pt",
+              "slots": 4001536,
+              "F01": 0.85546875,
+              "F05": 0.98828125
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed202/checkpoints/step-005001472.pt",
+              "slots": 5001472,
+              "F01": 0.78125,
+              "F05": 0.95703125
+            }
+          ]
+        },
+        "12": {
+          "selected": "marl:outputs/exp009-step2/p1-seed202/checkpoints/step-004001536.pt",
+          "F01": 0.69140625,
+          "F05": 0.9375,
+          "slots": 4001536,
+          "end_F01": [
+            0.69140625,
+            0.63671875
+          ],
+          "checkpoints": [
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed202/checkpoints/step-001001728.pt",
+              "slots": 1001728,
+              "F01": 0.25,
+              "F05": 0.62109375
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed202/checkpoints/step-002001664.pt",
+              "slots": 2001664,
+              "F01": 0.53125,
+              "F05": 0.82421875
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed202/checkpoints/step-003001600.pt",
+              "slots": 3001600,
+              "F01": 0.6875,
+              "F05": 0.9453125
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed202/checkpoints/step-004001536.pt",
+              "slots": 4001536,
+              "F01": 0.69140625,
+              "F05": 0.9375
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed202/checkpoints/step-005001472.pt",
+              "slots": 5001472,
+              "F01": 0.63671875,
+              "F05": 0.890625
+            }
+          ]
+        },
+        "16": {
+          "selected": "marl:outputs/exp009-step2/p1-seed202/checkpoints/step-005001472.pt",
+          "F01": 0.15234375,
+          "F05": 0.44140625,
+          "slots": 5001472,
+          "end_F01": [
+            0.12890625,
+            0.15234375
+          ],
+          "checkpoints": [
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed202/checkpoints/step-001001728.pt",
+              "slots": 1001728,
+              "F01": 0.0,
+              "F05": 0.0078125
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed202/checkpoints/step-002001664.pt",
+              "slots": 2001664,
+              "F01": 0.0390625,
+              "F05": 0.234375
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed202/checkpoints/step-003001600.pt",
+              "slots": 3001600,
+              "F01": 0.13671875,
+              "F05": 0.4453125
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed202/checkpoints/step-004001536.pt",
+              "slots": 4001536,
+              "F01": 0.12890625,
+              "F05": 0.4296875
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed202/checkpoints/step-005001472.pt",
+              "slots": 5001472,
+              "F01": 0.15234375,
+              "F05": 0.44140625
+            }
+          ]
+        },
+        "20": {
+          "selected": "marl:outputs/exp009-step2/p1-seed202/checkpoints/step-005001472.pt",
+          "F01": 0.0,
+          "F05": 0.0,
+          "slots": 5001472,
+          "end_F01": [
+            0.0,
+            0.0
+          ],
+          "checkpoints": [
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed202/checkpoints/step-001001728.pt",
+              "slots": 1001728,
+              "F01": 0.0,
+              "F05": 0.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed202/checkpoints/step-002001664.pt",
+              "slots": 2001664,
+              "F01": 0.0,
+              "F05": 0.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed202/checkpoints/step-003001600.pt",
+              "slots": 3001600,
+              "F01": 0.0,
+              "F05": 0.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed202/checkpoints/step-004001536.pt",
+              "slots": 4001536,
+              "F01": 0.0,
+              "F05": 0.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p1-seed202/checkpoints/step-005001472.pt",
+              "slots": 5001472,
+              "F01": 0.0,
+              "F05": 0.0
+            }
+          ]
+        }
+      }
+    },
+    "P2": {
+      "101": {
+        "2": {
+          "selected": "marl:outputs/exp009-step2/p2-seed101/checkpoints/step-004001536.pt",
+          "F01": 0.99609375,
+          "F05": 1.0,
+          "slots": 4001536,
+          "end_F01": [
+            0.99609375,
+            0.9921875
+          ],
+          "checkpoints": [
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed101/checkpoints/step-001001728.pt",
+              "slots": 1001728,
+              "F01": 0.98828125,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed101/checkpoints/step-002001664.pt",
+              "slots": 2001664,
+              "F01": 0.98828125,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed101/checkpoints/step-003001600.pt",
+              "slots": 3001600,
+              "F01": 0.98828125,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed101/checkpoints/step-004001536.pt",
+              "slots": 4001536,
+              "F01": 0.99609375,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed101/checkpoints/step-005001472.pt",
+              "slots": 5001472,
+              "F01": 0.9921875,
+              "F05": 1.0
+            }
+          ]
+        },
+        "4": {
+          "selected": "marl:outputs/exp009-step2/p2-seed101/checkpoints/step-005001472.pt",
+          "F01": 0.984375,
+          "F05": 1.0,
+          "slots": 5001472,
+          "end_F01": [
+            0.984375,
+            0.984375
+          ],
+          "checkpoints": [
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed101/checkpoints/step-001001728.pt",
+              "slots": 1001728,
+              "F01": 0.9609375,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed101/checkpoints/step-002001664.pt",
+              "slots": 2001664,
+              "F01": 0.98046875,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed101/checkpoints/step-003001600.pt",
+              "slots": 3001600,
+              "F01": 0.984375,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed101/checkpoints/step-004001536.pt",
+              "slots": 4001536,
+              "F01": 0.984375,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed101/checkpoints/step-005001472.pt",
+              "slots": 5001472,
+              "F01": 0.984375,
+              "F05": 1.0
+            }
+          ]
+        },
+        "6": {
+          "selected": "marl:outputs/exp009-step2/p2-seed101/checkpoints/step-004001536.pt",
+          "F01": 0.97265625,
+          "F05": 1.0,
+          "slots": 4001536,
+          "end_F01": [
+            0.97265625,
+            0.96484375
+          ],
+          "checkpoints": [
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed101/checkpoints/step-001001728.pt",
+              "slots": 1001728,
+              "F01": 0.92578125,
+              "F05": 0.9921875
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed101/checkpoints/step-002001664.pt",
+              "slots": 2001664,
+              "F01": 0.953125,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed101/checkpoints/step-003001600.pt",
+              "slots": 3001600,
+              "F01": 0.96875,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed101/checkpoints/step-004001536.pt",
+              "slots": 4001536,
+              "F01": 0.97265625,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed101/checkpoints/step-005001472.pt",
+              "slots": 5001472,
+              "F01": 0.96484375,
+              "F05": 1.0
+            }
+          ]
+        },
+        "8": {
+          "selected": "marl:outputs/exp009-step2/p2-seed101/checkpoints/step-004001536.pt",
+          "F01": 0.94140625,
+          "F05": 1.0,
+          "slots": 4001536,
+          "end_F01": [
+            0.94140625,
+            0.93359375
+          ],
+          "checkpoints": [
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed101/checkpoints/step-001001728.pt",
+              "slots": 1001728,
+              "F01": 0.81640625,
+              "F05": 0.9765625
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed101/checkpoints/step-002001664.pt",
+              "slots": 2001664,
+              "F01": 0.87109375,
+              "F05": 0.984375
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed101/checkpoints/step-003001600.pt",
+              "slots": 3001600,
+              "F01": 0.921875,
+              "F05": 0.99609375
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed101/checkpoints/step-004001536.pt",
+              "slots": 4001536,
+              "F01": 0.94140625,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed101/checkpoints/step-005001472.pt",
+              "slots": 5001472,
+              "F01": 0.93359375,
+              "F05": 1.0
+            }
+          ]
+        },
+        "10": {
+          "selected": "marl:outputs/exp009-step2/p2-seed101/checkpoints/step-004001536.pt",
+          "F01": 0.84765625,
+          "F05": 0.98046875,
+          "slots": 4001536,
+          "end_F01": [
+            0.84765625,
+            0.84375
+          ],
+          "checkpoints": [
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed101/checkpoints/step-001001728.pt",
+              "slots": 1001728,
+              "F01": 0.64453125,
+              "F05": 0.875
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed101/checkpoints/step-002001664.pt",
+              "slots": 2001664,
+              "F01": 0.71875,
+              "F05": 0.91796875
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed101/checkpoints/step-003001600.pt",
+              "slots": 3001600,
+              "F01": 0.8203125,
+              "F05": 0.96875
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed101/checkpoints/step-004001536.pt",
+              "slots": 4001536,
+              "F01": 0.84765625,
+              "F05": 0.98046875
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed101/checkpoints/step-005001472.pt",
+              "slots": 5001472,
+              "F01": 0.84375,
+              "F05": 0.98046875
+            }
+          ]
+        },
+        "12": {
+          "selected": "marl:outputs/exp009-step2/p2-seed101/checkpoints/step-004001536.pt",
+          "F01": 0.70703125,
+          "F05": 0.93359375,
+          "slots": 4001536,
+          "end_F01": [
+            0.70703125,
+            0.703125
+          ],
+          "checkpoints": [
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed101/checkpoints/step-001001728.pt",
+              "slots": 1001728,
+              "F01": 0.3828125,
+              "F05": 0.69921875
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed101/checkpoints/step-002001664.pt",
+              "slots": 2001664,
+              "F01": 0.51171875,
+              "F05": 0.80078125
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed101/checkpoints/step-003001600.pt",
+              "slots": 3001600,
+              "F01": 0.671875,
+              "F05": 0.89453125
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed101/checkpoints/step-004001536.pt",
+              "slots": 4001536,
+              "F01": 0.70703125,
+              "F05": 0.93359375
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed101/checkpoints/step-005001472.pt",
+              "slots": 5001472,
+              "F01": 0.703125,
+              "F05": 0.9453125
+            }
+          ]
+        },
+        "16": {
+          "selected": "marl:outputs/exp009-step2/p2-seed101/checkpoints/step-005001472.pt",
+          "F01": 0.21484375,
+          "F05": 0.4921875,
+          "slots": 5001472,
+          "end_F01": [
+            0.21484375,
+            0.21484375
+          ],
+          "checkpoints": [
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed101/checkpoints/step-001001728.pt",
+              "slots": 1001728,
+              "F01": 0.0,
+              "F05": 0.04296875
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed101/checkpoints/step-002001664.pt",
+              "slots": 2001664,
+              "F01": 0.015625,
+              "F05": 0.22265625
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed101/checkpoints/step-003001600.pt",
+              "slots": 3001600,
+              "F01": 0.1328125,
+              "F05": 0.43359375
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed101/checkpoints/step-004001536.pt",
+              "slots": 4001536,
+              "F01": 0.21484375,
+              "F05": 0.48828125
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed101/checkpoints/step-005001472.pt",
+              "slots": 5001472,
+              "F01": 0.21484375,
+              "F05": 0.4921875
+            }
+          ]
+        },
+        "20": {
+          "selected": "marl:outputs/exp009-step2/p2-seed101/checkpoints/step-005001472.pt",
+          "F01": 0.0,
+          "F05": 0.0,
+          "slots": 5001472,
+          "end_F01": [
+            0.0,
+            0.0
+          ],
+          "checkpoints": [
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed101/checkpoints/step-001001728.pt",
+              "slots": 1001728,
+              "F01": 0.0,
+              "F05": 0.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed101/checkpoints/step-002001664.pt",
+              "slots": 2001664,
+              "F01": 0.0,
+              "F05": 0.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed101/checkpoints/step-003001600.pt",
+              "slots": 3001600,
+              "F01": 0.0,
+              "F05": 0.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed101/checkpoints/step-004001536.pt",
+              "slots": 4001536,
+              "F01": 0.0,
+              "F05": 0.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed101/checkpoints/step-005001472.pt",
+              "slots": 5001472,
+              "F01": 0.0,
+              "F05": 0.0
+            }
+          ]
+        }
+      },
+      "202": {
+        "2": {
+          "selected": "marl:outputs/exp009-step2/p2-seed202/checkpoints/step-004001536.pt",
+          "F01": 0.9921875,
+          "F05": 1.0,
+          "slots": 4001536,
+          "end_F01": [
+            0.9921875,
+            0.98828125
+          ],
+          "checkpoints": [
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed202/checkpoints/step-001001728.pt",
+              "slots": 1001728,
+              "F01": 0.984375,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed202/checkpoints/step-002001664.pt",
+              "slots": 2001664,
+              "F01": 0.98828125,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed202/checkpoints/step-003001600.pt",
+              "slots": 3001600,
+              "F01": 0.98828125,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed202/checkpoints/step-004001536.pt",
+              "slots": 4001536,
+              "F01": 0.9921875,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed202/checkpoints/step-005001472.pt",
+              "slots": 5001472,
+              "F01": 0.98828125,
+              "F05": 1.0
+            }
+          ]
+        },
+        "4": {
+          "selected": "marl:outputs/exp009-step2/p2-seed202/checkpoints/step-004001536.pt",
+          "F01": 0.98828125,
+          "F05": 1.0,
+          "slots": 4001536,
+          "end_F01": [
+            0.98828125,
+            0.9765625
+          ],
+          "checkpoints": [
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed202/checkpoints/step-001001728.pt",
+              "slots": 1001728,
+              "F01": 0.95703125,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed202/checkpoints/step-002001664.pt",
+              "slots": 2001664,
+              "F01": 0.96484375,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed202/checkpoints/step-003001600.pt",
+              "slots": 3001600,
+              "F01": 0.98046875,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed202/checkpoints/step-004001536.pt",
+              "slots": 4001536,
+              "F01": 0.98828125,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed202/checkpoints/step-005001472.pt",
+              "slots": 5001472,
+              "F01": 0.9765625,
+              "F05": 1.0
+            }
+          ]
+        },
+        "6": {
+          "selected": "marl:outputs/exp009-step2/p2-seed202/checkpoints/step-004001536.pt",
+          "F01": 0.98046875,
+          "F05": 1.0,
+          "slots": 4001536,
+          "end_F01": [
+            0.98046875,
+            0.95703125
+          ],
+          "checkpoints": [
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed202/checkpoints/step-001001728.pt",
+              "slots": 1001728,
+              "F01": 0.8984375,
+              "F05": 0.98828125
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed202/checkpoints/step-002001664.pt",
+              "slots": 2001664,
+              "F01": 0.90625,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed202/checkpoints/step-003001600.pt",
+              "slots": 3001600,
+              "F01": 0.94921875,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed202/checkpoints/step-004001536.pt",
+              "slots": 4001536,
+              "F01": 0.98046875,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed202/checkpoints/step-005001472.pt",
+              "slots": 5001472,
+              "F01": 0.95703125,
+              "F05": 1.0
+            }
+          ]
+        },
+        "8": {
+          "selected": "marl:outputs/exp009-step2/p2-seed202/checkpoints/step-004001536.pt",
+          "F01": 0.9296875,
+          "F05": 1.0,
+          "slots": 4001536,
+          "end_F01": [
+            0.9296875,
+            0.9140625
+          ],
+          "checkpoints": [
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed202/checkpoints/step-001001728.pt",
+              "slots": 1001728,
+              "F01": 0.80078125,
+              "F05": 0.9609375
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed202/checkpoints/step-002001664.pt",
+              "slots": 2001664,
+              "F01": 0.83203125,
+              "F05": 0.9921875
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed202/checkpoints/step-003001600.pt",
+              "slots": 3001600,
+              "F01": 0.89453125,
+              "F05": 0.9921875
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed202/checkpoints/step-004001536.pt",
+              "slots": 4001536,
+              "F01": 0.9296875,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed202/checkpoints/step-005001472.pt",
+              "slots": 5001472,
+              "F01": 0.9140625,
+              "F05": 1.0
+            }
+          ]
+        },
+        "10": {
+          "selected": "marl:outputs/exp009-step2/p2-seed202/checkpoints/step-005001472.pt",
+          "F01": 0.8125,
+          "F05": 0.9921875,
+          "slots": 5001472,
+          "end_F01": [
+            0.78515625,
+            0.8125
+          ],
+          "checkpoints": [
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed202/checkpoints/step-001001728.pt",
+              "slots": 1001728,
+              "F01": 0.55078125,
+              "F05": 0.80859375
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed202/checkpoints/step-002001664.pt",
+              "slots": 2001664,
+              "F01": 0.6875,
+              "F05": 0.890625
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed202/checkpoints/step-003001600.pt",
+              "slots": 3001600,
+              "F01": 0.7890625,
+              "F05": 0.95703125
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed202/checkpoints/step-004001536.pt",
+              "slots": 4001536,
+              "F01": 0.78515625,
+              "F05": 0.984375
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed202/checkpoints/step-005001472.pt",
+              "slots": 5001472,
+              "F01": 0.8125,
+              "F05": 0.9921875
+            }
+          ]
+        },
+        "12": {
+          "selected": "marl:outputs/exp009-step2/p2-seed202/checkpoints/step-005001472.pt",
+          "F01": 0.6953125,
+          "F05": 0.953125,
+          "slots": 5001472,
+          "end_F01": [
+            0.6015625,
+            0.6953125
+          ],
+          "checkpoints": [
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed202/checkpoints/step-001001728.pt",
+              "slots": 1001728,
+              "F01": 0.25390625,
+              "F05": 0.53125
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed202/checkpoints/step-002001664.pt",
+              "slots": 2001664,
+              "F01": 0.48828125,
+              "F05": 0.76953125
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed202/checkpoints/step-003001600.pt",
+              "slots": 3001600,
+              "F01": 0.6328125,
+              "F05": 0.89453125
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed202/checkpoints/step-004001536.pt",
+              "slots": 4001536,
+              "F01": 0.6015625,
+              "F05": 0.94140625
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed202/checkpoints/step-005001472.pt",
+              "slots": 5001472,
+              "F01": 0.6953125,
+              "F05": 0.953125
+            }
+          ]
+        },
+        "16": {
+          "selected": "marl:outputs/exp009-step2/p2-seed202/checkpoints/step-005001472.pt",
+          "F01": 0.15234375,
+          "F05": 0.38671875,
+          "slots": 5001472,
+          "end_F01": [
+            0.05859375,
+            0.15234375
+          ],
+          "checkpoints": [
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed202/checkpoints/step-001001728.pt",
+              "slots": 1001728,
+              "F01": 0.0,
+              "F05": 0.0078125
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed202/checkpoints/step-002001664.pt",
+              "slots": 2001664,
+              "F01": 0.01171875,
+              "F05": 0.203125
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed202/checkpoints/step-003001600.pt",
+              "slots": 3001600,
+              "F01": 0.06640625,
+              "F05": 0.3203125
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed202/checkpoints/step-004001536.pt",
+              "slots": 4001536,
+              "F01": 0.05859375,
+              "F05": 0.4140625
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed202/checkpoints/step-005001472.pt",
+              "slots": 5001472,
+              "F01": 0.15234375,
+              "F05": 0.38671875
+            }
+          ]
+        },
+        "20": {
+          "selected": "marl:outputs/exp009-step2/p2-seed202/checkpoints/step-005001472.pt",
+          "F01": 0.0,
+          "F05": 0.0,
+          "slots": 5001472,
+          "end_F01": [
+            0.0,
+            0.0
+          ],
+          "checkpoints": [
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed202/checkpoints/step-001001728.pt",
+              "slots": 1001728,
+              "F01": 0.0,
+              "F05": 0.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed202/checkpoints/step-002001664.pt",
+              "slots": 2001664,
+              "F01": 0.0,
+              "F05": 0.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed202/checkpoints/step-003001600.pt",
+              "slots": 3001600,
+              "F01": 0.0,
+              "F05": 0.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed202/checkpoints/step-004001536.pt",
+              "slots": 4001536,
+              "F01": 0.0,
+              "F05": 0.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/p2-seed202/checkpoints/step-005001472.pt",
+              "slots": 5001472,
+              "F01": 0.0,
+              "F05": 0.0
+            }
+          ]
+        }
+      }
+    },
+    "S1": {
+      "101": {
+        "2": {
+          "selected": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+          "F01": 0.9921875,
+          "F05": 1.0,
+          "slots": 4001536,
+          "end_F01": [
+            0.9921875,
+            0.98828125
+          ],
+          "checkpoints": [
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-001001728.pt",
+              "slots": 1001728,
+              "F01": 0.984375,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-002001664.pt",
+              "slots": 2001664,
+              "F01": 0.98828125,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-003001600.pt",
+              "slots": 3001600,
+              "F01": 0.98828125,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+              "slots": 4001536,
+              "F01": 0.9921875,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-005001472.pt",
+              "slots": 5001472,
+              "F01": 0.98828125,
+              "F05": 1.0
+            }
+          ]
+        },
+        "4": {
+          "selected": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+          "F01": 0.984375,
+          "F05": 1.0,
+          "slots": 4001536,
+          "end_F01": [
+            0.984375,
+            0.89453125
+          ],
+          "checkpoints": [
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-001001728.pt",
+              "slots": 1001728,
+              "F01": 0.953125,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-002001664.pt",
+              "slots": 2001664,
+              "F01": 0.98046875,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-003001600.pt",
+              "slots": 3001600,
+              "F01": 0.984375,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+              "slots": 4001536,
+              "F01": 0.984375,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-005001472.pt",
+              "slots": 5001472,
+              "F01": 0.89453125,
+              "F05": 0.9453125
+            }
+          ]
+        },
+        "6": {
+          "selected": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+          "F01": 0.9765625,
+          "F05": 1.0,
+          "slots": 4001536,
+          "end_F01": [
+            0.9765625,
+            0.8359375
+          ],
+          "checkpoints": [
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-001001728.pt",
+              "slots": 1001728,
+              "F01": 0.91796875,
+              "F05": 0.9921875
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-002001664.pt",
+              "slots": 2001664,
+              "F01": 0.9453125,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-003001600.pt",
+              "slots": 3001600,
+              "F01": 0.953125,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+              "slots": 4001536,
+              "F01": 0.9765625,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-005001472.pt",
+              "slots": 5001472,
+              "F01": 0.8359375,
+              "F05": 0.91015625
+            }
+          ]
+        },
+        "8": {
+          "selected": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+          "F01": 0.9375,
+          "F05": 1.0,
+          "slots": 4001536,
+          "end_F01": [
+            0.9375,
+            0.80078125
+          ],
+          "checkpoints": [
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-001001728.pt",
+              "slots": 1001728,
+              "F01": 0.78125,
+              "F05": 0.9765625
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-002001664.pt",
+              "slots": 2001664,
+              "F01": 0.86328125,
+              "F05": 0.9921875
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-003001600.pt",
+              "slots": 3001600,
+              "F01": 0.921875,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+              "slots": 4001536,
+              "F01": 0.9375,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-005001472.pt",
+              "slots": 5001472,
+              "F01": 0.80078125,
+              "F05": 0.921875
+            }
+          ]
+        },
+        "10": {
+          "selected": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+          "F01": 0.85546875,
+          "F05": 0.984375,
+          "slots": 4001536,
+          "end_F01": [
+            0.85546875,
+            0.6171875
+          ],
+          "checkpoints": [
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-001001728.pt",
+              "slots": 1001728,
+              "F01": 0.5703125,
+              "F05": 0.8125
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-002001664.pt",
+              "slots": 2001664,
+              "F01": 0.72265625,
+              "F05": 0.9375
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-003001600.pt",
+              "slots": 3001600,
+              "F01": 0.80078125,
+              "F05": 0.96875
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+              "slots": 4001536,
+              "F01": 0.85546875,
+              "F05": 0.984375
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-005001472.pt",
+              "slots": 5001472,
+              "F01": 0.6171875,
+              "F05": 0.875
+            }
+          ]
+        },
+        "12": {
+          "selected": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+          "F01": 0.6953125,
+          "F05": 0.9453125,
+          "slots": 4001536,
+          "end_F01": [
+            0.6953125,
+            0.42578125
+          ],
+          "checkpoints": [
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-001001728.pt",
+              "slots": 1001728,
+              "F01": 0.34375,
+              "F05": 0.62109375
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-002001664.pt",
+              "slots": 2001664,
+              "F01": 0.5390625,
+              "F05": 0.81640625
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-003001600.pt",
+              "slots": 3001600,
+              "F01": 0.63671875,
+              "F05": 0.90234375
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+              "slots": 4001536,
+              "F01": 0.6953125,
+              "F05": 0.9453125
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-005001472.pt",
+              "slots": 5001472,
+              "F01": 0.42578125,
+              "F05": 0.7890625
+            }
+          ]
+        },
+        "16": {
+          "selected": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+          "F01": 0.18359375,
+          "F05": 0.46484375,
+          "slots": 4001536,
+          "end_F01": [
+            0.18359375,
+            0.05078125
+          ],
+          "checkpoints": [
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-001001728.pt",
+              "slots": 1001728,
+              "F01": 0.0,
+              "F05": 0.08203125
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-002001664.pt",
+              "slots": 2001664,
+              "F01": 0.046875,
+              "F05": 0.2421875
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-003001600.pt",
+              "slots": 3001600,
+              "F01": 0.1015625,
+              "F05": 0.35546875
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+              "slots": 4001536,
+              "F01": 0.18359375,
+              "F05": 0.46484375
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-005001472.pt",
+              "slots": 5001472,
+              "F01": 0.05078125,
+              "F05": 0.24609375
+            }
+          ]
+        },
+        "20": {
+          "selected": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-005001472.pt",
+          "F01": 0.0,
+          "F05": 0.0,
+          "slots": 5001472,
+          "end_F01": [
+            0.0,
+            0.0
+          ],
+          "checkpoints": [
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-001001728.pt",
+              "slots": 1001728,
+              "F01": 0.0,
+              "F05": 0.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-002001664.pt",
+              "slots": 2001664,
+              "F01": 0.0,
+              "F05": 0.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-003001600.pt",
+              "slots": 3001600,
+              "F01": 0.0,
+              "F05": 0.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+              "slots": 4001536,
+              "F01": 0.0,
+              "F05": 0.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-005001472.pt",
+              "slots": 5001472,
+              "F01": 0.0,
+              "F05": 0.0
+            }
+          ]
+        }
+      },
+      "202": {
+        "2": {
+          "selected": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+          "F01": 1.0,
+          "F05": 1.0,
+          "slots": 5001472,
+          "end_F01": [
+            0.9921875,
+            1.0
+          ],
+          "checkpoints": [
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-001001728.pt",
+              "slots": 1001728,
+              "F01": 0.98828125,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-002001664.pt",
+              "slots": 2001664,
+              "F01": 0.98828125,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-003001600.pt",
+              "slots": 3001600,
+              "F01": 0.9921875,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-004001536.pt",
+              "slots": 4001536,
+              "F01": 0.9921875,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+              "slots": 5001472,
+              "F01": 1.0,
+              "F05": 1.0
+            }
+          ]
+        },
+        "4": {
+          "selected": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+          "F01": 0.98828125,
+          "F05": 1.0,
+          "slots": 5001472,
+          "end_F01": [
+            0.984375,
+            0.98828125
+          ],
+          "checkpoints": [
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-001001728.pt",
+              "slots": 1001728,
+              "F01": 0.9609375,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-002001664.pt",
+              "slots": 2001664,
+              "F01": 0.984375,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-003001600.pt",
+              "slots": 3001600,
+              "F01": 0.984375,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-004001536.pt",
+              "slots": 4001536,
+              "F01": 0.984375,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+              "slots": 5001472,
+              "F01": 0.98828125,
+              "F05": 1.0
+            }
+          ]
+        },
+        "6": {
+          "selected": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+          "F01": 0.984375,
+          "F05": 1.0,
+          "slots": 5001472,
+          "end_F01": [
+            0.97265625,
+            0.984375
+          ],
+          "checkpoints": [
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-001001728.pt",
+              "slots": 1001728,
+              "F01": 0.9375,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-002001664.pt",
+              "slots": 2001664,
+              "F01": 0.9609375,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-003001600.pt",
+              "slots": 3001600,
+              "F01": 0.98046875,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-004001536.pt",
+              "slots": 4001536,
+              "F01": 0.97265625,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+              "slots": 5001472,
+              "F01": 0.984375,
+              "F05": 1.0
+            }
+          ]
+        },
+        "8": {
+          "selected": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+          "F01": 0.94921875,
+          "F05": 1.0,
+          "slots": 5001472,
+          "end_F01": [
+            0.9375,
+            0.94921875
+          ],
+          "checkpoints": [
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-001001728.pt",
+              "slots": 1001728,
+              "F01": 0.85546875,
+              "F05": 0.984375
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-002001664.pt",
+              "slots": 2001664,
+              "F01": 0.921875,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-003001600.pt",
+              "slots": 3001600,
+              "F01": 0.9375,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-004001536.pt",
+              "slots": 4001536,
+              "F01": 0.9375,
+              "F05": 1.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+              "slots": 5001472,
+              "F01": 0.94921875,
+              "F05": 1.0
+            }
+          ]
+        },
+        "10": {
+          "selected": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+          "F01": 0.87890625,
+          "F05": 0.98828125,
+          "slots": 5001472,
+          "end_F01": [
+            0.859375,
+            0.87890625
+          ],
+          "checkpoints": [
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-001001728.pt",
+              "slots": 1001728,
+              "F01": 0.6875,
+              "F05": 0.91796875
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-002001664.pt",
+              "slots": 2001664,
+              "F01": 0.80859375,
+              "F05": 0.9765625
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-003001600.pt",
+              "slots": 3001600,
+              "F01": 0.85546875,
+              "F05": 0.98828125
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-004001536.pt",
+              "slots": 4001536,
+              "F01": 0.859375,
+              "F05": 0.98828125
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+              "slots": 5001472,
+              "F01": 0.87890625,
+              "F05": 0.98828125
+            }
+          ]
+        },
+        "12": {
+          "selected": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+          "F01": 0.765625,
+          "F05": 0.96875,
+          "slots": 5001472,
+          "end_F01": [
+            0.73828125,
+            0.765625
+          ],
+          "checkpoints": [
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-001001728.pt",
+              "slots": 1001728,
+              "F01": 0.484375,
+              "F05": 0.78125
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-002001664.pt",
+              "slots": 2001664,
+              "F01": 0.6328125,
+              "F05": 0.91015625
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-003001600.pt",
+              "slots": 3001600,
+              "F01": 0.72265625,
+              "F05": 0.95703125
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-004001536.pt",
+              "slots": 4001536,
+              "F01": 0.73828125,
+              "F05": 0.9609375
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+              "slots": 5001472,
+              "F01": 0.765625,
+              "F05": 0.96875
+            }
+          ]
+        },
+        "16": {
+          "selected": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-004001536.pt",
+          "F01": 0.2265625,
+          "F05": 0.51171875,
+          "slots": 4001536,
+          "end_F01": [
+            0.2265625,
+            0.02734375
+          ],
+          "checkpoints": [
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-001001728.pt",
+              "slots": 1001728,
+              "F01": 0.01171875,
+              "F05": 0.1875
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-002001664.pt",
+              "slots": 2001664,
+              "F01": 0.08203125,
+              "F05": 0.37109375
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-003001600.pt",
+              "slots": 3001600,
+              "F01": 0.21875,
+              "F05": 0.54296875
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-004001536.pt",
+              "slots": 4001536,
+              "F01": 0.2265625,
+              "F05": 0.51171875
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+              "slots": 5001472,
+              "F01": 0.02734375,
+              "F05": 0.2734375
+            }
+          ]
+        },
+        "20": {
+          "selected": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+          "F01": 0.0,
+          "F05": 0.0,
+          "slots": 5001472,
+          "end_F01": [
+            0.0,
+            0.0
+          ],
+          "checkpoints": [
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-001001728.pt",
+              "slots": 1001728,
+              "F01": 0.0,
+              "F05": 0.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-002001664.pt",
+              "slots": 2001664,
+              "F01": 0.0,
+              "F05": 0.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-003001600.pt",
+              "slots": 3001600,
+              "F01": 0.0,
+              "F05": 0.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-004001536.pt",
+              "slots": 4001536,
+              "F01": 0.0,
+              "F05": 0.0
+            },
+            {
+              "spec": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+              "slots": 5001472,
+              "F01": 0.0,
+              "F05": 0.0
+            }
+          ]
+        }
+      }
+    }
+  },
+  "layers": {
+    "P1": {
+      "101": {
+        "2": "marl:outputs/exp009-step2/p1-seed101/checkpoints/step-003001600.pt",
+        "4": "marl:outputs/exp009-step2/p1-seed101/checkpoints/step-004001536.pt",
+        "6": "marl:outputs/exp009-step2/p1-seed101/checkpoints/step-003001600.pt",
+        "8": "marl:outputs/exp009-step2/p1-seed101/checkpoints/step-004001536.pt",
+        "10": "marl:outputs/exp009-step2/p1-seed101/checkpoints/step-004001536.pt",
+        "12": "marl:outputs/exp009-step2/p1-seed101/checkpoints/step-004001536.pt",
+        "16": "marl:outputs/exp009-step2/p1-seed101/checkpoints/step-005001472.pt",
+        "20": "marl:outputs/exp009-step2/p1-seed101/checkpoints/step-005001472.pt"
+      },
+      "202": {
+        "2": "marl:outputs/exp009-step2/p1-seed202/checkpoints/step-004001536.pt",
+        "4": "marl:outputs/exp009-step2/p1-seed202/checkpoints/step-004001536.pt",
+        "6": "marl:outputs/exp009-step2/p1-seed202/checkpoints/step-004001536.pt",
+        "8": "marl:outputs/exp009-step2/p1-seed202/checkpoints/step-004001536.pt",
+        "10": "marl:outputs/exp009-step2/p1-seed202/checkpoints/step-004001536.pt",
+        "12": "marl:outputs/exp009-step2/p1-seed202/checkpoints/step-004001536.pt",
+        "16": "marl:outputs/exp009-step2/p1-seed202/checkpoints/step-005001472.pt",
+        "20": "marl:outputs/exp009-step2/p1-seed202/checkpoints/step-005001472.pt"
+      }
+    },
+    "P2": {
+      "101": {
+        "2": "marl:outputs/exp009-step2/p2-seed101/checkpoints/step-004001536.pt",
+        "4": "marl:outputs/exp009-step2/p2-seed101/checkpoints/step-005001472.pt",
+        "6": "marl:outputs/exp009-step2/p2-seed101/checkpoints/step-004001536.pt",
+        "8": "marl:outputs/exp009-step2/p2-seed101/checkpoints/step-004001536.pt",
+        "10": "marl:outputs/exp009-step2/p2-seed101/checkpoints/step-004001536.pt",
+        "12": "marl:outputs/exp009-step2/p2-seed101/checkpoints/step-004001536.pt",
+        "16": "marl:outputs/exp009-step2/p2-seed101/checkpoints/step-005001472.pt",
+        "20": "marl:outputs/exp009-step2/p2-seed101/checkpoints/step-005001472.pt"
+      },
+      "202": {
+        "2": "marl:outputs/exp009-step2/p2-seed202/checkpoints/step-004001536.pt",
+        "4": "marl:outputs/exp009-step2/p2-seed202/checkpoints/step-004001536.pt",
+        "6": "marl:outputs/exp009-step2/p2-seed202/checkpoints/step-004001536.pt",
+        "8": "marl:outputs/exp009-step2/p2-seed202/checkpoints/step-004001536.pt",
+        "10": "marl:outputs/exp009-step2/p2-seed202/checkpoints/step-005001472.pt",
+        "12": "marl:outputs/exp009-step2/p2-seed202/checkpoints/step-005001472.pt",
+        "16": "marl:outputs/exp009-step2/p2-seed202/checkpoints/step-005001472.pt",
+        "20": "marl:outputs/exp009-step2/p2-seed202/checkpoints/step-005001472.pt"
+      }
+    },
+    "S1": {
+      "101": {
+        "2": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+        "4": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+        "6": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+        "8": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+        "10": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+        "12": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+        "16": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+        "20": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-005001472.pt"
+      },
+      "202": {
+        "2": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+        "4": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+        "6": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+        "8": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+        "10": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+        "12": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+        "16": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-004001536.pt",
+        "20": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt"
+      }
+    }
+  }
+}

@@ -15,7 +15,7 @@ episodes are evaluated once:
 
 ``primary`` and ``baseline`` default to "M" and "A_near" (EXP-008); EXP-009
 uses "A_mix" as its baseline. Every other list-valued key except rules and edf
-is a descriptive learned group.
+is a descriptive learned group; keys starting with "_" are metadata.
 
 * Learned groups pool their training seeds: F(N) is the mean over seeds and
   instances, N* the first-drop point of the unrounded F (not a mean of N*).
@@ -164,7 +164,9 @@ def failures(episodes: dict, specs: dict[str, str], n: int) -> dict:
 def analyze(episodes: dict, methods: dict, instances: list[int], draws: int) -> dict:
     primary = methods.get("primary", "M")
     baseline = methods.get("baseline", "A_near")
-    learned = {g: list(v) for g, v in methods.items() if g not in NOT_LEARNED}
+    learned = {
+        g: list(v) for g, v in methods.items() if g not in NOT_LEARNED and not g.startswith("_")
+    }
     groups = {**learned, "best_local": [methods["best_local"]]}
     grid = grid_of(episodes, learned[primary][0])
     result: dict = {"grid": grid, "instances": len(instances), "methods": methods, "main": {}}

@@ -13,6 +13,11 @@ v2 §4, 2026-10-04 supplement).
 * ``step``: the five rules of §4 for a candidate condition against a baseline
   (step 1: P0 against M0; step 2: S1, P1, P2 against U), the step-1 choice of B
   and the step-2 choice of M.
+* ``methods``: the methods file of the confirmation analysis (§6), frozen before
+  v2-confirm2 is read: M = the seed layers of the selected condition, M_last =
+  each of its runs' last checkpoint (one policy for every N), A_mix = the seed
+  layers of the EXP-006 long runs, best_local, the six calibrated rules and both
+  N_EDF versions. N >= 24 use each layer's N = 20 model (descriptive only).
 
 Only formal screening outputs of exp009-screen256 are read; validation, test,
 confirmation sets and other dev ranges are refused.
@@ -32,6 +37,19 @@ NEAR = (6, 8)
 OTHER = (2, 4, 10, 12)  # rule 2
 IMPROVEMENT, DROP, F2_FLOOR, TIE, TOL = 0.01, 0.01, 0.95, 0.005, 1e-12
 STEP2_ORDER = ("S1", "P1", "P2")
+EXTRA_N = (24, 28, 32)  # evaluated with the N = 20 model (protocol v2 §4 supplement)
+RULES = tuple(
+    f"calibrated:{f}"
+    for f in (
+        "random_max",
+        "sticky_max",
+        "p_persistent",
+        "opportunistic",
+        "reservation",
+        "paced_sticky_csi",
+    )
+)
+EDF = ("central_edf", "central_edf:defer_hopeless=1")
 
 
 def load_screen(paths: list[Path], formal: bool = True) -> dict[str, dict[int, dict]]:
@@ -110,6 +128,44 @@ def layers(selection: dict) -> dict:
     }
 
 
+def merge_selections(paths: list[Path]) -> dict:
+    """condition -> seed -> N -> cell over several selection files (seeds must not repeat)."""
+    merged: dict = defaultdict(dict)
+    for path in paths:
+        for condition, seeds in json.loads(path.read_text())["selection"].items():
+            for seed, cells in seeds.items():
+                if seed in merged[condition]:
+                    raise ValueError(f"{condition} seed {seed} appears in more than one selection")
+                merged[condition][seed] = cells
+    return dict(merged)
+
+
+def methods(selection: dict, primary: str, baseline: str = "A_mix") -> dict:
+    """The frozen methods file of the confirmation analysis (§6)."""
+
+    def layer(cells: dict) -> dict:
+        out = {n: cells[n]["selected"] for n in sorted(cells, key=int)}
+        out.update({str(n): cells["20"]["selected"] for n in EXTRA_N})
+        return out
+
+    def last(cells: dict) -> str:
+        rows = max(cells.values(), key=lambda c: c["checkpoints"][-1]["slots"])["checkpoints"]
+        return rows[-1]["spec"]
+
+    seeds = sorted(selection[primary])
+    return {
+        "primary": "M",
+        "baseline": baseline,
+        "M": [layer(selection[primary][s]) for s in seeds],
+        "M_last": [last(selection[primary][s]) for s in seeds],
+        baseline: [layer(selection[baseline][s]) for s in sorted(selection[baseline])],
+        "best_local": "best_local",
+        "rules": list(RULES),
+        "edf": list(EDF),
+        "_source": {"condition": primary, "seeds": seeds},
+    }
+
+
 def _mean(values) -> float:
     values = list(values)
     return sum(values) / len(values)
@@ -176,9 +232,11 @@ def main(argv: list[str] | None = None) -> None:
     s = sub.add_parser("select")
     s.add_argument("--screen", type=Path, nargs="+", required=True)
     s.add_argument("--rename", nargs="*", default=[], metavar="OLD=NEW")
-    for name in ("step1", "step2"):
+    for name in ("step1", "step2", "methods"):
         r = sub.add_parser(name)
         r.add_argument("--selection", type=Path, nargs="+", required=True)
+    sub.choices["methods"].add_argument("--primary", required=True)
+    sub.choices["methods"].add_argument("--baseline", default="A_mix")
     sub.choices["step1"].add_argument("--candidate", default="P0")
     sub.choices["step1"].add_argument("--baseline", default="M0")
     sub.choices["step2"].add_argument("--baseline", required=True, help="the U condition label")
@@ -196,6 +254,9 @@ def main(argv: list[str] | None = None) -> None:
             for seed, by_n in seeds.items():
                 cells = " ".join(f"{n}:{c['F01']:.3f}" for n, c in by_n.items())
                 print(f"{condition} seed {seed}: {cells}")
+    elif args.command == "methods":
+        result = methods(merge_selections(args.selection), args.primary, args.baseline)
+        print(f"M = {args.primary} seeds {result['_source']['seeds']}, baseline {args.baseline}")
     else:
         selection: dict = {}
         for path in args.selection:

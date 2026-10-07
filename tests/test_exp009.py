@@ -384,3 +384,48 @@ def test_step2_configs_are_mixed_r0_with_the_designed_samplers():
             assert raw[section] == r0[section], (key, section)
         assert raw["sampler"] == (sampler | plr if sampler["kind"] == "plr" else sampler)
         assert settings_from(raw, "fixed")[4] == SamplerSettings(**raw["sampler"])
+
+
+def test_final_config_is_s1_with_seed_303():
+    s1 = tomllib.loads((ROOT / "configs" / "exp009-step2-s1.toml").read_text())
+    final = tomllib.loads((ROOT / "configs" / "exp009-final-s1.toml").read_text())
+    assert final["experiment"]["seeds"] == [303] and final["experiment"]["condition"] == "S1"
+    assert {k: v for k, v in final.items() if k != "experiment"} == {
+        k: v for k, v in s1.items() if k != "experiment"
+    }
+
+
+def _cells(prefix: str, seed: int) -> dict:
+    out = {}
+    for n in sel.GRID:
+        rows = [
+            {
+                "spec": f"marl:{prefix}-{seed}/checkpoints/step-00{k}000000.pt",
+                "slots": k * 1_000_000,
+            }
+            for k in (1, 2, 3)
+        ]
+        out[str(n)] = {"selected": rows[n % 3]["spec"], "checkpoints": rows}
+    return out
+
+
+def test_methods_file_layers_last_checkpoints_and_extra_n():
+    selection = {
+        "S1": {"101": _cells("s1", 101), "303": _cells("s1", 303)},
+        "A_mix": {"101": _cells("a", 101), "202": _cells("a", 202), "303": _cells("a", 303)},
+    }
+    methods = sel.methods(selection, "S1")
+    assert methods["primary"] == "M" and methods["baseline"] == "A_mix"
+    assert len(methods["M"]) == 2 and len(methods["A_mix"]) == 3
+    layer = methods["M"][0]
+    assert layer["8"] == selection["S1"]["101"]["8"]["selected"]
+    assert layer["24"] == layer["28"] == layer["32"] == layer["20"]
+    assert methods["M_last"][1].endswith("s1-303/checkpoints/step-003000000.pt")
+    assert len(methods["rules"]) == 6 and len(methods["edf"]) == 2
+    confirm = load_script("run_exp009_confirm")
+    pairs = confirm.pairs(methods)
+    assert len(pairs) == len(set(pairs))
+    assert ("central_edf", 40) in pairs and ("best_local", 32) in pairs
+    assert (layer["20"], 32) in pairs and not any(
+        n == 36 for s, n in pairs if s.startswith("marl:")
+    )
