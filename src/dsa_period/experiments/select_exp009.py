@@ -79,8 +79,11 @@ def load_screen(paths: list[Path], formal: bool = True) -> dict[str, dict[int, d
     return dict(found)
 
 
-def select(screen: dict, rename: dict[str, str] | None = None) -> dict:
-    """Per (condition, seed, N): every checkpoint's F, the selected one and the end segment."""
+def select(screen: dict, rename: dict[str, str] | None = None, grid=GRID) -> dict:
+    """Per (condition, seed, N): every checkpoint's F, the selected one and the end segment.
+
+    ``grid`` lists the N every (condition, seed) must cover (EXP-010 uses 6, 8, 10).
+    """
     rename = rename or {}
     cells: dict[tuple, list] = defaultdict(list)
     for spec, by_n in screen.items():
@@ -112,7 +115,7 @@ def select(screen: dict, rename: dict[str, str] | None = None) -> dict:
         }
     for condition, seeds in result.items():
         for seed, by_n in seeds.items():
-            missing = [n for n in GRID if str(n) not in by_n]
+            missing = [n for n in grid if str(n) not in by_n]
             if missing:
                 raise ValueError(f"{condition} seed {seed} lacks N = {missing}")
     return {c: dict(s) for c, s in result.items()}
@@ -232,6 +235,7 @@ def main(argv: list[str] | None = None) -> None:
     s = sub.add_parser("select")
     s.add_argument("--screen", type=Path, nargs="+", required=True)
     s.add_argument("--rename", nargs="*", default=[], metavar="OLD=NEW")
+    s.add_argument("--grid", type=int, nargs="+", default=list(GRID))
     for name in ("step1", "step2", "methods"):
         r = sub.add_parser(name)
         r.add_argument("--selection", type=Path, nargs="+", required=True)
@@ -248,7 +252,7 @@ def main(argv: list[str] | None = None) -> None:
         parser.error(f"output {args.output} already exists")
     if args.command == "select":
         rename = dict(item.split("=", 1) for item in args.rename)
-        chosen = select(load_screen(args.screen, not args.allow_informal), rename)
+        chosen = select(load_screen(args.screen, not args.allow_informal), rename, tuple(args.grid))
         result = {"screen": SCREEN, "selection": chosen, "layers": layers(chosen)}
         for condition, seeds in chosen.items():
             for seed, by_n in seeds.items():

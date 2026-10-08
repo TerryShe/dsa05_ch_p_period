@@ -930,10 +930,15 @@ def _load_checkpoint(path: str) -> dict:
 def load_capacity_policy(
     path: Path, config: PhysicalConfig, menu: PowerMenu, mu0: float | None = None
 ) -> MarlPolicy:
-    """A protocol policy for any N from an EXP-DSA05-006 checkpoint (cached per process)."""
+    """A protocol policy for any N from a capacity checkpoint (cached per process).
+
+    Accepts EXP-006/008/009 MAPPO checkpoints and EXP-010 imitation checkpoints
+    (``marl.imitation``), whose actor is the same network.
+    """
     checkpoint = _load_checkpoint(str(path))
-    if checkpoint.get("kind") != CHECKPOINT_KIND or checkpoint["schema"] != CHECKPOINT_SCHEMA:
-        raise ValueError(f"{path} is not an EXP-DSA05-006 checkpoint")
+    kind = checkpoint.get("kind")
+    if kind not in (CHECKPOINT_KIND, "capacity-imitation") or checkpoint["schema"] != 1:
+        raise ValueError(f"{path} is not a capacity checkpoint")
     model = checkpoint["model"]
     actor = ChannelSetActor(
         model["token_dim"],
@@ -942,7 +947,9 @@ def load_capacity_policy(
         model["num_levels"],
         model["hidden"],
     )
-    actor.load_state_dict(checkpoint["ppo"]["actor"])
+    actor.load_state_dict(
+        checkpoint["ppo"]["actor"] if kind == CHECKPOINT_KIND else checkpoint["actor"]
+    )
     actor.eval()
     duals = DualSettings(**checkpoint["duals"])
     constraint = CapacityConstraint(**checkpoint["constraint"])

@@ -1,0 +1,23 @@
+# EXP-DSA05-010: DAgger imitation of N_EDF (canonical) by the unchanged local actor
+# (design §2). One run per N in per_n and seed, all 14 environments with that N
+# (--num-ues). Iteration 1 is executed by the teacher, later ones by the student.
+[experiment]
+id = "exp010-edf-imitation"
+design = "docs/experiment-designs/010-edf-imitation-diagnostic_20261008.md"
+condition = "IL"
+teacher = "central_edf"
+seeds = [101, 202]
+per_n = [6, 8, 10]
+
+[imitation]
+iterations = 6
+episodes_per_env = 30
+episode_slots = 600
+num_envs = 14
+segment_slots = 128
+epochs = 4
+batch_episodes = 16
+lr = 3e-4
+max_grad_norm = 0.5
+hidden = 64
+torch_threads = 1

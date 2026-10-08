@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "experiment": "EXP-DSA05-010",
+  "design": "docs/experiment-designs/010-edf-imitation-diagnostic_20261008.md",
+  "document": "docs/research/exp010-registration.md",
+  "protocol_id": "marl-protocol-v2",
+  "registered_on": "2026-10-08",
+  "scenario_config": "configs/scenario-v2.toml",
+  "scenario_config_sha256": "74e3fadc6626abebe681ed43c487a8e3781e0dfb65494ace72db730f58550afc",
+  "horizon_slots": 20200,
+  "warmup_slots": 200,
+  "execution_seeds": {
+    "base": 20260930,
+    "scheme": "SeedSequence([base, seed_code, instance, repeat]).spawn(N)[j]"
+  },
+  "fading_seeds": {
+    "base": 20261001,
+    "scheme": "SeedSequence([base, seed_code, instance, repeat]).spawn(N)[j]"
+  },
+  "screening": {
+    "exp010-eval512": {
+      "split": "dev",
+      "start": 4000,
+      "stop": 4512,
+      "count": 512,
+      "grid": [
+        6,
+        8,
+        10
+      ],
+      "repeats": 1,
+      "seed_code": 0,
+      "score": "F_0.01(N) of each method; D8 = F_0.01(8; IL) - F_0.01(8; A_mix)",
+      "selection": "none: evaluation only (checkpoints are selected on exp009-screen256)",
+      "entry_point": "evaluate_capacity --split dev --screen exp010-eval512 --formal",
+      "digests": {
+        "6": "915bec14997490378c4bc4d415cb80113f6bf782a0f20bed3b37b028d547f5a7",
+        "8": "841de93f30563a88a0b74eb29eceeb02419a48e877c0da43e6e6f58cea7564ad",
+        "10": "a85516824857fb05215d1f463ba3b6ab697e49a1f1108c9fb7f2d0bbf5b1cb17"
+      }
+    }
+  },
+  "confirmation": {},
+  "usage_checked_on_registration": {
+    "v2_dev_ranges_used": [
+      [
+        0,
+        64
+      ],
+      [
+        1000,
+        1400
+      ],
+      [
+        2000,
+        2256
+      ],
+      [
+        3000,
+        3256
+      ]
+    ],
+    "v2_reserve_ranges_read": []
+  }
+}

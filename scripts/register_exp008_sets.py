@@ -1,9 +1,11 @@
-"""Write the set manifests of EXP-DSA05-008 and EXP-DSA05-009 (protocol v2).
+"""Write the set manifests of EXP-DSA05-008, -009 and -010 (protocol v2).
 
 EXP-008 (docs/research/exp008-sets.json): the screening set exp008-screen256
 (dev 2000-2255, N = 6 and 8) and the confirmation set v2-confirm1 (reserve
 30000-30499). EXP-009 (docs/research/exp009-sets.json): exp009-screen256 (dev
-3000-3255, N in {2, ..., 20}) and v2-confirm2 (reserve 30500-30999). Each set
+3000-3255, N in {2, ..., 20}) and v2-confirm2 (reserve 30500-30999). EXP-010
+(docs/research/exp010-sets.json): the evaluation slice exp010-eval512 (dev
+4000-4511, N = 6, 8, 10). Each set
 carries its instance and fading digests (``splits_v2.instance_digest``:
 topology, shadowing, traffic and the fading of slots 0-7) at every N it is read
 at; confirmation sets at every N of the protocol-v2 grid and of N_EDF. No policy
@@ -42,6 +44,17 @@ REGISTRY = {
         "score": "per N: F_0.01(N) of that N's model; S_near = (F_0.01(6) + F_0.01(8)) / 2",
         "selection": "per (condition, seed, N): max (F_0.01(N), F_0.05(N), slots); design §3",
         "dev_used": [[0, 64], [1000, 1400], [2000, 2256]],
+    },
+    "EXP-DSA05-010": {
+        "output": "docs/research/exp010-sets.json",
+        "design": "docs/experiment-designs/010-edf-imitation-diagnostic_20261008.md",
+        "document": "docs/research/exp010-registration.md",
+        "registered_on": "2026-10-08",
+        "screening": ["exp010-eval512"],
+        "confirmation": [],
+        "score": "F_0.01(N) of each method; D8 = F_0.01(8; IL) - F_0.01(8; A_mix)",
+        "selection": "none: evaluation only (checkpoints are selected on exp009-screen256)",
+        "dev_used": [[0, 64], [1000, 1400], [2000, 2256], [3000, 3256]],
     },
 }
 
