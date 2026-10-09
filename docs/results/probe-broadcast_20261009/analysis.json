@@ -1,0 +1,2166 @@
+{
+ "6": {
+  "infeasible_for_all": [
+   1259,
+   1395
+  ],
+  "groups": {
+   "A_mix": {
+    "none": {
+     "F": 0.9675,
+     "ci95": [
+      0.9475,
+      0.985
+     ]
+    },
+    "B2": {
+     "F": 0.975,
+     "ci95": [
+      0.9575,
+      0.99
+     ],
+     "minus_none": {
+      "difference": 0.0075,
+      "ci95": [
+       -0.0016666666666666668,
+       0.02
+      ]
+     }
+    },
+    "B3": {
+     "F": 0.9833333333333333,
+     "ci95": [
+      0.9683333333333334,
+      0.995
+     ],
+     "minus_none": {
+      "difference": 0.015833333333333335,
+      "ci95": [
+       0.005,
+       0.028333333333333332
+      ]
+     }
+    }
+   },
+   "M": {
+    "none": {
+     "F": 0.9708333333333333,
+     "ci95": [
+      0.9508333333333333,
+      0.9875
+     ]
+    },
+    "B2": {
+     "F": 0.9741666666666666,
+     "ci95": [
+      0.955,
+      0.99
+     ],
+     "minus_none": {
+      "difference": 0.0033333333333333335,
+      "ci95": [
+       -0.005833333333333334,
+       0.015
+      ]
+     }
+    },
+    "B3": {
+     "F": 0.98,
+     "ci95": [
+      0.9633333333333334,
+      0.9933333333333333
+     ],
+     "minus_none": {
+      "difference": 0.009166666666666667,
+      "ci95": [
+       0.0016666666666666668,
+       0.02
+      ]
+     }
+    }
+   },
+   "best_local": {
+    "none": {
+     "F": 0.95,
+     "ci95": [
+      0.93,
+      0.97
+     ]
+    },
+    "B2": {
+     "F": 0.9625,
+     "ci95": [
+      0.9425,
+      0.98
+     ],
+     "minus_none": {
+      "difference": 0.0125,
+      "ci95": [
+       0.0025,
+       0.025
+      ]
+     }
+    },
+    "B3": {
+     "F": 0.96,
+     "ci95": [
+      0.94,
+      0.9775
+     ],
+     "minus_none": {
+      "difference": 0.01,
+      "ci95": [
+       0.0025,
+       0.02
+      ]
+     }
+    }
+   }
+  },
+  "layers": {
+   "A_mix|0": {
+    "none": {
+     "F": 0.9575,
+     "failed": 17,
+     "repaired": 0,
+     "broken": 0,
+     "silenced_per_episode": 0.0,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 21634.1825,
+     "collision_share": 0.1852406486817794,
+     "failing_ues": 19,
+     "pairs": {
+      "entry": 9784,
+      "victim_entry": 9755,
+      "co_residence": 7335,
+      "both_new": 6465
+     }
+    },
+    "B2": {
+     "F": 0.9675,
+     "failed": 13,
+     "repaired": 5,
+     "broken": 1,
+     "silenced_per_episode": 4129.7425,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 19987.42,
+     "collision_share": 0.09627105449327628,
+     "failing_ues": 15,
+     "pairs": {
+      "entry": 422,
+      "victim_entry": 912,
+      "co_residence": 91,
+      "both_new": 11750
+     }
+    },
+    "B3": {
+     "F": 0.9775,
+     "failed": 9,
+     "repaired": 8,
+     "broken": 0,
+     "silenced_per_episode": 21.7475,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 21635.5825,
+     "collision_share": 0.18519815678639576,
+     "failing_ues": 11,
+     "pairs": {
+      "entry": 4929,
+      "victim_entry": 6300,
+      "co_residence": 4399,
+      "both_new": 5017
+     }
+    }
+   },
+   "A_mix|1": {
+    "none": {
+     "F": 0.97,
+     "failed": 12,
+     "repaired": 0,
+     "broken": 0,
+     "silenced_per_episode": 0.0,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 19490.085,
+     "collision_share": 0.10385665326754603,
+     "failing_ues": 13,
+     "pairs": {
+      "entry": 6252,
+      "victim_entry": 3075,
+      "co_residence": 1797,
+      "both_new": 4866
+     }
+    },
+    "B2": {
+     "F": 0.9825,
+     "failed": 7,
+     "repaired": 5,
+     "broken": 0,
+     "silenced_per_episode": 1544.565,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 18275.6075,
+     "collision_share": 0.05499215279163771,
+     "failing_ues": 8,
+     "pairs": {
+      "entry": 71,
+      "victim_entry": 268,
+      "co_residence": 18,
+      "both_new": 5094
+     }
+    },
+    "B3": {
+     "F": 0.9875,
+     "failed": 5,
+     "repaired": 7,
+     "broken": 0,
+     "silenced_per_episode": 13.8875,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 19487.115,
+     "collision_share": 0.10364887260120341,
+     "failing_ues": 6,
+     "pairs": {
+      "entry": 2737,
+      "victim_entry": 1635,
+      "co_residence": 768,
+      "both_new": 2297
+     }
+    }
+   },
+   "A_mix|2": {
+    "none": {
+     "F": 0.975,
+     "failed": 10,
+     "repaired": 0,
+     "broken": 0,
+     "silenced_per_episode": 0.0,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 20982.9525,
+     "collision_share": 0.11819809438161764,
+     "failing_ues": 11,
+     "pairs": {
+      "entry": 3796,
+      "victim_entry": 3161,
+      "co_residence": 2136,
+      "both_new": 3418
+     }
+    },
+    "B2": {
+     "F": 0.975,
+     "failed": 10,
+     "repaired": 1,
+     "broken": 1,
+     "silenced_per_episode": 2010.7475,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 19782.0425,
+     "collision_share": 0.057823654963839045,
+     "failing_ues": 11,
+     "pairs": {
+      "entry": 87,
+      "victim_entry": 324,
+      "co_residence": 15,
+      "both_new": 5413
+     }
+    },
+    "B3": {
+     "F": 0.985,
+     "failed": 6,
+     "repaired": 4,
+     "broken": 0,
+     "silenced_per_episode": 12.6975,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 20975.5075,
+     "collision_share": 0.1178966706765021,
+     "failing_ues": 6,
+     "pairs": {
+      "entry": 2132,
+      "victim_entry": 1443,
+      "co_residence": 1154,
+      "both_new": 1500
+     }
+    }
+   },
+   "M|0": {
+    "none": {
+     "F": 0.9675,
+     "failed": 13,
+     "repaired": 0,
+     "broken": 0,
+     "silenced_per_episode": 0.0,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 19520.1325,
+     "collision_share": 0.07979172272524278,
+     "failing_ues": 13,
+     "pairs": {
+      "entry": 4177,
+      "victim_entry": 2670,
+      "co_residence": 2531,
+      "both_new": 3876
+     }
+    },
+    "B2": {
+     "F": 0.9775,
+     "failed": 9,
+     "repaired": 5,
+     "broken": 1,
+     "silenced_per_episode": 1120.14,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 19392.7525,
+     "collision_share": 0.05994778203867656,
+     "failing_ues": 11,
+     "pairs": {
+      "entry": 81,
+      "victim_entry": 466,
+      "co_residence": 12,
+      "both_new": 7913
+     }
+    },
+    "B3": {
+     "F": 0.9825,
+     "failed": 7,
+     "repaired": 6,
+     "broken": 0,
+     "silenced_per_episode": 11.6225,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 19518.355,
+     "collision_share": 0.07969767431732848,
+     "failing_ues": 7,
+     "pairs": {
+      "entry": 1719,
+      "victim_entry": 1514,
+      "co_residence": 1345,
+      "both_new": 2302
+     }
+    }
+   },
+   "M|1": {
+    "none": {
+     "F": 0.9825,
+     "failed": 7,
+     "repaired": 0,
+     "broken": 0,
+     "silenced_per_episode": 0.0,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 18520.4525,
+     "collision_share": 0.07584115452902676,
+     "failing_ues": 7,
+     "pairs": {
+      "entry": 1808,
+      "victim_entry": 999,
+      "co_residence": 333,
+      "both_new": 2037
+     }
+    },
+    "B2": {
+     "F": 0.9825,
+     "failed": 7,
+     "repaired": 1,
+     "broken": 1,
+     "silenced_per_episode": 1416.0875,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 18127.0025,
+     "collision_share": 0.047246642129607476,
+     "failing_ues": 9,
+     "pairs": {
+      "entry": 50,
+      "victim_entry": 134,
+      "co_residence": 9,
+      "both_new": 6677
+     }
+    },
+    "B3": {
+     "F": 0.9875,
+     "failed": 5,
+     "repaired": 2,
+     "broken": 0,
+     "silenced_per_episode": 9.545,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 18519.115,
+     "collision_share": 0.07565588312400458,
+     "failing_ues": 5,
+     "pairs": {
+      "entry": 992,
+      "victim_entry": 729,
+      "co_residence": 232,
+      "both_new": 1946
+     }
+    }
+   },
+   "M|2": {
+    "none": {
+     "F": 0.9625,
+     "failed": 15,
+     "repaired": 0,
+     "broken": 0,
+     "silenced_per_episode": 0.0,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 22997.085,
+     "collision_share": 0.16721673638202406,
+     "failing_ues": 17,
+     "pairs": {
+      "entry": 9574,
+      "victim_entry": 5378,
+      "co_residence": 8357,
+      "both_new": 6462
+     }
+    },
+    "B2": {
+     "F": 0.9625,
+     "failed": 15,
+     "repaired": 2,
+     "broken": 2,
+     "silenced_per_episode": 3693.5775,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 21840.0125,
+     "collision_share": 0.08112873103895889,
+     "failing_ues": 17,
+     "pairs": {
+      "entry": 187,
+      "victim_entry": 634,
+      "co_residence": 40,
+      "both_new": 16596
+     }
+    },
+    "B3": {
+     "F": 0.97,
+     "failed": 12,
+     "repaired": 3,
+     "broken": 0,
+     "silenced_per_episode": 18.985,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 22998.855,
+     "collision_share": 0.16710842778912255,
+     "failing_ues": 14,
+     "pairs": {
+      "entry": 7018,
+      "victim_entry": 4160,
+      "co_residence": 5886,
+      "both_new": 6915
+     }
+    }
+   },
+   "best_local": {
+    "none": {
+     "F": 0.95,
+     "failed": 20,
+     "repaired": 0,
+     "broken": 0,
+     "silenced_per_episode": 0.0,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 19447.5575,
+     "collision_share": 0.11237388037032414,
+     "failing_ues": 22,
+     "pairs": {
+      "entry": 8449,
+      "victim_entry": 3058,
+      "co_residence": 8639,
+      "both_new": 6760
+     }
+    },
+    "B2": {
+     "F": 0.9625,
+     "failed": 15,
+     "repaired": 5,
+     "broken": 0,
+     "silenced_per_episode": 1699.3975,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 18791.6925,
+     "collision_share": 0.06961799742093482,
+     "failing_ues": 17,
+     "pairs": {
+      "entry": 356,
+      "victim_entry": 189,
+      "co_residence": 165,
+      "both_new": 8273
+     }
+    },
+    "B3": {
+     "F": 0.96,
+     "failed": 16,
+     "repaired": 4,
+     "broken": 0,
+     "silenced_per_episode": 22.89,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 19443.725,
+     "collision_share": 0.11170544738726762,
+     "failing_ues": 18,
+     "pairs": {
+      "entry": 6611,
+      "victim_entry": 2384,
+      "co_residence": 6378,
+      "both_new": 5844
+     }
+    }
+   }
+  },
+  "visibility": {
+   "A_mix": {
+    "choice_rate_free": 0.2819177150927461,
+    "relative_choice_rate": {
+     "<3|calm": 0.9170433588943374,
+     "3-10|calm": 0.7184215350560671,
+     "10-20|calm": 0.5856205610997314,
+     ">=20|calm": 0.7330579949756748,
+     "<3|urgent": 0.8670919438328939,
+     "3-10|urgent": 0.7863288329055566,
+     "10-20|urgent": 0.895592686062834,
+     ">=20|urgent": 0.9521255255040394
+    },
+    "available_share": {
+     "free": 0.8041327485512676,
+     "<3|calm": 0.014631575658477145,
+     "3-10|calm": 0.04895762943939462,
+     "10-20|calm": 0.07817230894774148,
+     ">=20|calm": 0.05350785308238921,
+     "<3|urgent": 0.00039507709725422396,
+     "3-10|urgent": 0.0001406123547974654,
+     "10-20|urgent": 2.9602601009992715e-05,
+     ">=20|urgent": 3.259226766828668e-05
+    },
+    "pair_share": {
+     "entry": 0.3206985769728331,
+     "victim_entry": 0.25858667529107376,
+     "co_residence": 0.18221216041397154,
+     "both_new": 0.2385025873221216
+    },
+    "entries": 19832,
+    "entry_share": {
+     "excess|<3": 0.14421137555465913,
+     "excess|3-10": 0.8218535699878984,
+     "excess|10-20": 0.01583299717628076,
+     "excess|>=20": 0.01810205728116176,
+     "free_subchannel_existed": 0.971107301331182,
+     "best_own_channel": 0.6012505042355789,
+     "entering_urgent": 0.008874546187979023
+    }
+   },
+   "M": {
+    "choice_rate_free": 0.29945346263974437,
+    "relative_choice_rate": {
+     "<3|calm": 0.7980364664926702,
+     "3-10|calm": 0.523909233796627,
+     "10-20|calm": 0.332760961646744,
+     ">=20|calm": 0.21663379206358974,
+     "<3|urgent": 0.8134056701646399,
+     "3-10|urgent": 0.6434420647802425,
+     "10-20|urgent": 0.40048915074281066,
+     ">=20|urgent": 0.3280613602571329
+    },
+    "available_share": {
+     "free": 0.8008113284706356,
+     "<3|calm": 0.014030760930438448,
+     "3-10|calm": 0.05915492542005781,
+     "10-20|calm": 0.0745824937080006,
+     ">=20|calm": 0.05088567277240508,
+     "<3|urgent": 0.00035636235632813593,
+     "3-10|urgent": 0.00012372372696890078,
+     "10-20|urgent": 2.7741531178429225e-05,
+     ">=20|urgent": 2.699108398694782e-05
+    },
+    "pair_share": {
+     "entry": 0.32278743620596656,
+     "victim_entry": 0.1876893074976142,
+     "co_residence": 0.232791170490851,
+     "both_new": 0.2567320858055682
+    },
+    "entries": 15559,
+    "entry_share": {
+     "excess|<3": 0.14608908027508194,
+     "excess|3-10": 0.8294234847997943,
+     "excess|10-20": 0.014718169548171477,
+     "excess|>=20": 0.009769265376952246,
+     "free_subchannel_existed": 0.9552670480107976,
+     "best_own_channel": 0.647021016774857,
+     "entering_urgent": 0.00989780834243846
+    }
+   },
+   "best_local": {
+    "choice_rate_free": 0.3003595299563671,
+    "relative_choice_rate": {
+     "<3|calm": 0.7002392695457729,
+     "3-10|calm": 0.4409787058255885,
+     "10-20|calm": 0.31463651691870903,
+     ">=20|calm": 0.30022995508168215,
+     "<3|urgent": 0.7915260528736316,
+     "3-10|urgent": 0.6798922273096707,
+     "10-20|urgent": 0.30788598264768596,
+     ">=20|urgent": 0.24276461838004337
+    },
+    "available_share": {
+     "free": 0.8138904105004211,
+     "<3|calm": 0.003108029460382628,
+     "3-10|calm": 0.04505564263760048,
+     "10-20|calm": 0.08356603763059982,
+     ">=20|calm": 0.05362719339837525,
+     "<3|urgent": 0.00047176775311589473,
+     "3-10|urgent": 0.00019776611312236547,
+     "10-20|urgent": 4.745196696956343e-05,
+     ">=20|urgent": 3.5700539412837694e-05
+    },
+    "pair_share": {
+     "entry": 0.3140191778785401,
+     "victim_entry": 0.11365494685200327,
+     "co_residence": 0.32108079982160115,
+     "both_new": 0.2512450754478555
+    },
+    "entries": 8449,
+    "entry_share": {
+     "excess|<3": 0.24133033495088177,
+     "excess|3-10": 0.728251864125932,
+     "excess|10-20": 0.018582080719611788,
+     "excess|>=20": 0.011835720203574387,
+     "free_subchannel_existed": 0.9256716771215528,
+     "best_own_channel": 0.5317789087465973,
+     "entering_urgent": 0.008758432950645047
+    }
+   }
+  }
+ },
+ "8": {
+  "infeasible_for_all": [
+   1259,
+   1395
+  ],
+  "groups": {
+   "A_mix": {
+    "none": {
+     "F": 0.9225,
+     "ci95": [
+      0.8958125,
+      0.9483333333333334
+     ]
+    },
+    "B2": {
+     "F": 0.8883333333333333,
+     "ci95": [
+      0.8566666666666667,
+      0.9208541666666665
+     ],
+     "minus_none": {
+      "difference": -0.034166666666666665,
+      "ci95": [
+       -0.055,
+       -0.015
+      ]
+     }
+    },
+    "B3": {
+     "F": 0.9491666666666667,
+     "ci95": [
+      0.9266666666666666,
+      0.97
+     ],
+     "minus_none": {
+      "difference": 0.02666666666666667,
+      "ci95": [
+       0.014166666666666666,
+       0.04
+      ]
+     }
+    },
+    "B2r": {
+     "F": 0.8158333333333333,
+     "ci95": [
+      0.76,
+      0.88
+     ],
+     "minus_none": {
+      "difference": -0.10666666666666667,
+      "ci95": [
+       -0.155,
+       -0.058312500000000114
+      ]
+     }
+    },
+    "B3r": {
+     "F": 0.9458333333333333,
+     "ci95": [
+      0.9216666666666666,
+      0.9683333333333334
+     ],
+     "minus_none": {
+      "difference": 0.023333333333333334,
+      "ci95": [
+       0.009166666666666667,
+       0.04
+      ]
+     }
+    }
+   },
+   "M": {
+    "none": {
+     "F": 0.9308333333333333,
+     "ci95": [
+      0.9033333333333333,
+      0.9575
+     ]
+    },
+    "B2": {
+     "F": 0.8775,
+     "ci95": [
+      0.8075,
+      0.94
+     ],
+     "minus_none": {
+      "difference": -0.05333333333333334,
+      "ci95": [
+       -0.11166666666666666,
+       -0.008333333333333333
+      ]
+     }
+    },
+    "B3": {
+     "F": 0.9458333333333333,
+     "ci95": [
+      0.9191666666666667,
+      0.9708541666666666
+     ],
+     "minus_none": {
+      "difference": 0.015,
+      "ci95": [
+       0.004166666666666667,
+       0.0275
+      ]
+     }
+    },
+    "B2r": {
+     "F": 0.7116666666666667,
+     "ci95": [
+      0.5891249999999999,
+      0.8058333333333333
+     ],
+     "minus_none": {
+      "difference": -0.21916666666666668,
+      "ci95": [
+       -0.3325,
+       -0.1375
+      ]
+     }
+    },
+    "B3r": {
+     "F": 0.9483333333333334,
+     "ci95": [
+      0.9225,
+      0.9716874999999999
+     ],
+     "minus_none": {
+      "difference": 0.0175,
+      "ci95": [
+       0.0075,
+       0.028333333333333332
+      ]
+     }
+    }
+   },
+   "best_local": {
+    "none": {
+     "F": 0.8575,
+     "ci95": [
+      0.8225,
+      0.89
+     ]
+    },
+    "B2": {
+     "F": 0.8575,
+     "ci95": [
+      0.8225,
+      0.8925
+     ],
+     "minus_none": {
+      "difference": 0.0,
+      "ci95": [
+       -0.0175,
+       0.0175
+      ]
+     }
+    },
+    "B3": {
+     "F": 0.905,
+     "ci95": [
+      0.875,
+      0.935
+     ],
+     "minus_none": {
+      "difference": 0.0475,
+      "ci95": [
+       0.0275,
+       0.07
+      ]
+     }
+    },
+    "B2r": {
+     "F": 0.755,
+     "ci95": [
+      0.7149375,
+      0.7975
+     ],
+     "minus_none": {
+      "difference": -0.1025,
+      "ci95": [
+       -0.1375,
+       -0.07
+      ]
+     }
+    },
+    "B3r": {
+     "F": 0.9025,
+     "ci95": [
+      0.8725,
+      0.93
+     ],
+     "minus_none": {
+      "difference": 0.045,
+      "ci95": [
+       0.025,
+       0.065
+      ]
+     }
+    }
+   }
+  },
+  "layers": {
+   "A_mix|0": {
+    "none": {
+     "F": 0.9175,
+     "failed": 33,
+     "repaired": 0,
+     "broken": 0,
+     "silenced_per_episode": 0.0,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 26027.7325,
+     "collision_share": 0.1323212654041223,
+     "failing_ues": 36,
+     "pairs": {
+      "entry": 15697,
+      "victim_entry": 17253,
+      "co_residence": 9194,
+      "both_new": 19442
+     }
+    },
+    "B2": {
+     "F": 0.8725,
+     "failed": 51,
+     "repaired": 1,
+     "broken": 19,
+     "silenced_per_episode": 2815.065,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 25822.35,
+     "collision_share": 0.11322991517038535,
+     "failing_ues": 60,
+     "pairs": {
+      "entry": 979,
+      "victim_entry": 4105,
+      "co_residence": 202,
+      "both_new": 73053
+     }
+    },
+    "B3": {
+     "F": 0.9425,
+     "failed": 23,
+     "repaired": 10,
+     "broken": 0,
+     "silenced_per_episode": 42.6825,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 26026.8725,
+     "collision_share": 0.13198733347619848,
+     "failing_ues": 25,
+     "pairs": {
+      "entry": 10646,
+      "victim_entry": 12766,
+      "co_residence": 5578,
+      "both_new": 15769
+     }
+    },
+    "B2r": {
+     "F": 0.775,
+     "failed": 90,
+     "repaired": 1,
+     "broken": 58,
+     "silenced_per_episode": 87.235,
+     "moved_per_episode": 3492.04,
+     "transmissions_per_episode": 28516.12,
+     "collision_share": 0.20503876403942753,
+     "failing_ues": 118,
+     "pairs": {
+      "entry": 1314,
+      "victim_entry": 4828,
+      "co_residence": 381,
+      "both_new": 417605
+     }
+    },
+    "B3r": {
+     "F": 0.935,
+     "failed": 26,
+     "repaired": 8,
+     "broken": 1,
+     "silenced_per_episode": 0.0,
+     "moved_per_episode": 34.36,
+     "transmissions_per_episode": 26045.16,
+     "collision_share": 0.1325997805350399,
+     "failing_ues": 27,
+     "pairs": {
+      "entry": 10695,
+      "victim_entry": 13364,
+      "co_residence": 5757,
+      "both_new": 16973
+     }
+    }
+   },
+   "A_mix|1": {
+    "none": {
+     "F": 0.915,
+     "failed": 34,
+     "repaired": 0,
+     "broken": 0,
+     "silenced_per_episode": 0.0,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 30191.73,
+     "collision_share": 0.19194817587465177,
+     "failing_ues": 38,
+     "pairs": {
+      "entry": 33087,
+      "victim_entry": 16891,
+      "co_residence": 9377,
+      "both_new": 24121
+     }
+    },
+    "B2": {
+     "F": 0.885,
+     "failed": 46,
+     "repaired": 3,
+     "broken": 15,
+     "silenced_per_episode": 4860.89,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 28668.925,
+     "collision_share": 0.13092337783854818,
+     "failing_ues": 54,
+     "pairs": {
+      "entry": 842,
+      "victim_entry": 3067,
+      "co_residence": 122,
+      "both_new": 73360
+     }
+    },
+    "B3": {
+     "F": 0.945,
+     "failed": 22,
+     "repaired": 12,
+     "broken": 0,
+     "silenced_per_episode": 45.4475,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 30190.1175,
+     "collision_share": 0.1914243129394909,
+     "failing_ues": 25,
+     "pairs": {
+      "entry": 21775,
+      "victim_entry": 12081,
+      "co_residence": 5239,
+      "both_new": 17610
+     }
+    },
+    "B2r": {
+     "F": 0.7975,
+     "failed": 81,
+     "repaired": 4,
+     "broken": 51,
+     "silenced_per_episode": 160.18,
+     "moved_per_episode": 5888.335,
+     "transmissions_per_episode": 33442.835,
+     "collision_share": 0.26375275899905015,
+     "failing_ues": 136,
+     "pairs": {
+      "entry": 2596,
+      "victim_entry": 4746,
+      "co_residence": 526,
+      "both_new": 911657
+     }
+    },
+    "B3r": {
+     "F": 0.9475,
+     "failed": 21,
+     "repaired": 13,
+     "broken": 0,
+     "silenced_per_episode": 0.0,
+     "moved_per_episode": 35.5675,
+     "transmissions_per_episode": 30213.925,
+     "collision_share": 0.1921665258651433,
+     "failing_ues": 24,
+     "pairs": {
+      "entry": 20216,
+      "victim_entry": 11847,
+      "co_residence": 4933,
+      "both_new": 17809
+     }
+    }
+   },
+   "A_mix|2": {
+    "none": {
+     "F": 0.935,
+     "failed": 26,
+     "repaired": 0,
+     "broken": 0,
+     "silenced_per_episode": 0.0,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 29831.65,
+     "collision_share": 0.1870825113595795,
+     "failing_ues": 29,
+     "pairs": {
+      "entry": 17668,
+      "victim_entry": 12235,
+      "co_residence": 8640,
+      "both_new": 13458
+     }
+    },
+    "B2": {
+     "F": 0.9075,
+     "failed": 37,
+     "repaired": 3,
+     "broken": 14,
+     "silenced_per_episode": 4754.1175,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 27544.085,
+     "collision_share": 0.11064771256696311,
+     "failing_ues": 43,
+     "pairs": {
+      "entry": 797,
+      "victim_entry": 1126,
+      "co_residence": 71,
+      "both_new": 42431
+     }
+    },
+    "B3": {
+     "F": 0.96,
+     "failed": 16,
+     "repaired": 10,
+     "broken": 0,
+     "silenced_per_episode": 40.6875,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 29830.66,
+     "collision_share": 0.1870544433143618,
+     "failing_ues": 17,
+     "pairs": {
+      "entry": 8842,
+      "victim_entry": 7896,
+      "co_residence": 4740,
+      "both_new": 10569
+     }
+    },
+    "B2r": {
+     "F": 0.875,
+     "failed": 50,
+     "repaired": 2,
+     "broken": 26,
+     "silenced_per_episode": 138.7,
+     "moved_per_episode": 5155.6725,
+     "transmissions_per_episode": 30790.205,
+     "collision_share": 0.19496581786318085,
+     "failing_ues": 66,
+     "pairs": {
+      "entry": 768,
+      "victim_entry": 1614,
+      "co_residence": 177,
+      "both_new": 253038
+     }
+    },
+    "B3r": {
+     "F": 0.955,
+     "failed": 18,
+     "repaired": 9,
+     "broken": 1,
+     "silenced_per_episode": 0.0,
+     "moved_per_episode": 33.0375,
+     "transmissions_per_episode": 29843.865,
+     "collision_share": 0.18736279634021935,
+     "failing_ues": 20,
+     "pairs": {
+      "entry": 11213,
+      "victim_entry": 8497,
+      "co_residence": 5507,
+      "both_new": 11294
+     }
+    }
+   },
+   "M|0": {
+    "none": {
+     "F": 0.9325,
+     "failed": 27,
+     "repaired": 0,
+     "broken": 0,
+     "silenced_per_episode": 0.0,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 27779.78,
+     "collision_share": 0.14381818358532716,
+     "failing_ues": 31,
+     "pairs": {
+      "entry": 16745,
+      "victim_entry": 10887,
+      "co_residence": 8721,
+      "both_new": 19260
+     }
+    },
+    "B2": {
+     "F": 0.8975,
+     "failed": 41,
+     "repaired": 4,
+     "broken": 18,
+     "silenced_per_episode": 3204.9375,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 27895.455,
+     "collision_share": 0.1301137586750243,
+     "failing_ues": 48,
+     "pairs": {
+      "entry": 696,
+      "victim_entry": 1620,
+      "co_residence": 188,
+      "both_new": 73111
+     }
+    },
+    "B3": {
+     "F": 0.9425,
+     "failed": 23,
+     "repaired": 4,
+     "broken": 0,
+     "silenced_per_episode": 35.26,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 27786.5925,
+     "collision_share": 0.14394055334420727,
+     "failing_ues": 26,
+     "pairs": {
+      "entry": 13121,
+      "victim_entry": 8440,
+      "co_residence": 6882,
+      "both_new": 18086
+     }
+    },
+    "B2r": {
+     "F": 0.7675,
+     "failed": 93,
+     "repaired": 3,
+     "broken": 69,
+     "silenced_per_episode": 121.845,
+     "moved_per_episode": 3555.7275,
+     "transmissions_per_episode": 30717.62,
+     "collision_share": 0.22313325381328372,
+     "failing_ues": 129,
+     "pairs": {
+      "entry": 937,
+      "victim_entry": 2935,
+      "co_residence": 349,
+      "both_new": 548638
+     }
+    },
+    "B3r": {
+     "F": 0.9525,
+     "failed": 19,
+     "repaired": 8,
+     "broken": 0,
+     "silenced_per_episode": 0.0,
+     "moved_per_episode": 28.9575,
+     "transmissions_per_episode": 27795.025,
+     "collision_share": 0.14422688952429435,
+     "failing_ues": 21,
+     "pairs": {
+      "entry": 10027,
+      "victim_entry": 7859,
+      "co_residence": 5533,
+      "both_new": 15888
+     }
+    }
+   },
+   "M|1": {
+    "none": {
+     "F": 0.945,
+     "failed": 22,
+     "repaired": 0,
+     "broken": 0,
+     "silenced_per_episode": 0.0,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 26706.9975,
+     "collision_share": 0.13742793438311438,
+     "failing_ues": 25,
+     "pairs": {
+      "entry": 13459,
+      "victim_entry": 6330,
+      "co_residence": 2335,
+      "both_new": 16870
+     }
+    },
+    "B2": {
+     "F": 0.9325,
+     "failed": 27,
+     "repaired": 4,
+     "broken": 9,
+     "silenced_per_episode": 3899.91,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 26109.16,
+     "collision_share": 0.1044349952277285,
+     "failing_ues": 31,
+     "pairs": {
+      "entry": 508,
+      "victim_entry": 525,
+      "co_residence": 36,
+      "both_new": 44071
+     }
+    },
+    "B3": {
+     "F": 0.965,
+     "failed": 14,
+     "repaired": 9,
+     "broken": 1,
+     "silenced_per_episode": 32.9125,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 26715.915,
+     "collision_share": 0.13756472499631775,
+     "failing_ues": 15,
+     "pairs": {
+      "entry": 6597,
+      "victim_entry": 4114,
+      "co_residence": 1105,
+      "both_new": 12345
+     }
+    },
+    "B2r": {
+     "F": 0.785,
+     "failed": 86,
+     "repaired": 3,
+     "broken": 67,
+     "silenced_per_episode": 97.6775,
+     "moved_per_episode": 3611.7275,
+     "transmissions_per_episode": 29026.24,
+     "collision_share": 0.20269590549792188,
+     "failing_ues": 153,
+     "pairs": {
+      "entry": 1406,
+      "victim_entry": 2648,
+      "co_residence": 311,
+      "both_new": 670766
+     }
+    },
+    "B3r": {
+     "F": 0.9625,
+     "failed": 15,
+     "repaired": 7,
+     "broken": 0,
+     "silenced_per_episode": 0.0,
+     "moved_per_episode": 25.485,
+     "transmissions_per_episode": 26719.0825,
+     "collision_share": 0.1377585663729284,
+     "failing_ues": 17,
+     "pairs": {
+      "entry": 7995,
+      "victim_entry": 4740,
+      "co_residence": 1568,
+      "both_new": 14696
+     }
+    }
+   },
+   "M|2": {
+    "none": {
+     "F": 0.915,
+     "failed": 34,
+     "repaired": 0,
+     "broken": 0,
+     "silenced_per_episode": 0.0,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 31659.8125,
+     "collision_share": 0.24303310387577312,
+     "failing_ues": 37,
+     "pairs": {
+      "entry": 31129,
+      "victim_entry": 15362,
+      "co_residence": 20896,
+      "both_new": 23826
+     }
+    },
+    "B2": {
+     "F": 0.8025,
+     "failed": 79,
+     "repaired": 0,
+     "broken": 45,
+     "silenced_per_episode": 8339.4925,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 30355.205,
+     "collision_share": 0.16330115378894658,
+     "failing_ues": 104,
+     "pairs": {
+      "entry": 2573,
+      "victim_entry": 3363,
+      "co_residence": 370,
+      "both_new": 205740
+     }
+    },
+    "B3": {
+     "F": 0.93,
+     "failed": 28,
+     "repaired": 7,
+     "broken": 1,
+     "silenced_per_episode": 58.4425,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 31681.6425,
+     "collision_share": 0.2433483365011773,
+     "failing_ues": 31,
+     "pairs": {
+      "entry": 25388,
+      "victim_entry": 12417,
+      "co_residence": 16520,
+      "both_new": 24914
+     }
+    },
+    "B2r": {
+     "F": 0.5825,
+     "failed": 167,
+     "repaired": 0,
+     "broken": 133,
+     "silenced_per_episode": 201.2475,
+     "moved_per_episode": 8526.1675,
+     "transmissions_per_episode": 36916.1575,
+     "collision_share": 0.3350847118907216,
+     "failing_ues": 300,
+     "pairs": {
+      "entry": 4708,
+      "victim_entry": 8341,
+      "co_residence": 1299,
+      "both_new": 2294582
+     }
+    },
+    "B3r": {
+     "F": 0.93,
+     "failed": 28,
+     "repaired": 6,
+     "broken": 0,
+     "silenced_per_episode": 0.0,
+     "moved_per_episode": 45.86,
+     "transmissions_per_episode": 31684.7525,
+     "collision_share": 0.2435632880515636,
+     "failing_ues": 31,
+     "pairs": {
+      "entry": 24627,
+      "victim_entry": 12346,
+      "co_residence": 16188,
+      "both_new": 24846
+     }
+    }
+   },
+   "best_local": {
+    "none": {
+     "F": 0.8575,
+     "failed": 57,
+     "repaired": 0,
+     "broken": 0,
+     "silenced_per_episode": 0.0,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 28434.28,
+     "collision_share": 0.18953196634484853,
+     "failing_ues": 61,
+     "pairs": {
+      "entry": 36180,
+      "victim_entry": 11606,
+      "co_residence": 37242,
+      "both_new": 34871
+     }
+    },
+    "B2": {
+     "F": 0.8575,
+     "failed": 57,
+     "repaired": 7,
+     "broken": 7,
+     "silenced_per_episode": 4636.755,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 27680.1725,
+     "collision_share": 0.15314201889457155,
+     "failing_ues": 66,
+     "pairs": {
+      "entry": 2111,
+      "victim_entry": 923,
+      "co_residence": 843,
+      "both_new": 82883
+     }
+    },
+    "B3": {
+     "F": 0.905,
+     "failed": 38,
+     "repaired": 19,
+     "broken": 0,
+     "silenced_per_episode": 80.365,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 28428.205,
+     "collision_share": 0.18828756511359054,
+     "failing_ues": 42,
+     "pairs": {
+      "entry": 25117,
+      "victim_entry": 7897,
+      "co_residence": 24154,
+      "both_new": 25649
+     }
+    },
+    "B2r": {
+     "F": 0.755,
+     "failed": 98,
+     "repaired": 5,
+     "broken": 46,
+     "silenced_per_episode": 126.8075,
+     "moved_per_episode": 5309.3225,
+     "transmissions_per_episode": 32089.885,
+     "collision_share": 0.29881425252848365,
+     "failing_ues": 144,
+     "pairs": {
+      "entry": 1702,
+      "victim_entry": 1531,
+      "co_residence": 2151,
+      "both_new": 732536
+     }
+    },
+    "B3r": {
+     "F": 0.9025,
+     "failed": 39,
+     "repaired": 18,
+     "broken": 0,
+     "silenced_per_episode": 0.0,
+     "moved_per_episode": 62.28,
+     "transmissions_per_episode": 28457.97,
+     "collision_share": 0.18928089389369657,
+     "failing_ues": 42,
+     "pairs": {
+      "entry": 24497,
+      "victim_entry": 7864,
+      "co_residence": 23745,
+      "both_new": 26363
+     }
+    }
+   }
+  },
+  "visibility": {
+   "A_mix": {
+    "choice_rate_free": 0.3162557265485477,
+    "relative_choice_rate": {
+     "<3|calm": 0.9230053751875867,
+     "3-10|calm": 0.5526104938487947,
+     "10-20|calm": 0.34272048248193493,
+     ">=20|calm": 0.44491881905195896,
+     "<3|urgent": 0.8299161647154166,
+     "3-10|urgent": 0.6370921549083958,
+     "10-20|urgent": 0.3469741482408217,
+     ">=20|urgent": 0.5061451471399669
+    },
+    "available_share": {
+     "free": 0.7118798647320776,
+     "<3|calm": 0.014954275205228454,
+     "3-10|calm": 0.07464570998781689,
+     "10-20|calm": 0.11897885741308788,
+     ">=20|calm": 0.0782704511573892,
+     "<3|urgent": 0.0006619354540611901,
+     "3-10|urgent": 0.00039479109444233874,
+     "10-20|urgent": 0.00012073926384268836,
+     ">=20|urgent": 9.337569205369199e-05
+    },
+    "pair_share": {
+     "entry": 0.3372119575973166,
+     "victim_entry": 0.23535113136408153,
+     "co_residence": 0.13808274511196927,
+     "both_new": 0.2893541659266326
+    },
+    "entries": 66452,
+    "entry_share": {
+     "excess|<3": 0.13199000782519713,
+     "excess|3-10": 0.8402756877144405,
+     "excess|10-20": 0.01438632396316138,
+     "excess|>=20": 0.013347980497200988,
+     "free_subchannel_existed": 0.9383163787395413,
+     "best_own_channel": 0.5784476012761091,
+     "entering_urgent": 0.007840245590802384
+    }
+   },
+   "M": {
+    "choice_rate_free": 0.3211212623229412,
+    "relative_choice_rate": {
+     "<3|calm": 0.806702384130163,
+     "3-10|calm": 0.5381906656126645,
+     "10-20|calm": 0.3447683720431074,
+     ">=20|calm": 0.23545252424423008,
+     "<3|urgent": 0.8263593382646796,
+     "3-10|urgent": 0.6463812146191511,
+     "10-20|urgent": 0.3874569888702294,
+     ">=20|urgent": 0.2866586717970853
+    },
+    "available_share": {
+     "free": 0.712669450714143,
+     "<3|calm": 0.01478007450240238,
+     "3-10|calm": 0.08473098549640388,
+     "10-20|calm": 0.11134382038387652,
+     ">=20|calm": 0.07528990789391585,
+     "<3|urgent": 0.0006606162707150158,
+     "3-10|urgent": 0.0003588311306979169,
+     "10-20|urgent": 9.496380051020445e-05,
+     ">=20|urgent": 7.134980733520708e-05
+    },
+    "pair_share": {
+     "entry": 0.3300667312452911,
+     "victim_entry": 0.1753255838983963,
+     "co_residence": 0.17195135076956194,
+     "both_new": 0.3226563340867506
+    },
+    "entries": 61333,
+    "entry_share": {
+     "excess|<3": 0.1446040467611237,
+     "excess|3-10": 0.8241240441524139,
+     "excess|10-20": 0.01938597492377676,
+     "excess|>=20": 0.011885934162685666,
+     "free_subchannel_existed": 0.9211517453899206,
+     "best_own_channel": 0.6410578318360426,
+     "entering_urgent": 0.00906526665905793
+    }
+   },
+   "best_local": {
+    "choice_rate_free": 0.32569379776176527,
+    "relative_choice_rate": {
+     "<3|calm": 0.7933190748583492,
+     "3-10|calm": 0.47141381173279534,
+     "10-20|calm": 0.2937441739555303,
+     ">=20|calm": 0.267839348869795,
+     "<3|urgent": 0.7740712606887235,
+     "3-10|urgent": 0.5953937665422685,
+     "10-20|urgent": 0.3043836340119464,
+     ">=20|urgent": 0.25727766099851723
+    },
+    "available_share": {
+     "free": 0.7206169050965666,
+     "<3|calm": 0.00883916474608591,
+     "3-10|calm": 0.07981213044343753,
+     "10-20|calm": 0.12080722389722089,
+     ">=20|calm": 0.06802646138645321,
+     "<3|urgent": 0.0009369701656801214,
+     "3-10|urgent": 0.0006458861602886009,
+     "10-20|urgent": 0.00020722077348958888,
+     ">=20|urgent": 0.0001080373307775773
+    },
+    "pair_share": {
+     "entry": 0.301753976263355,
+     "victim_entry": 0.09679813843318126,
+     "co_residence": 0.31061143128800073,
+     "both_new": 0.29083645401546304
+    },
+    "entries": 36180,
+    "entry_share": {
+     "excess|<3": 0.21840796019900496,
+     "excess|3-10": 0.732808181315644,
+     "excess|10-20": 0.03430071862907684,
+     "excess|>=20": 0.014483139856274184,
+     "free_subchannel_existed": 0.9024046434494196,
+     "best_own_channel": 0.5282476506357103,
+     "entering_urgent": 0.004256495301271421
+    }
+   }
+  }
+ },
+ "10": {
+  "infeasible_for_all": [
+   1259,
+   1395
+  ],
+  "groups": {
+   "A_mix": {
+    "none": {
+     "F": 0.8383333333333334,
+     "ci95": [
+      0.8008333333333333,
+      0.8733541666666665
+     ]
+    },
+    "B2": {
+     "F": 0.6308333333333334,
+     "ci95": [
+      0.5591666666666667,
+      0.7158541666666666
+     ],
+     "minus_none": {
+      "difference": -0.2075,
+      "ci95": [
+       -0.28,
+       -0.1275
+      ]
+     }
+    },
+    "B3": {
+     "F": 0.885,
+     "ci95": [
+      0.8558125,
+      0.915
+     ],
+     "minus_none": {
+      "difference": 0.04666666666666667,
+      "ci95": [
+       0.024145833333333335,
+       0.07333333333333333
+      ]
+     }
+    }
+   },
+   "M": {
+    "none": {
+     "F": 0.8625,
+     "ci95": [
+      0.825,
+      0.9016666666666666
+     ]
+    },
+    "B2": {
+     "F": 0.5383333333333333,
+     "ci95": [
+      0.34,
+      0.725
+     ],
+     "minus_none": {
+      "difference": -0.32416666666666666,
+      "ci95": [
+       -0.5,
+       -0.16
+      ]
+     }
+    },
+    "B3": {
+     "F": 0.89,
+     "ci95": [
+      0.8525,
+      0.9283333333333333
+     ],
+     "minus_none": {
+      "difference": 0.0275,
+      "ci95": [
+       0.0125,
+       0.04416666666666667
+      ]
+     }
+    }
+   },
+   "best_local": {
+    "none": {
+     "F": 0.695,
+     "ci95": [
+      0.65,
+      0.74
+     ]
+    },
+    "B2": {
+     "F": 0.435,
+     "ci95": [
+      0.385,
+      0.4825
+     ],
+     "minus_none": {
+      "difference": -0.26,
+      "ci95": [
+       -0.3025,
+       -0.22
+      ]
+     }
+    },
+    "B3": {
+     "F": 0.8125,
+     "ci95": [
+      0.7725,
+      0.85
+     ],
+     "minus_none": {
+      "difference": 0.1175,
+      "ci95": [
+       0.0875,
+       0.1525
+      ]
+     }
+    }
+   }
+  },
+  "layers": {
+   "A_mix|0": {
+    "none": {
+     "F": 0.85,
+     "failed": 60,
+     "repaired": 0,
+     "broken": 0,
+     "silenced_per_episode": 0.0,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 34436.55,
+     "collision_share": 0.19256690928678977,
+     "failing_ues": 67,
+     "pairs": {
+      "entry": 45484,
+      "victim_entry": 47618,
+      "co_residence": 26884,
+      "both_new": 58243
+     }
+    },
+    "B2": {
+     "F": 0.595,
+     "failed": 162,
+     "repaired": 0,
+     "broken": 102,
+     "silenced_per_episode": 6630.9225,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 35396.45,
+     "collision_share": 0.2064591223131133,
+     "failing_ues": 273,
+     "pairs": {
+      "entry": 9747,
+      "victim_entry": 18443,
+      "co_residence": 1246,
+      "both_new": 672750
+     }
+    },
+    "B3": {
+     "F": 0.875,
+     "failed": 50,
+     "repaired": 10,
+     "broken": 0,
+     "silenced_per_episode": 103.505,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 34475.075,
+     "collision_share": 0.19308761474775618,
+     "failing_ues": 56,
+     "pairs": {
+      "entry": 36908,
+      "victim_entry": 40729,
+      "co_residence": 19416,
+      "both_new": 55997
+     }
+    }
+   },
+   "A_mix|1": {
+    "none": {
+     "F": 0.8275,
+     "failed": 69,
+     "repaired": 0,
+     "broken": 0,
+     "silenced_per_episode": 0.0,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 38258.7625,
+     "collision_share": 0.23735752038503596,
+     "failing_ues": 77,
+     "pairs": {
+      "entry": 77969,
+      "victim_entry": 53008,
+      "co_residence": 32257,
+      "both_new": 74323
+     }
+    },
+    "B2": {
+     "F": 0.585,
+     "failed": 166,
+     "repaired": 1,
+     "broken": 98,
+     "silenced_per_episode": 11307.645,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 40705.5,
+     "collision_share": 0.26808502536512263,
+     "failing_ues": 417,
+     "pairs": {
+      "entry": 23620,
+      "victim_entry": 23498,
+      "co_residence": 5303,
+      "both_new": 2092778
+     }
+    },
+    "B3": {
+     "F": 0.89,
+     "failed": 44,
+     "repaired": 25,
+     "broken": 0,
+     "silenced_per_episode": 124.5325,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 38299.0075,
+     "collision_share": 0.23775772779490434,
+     "failing_ues": 49,
+     "pairs": {
+      "entry": 49004,
+      "victim_entry": 35194,
+      "co_residence": 18966,
+      "both_new": 57941
+     }
+    }
+   },
+   "A_mix|2": {
+    "none": {
+     "F": 0.8375,
+     "failed": 65,
+     "repaired": 0,
+     "broken": 0,
+     "silenced_per_episode": 0.0,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 34898.325,
+     "collision_share": 0.21650165158356455,
+     "failing_ues": 74,
+     "pairs": {
+      "entry": 51205,
+      "victim_entry": 53062,
+      "co_residence": 36607,
+      "both_new": 50011
+     }
+    },
+    "B2": {
+     "F": 0.7125,
+     "failed": 115,
+     "repaired": 1,
+     "broken": 51,
+     "silenced_per_episode": 8143.1975,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 34322.5575,
+     "collision_share": 0.1810550539539485,
+     "failing_ues": 166,
+     "pairs": {
+      "entry": 5920,
+      "victim_entry": 11414,
+      "co_residence": 1195,
+      "both_new": 326153
+     }
+    },
+    "B3": {
+     "F": 0.89,
+     "failed": 44,
+     "repaired": 21,
+     "broken": 0,
+     "silenced_per_episode": 107.585,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 34944.1925,
+     "collision_share": 0.2168202913831819,
+     "failing_ues": 50,
+     "pairs": {
+      "entry": 35980,
+      "victim_entry": 37687,
+      "co_residence": 23243,
+      "both_new": 38963
+     }
+    }
+   },
+   "M|0": {
+    "none": {
+     "F": 0.86,
+     "failed": 56,
+     "repaired": 0,
+     "broken": 0,
+     "silenced_per_episode": 0.0,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 36641.5975,
+     "collision_share": 0.21191359083074912,
+     "failing_ues": 62,
+     "pairs": {
+      "entry": 47934,
+      "victim_entry": 32616,
+      "co_residence": 27116,
+      "both_new": 62066
+     }
+    },
+    "B2": {
+     "F": 0.55,
+     "failed": 180,
+     "repaired": 0,
+     "broken": 124,
+     "silenced_per_episode": 7900.475,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 39053.9825,
+     "collision_share": 0.2546443886996672,
+     "failing_ues": 378,
+     "pairs": {
+      "entry": 9356,
+      "victim_entry": 12169,
+      "co_residence": 1909,
+      "both_new": 1412557
+     }
+    },
+    "B3": {
+     "F": 0.8925,
+     "failed": 43,
+     "repaired": 14,
+     "broken": 1,
+     "silenced_per_episode": 88.465,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 36656.3525,
+     "collision_share": 0.21216752266881983,
+     "failing_ues": 48,
+     "pairs": {
+      "entry": 36278,
+      "victim_entry": 25495,
+      "co_residence": 19831,
+      "both_new": 59976
+     }
+    }
+   },
+   "M|1": {
+    "none": {
+     "F": 0.8875,
+     "failed": 45,
+     "repaired": 0,
+     "broken": 0,
+     "silenced_per_episode": 0.0,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 35515.7225,
+     "collision_share": 0.20348875065120806,
+     "failing_ues": 49,
+     "pairs": {
+      "entry": 40030,
+      "victim_entry": 20274,
+      "co_residence": 8669,
+      "both_new": 52854
+     }
+    },
+    "B2": {
+     "F": 0.7275,
+     "failed": 109,
+     "repaired": 4,
+     "broken": 68,
+     "silenced_per_episode": 9069.885,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 35672.405,
+     "collision_share": 0.19794207875807646,
+     "failing_ues": 200,
+     "pairs": {
+      "entry": 6903,
+      "victim_entry": 5956,
+      "co_residence": 596,
+      "both_new": 566904
+     }
+    },
+    "B3": {
+     "F": 0.9175,
+     "failed": 33,
+     "repaired": 13,
+     "broken": 1,
+     "silenced_per_episode": 89.465,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 35550.7325,
+     "collision_share": 0.20425549600138337,
+     "failing_ues": 37,
+     "pairs": {
+      "entry": 29485,
+      "victim_entry": 15948,
+      "co_residence": 5999,
+      "both_new": 50108
+     }
+    }
+   },
+   "M|2": {
+    "none": {
+     "F": 0.84,
+     "failed": 64,
+     "repaired": 0,
+     "broken": 0,
+     "silenced_per_episode": 0.0,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 42697.68,
+     "collision_share": 0.33266924572951034,
+     "failing_ues": 70,
+     "pairs": {
+      "entry": 79653,
+      "victim_entry": 46568,
+      "co_residence": 57762,
+      "both_new": 74160
+     }
+    },
+    "B2": {
+     "F": 0.3375,
+     "failed": 265,
+     "repaired": 0,
+     "broken": 201,
+     "silenced_per_episode": 20046.435,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 45030.7725,
+     "collision_share": 0.3463909596487602,
+     "failing_ues": 776,
+     "pairs": {
+      "entry": 50762,
+      "victim_entry": 37932,
+      "co_residence": 8303,
+      "both_new": 3859466
+     }
+    },
+    "B3": {
+     "F": 0.86,
+     "failed": 56,
+     "repaired": 10,
+     "broken": 2,
+     "silenced_per_episode": 152.565,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 42757.34,
+     "collision_share": 0.3338489952836168,
+     "failing_ues": 62,
+     "pairs": {
+      "entry": 67163,
+      "victim_entry": 41036,
+      "co_residence": 47895,
+      "both_new": 85424
+     }
+    }
+   },
+   "best_local": {
+    "none": {
+     "F": 0.695,
+     "failed": 122,
+     "repaired": 0,
+     "broken": 0,
+     "silenced_per_episode": 0.0,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 38468.3325,
+     "collision_share": 0.2754977746955889,
+     "failing_ues": 148,
+     "pairs": {
+      "entry": 119413,
+      "victim_entry": 45549,
+      "co_residence": 141208,
+      "both_new": 146908
+     }
+    },
+    "B2": {
+     "F": 0.435,
+     "failed": 226,
+     "repaired": 0,
+     "broken": 104,
+     "silenced_per_episode": 10889.02,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 40004.19,
+     "collision_share": 0.299526499599167,
+     "failing_ues": 437,
+     "pairs": {
+      "entry": 17492,
+      "victim_entry": 11046,
+      "co_residence": 11619,
+      "both_new": 1402737
+     }
+    },
+    "B3": {
+     "F": 0.8125,
+     "failed": 75,
+     "repaired": 48,
+     "broken": 1,
+     "silenced_per_episode": 229.485,
+     "moved_per_episode": 0.0,
+     "transmissions_per_episode": 38518.81,
+     "collision_share": 0.2750846923879528,
+     "failing_ues": 83,
+     "pairs": {
+      "entry": 74451,
+      "victim_entry": 25176,
+      "co_residence": 79244,
+      "both_new": 94798
+     }
+    }
+   }
+  },
+  "visibility": {
+   "A_mix": {
+    "choice_rate_free": 0.3373598631384064,
+    "relative_choice_rate": {
+     "<3|calm": 0.8978601652733099,
+     "3-10|calm": 0.5391408115652648,
+     "10-20|calm": 0.3303105188985594,
+     ">=20|calm": 0.3469847360373589,
+     "<3|urgent": 0.8272230981703592,
+     "3-10|urgent": 0.6159564741690955,
+     "10-20|urgent": 0.32888419972170974,
+     ">=20|urgent": 0.41334476075204946
+    },
+    "available_share": {
+     "free": 0.640239809784842,
+     "<3|calm": 0.006210478485100312,
+     "3-10|calm": 0.09894361512787737,
+     "10-20|calm": 0.14837826227871892,
+     ">=20|calm": 0.1036986854713519,
+     "<3|urgent": 0.0008899580138990277,
+     "3-10|urgent": 0.0010274495296983754,
+     "10-20|urgent": 0.000366183366612667,
+     ">=20|urgent": 0.00024555794189946937
+    },
+    "pair_share": {
+     "entry": 0.2878957457996179,
+     "victim_entry": 0.25333005863144936,
+     "co_residence": 0.15782524630318576,
+     "both_new": 0.300948949265747
+    },
+    "entries": 174658,
+    "entry_share": {
+     "excess|<3": 0.11263726826140229,
+     "excess|3-10": 0.8210044773213938,
+     "excess|10-20": 0.03070572203964319,
+     "excess|>=20": 0.03565253237756072,
+     "free_subchannel_existed": 0.8765473095993312,
+     "best_own_channel": 0.6249126865073458,
+     "entering_urgent": 0.011090244935817426
+    }
+   },
+   "M": {
+    "choice_rate_free": 0.3444429518205127,
+    "relative_choice_rate": {
+     "<3|calm": 0.8185437569649064,
+     "3-10|calm": 0.5563997483771546,
+     "10-20|calm": 0.3624802853721374,
+     ">=20|calm": 0.2784237123416092,
+     "<3|urgent": 0.840356808412038,
+     "3-10|urgent": 0.6485075171619008,
+     "10-20|urgent": 0.3997778152562521,
+     ">=20|urgent": 0.33721219248640505
+    },
+    "available_share": {
+     "free": 0.6217154425323104,
+     "<3|calm": 0.01871704744603541,
+     "3-10|calm": 0.11150923378401417,
+     "10-20|calm": 0.14774009540744362,
+     ">=20|calm": 0.09803151057767726,
+     "<3|urgent": 0.0009020755135919477,
+     "3-10|urgent": 0.0009106030804264322,
+     "10-20|urgent": 0.0002955795722328831,
+     ">=20|urgent": 0.00017841208626794372
+    },
+    "pair_share": {
+     "entry": 0.30492339485757736,
+     "victim_entry": 0.18093075884752102,
+     "co_residence": 0.1701776598957253,
+     "both_new": 0.34396818639917626
+    },
+    "entries": 167617,
+    "entry_share": {
+     "excess|<3": 0.11383690198488221,
+     "excess|3-10": 0.831031458622932,
+     "excess|10-20": 0.03893996432342781,
+     "excess|>=20": 0.016191675068757943,
+     "free_subchannel_existed": 0.8416807364408144,
+     "best_own_channel": 0.6096636975963059,
+     "entering_urgent": 0.00787509620145928
+    }
+   },
+   "best_local": {
+    "choice_rate_free": 0.357124146338678,
+    "relative_choice_rate": {
+     "<3|calm": 0.8165344773443627,
+     "3-10|calm": 0.48827472725865756,
+     "10-20|calm": 0.28322141513598076,
+     ">=20|calm": 0.23850649433736276,
+     "<3|urgent": 0.7969745457583962,
+     "3-10|urgent": 0.5814340568712504,
+     "10-20|urgent": 0.2810782861571963,
+     ">=20|urgent": 0.23243435736812265
+    },
+    "available_share": {
+     "free": 0.6294862058503697,
+     "<3|calm": 0.011384474130233793,
+     "3-10|calm": 0.10531949041545789,
+     "10-20|calm": 0.15998111124427994,
+     ">=20|calm": 0.08975738425179945,
+     "<3|urgent": 0.0013281437180902632,
+     "3-10|urgent": 0.0016683045683059275,
+     "10-20|urgent": 0.0007392928990102686,
+     ">=20|urgent": 0.0003355929224527241
+    },
+    "pair_share": {
+     "entry": 0.26355947541041497,
+     "victim_entry": 0.10053235866671964,
+     "co_residence": 0.31166377533228273,
+     "both_new": 0.32424439059058263
+    },
+    "entries": 119413,
+    "entry_share": {
+     "excess|<3": 0.1694790349459439,
+     "excess|3-10": 0.7271235125153878,
+     "excess|10-20": 0.08180013901334025,
+     "excess|>=20": 0.021597313525328062,
+     "free_subchannel_existed": 0.7984976510095215,
+     "best_own_channel": 0.5015199350154506,
+     "entering_urgent": 0.006724560977448017
+    }
+   }
+  }
+ }
+}

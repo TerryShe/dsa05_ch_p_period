@@ -1,0 +1,1447 @@
+{
+ "instances": [
+  1000,
+  1399
+ ],
+ "urgent_slack": 3,
+ "specs": {
+  "A_mix|0": {
+   "6": "marl:outputs/exp006-phase2/fixed-seed101/checkpoints/step-020000512.pt"
+  },
+  "A_mix|1": {
+   "6": "marl:outputs/exp006-phase2/fixed-seed202/checkpoints/step-012001024.pt"
+  },
+  "A_mix|2": {
+   "6": "marl:outputs/exp006-phase2/fixed-seed303/checkpoints/step-020000512.pt"
+  },
+  "M|0": {
+   "6": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt"
+  },
+  "M|1": {
+   "6": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt"
+  },
+  "M|2": {
+   "6": "marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt"
+  },
+  "best_local": {
+   "6": "best_local"
+  }
+ },
+ "summary": {
+  "cells": {
+   "A_mix|0|B2|N=6": {
+    "episodes": 400,
+    "F": {
+     "0.01": 0.9675,
+     "0.05": 1.0
+    },
+    "failed": [
+     1023,
+     1073,
+     1210,
+     1221,
+     1259,
+     1276,
+     1294,
+     1329,
+     1333,
+     1345,
+     1358,
+     1395,
+     1396
+    ],
+    "choice": {
+     "available": {
+      "free": 11855099,
+      "10-20|calm": 850012,
+      ">=20|calm": 547603,
+      "3-10|calm": 693408,
+      "<3|calm": 178624,
+      "10-20|urgent": 17253,
+      ">=20|urgent": 8160,
+      "3-10|urgent": 14930,
+      "<3|urgent": 7649
+     },
+     "chosen": {
+      "free": 3619569,
+      "10-20|calm": 3675,
+      ">=20|calm": 1135,
+      "3-10|calm": 11357,
+      "<3|calm": 6336,
+      "10-20|urgent": 566,
+      ">=20|urgent": 234,
+      "3-10|urgent": 399,
+      "<3|urgent": 106
+     }
+    },
+    "pairs": {
+     "both_new": 11750,
+     "entry": 422,
+     "victim_entry": 912,
+     "co_residence": 91
+    },
+    "entries": {
+     "total": 422,
+     "excess|<3": 95,
+     "free_subchannel_existed": 413,
+     "best_own_channel": 290,
+     "entering_urgent": 422,
+     "excess|3-10": 325,
+     "excess|>=20": 1,
+     "excess|10-20": 1
+    },
+    "moved": 0,
+    "silenced": 1651897,
+    "transmissions": 7994968,
+    "collided": 769684,
+    "failing_ues": 15
+   },
+   "A_mix|0|B3|N=6": {
+    "episodes": 400,
+    "F": {
+     "0.01": 0.9775,
+     "0.05": 1.0
+    },
+    "failed": [
+     1210,
+     1259,
+     1260,
+     1276,
+     1321,
+     1329,
+     1345,
+     1358,
+     1395
+    ],
+    "choice": {
+     "available": {
+      "free": 10772018,
+      "10-20|calm": 962173,
+      ">=20|calm": 696968,
+      "3-10|calm": 755444,
+      "<3|calm": 207426,
+      "10-20|urgent": 681,
+      "<3|urgent": 6438,
+      "3-10|urgent": 2803,
+      ">=20|urgent": 521
+     },
+     "chosen": {
+      "free": 2796369,
+      "10-20|calm": 275723,
+      ">=20|calm": 197698,
+      "3-10|calm": 206152,
+      "<3|calm": 51036,
+      "10-20|urgent": 5,
+      "<3|urgent": 58,
+      "3-10|urgent": 53,
+      ">=20|urgent": 4
+     }
+    },
+    "pairs": {
+     "victim_entry": 6300,
+     "both_new": 5017,
+     "entry": 4929,
+     "co_residence": 4399
+    },
+    "entries": {
+     "total": 4929,
+     "excess|3-10": 4272,
+     "free_subchannel_existed": 4764,
+     "best_own_channel": 3210,
+     "entering_urgent": 124,
+     "excess|<3": 456,
+     "excess|>=20": 96,
+     "excess|10-20": 105
+    },
+    "moved": 0,
+    "silenced": 8699,
+    "transmissions": 8654233,
+    "collided": 1602748,
+    "failing_ues": 11
+   },
+   "A_mix|0|none|N=6": {
+    "episodes": 400,
+    "F": {
+     "0.01": 0.9575,
+     "0.05": 1.0
+    },
+    "failed": [
+     1023,
+     1073,
+     1153,
+     1173,
+     1210,
+     1259,
+     1260,
+     1276,
+     1294,
+     1311,
+     1321,
+     1329,
+     1333,
+     1345,
+     1358,
+     1395,
+     1396
+    ],
+    "choice": {
+     "available": {
+      "free": 10760996,
+      "10-20|calm": 960946,
+      ">=20|calm": 696274,
+      "3-10|calm": 754252,
+      "<3|calm": 207104,
+      "10-20|urgent": 603,
+      "<3|urgent": 5166,
+      "3-10|urgent": 2213,
+      ">=20|urgent": 608
+     },
+     "chosen": {
+      "free": 2789306,
+      "10-20|calm": 276162,
+      ">=20|calm": 198149,
+      "3-10|calm": 206210,
+      "<3|calm": 51111,
+      "10-20|urgent": 232,
+      "<3|urgent": 1237,
+      "3-10|urgent": 612,
+      ">=20|urgent": 206
+     }
+    },
+    "pairs": {
+     "entry": 9784,
+     "both_new": 6465,
+     "victim_entry": 9755,
+     "co_residence": 7335
+    },
+    "entries": {
+     "total": 9784,
+     "excess|<3": 1232,
+     "free_subchannel_existed": 9588,
+     "best_own_channel": 6193,
+     "entering_urgent": 97,
+     "excess|3-10": 8083,
+     "excess|>=20": 260,
+     "excess|10-20": 209
+    },
+    "moved": 0,
+    "silenced": 0,
+    "transmissions": 8653673,
+    "collided": 1603012,
+    "failing_ues": 19
+   },
+   "A_mix|1|B2|N=6": {
+    "episodes": 400,
+    "F": {
+     "0.01": 0.9825,
+     "0.05": 1.0
+    },
+    "failed": [
+     1210,
+     1259,
+     1276,
+     1329,
+     1345,
+     1358,
+     1395
+    ],
+    "choice": {
+     "available": {
+      "free": 10996408,
+      "10-20|calm": 1025859,
+      ">=20|calm": 666390,
+      "3-10|calm": 524371,
+      "<3|calm": 63965,
+      "10-20|urgent": 1472,
+      ">=20|urgent": 1313,
+      "3-10|urgent": 3526,
+      "<3|urgent": 5963
+     },
+     "chosen": {
+      "free": 3423333,
+      "10-20|calm": 678,
+      ">=20|calm": 435,
+      "3-10|calm": 1731,
+      "<3|calm": 309,
+      "10-20|urgent": 14,
+      ">=20|urgent": 8,
+      "3-10|urgent": 38,
+      "<3|urgent": 65
+     }
+    },
+    "pairs": {
+     "both_new": 5094,
+     "victim_entry": 268,
+     "entry": 71,
+     "co_residence": 18
+    },
+    "entries": {
+     "total": 71,
+     "excess|3-10": 45,
+     "free_subchannel_existed": 70,
+     "best_own_channel": 49,
+     "entering_urgent": 71,
+     "excess|<3": 26
+    },
+    "moved": 0,
+    "silenced": 617826,
+    "transmissions": 7310243,
+    "collided": 402006,
+    "failing_ues": 8
+   },
+   "A_mix|1|B3|N=6": {
+    "episodes": 400,
+    "F": {
+     "0.01": 0.9875,
+     "0.05": 1.0
+    },
+    "failed": [
+     1210,
+     1259,
+     1276,
+     1358,
+     1395
+    ],
+    "choice": {
+     "available": {
+      "free": 11000746,
+      "10-20|calm": 1080814,
+      ">=20|calm": 747920,
+      "3-10|calm": 550241,
+      "<3|calm": 150325,
+      "<3|urgent": 5738,
+      "3-10|urgent": 1893,
+      "10-20|urgent": 377,
+      ">=20|urgent": 301
+     },
+     "chosen": {
+      "free": 3244850,
+      "10-20|calm": 122633,
+      ">=20|calm": 60246,
+      "3-10|calm": 106854,
+      "<3|calm": 42241,
+      "<3|urgent": 47,
+      "3-10|urgent": 18,
+      "10-20|urgent": 3,
+      ">=20|urgent": 3
+     }
+    },
+    "pairs": {
+     "co_residence": 768,
+     "both_new": 2297,
+     "entry": 2737,
+     "victim_entry": 1635
+    },
+    "entries": {
+     "total": 2737,
+     "excess|<3": 256,
+     "free_subchannel_existed": 2598,
+     "best_own_channel": 1569,
+     "entering_urgent": 36,
+     "excess|3-10": 2451,
+     "excess|10-20": 18,
+     "excess|>=20": 12
+    },
+    "moved": 0,
+    "silenced": 5555,
+    "transmissions": 7794846,
+    "collided": 807927,
+    "failing_ues": 6
+   },
+   "A_mix|1|none|N=6": {
+    "episodes": 400,
+    "F": {
+     "0.01": 0.97,
+     "0.05": 1.0
+    },
+    "failed": [
+     1023,
+     1173,
+     1210,
+     1259,
+     1260,
+     1276,
+     1321,
+     1329,
+     1345,
+     1358,
+     1395,
+     1396
+    ],
+    "choice": {
+     "available": {
+      "free": 10998911,
+      "10-20|calm": 1081841,
+      ">=20|calm": 747913,
+      "3-10|calm": 549875,
+      "<3|calm": 150664,
+      "<3|urgent": 5249,
+      "3-10|urgent": 1690,
+      ">=20|urgent": 367,
+      "10-20|urgent": 309
+     },
+     "chosen": {
+      "free": 3242207,
+      "10-20|calm": 123035,
+      ">=20|calm": 60422,
+      "3-10|calm": 107219,
+      "<3|calm": 42357,
+      "<3|urgent": 1433,
+      "3-10|urgent": 374,
+      ">=20|urgent": 50,
+      "10-20|urgent": 32
+     }
+    },
+    "pairs": {
+     "entry": 6252,
+     "co_residence": 1797,
+     "victim_entry": 3075,
+     "both_new": 4866
+    },
+    "entries": {
+     "total": 6252,
+     "excess|<3": 995,
+     "free_subchannel_existed": 6050,
+     "best_own_channel": 3637,
+     "entering_urgent": 39,
+     "excess|3-10": 5169,
+     "excess|10-20": 59,
+     "excess|>=20": 29
+    },
+    "moved": 0,
+    "silenced": 0,
+    "transmissions": 7796034,
+    "collided": 809670,
+    "failing_ues": 13
+   },
+   "A_mix|2|B2|N=6": {
+    "episodes": 400,
+    "F": {
+     "0.01": 0.975,
+     "0.05": 1.0
+    },
+    "failed": [
+     1023,
+     1210,
+     1259,
+     1260,
+     1276,
+     1321,
+     1329,
+     1345,
+     1358,
+     1395
+    ],
+    "choice": {
+     "available": {
+      "free": 11391256,
+      "3-10|calm": 649363,
+      ">=20|calm": 573748,
+      "<3|calm": 195687,
+      "10-20|calm": 1097476,
+      "10-20|urgent": 2262,
+      ">=20|urgent": 809,
+      "<3|urgent": 7030,
+      "3-10|urgent": 4847
+     },
+     "chosen": {
+      "free": 3611187,
+      "3-10|calm": 1393,
+      ">=20|calm": 600,
+      "<3|calm": 282,
+      "10-20|calm": 863,
+      "10-20|urgent": 19,
+      ">=20|urgent": 4,
+      "<3|urgent": 43,
+      "3-10|urgent": 46
+     }
+    },
+    "pairs": {
+     "both_new": 5413,
+     "entry": 87,
+     "victim_entry": 324,
+     "co_residence": 15
+    },
+    "entries": {
+     "total": 87,
+     "excess|3-10": 56,
+     "free_subchannel_existed": 85,
+     "best_own_channel": 71,
+     "entering_urgent": 87,
+     "excess|<3": 30,
+     "excess|>=20": 1
+    },
+    "moved": 0,
+    "silenced": 804299,
+    "transmissions": 7912817,
+    "collided": 457548,
+    "failing_ues": 11
+   },
+   "A_mix|2|B3|N=6": {
+    "episodes": 400,
+    "F": {
+     "0.01": 0.985,
+     "0.05": 1.0
+    },
+    "failed": [
+     1210,
+     1259,
+     1260,
+     1276,
+     1358,
+     1395
+    ],
+    "choice": {
+     "available": {
+      "free": 11056640,
+      "3-10|calm": 693386,
+      ">=20|calm": 739563,
+      "10-20|calm": 1146394,
+      "<3|calm": 239381,
+      "3-10|urgent": 2050,
+      "<3|urgent": 6263,
+      ">=20|urgent": 346,
+      "10-20|urgent": 489
+     },
+     "chosen": {
+      "free": 3222293,
+      "3-10|calm": 91151,
+      ">=20|calm": 192107,
+      "10-20|calm": 126814,
+      "<3|calm": 60912,
+      "3-10|urgent": 20,
+      "<3|urgent": 33,
+      ">=20|urgent": 2,
+      "10-20|urgent": 2
+     }
+    },
+    "pairs": {
+     "both_new": 1500,
+     "victim_entry": 1443,
+     "entry": 2132,
+     "co_residence": 1154
+    },
+    "entries": {
+     "total": 2132,
+     "excess|3-10": 1901,
+     "free_subchannel_existed": 2061,
+     "best_own_channel": 1200,
+     "entering_urgent": 25,
+     "excess|<3": 198,
+     "excess|10-20": 15,
+     "excess|>=20": 18
+    },
+    "moved": 0,
+    "silenced": 5079,
+    "transmissions": 8390203,
+    "collided": 989177,
+    "failing_ues": 6
+   },
+   "A_mix|2|none|N=6": {
+    "episodes": 400,
+    "F": {
+     "0.01": 0.975,
+     "0.05": 1.0
+    },
+    "failed": [
+     1173,
+     1210,
+     1259,
+     1260,
+     1276,
+     1321,
+     1329,
+     1345,
+     1358,
+     1395
+    ],
+    "choice": {
+     "available": {
+      "free": 11054519,
+      "3-10|calm": 693698,
+      ">=20|calm": 739320,
+      "10-20|calm": 1147208,
+      "<3|calm": 239306,
+      "3-10|urgent": 1835,
+      "<3|urgent": 5707,
+      ">=20|urgent": 355,
+      "10-20|urgent": 296
+     },
+     "chosen": {
+      "free": 3219455,
+      "3-10|calm": 91202,
+      ">=20|calm": 192677,
+      "10-20|calm": 127461,
+      "<3|calm": 60894,
+      "3-10|urgent": 286,
+      "<3|urgent": 1271,
+      ">=20|urgent": 101,
+      "10-20|urgent": 41
+     }
+    },
+    "pairs": {
+     "both_new": 3418,
+     "victim_entry": 3161,
+     "entry": 3796,
+     "co_residence": 2136
+    },
+    "entries": {
+     "total": 3796,
+     "excess|<3": 633,
+     "free_subchannel_existed": 3621,
+     "best_own_channel": 2094,
+     "entering_urgent": 40,
+     "excess|3-10": 3047,
+     "excess|>=20": 70,
+     "excess|10-20": 46
+    },
+    "moved": 0,
+    "silenced": 0,
+    "transmissions": 8393181,
+    "collided": 992058,
+    "failing_ues": 11
+   },
+   "M|0|B2|N=6": {
+    "episodes": 400,
+    "F": {
+     "0.01": 0.9775,
+     "0.05": 1.0
+    },
+    "failed": [
+     1210,
+     1259,
+     1276,
+     1311,
+     1321,
+     1329,
+     1345,
+     1358,
+     1395
+    ],
+    "choice": {
+     "available": {
+      "free": 11158524,
+      "3-10|calm": 850126,
+      ">=20|calm": 665999,
+      "10-20|calm": 948278,
+      ">=20|urgent": 1031,
+      "<3|calm": 137177,
+      "10-20|urgent": 2057,
+      "<3|urgent": 5812,
+      "3-10|urgent": 3988
+     },
+     "chosen": {
+      "free": 3583581,
+      "3-10|calm": 1318,
+      ">=20|calm": 737,
+      "10-20|calm": 440,
+      ">=20|urgent": 10,
+      "<3|calm": 579,
+      "10-20|urgent": 20,
+      "<3|urgent": 41,
+      "3-10|urgent": 50
+     }
+    },
+    "pairs": {
+     "both_new": 7913,
+     "victim_entry": 466,
+     "entry": 81,
+     "co_residence": 12
+    },
+    "entries": {
+     "total": 81,
+     "excess|3-10": 49,
+     "free_subchannel_existed": 77,
+     "best_own_channel": 56,
+     "entering_urgent": 81,
+     "excess|<3": 32
+    },
+    "moved": 0,
+    "silenced": 448056,
+    "transmissions": 7757101,
+    "collided": 465021,
+    "failing_ues": 11
+   },
+   "M|0|B3|N=6": {
+    "episodes": 400,
+    "F": {
+     "0.01": 0.9825,
+     "0.05": 1.0
+    },
+    "failed": [
+     1210,
+     1259,
+     1260,
+     1276,
+     1345,
+     1358,
+     1395
+    ],
+    "choice": {
+     "available": {
+      "free": 10612286,
+      "10-20|calm": 897937,
+      ">=20|calm": 656013,
+      "3-10|calm": 796526,
+      "<3|calm": 133287,
+      "<3|urgent": 5157,
+      "3-10|urgent": 1837,
+      ">=20|urgent": 421,
+      "10-20|urgent": 610
+     },
+     "chosen": {
+      "free": 3262409,
+      "10-20|calm": 40932,
+      ">=20|calm": 23755,
+      "3-10|calm": 78897,
+      "<3|calm": 27534,
+      "<3|urgent": 18,
+      "3-10|urgent": 14,
+      ">=20|urgent": 0,
+      "10-20|urgent": 3
+     }
+    },
+    "pairs": {
+     "both_new": 2302,
+     "victim_entry": 1514,
+     "entry": 1719,
+     "co_residence": 1345
+    },
+    "entries": {
+     "total": 1719,
+     "excess|<3": 350,
+     "free_subchannel_existed": 1636,
+     "best_own_channel": 1129,
+     "entering_urgent": 29,
+     "excess|3-10": 1340,
+     "excess|10-20": 19,
+     "excess|>=20": 10
+    },
+    "moved": 0,
+    "silenced": 4649,
+    "transmissions": 7807342,
+    "collided": 622227,
+    "failing_ues": 7
+   },
+   "M|0|none|N=6": {
+    "episodes": 400,
+    "F": {
+     "0.01": 0.9675,
+     "0.05": 1.0
+    },
+    "failed": [
+     1023,
+     1173,
+     1210,
+     1259,
+     1260,
+     1276,
+     1321,
+     1329,
+     1333,
+     1345,
+     1358,
+     1395,
+     1396
+    ],
+    "choice": {
+     "available": {
+      "free": 10605959,
+      "10-20|calm": 898087,
+      ">=20|calm": 655624,
+      "3-10|calm": 796834,
+      "<3|calm": 132978,
+      "<3|urgent": 4464,
+      "10-20|urgent": 411,
+      "3-10|urgent": 1460,
+      ">=20|urgent": 372
+     },
+     "chosen": {
+      "free": 3258859,
+      "10-20|calm": 41124,
+      ">=20|calm": 23841,
+      "3-10|calm": 79398,
+      "<3|calm": 27317,
+      "<3|urgent": 1017,
+      "10-20|urgent": 18,
+      "3-10|urgent": 192,
+      ">=20|urgent": 24
+     }
+    },
+    "pairs": {
+     "both_new": 3876,
+     "co_residence": 2531,
+     "victim_entry": 2670,
+     "entry": 4177
+    },
+    "entries": {
+     "total": 4177,
+     "excess|<3": 906,
+     "free_subchannel_existed": 3988,
+     "best_own_channel": 2697,
+     "entering_urgent": 36,
+     "excess|3-10": 3210,
+     "excess|10-20": 41,
+     "excess|>=20": 20
+    },
+    "moved": 0,
+    "silenced": 0,
+    "transmissions": 7808053,
+    "collided": 623018,
+    "failing_ues": 13
+   },
+   "M|1|B2|N=6": {
+    "episodes": 400,
+    "F": {
+     "0.01": 0.9825,
+     "0.05": 1.0
+    },
+    "failed": [
+     1210,
+     1259,
+     1276,
+     1329,
+     1345,
+     1358,
+     1395
+    ],
+    "choice": {
+     "available": {
+      "free": 10469578,
+      "10-20|calm": 993984,
+      ">=20|calm": 656956,
+      "3-10|calm": 562989,
+      "<3|calm": 17102,
+      ">=20|urgent": 1924,
+      "10-20|urgent": 1144,
+      "3-10|urgent": 2474,
+      "<3|urgent": 4775
+     },
+     "chosen": {
+      "free": 3242410,
+      "10-20|calm": 1640,
+      ">=20|calm": 260,
+      "3-10|calm": 2651,
+      "<3|calm": 107,
+      ">=20|urgent": 9,
+      "10-20|urgent": 12,
+      "3-10|urgent": 35,
+      "<3|urgent": 39
+     }
+    },
+    "pairs": {
+     "both_new": 6677,
+     "victim_entry": 134,
+     "entry": 50,
+     "co_residence": 9
+    },
+    "entries": {
+     "total": 50,
+     "excess|3-10": 33,
+     "free_subchannel_existed": 47,
+     "best_own_channel": 34,
+     "entering_urgent": 50,
+     "excess|<3": 17
+    },
+    "moved": 0,
+    "silenced": 566435,
+    "transmissions": 7250801,
+    "collided": 342576,
+    "failing_ues": 9
+   },
+   "M|1|B3|N=6": {
+    "episodes": 400,
+    "F": {
+     "0.01": 0.9875,
+     "0.05": 1.0
+    },
+    "failed": [
+     1259,
+     1276,
+     1345,
+     1358,
+     1395
+    ],
+    "choice": {
+     "available": {
+      "free": 10194021,
+      "10-20|calm": 1008500,
+      ">=20|calm": 690596,
+      "3-10|calm": 550893,
+      "<3|calm": 21455,
+      "<3|urgent": 4455,
+      "3-10|urgent": 1131,
+      "10-20|urgent": 291,
+      ">=20|urgent": 246
+     },
+     "chosen": {
+      "free": 3039018,
+      "10-20|calm": 74920,
+      ">=20|calm": 32771,
+      "3-10|calm": 70959,
+      "<3|calm": 5366,
+      "<3|urgent": 30,
+      "3-10|urgent": 21,
+      "10-20|urgent": 6,
+      ">=20|urgent": 0
+     }
+    },
+    "pairs": {
+     "both_new": 1946,
+     "victim_entry": 729,
+     "co_residence": 232,
+     "entry": 992
+    },
+    "entries": {
+     "total": 992,
+     "excess|3-10": 829,
+     "free_subchannel_existed": 892,
+     "best_own_channel": 690,
+     "entering_urgent": 19,
+     "excess|<3": 157,
+     "excess|>=20": 3,
+     "excess|10-20": 3
+    },
+    "moved": 0,
+    "silenced": 3818,
+    "transmissions": 7407646,
+    "collided": 560432,
+    "failing_ues": 5
+   },
+   "M|1|none|N=6": {
+    "episodes": 400,
+    "F": {
+     "0.01": 0.9825,
+     "0.05": 1.0
+    },
+    "failed": [
+     1210,
+     1259,
+     1260,
+     1276,
+     1345,
+     1358,
+     1395
+    ],
+    "choice": {
+     "available": {
+      "free": 10190367,
+      "10-20|calm": 1007941,
+      ">=20|calm": 690562,
+      "3-10|calm": 550900,
+      "<3|calm": 21181,
+      "<3|urgent": 4037,
+      "10-20|urgent": 248,
+      ">=20|urgent": 296,
+      "3-10|urgent": 969
+     },
+     "chosen": {
+      "free": 3036472,
+      "10-20|calm": 74947,
+      ">=20|calm": 32990,
+      "3-10|calm": 71142,
+      "<3|calm": 5187,
+      "<3|urgent": 940,
+      "10-20|urgent": 29,
+      ">=20|urgent": 28,
+      "3-10|urgent": 162
+     }
+    },
+    "pairs": {
+     "entry": 1808,
+     "victim_entry": 999,
+     "both_new": 2037,
+     "co_residence": 333
+    },
+    "entries": {
+     "total": 1808,
+     "excess|<3": 442,
+     "free_subchannel_existed": 1680,
+     "best_own_channel": 1236,
+     "entering_urgent": 20,
+     "excess|3-10": 1347,
+     "excess|10-20": 7,
+     "excess|>=20": 12
+    },
+    "moved": 0,
+    "silenced": 0,
+    "transmissions": 7408181,
+    "collided": 561845,
+    "failing_ues": 7
+   },
+   "M|2|B2|N=6": {
+    "episodes": 400,
+    "F": {
+     "0.01": 0.9625,
+     "0.05": 1.0
+    },
+    "failed": [
+     1023,
+     1153,
+     1173,
+     1210,
+     1259,
+     1260,
+     1276,
+     1311,
+     1321,
+     1329,
+     1345,
+     1358,
+     1366,
+     1395,
+     1396
+    ],
+    "choice": {
+     "available": {
+      "free": 12389333,
+      "10-20|calm": 1041953,
+      "3-10|calm": 1034178,
+      "<3|calm": 436586,
+      ">=20|calm": 639052,
+      ">=20|urgent": 4607,
+      "10-20|urgent": 12341,
+      "3-10|urgent": 13069,
+      "<3|urgent": 8190
+     },
+     "chosen": {
+      "free": 4075293,
+      "10-20|calm": 897,
+      "3-10|calm": 4544,
+      "<3|calm": 6979,
+      ">=20|calm": 464,
+      ">=20|urgent": 56,
+      "10-20|urgent": 158,
+      "3-10|urgent": 125,
+      "<3|urgent": 54
+     }
+    },
+    "pairs": {
+     "both_new": 16596,
+     "victim_entry": 634,
+     "entry": 187,
+     "co_residence": 40
+    },
+    "entries": {
+     "total": 187,
+     "excess|<3": 38,
+     "free_subchannel_existed": 181,
+     "best_own_channel": 139,
+     "entering_urgent": 187,
+     "excess|3-10": 146,
+     "excess|10-20": 3
+    },
+    "moved": 0,
+    "silenced": 1477431,
+    "transmissions": 8736005,
+    "collided": 708741,
+    "failing_ues": 17
+   },
+   "M|2|B3|N=6": {
+    "episodes": 400,
+    "F": {
+     "0.01": 0.97,
+     "0.05": 1.0
+    },
+    "failed": [
+     1153,
+     1173,
+     1210,
+     1259,
+     1260,
+     1276,
+     1321,
+     1329,
+     1345,
+     1358,
+     1395,
+     1396
+    ],
+    "choice": {
+     "available": {
+      "free": 11226848,
+      "3-10|calm": 1016864,
+      ">=20|calm": 688274,
+      "10-20|calm": 1075448,
+      "<3|calm": 408127,
+      "3-10|urgent": 2991,
+      "<3|urgent": 6668,
+      ">=20|urgent": 519,
+      "10-20|urgent": 649
+     },
+     "chosen": {
+      "free": 3296955,
+      "3-10|calm": 220096,
+      ">=20|calm": 74822,
+      "10-20|calm": 180772,
+      "<3|calm": 101755,
+      "3-10|urgent": 31,
+      "<3|urgent": 30,
+      ">=20|urgent": 3,
+      "10-20|urgent": 4
+     }
+    },
+    "pairs": {
+     "entry": 7018,
+     "co_residence": 5886,
+     "victim_entry": 4160,
+     "both_new": 6915
+    },
+    "entries": {
+     "total": 7018,
+     "excess|3-10": 6331,
+     "free_subchannel_existed": 6705,
+     "best_own_channel": 4348,
+     "entering_urgent": 85,
+     "excess|<3": 436,
+     "excess|>=20": 87,
+     "excess|10-20": 164
+    },
+    "moved": 0,
+    "silenced": 7594,
+    "transmissions": 9199542,
+    "collided": 1537321,
+    "failing_ues": 14
+   },
+   "M|2|none|N=6": {
+    "episodes": 400,
+    "F": {
+     "0.01": 0.9625,
+     "0.05": 1.0
+    },
+    "failed": [
+     1023,
+     1073,
+     1153,
+     1173,
+     1210,
+     1259,
+     1260,
+     1276,
+     1321,
+     1329,
+     1333,
+     1345,
+     1358,
+     1395,
+     1396
+    ],
+    "choice": {
+     "available": {
+      "free": 11217039,
+      "3-10|calm": 1017053,
+      ">=20|calm": 688028,
+      "10-20|calm": 1075494,
+      "<3|calm": 406737,
+      "3-10|urgent": 2517,
+      "10-20|urgent": 450,
+      "<3|urgent": 5745,
+      ">=20|urgent": 411
+     },
+     "chosen": {
+      "free": 3291182,
+      "3-10|calm": 220463,
+      ">=20|calm": 75132,
+      "10-20|calm": 181027,
+      "<3|calm": 101536,
+      "3-10|urgent": 599,
+      "10-20|urgent": 86,
+      "<3|urgent": 1513,
+      ">=20|urgent": 54
+     }
+    },
+    "pairs": {
+     "entry": 9574,
+     "both_new": 6462,
+     "co_residence": 8357,
+     "victim_entry": 5378
+    },
+    "entries": {
+     "total": 9574,
+     "excess|<3": 925,
+     "free_subchannel_existed": 9195,
+     "best_own_channel": 6134,
+     "entering_urgent": 98,
+     "excess|3-10": 8348,
+     "excess|10-20": 181,
+     "excess|>=20": 120
+    },
+    "moved": 0,
+    "silenced": 0,
+    "transmissions": 9198834,
+    "collided": 1538199,
+    "failing_ues": 17
+   },
+   "best_local|B2|N=6": {
+    "episodes": 400,
+    "F": {
+     "0.01": 0.9625,
+     "0.05": 1.0
+    },
+    "failed": [
+     1023,
+     1073,
+     1173,
+     1210,
+     1218,
+     1259,
+     1260,
+     1276,
+     1321,
+     1329,
+     1333,
+     1345,
+     1358,
+     1395,
+     1396
+    ],
+    "choice": {
+     "available": {
+      "free": 11526511,
+      "3-10|calm": 600095,
+      ">=20|calm": 702401,
+      "10-20|calm": 1119960,
+      "<3|calm": 36900,
+      "10-20|urgent": 4838,
+      "3-10|urgent": 7621,
+      ">=20|urgent": 1859,
+      "<3|urgent": 7055
+     },
+     "chosen": {
+      "free": 3649549,
+      "3-10|calm": 2185,
+      ">=20|calm": 35,
+      "10-20|calm": 154,
+      "<3|calm": 517,
+      "10-20|urgent": 26,
+      "3-10|urgent": 90,
+      ">=20|urgent": 7,
+      "<3|urgent": 241
+     }
+    },
+    "pairs": {
+     "both_new": 8273,
+     "entry": 356,
+     "co_residence": 165,
+     "victim_entry": 189
+    },
+    "entries": {
+     "total": 356,
+     "excess|<3": 213,
+     "free_subchannel_existed": 347,
+     "best_own_channel": 287,
+     "entering_urgent": 356,
+     "excess|3-10": 143
+    },
+    "moved": 0,
+    "silenced": 679759,
+    "transmissions": 7516677,
+    "collided": 523296,
+    "failing_ues": 17
+   },
+   "best_local|B3|N=6": {
+    "episodes": 400,
+    "F": {
+     "0.01": 0.96,
+     "0.05": 1.0
+    },
+    "failed": [
+     1023,
+     1073,
+     1153,
+     1173,
+     1210,
+     1259,
+     1260,
+     1276,
+     1311,
+     1321,
+     1329,
+     1333,
+     1345,
+     1358,
+     1395,
+     1396
+    ],
+    "choice": {
+     "available": {
+      "free": 10944817,
+      "3-10|calm": 605368,
+      ">=20|calm": 721213,
+      "10-20|calm": 1123328,
+      "<3|calm": 42254,
+      "<3|urgent": 6388,
+      "3-10|urgent": 2898,
+      ">=20|urgent": 279,
+      "10-20|urgent": 470
+     },
+     "chosen": {
+      "free": 3287875,
+      "3-10|calm": 80231,
+      ">=20|calm": 65288,
+      "10-20|calm": 106210,
+      "<3|calm": 9169,
+      "<3|urgent": 171,
+      "3-10|urgent": 46,
+      ">=20|urgent": 0,
+      "10-20|urgent": 0
+     }
+    },
+    "pairs": {
+     "entry": 6611,
+     "both_new": 5844,
+     "co_residence": 6378,
+     "victim_entry": 2384
+    },
+    "entries": {
+     "total": 6611,
+     "excess|<3": 1371,
+     "free_subchannel_existed": 6055,
+     "best_own_channel": 3613,
+     "entering_urgent": 178,
+     "excess|3-10": 5033,
+     "excess|10-20": 135,
+     "excess|>=20": 72
+    },
+    "moved": 0,
+    "silenced": 9156,
+    "transmissions": 7777490,
+    "collided": 868788,
+    "failing_ues": 18
+   },
+   "best_local|none|N=6": {
+    "episodes": 400,
+    "F": {
+     "0.01": 0.95,
+     "0.05": 0.995
+    },
+    "failed": [
+     1023,
+     1052,
+     1073,
+     1153,
+     1173,
+     1210,
+     1218,
+     1259,
+     1260,
+     1268,
+     1276,
+     1294,
+     1311,
+     1321,
+     1329,
+     1333,
+     1345,
+     1358,
+     1395,
+     1396
+    ],
+    "choice": {
+     "available": {
+      "free": 10942899,
+      "3-10|calm": 605781,
+      ">=20|calm": 721027,
+      "10-20|calm": 1123560,
+      "<3|calm": 41788,
+      "<3|urgent": 6343,
+      "3-10|urgent": 2659,
+      "10-20|urgent": 638,
+      ">=20|urgent": 480
+     },
+     "chosen": {
+      "free": 3286804,
+      "3-10|calm": 80237,
+      ">=20|calm": 65020,
+      "10-20|calm": 106181,
+      "<3|calm": 8789,
+      "<3|urgent": 1508,
+      "3-10|urgent": 543,
+      "10-20|urgent": 59,
+      ">=20|urgent": 35
+     }
+    },
+    "pairs": {
+     "entry": 8449,
+     "both_new": 6760,
+     "co_residence": 8639,
+     "victim_entry": 3058
+    },
+    "entries": {
+     "total": 8449,
+     "excess|<3": 2039,
+     "free_subchannel_existed": 7821,
+     "best_own_channel": 4493,
+     "entering_urgent": 74,
+     "excess|3-10": 6153,
+     "excess|10-20": 157,
+     "excess|>=20": 100
+    },
+    "moved": 0,
+    "silenced": 0,
+    "transmissions": 7779023,
+    "collided": 874159,
+    "failing_ues": 22
+   }
+  },
+  "groups": {
+   "A_mix|N=6": {
+    "none": 0.9675,
+    "B2": 0.975,
+    "B3": 0.9833333333333333,
+    "B2-none": {
+     "difference": 0.0075,
+     "ci95": [
+      -0.0016666666666666668,
+      0.02
+     ]
+    },
+    "B3-none": {
+     "difference": 0.015833333333333335,
+     "ci95": [
+      0.005,
+      0.028333333333333332
+     ]
+    }
+   },
+   "M|N=6": {
+    "none": 0.9708333333333333,
+    "B2": 0.9741666666666666,
+    "B3": 0.98,
+    "B2-none": {
+     "difference": 0.0033333333333333335,
+     "ci95": [
+      -0.005833333333333334,
+      0.015
+     ]
+    },
+    "B3-none": {
+     "difference": 0.009166666666666667,
+     "ci95": [
+      0.0016666666666666668,
+      0.02
+     ]
+    }
+   },
+   "best_local|N=6": {
+    "none": 0.95,
+    "B2": 0.9625,
+    "B3": 0.96,
+    "B2-none": {
+     "difference": 0.0125,
+     "ci95": [
+      0.0025,
+      0.025
+     ]
+    },
+    "B3-none": {
+     "difference": 0.01,
+     "ci95": [
+      0.0025,
+      0.02
+     ]
+    }
+   }
+  }
+ }
+}
