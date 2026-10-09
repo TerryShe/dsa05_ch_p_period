@@ -1,7 +1,10 @@
 """Archive the information-boundary probe (descriptive): summaries and derived tables.
 
-Reads outputs/probe-broadcast/n{N}.json (scripts/probe_broadcast.py) and writes
-into --output:
+Reads outputs/probe-broadcast/<run>.json for every run template in --runs
+(default "n{n}", the first probe; scripts/probe_broadcast.py), merges the
+episodes of the runs per N (same specs and instances, disjoint modes; the
+summary is then recomputed with the probe's own summarize) and writes into
+--output:
 
 * summary-n{N}.json: the probe's own summary (cells and groups) and specs,
   without the per-episode records;
@@ -10,11 +13,13 @@ into --output:
   against "none", yield decisions and transmissions per episode, collision
   share; the deployments infeasible for every policy; per group (no broadcast),
   choice rates relative to a free subchannel and the entry statistics around
-  failing UEs.
+  failing UEs; for the B3 variants, urgency flags sent and heard per episode.
 """
 
 import argparse
+import importlib.util
 import json
+import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 
@@ -26,7 +31,11 @@ from dsa_period.evaluation import _bootstrap, _interval
 ROOT = Path(__file__).parents[1]
 SOURCE = ROOT / "outputs" / "probe-broadcast"
 GRID = (6, 8, 10)
-MODES = ("none", "B2", "B3", "B2r", "B3r")
+_spec = importlib.util.spec_from_file_location("probe", ROOT / "scripts" / "probe_broadcast.py")
+probe = importlib.util.module_from_spec(_spec)
+sys.modules["probe"] = probe
+_spec.loader.exec_module(probe)
+MODES = probe.MODES
 OCCUPIED = [
     f"{b}|{u}" for u in ("calm", "urgent") for b in ("<3", "3-10", "10-20", ">=20")
 ]  # fmt: skip
@@ -118,19 +127,49 @@ def analyse(data: dict, n: int, resamples: int) -> dict:
                 "failing_ues": cell["failing_ues"],
                 "pairs": {k: cell["pairs"].get(k, 0) for k in PAIRS},
             }
+            if cell.get("flags_sent"):
+                rows[m]["flags_sent_per_episode"] = cell["flags_sent"] / cell["episodes"]
+                rows[m]["flags_heard_share"] = cell["flags_heard"] / cell["flags_sent"]
         out["layers"][lab] = rows
     return out
+
+
+def load(runs: list[str], n: int, resamples: int) -> dict:
+    parts = [json.loads((SOURCE / f"{run.format(n=n)}.json").read_text()) for run in runs]
+    data = parts[0]
+    if len(parts) == 1:
+        return data
+    seen = set()
+    for part in parts:
+        if part["specs"] != data["specs"] or part["instances"] != data["instances"]:
+            raise ValueError("runs differ in policies or instances")
+        modes = {e["mode"] for e in part["episodes"]}
+        if modes & seen:
+            raise ValueError(f"modes {sorted(modes & seen)} appear in more than one run")
+        seen |= modes
+    episodes = [e for part in parts for e in part["episodes"]]
+    results = [
+        (
+            e["label"],
+            e["mode"],
+            e["num_ues"],
+            {k: v for k, v in e.items() if k not in ("label", "mode", "num_ues")},
+        )
+        for e in episodes
+    ]
+    return {**data, "summary": probe.summarize(results, resamples), "episodes": episodes}
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--resamples", type=int, default=2000)
+    parser.add_argument("--runs", nargs="+", default=["n{n}"])
     args = parser.parse_args()
     args.output.mkdir(parents=True, exist_ok=True)
     analysis = {}
     for n in GRID:
-        data = json.loads((SOURCE / f"n{n}.json").read_text())
+        data = load(args.runs, n, args.resamples)
         archived = {k: data[k] for k in ("instances", "urgent_slack", "specs", "summary")}
         (args.output / f"summary-n{n}.json").write_text(json.dumps(archived, indent=1))
         analysis[str(n)] = analyse(data, n, args.resamples)

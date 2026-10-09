@@ -105,3 +105,28 @@ def test_yield_defers_or_moves_calm_ues_and_leaves_urgent_ones(mode):
             gains = np.array(held[ue].own_gain_w)
             gains[1] = -np.inf
             assert actions[ue].tolist() == [int(np.argmax(gains)), 5]
+
+
+def test_flag_loss_variants_hear_only_lone_or_strong_transmitters():
+    scenario = short(4)
+    env = scenario.make_env(*scenario.instance(1000), splits_v2.fading_seeds("dev", 4, 1000, 0))
+    observations = env.reset()
+    prev = np.array([[1, 3], [1, 2], [2, 1], [3, 0]])  # UEs 0 and 1 collide, UE 3 OFF
+    bits = [5000.0, 200.0, 800.0, 0.0]
+    held = [dataclasses.replace(o, previous_action=tuple(prev[u]), previous_service_bits=bits[u])
+            for u, o in enumerate(observations)]  # fmt: skip
+    expected = {
+        "B3": [True, True, True, False],
+        "B3c": [False, False, True, False],
+        "B3s": [True, False, False, False],  # 0 dB = channel uses per slot bits
+    }
+    assert scenario.physical.channel_uses_per_slot == 1000
+    for mode, heard in expected.items():
+        wrapper = probe.Broadcast(Fixed(np.zeros((4, 2))), scenario, mode)
+        wrapper.reset(splits_v2.execution_generators("dev", 4, 1000, 0))
+        assert wrapper.received(prev, held).tolist() == heard
+    # A lost flag does not block: UE 2 urgent and alone on 2 is heard by B3c,
+    # urgent UE 1 collided on 1 is not.
+    wrapper = _wrapper("B3c", [False, True, True, False])
+    wrapper.heard = wrapper.received(prev, held)
+    assert wrapper.blocked(prev, 3).tolist() == [False, False, True, False]

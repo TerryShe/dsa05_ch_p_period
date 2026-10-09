@@ -35,6 +35,14 @@ Two checks before any design that changes the fixed OBS (discussion of
 
    Urgent UEs act as the policy says. "none" runs the policy unchanged.
 
+   B3 assumes the AP reads every urgency flag, even of collided or weak
+   transmissions. Two flag-loss variants (follow-up of 2026-10-09) use the
+   same rule as B3 but let the AP hear a flag only if:
+
+   * B3c: its transmitter was alone on its subchannel (any collision loses it);
+   * B3s: its transmission reached SINR >= FLAG_SINR_DB (from the AP-reported
+     mutual information of that transmission).
+
 Execution and fading seeds are those of protocol v2 (dev); never run this on
 validation, test or confirmation instances. Results are not formal.
 """
@@ -62,10 +70,12 @@ from dsa_period.evaluation import _bootstrap, _interval
 from dsa_period.physics import shannon_bits
 from dsa_period.rules_v2 import make_policy_v2
 
-MODES = ("none", "B2", "B3", "B2r", "B3r")
+MODES = ("none", "B2", "B3", "B2r", "B3r", "B3c", "B3s")
+DEFAULT_MODES = MODES[:5]  # the first probe run (2026-10-08)
 URGENT_SLACK = 3
 EXCESS_BINS_DB = (3.0, 10.0, 20.0)  # occupied subchannels: <3, 3-10, 10-20, >=20 dB over noise
 FREE = "free"
+FLAG_SINR_DB = 0.0  # B3s: SINR the AP needs to read an urgency flag
 
 
 def slack(scenario, observations) -> np.ndarray:
@@ -94,11 +104,26 @@ class Broadcast:
         self.k = scenario.physical.num_subchannels
         self.moved = 0  # yield decisions that changed the subchannel
         self.silenced = 0  # yield decisions that went OFF
+        self.flag_bits = float(
+            shannon_bits(scenario.physical, 10.0 ** (FLAG_SINR_DB / 10.0))
+        )  # fmt: skip
 
     def reset(self, rngs) -> None:
         self.inner.reset(rngs)
         self.prev_urgent = np.zeros(self.scenario.physical.num_ues, dtype=bool)
-        self.moved = self.silenced = 0
+        self.heard = None  # all flags heard
+        self.moved = self.silenced = self.flags_sent = self.flags_heard = 0
+
+    def received(self, prev: np.ndarray, observations) -> np.ndarray:
+        """Transmitters of the previous slot whose urgency flag the AP read."""
+        sent = prev[:, 1] > 0
+        if self.mode == "B3c":
+            count = np.bincount(prev[sent, 0], minlength=self.k)
+            return sent & (count[prev[:, 0]] == 1)
+        if self.mode == "B3s":
+            bits = np.array([o.previous_service_bits for o in observations])
+            return sent & (bits >= self.flag_bits)
+        return sent
 
     def blocked(self, prev: np.ndarray, ue: int) -> np.ndarray:
         """Which subchannels UE ``ue`` must avoid, from the previous slot's broadcast."""
@@ -108,8 +133,9 @@ class Broadcast:
         if self.mode.startswith("B2"):
             count = np.minimum(np.bincount(prev[sent, 0], minlength=self.k), 2)
             return count - mine >= 1
+        heard = sent if self.heard is None else self.heard
         flag = np.zeros(self.k, dtype=bool)
-        flag[prev[sent & self.prev_urgent, 0]] = True
+        flag[prev[sent & self.prev_urgent & heard, 0]] = True
         return flag & ~(mine & self.prev_urgent[ue])
 
     def act(self, observations) -> np.ndarray:
@@ -119,6 +145,11 @@ class Broadcast:
         actions = np.array(self.inner.act(observations), dtype=np.int64, copy=True)
         if self.mode != "none":
             prev = np.array([o.previous_action for o in observations], dtype=np.int64)
+            if self.mode.startswith("B3"):
+                self.heard = self.received(prev, observations)
+                flagged = (prev[:, 1] > 0) & self.prev_urgent
+                self.flags_sent += int(flagged.sum())
+                self.flags_heard += int((flagged & self.heard).sum())
             for ue in np.flatnonzero((remaining > 0) & ~urgent_now & (actions[:, 1] > 0)):
                 blocked = self.blocked(prev, ue)
                 if not blocked[actions[ue, 0]]:
@@ -252,6 +283,8 @@ def run(scenario, policy: Broadcast, instance: int) -> dict:
         "failing_ues": int(failing.sum()),
         "moved": policy.moved,
         "silenced": policy.silenced,
+        "flags_sent": policy.flags_sent,
+        "flags_heard": policy.flags_heard,
         "transmissions": int(sent[warmup:].sum()),
         "collided": collided,
         "choice": {key: dict(value) for key, value in choice.items()},
@@ -266,6 +299,8 @@ def merge(rows: list[dict]) -> dict:
         total[name] = defaultdict(int)
     for key in ("moved", "silenced", "transmissions", "collided", "failing_ues"):
         total[key] = sum(r[key] for r in rows)
+    for key in ("flags_sent", "flags_heard"):  # absent in the first probe run
+        total[key] = sum(r.get(key, 0) for r in rows)
     for r in rows:
         for part in ("available", "chosen"):
             for key, v in r["choice"][part].items():
@@ -323,7 +358,7 @@ def main() -> None:
     parser.add_argument("--config", default="configs/scenario-v2.toml")
     parser.add_argument("--methods", type=Path, default=Path("outputs/exp010/methods-exp010.json"))
     parser.add_argument("--groups", nargs="+", default=["A_mix", "M", "best_local"])
-    parser.add_argument("--modes", nargs="+", default=list(MODES), choices=MODES)
+    parser.add_argument("--modes", nargs="+", default=list(DEFAULT_MODES), choices=MODES)
     parser.add_argument("--grid", type=int, nargs="+", default=[8])
     parser.add_argument("--first-instance", type=int, default=1000)
     parser.add_argument("--instances", type=int, default=400)
