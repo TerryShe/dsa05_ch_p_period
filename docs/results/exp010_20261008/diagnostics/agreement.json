@@ -1,0 +1,128 @@
+{
+  "instances": [
+    1000,
+    1063
+  ],
+  "result": {
+    "A_mix|0|10": {
+      "agreement": 0.4370880041752571,
+      "collision_share": 0.1977520488573502,
+      "active_ue_slots": 2276267
+    },
+    "A_mix|0|6": {
+      "agreement": 0.4120346276025447,
+      "collision_share": 0.18963939795916157,
+      "active_ue_slots": 1406508
+    },
+    "A_mix|0|8": {
+      "agreement": 0.4776042398404747,
+      "collision_share": 0.13164771317207047,
+      "active_ue_slots": 1694026
+    },
+    "A_mix|1|10": {
+      "agreement": 0.37963628126851395,
+      "collision_share": 0.23274557014951197,
+      "active_ue_slots": 2445791
+    },
+    "A_mix|1|6": {
+      "agreement": 0.5228702453716145,
+      "collision_share": 0.10038536776370113,
+      "active_ue_slots": 1276309
+    },
+    "A_mix|1|8": {
+      "agreement": 0.41184320711577244,
+      "collision_share": 0.189163800389981,
+      "active_ue_slots": 1913046
+    },
+    "A_mix|2|10": {
+      "agreement": 0.38521434986955094,
+      "collision_share": 0.2172889509017,
+      "active_ue_slots": 2945978
+    },
+    "A_mix|2|6": {
+      "agreement": 0.4930786420501155,
+      "collision_share": 0.11954900304245165,
+      "active_ue_slots": 1343378
+    },
+    "A_mix|2|8": {
+      "agreement": 0.4554000085589886,
+      "collision_share": 0.18429498506888403,
+      "active_ue_slots": 1892747
+    },
+    "IL|0|10": {
+      "agreement": 0.6491865761318746,
+      "collision_share": 0.35284078259660495,
+      "active_ue_slots": 2548118
+    },
+    "IL|0|6": {
+      "agreement": 0.8137093216935606,
+      "collision_share": 0.16484037622187986,
+      "active_ue_slots": 1215144
+    },
+    "IL|0|8": {
+      "agreement": 0.7283488670410305,
+      "collision_share": 0.24407973446804263,
+      "active_ue_slots": 1783648
+    },
+    "IL|1|10": {
+      "agreement": 0.6326004231140206,
+      "collision_share": 0.35498031977024336,
+      "active_ue_slots": 2557703
+    },
+    "IL|1|6": {
+      "agreement": 0.8220663615579399,
+      "collision_share": 0.17464937119432464,
+      "active_ue_slots": 1219893
+    },
+    "IL|1|8": {
+      "agreement": 0.7096333877452892,
+      "collision_share": 0.2506335219764646,
+      "active_ue_slots": 1780246
+    },
+    "M|0|10": {
+      "agreement": 0.3903763637251222,
+      "collision_share": 0.21672945644179756,
+      "active_ue_slots": 2376212
+    },
+    "M|0|6": {
+      "agreement": 0.43918660500575285,
+      "collision_share": 0.08010620625712281,
+      "active_ue_slots": 1255036
+    },
+    "M|0|8": {
+      "agreement": 0.4116645155173397,
+      "collision_share": 0.144366281325779,
+      "active_ue_slots": 1771921
+    },
+    "M|1|10": {
+      "agreement": 0.45657560749008497,
+      "collision_share": 0.2023558103228253,
+      "active_ue_slots": 2286169
+    },
+    "M|1|6": {
+      "agreement": 0.5388464590695434,
+      "collision_share": 0.07239285868789799,
+      "active_ue_slots": 1179464
+    },
+    "M|1|8": {
+      "agreement": 0.49220973136311674,
+      "collision_share": 0.13657980162948896,
+      "active_ue_slots": 1691726
+    },
+    "M|2|10": {
+      "agreement": 0.39124219484721723,
+      "collision_share": 0.334034862067107,
+      "active_ue_slots": 2731689
+    },
+    "M|2|6": {
+      "agreement": 0.42211132730845224,
+      "collision_share": 0.16971038780247086,
+      "active_ue_slots": 1466253
+    },
+    "M|2|8": {
+      "agreement": 0.4181401598865649,
+      "collision_share": 0.2438098453824651,
+      "active_ue_slots": 2008549
+    }
+  }
+}

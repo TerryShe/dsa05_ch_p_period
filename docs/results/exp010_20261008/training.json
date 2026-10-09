@@ -1,0 +1,716 @@
+{
+ "il-n10-seed101": {
+  "provenance": {
+   "commit": "20f0fc01f4d78acb64479174b9ab9e863ed9b95a",
+   "dirty": false
+  },
+  "config_sha256": "445ecd46f2a9057ba4290a1a1db2a276ab224d1ba50e88c0a76c71e7801e54cf",
+  "result": {
+   "slots": 1512000,
+   "iterations": 6,
+   "wall_s": 3496.539328615181,
+   "episodes": 2520,
+   "distinct_training_instances": 2518,
+   "peak_rss_mb": 3278.30859375
+  },
+  "iterations": [
+   {
+    "iteration": 1,
+    "slots": 252000,
+    "executed_by": "teacher",
+    "student_agreement": 0.04724485782502479,
+    "collision_share": 0.0,
+    "violation_rate": 6.511603677753758e-05,
+    "loss_by_epoch": [
+     1.9289866615224767,
+     0.9927789648373921,
+     0.6432155472260934,
+     0.5987543774975671
+    ],
+    "episodes": 420,
+    "collect_s": 68.24097202485427,
+    "train_s": 147.75372702581808
+   },
+   {
+    "iteration": 2,
+    "slots": 504000,
+    "executed_by": "student",
+    "student_agreement": 0.5440030561768869,
+    "collision_share": 0.47191978519282685,
+    "violation_rate": 0.010113574200942978,
+    "loss_by_epoch": [
+     0.8256238260359134,
+     0.7827451638455661,
+     0.7625875007431462,
+     0.7557439196784541
+    ],
+    "episodes": 840,
+    "collect_s": 74.21639446122572,
+    "train_s": 297.50857513491064
+   },
+   {
+    "iteration": 3,
+    "slots": 756000,
+    "executed_by": "student",
+    "student_agreement": 0.5828366682944336,
+    "collision_share": 0.3726919563537076,
+    "violation_rate": 0.0021683075480543835,
+    "loss_by_epoch": [
+     0.7623904735227175,
+     0.7520110177088387,
+     0.744995034042793,
+     0.7358542925194849
+    ],
+    "episodes": 1260,
+    "collect_s": 75.75839583808556,
+    "train_s": 447.8995790788904
+   },
+   {
+    "iteration": 4,
+    "slots": 1008000,
+    "executed_by": "student",
+    "student_agreement": 0.6167513143714536,
+    "collision_share": 0.36059378666530634,
+    "violation_rate": 0.002083767451552407,
+    "loss_by_epoch": [
+     0.7296012683141799,
+     0.7206325989677792,
+     0.7126508990923563,
+     0.7073283586047945
+    ],
+    "episodes": 1680,
+    "collect_s": 76.42190799769014,
+    "train_s": 596.4476159377955
+   },
+   {
+    "iteration": 5,
+    "slots": 1260000,
+    "executed_by": "student",
+    "student_agreement": 0.6340182851415037,
+    "collision_share": 0.3488429839282056,
+    "violation_rate": 0.0016020944454213312,
+    "loss_by_epoch": [
+     0.6977970731980873,
+     0.6910289425741543,
+     0.6842540975772973,
+     0.6744319806496303
+    ],
+    "episodes": 2100,
+    "collect_s": 74.48223799001426,
+    "train_s": 740.0827462552115
+   },
+   {
+    "iteration": 6,
+    "slots": 1512000,
+    "executed_by": "student",
+    "student_agreement": 0.6507523443776005,
+    "collision_share": 0.34845500292089,
+    "violation_rate": 0.001406552188946844,
+    "loss_by_epoch": [
+     0.6716425849667078,
+     0.6645611946341358,
+     0.6579204455961155,
+     0.6543179740256901
+    ],
+    "episodes": 2520,
+    "collect_s": 69.81926232110709,
+    "train_s": 827.8973263259977
+   }
+  ]
+ },
+ "il-n10-seed202": {
+  "provenance": {
+   "commit": "20f0fc01f4d78acb64479174b9ab9e863ed9b95a",
+   "dirty": false
+  },
+  "config_sha256": "445ecd46f2a9057ba4290a1a1db2a276ab224d1ba50e88c0a76c71e7801e54cf",
+  "result": {
+   "slots": 1512000,
+   "iterations": 6,
+   "wall_s": 3498.836873545777,
+   "episodes": 2520,
+   "distinct_training_instances": 2519,
+   "peak_rss_mb": 3274.24609375
+  },
+  "iterations": [
+   {
+    "iteration": 1,
+    "slots": 252000,
+    "executed_by": "teacher",
+    "student_agreement": 0.04786095296499791,
+    "collision_share": 0.0,
+    "violation_rate": 0.00011722794974828554,
+    "loss_by_epoch": [
+     1.9319105713455766,
+     1.0013960988433273,
+     0.6454682579746953,
+     0.5994976882581358
+    ],
+    "episodes": 420,
+    "collect_s": 68.08302268804982,
+    "train_s": 148.07532261870801
+   },
+   {
+    "iteration": 2,
+    "slots": 504000,
+    "executed_by": "student",
+    "student_agreement": 0.5416009598004956,
+    "collision_share": 0.49704895205711863,
+    "violation_rate": 0.013954548414403856,
+    "loss_by_epoch": [
+     0.8402751112883946,
+     0.7960122691010529,
+     0.7766580997772936,
+     0.7674765364179071
+    ],
+    "episodes": 840,
+    "collect_s": 74.49379269732162,
+    "train_s": 297.022143652197
+   },
+   {
+    "iteration": 3,
+    "slots": 756000,
+    "executed_by": "student",
+    "student_agreement": 0.5500697312970021,
+    "collision_share": 0.3734067777917822,
+    "violation_rate": 0.0021493330554397667,
+    "loss_by_epoch": [
+     0.7703862179683734,
+     0.7604699730873108,
+     0.7491493661192399,
+     0.7385053894187831
+    ],
+    "episodes": 1260,
+    "collect_s": 76.13753710594028,
+    "train_s": 447.8367515290156
+   },
+   {
+    "iteration": 4,
+    "slots": 1008000,
+    "executed_by": "student",
+    "student_agreement": 0.6091115556715279,
+    "collision_share": 0.3787660833531185,
+    "violation_rate": 0.0029040617796819855,
+    "loss_by_epoch": [
+     0.7415167656398954,
+     0.7326659715743292,
+     0.7259073464075724,
+     0.7205212762242271
+    ],
+    "episodes": 1680,
+    "collect_s": 76.83029099926353,
+    "train_s": 596.9674054747447
+   },
+   {
+    "iteration": 5,
+    "slots": 1260000,
+    "executed_by": "student",
+    "student_agreement": 0.6177826093005045,
+    "collision_share": 0.35807908472545646,
+    "violation_rate": 0.0012306850813619582,
+    "loss_by_epoch": [
+     0.7163797243978038,
+     0.7088053824323597,
+     0.7043733971588539,
+     0.6957181254119584
+    ],
+    "episodes": 2100,
+    "collect_s": 74.69440842419863,
+    "train_s": 740.770791829098
+   },
+   {
+    "iteration": 6,
+    "slots": 1512000,
+    "executed_by": "student",
+    "student_agreement": 0.6299199735436559,
+    "collision_share": 0.3555815800729139,
+    "violation_rate": 0.0014720441873795008,
+    "loss_by_epoch": [
+     0.689712312930747,
+     0.6821357837583445,
+     0.6774307496940033,
+     0.6716904653778559
+    ],
+    "episodes": 2520,
+    "collect_s": 69.78944626264274,
+    "train_s": 828.1232712659985
+   }
+  ]
+ },
+ "il-n6-seed101": {
+  "provenance": {
+   "commit": "20f0fc01f4d78acb64479174b9ab9e863ed9b95a",
+   "dirty": false
+  },
+  "config_sha256": "445ecd46f2a9057ba4290a1a1db2a276ab224d1ba50e88c0a76c71e7801e54cf",
+  "result": {
+   "slots": 1512000,
+   "iterations": 6,
+   "wall_s": 2423.9368901588023,
+   "episodes": 2520,
+   "distinct_training_instances": 2518,
+   "peak_rss_mb": 2096.42578125
+  },
+  "iterations": [
+   {
+    "iteration": 1,
+    "slots": 252000,
+    "executed_by": "teacher",
+    "student_agreement": 0.04785703978065323,
+    "collision_share": 0.0,
+    "violation_rate": 6.991458767871916e-05,
+    "loss_by_epoch": [
+     1.9166658021785594,
+     0.8584870771125511,
+     0.4395789866094236,
+     0.3910629859677068
+    ],
+    "episodes": 420,
+    "collect_s": 53.41310979099944,
+    "train_s": 99.32656604563817
+   },
+   {
+    "iteration": 2,
+    "slots": 504000,
+    "executed_by": "student",
+    "student_agreement": 0.6920201229402267,
+    "collision_share": 0.28384904444519377,
+    "violation_rate": 0.00275000582628353,
+    "loss_by_epoch": [
+     0.4995279417847687,
+     0.468067304930597,
+     0.4503665978053831,
+     0.4449049628005837
+    ],
+    "episodes": 840,
+    "collect_s": 57.227847980801016,
+    "train_s": 196.06159421475604
+   },
+   {
+    "iteration": 3,
+    "slots": 756000,
+    "executed_by": "student",
+    "student_agreement": 0.7642537660869276,
+    "collision_share": 0.19651969067616726,
+    "violation_rate": 0.0006058417122018851,
+    "loss_by_epoch": [
+     0.4429072472113597,
+     0.4314560907551005,
+     0.4215306540833244,
+     0.4145271796968919
+    ],
+    "episodes": 1260,
+    "collect_s": 58.42197503801435,
+    "train_s": 294.96999455289915
+   },
+   {
+    "iteration": 4,
+    "slots": 1008000,
+    "executed_by": "student",
+    "student_agreement": 0.7742718742259921,
+    "collision_share": 0.20022469714732316,
+    "violation_rate": 0.0006758488895103591,
+    "loss_by_epoch": [
+     0.4113500115984962,
+     0.4024324817316873,
+     0.3954001876286098,
+     0.3910369445028759
+    ],
+    "episodes": 1680,
+    "collect_s": 59.465169499162585,
+    "train_s": 394.34448758279905
+   },
+   {
+    "iteration": 5,
+    "slots": 1260000,
+    "executed_by": "student",
+    "student_agreement": 0.802162514738717,
+    "collision_share": 0.17304045313540056,
+    "violation_rate": 0.00036122536967338236,
+    "loss_by_epoch": [
+     0.3840747379895413,
+     0.3757968671394117,
+     0.36929941601825483,
+     0.3634987767447125
+    ],
+    "episodes": 2100,
+    "collect_s": 59.29858349217102,
+    "train_s": 497.62396092992276
+   },
+   {
+    "iteration": 6,
+    "slots": 1512000,
+    "executed_by": "student",
+    "student_agreement": 0.8062720815279902,
+    "collision_share": 0.17327964287040437,
+    "violation_rate": 0.00025632660670177565,
+    "loss_by_epoch": [
+     0.3567976955371567,
+     0.3520053919168967,
+     0.34501977434641196,
+     0.340393242070192
+    ],
+    "episodes": 2520,
+    "collect_s": 56.403110809158534,
+    "train_s": 597.3699157848023
+   }
+  ]
+ },
+ "il-n6-seed202": {
+  "provenance": {
+   "commit": "20f0fc01f4d78acb64479174b9ab9e863ed9b95a",
+   "dirty": false
+  },
+  "config_sha256": "445ecd46f2a9057ba4290a1a1db2a276ab224d1ba50e88c0a76c71e7801e54cf",
+  "result": {
+   "slots": 1512000,
+   "iterations": 6,
+   "wall_s": 2423.0631620688364,
+   "episodes": 2520,
+   "distinct_training_instances": 2519,
+   "peak_rss_mb": 2093.03515625
+  },
+  "iterations": [
+   {
+    "iteration": 1,
+    "slots": 252000,
+    "executed_by": "teacher",
+    "student_agreement": 0.04726635247615066,
+    "collision_share": 0.0,
+    "violation_rate": 0.0001281677832799301,
+    "loss_by_epoch": [
+     1.9154472253940724,
+     0.8595960683292813,
+     0.45563624501228334,
+     0.4010075445528384
+    ],
+    "episodes": 420,
+    "collect_s": 52.771085001993924,
+    "train_s": 99.02967465203255
+   },
+   {
+    "iteration": 2,
+    "slots": 504000,
+    "executed_by": "student",
+    "student_agreement": 0.69524883895828,
+    "collision_share": 0.2645462019327718,
+    "violation_rate": 0.002283530617951347,
+    "loss_by_epoch": [
+     0.49347726084151355,
+     0.4615995641024608,
+     0.44275215121934997,
+     0.43507022666481304
+    ],
+    "episodes": 840,
+    "collect_s": 57.75931772077456,
+    "train_s": 196.17266120482236
+   },
+   {
+    "iteration": 3,
+    "slots": 756000,
+    "executed_by": "student",
+    "student_agreement": 0.7643353026274317,
+    "collision_share": 0.20251034516234726,
+    "violation_rate": 0.0006408762526217665,
+    "loss_by_epoch": [
+     0.43736935687970513,
+     0.42553756335113624,
+     0.4161882236034055,
+     0.4082907713666747
+    ],
+    "episodes": 1260,
+    "collect_s": 58.92651564301923,
+    "train_s": 293.6128784879111
+   },
+   {
+    "iteration": 4,
+    "slots": 1008000,
+    "executed_by": "student",
+    "student_agreement": 0.7824888492052114,
+    "collision_share": 0.18976503875015377,
+    "violation_rate": 0.0006290333853644899,
+    "loss_by_epoch": [
+     0.40428011933962504,
+     0.396803385303134,
+     0.3916000724974133,
+     0.38588642540432155
+    ],
+    "episodes": 1680,
+    "collect_s": 59.341442099772394,
+    "train_s": 394.14226588699967
+   },
+   {
+    "iteration": 5,
+    "slots": 1260000,
+    "executed_by": "student",
+    "student_agreement": 0.8108150802525846,
+    "collision_share": 0.18769082302438375,
+    "violation_rate": 0.00032621105855488503,
+    "loss_by_epoch": [
+     0.38083374233859957,
+     0.37480653370871686,
+     0.3670156047199712,
+     0.36144496127963066
+    ],
+    "episodes": 2100,
+    "collect_s": 59.67496853787452,
+    "train_s": 497.7362222429365
+   },
+   {
+    "iteration": 6,
+    "slots": 1512000,
+    "executed_by": "student",
+    "student_agreement": 0.8258237979115863,
+    "collision_share": 0.17186607101889972,
+    "violation_rate": 0.00027969746058013916,
+    "loss_by_epoch": [
+     0.35352699145486083,
+     0.34708630565223814,
+     0.34170083560143844,
+     0.335828859858875
+    ],
+    "episodes": 2520,
+    "collect_s": 56.65495587978512,
+    "train_s": 597.2302521453239
+   }
+  ]
+ },
+ "il-n8-seed101": {
+  "provenance": {
+   "commit": "20f0fc01f4d78acb64479174b9ab9e863ed9b95a",
+   "dirty": false
+  },
+  "config_sha256": "445ecd46f2a9057ba4290a1a1db2a276ab224d1ba50e88c0a76c71e7801e54cf",
+  "result": {
+   "slots": 1512000,
+   "iterations": 6,
+   "wall_s": 2963.1121862661093,
+   "episodes": 2520,
+   "distinct_training_instances": 2518,
+   "peak_rss_mb": 2684.21484375
+  },
+  "iterations": [
+   {
+    "iteration": 1,
+    "slots": 252000,
+    "executed_by": "teacher",
+    "student_agreement": 0.04651318643721055,
+    "collision_share": 0.0,
+    "violation_rate": 6.511635478645906e-05,
+    "loss_by_epoch": [
+     1.9194482291186297,
+     0.9299844490157233,
+     0.5422708818206081,
+     0.49307512552649885
+    ],
+    "episodes": 420,
+    "collect_s": 60.21384957013652,
+    "train_s": 122.69566048961133
+   },
+   {
+    "iteration": 2,
+    "slots": 504000,
+    "executed_by": "student",
+    "student_agreement": 0.624209452060577,
+    "collision_share": 0.38978017960661626,
+    "violation_rate": 0.006276150627615063,
+    "loss_by_epoch": [
+     0.6695310576906744,
+     0.6290483347649845,
+     0.6087826671465388,
+     0.6027508099124117
+    ],
+    "episodes": 840,
+    "collect_s": 64.13058931706473,
+    "train_s": 243.7004572711885
+   },
+   {
+    "iteration": 3,
+    "slots": 756000,
+    "executed_by": "student",
+    "student_agreement": 0.6694838682772905,
+    "collision_share": 0.27500428408091715,
+    "violation_rate": 0.0008953353030710001,
+    "loss_by_epoch": [
+     0.5998757083204728,
+     0.5885092683985264,
+     0.5798159706441662,
+     0.5750296327886703
+    ],
+    "episodes": 1260,
+    "collect_s": 67.30792388971895,
+    "train_s": 367.72590842610225
+   },
+   {
+    "iteration": 4,
+    "slots": 1008000,
+    "executed_by": "student",
+    "student_agreement": 0.7040473572845249,
+    "collision_share": 0.2813023767764674,
+    "violation_rate": 0.0012617937008002214,
+    "loss_by_epoch": [
+     0.5701716796557108,
+     0.5612284266948699,
+     0.554767841838655,
+     0.5502693691140129
+    ],
+    "episodes": 1680,
+    "collect_s": 68.16104123136029,
+    "train_s": 493.05986655596644
+   },
+   {
+    "iteration": 5,
+    "slots": 1260000,
+    "executed_by": "student",
+    "student_agreement": 0.7020130026217668,
+    "collision_share": 0.26062759596255614,
+    "violation_rate": 0.0007651794508616409,
+    "loss_by_epoch": [
+     0.5421245677904649,
+     0.5348520827112776,
+     0.528431798472549,
+     0.5199192897839979
+    ],
+    "episodes": 2100,
+    "collect_s": 68.9467892171815,
+    "train_s": 620.9133175397292
+   },
+   {
+    "iteration": 6,
+    "slots": 1512000,
+    "executed_by": "student",
+    "student_agreement": 0.7437606603015272,
+    "collision_share": 0.26423295198630753,
+    "violation_rate": 0.0007326245868811358,
+    "loss_by_epoch": [
+     0.5133918527938143,
+     0.5063856665092179,
+     0.5003124638071543,
+     0.494734643116782
+    ],
+    "episodes": 2520,
+    "collect_s": 68.95034087775275,
+    "train_s": 717.2956330450252
+   }
+  ]
+ },
+ "il-n8-seed202": {
+  "provenance": {
+   "commit": "20f0fc01f4d78acb64479174b9ab9e863ed9b95a",
+   "dirty": false
+  },
+  "config_sha256": "445ecd46f2a9057ba4290a1a1db2a276ab224d1ba50e88c0a76c71e7801e54cf",
+  "result": {
+   "slots": 1512000,
+   "iterations": 6,
+   "wall_s": 2969.9962963052094,
+   "episodes": 2520,
+   "distinct_training_instances": 2519,
+   "peak_rss_mb": 2683.59765625
+  },
+  "iterations": [
+   {
+    "iteration": 1,
+    "slots": 252000,
+    "executed_by": "teacher",
+    "student_agreement": 0.04772439839316013,
+    "collision_share": 0.0,
+    "violation_rate": 0.00012211702067034105,
+    "loss_by_epoch": [
+     1.922511883135195,
+     0.9129742277993096,
+     0.540966064841659,
+     0.4951316603907832
+    ],
+    "episodes": 420,
+    "collect_s": 60.49271522788331,
+    "train_s": 123.17911599390209
+   },
+   {
+    "iteration": 2,
+    "slots": 504000,
+    "executed_by": "student",
+    "student_agreement": 0.6292758982915483,
+    "collision_share": 0.37759855260810843,
+    "violation_rate": 0.005632060422567308,
+    "loss_by_epoch": [
+     0.6507154492837078,
+     0.617846588593609,
+     0.5995023763404702,
+     0.5901165335808161
+    ],
+    "episodes": 840,
+    "collect_s": 64.76664844993502,
+    "train_s": 245.14441486401483
+   },
+   {
+    "iteration": 3,
+    "slots": 756000,
+    "executed_by": "student",
+    "student_agreement": 0.6542909131218857,
+    "collision_share": 0.28494104318938696,
+    "violation_rate": 0.0008792497069167644,
+    "loss_by_epoch": [
+     0.5940435979939714,
+     0.5829169074191323,
+     0.5741785084899468,
+     0.5653648155399515
+    ],
+    "episodes": 1260,
+    "collect_s": 68.1688553057611,
+    "train_s": 369.6538650090806
+   },
+   {
+    "iteration": 4,
+    "slots": 1008000,
+    "executed_by": "student",
+    "student_agreement": 0.7004877968256065,
+    "collision_share": 0.2812333909115068,
+    "violation_rate": 0.0011638790542465307,
+    "loss_by_epoch": [
+     0.5689483827068692,
+     0.5613452054205395,
+     0.5560338008971442,
+     0.5509464593728384
+    ],
+    "episodes": 1680,
+    "collect_s": 68.64864078722894,
+    "train_s": 494.25177211500704
+   },
+   {
+    "iteration": 5,
+    "slots": 1260000,
+    "executed_by": "student",
+    "student_agreement": 0.7208621747617024,
+    "collision_share": 0.28226207713939094,
+    "violation_rate": 0.0007732189511895363,
+    "loss_by_epoch": [
+     0.5473361417651177,
+     0.5394931527701291,
+     0.5331902857531201,
+     0.5243969822471792
+    ],
+    "episodes": 2100,
+    "collect_s": 68.99094365816563,
+    "train_s": 619.6249374612235
+   },
+   {
+    "iteration": 6,
+    "slots": 1512000,
+    "executed_by": "student",
+    "student_agreement": 0.7025511243306891,
+    "collision_share": 0.2599265344061998,
+    "violation_rate": 0.00045597407461690033,
+    "loss_by_epoch": [
+     0.5177197329605682,
+     0.5089268004969706,
+     0.5035640255937094,
+     0.49752565256402465
+    ],
+    "episodes": 2520,
+    "collect_s": 69.3405243982561,
+    "train_s": 717.7236003139988
+   }
+  ]
+ }
+}

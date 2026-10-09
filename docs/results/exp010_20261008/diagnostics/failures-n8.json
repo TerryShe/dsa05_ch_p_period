@@ -1,0 +1,2882 @@
+{
+  "instances": [
+    1000,
+    1399
+  ],
+  "summary": {
+    "marl:outputs/exp010/il-n8-seed101/checkpoints/step-001512000.pt|N=8": {
+      "episodes": 400,
+      "failed_episodes": 33,
+      "failing_ues": [
+        {
+          "instance": 1023,
+          "ue": 4,
+          "class": "medium",
+          "distance_m": 93.5,
+          "shadowing_db": -9.6,
+          "violations": 19,
+          "allowance": 10,
+          "duty": 0.50865,
+          "missed_by_class": {
+            "interference": 15,
+            "physics": 4
+          }
+        },
+        {
+          "instance": 1062,
+          "ue": 6,
+          "class": "fast",
+          "distance_m": 99.4,
+          "shadowing_db": -6.7,
+          "violations": 42,
+          "allowance": 20,
+          "duty": 0.42915,
+          "missed_by_class": {
+            "interference": 39,
+            "physics": 3
+          }
+        },
+        {
+          "instance": 1062,
+          "ue": 7,
+          "class": "medium",
+          "distance_m": 96.4,
+          "shadowing_db": -8.9,
+          "violations": 29,
+          "allowance": 10,
+          "duty": 0.5066,
+          "missed_by_class": {
+            "interference": 23,
+            "physics": 6
+          }
+        },
+        {
+          "instance": 1073,
+          "ue": 1,
+          "class": "medium",
+          "distance_m": 92.4,
+          "shadowing_db": -9.6,
+          "violations": 22,
+          "allowance": 10,
+          "duty": 0.5258,
+          "missed_by_class": {
+            "interference": 19,
+            "physics": 2,
+            "channel": 1
+          }
+        },
+        {
+          "instance": 1079,
+          "ue": 6,
+          "class": "fast",
+          "distance_m": 99.1,
+          "shadowing_db": -6.1,
+          "violations": 27,
+          "allowance": 20,
+          "duty": 0.43465,
+          "missed_by_class": {
+            "interference": 27
+          }
+        },
+        {
+          "instance": 1086,
+          "ue": 6,
+          "class": "fast",
+          "distance_m": 90.2,
+          "shadowing_db": -10.0,
+          "violations": 64,
+          "allowance": 20,
+          "duty": 0.49585,
+          "missed_by_class": {
+            "interference": 60,
+            "physics": 4
+          }
+        },
+        {
+          "instance": 1086,
+          "ue": 7,
+          "class": "medium",
+          "distance_m": 93.1,
+          "shadowing_db": -8.5,
+          "violations": 15,
+          "allowance": 10,
+          "duty": 0.48305,
+          "missed_by_class": {
+            "interference": 13,
+            "physics": 2
+          }
+        },
+        {
+          "instance": 1128,
+          "ue": 7,
+          "class": "medium",
+          "distance_m": 93.3,
+          "shadowing_db": -9.9,
+          "violations": 24,
+          "allowance": 10,
+          "duty": 0.51025,
+          "missed_by_class": {
+            "interference": 23,
+            "physics": 1
+          }
+        },
+        {
+          "instance": 1136,
+          "ue": 7,
+          "class": "medium",
+          "distance_m": 82.8,
+          "shadowing_db": -11.1,
+          "violations": 22,
+          "allowance": 10,
+          "duty": 0.4797,
+          "missed_by_class": {
+            "interference": 20,
+            "physics": 2
+          }
+        },
+        {
+          "instance": 1137,
+          "ue": 7,
+          "class": "medium",
+          "distance_m": 84.4,
+          "shadowing_db": -11.0,
+          "violations": 11,
+          "allowance": 10,
+          "duty": 0.4628,
+          "missed_by_class": {
+            "interference": 9,
+            "physics": 2
+          }
+        },
+        {
+          "instance": 1153,
+          "ue": 4,
+          "class": "medium",
+          "distance_m": 82.2,
+          "shadowing_db": -11.7,
+          "violations": 13,
+          "allowance": 10,
+          "duty": 0.4622,
+          "missed_by_class": {
+            "interference": 13
+          }
+        },
+        {
+          "instance": 1173,
+          "ue": 3,
+          "class": "fast",
+          "distance_m": 94.3,
+          "shadowing_db": -9.2,
+          "violations": 56,
+          "allowance": 20,
+          "duty": 0.46745,
+          "missed_by_class": {
+            "interference": 49,
+            "physics": 7
+          }
+        },
+        {
+          "instance": 1207,
+          "ue": 6,
+          "class": "fast",
+          "distance_m": 97.6,
+          "shadowing_db": -8.4,
+          "violations": 51,
+          "allowance": 20,
+          "duty": 0.52725,
+          "missed_by_class": {
+            "interference": 35,
+            "physics": 15,
+            "power": 1
+          }
+        },
+        {
+          "instance": 1209,
+          "ue": 6,
+          "class": "fast",
+          "distance_m": 68.3,
+          "shadowing_db": -14.3,
+          "violations": 39,
+          "allowance": 20,
+          "duty": 0.4574,
+          "missed_by_class": {
+            "interference": 30,
+            "physics": 9
+          }
+        },
+        {
+          "instance": 1210,
+          "ue": 4,
+          "class": "medium",
+          "distance_m": 77.5,
+          "shadowing_db": -13.0,
+          "violations": 34,
+          "allowance": 10,
+          "duty": 0.58015,
+          "missed_by_class": {
+            "interference": 31,
+            "physics": 2,
+            "channel": 1
+          }
+        },
+        {
+          "instance": 1218,
+          "ue": 4,
+          "class": "medium",
+          "distance_m": 98.6,
+          "shadowing_db": -8.2,
+          "violations": 13,
+          "allowance": 10,
+          "duty": 0.5059,
+          "missed_by_class": {
+            "interference": 11,
+            "physics": 1,
+            "channel": 1
+          }
+        },
+        {
+          "instance": 1221,
+          "ue": 3,
+          "class": "fast",
+          "distance_m": 92.2,
+          "shadowing_db": -7.4,
+          "violations": 25,
+          "allowance": 20,
+          "duty": 0.41795,
+          "missed_by_class": {
+            "interference": 22,
+            "physics": 3
+          }
+        },
+        {
+          "instance": 1259,
+          "ue": 0,
+          "class": "fast",
+          "distance_m": 88.8,
+          "shadowing_db": -9.7,
+          "violations": 47,
+          "allowance": 20,
+          "duty": 0.491,
+          "missed_by_class": {
+            "physics": 6,
+            "interference": 41
+          }
+        },
+        {
+          "instance": 1259,
+          "ue": 3,
+          "class": "fast",
+          "distance_m": 87.2,
+          "shadowing_db": -11.0,
+          "violations": 83,
+          "allowance": 20,
+          "duty": 0.4949,
+          "missed_by_class": {
+            "interference": 62,
+            "physics": 21
+          }
+        },
+        {
+          "instance": 1260,
+          "ue": 1,
+          "class": "medium",
+          "distance_m": 98.1,
+          "shadowing_db": -9.0,
+          "violations": 28,
+          "allowance": 10,
+          "duty": 0.4896,
+          "missed_by_class": {
+            "interference": 25,
+            "physics": 3
+          }
+        },
+        {
+          "instance": 1276,
+          "ue": 0,
+          "class": "fast",
+          "distance_m": 82.8,
+          "shadowing_db": -11.9,
+          "violations": 85,
+          "allowance": 20,
+          "duty": 0.51975,
+          "missed_by_class": {
+            "interference": 67,
+            "physics": 18
+          }
+        },
+        {
+          "instance": 1278,
+          "ue": 6,
+          "class": "fast",
+          "distance_m": 83.4,
+          "shadowing_db": -10.1,
+          "violations": 25,
+          "allowance": 20,
+          "duty": 0.4153,
+          "missed_by_class": {
+            "physics": 11,
+            "interference": 14
+          }
+        },
+        {
+          "instance": 1283,
+          "ue": 7,
+          "class": "medium",
+          "distance_m": 91.9,
+          "shadowing_db": -8.4,
+          "violations": 20,
+          "allowance": 10,
+          "duty": 0.46255,
+          "missed_by_class": {
+            "interference": 18,
+            "physics": 2
+          }
+        },
+        {
+          "instance": 1294,
+          "ue": 0,
+          "class": "fast",
+          "distance_m": 99.8,
+          "shadowing_db": -6.4,
+          "violations": 27,
+          "allowance": 20,
+          "duty": 0.4047,
+          "missed_by_class": {
+            "interference": 23,
+            "physics": 4
+          }
+        },
+        {
+          "instance": 1303,
+          "ue": 0,
+          "class": "fast",
+          "distance_m": 70.7,
+          "shadowing_db": -11.6,
+          "violations": 25,
+          "allowance": 20,
+          "duty": 0.3836,
+          "missed_by_class": {
+            "interference": 22,
+            "physics": 3
+          }
+        },
+        {
+          "instance": 1311,
+          "ue": 0,
+          "class": "fast",
+          "distance_m": 99.4,
+          "shadowing_db": -7.0,
+          "violations": 22,
+          "allowance": 20,
+          "duty": 0.4459,
+          "missed_by_class": {
+            "interference": 19,
+            "physics": 3
+          }
+        },
+        {
+          "instance": 1321,
+          "ue": 1,
+          "class": "medium",
+          "distance_m": 96.4,
+          "shadowing_db": -9.1,
+          "violations": 28,
+          "allowance": 10,
+          "duty": 0.497,
+          "missed_by_class": {
+            "physics": 4,
+            "interference": 24
+          }
+        },
+        {
+          "instance": 1329,
+          "ue": 3,
+          "class": "fast",
+          "distance_m": 78.7,
+          "shadowing_db": -10.6,
+          "violations": 55,
+          "allowance": 20,
+          "duty": 0.46605,
+          "missed_by_class": {
+            "interference": 52,
+            "physics": 3
+          }
+        },
+        {
+          "instance": 1333,
+          "ue": 3,
+          "class": "fast",
+          "distance_m": 93.1,
+          "shadowing_db": -8.8,
+          "violations": 39,
+          "allowance": 20,
+          "duty": 0.4416,
+          "missed_by_class": {
+            "interference": 35,
+            "physics": 4
+          }
+        },
+        {
+          "instance": 1345,
+          "ue": 0,
+          "class": "fast",
+          "distance_m": 95.7,
+          "shadowing_db": -8.5,
+          "violations": 50,
+          "allowance": 20,
+          "duty": 0.50555,
+          "missed_by_class": {
+            "channel": 1,
+            "interference": 44,
+            "physics": 5
+          }
+        },
+        {
+          "instance": 1348,
+          "ue": 7,
+          "class": "medium",
+          "distance_m": 83.1,
+          "shadowing_db": -10.7,
+          "violations": 24,
+          "allowance": 10,
+          "duty": 0.4936,
+          "missed_by_class": {
+            "channel": 2,
+            "interference": 21,
+            "physics": 1
+          }
+        },
+        {
+          "instance": 1355,
+          "ue": 7,
+          "class": "medium",
+          "distance_m": 93.2,
+          "shadowing_db": -9.4,
+          "violations": 16,
+          "allowance": 10,
+          "duty": 0.4735,
+          "missed_by_class": {
+            "interference": 13,
+            "physics": 3
+          }
+        },
+        {
+          "instance": 1358,
+          "ue": 0,
+          "class": "fast",
+          "distance_m": 97.0,
+          "shadowing_db": -8.7,
+          "violations": 85,
+          "allowance": 20,
+          "duty": 0.49425,
+          "missed_by_class": {
+            "interference": 78,
+            "physics": 7
+          }
+        },
+        {
+          "instance": 1358,
+          "ue": 3,
+          "class": "fast",
+          "distance_m": 99.1,
+          "shadowing_db": -7.1,
+          "violations": 56,
+          "allowance": 20,
+          "duty": 0.46065,
+          "missed_by_class": {
+            "interference": 53,
+            "physics": 3
+          }
+        },
+        {
+          "instance": 1366,
+          "ue": 1,
+          "class": "medium",
+          "distance_m": 77.6,
+          "shadowing_db": -11.4,
+          "violations": 14,
+          "allowance": 10,
+          "duty": 0.43565,
+          "missed_by_class": {
+            "interference": 13,
+            "channel": 1
+          }
+        },
+        {
+          "instance": 1388,
+          "ue": 6,
+          "class": "fast",
+          "distance_m": 80.2,
+          "shadowing_db": -12.4,
+          "violations": 89,
+          "allowance": 20,
+          "duty": 0.5391,
+          "missed_by_class": {
+            "interference": 74,
+            "physics": 15
+          }
+        },
+        {
+          "instance": 1395,
+          "ue": 0,
+          "class": "fast",
+          "distance_m": 83.9,
+          "shadowing_db": -11.7,
+          "violations": 120,
+          "allowance": 20,
+          "duty": 0.54715,
+          "missed_by_class": {
+            "interference": 93,
+            "physics": 26,
+            "channel": 1
+          }
+        }
+      ],
+      "classes": {
+        "failing": {
+          "interference": 1230,
+          "tx_slots": 17756,
+          "window_slots": 17760,
+          "physics": 205,
+          "channel": 8,
+          "power": 1
+        },
+        "other": {
+          "interference": 823,
+          "tx_slots": 10667,
+          "window_slots": 10670,
+          "physics": 71,
+          "channel": 5
+        }
+      },
+      "interferers": {
+        "mid|fast|could_wait": 1023,
+        "total": 9278,
+        "near|medium|could_wait": 277,
+        "mid|slow|could_wait": 906,
+        "near|fast|could_wait": 411,
+        "far|medium|could_wait": 1889,
+        "near|slow|could_wait": 455,
+        "far|medium|urgent": 18,
+        "far|fast|could_wait": 1934,
+        "far|fast|urgent": 179,
+        "mid|medium|could_wait": 984,
+        "far|slow|could_wait": 1191,
+        "mid|fast|urgent": 11
+      }
+    },
+    "marl:outputs/exp010/il-n8-seed202/checkpoints/step-001260000.pt|N=8": {
+      "episodes": 400,
+      "failed_episodes": 38,
+      "failing_ues": [
+        {
+          "instance": 1023,
+          "ue": 4,
+          "class": "medium",
+          "distance_m": 93.5,
+          "shadowing_db": -9.6,
+          "violations": 21,
+          "allowance": 10,
+          "duty": 0.5204,
+          "missed_by_class": {
+            "interference": 15,
+            "physics": 4,
+            "channel": 2
+          }
+        },
+        {
+          "instance": 1062,
+          "ue": 6,
+          "class": "fast",
+          "distance_m": 99.4,
+          "shadowing_db": -6.7,
+          "violations": 39,
+          "allowance": 20,
+          "duty": 0.4356,
+          "missed_by_class": {
+            "interference": 36,
+            "physics": 3
+          }
+        },
+        {
+          "instance": 1062,
+          "ue": 7,
+          "class": "medium",
+          "distance_m": 96.4,
+          "shadowing_db": -8.9,
+          "violations": 31,
+          "allowance": 10,
+          "duty": 0.504,
+          "missed_by_class": {
+            "interference": 25,
+            "physics": 6
+          }
+        },
+        {
+          "instance": 1073,
+          "ue": 1,
+          "class": "medium",
+          "distance_m": 92.4,
+          "shadowing_db": -9.6,
+          "violations": 24,
+          "allowance": 10,
+          "duty": 0.5279,
+          "missed_by_class": {
+            "interference": 21,
+            "physics": 2,
+            "channel": 1
+          }
+        },
+        {
+          "instance": 1086,
+          "ue": 6,
+          "class": "fast",
+          "distance_m": 90.2,
+          "shadowing_db": -10.0,
+          "violations": 72,
+          "allowance": 20,
+          "duty": 0.50555,
+          "missed_by_class": {
+            "interference": 68,
+            "physics": 4
+          }
+        },
+        {
+          "instance": 1086,
+          "ue": 7,
+          "class": "medium",
+          "distance_m": 93.1,
+          "shadowing_db": -8.5,
+          "violations": 15,
+          "allowance": 10,
+          "duty": 0.48285,
+          "missed_by_class": {
+            "interference": 13,
+            "physics": 2
+          }
+        },
+        {
+          "instance": 1128,
+          "ue": 7,
+          "class": "medium",
+          "distance_m": 93.3,
+          "shadowing_db": -9.9,
+          "violations": 17,
+          "allowance": 10,
+          "duty": 0.5077,
+          "missed_by_class": {
+            "interference": 16,
+            "physics": 1
+          }
+        },
+        {
+          "instance": 1136,
+          "ue": 7,
+          "class": "medium",
+          "distance_m": 82.8,
+          "shadowing_db": -11.1,
+          "violations": 24,
+          "allowance": 10,
+          "duty": 0.4779,
+          "missed_by_class": {
+            "interference": 22,
+            "physics": 2
+          }
+        },
+        {
+          "instance": 1137,
+          "ue": 7,
+          "class": "medium",
+          "distance_m": 84.4,
+          "shadowing_db": -11.0,
+          "violations": 17,
+          "allowance": 10,
+          "duty": 0.47325,
+          "missed_by_class": {
+            "interference": 15,
+            "physics": 2
+          }
+        },
+        {
+          "instance": 1153,
+          "ue": 4,
+          "class": "medium",
+          "distance_m": 82.2,
+          "shadowing_db": -11.7,
+          "violations": 19,
+          "allowance": 10,
+          "duty": 0.47275,
+          "missed_by_class": {
+            "interference": 19
+          }
+        },
+        {
+          "instance": 1173,
+          "ue": 3,
+          "class": "fast",
+          "distance_m": 94.3,
+          "shadowing_db": -9.2,
+          "violations": 56,
+          "allowance": 20,
+          "duty": 0.47275,
+          "missed_by_class": {
+            "interference": 49,
+            "physics": 7
+          }
+        },
+        {
+          "instance": 1174,
+          "ue": 6,
+          "class": "fast",
+          "distance_m": 88.2,
+          "shadowing_db": -8.6,
+          "violations": 22,
+          "allowance": 20,
+          "duty": 0.38965,
+          "missed_by_class": {
+            "physics": 5,
+            "interference": 17
+          }
+        },
+        {
+          "instance": 1207,
+          "ue": 6,
+          "class": "fast",
+          "distance_m": 97.6,
+          "shadowing_db": -8.4,
+          "violations": 63,
+          "allowance": 20,
+          "duty": 0.54965,
+          "missed_by_class": {
+            "interference": 47,
+            "physics": 15,
+            "channel": 1
+          }
+        },
+        {
+          "instance": 1209,
+          "ue": 6,
+          "class": "fast",
+          "distance_m": 68.3,
+          "shadowing_db": -14.3,
+          "violations": 43,
+          "allowance": 20,
+          "duty": 0.46015,
+          "missed_by_class": {
+            "interference": 34,
+            "physics": 9
+          }
+        },
+        {
+          "instance": 1210,
+          "ue": 4,
+          "class": "medium",
+          "distance_m": 77.5,
+          "shadowing_db": -13.0,
+          "violations": 38,
+          "allowance": 10,
+          "duty": 0.577,
+          "missed_by_class": {
+            "interference": 34,
+            "physics": 2,
+            "channel": 2
+          }
+        },
+        {
+          "instance": 1218,
+          "ue": 4,
+          "class": "medium",
+          "distance_m": 98.6,
+          "shadowing_db": -8.2,
+          "violations": 17,
+          "allowance": 10,
+          "duty": 0.5098,
+          "missed_by_class": {
+            "interference": 16,
+            "physics": 1
+          }
+        },
+        {
+          "instance": 1221,
+          "ue": 3,
+          "class": "fast",
+          "distance_m": 92.2,
+          "shadowing_db": -7.4,
+          "violations": 25,
+          "allowance": 20,
+          "duty": 0.42315,
+          "missed_by_class": {
+            "interference": 22,
+            "physics": 3
+          }
+        },
+        {
+          "instance": 1250,
+          "ue": 6,
+          "class": "fast",
+          "distance_m": 89.2,
+          "shadowing_db": -8.5,
+          "violations": 25,
+          "allowance": 20,
+          "duty": 0.4549,
+          "missed_by_class": {
+            "interference": 24,
+            "physics": 1
+          }
+        },
+        {
+          "instance": 1259,
+          "ue": 0,
+          "class": "fast",
+          "distance_m": 88.8,
+          "shadowing_db": -9.7,
+          "violations": 50,
+          "allowance": 20,
+          "duty": 0.50625,
+          "missed_by_class": {
+            "physics": 6,
+            "interference": 44
+          }
+        },
+        {
+          "instance": 1259,
+          "ue": 3,
+          "class": "fast",
+          "distance_m": 87.2,
+          "shadowing_db": -11.0,
+          "violations": 103,
+          "allowance": 20,
+          "duty": 0.51105,
+          "missed_by_class": {
+            "interference": 81,
+            "physics": 21,
+            "power": 1
+          }
+        },
+        {
+          "instance": 1260,
+          "ue": 1,
+          "class": "medium",
+          "distance_m": 98.1,
+          "shadowing_db": -9.0,
+          "violations": 39,
+          "allowance": 10,
+          "duty": 0.4956,
+          "missed_by_class": {
+            "interference": 35,
+            "physics": 3,
+            "channel": 1
+          }
+        },
+        {
+          "instance": 1268,
+          "ue": 0,
+          "class": "fast",
+          "distance_m": 100.0,
+          "shadowing_db": -6.2,
+          "violations": 21,
+          "allowance": 20,
+          "duty": 0.39465,
+          "missed_by_class": {
+            "interference": 20,
+            "physics": 1
+          }
+        },
+        {
+          "instance": 1276,
+          "ue": 0,
+          "class": "fast",
+          "distance_m": 82.8,
+          "shadowing_db": -11.9,
+          "violations": 92,
+          "allowance": 20,
+          "duty": 0.52575,
+          "missed_by_class": {
+            "physics": 18,
+            "interference": 73,
+            "channel": 1
+          }
+        },
+        {
+          "instance": 1278,
+          "ue": 6,
+          "class": "fast",
+          "distance_m": 83.4,
+          "shadowing_db": -10.1,
+          "violations": 28,
+          "allowance": 20,
+          "duty": 0.4212,
+          "missed_by_class": {
+            "physics": 11,
+            "interference": 17
+          }
+        },
+        {
+          "instance": 1280,
+          "ue": 6,
+          "class": "fast",
+          "distance_m": 76.8,
+          "shadowing_db": -10.8,
+          "violations": 21,
+          "allowance": 20,
+          "duty": 0.39535,
+          "missed_by_class": {
+            "interference": 21
+          }
+        },
+        {
+          "instance": 1283,
+          "ue": 7,
+          "class": "medium",
+          "distance_m": 91.9,
+          "shadowing_db": -8.4,
+          "violations": 16,
+          "allowance": 10,
+          "duty": 0.4584,
+          "missed_by_class": {
+            "interference": 14,
+            "physics": 2
+          }
+        },
+        {
+          "instance": 1294,
+          "ue": 0,
+          "class": "fast",
+          "distance_m": 99.8,
+          "shadowing_db": -6.4,
+          "violations": 33,
+          "allowance": 20,
+          "duty": 0.40965,
+          "missed_by_class": {
+            "interference": 29,
+            "physics": 4
+          }
+        },
+        {
+          "instance": 1303,
+          "ue": 0,
+          "class": "fast",
+          "distance_m": 70.7,
+          "shadowing_db": -11.6,
+          "violations": 25,
+          "allowance": 20,
+          "duty": 0.389,
+          "missed_by_class": {
+            "interference": 22,
+            "physics": 3
+          }
+        },
+        {
+          "instance": 1311,
+          "ue": 0,
+          "class": "fast",
+          "distance_m": 99.4,
+          "shadowing_db": -7.0,
+          "violations": 27,
+          "allowance": 20,
+          "duty": 0.45765,
+          "missed_by_class": {
+            "interference": 24,
+            "physics": 3
+          }
+        },
+        {
+          "instance": 1321,
+          "ue": 1,
+          "class": "medium",
+          "distance_m": 96.4,
+          "shadowing_db": -9.1,
+          "violations": 28,
+          "allowance": 10,
+          "duty": 0.50855,
+          "missed_by_class": {
+            "physics": 4,
+            "interference": 24
+          }
+        },
+        {
+          "instance": 1329,
+          "ue": 3,
+          "class": "fast",
+          "distance_m": 78.7,
+          "shadowing_db": -10.6,
+          "violations": 49,
+          "allowance": 20,
+          "duty": 0.4793,
+          "missed_by_class": {
+            "interference": 46,
+            "physics": 3
+          }
+        },
+        {
+          "instance": 1333,
+          "ue": 3,
+          "class": "fast",
+          "distance_m": 93.1,
+          "shadowing_db": -8.8,
+          "violations": 36,
+          "allowance": 20,
+          "duty": 0.4495,
+          "missed_by_class": {
+            "interference": 32,
+            "physics": 4
+          }
+        },
+        {
+          "instance": 1345,
+          "ue": 0,
+          "class": "fast",
+          "distance_m": 95.7,
+          "shadowing_db": -8.5,
+          "violations": 58,
+          "allowance": 20,
+          "duty": 0.51385,
+          "missed_by_class": {
+            "interference": 52,
+            "channel": 1,
+            "physics": 5
+          }
+        },
+        {
+          "instance": 1348,
+          "ue": 7,
+          "class": "medium",
+          "distance_m": 83.1,
+          "shadowing_db": -10.7,
+          "violations": 24,
+          "allowance": 10,
+          "duty": 0.4941,
+          "missed_by_class": {
+            "interference": 23,
+            "physics": 1
+          }
+        },
+        {
+          "instance": 1355,
+          "ue": 7,
+          "class": "medium",
+          "distance_m": 93.2,
+          "shadowing_db": -9.4,
+          "violations": 17,
+          "allowance": 10,
+          "duty": 0.48145,
+          "missed_by_class": {
+            "interference": 14,
+            "physics": 3
+          }
+        },
+        {
+          "instance": 1358,
+          "ue": 0,
+          "class": "fast",
+          "distance_m": 97.0,
+          "shadowing_db": -8.7,
+          "violations": 95,
+          "allowance": 20,
+          "duty": 0.50175,
+          "missed_by_class": {
+            "interference": 88,
+            "physics": 7
+          }
+        },
+        {
+          "instance": 1358,
+          "ue": 3,
+          "class": "fast",
+          "distance_m": 99.1,
+          "shadowing_db": -7.1,
+          "violations": 64,
+          "allowance": 20,
+          "duty": 0.46995,
+          "missed_by_class": {
+            "interference": 61,
+            "physics": 3
+          }
+        },
+        {
+          "instance": 1366,
+          "ue": 1,
+          "class": "medium",
+          "distance_m": 77.6,
+          "shadowing_db": -11.4,
+          "violations": 12,
+          "allowance": 10,
+          "duty": 0.4356,
+          "missed_by_class": {
+            "interference": 12
+          }
+        },
+        {
+          "instance": 1388,
+          "ue": 6,
+          "class": "fast",
+          "distance_m": 80.2,
+          "shadowing_db": -12.4,
+          "violations": 103,
+          "allowance": 20,
+          "duty": 0.5585,
+          "missed_by_class": {
+            "interference": 87,
+            "physics": 15,
+            "channel": 1
+          }
+        },
+        {
+          "instance": 1395,
+          "ue": 0,
+          "class": "fast",
+          "distance_m": 83.9,
+          "shadowing_db": -11.7,
+          "violations": 116,
+          "allowance": 20,
+          "duty": 0.5531,
+          "missed_by_class": {
+            "interference": 89,
+            "physics": 26,
+            "channel": 1
+          }
+        },
+        {
+          "instance": 1396,
+          "ue": 3,
+          "class": "fast",
+          "distance_m": 97.4,
+          "shadowing_db": -8.1,
+          "violations": 23,
+          "allowance": 20,
+          "duty": 0.4431,
+          "missed_by_class": {
+            "interference": 14,
+            "physics": 7,
+            "power": 1,
+            "channel": 1
+          }
+        },
+        {
+          "instance": 1398,
+          "ue": 3,
+          "class": "fast",
+          "distance_m": 97.8,
+          "shadowing_db": -5.8,
+          "violations": 24,
+          "allowance": 20,
+          "duty": 0.4479,
+          "missed_by_class": {
+            "interference": 23,
+            "physics": 1
+          }
+        }
+      ],
+      "classes": {
+        "failing": {
+          "interference": 1438,
+          "tx_slots": 20310,
+          "window_slots": 20310,
+          "physics": 220,
+          "channel": 12,
+          "power": 2
+        },
+        "other": {
+          "interference": 798,
+          "tx_slots": 10446,
+          "window_slots": 10450,
+          "physics": 56,
+          "channel": 3,
+          "power": 1
+        }
+      },
+      "interferers": {
+        "mid|fast|could_wait": 1075,
+        "total": 10886,
+        "near|medium|could_wait": 401,
+        "mid|slow|could_wait": 976,
+        "near|fast|could_wait": 451,
+        "far|medium|could_wait": 1991,
+        "near|slow|could_wait": 557,
+        "far|medium|urgent": 27,
+        "far|fast|could_wait": 2503,
+        "far|fast|urgent": 259,
+        "far|slow|could_wait": 1489,
+        "mid|medium|could_wait": 1154,
+        "mid|fast|urgent": 3
+      }
+    },
+    "marl:outputs/exp006-phase2/fixed-seed101/checkpoints/step-018000640.pt|N=8": {
+      "episodes": 400,
+      "failed_episodes": 33,
+      "failing_ues": [
+        {
+          "instance": 1023,
+          "ue": 4,
+          "class": "medium",
+          "distance_m": 93.5,
+          "shadowing_db": -9.6,
+          "violations": 17,
+          "allowance": 10,
+          "duty": 0.49715,
+          "missed_by_class": {
+            "interference": 11,
+            "physics": 4,
+            "channel": 2
+          }
+        },
+        {
+          "instance": 1032,
+          "ue": 5,
+          "class": "slow",
+          "distance_m": 5.2,
+          "shadowing_db": 10.3,
+          "violations": 26,
+          "allowance": 5,
+          "duty": 0.04285,
+          "missed_by_class": {
+            "power": 2,
+            "attempts": 14,
+            "channel": 10
+          }
+        },
+        {
+          "instance": 1062,
+          "ue": 6,
+          "class": "fast",
+          "distance_m": 99.4,
+          "shadowing_db": -6.7,
+          "violations": 22,
+          "allowance": 20,
+          "duty": 0.4183,
+          "missed_by_class": {
+            "interference": 13,
+            "physics": 3,
+            "channel": 6
+          }
+        },
+        {
+          "instance": 1062,
+          "ue": 7,
+          "class": "medium",
+          "distance_m": 96.4,
+          "shadowing_db": -8.9,
+          "violations": 24,
+          "allowance": 10,
+          "duty": 0.475,
+          "missed_by_class": {
+            "channel": 6,
+            "physics": 6,
+            "interference": 12
+          }
+        },
+        {
+          "instance": 1073,
+          "ue": 1,
+          "class": "medium",
+          "distance_m": 92.4,
+          "shadowing_db": -9.6,
+          "violations": 15,
+          "allowance": 10,
+          "duty": 0.5078,
+          "missed_by_class": {
+            "interference": 8,
+            "physics": 2,
+            "channel": 5
+          }
+        },
+        {
+          "instance": 1086,
+          "ue": 6,
+          "class": "fast",
+          "distance_m": 90.2,
+          "shadowing_db": -10.0,
+          "violations": 50,
+          "allowance": 20,
+          "duty": 0.4949,
+          "missed_by_class": {
+            "channel": 10,
+            "interference": 36,
+            "physics": 4
+          }
+        },
+        {
+          "instance": 1128,
+          "ue": 7,
+          "class": "medium",
+          "distance_m": 93.3,
+          "shadowing_db": -9.9,
+          "violations": 19,
+          "allowance": 10,
+          "duty": 0.49055,
+          "missed_by_class": {
+            "channel": 8,
+            "interference": 10,
+            "physics": 1
+          }
+        },
+        {
+          "instance": 1136,
+          "ue": 7,
+          "class": "medium",
+          "distance_m": 82.8,
+          "shadowing_db": -11.1,
+          "violations": 18,
+          "allowance": 10,
+          "duty": 0.43345,
+          "missed_by_class": {
+            "interference": 14,
+            "channel": 2,
+            "physics": 2
+          }
+        },
+        {
+          "instance": 1137,
+          "ue": 7,
+          "class": "medium",
+          "distance_m": 84.4,
+          "shadowing_db": -11.0,
+          "violations": 11,
+          "allowance": 10,
+          "duty": 0.4642,
+          "missed_by_class": {
+            "channel": 3,
+            "interference": 6,
+            "physics": 2
+          }
+        },
+        {
+          "instance": 1153,
+          "ue": 4,
+          "class": "medium",
+          "distance_m": 82.2,
+          "shadowing_db": -11.7,
+          "violations": 13,
+          "allowance": 10,
+          "duty": 0.45795,
+          "missed_by_class": {
+            "channel": 5,
+            "interference": 8
+          }
+        },
+        {
+          "instance": 1173,
+          "ue": 3,
+          "class": "fast",
+          "distance_m": 94.3,
+          "shadowing_db": -9.2,
+          "violations": 44,
+          "allowance": 20,
+          "duty": 0.47065,
+          "missed_by_class": {
+            "interference": 28,
+            "channel": 9,
+            "physics": 7
+          }
+        },
+        {
+          "instance": 1207,
+          "ue": 6,
+          "class": "fast",
+          "distance_m": 97.6,
+          "shadowing_db": -8.4,
+          "violations": 51,
+          "allowance": 20,
+          "duty": 0.5356,
+          "missed_by_class": {
+            "interference": 28,
+            "channel": 8,
+            "physics": 15
+          }
+        },
+        {
+          "instance": 1209,
+          "ue": 6,
+          "class": "fast",
+          "distance_m": 68.3,
+          "shadowing_db": -14.3,
+          "violations": 41,
+          "allowance": 20,
+          "duty": 0.464,
+          "missed_by_class": {
+            "channel": 8,
+            "interference": 24,
+            "physics": 9
+          }
+        },
+        {
+          "instance": 1210,
+          "ue": 4,
+          "class": "medium",
+          "distance_m": 77.5,
+          "shadowing_db": -13.0,
+          "violations": 27,
+          "allowance": 10,
+          "duty": 0.54305,
+          "missed_by_class": {
+            "channel": 10,
+            "interference": 15,
+            "physics": 2
+          }
+        },
+        {
+          "instance": 1218,
+          "ue": 4,
+          "class": "medium",
+          "distance_m": 98.6,
+          "shadowing_db": -8.2,
+          "violations": 11,
+          "allowance": 10,
+          "duty": 0.4734,
+          "missed_by_class": {
+            "interference": 6,
+            "physics": 1,
+            "channel": 4
+          }
+        },
+        {
+          "instance": 1250,
+          "ue": 6,
+          "class": "fast",
+          "distance_m": 89.2,
+          "shadowing_db": -8.5,
+          "violations": 25,
+          "allowance": 20,
+          "duty": 0.4399,
+          "missed_by_class": {
+            "interference": 20,
+            "channel": 4,
+            "physics": 1
+          }
+        },
+        {
+          "instance": 1259,
+          "ue": 0,
+          "class": "fast",
+          "distance_m": 88.8,
+          "shadowing_db": -9.7,
+          "violations": 30,
+          "allowance": 20,
+          "duty": 0.4847,
+          "missed_by_class": {
+            "physics": 6,
+            "interference": 18,
+            "channel": 6
+          }
+        },
+        {
+          "instance": 1259,
+          "ue": 3,
+          "class": "fast",
+          "distance_m": 87.2,
+          "shadowing_db": -11.0,
+          "violations": 59,
+          "allowance": 20,
+          "duty": 0.50535,
+          "missed_by_class": {
+            "interference": 32,
+            "physics": 21,
+            "channel": 6
+          }
+        },
+        {
+          "instance": 1260,
+          "ue": 1,
+          "class": "medium",
+          "distance_m": 98.1,
+          "shadowing_db": -9.0,
+          "violations": 27,
+          "allowance": 10,
+          "duty": 0.4739,
+          "missed_by_class": {
+            "interference": 17,
+            "channel": 7,
+            "physics": 3
+          }
+        },
+        {
+          "instance": 1263,
+          "ue": 5,
+          "class": "slow",
+          "distance_m": 1.7,
+          "shadowing_db": 2.4,
+          "violations": 8,
+          "allowance": 5,
+          "duty": 0.02935,
+          "missed_by_class": {
+            "power": 2,
+            "interference": 6
+          }
+        },
+        {
+          "instance": 1276,
+          "ue": 0,
+          "class": "fast",
+          "distance_m": 82.8,
+          "shadowing_db": -11.9,
+          "violations": 92,
+          "allowance": 20,
+          "duty": 0.52655,
+          "missed_by_class": {
+            "physics": 18,
+            "channel": 8,
+            "interference": 66
+          }
+        },
+        {
+          "instance": 1278,
+          "ue": 6,
+          "class": "fast",
+          "distance_m": 83.4,
+          "shadowing_db": -10.1,
+          "violations": 24,
+          "allowance": 20,
+          "duty": 0.4283,
+          "missed_by_class": {
+            "interference": 11,
+            "physics": 11,
+            "channel": 2
+          }
+        },
+        {
+          "instance": 1283,
+          "ue": 7,
+          "class": "medium",
+          "distance_m": 91.9,
+          "shadowing_db": -8.4,
+          "violations": 14,
+          "allowance": 10,
+          "duty": 0.42495,
+          "missed_by_class": {
+            "interference": 12,
+            "physics": 2
+          }
+        },
+        {
+          "instance": 1294,
+          "ue": 0,
+          "class": "fast",
+          "distance_m": 99.8,
+          "shadowing_db": -6.4,
+          "violations": 22,
+          "allowance": 20,
+          "duty": 0.4077,
+          "missed_by_class": {
+            "interference": 15,
+            "channel": 3,
+            "physics": 4
+          }
+        },
+        {
+          "instance": 1321,
+          "ue": 1,
+          "class": "medium",
+          "distance_m": 96.4,
+          "shadowing_db": -9.1,
+          "violations": 18,
+          "allowance": 10,
+          "duty": 0.47555,
+          "missed_by_class": {
+            "physics": 4,
+            "interference": 10,
+            "channel": 4
+          }
+        },
+        {
+          "instance": 1329,
+          "ue": 3,
+          "class": "fast",
+          "distance_m": 78.7,
+          "shadowing_db": -10.6,
+          "violations": 36,
+          "allowance": 20,
+          "duty": 0.4651,
+          "missed_by_class": {
+            "interference": 31,
+            "channel": 2,
+            "physics": 3
+          }
+        },
+        {
+          "instance": 1332,
+          "ue": 0,
+          "class": "fast",
+          "distance_m": 99.5,
+          "shadowing_db": -5.2,
+          "violations": 21,
+          "allowance": 20,
+          "duty": 0.3917,
+          "missed_by_class": {
+            "interference": 16,
+            "channel": 3,
+            "physics": 2
+          }
+        },
+        {
+          "instance": 1333,
+          "ue": 3,
+          "class": "fast",
+          "distance_m": 93.1,
+          "shadowing_db": -8.8,
+          "violations": 30,
+          "allowance": 20,
+          "duty": 0.4562,
+          "missed_by_class": {
+            "channel": 7,
+            "interference": 19,
+            "physics": 4
+          }
+        },
+        {
+          "instance": 1345,
+          "ue": 0,
+          "class": "fast",
+          "distance_m": 95.7,
+          "shadowing_db": -8.5,
+          "violations": 49,
+          "allowance": 20,
+          "duty": 0.50585,
+          "missed_by_class": {
+            "interference": 36,
+            "channel": 8,
+            "physics": 5
+          }
+        },
+        {
+          "instance": 1348,
+          "ue": 7,
+          "class": "medium",
+          "distance_m": 83.1,
+          "shadowing_db": -10.7,
+          "violations": 14,
+          "allowance": 10,
+          "duty": 0.45205,
+          "missed_by_class": {
+            "channel": 4,
+            "physics": 1,
+            "interference": 9
+          }
+        },
+        {
+          "instance": 1355,
+          "ue": 7,
+          "class": "medium",
+          "distance_m": 93.2,
+          "shadowing_db": -9.4,
+          "violations": 14,
+          "allowance": 10,
+          "duty": 0.4451,
+          "missed_by_class": {
+            "interference": 8,
+            "physics": 3,
+            "channel": 3
+          }
+        },
+        {
+          "instance": 1358,
+          "ue": 0,
+          "class": "fast",
+          "distance_m": 97.0,
+          "shadowing_db": -8.7,
+          "violations": 86,
+          "allowance": 20,
+          "duty": 0.50425,
+          "missed_by_class": {
+            "interference": 70,
+            "physics": 7,
+            "channel": 9
+          }
+        },
+        {
+          "instance": 1358,
+          "ue": 3,
+          "class": "fast",
+          "distance_m": 99.1,
+          "shadowing_db": -7.1,
+          "violations": 42,
+          "allowance": 20,
+          "duty": 0.47545,
+          "missed_by_class": {
+            "interference": 34,
+            "physics": 3,
+            "channel": 5
+          }
+        },
+        {
+          "instance": 1388,
+          "ue": 6,
+          "class": "fast",
+          "distance_m": 80.2,
+          "shadowing_db": -12.4,
+          "violations": 77,
+          "allowance": 20,
+          "duty": 0.53515,
+          "missed_by_class": {
+            "interference": 43,
+            "channel": 19,
+            "physics": 15
+          }
+        },
+        {
+          "instance": 1395,
+          "ue": 0,
+          "class": "fast",
+          "distance_m": 83.9,
+          "shadowing_db": -11.7,
+          "violations": 103,
+          "allowance": 20,
+          "duty": 0.54435,
+          "missed_by_class": {
+            "physics": 26,
+            "channel": 14,
+            "interference": 63
+          }
+        },
+        {
+          "instance": 1396,
+          "ue": 3,
+          "class": "fast",
+          "distance_m": 97.4,
+          "shadowing_db": -8.1,
+          "violations": 22,
+          "allowance": 20,
+          "duty": 0.44715,
+          "missed_by_class": {
+            "interference": 11,
+            "physics": 7,
+            "channel": 4
+          }
+        }
+      ],
+      "classes": {
+        "failing": {
+          "interference": 766,
+          "tx_slots": 14133,
+          "window_slots": 15460,
+          "physics": 204,
+          "channel": 214,
+          "power": 4,
+          "attempts": 14
+        },
+        "other": {
+          "physics": 72,
+          "tx_slots": 7755,
+          "window_slots": 8010,
+          "interference": 449,
+          "channel": 95,
+          "attempts": 3,
+          "power": 1
+        }
+      },
+      "interferers": {
+        "mid|fast|could_wait": 392,
+        "total": 4372,
+        "near|medium|could_wait": 222,
+        "near|fast|could_wait": 145,
+        "mid|slow|could_wait": 501,
+        "near|slow|could_wait": 376,
+        "far|medium|could_wait": 661,
+        "far|fast|could_wait": 650,
+        "far|fast|urgent": 41,
+        "far|slow|could_wait": 882,
+        "mid|medium|could_wait": 486,
+        "far|medium|urgent": 12,
+        "mid|fast|urgent": 4
+      }
+    },
+    "marl:outputs/exp006-phase2/fixed-seed202/checkpoints/step-014000896.pt|N=8": {
+      "episodes": 400,
+      "failed_episodes": 34,
+      "failing_ues": [
+        {
+          "instance": 1023,
+          "ue": 4,
+          "class": "medium",
+          "distance_m": 93.5,
+          "shadowing_db": -9.6,
+          "violations": 23,
+          "allowance": 10,
+          "duty": 0.49965,
+          "missed_by_class": {
+            "interference": 16,
+            "physics": 4,
+            "channel": 3
+          }
+        },
+        {
+          "instance": 1052,
+          "ue": 1,
+          "class": "medium",
+          "distance_m": 93.8,
+          "shadowing_db": -8.5,
+          "violations": 11,
+          "allowance": 10,
+          "duty": 0.44755,
+          "missed_by_class": {
+            "interference": 7,
+            "physics": 2,
+            "channel": 2
+          }
+        },
+        {
+          "instance": 1062,
+          "ue": 6,
+          "class": "fast",
+          "distance_m": 99.4,
+          "shadowing_db": -6.7,
+          "violations": 30,
+          "allowance": 20,
+          "duty": 0.43245,
+          "missed_by_class": {
+            "interference": 22,
+            "physics": 3,
+            "channel": 5
+          }
+        },
+        {
+          "instance": 1062,
+          "ue": 7,
+          "class": "medium",
+          "distance_m": 96.4,
+          "shadowing_db": -8.9,
+          "violations": 35,
+          "allowance": 10,
+          "duty": 0.48205,
+          "missed_by_class": {
+            "interference": 24,
+            "physics": 6,
+            "channel": 5
+          }
+        },
+        {
+          "instance": 1073,
+          "ue": 1,
+          "class": "medium",
+          "distance_m": 92.4,
+          "shadowing_db": -9.6,
+          "violations": 22,
+          "allowance": 10,
+          "duty": 0.51115,
+          "missed_by_class": {
+            "interference": 18,
+            "physics": 2,
+            "channel": 2
+          }
+        },
+        {
+          "instance": 1083,
+          "ue": 1,
+          "class": "medium",
+          "distance_m": 53.8,
+          "shadowing_db": -18.6,
+          "violations": 11,
+          "allowance": 10,
+          "duty": 0.45185,
+          "missed_by_class": {
+            "interference": 8,
+            "physics": 2,
+            "channel": 1
+          }
+        },
+        {
+          "instance": 1086,
+          "ue": 6,
+          "class": "fast",
+          "distance_m": 90.2,
+          "shadowing_db": -10.0,
+          "violations": 59,
+          "allowance": 20,
+          "duty": 0.49075,
+          "missed_by_class": {
+            "channel": 6,
+            "interference": 49,
+            "physics": 4
+          }
+        },
+        {
+          "instance": 1086,
+          "ue": 7,
+          "class": "medium",
+          "distance_m": 93.1,
+          "shadowing_db": -8.5,
+          "violations": 12,
+          "allowance": 10,
+          "duty": 0.4496,
+          "missed_by_class": {
+            "interference": 9,
+            "channel": 1,
+            "physics": 2
+          }
+        },
+        {
+          "instance": 1128,
+          "ue": 7,
+          "class": "medium",
+          "distance_m": 93.3,
+          "shadowing_db": -9.9,
+          "violations": 26,
+          "allowance": 10,
+          "duty": 0.5118,
+          "missed_by_class": {
+            "interference": 20,
+            "channel": 3,
+            "power": 2,
+            "physics": 1
+          }
+        },
+        {
+          "instance": 1136,
+          "ue": 7,
+          "class": "medium",
+          "distance_m": 82.8,
+          "shadowing_db": -11.1,
+          "violations": 17,
+          "allowance": 10,
+          "duty": 0.4272,
+          "missed_by_class": {
+            "interference": 14,
+            "channel": 1,
+            "physics": 2
+          }
+        },
+        {
+          "instance": 1137,
+          "ue": 7,
+          "class": "medium",
+          "distance_m": 84.4,
+          "shadowing_db": -11.0,
+          "violations": 12,
+          "allowance": 10,
+          "duty": 0.4595,
+          "missed_by_class": {
+            "interference": 7,
+            "channel": 2,
+            "power": 1,
+            "physics": 2
+          }
+        },
+        {
+          "instance": 1153,
+          "ue": 4,
+          "class": "medium",
+          "distance_m": 82.2,
+          "shadowing_db": -11.7,
+          "violations": 19,
+          "allowance": 10,
+          "duty": 0.4675,
+          "missed_by_class": {
+            "channel": 4,
+            "interference": 15
+          }
+        },
+        {
+          "instance": 1173,
+          "ue": 3,
+          "class": "fast",
+          "distance_m": 94.3,
+          "shadowing_db": -9.2,
+          "violations": 42,
+          "allowance": 20,
+          "duty": 0.4758,
+          "missed_by_class": {
+            "channel": 8,
+            "interference": 27,
+            "physics": 7
+          }
+        },
+        {
+          "instance": 1207,
+          "ue": 6,
+          "class": "fast",
+          "distance_m": 97.6,
+          "shadowing_db": -8.4,
+          "violations": 66,
+          "allowance": 20,
+          "duty": 0.54825,
+          "missed_by_class": {
+            "interference": 44,
+            "physics": 15,
+            "channel": 7
+          }
+        },
+        {
+          "instance": 1209,
+          "ue": 6,
+          "class": "fast",
+          "distance_m": 68.3,
+          "shadowing_db": -14.3,
+          "violations": 40,
+          "allowance": 20,
+          "duty": 0.4598,
+          "missed_by_class": {
+            "channel": 8,
+            "interference": 23,
+            "physics": 9
+          }
+        },
+        {
+          "instance": 1210,
+          "ue": 4,
+          "class": "medium",
+          "distance_m": 77.5,
+          "shadowing_db": -13.0,
+          "violations": 34,
+          "allowance": 10,
+          "duty": 0.5449,
+          "missed_by_class": {
+            "channel": 11,
+            "interference": 21,
+            "physics": 2
+          }
+        },
+        {
+          "instance": 1218,
+          "ue": 4,
+          "class": "medium",
+          "distance_m": 98.6,
+          "shadowing_db": -8.2,
+          "violations": 13,
+          "allowance": 10,
+          "duty": 0.4798,
+          "missed_by_class": {
+            "interference": 8,
+            "physics": 1,
+            "channel": 4
+          }
+        },
+        {
+          "instance": 1250,
+          "ue": 6,
+          "class": "fast",
+          "distance_m": 89.2,
+          "shadowing_db": -8.5,
+          "violations": 23,
+          "allowance": 20,
+          "duty": 0.4454,
+          "missed_by_class": {
+            "interference": 19,
+            "channel": 3,
+            "physics": 1
+          }
+        },
+        {
+          "instance": 1259,
+          "ue": 0,
+          "class": "fast",
+          "distance_m": 88.8,
+          "shadowing_db": -9.7,
+          "violations": 33,
+          "allowance": 20,
+          "duty": 0.49665,
+          "missed_by_class": {
+            "physics": 6,
+            "interference": 24,
+            "channel": 3
+          }
+        },
+        {
+          "instance": 1259,
+          "ue": 3,
+          "class": "fast",
+          "distance_m": 87.2,
+          "shadowing_db": -11.0,
+          "violations": 71,
+          "allowance": 20,
+          "duty": 0.48485,
+          "missed_by_class": {
+            "physics": 21,
+            "interference": 39,
+            "channel": 11
+          }
+        },
+        {
+          "instance": 1260,
+          "ue": 1,
+          "class": "medium",
+          "distance_m": 98.1,
+          "shadowing_db": -9.0,
+          "violations": 31,
+          "allowance": 10,
+          "duty": 0.47115,
+          "missed_by_class": {
+            "interference": 24,
+            "physics": 3,
+            "channel": 4
+          }
+        },
+        {
+          "instance": 1276,
+          "ue": 0,
+          "class": "fast",
+          "distance_m": 82.8,
+          "shadowing_db": -11.9,
+          "violations": 115,
+          "allowance": 20,
+          "duty": 0.5242,
+          "missed_by_class": {
+            "interference": 81,
+            "physics": 18,
+            "channel": 16
+          }
+        },
+        {
+          "instance": 1278,
+          "ue": 6,
+          "class": "fast",
+          "distance_m": 83.4,
+          "shadowing_db": -10.1,
+          "violations": 26,
+          "allowance": 20,
+          "duty": 0.4532,
+          "missed_by_class": {
+            "interference": 13,
+            "physics": 11,
+            "channel": 2
+          }
+        },
+        {
+          "instance": 1283,
+          "ue": 7,
+          "class": "medium",
+          "distance_m": 91.9,
+          "shadowing_db": -8.4,
+          "violations": 16,
+          "allowance": 10,
+          "duty": 0.42985,
+          "missed_by_class": {
+            "interference": 13,
+            "channel": 1,
+            "physics": 2
+          }
+        },
+        {
+          "instance": 1294,
+          "ue": 0,
+          "class": "fast",
+          "distance_m": 99.8,
+          "shadowing_db": -6.4,
+          "violations": 21,
+          "allowance": 20,
+          "duty": 0.4234,
+          "missed_by_class": {
+            "interference": 12,
+            "power": 1,
+            "channel": 4,
+            "physics": 4
+          }
+        },
+        {
+          "instance": 1303,
+          "ue": 0,
+          "class": "fast",
+          "distance_m": 70.7,
+          "shadowing_db": -11.6,
+          "violations": 22,
+          "allowance": 20,
+          "duty": 0.359,
+          "missed_by_class": {
+            "interference": 18,
+            "physics": 3,
+            "channel": 1
+          }
+        },
+        {
+          "instance": 1321,
+          "ue": 1,
+          "class": "medium",
+          "distance_m": 96.4,
+          "shadowing_db": -9.1,
+          "violations": 28,
+          "allowance": 10,
+          "duty": 0.48205,
+          "missed_by_class": {
+            "physics": 4,
+            "interference": 22,
+            "channel": 2
+          }
+        },
+        {
+          "instance": 1329,
+          "ue": 3,
+          "class": "fast",
+          "distance_m": 78.7,
+          "shadowing_db": -10.6,
+          "violations": 45,
+          "allowance": 20,
+          "duty": 0.4594,
+          "missed_by_class": {
+            "interference": 40,
+            "channel": 2,
+            "physics": 3
+          }
+        },
+        {
+          "instance": 1333,
+          "ue": 3,
+          "class": "fast",
+          "distance_m": 93.1,
+          "shadowing_db": -8.8,
+          "violations": 37,
+          "allowance": 20,
+          "duty": 0.4753,
+          "missed_by_class": {
+            "interference": 25,
+            "channel": 8,
+            "physics": 4
+          }
+        },
+        {
+          "instance": 1339,
+          "ue": 6,
+          "class": "fast",
+          "distance_m": 98.3,
+          "shadowing_db": -7.5,
+          "violations": 23,
+          "allowance": 20,
+          "duty": 0.47475,
+          "missed_by_class": {
+            "interference": 18,
+            "channel": 3,
+            "physics": 2
+          }
+        },
+        {
+          "instance": 1345,
+          "ue": 0,
+          "class": "fast",
+          "distance_m": 95.7,
+          "shadowing_db": -8.5,
+          "violations": 50,
+          "allowance": 20,
+          "duty": 0.5,
+          "missed_by_class": {
+            "interference": 38,
+            "channel": 7,
+            "physics": 5
+          }
+        },
+        {
+          "instance": 1348,
+          "ue": 7,
+          "class": "medium",
+          "distance_m": 83.1,
+          "shadowing_db": -10.7,
+          "violations": 21,
+          "allowance": 10,
+          "duty": 0.4449,
+          "missed_by_class": {
+            "channel": 4,
+            "interference": 16,
+            "physics": 1
+          }
+        },
+        {
+          "instance": 1355,
+          "ue": 7,
+          "class": "medium",
+          "distance_m": 93.2,
+          "shadowing_db": -9.4,
+          "violations": 16,
+          "allowance": 10,
+          "duty": 0.45595,
+          "missed_by_class": {
+            "interference": 12,
+            "physics": 3,
+            "power": 1
+          }
+        },
+        {
+          "instance": 1358,
+          "ue": 0,
+          "class": "fast",
+          "distance_m": 97.0,
+          "shadowing_db": -8.7,
+          "violations": 93,
+          "allowance": 20,
+          "duty": 0.51075,
+          "missed_by_class": {
+            "interference": 79,
+            "physics": 7,
+            "channel": 7
+          }
+        },
+        {
+          "instance": 1358,
+          "ue": 3,
+          "class": "fast",
+          "distance_m": 99.1,
+          "shadowing_db": -7.1,
+          "violations": 47,
+          "allowance": 20,
+          "duty": 0.4796,
+          "missed_by_class": {
+            "interference": 39,
+            "channel": 4,
+            "physics": 3,
+            "power": 1
+          }
+        },
+        {
+          "instance": 1388,
+          "ue": 6,
+          "class": "fast",
+          "distance_m": 80.2,
+          "shadowing_db": -12.4,
+          "violations": 91,
+          "allowance": 20,
+          "duty": 0.53645,
+          "missed_by_class": {
+            "interference": 61,
+            "channel": 15,
+            "physics": 15
+          }
+        },
+        {
+          "instance": 1395,
+          "ue": 0,
+          "class": "fast",
+          "distance_m": 83.9,
+          "shadowing_db": -11.7,
+          "violations": 110,
+          "allowance": 20,
+          "duty": 0.55405,
+          "missed_by_class": {
+            "physics": 26,
+            "channel": 12,
+            "interference": 71,
+            "power": 1
+          }
+        },
+        {
+          "instance": 1396,
+          "ue": 3,
+          "class": "fast",
+          "distance_m": 97.4,
+          "shadowing_db": -8.1,
+          "violations": 24,
+          "allowance": 20,
+          "duty": 0.46075,
+          "missed_by_class": {
+            "interference": 13,
+            "channel": 4,
+            "physics": 7
+          }
+        }
+      ],
+      "classes": {
+        "failing": {
+          "interference": 1009,
+          "tx_slots": 17620,
+          "window_slots": 17620,
+          "physics": 213,
+          "channel": 186,
+          "power": 7
+        },
+        "other": {
+          "interference": 424,
+          "tx_slots": 7480,
+          "window_slots": 7480,
+          "physics": 63,
+          "channel": 80,
+          "power": 1
+        }
+      },
+      "interferers": {
+        "mid|slow|could_wait": 876,
+        "total": 6388,
+        "mid|fast|could_wait": 606,
+        "near|medium|could_wait": 253,
+        "near|fast|could_wait": 263,
+        "near|slow|could_wait": 435,
+        "mid|medium|could_wait": 735,
+        "far|medium|could_wait": 933,
+        "far|medium|urgent": 16,
+        "far|fast|could_wait": 839,
+        "far|fast|urgent": 54,
+        "far|slow|could_wait": 1378
+      }
+    },
+    "marl:outputs/exp006-phase2/fixed-seed303/checkpoints/step-020000512.pt|N=8": {
+      "episodes": 400,
+      "failed_episodes": 26,
+      "failing_ues": [
+        {
+          "instance": 1023,
+          "ue": 4,
+          "class": "medium",
+          "distance_m": 93.5,
+          "shadowing_db": -9.6,
+          "violations": 16,
+          "allowance": 10,
+          "duty": 0.4821,
+          "missed_by_class": {
+            "physics": 4,
+            "interference": 9,
+            "channel": 2,
+            "power": 1
+          }
+        },
+        {
+          "instance": 1062,
+          "ue": 6,
+          "class": "fast",
+          "distance_m": 99.4,
+          "shadowing_db": -6.7,
+          "violations": 25,
+          "allowance": 20,
+          "duty": 0.41425,
+          "missed_by_class": {
+            "interference": 20,
+            "physics": 3,
+            "channel": 2
+          }
+        },
+        {
+          "instance": 1062,
+          "ue": 7,
+          "class": "medium",
+          "distance_m": 96.4,
+          "shadowing_db": -8.9,
+          "violations": 21,
+          "allowance": 10,
+          "duty": 0.4794,
+          "missed_by_class": {
+            "interference": 11,
+            "physics": 6,
+            "channel": 4
+          }
+        },
+        {
+          "instance": 1073,
+          "ue": 1,
+          "class": "medium",
+          "distance_m": 92.4,
+          "shadowing_db": -9.6,
+          "violations": 15,
+          "allowance": 10,
+          "duty": 0.498,
+          "missed_by_class": {
+            "interference": 10,
+            "physics": 2,
+            "power": 1,
+            "channel": 2
+          }
+        },
+        {
+          "instance": 1086,
+          "ue": 6,
+          "class": "fast",
+          "distance_m": 90.2,
+          "shadowing_db": -10.0,
+          "violations": 44,
+          "allowance": 20,
+          "duty": 0.4885,
+          "missed_by_class": {
+            "interference": 36,
+            "channel": 3,
+            "physics": 4,
+            "power": 1
+          }
+        },
+        {
+          "instance": 1128,
+          "ue": 7,
+          "class": "medium",
+          "distance_m": 93.3,
+          "shadowing_db": -9.9,
+          "violations": 16,
+          "allowance": 10,
+          "duty": 0.4989,
+          "missed_by_class": {
+            "channel": 2,
+            "interference": 11,
+            "power": 2,
+            "physics": 1
+          }
+        },
+        {
+          "instance": 1136,
+          "ue": 7,
+          "class": "medium",
+          "distance_m": 82.8,
+          "shadowing_db": -11.1,
+          "violations": 16,
+          "allowance": 10,
+          "duty": 0.4562,
+          "missed_by_class": {
+            "interference": 11,
+            "channel": 1,
+            "power": 2,
+            "physics": 2
+          }
+        },
+        {
+          "instance": 1137,
+          "ue": 7,
+          "class": "medium",
+          "distance_m": 84.4,
+          "shadowing_db": -11.0,
+          "violations": 15,
+          "allowance": 10,
+          "duty": 0.4722,
+          "missed_by_class": {
+            "interference": 11,
+            "channel": 2,
+            "physics": 2
+          }
+        },
+        {
+          "instance": 1153,
+          "ue": 4,
+          "class": "medium",
+          "distance_m": 82.2,
+          "shadowing_db": -11.7,
+          "violations": 11,
+          "allowance": 10,
+          "duty": 0.46035,
+          "missed_by_class": {
+            "interference": 6,
+            "channel": 2,
+            "power": 3
+          }
+        },
+        {
+          "instance": 1173,
+          "ue": 3,
+          "class": "fast",
+          "distance_m": 94.3,
+          "shadowing_db": -9.2,
+          "violations": 34,
+          "allowance": 20,
+          "duty": 0.4558,
+          "missed_by_class": {
+            "interference": 22,
+            "channel": 4,
+            "physics": 7,
+            "power": 1
+          }
+        },
+        {
+          "instance": 1207,
+          "ue": 6,
+          "class": "fast",
+          "distance_m": 97.6,
+          "shadowing_db": -8.4,
+          "violations": 41,
+          "allowance": 20,
+          "duty": 0.50315,
+          "missed_by_class": {
+            "interference": 22,
+            "physics": 15,
+            "channel": 4
+          }
+        },
+        {
+          "instance": 1209,
+          "ue": 6,
+          "class": "fast",
+          "distance_m": 68.3,
+          "shadowing_db": -14.3,
+          "violations": 37,
+          "allowance": 20,
+          "duty": 0.46565,
+          "missed_by_class": {
+            "channel": 4,
+            "interference": 23,
+            "physics": 9,
+            "power": 1
+          }
+        },
+        {
+          "instance": 1210,
+          "ue": 4,
+          "class": "medium",
+          "distance_m": 77.5,
+          "shadowing_db": -13.0,
+          "violations": 23,
+          "allowance": 10,
+          "duty": 0.52245,
+          "missed_by_class": {
+            "channel": 6,
+            "interference": 14,
+            "physics": 2,
+            "power": 1
+          }
+        },
+        {
+          "instance": 1218,
+          "ue": 4,
+          "class": "medium",
+          "distance_m": 98.6,
+          "shadowing_db": -8.2,
+          "violations": 13,
+          "allowance": 10,
+          "duty": 0.45655,
+          "missed_by_class": {
+            "interference": 9,
+            "physics": 1,
+            "channel": 3
+          }
+        },
+        {
+          "instance": 1259,
+          "ue": 0,
+          "class": "fast",
+          "distance_m": 88.8,
+          "shadowing_db": -9.7,
+          "violations": 24,
+          "allowance": 20,
+          "duty": 0.4615,
+          "missed_by_class": {
+            "physics": 6,
+            "interference": 16,
+            "channel": 2
+          }
+        },
+        {
+          "instance": 1259,
+          "ue": 3,
+          "class": "fast",
+          "distance_m": 87.2,
+          "shadowing_db": -11.0,
+          "violations": 70,
+          "allowance": 20,
+          "duty": 0.47945,
+          "missed_by_class": {
+            "interference": 41,
+            "physics": 21,
+            "channel": 6,
+            "power": 2
+          }
+        },
+        {
+          "instance": 1260,
+          "ue": 1,
+          "class": "medium",
+          "distance_m": 98.1,
+          "shadowing_db": -9.0,
+          "violations": 30,
+          "allowance": 10,
+          "duty": 0.48835,
+          "missed_by_class": {
+            "interference": 22,
+            "channel": 5,
+            "physics": 3
+          }
+        },
+        {
+          "instance": 1276,
+          "ue": 0,
+          "class": "fast",
+          "distance_m": 82.8,
+          "shadowing_db": -11.9,
+          "violations": 72,
+          "allowance": 20,
+          "duty": 0.51275,
+          "missed_by_class": {
+            "physics": 18,
+            "interference": 45,
+            "channel": 9
+          }
+        },
+        {
+          "instance": 1283,
+          "ue": 7,
+          "class": "medium",
+          "distance_m": 91.9,
+          "shadowing_db": -8.4,
+          "violations": 17,
+          "allowance": 10,
+          "duty": 0.43645,
+          "missed_by_class": {
+            "interference": 13,
+            "channel": 1,
+            "physics": 2,
+            "power": 1
+          }
+        },
+        {
+          "instance": 1321,
+          "ue": 1,
+          "class": "medium",
+          "distance_m": 96.4,
+          "shadowing_db": -9.1,
+          "violations": 16,
+          "allowance": 10,
+          "duty": 0.4755,
+          "missed_by_class": {
+            "physics": 4,
+            "channel": 3,
+            "interference": 7,
+            "power": 2
+          }
+        },
+        {
+          "instance": 1329,
+          "ue": 3,
+          "class": "fast",
+          "distance_m": 78.7,
+          "shadowing_db": -10.6,
+          "violations": 34,
+          "allowance": 20,
+          "duty": 0.46125,
+          "missed_by_class": {
+            "interference": 28,
+            "channel": 2,
+            "physics": 3,
+            "power": 1
+          }
+        },
+        {
+          "instance": 1333,
+          "ue": 3,
+          "class": "fast",
+          "distance_m": 93.1,
+          "shadowing_db": -8.8,
+          "violations": 28,
+          "allowance": 20,
+          "duty": 0.43875,
+          "missed_by_class": {
+            "interference": 18,
+            "channel": 6,
+            "physics": 4
+          }
+        },
+        {
+          "instance": 1345,
+          "ue": 0,
+          "class": "fast",
+          "distance_m": 95.7,
+          "shadowing_db": -8.5,
+          "violations": 40,
+          "allowance": 20,
+          "duty": 0.47775,
+          "missed_by_class": {
+            "interference": 27,
+            "channel": 8,
+            "physics": 5
+          }
+        },
+        {
+          "instance": 1348,
+          "ue": 7,
+          "class": "medium",
+          "distance_m": 83.1,
+          "shadowing_db": -10.7,
+          "violations": 14,
+          "allowance": 10,
+          "duty": 0.4592,
+          "missed_by_class": {
+            "channel": 3,
+            "interference": 10,
+            "physics": 1
+          }
+        },
+        {
+          "instance": 1355,
+          "ue": 7,
+          "class": "medium",
+          "distance_m": 93.2,
+          "shadowing_db": -9.4,
+          "violations": 19,
+          "allowance": 10,
+          "duty": 0.4451,
+          "missed_by_class": {
+            "interference": 13,
+            "physics": 3,
+            "channel": 2,
+            "power": 1
+          }
+        },
+        {
+          "instance": 1358,
+          "ue": 0,
+          "class": "fast",
+          "distance_m": 97.0,
+          "shadowing_db": -8.7,
+          "violations": 44,
+          "allowance": 20,
+          "duty": 0.4801,
+          "missed_by_class": {
+            "channel": 7,
+            "physics": 7,
+            "interference": 29,
+            "power": 1
+          }
+        },
+        {
+          "instance": 1358,
+          "ue": 3,
+          "class": "fast",
+          "distance_m": 99.1,
+          "shadowing_db": -7.1,
+          "violations": 36,
+          "allowance": 20,
+          "duty": 0.46305,
+          "missed_by_class": {
+            "interference": 31,
+            "channel": 2,
+            "physics": 3
+          }
+        },
+        {
+          "instance": 1388,
+          "ue": 6,
+          "class": "fast",
+          "distance_m": 80.2,
+          "shadowing_db": -12.4,
+          "violations": 71,
+          "allowance": 20,
+          "duty": 0.5208,
+          "missed_by_class": {
+            "channel": 13,
+            "interference": 43,
+            "physics": 15
+          }
+        },
+        {
+          "instance": 1395,
+          "ue": 0,
+          "class": "fast",
+          "distance_m": 83.9,
+          "shadowing_db": -11.7,
+          "violations": 84,
+          "allowance": 20,
+          "duty": 0.5389,
+          "missed_by_class": {
+            "physics": 26,
+            "interference": 53,
+            "channel": 5
+          }
+        }
+      ],
+      "classes": {
+        "failing": {
+          "physics": 179,
+          "tx_slots": 11680,
+          "window_slots": 11680,
+          "interference": 611,
+          "channel": 115,
+          "power": 21
+        },
+        "other": {
+          "interference": 426,
+          "tx_slots": 8250,
+          "window_slots": 8250,
+          "physics": 97,
+          "channel": 70,
+          "power": 29
+        }
+      },
+      "interferers": {
+        "near|medium|could_wait": 111,
+        "total": 3175,
+        "near|fast|could_wait": 143,
+        "mid|fast|could_wait": 404,
+        "mid|slow|could_wait": 362,
+        "near|slow|could_wait": 260,
+        "far|medium|could_wait": 526,
+        "far|fast|could_wait": 499,
+        "mid|medium|could_wait": 408,
+        "far|slow|could_wait": 446,
+        "far|medium|urgent": 2,
+        "far|fast|urgent": 14
+      }
+    }
+  }
+}
