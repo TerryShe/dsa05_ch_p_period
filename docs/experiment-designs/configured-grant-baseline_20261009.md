@@ -2,9 +2,10 @@
 doc_id: DES-DSA05-CG-BASELINE
 type: baseline-design
 status: approved
-revision: 1
+revision: 2
 created: 2026-10-09
 approved: 2026-10-09
+amended: 2026-10-09（第 0 阶段修正：CG-单信道第一个时机的子信道选择；评估前确认）
 scenario: DES-DSA05-PERIODIC v2.0（第 6 版；2026-10-04 补充）
 protocol: marl-protocol-v2（验证集与开发切片 exp010-eval512，均已读过；不读取测试集、确认集与备用池）
 depends_on: [RES-DSA05-PROBE-BROADCAST, RES-DSA05-PROBE-FLAGLOSS, EXP-DSA05-010]
@@ -145,6 +146,12 @@ depends_on: [RES-DSA05-PROBE-BROADCAST, RES-DSA05-PROBE-FLAGLOSS, EXP-DSA05-010]
 
 两个变体都在定稿时写定，不在看到结果后增加或修改。
 
+**第 0 阶段修正（2026-10-09，实现时发现，在任何评估之前；用户已于 2026-10-09 确认）**：
+- **问题**：按上表的写法，CG-单信道的第一个时机按 §3.4 第 2–4 步选择。此时每个 UE 在第 1 步都打平（还没有时机），第 2、3 步也多半打平，于是按字典序取子信道 0。所有 UE 都挤在子信道 0 上，其余 3 个子信道空着，变体退化。
+- **发现方式**：开发实例 0 的冒烟测试，时域缩短为 1,200 个时隙，只看分配，不看任何评估集。N = 8 时只分出 25% 的资源单元，8 个 UE 全部因放不下而关闭。
+- **修正**：CG-单信道的第一个时机取**空闲资源单元最多、且放得下**的子信道（并列时取序号小者），其余步骤不变。修正后同一冒烟测试中，UE 分布在 4 个子信道上，资源单元全部分出。
+- **主变体不受影响**，没有修改：它的第一个时机同样多落在子信道 0，但以后的时机按第 1 步分散到各子信道，冒烟测试中分出 99%–100% 的资源单元。
+
 ## 5. 评估
 
 ### 5.1 集合
@@ -187,8 +194,9 @@ depends_on: [RES-DSA05-PROBE-BROADCAST, RES-DSA05-PROBE-FLAGLOSS, EXP-DSA05-010]
 
 **代码**：
 - `rules_v2.ConfiguredGrantPolicy`，在 `RULES` 中注册为 `configured_grant`，参数 `single_channel`（0 或 1）。
-  - 新增可选接口 `configure(mean_gain_linear, traffic)`；
-  - `capacity.run_capacity_episode` 在 `reset` 之前，对实现了该接口的策略传入该回合的平均增益与业务（周期、包长、相位）；
+  - 新增可选接口 `configure(mean_gain_linear, traffic, fading)`；
+  - `capacity.run_capacity_episode` 在 `reset` 之前，对实现了该接口的策略传入该回合的平均增益、业务（周期、包长、相位）与衰落配置（§2 的衰落统计，实现时加入）；
+  - 另一个可选接口 `episode_diagnostics()`：回合结束后其结果存入回合记录的 `policy_diagnostics`，供 §5.2 的诊断使用；
   - 其他策略不受影响。
 - 样本库与预测中断概率：同一模块，按进程缓存。
 - 汇总脚本：两个集合的主表、配对差值与诊断。

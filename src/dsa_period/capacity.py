@@ -86,6 +86,9 @@ def run_capacity_episode(
     rngs = splits_v2.execution_generators(split, n, instance, repeat)
     topology, traffic = scenario.instance(instance)
     env = scenario.make_env(topology, traffic, splits_v2.fading_seeds(split, n, instance, repeat))
+    configure = getattr(policy, "configure", None)
+    if configure is not None:  # semi-static references (N_CG): mean gains, TSCAI, statistics
+        configure(env.channel.mean_gain_linear, traffic, scenario.fading)
     policy.reset(rngs)
     observations = env.reset()
     while not env.truncated:
@@ -108,7 +111,7 @@ def run_capacity_episode(
         allowed = np.array([allowance(eps, int(m)) for m in count])
         feasible[eps_key(eps)] = bool(np.all(missed <= allowed))
         hopeless[eps_key(eps)] = bool(np.any(impossible > allowed))
-    return {
+    result = {
         "num_ues": n,
         "instance": instance,
         "repeat": repeat,
@@ -126,6 +129,10 @@ def run_capacity_episode(
         "mean_power_mw": (1e3 * energy.sum(axis=0) / window_s).tolist(),
         "duty": (energy > 0).mean(axis=0).tolist(),
     }
+    diagnostics = getattr(policy, "episode_diagnostics", None)
+    if diagnostics is not None:
+        result["policy_diagnostics"] = diagnostics()
+    return result
 
 
 # --------------------------------------------------------------- aggregation

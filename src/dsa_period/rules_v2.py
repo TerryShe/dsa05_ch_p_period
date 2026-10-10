@@ -14,12 +14,15 @@ Common quantities of one UE, all local:
   slots the UE can still skip if the rate held.
 
 ``CentralEdfPolicy`` is the reference N_EDF (§7): it sees every UE's queue and
-current gains at once, so it is not a local rule.
+current gains at once, so it is not a local rule. ``ConfiguredGrantPolicy`` is
+the semi-static reference N_CG (2026-10-09 supplement to §7): exclusive periodic
+occasions allocated once from mean gains, traffic and fading statistics.
 """
 
 import json
 import math
 from collections.abc import Sequence
+from dataclasses import dataclass
 from functools import lru_cache
 from pathlib import Path
 
@@ -27,9 +30,11 @@ import numpy as np
 from numpy.typing import NDArray
 
 from dsa_period.baselines import estimate_link
+from dsa_period.channel import ShadowedJakesChannel
 from dsa_period.env import Outcome, UEObservation
 from dsa_period.physics import PhysicalConfig, PowerMenu, shannon_bits
 from dsa_period.policies import POLICIES, HeuristicPolicy, Policy
+from dsa_period.traffic import TrafficPattern
 
 
 def _slack(obs: UEObservation, rate: float) -> float:
@@ -289,6 +294,264 @@ class CentralEdfPolicy:
         return actions
 
 
+# Configured-grant reference N_CG
+# (docs/experiment-designs/configured-grant-baseline_20261009.md).
+CG_BANK_SEED = 20_261_009
+CG_BANK_SAMPLES = 20_000
+_BANK_CHUNK = 500
+
+
+@lru_cache(maxsize=2)
+def fading_bank(
+    num_subchannels: int,
+    doppler_hz: float,
+    sinusoids: int,
+    slot_duration_s: float,
+    slots: int,
+    samples: int = CG_BANK_SAMPLES,
+    seed: int = CG_BANK_SEED,
+) -> NDArray[np.float64]:
+    """(samples, slots, K) small-scale power |h|^2 of independent fading realizations.
+
+    The scenario's own sum-of-sinusoids generator with unit mean gain, one
+    realization per sample and slots [0, slots) of each (design §3.5). The seed
+    base differs from every protocol v2 seed base; cached per process, read-only.
+    """
+    seeds = np.random.SeedSequence(seed).spawn(samples)
+    bank = np.empty((samples, slots, num_subchannels))
+    for start in range(0, samples, _BANK_CHUNK):
+        part = seeds[start : start + _BANK_CHUNK]
+        channel = ShadowedJakesChannel(
+            np.ones(len(part)),
+            num_subchannels,
+            doppler_hz=doppler_hz,
+            slot_duration_s=slot_duration_s,
+            ue_seeds=part,
+            sinusoids=sinusoids,
+        )
+        h = channel.small_scale(np.arange(slots))
+        bank[start : start + len(part)] = np.transpose(h.real**2 + h.imag**2, (1, 0, 2))
+    bank.flags.writeable = False
+    return bank
+
+
+@dataclass(frozen=True)
+class GrantAllocation:
+    """Exclusive periodic occasions of every UE and the AP's predictions.
+
+    ``occasions[i]`` lists UE i's (slot residue r mod P_i, subchannel k) in the
+    order they were granted; ``outage[i]`` is the predicted probability that a
+    packet misses with them, ``need[i]`` the packet size over the expected
+    bits per slot; ``order`` is the UE granted at every step and ``blocked``
+    counts UEs closed by placement while enough free resource units remained.
+    """
+
+    occasions: tuple[tuple[tuple[int, int], ...], ...]
+    outage: tuple[float, ...]
+    need: tuple[float, ...]
+    order: tuple[int, ...]
+    hyperperiod: int
+    assigned_share: float
+    blocked: int
+
+
+def place_occasion(
+    ue: int,
+    owner: NDArray[np.int64],
+    occasions: Sequence[tuple[int, int]],
+    period: int,
+    phase: int,
+    column: int,
+    single_channel: bool = False,
+) -> tuple[int, int] | None:
+    """Where UE ``ue`` gets its next occasion (design §3.4), or None if nowhere.
+
+    ``owner`` is the (K, hyperperiod) grid of resource units (-1 free). A
+    candidate (r, k) needs a residue r unused by the UE and every unit
+    (r + nP, k) free. Preference: the subchannel with the fewest of the UE's
+    occasions; a column (k, r mod ``column``) already partly used by another UE;
+    the largest minimum window distance to the UE's occasions on that
+    subchannel; the smallest (k, r). CG-single-channel keeps a UE on the
+    subchannel of its first occasion, which goes to the subchannel with the most
+    free units (phase-0 amendment: the shared first criterion would put every
+    UE on subchannel 0).
+    """
+    num_subchannels, hyperperiod = owner.shape
+    used = {r for r, _ in occasions}
+    per_channel = np.bincount([k for _, k in occasions], minlength=num_subchannels)
+    channels = range(num_subchannels)
+    if single_channel and occasions:
+        channels = [occasions[0][1]]
+    elif single_channel:
+        per_channel = -np.count_nonzero(owner == -1, axis=1)
+    best, best_key = None, None
+    for k in channels:
+        positions = [(r - phase) % period for r, kk in occasions if kk == k]
+        for r in range(period):
+            if r in used or np.any(owner[k, r::period] != -1):
+                continue
+            cells = owner[k, r % column :: column]
+            shared = bool(np.any((cells != -1) & (cells != ue)))
+            p = (r - phase) % period
+            spread = min(abs(p - q) for q in positions) if positions else math.inf
+            key = (per_channel[k], not shared, -spread, k, r)
+            if best_key is None or key < best_key:
+                best, best_key = (r, k), key
+    return best
+
+
+def allocate_grants(
+    config: PhysicalConfig,
+    snr: NDArray[np.float64],
+    packet_bits: NDArray[np.float64],
+    period: NDArray[np.int64],
+    phase: NDArray[np.int64],
+    bank: NDArray[np.float64],
+    single_channel: bool = False,
+) -> GrantAllocation:
+    """Greedy max-min allocation of exclusive periodic occasions (design §3.3).
+
+    ``snr`` is each UE's mean SNR at max power alone; ``bank`` holds (samples,
+    window slots, K) fading power. Every step grants one occasion to the open UE
+    with the largest predicted outage (ties: fewer occasions per unit of need,
+    then the lower index); a UE closes when it holds P_i occasions or none fits.
+    """
+    n = len(snr)
+    num_subchannels = bank.shape[2]
+    period = [int(p) for p in period]
+    if max(period) > bank.shape[1] or num_subchannels != config.num_subchannels:
+        raise ValueError("the fading bank must cover the longest window and every subchannel")
+    hyperperiod = math.lcm(*period)
+    column = math.gcd(*period)
+    owner = np.full((num_subchannels, hyperperiod), -1, dtype=np.int64)
+    expected = np.array([shannon_bits(config, s * bank[:, 0, :]).mean() for s in snr])
+    need = np.asarray(packet_bits, dtype=np.float64) / expected
+    occasions: list[list[tuple[int, int]]] = [[] for _ in range(n)]
+    accumulated = np.zeros((n, bank.shape[0]))
+    outage = np.ones(n)
+    open_ = np.ones(n, dtype=bool)
+    order, blocked = [], 0
+    while open_.any():
+        ue = min(
+            np.flatnonzero(open_),
+            key=lambda i: (-outage[i], len(occasions[i]) / need[i], i),
+        )
+        spot = place_occasion(
+            int(ue), owner, occasions[ue], period[ue], int(phase[ue]), column, single_channel
+        )
+        if spot is None:
+            open_[ue] = False
+            blocked += int(np.count_nonzero(owner == -1) >= hyperperiod // period[ue])
+            continue
+        r, k = spot
+        owner[k, r :: period[ue]] = ue
+        occasions[ue].append((r, k))
+        order.append(int(ue))
+        position = (r - int(phase[ue])) % period[ue]
+        accumulated[ue] += shannon_bits(config, snr[ue] * bank[:, position, k])
+        outage[ue] = float(np.mean(accumulated[ue] < packet_bits[ue]))
+        if len(occasions[ue]) == period[ue]:
+            open_[ue] = False
+    return GrantAllocation(
+        occasions=tuple(tuple(o) for o in occasions),
+        outage=tuple(float(q) for q in outage),
+        need=tuple(float(x) for x in need),
+        order=tuple(order),
+        hyperperiod=hyperperiod,
+        assigned_share=float(np.mean(owner != -1)),
+        blocked=blocked,
+    )
+
+
+class ConfiguredGrantPolicy:
+    """Configured-grant reference N_CG (TSCAI + configured grant); not a local rule.
+
+    ``configure`` gives the AP what TSCAI and long-term measurement give it:
+    every UE's mean gain (path loss and shadowing), period, packet size and
+    arrival phase, and the fading statistics. It never sees current gains,
+    queues or outcomes. It allocates exclusive periodic occasions once per
+    episode (``allocate_grants``); a UE then transmits at max power in its
+    occasions while it holds bits. Deterministic.
+    """
+
+    def __init__(
+        self, config: PhysicalConfig, menu: PowerMenu, *, single_channel: bool = False
+    ) -> None:
+        self.config, self.menu = config, menu
+        self.single_channel = bool(single_channel)
+        self.name = "configured_grant" + ("(single_channel)" if self.single_channel else "")
+        self._top = menu.num_levels - 1
+        self.allocation: GrantAllocation | None = None
+
+    def configure(
+        self, mean_gain_linear: NDArray[np.float64], traffic: TrafficPattern, fading: object
+    ) -> None:
+        period = np.asarray(traffic.period_slots, dtype=np.int64)
+        self._period, self._phase = period, np.asarray(traffic.phase_slots, dtype=np.int64)
+        bank = fading_bank(
+            self.config.num_subchannels,
+            float(fading.doppler_hz),
+            int(fading.sinusoids),
+            float(self.config.slot_duration_s),
+            int(period.max()),
+            CG_BANK_SAMPLES,
+            CG_BANK_SEED,
+        )
+        snr = self.menu.power_w[-1] * np.asarray(mean_gain_linear) / self.config.noise_power_w
+        self._snr = snr
+        self.allocation = allocate_grants(
+            self.config,
+            snr,
+            np.asarray(traffic.packet_bits, dtype=np.float64),
+            period,
+            self._phase,
+            bank,
+            self.single_channel,
+        )
+        self._grant = [dict(o) for o in self.allocation.occasions]
+
+    def reset(self, rngs: Sequence[np.random.Generator]) -> None:
+        if self.allocation is None:
+            raise ValueError("configure the grants before reset")
+        if len(rngs) != len(self._grant):
+            raise ValueError("configured for a different number of UEs")
+        self._t = 0
+        self._offered = np.zeros(len(self._grant), dtype=np.int64)
+        self._sent = np.zeros(len(self._grant), dtype=np.int64)
+
+    def act(self, observations: Sequence[UEObservation]) -> NDArray[np.int64]:
+        if len(observations) != len(self._grant):
+            raise ValueError("need one observation per configured UE")
+        actions = np.zeros((len(observations), 2), dtype=np.int64)
+        for ue, obs in enumerate(observations):
+            period = int(self._period[ue])
+            if (self._t + obs.slots_to_deadline - self._phase[ue]) % period:
+                raise ValueError("observations are out of step with the configured traffic")
+            channel = self._grant[ue].get(self._t % period)
+            if channel is None:
+                continue
+            self._offered[ue] += 1
+            if obs.remaining_bits > 0:
+                actions[ue] = (channel, self._top)
+                self._sent[ue] += 1
+        self._t += 1
+        return actions
+
+    def episode_diagnostics(self) -> dict:
+        allocation = self.allocation
+        return {
+            "occasions": [len(o) for o in allocation.occasions],
+            "grants": [[list(g) for g in o] for o in allocation.occasions],
+            "predicted_outage": list(allocation.outage),
+            "need": list(allocation.need),
+            "mean_snr_db": (10 * np.log10(self._snr)).tolist(),
+            "assigned_share": allocation.assigned_share,
+            "blocked": allocation.blocked,
+            "offered": self._offered.tolist(),
+            "sent": self._sent.tolist(),
+        }
+
+
 def _params(raw: str, allowed: dict[str, type]) -> dict:
     params = {}
     for item in filter(None, raw.split(",")):
@@ -308,6 +571,7 @@ RULES = {
         {"margin": float, "switch_db": float, "switch_probability": float},
     ),
     "central_edf": (CentralEdfPolicy, {"defer_hopeless": bool}),
+    "configured_grant": (ConfiguredGrantPolicy, {"single_channel": bool}),
 }
 
 
