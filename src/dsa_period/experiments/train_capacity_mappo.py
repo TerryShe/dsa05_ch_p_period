@@ -6,6 +6,8 @@ optional ``[sampler]`` section holds the EXP-DSA05-009 deployment sampler
 (``level_sampler.SamplerSettings``). A per-N config (``experiment.per_n`` lists
 the allowed N, ``training.num_envs`` the environments) is run once per N with
 ``--num-ues N``: all environments then have N UEs (EXP-009, protocol v2 §4).
+The optional ``[information]`` section adds the EXP-DSA05-011 urgency state
+summary (``urgency.SummarySettings``); without it the actor sees L0 only.
 
 ``--formal`` requires a clean committed tree and no overrides; ``--budget-slots``
 and ``--set`` exist only for smoke tests and throughput checks. The output holds
@@ -34,6 +36,7 @@ from dsa_period.marl.trainer_v2 import (
     CapacityTrainingSettings,
     UpdateSettings,
 )
+from dsa_period.urgency import SummarySettings
 
 
 def resolve_training(raw: dict, num_ues: int | None) -> dict:
@@ -64,6 +67,20 @@ def settings_from(raw: dict, variant: str, num_ues: int | None = None):
         UpdateSettings(**raw.get("update", {})),
         SamplerSettings(**raw.get("sampler", {})),
     )
+
+
+def information_from(raw: dict) -> SummarySettings | None:
+    """The EXP-011 summary of a config ([information]); None for L0 configs.
+
+    ``theta_db = "all"`` means every uplink bit is read.
+    """
+    table = raw.get("information")
+    if table is None:
+        return None
+    table = dict(table)
+    if table.get("theta_db") == "all":
+        table["theta_db"] = None
+    return SummarySettings(**table)
 
 
 def parse_value(text: str) -> int | float | str:
@@ -117,12 +134,18 @@ def main(argv: list[str] | None = None) -> None:
                 parser.error(f"unknown override {key}")
             raw.setdefault("update", {})[name] = value
             continue
+        if section == "information":
+            if name not in SummarySettings.__dataclass_fields__:
+                parser.error(f"unknown override {key}")
+            raw.setdefault("information", {})[name] = value
+            continue
         table = raw["constraint"][args.variant] if section == "constraint" else raw[section]
         if name not in table:
             parser.error(f"unknown override {key}")
         table[name] = value
     try:
         training, ppo, constraint, update, sampler = settings_from(raw, args.variant, args.num_ues)
+        information = information_from(raw)
     except ValueError as exc:
         parser.error(str(exc))
     # Any N works: the trainer derives one scenario per environment from it.
@@ -148,12 +171,15 @@ def main(argv: list[str] | None = None) -> None:
             "constraint": raw["constraint"][args.variant],
             "update": asdict(update),
             "sampler": asdict(sampler),
+            "information": None if information is None else asdict(information),
         },
         "torch": torch.__version__,
         "python": platform.python_version(),
     }
     (args.output / "manifest.json").write_text(json.dumps(manifest, indent=2))
-    trainer = CapacityTrainer(scenario, training, ppo, constraint, args.seed, update, sampler)
+    trainer = CapacityTrainer(
+        scenario, training, ppo, constraint, args.seed, update, sampler, information
+    )
     result = trainer.run(args.output)
     print(json.dumps(result, indent=2))
 

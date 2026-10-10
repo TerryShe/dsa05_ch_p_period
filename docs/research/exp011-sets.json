@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "experiment": "EXP-DSA05-011",
+  "design": "docs/experiment-designs/011-urgency-information-coordination_20261010.md",
+  "document": "docs/research/exp011-registration.md",
+  "protocol_id": "marl-protocol-v2",
+  "registered_on": "2026-10-10",
+  "scenario_config": "configs/scenario-v2.toml",
+  "scenario_config_sha256": "74e3fadc6626abebe681ed43c487a8e3781e0dfb65494ace72db730f58550afc",
+  "horizon_slots": 20200,
+  "warmup_slots": 200,
+  "execution_seeds": {
+    "base": 20260930,
+    "scheme": "SeedSequence([base, seed_code, instance, repeat]).spawn(N)[j]"
+  },
+  "fading_seeds": {
+    "base": 20261001,
+    "scheme": "SeedSequence([base, seed_code, instance, repeat]).spawn(N)[j]"
+  },
+  "screening": {
+    "exp011-eval512": {
+      "split": "dev",
+      "start": 5000,
+      "stop": 5512,
+      "count": 512,
+      "grid": [
+        6,
+        8,
+        10,
+        12,
+        16
+      ],
+      "repeats": 1,
+      "seed_code": 0,
+      "score": "P2 = deployment mean of the worst UE's violation rate; D_N = P2(U) - P2(M)",
+      "selection": "none: evaluation only (checkpoints are selected on exp009-screen256 by P2)",
+      "entry_point": "evaluate_capacity --split dev --screen exp011-eval512 --formal",
+      "digests": {
+        "6": "606ada186047228074735d07f376917c7ec54b2d29930bb0f1d1e2519011e264",
+        "8": "1ae84585d43b1793883f5636baa71294f99d6de1d6e83fe9df362a78328bfe90",
+        "10": "0cb8066ddc3a5c9bd7b57004a2cdc7ae47853f6f5e2f54c429bb8361042186df",
+        "12": "bd48415a9c3cbd88cc788e20b008ca356ba5a6458e3610ad367ad1ba7e9fefd1",
+        "16": "30c823847be3d0c2fb3bd24eb69fd9f964472c123c86c63ea187f4af7e1a18bc"
+      }
+    }
+  },
+  "confirmation": {},
+  "usage_checked_on_registration": {
+    "v2_dev_ranges_used": [
+      [
+        0,
+        64
+      ],
+      [
+        1000,
+        1400
+      ],
+      [
+        2000,
+        2256
+      ],
+      [
+        3000,
+        3256
+      ],
+      [
+        4000,
+        4512
+      ]
+    ],
+    "v2_reserve_ranges_read": []
+  }
+}

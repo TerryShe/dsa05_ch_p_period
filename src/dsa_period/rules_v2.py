@@ -37,6 +37,7 @@ from dsa_period.env import Outcome, UEObservation
 from dsa_period.physics import PhysicalConfig, PowerMenu, shannon_bits
 from dsa_period.policies import POLICIES, HeuristicPolicy, Policy
 from dsa_period.traffic import TrafficPattern
+from dsa_period.urgency import SummarySettings, YieldPolicy, parse_wrapper
 
 
 def _slack(obs: UEObservation, rate: float) -> float:
@@ -676,8 +677,20 @@ def make_policy_v2(spec: str, config: PhysicalConfig, menu: PowerMenu) -> Policy
 
     ``random_max``, ``sticky_max``, ``name:key=value,...`` of ``RULES``,
     ``calibrated:<family>`` (frozen per-N parameters), ``best_local`` (the best
-    calibrated rule at that N) or ``marl:<checkpoint path>`` (EXP-DSA05-006).
+    calibrated rule at that N) or ``marl:<checkpoint path>`` (EXP-DSA05-006; a
+    summary checkpoint of EXP-DSA05-011 loads as a ``SummaryPolicy``). The
+    EXP-DSA05-011 wrappers ``yield[theta=T]@SPEC`` and ``summary[theta=T,hide=H]@marl:PATH``
+    are described in ``urgency.parse_wrapper``.
     """
+    wrapped = parse_wrapper(spec)
+    if wrapped is not None:
+        wrapper, options, inner = wrapped
+        if wrapper == "yield":
+            base = make_policy_v2(inner, config, menu)
+            return YieldPolicy(base, config, menu, SummarySettings(theta_db=options["theta_db"]))
+        from dsa_period.marl.trainer_v2 import load_capacity_policy
+
+        return load_capacity_policy(Path(inner.partition(":")[2]), config, menu, **options)
     name, _, raw = spec.partition(":")
     if name == "calibrated":
         return make_policy_v2(calibrated_spec(raw, config.num_ues), config, menu)

@@ -1,11 +1,12 @@
-"""Write the set manifests of EXP-DSA05-008, -009 and -010 (protocol v2).
+"""Write the set manifests of EXP-DSA05-008, -009, -010 and -011 (protocol v2).
 
 EXP-008 (docs/research/exp008-sets.json): the screening set exp008-screen256
 (dev 2000-2255, N = 6 and 8) and the confirmation set v2-confirm1 (reserve
 30000-30499). EXP-009 (docs/research/exp009-sets.json): exp009-screen256 (dev
 3000-3255, N in {2, ..., 20}) and v2-confirm2 (reserve 30500-30999). EXP-010
 (docs/research/exp010-sets.json): the evaluation slice exp010-eval512 (dev
-4000-4511, N = 6, 8, 10). Each set
+4000-4511, N = 6, 8, 10). EXP-011 (docs/research/exp011-sets.json): the
+evaluation slice exp011-eval512 (dev 5000-5511, N = 6, 8, 10, 12, 16). Each set
 carries its instance and fading digests (``splits_v2.instance_digest``:
 topology, shadowing, traffic and the fading of slots 0-7) at every N it is read
 at; confirmation sets at every N of the protocol-v2 grid and of N_EDF. No policy
@@ -55,6 +56,17 @@ REGISTRY = {
         "score": "F_0.01(N) of each method; D8 = F_0.01(8; IL) - F_0.01(8; A_mix)",
         "selection": "none: evaluation only (checkpoints are selected on exp009-screen256)",
         "dev_used": [[0, 64], [1000, 1400], [2000, 2256], [3000, 3256]],
+    },
+    "EXP-DSA05-011": {
+        "output": "docs/research/exp011-sets.json",
+        "design": "docs/experiment-designs/011-urgency-information-coordination_20261010.md",
+        "document": "docs/research/exp011-registration.md",
+        "registered_on": "2026-10-10",
+        "screening": ["exp011-eval512"],
+        "confirmation": [],
+        "score": "P2 = deployment mean of the worst UE's violation rate; D_N = P2(U) - P2(M)",
+        "selection": "none: evaluation only (checkpoints are selected on exp009-screen256 by P2)",
+        "dev_used": [[0, 64], [1000, 1400], [2000, 2256], [3000, 3256], [4000, 4512]],
     },
 }
 

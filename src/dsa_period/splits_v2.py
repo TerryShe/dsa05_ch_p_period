@@ -47,6 +47,8 @@ SCREENING_SETS: dict[str, dict] = {
     "exp009-screen256": {"range": (3_000, 3_256), "grid": (2, 4, 6, 8, 10, 12, 16, 20)},
     # EXP-DSA05-010 (design §3.1): the diagnostic evaluation, dev 4000-4511 at N = 6, 8, 10.
     "exp010-eval512": {"range": (4_000, 4_512), "grid": (6, 8, 10)},
+    # EXP-DSA05-011 (design §4.2): the evaluation of the urgency summary, dev 5000-5511.
+    "exp011-eval512": {"range": (5_000, 5_512), "grid": (6, 8, 10, 12, 16)},
 }
 # Confirmation sets, one execution each: v2-confirm1 (EXP-008 §7.1, reserve 30000-30499)
 # and v2-confirm2 (EXP-009 §3, reserve 30500-30999).

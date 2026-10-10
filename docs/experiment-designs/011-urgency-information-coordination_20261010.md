@@ -15,7 +15,7 @@ depends_on: [FRM-DSA05-RELIABILITY, RES-DSA05-PROBE-BROADCAST, RES-DSA05-PROBE-F
 
 状态：**已定稿（2026-10-10，用户批准；第 1 版）**。
 
-- 下一步是第 0 阶段（§7）。第 0 阶段的实现提交并通过测试之前，不训练，不读取 exp011-eval512。
+- 第 0 阶段已完成并经用户同意提交（2026-10-10，§10）；正式运行由 `scripts/run_exp011.py` 执行，输出在 `outputs/exp011/`。
 - 第 1 版按框架第 3 版修改：
   - 假设改用新编号；
   - 接收条件从两个敏感性点扩为预先写定的网格，并加一组在 0 dB 下训练的 U₀（§3.5）；
@@ -121,7 +121,22 @@ L0 方法的观测与执行完全不变。L1 只给本设计的 U、O、L、U₀
   - 上行 1 比特对应高优先级 SR（Rel-16）一类的紧急指示；
   - 下行 K 比特对应组公共的上行取消指示（DCI 2_4）。
 - 语义上有一个重要区别：DCI 2_4 要求被指示的低优先级传输**必须**取消；L1 的广播只是信息，是否让路由策略决定。手写规则 +Y（§3.1）强制不紧急的 UE 推迟，语义上最接近 DCI 2_4。
-- 引用的 NR 条款在第 0 阶段核对，做法同 CG 设计 §3.7。核对之前只写机制名称，不写条款细节。
+- 引用的 NR 条款已在第 0 阶段核对，见 §2.7。
+
+### 2.7 NR 条款核对（第 0 阶段，2026-10-10）
+
+| 条款 | 内容 | 来源 |
+|---|---|---|
+| TS 38.212 §7.3.1（表 7.3.1-1） | DCI format 2_4："Notifying a group of UEs of the PRB(s) and OFDM symbol(s) where UE cancels the corresponding UL transmission from the UE" | [itecspec 38.212 §7.3.1](https://itecspec.com/3gpp/38.212/s/7.3.1) |
+| TS 38.213 §11.2A | 配置了 UplinkCancellation 的 UE 用 CI-RNTI 监听 DCI format 2_4；检测到后取消与指示资源重叠的 PUSCH 或 SRS；若另配置 uplinkCancellationPriority，只取消优先级 0 的 PUSCH | [itecspec 38.213 §11.2A](https://itecspec.com/3gpp/38.213/s/11.2a) |
+| TS 38.331 SchedulingRequestResourceConfigExt-v1610 | `phy-PriorityIndex-r16 ENUMERATED {p0, p1}`：p0 为低优先级，p1 为高优先级（物理层的优先级处理与复用） | [itecspec 38.331](https://itecspec.com/3gpp/38.331/s/schedulingrequestresourceconfig) |
+
+核对后，对应关系的写法：
+
+- **下行**：K 比特广播对应 DCI format 2_4 这类组公共、按资源指示的信令。强制让路 +Y 对应"配置了 uplinkCancellationPriority 时只取消低优先级 PUSCH"。
+- **上行**：1 比特标志对应 SR 的高、低优先级之分（p1 / p0）。区别是 NR 的 SR 在单独的 PUCCH 资源上请求调度，L1 的标志随数据发送。
+- **时序上的区别**：NR 中 gNB 指示的是之后将被取消的资源（为已调度的高优先级传输让出）；L1 标记的是上一时隙紧急 UE 所在的子信道，相当于预测它会继续在那里发送。
+- 以上读的是 itecspec 上的 Rel-19 文本（与 CG 设计 §3.7 相同的来源），没有逐字核对 Rel-16 原版。
 
 ## 3. 方法与比较
 
@@ -321,3 +336,32 @@ L0 方法的观测与执行完全不变。L1 只给本设计的 U、O、L、U₀
    - 另训练 U₀（0 dB）一组。
 4. **负载集合与判据**：评估 N ∈ {6, 8, 10, 12, 16}；主判据为 N ∈ {8, 10, 12} 上 D_N 都显著（§5.2）。
 5. **选模规则**：所有学习方法都按 P2 选检查点，包括用已有结果重选 M（§4.1）。
+
+## 10. 第 0 阶段的实现记录（2026-10-10，用户同意）
+
+**实现**：
+
+- `src/dsa_period/urgency.py`：摘要链路、紧迫判定、隐去掩码、让路规则 +Y、包装语法 `yield[theta=T]@SPEC` 与 `summary[theta=T,hide=H]@marl:PATH`；
+- `marl/networks.py`：消息头 `MessageActor`；
+- `marl/policy.py`：`SummaryPolicy`；
+- `marl/trainer_v2.py`：摘要输入，以及消息的联合对数概率与联合熵；
+- 训练入口的 `[information]` 节；配置 `configs/exp011-{u,o,l,u0}.toml`；
+- 选模 `experiments/select_exp011.py`；
+- 分析、诊断与驱动：`scripts/analyze_exp011.py`、`scripts/diagnose_exp011.py`、`scripts/run_exp011.py`；
+- 测试 `tests/test_exp011.py`（22 项）；全套 308 项通过。
+
+**实现时定下的具体做法**（设计没有写到这么细）：
+
+1. 学习方法的"让路事件"：不紧急、有包、自己最好的子信道被标记，而这个时隙没有在那里发送。§5.3 第 7 项中"按 UE 统计推迟次数"对学习方法用这个计数。
+2. 选择率沿用探针的口径：只统计换到新子信道的不紧急 UE，选项不含自己上一时隙用过的子信道。
+3. 按 P2 重选 M，在 15 个（种子，N）格子中换了 3 个，都在 N = 6 或 16。EXP-009 冻结清单中的 M 也在评估集上评估，记为 M_exp009，与重选后的 M 并列报告。
+4. L 的消息比特：执行时由发送的 UE 用自己的随机数流再抽一个均匀数决定；训练时用训练器的随机数流。
+
+**核对**：
+
+- 让路规则在探针切片的实例 1003（N = 10，600 时隙）上，逐回合复现了探针 B3 与 B3s 的违约、推迟次数，以及发出与读到的标志数。
+- 网络前向计算改为共用一段代码后，重跑 exp009-screen256 上存档的 M 回合（实例 3014，N = 8），违约逐位相同。
+- 三种内容的冒烟训练，联合对数概率的回放误差都在 5 × 10⁻⁷ 以下；检查点可在任意 N 上加载运行。
+- 训练速度约 620–650 时隙/秒（M 为 588），与 §8 的估计一致。
+- 重新生成集合清单后，EXP-008、009、010 的清单逐字节不变。
+- 冒烟运行只用了训练池与已用过的开发实例 0–63、1,000–1,003。

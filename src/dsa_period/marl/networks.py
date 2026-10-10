@@ -48,6 +48,11 @@ class ChannelSetActor(nn.Module):
 
     def step(self, tokens: Tensor, context: Tensor, hidden: Tensor) -> tuple[Tensor, Tensor]:
         """tokens (B, K, Dt), context (B, Du), hidden (B, K, h) -> logits (B, A), hidden."""
+        logits, _, hidden = self._forward(tokens, context, hidden)
+        return logits, hidden
+
+    def _forward(self, tokens: Tensor, context: Tensor, hidden: Tensor):
+        """Action logits, the pooled per-UE summary and the new hidden state."""
         batch, k = tokens.shape[0], self.num_channels
         expanded = context.unsqueeze(1).expand(batch, k, context.shape[-1])
         encoded = self.encoder(torch.cat((tokens, expanded), dim=-1))
@@ -60,7 +65,7 @@ class ChannelSetActor(nn.Module):
             torch.cat((hidden, summary.unsqueeze(1).expand(batch, k, summary.shape[-1])), dim=-1)
         )
         logits = torch.cat((self.omega(summary), per_channel.reshape(batch, -1)), dim=-1)
-        return logits, hidden
+        return logits, summary, hidden
 
     def sequence(
         self, tokens: Tensor, context: Tensor, hidden: Tensor, starts: Tensor
@@ -72,6 +77,40 @@ class ChannelSetActor(nn.Module):
             logits, hidden = self.step(tokens[t], context[t], hidden)
             outputs.append(logits)
         return torch.stack(outputs), hidden
+
+
+class MessageActor(ChannelSetActor):
+    """ChannelSetActor with a second head: the uplink message bit (EXP-DSA05-011, content L).
+
+    ``step`` returns the action logits followed by the two message logits,
+    (B, num_actions + 2); ``split_logits`` separates them. The message head reads
+    the same pooled summary as the OFF score. A UE's message matters only when it
+    transmits; the joint log-probability adds the message term only then.
+    """
+
+    MESSAGES = 2
+
+    def __init__(
+        self, token_dim: int, context_dim: int, num_channels: int, num_levels: int, hidden: int
+    ) -> None:
+        super().__init__(token_dim, context_dim, num_channels, num_levels, hidden)
+        self.message = nn.Sequential(
+            nn.Linear(hidden + context_dim, hidden), nn.Tanh(), nn.Linear(hidden, self.MESSAGES)
+        )
+        _init(self.message, (self.message[-1],))
+
+    def step(self, tokens: Tensor, context: Tensor, hidden: Tensor) -> tuple[Tensor, Tensor]:
+        logits, summary, hidden = self._forward(tokens, context, hidden)
+        return torch.cat((logits, self.message(summary)), dim=-1), hidden
+
+
+def split_logits(logits: Tensor, num_actions: int) -> tuple[Tensor, Tensor | None]:
+    """Action logits and, for a ``MessageActor``, the message logits (else None)."""
+    if logits.shape[-1] == num_actions:
+        return logits, None
+    if logits.shape[-1] != num_actions + MessageActor.MESSAGES:
+        raise ValueError("unexpected number of logits")
+    return logits[..., :num_actions], logits[..., num_actions:]
 
 
 class CentralCritic(nn.Module):

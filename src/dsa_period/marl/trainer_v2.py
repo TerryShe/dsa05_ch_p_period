@@ -23,12 +23,20 @@ EXP-DSA05-009 adds training-deployment samplers per N group
 (``level_sampler.SamplerSettings``: uniform, stratified, plr); the uniform default
 keeps the trainer's own draw. ``train_step`` runs the PPO update and then scores
 the episodes that ended in the rollout (PLR with the GAE-magnitude score).
+
+EXP-DSA05-011 adds the urgency state summary (``urgency.SummarySettings``): each
+environment gets an AP-side ``SummaryLink``; every UE's tokens carry the K-bit
+broadcast and its context its own previous uplink bit (no hiding in training).
+With the message content the actor is a ``MessageActor``: the message of a UE
+that transmits enters the joint log-probability, and the entropy bonus is the
+joint entropy H(a) + P(a != OFF) H(m). Without a summary the trainer is the
+EXP-006/008/009 trainer, bit for bit.
 """
 
 import json
 import resource
 import time
-from dataclasses import asdict, dataclass
+from dataclasses import asdict, dataclass, replace
 from functools import lru_cache
 from pathlib import Path
 
@@ -52,10 +60,17 @@ from dsa_period.marl.features import (
     token_dim,
 )
 from dsa_period.marl.level_sampler import LevelSampler, SamplerSettings, deployment_hardness
-from dsa_period.marl.networks import ChannelSetActor, SetCritic, masked_log_probs
-from dsa_period.marl.policy import MarlPolicy
+from dsa_period.marl.networks import (
+    ChannelSetActor,
+    MessageActor,
+    SetCritic,
+    masked_log_probs,
+    split_logits,
+)
+from dsa_period.marl.policy import MarlPolicy, SummaryPolicy
 from dsa_period.marl.ppo import PPOSettings, discounted_gae
 from dsa_period.physics import PhysicalConfig, PowerMenu
+from dsa_period.urgency import SummaryLink, SummarySettings, with_summary
 
 CHECKPOINT_KIND = "capacity-mappo"
 CHECKPOINT_SCHEMA = 1
@@ -206,6 +221,7 @@ class RaggedRollout:
     truncated: np.ndarray
     starts: np.ndarray
     initial_hidden: Tensor  # [U, K, h] before obs[0]
+    messages: np.ndarray | None = None  # [T, U] message bits (EXP-011 content L), 0 when OFF
 
 
 class RaggedMAPPO:
@@ -334,6 +350,7 @@ class RaggedMAPPO:
         old_log_probs = torch.from_numpy(rollout.log_probs)
         critic_ue = torch.from_numpy(rollout.critic_ue)
         starts = torch.from_numpy(rollout.starts)[:, self.env_of_ue]
+        messages = None if rollout.messages is None else torch.from_numpy(rollout.messages)
         env_index = self.env_of_ue.expand(rollout.actions.shape[0], -1)
         by_env = self.options.actor_loss_weighting == "env"
         totals: dict[str, float] = {}
@@ -349,10 +366,20 @@ class RaggedMAPPO:
                     tokens[:, cols], context[:, cols], rollout.initial_hidden[cols], starts[:, cols]
                 )
                 mask = legal[:, cols]
+                logits, message_logits = split_logits(logits, self.actor.num_actions)
                 log_probs_all = masked_log_probs(logits, mask)
                 log_probs = log_probs_all.gather(-1, actions[:, cols].unsqueeze(-1)).squeeze(-1)
                 probs = log_probs_all.exp()
                 entropy = -(probs * log_probs_all.masked_fill(~mask, 0.0)).sum(-1)
+                if message_logits is not None:
+                    log_probs, entropy = joint_with_message(
+                        log_probs,
+                        entropy,
+                        probs,
+                        message_logits,
+                        actions[:, cols],
+                        messages[:, cols],
+                    )
                 act = active[:, cols]
                 old = old_log_probs[:, cols]
                 if replay_error is None:
@@ -511,14 +538,41 @@ class RaggedMAPPO:
             self.shuffle.set_state(state["shuffle"])
 
 
-def build_actor(config: PhysicalConfig, menu: PowerMenu, hidden: int) -> ChannelSetActor:
-    return ChannelSetActor(
-        token_dim(menu, own_csi=True),
-        context_dim(),
-        config.num_subchannels,
-        menu.num_levels - 1,
-        hidden,
-    )
+def joint_with_message(
+    log_probs: Tensor, entropy: Tensor, probs: Tensor, message_logits: Tensor, actions, messages
+) -> tuple[Tensor, Tensor]:
+    """Add the message of transmitting UEs: log pi(a) + [a != OFF] log pi(m), joint entropy."""
+    message_all = torch.log_softmax(message_logits, dim=-1)
+    chosen = message_all.gather(-1, messages.unsqueeze(-1)).squeeze(-1)
+    sends = (actions > 0).to(log_probs.dtype)
+    message_entropy = -(message_all.exp() * message_all).sum(-1)
+    return log_probs + sends * chosen, entropy + (1.0 - probs[..., 0]) * message_entropy
+
+
+def model_dims(
+    config: PhysicalConfig, menu: PowerMenu, information: SummarySettings | None
+) -> tuple[int, int, int]:
+    """Actor token and context dims and the critic's per-UE dim, with the summary if any.
+
+    The summary adds b_k to every subchannel token and the own previous bit to the
+    context; the critic reads the actor features, so it grows by K + 1.
+    """
+    extra = 0 if information is None else 1
+    tokens = token_dim(menu, own_csi=True) + extra
+    context = context_dim() + extra
+    critic = critic_ue_dim(config, menu) + (config.num_subchannels + 1) * extra
+    return tokens, context, critic
+
+
+def build_actor(
+    config: PhysicalConfig,
+    menu: PowerMenu,
+    hidden: int,
+    information: SummarySettings | None = None,
+) -> ChannelSetActor:
+    tokens, context, _ = model_dims(config, menu, information)
+    cls = MessageActor if information is not None and information.message else ChannelSetActor
+    return cls(tokens, context, config.num_subchannels, menu.num_levels - 1, hidden)
 
 
 class CapacityTrainer:
@@ -531,6 +585,7 @@ class CapacityTrainer:
         seed: int,
         update: UpdateSettings | None = None,
         sampler: SamplerSettings | None = None,
+        information: SummarySettings | None = None,
     ) -> None:
         if not scenario.is_v2:
             raise ValueError("EXP-DSA05-006 trains on scenario v2.0")
@@ -548,8 +603,10 @@ class CapacityTrainer:
         self.offsets = np.concatenate([[0], np.cumsum(self.env_ues)])
         self.env_of_ue = np.repeat(np.arange(self.env_ues.size), self.env_ues)
         torch.manual_seed(seed)
-        actor = build_actor(self.config, self.menu, settings.hidden)
-        critic = SetCritic(critic_ue_dim(self.config, self.menu), settings.critic_hidden)
+        self.information = information
+        dims = model_dims(self.config, self.menu, information)
+        actor = build_actor(self.config, self.menu, settings.hidden, information)
+        critic = SetCritic(dims[2], settings.critic_hidden)
         self.update_settings = update or UpdateSettings()
         self.ppo = RaggedMAPPO(
             actor, critic, ppo_settings, seed, self.env_of_ue, self.update_settings
@@ -564,10 +621,17 @@ class CapacityTrainer:
         ]
         self.envs = [None] * self.env_ues.size
         self.obs = [None] * self.env_ues.size
-        self.tokens = np.zeros((ues, k, token_dim(self.menu, own_csi=True)), np.float32)
-        self.context = np.zeros((ues, context_dim()), np.float32)
+        self.tokens = np.zeros((ues, k, dims[0]), np.float32)
+        self.context = np.zeros((ues, dims[1]), np.float32)
         self.legal = np.zeros((ues, self.actions), np.bool_)
-        self.critic_ue = np.zeros((ues, critic_ue_dim(self.config, self.menu)), np.float32)
+        self.critic_ue = np.zeros((ues, dims[2]), np.float32)
+        self.links = (
+            None
+            if information is None
+            else [SummaryLink(information, sc.physical, self.menu, sc.physical.num_ues)
+                  for sc in self.scenarios]
+        )  # fmt: skip
+        self.summary_counts = {"sent": 0, "read": 0, "marked": 0, "subchannel_slots": 0}
         self.starts = np.zeros(self.env_ues.size, np.bool_)
         self.hidden = actor.initial_hidden(ues)
         self.instances_drawn: list[int] = []
@@ -606,8 +670,21 @@ class CapacityTrainer:
         return self.memories[env].mu.copy()
 
     def _refresh(self, env: int) -> None:
+        """Features of a new observation; with a summary, the AP broadcast it carries."""
         rows, memory, obs = self._rows(env), self.memories[env], self.obs[env]
-        self.tokens[rows], self.context[rows] = memory.features(obs)
+        tokens, context = memory.features(obs)
+        if self.links is not None:
+            link = self.links[env]
+            sent, read = link.bits_sent, link.bits_read
+            marked = link.broadcast(obs)
+            seen = np.broadcast_to(marked, (int(self.env_ues[env]), marked.size)).copy()
+            tokens, context = with_summary(tokens, context, seen, link.own_previous)
+            counts = self.summary_counts
+            counts["sent"] += link.bits_sent - sent
+            counts["read"] += link.bits_read - read
+            counts["marked"] += int(marked.sum())
+            counts["subchannel_slots"] += marked.size
+        self.tokens[rows], self.context[rows] = tokens, context
         self.legal[rows] = legal_mask(obs, self.actions)
         self.critic_ue[rows] = critic_ue_features(
             self.tokens[rows], self.context[rows], self._penalty(env), self.duals.mu_scale
@@ -639,6 +716,8 @@ class CapacityTrainer:
         memory.reset(np.broadcast_to(np.asarray(mu, float), (n,)))
         self.obs[env] = stack(self.envs[env].reset())
         memory.update_duals(memory.observe(self.obs[env]))
+        if self.links is not None:
+            self.links[env].reset()
         self._refresh(env)
         self.hidden[self._rows(env)] = 0.0
         self.starts[env] = True
@@ -673,6 +752,11 @@ class CapacityTrainer:
             "truncated": np.zeros((steps, envs), np.bool_),
             "starts": np.zeros((steps, envs), np.bool_),
         }
+        message = self.information is not None and self.information.message
+        if message:
+            buf["messages"] = np.zeros((steps, ues), np.int64)
+        for key in self.summary_counts:
+            self.summary_counts[key] = 0
         initial_hidden = self.hidden.clone()
         settled = np.zeros(envs, np.int64)
         violations = np.zeros(envs, np.int64)
@@ -694,15 +778,28 @@ class CapacityTrainer:
                 logits, self.hidden = actor.step(
                     torch.from_numpy(self.tokens), torch.from_numpy(self.context), self.hidden
                 )
+                logits, message_logits = split_logits(logits, self.actions)
                 log_probs = masked_log_probs(logits, torch.from_numpy(self.legal))
                 chosen = torch.multinomial(log_probs.exp(), 1, generator=self.sampler).squeeze(-1)
-                buf["log_probs"][t] = log_probs.gather(-1, chosen[:, None]).squeeze(-1).numpy()
+                joint = log_probs.gather(-1, chosen[:, None]).squeeze(-1)
+                if message:
+                    message_all = torch.log_softmax(message_logits, dim=-1)
+                    words = torch.multinomial(message_all.exp(), 1, generator=self.sampler)
+                    words = torch.where(chosen > 0, words.squeeze(-1), 0)
+                    said = message_all.gather(-1, words[:, None]).squeeze(-1)
+                    joint = joint + (chosen > 0) * said
+                    buf["messages"][t] = words.numpy()
+                buf["log_probs"][t] = joint.numpy()
             buf["values"][t] = self._values()
             chosen = chosen.numpy()
             buf["actions"][t] = chosen
             self.starts[:] = False
             for env in range(envs):
                 rows = self._rows(env)
+                if self.links is not None:
+                    link, sending = self.links[env], chosen[rows] > 0
+                    words = buf["messages"][t, rows] if message else None
+                    link.commit(link.uplink(self.obs[env], sending, words), sending)
                 step = self.envs[env].step(decode_actions(chosen[rows], self.menu))
                 memory = self.memories[env]
                 self.obs[env] = stack(step.observations)
@@ -760,6 +857,13 @@ class CapacityTrainer:
         }
         if self.level_samplers:
             stats["sampler"] = {str(n): s.diagnostics() for n, s in self.level_samplers.items()}
+        if self.links is not None:
+            counts = self.summary_counts
+            stats["summary"] = {
+                "bits_sent": counts["sent"],
+                "bits_read": counts["read"],
+                "marked_share": counts["marked"] / max(counts["subchannel_slots"], 1),
+            }
         if local:
             count = np.maximum(mu_stats[1], 1)
             stats["mu_by_class_quarter"] = {
@@ -823,6 +927,7 @@ class CapacityTrainer:
 
     # -------------------------------------------------------------- checkpoints
     def checkpoint(self, slots: int, iteration: int) -> dict:
+        dims = model_dims(self.config, self.menu, self.information)
         extra = {}
         if self.level_samplers:
             extra = {
@@ -840,13 +945,14 @@ class CapacityTrainer:
             "update": asdict(self.update_settings),
             "constraint": asdict(self.constraint),
             "duals": asdict(self.duals),
+            **({} if self.information is None else {"information": asdict(self.information)}),
             "model": {
-                "token_dim": token_dim(self.menu, own_csi=True),
-                "context_dim": context_dim(),
+                "token_dim": dims[0],
+                "context_dim": dims[1],
                 "num_channels": self.config.num_subchannels,
                 "num_levels": self.menu.num_levels - 1,
                 "hidden": self.settings.hidden,
-                "critic_ue_dim": critic_ue_dim(self.config, self.menu),
+                "critic_ue_dim": dims[2],
                 "critic_hidden": self.settings.critic_hidden,
             },
             "ppo": self.ppo.state_dict(),
@@ -927,20 +1033,40 @@ def _load_checkpoint(path: str) -> dict:
     return torch.load(path, map_location="cpu", weights_only=False)
 
 
+KEEP = object()  # keep the checkpoint's reading threshold
+
+
 def load_capacity_policy(
-    path: Path, config: PhysicalConfig, menu: PowerMenu, mu0: float | None = None
+    path: Path,
+    config: PhysicalConfig,
+    menu: PowerMenu,
+    mu0: float | None = None,
+    theta_db=KEEP,
+    hide: str = "none",
 ) -> MarlPolicy:
     """A protocol policy for any N from a capacity checkpoint (cached per process).
 
     Accepts EXP-006/008/009 MAPPO checkpoints and EXP-010 imitation checkpoints
-    (``marl.imitation``), whose actor is the same network.
+    (``marl.imitation``), whose actor is the same network. An EXP-011 summary
+    checkpoint (it records ``information``) loads as a ``SummaryPolicy``; there
+    ``theta_db`` may replace the reading threshold and ``hide`` sets the
+    evaluation-time hiding mask (design §3.3, §3.5).
     """
     checkpoint = _load_checkpoint(str(path))
     kind = checkpoint.get("kind")
     if kind not in (CHECKPOINT_KIND, "capacity-imitation") or checkpoint["schema"] != 1:
         raise ValueError(f"{path} is not a capacity checkpoint")
     model = checkpoint["model"]
-    actor = ChannelSetActor(
+    information = checkpoint.get("information")
+    if information is None and (theta_db is not KEEP or hide != "none"):
+        raise ValueError(f"{path} carries no urgency summary to modify")
+    settings = None
+    if information is not None:
+        settings = SummarySettings(**information)
+        if theta_db is not KEEP:
+            settings = replace(settings, theta_db=theta_db)
+    cls = MessageActor if settings is not None and settings.message else ChannelSetActor
+    actor = cls(
         model["token_dim"],
         model["context_dim"],
         model["num_channels"],
@@ -954,4 +1080,6 @@ def load_capacity_policy(
     duals = DualSettings(**checkpoint["duals"])
     constraint = CapacityConstraint(**checkpoint["constraint"])
     start = constraint.mu0 if mu0 is None else mu0
-    return MarlPolicy(actor, config, menu, duals, start, name=f"marl:{path}")
+    if settings is None:
+        return MarlPolicy(actor, config, menu, duals, start, name=f"marl:{path}")
+    return SummaryPolicy(actor, config, menu, duals, settings, start, f"marl:{path}", hide)
