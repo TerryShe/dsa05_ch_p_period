@@ -18,6 +18,7 @@ depends_on: [DES-DSA05-CG-BASELINE, RES-DSA05-CG-BASELINE]
 - CG 报告的更正说明（§1、§10 第 6 项）随本次定稿一起加入。
 - 第 0 阶段已完成，记录与两项修正见 §11，2026-10-10 用户确认。
 - 第一次正式运行因 HiGHS 崩溃中止，修正 3 经用户确认（§11.8），之后在新提交上重跑两组正式运行。
+- 结果见 [RES-DSA05-CG-OPT](../results/cg-opt_20261010/report.md)：CG-opt 低于学习策略，CG-opt − CG 显著为正，主表的 N_CG 改用 CG-opt（判读 2026-10-10 用户确认）。
 
 ## 1. 为什么需要
 
