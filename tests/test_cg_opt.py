@@ -3,6 +3,8 @@
 import dataclasses
 import itertools
 import math
+import os
+import signal
 from pathlib import Path
 
 import numpy as np
@@ -284,6 +286,55 @@ def test_a_solve_overrunning_the_limit_is_killed(monkeypatch):
     assert occasions is None
     assert records[0]["status"] == "Killed at the time limit" and records[0]["nodes"] is None
     assert records[0]["time_limit_hit"] and records[0]["seconds"] < 5
+
+
+def test_a_crashed_solve_is_retried_once_without_restarts(monkeypatch):
+    scenario = short(8)
+    snr, bits, period, phase = inputs(scenario, 29)
+    args = (scenario.physical, snr, bits, period, phase, small_bank(scenario))
+    d = cg_opt.deployment(*args)
+    curves = [cg_opt.outage_curve(d, ue) for ue in range(d.num_ues)]
+    _, intact = cg_opt.solve_counts(d, curves)
+    run = cg_opt._Milp._run
+
+    def crash_with_restarts(self, *solve_args):
+        if solve_args[-1]:  # allow_restart
+            os.kill(os.getpid(), signal.SIGKILL)
+        return run(self, *solve_args)
+
+    monkeypatch.setattr(cg_opt._Milp, "_run", crash_with_restarts)
+    occasions, records = cg_opt.solve_counts(d, curves)
+    assert occasions is not None and len(records) == 2
+    for record in records:
+        assert record["crashed_attempt"]["status"] == "Crashed"
+        assert record["crashed_attempt"]["exit_code"] == -signal.SIGKILL
+        assert not record["crashed"] and not record["allow_restart"]
+    assert records[0]["status"] == "Optimal"
+    assert records[0]["max_misses"] == intact[0]["max_misses"]
+
+    def always_crash(self, *solve_args):
+        os.kill(os.getpid(), signal.SIGKILL)
+
+    monkeypatch.setattr(cg_opt._Milp, "_run", always_crash)
+    occasions, records = cg_opt.solve_counts(d, curves)
+    assert occasions is None and len(records) == 1
+    assert records[0]["status"] == "Crashed" and records[0]["crashed_attempt"]["crashed"]
+    fallback = cg_opt.optimize_grants(*args, max_evaluations=0)
+    assert fallback.record["start"] == "greedy" and "milp" not in fallback.record["misses"]
+
+
+def test_an_error_in_the_solve_child_is_raised_not_taken_for_a_crash(monkeypatch):
+    scenario = short(8)
+    snr, bits, period, phase = inputs(scenario, 29)
+    d = cg_opt.deployment(scenario.physical, snr, bits, period, phase, small_bank(scenario))
+    curves = [cg_opt.outage_curve(d, ue) for ue in range(d.num_ues)]
+
+    def broken(self, *solve_args):
+        raise ValueError("broken model")
+
+    monkeypatch.setattr(cg_opt._Milp, "_run", broken)
+    with pytest.raises(ValueError, match="broken model"):
+        cg_opt.solve_counts(d, curves)
 
 
 def test_opt_policy_transmits_like_cg_and_reports_both_banks():

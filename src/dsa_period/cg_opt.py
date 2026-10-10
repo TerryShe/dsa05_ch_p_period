@@ -200,38 +200,70 @@ class _Milp:
         then depends on the machine only through whether the limit is hit, and
         every hit is reported (design §4.4, phase-0 amendment). Reaching the
         node limit keeps the incumbent (deterministic).
+
+        A child that dies without a result (HiGHS 1.15.1 segfaults on some
+        models after a root restart) is retried once with the same budget and
+        restarts disabled; a second failure gives no solution. The crashed
+        attempt is kept in the record (design §11.8, amendment 3).
         """
+        values, record = self._attempt(cost, upper, start, max_nodes, time_limit_s, True)
+        if record["crashed"]:
+            crashed = record
+            values, record = self._attempt(cost, upper, start, max_nodes, time_limit_s, False)
+            record["crashed_attempt"] = crashed
+            record["seconds"] += crashed["seconds"]
+        return values, record
+
+    def _attempt(
+        self,
+        cost: NDArray[np.float64],
+        upper: NDArray[np.float64],
+        start: NDArray[np.float64] | None,
+        max_nodes: int | None,
+        time_limit_s: float,
+        allow_restart: bool,
+    ) -> tuple[NDArray[np.float64] | None, dict]:
         context = multiprocessing.get_context("fork")
         receiver, sender = context.Pipe(duplex=False)
-        args = (cost, upper, start, max_nodes, time_limit_s)
+        args = (cost, upper, start, max_nodes, time_limit_s, allow_restart)
         child = context.Process(target=self._child, args=(sender, args))
         began = time.perf_counter()
         child.start()
         sender.close()
+        lost = {"nodes": None, "gap": None, "objective": None, "node_limit_hit": False}
+        values = None
         if receiver.poll(time_limit_s + KILL_GRACE_S):
-            values, record = receiver.recv()
+            try:
+                result = receiver.recv()
+            except EOFError:  # the child died without a result
+                result = None
+            if isinstance(result, Exception):
+                child.join()
+                raise result
+            if result is None:
+                record = {"status": "Crashed", "time_limit_hit": False, **lost}
+            else:
+                values, record = result
         else:
-            values, record = (
-                None,
-                {
-                    "status": "Killed at the time limit",
-                    "nodes": None,
-                    "gap": None,
-                    "objective": None,
-                    "time_limit_hit": True,
-                    "node_limit_hit": False,
-                },
-            )
+            record = {"status": "Killed at the time limit", "time_limit_hit": True, **lost}
             child.kill()
         child.join()
         receiver.close()
         record["seconds"] = time.perf_counter() - began
+        record["crashed"] = record["status"] == "Crashed"
+        if record["crashed"]:
+            record["exit_code"] = child.exitcode
+        record["allow_restart"] = allow_restart
         if record["time_limit_hit"]:
             values = None
         return values, record
 
     def _child(self, sender, args) -> None:
-        sender.send(self._run(*args))
+        try:
+            result = self._run(*args)
+        except Exception as exc:  # raised in the parent, not taken for a crash
+            result = exc
+        sender.send(result)
         sender.close()
 
     def _run(
@@ -241,6 +273,7 @@ class _Milp:
         start: NDArray[np.float64] | None,
         max_nodes: int | None,
         time_limit_s: float,
+        allow_restart: bool,
     ) -> tuple[NDArray[np.float64] | None, dict]:
         import highspy
         from scipy import sparse
@@ -274,11 +307,13 @@ class _Milp:
             ("threads", 1),
             ("random_seed", 0),
             ("time_limit", float(time_limit_s)),
+            ("mip_allow_restart", bool(allow_restart)),
         ]
         if max_nodes is not None:
             options.append(("mip_max_nodes", int(max_nodes)))
         for option, value in options:
-            solver.setOptionValue(option, value)
+            if solver.setOptionValue(option, value) != highspy.HighsStatus.kOk:
+                raise ValueError(f"HiGHS rejected {option} = {value!r}")
         solver.passModel(model)
         if start is not None:
             hint = highspy.HighsSolution()

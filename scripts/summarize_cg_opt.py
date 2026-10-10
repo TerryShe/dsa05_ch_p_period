@@ -208,7 +208,11 @@ def solver(rows: list[dict]) -> dict:
         "stage1_without_solution": sum(len(r["stage1"]) == 1 for _, r in records),
         "nodes_max": max(s["nodes"] or 0 for _, _, s in solves),
         "gap_max": max(s["gap"] or 0.0 for _, _, s in solves),
-        "killed": [[i, k] for i, k, s in solves if s["nodes"] is None],
+        "killed": [[i, k] for i, k, s in solves if s["status"] == "Killed at the time limit"],
+        # design §11.8: a crashed solve is retried once without restarts
+        "crashed_and_retried": [
+            [i, k, s["status"]] for i, k, s in solves if "crashed_attempt" in s
+        ],
         "solve_seconds": {
             "mean": float(np.mean([s["seconds"] for _, _, s in solves])),
             "max": float(np.max([s["seconds"] for _, _, s in solves])),
@@ -299,6 +303,7 @@ def main(argv: list[str] | None = None) -> None:
             s = d["solver"]
             print(
                 f"{name} N={n}: start {s['start']} time-limit {len(s['time_limit_hits'])} "
+                f"crashed {s['crashed_and_retried']} "
                 f"node-limit {len(s['node_limit_hits'])} not-local-opt "
                 f"{len(s['not_at_local_optimum'])} B-A {d['bank_a_vs_b']['b_minus_a']['mean']:+.5f}"
             )
