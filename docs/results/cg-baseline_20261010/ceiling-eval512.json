@@ -1,0 +1,239 @@
+{
+ "run": "outputs/cg-baseline/eval512",
+ "by_n": {
+  "6": {
+   "deployments": 512,
+   "F_0.01": 0.89453125,
+   "ceiling": {
+    "0.01": 0.8984375,
+    "0.05": 0.984375
+   },
+   "failing_0.01": 54,
+   "failing_with_lone_outage_above_0.01": 48,
+   "ues_with_lone_outage_above_0.01": 54,
+   "ues": 3072,
+   "against_exp010": {
+    "A_mix": [
+     {
+      "other_only_lone_capped": 35,
+      "other_only_sharing": 6,
+      "cg_only": 0,
+      "other_fails": 13,
+      "other_fails_lone_capped": 13
+     },
+     {
+      "other_only_lone_capped": 33,
+      "other_only_sharing": 5,
+      "cg_only": 1,
+      "other_fails": 17,
+      "other_fails_lone_capped": 15
+     },
+     {
+      "other_only_lone_capped": 37,
+      "other_only_sharing": 6,
+      "cg_only": 0,
+      "other_fails": 11,
+      "other_fails_lone_capped": 11
+     }
+    ],
+    "M": [
+     {
+      "other_only_lone_capped": 38,
+      "other_only_sharing": 6,
+      "cg_only": 0,
+      "other_fails": 10,
+      "other_fails_lone_capped": 10
+     },
+     {
+      "other_only_lone_capped": 41,
+      "other_only_sharing": 6,
+      "cg_only": 0,
+      "other_fails": 7,
+      "other_fails_lone_capped": 7
+     },
+     {
+      "other_only_lone_capped": 36,
+      "other_only_sharing": 6,
+      "cg_only": 0,
+      "other_fails": 12,
+      "other_fails_lone_capped": 12
+     }
+    ],
+    "best_local": [
+     {
+      "other_only_lone_capped": 24,
+      "other_only_sharing": 6,
+      "cg_only": 0,
+      "other_fails": 24,
+      "other_fails_lone_capped": 24
+     }
+    ],
+    "edf": [
+     {
+      "other_only_lone_capped": 46,
+      "other_only_sharing": 6,
+      "cg_only": 0,
+      "other_fails": 2,
+      "other_fails_lone_capped": 2
+     }
+    ]
+   }
+  },
+  "8": {
+   "deployments": 512,
+   "F_0.01": 0.8046875,
+   "ceiling": {
+    "0.01": 0.8515625,
+    "0.05": 0.974609375
+   },
+   "failing_0.01": 100,
+   "failing_with_lone_outage_above_0.01": 72,
+   "ues_with_lone_outage_above_0.01": 83,
+   "ues": 4096,
+   "against_exp010": {
+    "A_mix": [
+     {
+      "other_only_lone_capped": 34,
+      "other_only_sharing": 27,
+      "cg_only": 0,
+      "other_fails": 39,
+      "other_fails_lone_capped": 38
+     },
+     {
+      "other_only_lone_capped": 34,
+      "other_only_sharing": 28,
+      "cg_only": 0,
+      "other_fails": 38,
+      "other_fails_lone_capped": 38
+     },
+     {
+      "other_only_lone_capped": 31,
+      "other_only_sharing": 28,
+      "cg_only": 0,
+      "other_fails": 41,
+      "other_fails_lone_capped": 41
+     }
+    ],
+    "M": [
+     {
+      "other_only_lone_capped": 39,
+      "other_only_sharing": 28,
+      "cg_only": 0,
+      "other_fails": 33,
+      "other_fails_lone_capped": 33
+     },
+     {
+      "other_only_lone_capped": 45,
+      "other_only_sharing": 28,
+      "cg_only": 0,
+      "other_fails": 27,
+      "other_fails_lone_capped": 27
+     },
+     {
+      "other_only_lone_capped": 31,
+      "other_only_sharing": 27,
+      "cg_only": 0,
+      "other_fails": 42,
+      "other_fails_lone_capped": 41
+     }
+    ],
+    "best_local": [
+     {
+      "other_only_lone_capped": 21,
+      "other_only_sharing": 26,
+      "cg_only": 1,
+      "other_fails": 54,
+      "other_fails_lone_capped": 51
+     }
+    ],
+    "edf": [
+     {
+      "other_only_lone_capped": 68,
+      "other_only_sharing": 28,
+      "cg_only": 0,
+      "other_fails": 4,
+      "other_fails_lone_capped": 4
+     }
+    ]
+   }
+  },
+  "10": {
+   "deployments": 512,
+   "F_0.01": 0.681640625,
+   "ceiling": {
+    "0.01": 0.818359375,
+    "0.05": 0.970703125
+   },
+   "failing_0.01": 163,
+   "failing_with_lone_outage_above_0.01": 91,
+   "ues_with_lone_outage_above_0.01": 103,
+   "ues": 5120,
+   "against_exp010": {
+    "A_mix": [
+     {
+      "other_only_lone_capped": 24,
+      "other_only_sharing": 69,
+      "cg_only": 1,
+      "other_fails": 71,
+      "other_fails_lone_capped": 67
+     },
+     {
+      "other_only_lone_capped": 18,
+      "other_only_sharing": 66,
+      "cg_only": 2,
+      "other_fails": 81,
+      "other_fails_lone_capped": 73
+     },
+     {
+      "other_only_lone_capped": 25,
+      "other_only_sharing": 66,
+      "cg_only": 1,
+      "other_fails": 73,
+      "other_fails_lone_capped": 66
+     }
+    ],
+    "M": [
+     {
+      "other_only_lone_capped": 31,
+      "other_only_sharing": 71,
+      "cg_only": 0,
+      "other_fails": 61,
+      "other_fails_lone_capped": 60
+     },
+     {
+      "other_only_lone_capped": 39,
+      "other_only_sharing": 72,
+      "cg_only": 0,
+      "other_fails": 52,
+      "other_fails_lone_capped": 52
+     },
+     {
+      "other_only_lone_capped": 19,
+      "other_only_sharing": 70,
+      "cg_only": 1,
+      "other_fails": 75,
+      "other_fails_lone_capped": 72
+     }
+    ],
+    "best_local": [
+     {
+      "other_only_lone_capped": 5,
+      "other_only_sharing": 34,
+      "cg_only": 21,
+      "other_fails": 145,
+      "other_fails_lone_capped": 87
+     }
+    ],
+    "edf": [
+     {
+      "other_only_lone_capped": 86,
+      "other_only_sharing": 72,
+      "cg_only": 0,
+      "other_fails": 5,
+      "other_fails_lone_capped": 5
+     }
+    ]
+   }
+  }
+ }
+}

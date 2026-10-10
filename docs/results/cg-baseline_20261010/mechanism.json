@@ -1,0 +1,610 @@
+{
+ "bank": {
+  "lag_slots": {
+   "1": 0.9975972581651301,
+   "5": 0.9483598036175094,
+   "9": 0.842110407399849,
+   "19": 0.4347988446003933,
+   "39": -0.03088835402041412
+  },
+  "across_subchannels": -0.005595053527571752
+ },
+ "lone_ue_snr_db_for_outage_0.01": [
+  {
+   "period": 10,
+   "packet_bits": 6144.0,
+   "slots": 10,
+   "cg": 4.36541669095277,
+   "best_per_slot": 0.90400026455427,
+   "best_at_start": 2.0646180843777984
+  },
+  {
+   "period": 10,
+   "packet_bits": 6144.0,
+   "slots": 5,
+   "cg": 9.157930613801,
+   "best_per_slot": 5.1766450527702546,
+   "best_at_start": 5.384763235533683
+  },
+  {
+   "period": 20,
+   "packet_bits": 12288.0,
+   "slots": 20,
+   "cg": 3.7023947902434884,
+   "best_per_slot": 0.376094335470043,
+   "best_at_start": 3.7135858884903428
+  },
+  {
+   "period": 20,
+   "packet_bits": 12288.0,
+   "slots": 10,
+   "cg": 8.029564986909463,
+   "best_per_slot": 4.95762717040634,
+   "best_at_start": 6.1918203499226365
+  },
+  {
+   "period": 40,
+   "packet_bits": 24576.0,
+   "slots": 40,
+   "cg": 2.7453285515912285,
+   "best_per_slot": -0.6150127697856078,
+   "best_at_start": 3.7284104165701137
+  },
+  {
+   "period": 40,
+   "packet_bits": 24576.0,
+   "slots": 20,
+   "cg": 7.072372013535642,
+   "best_per_slot": 4.4694621490543796,
+   "best_at_start": 8.079659906879897
+  }
+ ],
+ "paired_by_mean_snr": {
+  "6": {
+   "CG": {
+    "layers": 1,
+    "transmissions_per_slot": 1.08736484375,
+    "by_mean_snr_db": {
+     "<3": {
+      "ues_per_layer": 33,
+      "violation_rate": 0.05394366197183099,
+      "failing_share": 0.8787878787878788,
+      "duty": 0.5776439393939394
+     },
+     "3-6": {
+      "ues_per_layer": 143,
+      "violation_rate": 0.009352769679300292,
+      "failing_share": 0.23076923076923078,
+      "duty": 0.437033916083916
+     },
+     "6-10": {
+      "ues_per_layer": 344,
+      "violation_rate": 0.0005544303797468354,
+      "failing_share": 0.0029069767441860465,
+      "duty": 0.2994970930232558
+     },
+     "10-20": {
+      "ues_per_layer": 1389,
+      "violation_rate": 2.804878048780488e-05,
+      "failing_share": 0.0,
+      "duty": 0.18234953203743717
+     },
+     ">=20": {
+      "ues_per_layer": 1163,
+      "violation_rate": 1.4903129657228019e-06,
+      "failing_share": 0.0,
+      "duty": 0.10220309544282022
+     }
+    }
+   },
+   "A_mix": {
+    "layers": 3,
+    "transmissions_per_slot": 1.0287140299479167,
+    "by_mean_snr_db": {
+     "<3": {
+      "ues_per_layer": 33,
+      "violation_rate": 0.013164319248826292,
+      "failing_share": 0.3939393939393939,
+      "duty": 0.45943686868686856
+     },
+     "3-6": {
+      "ues_per_layer": 143,
+      "violation_rate": 0.001900874635568513,
+      "failing_share": 0.006993006993006993,
+      "duty": 0.362328787878788
+     },
+     "6-10": {
+      "ues_per_layer": 344,
+      "violation_rate": 0.00011983122362869198,
+      "failing_share": 0.0,
+      "duty": 0.2770420058139533
+     },
+     "10-20": {
+      "ues_per_layer": 1389,
+      "violation_rate": 3.861788617886179e-06,
+      "failing_share": 0.0,
+      "duty": 0.17875956323494152
+     },
+     ">=20": {
+      "ues_per_layer": 1163,
+      "violation_rate": 9.935419771485344e-07,
+      "failing_share": 0.0,
+      "duty": 0.09985182000573262
+     }
+    }
+   },
+   "M": {
+    "layers": 3,
+    "transmissions_per_slot": 1.00899716796875,
+    "by_mean_snr_db": {
+     "<3": {
+      "ues_per_layer": 33,
+      "violation_rate": 0.010769953051643192,
+      "failing_share": 0.2727272727272727,
+      "duty": 0.4407676767676766
+     },
+     "3-6": {
+      "ues_per_layer": 143,
+      "violation_rate": 0.0016948493683187561,
+      "failing_share": 0.006993006993006993,
+      "duty": 0.34967016317016303
+     },
+     "6-10": {
+      "ues_per_layer": 344,
+      "violation_rate": 0.00012067510548523207,
+      "failing_share": 0.0,
+      "duty": 0.27058909883720916
+     },
+     "10-20": {
+      "ues_per_layer": 1389,
+      "violation_rate": 3.861788617886179e-06,
+      "failing_share": 0.0,
+      "duty": 0.17638371730261615
+     },
+     ">=20": {
+      "ues_per_layer": 1163,
+      "violation_rate": 0.0,
+      "failing_share": 0.0,
+      "duty": 0.09800408426483247
+     }
+    }
+   },
+   "best_local": {
+    "layers": 1,
+    "transmissions_per_slot": 0.97056025390625,
+    "by_mean_snr_db": {
+     "<3": {
+      "ues_per_layer": 33,
+      "violation_rate": 0.022,
+      "failing_share": 0.45454545454545453,
+      "duty": 0.44488787878787883
+     },
+     "3-6": {
+      "ues_per_layer": 143,
+      "violation_rate": 0.00393002915451895,
+      "failing_share": 0.06993006993006994,
+      "duty": 0.34391328671328686
+     },
+     "6-10": {
+      "ues_per_layer": 344,
+      "violation_rate": 0.0003848101265822785,
+      "failing_share": 0.0,
+      "duty": 0.24834767441860475
+     },
+     "10-20": {
+      "ues_per_layer": 1389,
+      "violation_rate": 1.1585365853658537e-05,
+      "failing_share": 0.0,
+      "duty": 0.1660776817854572
+     },
+     ">=20": {
+      "ues_per_layer": 1163,
+      "violation_rate": 0.0,
+      "failing_share": 0.0,
+      "duty": 0.1005610060189166
+     }
+    }
+   },
+   "N_EDF": {
+    "layers": 1,
+    "transmissions_per_slot": 0.8283322265624999,
+    "by_mean_snr_db": {
+     "<3": {
+      "ues_per_layer": 33,
+      "violation_rate": 0.003323943661971831,
+      "failing_share": 0.06060606060606061,
+      "duty": 0.3667515151515151
+     },
+     "3-6": {
+      "ues_per_layer": 143,
+      "violation_rate": 0.00036151603498542275,
+      "failing_share": 0.0,
+      "duty": 0.28579580419580425
+     },
+     "6-10": {
+      "ues_per_layer": 344,
+      "violation_rate": 1.7721518987341772e-05,
+      "failing_share": 0.0,
+      "duty": 0.2089931686046509
+     },
+     "10-20": {
+      "ues_per_layer": 1389,
+      "violation_rate": 0.0,
+      "failing_share": 0.0,
+      "duty": 0.14110752339812807
+     },
+     ">=20": {
+      "ues_per_layer": 1163,
+      "violation_rate": 0.0,
+      "failing_share": 0.0,
+      "duty": 0.08877257093723082
+     }
+    }
+   }
+  },
+  "8": {
+   "CG": {
+    "layers": 1,
+    "transmissions_per_slot": 1.4636732421875,
+    "by_mean_snr_db": {
+     "<3": {
+      "ues_per_layer": 51,
+      "violation_rate": 0.06321951219512195,
+      "failing_share": 0.9803921568627451,
+      "duty": 0.5822666666666667
+     },
+     "3-6": {
+      "ues_per_layer": 186,
+      "violation_rate": 0.014455114822546973,
+      "failing_share": 0.4032258064516129,
+      "duty": 0.4381545698924733
+     },
+     "6-10": {
+      "ues_per_layer": 451,
+      "violation_rate": 0.0018454706927175843,
+      "failing_share": 0.019955654101995565,
+      "duty": 0.300356984478936
+     },
+     "10-20": {
+      "ues_per_layer": 1855,
+      "violation_rate": 0.00024357876712328768,
+      "failing_share": 0.001078167115902965,
+      "duty": 0.18372805929919173
+     },
+     ">=20": {
+      "ues_per_layer": 1553,
+      "violation_rate": 6.614583333333334e-05,
+      "failing_share": 0.00128783000643915,
+      "duty": 0.10427031551835154
+     }
+    }
+   },
+   "A_mix": {
+    "layers": 3,
+    "transmissions_per_slot": 1.4203552734375,
+    "by_mean_snr_db": {
+     "<3": {
+      "ues_per_layer": 51,
+      "violation_rate": 0.019869918699186993,
+      "failing_share": 0.6601307189542484,
+      "duty": 0.46979313725490157
+     },
+     "3-6": {
+      "ues_per_layer": 186,
+      "violation_rate": 0.003437717466945024,
+      "failing_share": 0.05017921146953405,
+      "duty": 0.37013440860215097
+     },
+     "6-10": {
+      "ues_per_layer": 451,
+      "violation_rate": 0.00020781527531083481,
+      "failing_share": 0.0,
+      "duty": 0.28154711751662875
+     },
+     "10-20": {
+      "ues_per_layer": 1855,
+      "violation_rate": 3.7100456621004567e-06,
+      "failing_share": 0.0,
+      "duty": 0.18558264150943374
+     },
+     ">=20": {
+      "ues_per_layer": 1553,
+      "violation_rate": 1.2152777777777778e-06,
+      "failing_share": 0.0,
+      "duty": 0.10507656149388306
+     }
+    }
+   },
+   "M": {
+    "layers": 3,
+    "transmissions_per_slot": 1.41992919921875,
+    "by_mean_snr_db": {
+     "<3": {
+      "ues_per_layer": 51,
+      "violation_rate": 0.018672086720867207,
+      "failing_share": 0.5424836601307189,
+      "duty": 0.46819411764705887
+     },
+     "3-6": {
+      "ues_per_layer": 186,
+      "violation_rate": 0.003350034794711204,
+      "failing_share": 0.05017921146953405,
+      "duty": 0.3706465053763443
+     },
+     "6-10": {
+      "ues_per_layer": 451,
+      "violation_rate": 0.00024274718768502074,
+      "failing_share": 0.0,
+      "duty": 0.28297856614929834
+     },
+     "10-20": {
+      "ues_per_layer": 1855,
+      "violation_rate": 1.098744292237443e-05,
+      "failing_share": 0.0,
+      "duty": 0.18550257861635233
+     },
+     ">=20": {
+      "ues_per_layer": 1553,
+      "violation_rate": 1.7361111111111112e-07,
+      "failing_share": 0.0,
+      "duty": 0.10460720111611961
+     }
+    }
+   },
+   "best_local": {
+    "layers": 1,
+    "transmissions_per_slot": 1.4136735351562502,
+    "by_mean_snr_db": {
+     "<3": {
+      "ues_per_layer": 51,
+      "violation_rate": 0.039365853658536586,
+      "failing_share": 0.6862745098039216,
+      "duty": 0.48552058823529404
+     },
+     "3-6": {
+      "ues_per_layer": 186,
+      "violation_rate": 0.008208768267223382,
+      "failing_share": 0.13440860215053763,
+      "duty": 0.37469704301075246
+     },
+     "6-10": {
+      "ues_per_layer": 451,
+      "violation_rate": 0.0009413854351687389,
+      "failing_share": 0.0,
+      "duty": 0.27014733924611994
+     },
+     "10-20": {
+      "ues_per_layer": 1855,
+      "violation_rate": 5.393835616438356e-05,
+      "failing_share": 0.0,
+      "duty": 0.18088264150943414
+     },
+     ">=20": {
+      "ues_per_layer": 1553,
+      "violation_rate": 1.0416666666666667e-06,
+      "failing_share": 0.0,
+      "duty": 0.11073528654217632
+     }
+    }
+   },
+   "N_EDF": {
+    "layers": 1,
+    "transmissions_per_slot": 1.128599609375,
+    "by_mean_snr_db": {
+     "<3": {
+      "ues_per_layer": 51,
+      "violation_rate": 0.0034308943089430893,
+      "failing_share": 0.0784313725490196,
+      "duty": 0.3753352941176471
+     },
+     "3-6": {
+      "ues_per_layer": 186,
+      "violation_rate": 0.0003799582463465553,
+      "failing_share": 0.0,
+      "duty": 0.2903940860215054
+     },
+     "6-10": {
+      "ues_per_layer": 451,
+      "violation_rate": 1.4209591474245115e-05,
+      "failing_share": 0.0,
+      "duty": 0.21280498891352553
+     },
+     "10-20": {
+      "ues_per_layer": 1855,
+      "violation_rate": 0.0,
+      "failing_share": 0.0,
+      "duty": 0.1440398652291107
+     },
+     ">=20": {
+      "ues_per_layer": 1553,
+      "violation_rate": 0.0,
+      "failing_share": 0.0,
+      "duty": 0.09112594977462922
+     }
+    }
+   }
+  },
+  "10": {
+   "CG": {
+    "layers": 1,
+    "transmissions_per_slot": 1.820629296875,
+    "by_mean_snr_db": {
+     "<3": {
+      "ues_per_layer": 64,
+      "violation_rate": 0.0875448275862069,
+      "failing_share": 0.984375,
+      "duty": 0.5789085937499999
+     },
+     "3-6": {
+      "ues_per_layer": 224,
+      "violation_rate": 0.025117338003502628,
+      "failing_share": 0.625,
+      "duty": 0.4349046874999996
+     },
+     "6-10": {
+      "ues_per_layer": 566,
+      "violation_rate": 0.005520400858983536,
+      "failing_share": 0.12897526501766785,
+      "duty": 0.29976802120141294
+     },
+     "10-20": {
+      "ues_per_layer": 2309,
+      "violation_rate": 0.0015097904500171763,
+      "failing_share": 0.021654395842355997,
+      "duty": 0.1838598094413166
+     },
+     ">=20": {
+      "ues_per_layer": 1957,
+      "violation_rate": 0.00040698869475847894,
+      "failing_share": 0.0061318344404701075,
+      "duty": 0.10398180889115978
+     }
+    }
+   },
+   "A_mix": {
+    "layers": 3,
+    "transmissions_per_slot": 1.78143984375,
+    "by_mean_snr_db": {
+     "<3": {
+      "ues_per_layer": 64,
+      "violation_rate": 0.037268965517241376,
+      "failing_share": 0.75,
+      "duty": 0.5140174479166665
+     },
+     "3-6": {
+      "ues_per_layer": 224,
+      "violation_rate": 0.008318739054290718,
+      "failing_share": 0.16815476190476192,
+      "duty": 0.4033506696428572
+     },
+     "6-10": {
+      "ues_per_layer": 566,
+      "violation_rate": 0.0007902648532569792,
+      "failing_share": 0.0,
+      "duty": 0.2940715253239102
+     },
+     "10-20": {
+      "ues_per_layer": 2309,
+      "violation_rate": 3.2863849765258214e-05,
+      "failing_share": 0.0005774505557961599,
+      "duty": 0.18113866753284197
+     },
+     ">=20": {
+      "ues_per_layer": 1957,
+      "violation_rate": 7.947927372387804e-06,
+      "failing_share": 0.00034065746891500596,
+      "duty": 0.10432083120422453
+     }
+    }
+   },
+   "M": {
+    "layers": 3,
+    "transmissions_per_slot": 1.9011620442708335,
+    "by_mean_snr_db": {
+     "<3": {
+      "ues_per_layer": 64,
+      "violation_rate": 0.03285057471264368,
+      "failing_share": 0.6354166666666666,
+      "duty": 0.5070721354166671
+     },
+     "3-6": {
+      "ues_per_layer": 224,
+      "violation_rate": 0.007270286047869235,
+      "failing_share": 0.13690476190476192,
+      "duty": 0.4017333333333332
+     },
+     "6-10": {
+      "ues_per_layer": 566,
+      "violation_rate": 0.0007143879742304939,
+      "failing_share": 0.0005889281507656066,
+      "duty": 0.30618869257950493
+     },
+     "10-20": {
+      "ues_per_layer": 2309,
+      "violation_rate": 4.500171762281003e-05,
+      "failing_share": 0.0,
+      "duty": 0.20026735960733433
+     },
+     ">=20": {
+      "ues_per_layer": 1957,
+      "violation_rate": 1.7814319972593354e-06,
+      "failing_share": 0.0,
+      "duty": 0.1099815789473683
+     }
+    }
+   },
+   "best_local": {
+    "layers": 1,
+    "transmissions_per_slot": 1.9186677734375,
+    "by_mean_snr_db": {
+     "<3": {
+      "ues_per_layer": 64,
+      "violation_rate": 0.06675862068965517,
+      "failing_share": 0.875,
+      "duty": 0.53459765625
+     },
+     "3-6": {
+      "ues_per_layer": 224,
+      "violation_rate": 0.018956217162872154,
+      "failing_share": 0.45535714285714285,
+      "duty": 0.4130504464285712
+     },
+     "6-10": {
+      "ues_per_layer": 566,
+      "violation_rate": 0.0031080887616320688,
+      "failing_share": 0.04240282685512368,
+      "duty": 0.2978396643109542
+     },
+     "10-20": {
+      "ues_per_layer": 2309,
+      "violation_rate": 0.00023978014428031603,
+      "failing_share": 0.0,
+      "duty": 0.1971835643135553
+     },
+     ">=20": {
+      "ues_per_layer": 1957,
+      "violation_rate": 3.28879753340185e-06,
+      "failing_share": 0.0,
+      "duty": 0.1184191364333162
+     }
+    }
+   },
+   "N_EDF": {
+    "layers": 1,
+    "transmissions_per_slot": 1.41979970703125,
+    "by_mean_snr_db": {
+     "<3": {
+      "ues_per_layer": 64,
+      "violation_rate": 0.0035448275862068964,
+      "failing_share": 0.078125,
+      "duty": 0.38060468750000004
+     },
+     "3-6": {
+      "ues_per_layer": 224,
+      "violation_rate": 0.00036427320490367777,
+      "failing_share": 0.0,
+      "duty": 0.29274642857142846
+     },
+     "6-10": {
+      "ues_per_layer": 566,
+      "violation_rate": 1.4316392269148175e-05,
+      "failing_share": 0.0,
+      "duty": 0.21494911660777383
+     },
+     "10-20": {
+      "ues_per_layer": 2309,
+      "violation_rate": 0.0,
+      "failing_share": 0.0,
+      "duty": 0.14589759636206173
+     },
+     ">=20": {
+      "ues_per_layer": 1957,
+      "violation_rate": 0.0,
+      "failing_share": 0.0,
+      "duty": 0.09119305058763366
+     }
+    }
+   }
+  }
+ }
+}

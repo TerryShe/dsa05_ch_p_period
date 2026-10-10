@@ -1,0 +1,2744 @@
+{
+ "CG": {
+  "validation": {
+   "2": {
+    "episodes": 64,
+    "infeasible_for_all": 0,
+    "assigned_share_mean": 0.5,
+    "used_share": 0.1926326577970297,
+    "blocked_per_episode": 0.0,
+    "episodes_with_blocked": 0,
+    "by_class": {
+     "0": {
+      "ues": 64,
+      "occasions_mean": 10.0,
+      "window_share_mean": 1.0
+     },
+     "1": {
+      "ues": 64,
+      "occasions_mean": 20.0,
+      "window_share_mean": 1.0
+     }
+    },
+    "by_mean_snr_db": {
+     "<10": {
+      "ues": 25,
+      "window_share_mean": 1.0,
+      "predicted_outage_mean": 0.005854000000000001,
+      "violation_rate": 0.005243243243243243
+     },
+     "10-20": {
+      "ues": 55,
+      "window_share_mean": 1.0,
+      "predicted_outage_mean": 1.8181818181818183e-06,
+      "violation_rate": 0.0
+     },
+     "20-30": {
+      "ues": 32,
+      "window_share_mean": 1.0,
+      "predicted_outage_mean": 0.0,
+      "violation_rate": 0.0
+     },
+     ">=30": {
+      "ues": 16,
+      "window_share_mean": 1.0,
+      "predicted_outage_mean": 0.0,
+      "violation_rate": 0.0
+     }
+    },
+    "predicted_vs_realized": {
+     "<0.001": {
+      "ues": 119,
+      "predicted_outage_mean": 4.3697478991596636e-05,
+      "violation_rate": 3.3333333333333335e-05
+     },
+     "0.001-0.005": {
+      "ues": 3,
+      "predicted_outage_mean": 0.0030833333333333338,
+      "violation_rate": 0.002
+     },
+     "0.005-0.01": {
+      "ues": 2,
+      "predicted_outage_mean": 0.005424999999999999,
+      "violation_rate": 0.0075
+     },
+     "0.01-0.02": {
+      "ues": 3,
+      "predicted_outage_mean": 0.012816666666666665,
+      "violation_rate": 0.0178
+     },
+     "0.05-0.1": {
+      "ues": 1,
+      "predicted_outage_mean": 0.0827,
+      "violation_rate": 0.076
+     }
+    },
+    "failing_ues": {
+     "count": 3,
+     "classes": {
+      "1": 1,
+      "0": 2
+     },
+     "mean_snr_db_median": 4.035770287656936,
+     "window_share_median": 1.0,
+     "predicted_outage_median": 0.01295
+    }
+   },
+   "4": {
+    "episodes": 64,
+    "infeasible_for_all": 0,
+    "assigned_share_mean": 0.94296875,
+    "used_share": 0.2061803259862026,
+    "blocked_per_episode": 1.34375,
+    "episodes_with_blocked": 48,
+    "by_class": {
+     "0": {
+      "ues": 128,
+      "occasions_mean": 9.125,
+      "window_share_mean": 0.9125000000000005
+     },
+     "1": {
+      "ues": 64,
+      "occasions_mean": 18.9375,
+      "window_share_mean": 0.9468750000000001
+     },
+     "2": {
+      "ues": 64,
+      "occasions_mean": 40.0,
+      "window_share_mean": 1.0
+     }
+    },
+    "by_mean_snr_db": {
+     "<10": {
+      "ues": 49,
+      "window_share_mean": 0.9979591836734694,
+      "predicted_outage_mean": 0.007725510204081631,
+      "violation_rate": 0.009562043795620439
+     },
+     "10-20": {
+      "ues": 114,
+      "window_share_mean": 0.9495614035087723,
+      "predicted_outage_mean": 1.7543859649122807e-06,
+      "violation_rate": 6.134969325153374e-06
+     },
+     "20-30": {
+      "ues": 65,
+      "window_share_mean": 0.9215384615384616,
+      "predicted_outage_mean": 0.0,
+      "violation_rate": 0.0
+     },
+     ">=30": {
+      "ues": 28,
+      "window_share_mean": 0.869642857142857,
+      "predicted_outage_mean": 0.0,
+      "violation_rate": 0.0
+     }
+    },
+    "predicted_vs_realized": {
+     "<0.001": {
+      "ues": 238,
+      "predicted_outage_mean": 3.802521008403361e-05,
+      "violation_rate": 3.709428129829985e-05
+     },
+     "0.001-0.005": {
+      "ues": 7,
+      "predicted_outage_mean": 0.002521428571428571,
+      "violation_rate": 0.0020909090909090908
+     },
+     "0.005-0.01": {
+      "ues": 1,
+      "predicted_outage_mean": 0.0078,
+      "violation_rate": 0.008
+     },
+     "0.01-0.02": {
+      "ues": 6,
+      "predicted_outage_mean": 0.014133333333333333,
+      "violation_rate": 0.017052631578947368
+     },
+     "0.02-0.05": {
+      "ues": 1,
+      "predicted_outage_mean": 0.0404,
+      "violation_rate": 0.0375
+     },
+     "0.05-0.1": {
+      "ues": 3,
+      "predicted_outage_mean": 0.07301666666666666,
+      "violation_rate": 0.0752
+     }
+    },
+    "failing_ues": {
+     "count": 9,
+     "classes": {
+      "0": 7,
+      "1": 1,
+      "2": 1
+     },
+     "mean_snr_db_median": 2.6444298468288525,
+     "window_share_median": 1.0,
+     "predicted_outage_median": 0.01925
+    }
+   },
+   "6": {
+    "episodes": 64,
+    "infeasible_for_all": 0,
+    "assigned_share_mean": 0.9943359375,
+    "used_share": 0.28199618429727474,
+    "blocked_per_episode": 3.640625,
+    "episodes_with_blocked": 61,
+    "by_class": {
+     "0": {
+      "ues": 128,
+      "occasions_mean": 6.6953125,
+      "window_share_mean": 0.6695312500000001
+     },
+     "1": {
+      "ues": 128,
+      "occasions_mean": 12.734375,
+      "window_share_mean": 0.6367187500000002
+     },
+     "2": {
+      "ues": 128,
+      "occasions_mean": 27.296875,
+      "window_share_mean": 0.6824218750000003
+     }
+    },
+    "by_mean_snr_db": {
+     "<10": {
+      "ues": 71,
+      "window_share_mean": 0.9517605633802817,
+      "predicted_outage_mean": 0.00611056338028169,
+      "violation_rate": 0.008094117647058823
+     },
+     "10-20": {
+      "ues": 171,
+      "window_share_mean": 0.6988304093567251,
+      "predicted_outage_mean": 2.514619883040935e-05,
+      "violation_rate": 2.912621359223301e-05
+     },
+     "20-30": {
+      "ues": 99,
+      "window_share_mean": 0.5131313131313129,
+      "predicted_outage_mean": 0.0,
+      "violation_rate": 0.0
+     },
+     ">=30": {
+      "ues": 43,
+      "window_share_mean": 0.3877906976744186,
+      "predicted_outage_mean": 0.0,
+      "violation_rate": 0.0
+     }
+    },
+    "predicted_vs_realized": {
+     "<0.001": {
+      "ues": 357,
+      "predicted_outage_mean": 3.9495798319327725e-05,
+      "violation_rate": 3.6407766990291265e-05
+     },
+     "0.001-0.005": {
+      "ues": 14,
+      "predicted_outage_mean": 0.0024071428571428573,
+      "violation_rate": 0.0024705882352941176
+     },
+     "0.005-0.01": {
+      "ues": 1,
+      "predicted_outage_mean": 0.0062,
+      "violation_rate": 0.007
+     },
+     "0.01-0.02": {
+      "ues": 8,
+      "predicted_outage_mean": 0.0144,
+      "violation_rate": 0.015909090909090907
+     },
+     "0.02-0.05": {
+      "ues": 1,
+      "predicted_outage_mean": 0.04165,
+      "violation_rate": 0.036
+     },
+     "0.05-0.1": {
+      "ues": 3,
+      "predicted_outage_mean": 0.07576666666666666,
+      "violation_rate": 0.0766
+     }
+    },
+    "failing_ues": {
+     "count": 11,
+     "classes": {
+      "0": 7,
+      "1": 3,
+      "2": 1
+     },
+     "mean_snr_db_median": 3.413446177764539,
+     "window_share_median": 1.0,
+     "predicted_outage_median": 0.018
+    }
+   },
+   "8": {
+    "episodes": 64,
+    "infeasible_for_all": 0,
+    "assigned_share_mean": 0.9976562499999999,
+    "used_share": 0.3730829915411275,
+    "blocked_per_episode": 4.046875,
+    "episodes_with_blocked": 62,
+    "by_class": {
+     "0": {
+      "ues": 192,
+      "occasions_mean": 5.34375,
+      "window_share_mean": 0.5343749999999999
+     },
+     "1": {
+      "ues": 192,
+      "occasions_mean": 9.458333333333334,
+      "window_share_mean": 0.4729166666666667
+     },
+     "2": {
+      "ues": 128,
+      "occasions_mean": 19.375,
+      "window_share_mean": 0.48437500000000006
+     }
+    },
+    "by_mean_snr_db": {
+     "<10": {
+      "ues": 91,
+      "window_share_mean": 0.8434065934065934,
+      "predicted_outage_mean": 0.006943406593406592,
+      "violation_rate": 0.00843103448275862
+     },
+     "10-20": {
+      "ues": 230,
+      "window_share_mean": 0.5267391304347825,
+      "predicted_outage_mean": 0.00021717391304347853,
+      "violation_rate": 0.0002406779661016949
+     },
+     "20-30": {
+      "ues": 127,
+      "window_share_mean": 0.3352362204724407,
+      "predicted_outage_mean": 2.2834645669291333e-05,
+      "violation_rate": 3.9473684210526316e-05
+     },
+     ">=30": {
+      "ues": 64,
+      "window_share_mean": 0.23320312499999993,
+      "predicted_outage_mean": 7.03125e-06,
+      "violation_rate": 0.0
+     }
+    },
+    "predicted_vs_realized": {
+     "<0.001": {
+      "ues": 457,
+      "predicted_outage_mean": 7.78993435448578e-05,
+      "violation_rate": 6.18921308576481e-05
+     },
+     "0.001-0.005": {
+      "ues": 29,
+      "predicted_outage_mean": 0.0021568965517241383,
+      "violation_rate": 0.0024864864864864865
+     },
+     "0.005-0.01": {
+      "ues": 4,
+      "predicted_outage_mean": 0.0070625,
+      "violation_rate": 0.006571428571428572
+     },
+     "0.01-0.02": {
+      "ues": 14,
+      "predicted_outage_mean": 0.014017857142857143,
+      "violation_rate": 0.013674418604651163
+     },
+     "0.02-0.05": {
+      "ues": 5,
+      "predicted_outage_mean": 0.02812,
+      "violation_rate": 0.030533333333333332
+     },
+     "0.05-0.1": {
+      "ues": 3,
+      "predicted_outage_mean": 0.07396666666666667,
+      "violation_rate": 0.0764
+     }
+    },
+    "failing_ues": {
+     "count": 20,
+     "classes": {
+      "0": 12,
+      "1": 6,
+      "2": 2
+     },
+     "mean_snr_db_median": 3.8220096889928294,
+     "window_share_median": 1.0,
+     "predicted_outage_median": 0.017099999999999997
+    }
+   },
+   "10": {
+    "episodes": 64,
+    "infeasible_for_all": 0,
+    "assigned_share_mean": 0.9998046875,
+    "used_share": 0.45852492848425297,
+    "blocked_per_episode": 4.078125,
+    "episodes_with_blocked": 61,
+    "by_class": {
+     "0": {
+      "ues": 256,
+      "occasions_mean": 4.44140625,
+      "window_share_mean": 0.4441406250000002
+     },
+     "1": {
+      "ues": 192,
+      "occasions_mean": 7.625,
+      "window_share_mean": 0.38125000000000014
+     },
+     "2": {
+      "ues": 192,
+      "occasions_mean": 14.385416666666666,
+      "window_share_mean": 0.3596354166666667
+     }
+    },
+    "by_mean_snr_db": {
+     "<10": {
+      "ues": 109,
+      "window_share_mean": 0.7369266055045873,
+      "predicted_outage_mean": 0.010069266055045864,
+      "violation_rate": 0.012029197080291971
+     },
+     "10-20": {
+      "ues": 286,
+      "window_share_mean": 0.420541958041958,
+      "predicted_outage_mean": 0.0010071678321678314,
+      "violation_rate": 0.00106353591160221
+     },
+     "20-30": {
+      "ues": 163,
+      "window_share_mean": 0.2546012269938651,
+      "predicted_outage_mean": 0.0002855828220858898,
+      "violation_rate": 0.00035
+     },
+     ">=30": {
+      "ues": 82,
+      "window_share_mean": 0.16890243902439017,
+      "predicted_outage_mean": 0.0002908536585365854,
+      "violation_rate": 0.00026732673267326735
+     }
+    },
+    "predicted_vs_realized": {
+     "<0.001": {
+      "ues": 486,
+      "predicted_outage_mean": 0.0001304526748971195,
+      "violation_rate": 0.00011996572407883462
+     },
+     "0.001-0.005": {
+      "ues": 94,
+      "predicted_outage_mean": 0.002390425531914893,
+      "violation_rate": 0.0024521072796934865
+     },
+     "0.005-0.01": {
+      "ues": 26,
+      "predicted_outage_mean": 0.006463461538461537,
+      "violation_rate": 0.006346666666666666
+     },
+     "0.01-0.02": {
+      "ues": 17,
+      "predicted_outage_mean": 0.01425294117647059,
+      "violation_rate": 0.012936170212765958
+     },
+     "0.02-0.05": {
+      "ues": 13,
+      "predicted_outage_mean": 0.03058846153846154,
+      "violation_rate": 0.03244444444444444
+     },
+     "0.05-0.1": {
+      "ues": 2,
+      "predicted_outage_mean": 0.07025,
+      "violation_rate": 0.071
+     },
+     ">=0.1": {
+      "ues": 2,
+      "predicted_outage_mean": 0.10969999999999999,
+      "violation_rate": 0.11
+     }
+    },
+    "failing_ues": {
+     "count": 32,
+     "classes": {
+      "0": 16,
+      "1": 12,
+      "2": 4
+     },
+     "mean_snr_db_median": 4.246995758276787,
+     "window_share_median": 0.85,
+     "predicted_outage_median": 0.022275000000000003
+    }
+   },
+   "12": {
+    "episodes": 64,
+    "infeasible_for_all": 0,
+    "assigned_share_mean": 1.0,
+    "used_share": 0.5380470683787129,
+    "blocked_per_episode": 3.640625,
+    "episodes_with_blocked": 62,
+    "by_class": {
+     "0": {
+      "ues": 256,
+      "occasions_mean": 3.85546875,
+      "window_share_mean": 0.38554687500000007
+     },
+     "1": {
+      "ues": 256,
+      "occasions_mean": 6.4921875,
+      "window_share_mean": 0.3246093750000002
+     },
+     "2": {
+      "ues": 256,
+      "occasions_mean": 11.59375,
+      "window_share_mean": 0.2898437500000001
+     }
+    },
+    "by_mean_snr_db": {
+     "<10": {
+      "ues": 125,
+      "window_share_mean": 0.6511999999999998,
+      "predicted_outage_mean": 0.017964400000000002,
+      "violation_rate": 0.02012
+     },
+     "10-20": {
+      "ues": 352,
+      "window_share_mean": 0.3428977272727274,
+      "predicted_outage_mean": 0.003360369318181815,
+      "violation_rate": 0.00357020757020757
+     },
+     "20-30": {
+      "ues": 195,
+      "window_share_mean": 0.20833333333333326,
+      "predicted_outage_mean": 0.0014443589743589732,
+      "violation_rate": 0.0014235033259423504
+     },
+     ">=30": {
+      "ues": 96,
+      "window_share_mean": 0.13828124999999986,
+      "predicted_outage_mean": 0.0008442708333333333,
+      "violation_rate": 0.0009189189189189189
+     }
+    },
+    "predicted_vs_realized": {
+     "<0.001": {
+      "ues": 436,
+      "predicted_outage_mean": 0.00022327981651376166,
+      "violation_rate": 0.00021030927835051546
+     },
+     "0.001-0.005": {
+      "ues": 187,
+      "predicted_outage_mean": 0.0025481283422459904,
+      "violation_rate": 0.0026575963718820862
+     },
+     "0.005-0.01": {
+      "ues": 54,
+      "predicted_outage_mean": 0.007242592592592594,
+      "violation_rate": 0.0064625
+     },
+     "0.01-0.02": {
+      "ues": 42,
+      "predicted_outage_mean": 0.014707142857142858,
+      "violation_rate": 0.015148936170212766
+     },
+     "0.02-0.05": {
+      "ues": 34,
+      "predicted_outage_mean": 0.030475000000000002,
+      "violation_rate": 0.031488372093023256
+     },
+     "0.05-0.1": {
+      "ues": 13,
+      "predicted_outage_mean": 0.07284615384615384,
+      "violation_rate": 0.07491428571428571
+     },
+     ">=0.1": {
+      "ues": 2,
+      "predicted_outage_mean": 0.11265,
+      "violation_rate": 0.107
+     }
+    },
+    "failing_ues": {
+     "count": 87,
+     "classes": {
+      "1": 46,
+      "0": 27,
+      "2": 14
+     },
+     "mean_snr_db_median": 8.19102252476891,
+     "window_share_median": 0.5,
+     "predicted_outage_median": 0.02285
+    }
+   },
+   "16": {
+    "episodes": 64,
+    "infeasible_for_all": 0,
+    "assigned_share_mean": 1.0,
+    "used_share": 0.7122522818688118,
+    "blocked_per_episode": 3.3125,
+    "episodes_with_blocked": 50,
+    "by_class": {
+     "0": {
+      "ues": 384,
+      "occasions_mean": 2.7890625,
+      "window_share_mean": 0.2789062500000005
+     },
+     "1": {
+      "ues": 320,
+      "occasions_mean": 4.840625,
+      "window_share_mean": 0.24203125
+     },
+     "2": {
+      "ues": 320,
+      "occasions_mean": 8.93125,
+      "window_share_mean": 0.22328125000000015
+     }
+    },
+    "by_mean_snr_db": {
+     "<10": {
+      "ues": 171,
+      "window_share_mean": 0.4926900584795322,
+      "predicted_outage_mean": 0.09373216374269008,
+      "violation_rate": 0.10192575406032482
+     },
+     "10-20": {
+      "ues": 461,
+      "window_share_mean": 0.25227765726681134,
+      "predicted_outage_mean": 0.0341362255965293,
+      "violation_rate": 0.03648337825696316
+     },
+     "20-30": {
+      "ues": 262,
+      "window_share_mean": 0.16145038167938924,
+      "predicted_outage_mean": 0.015655534351145046,
+      "violation_rate": 0.017208791208791208
+     },
+     ">=30": {
+      "ues": 130,
+      "window_share_mean": 0.10115384615384597,
+      "predicted_outage_mean": 0.010535384615384617,
+      "violation_rate": 0.0121015873015873
+     }
+    },
+    "predicted_vs_realized": {
+     "<0.001": {
+      "ues": 127,
+      "predicted_outage_mean": 0.0003346456692913387,
+      "violation_rate": 0.0004404332129963899
+     },
+     "0.001-0.005": {
+      "ues": 176,
+      "predicted_outage_mean": 0.0025303977272727284,
+      "violation_rate": 0.0024558823529411767
+     },
+     "0.005-0.01": {
+      "ues": 121,
+      "predicted_outage_mean": 0.00757190082644628,
+      "violation_rate": 0.007117241379310345
+     },
+     "0.01-0.02": {
+      "ues": 158,
+      "predicted_outage_mean": 0.01443386075949367,
+      "violation_rate": 0.014476923076923076
+     },
+     "0.02-0.05": {
+      "ues": 213,
+      "predicted_outage_mean": 0.032434507042253514,
+      "violation_rate": 0.03257418111753372
+     },
+     "0.05-0.1": {
+      "ues": 141,
+      "predicted_outage_mean": 0.07476702127659578,
+      "violation_rate": 0.07771733333333333
+     },
+     ">=0.1": {
+      "ues": 88,
+      "predicted_outage_mean": 0.18296647727272725,
+      "violation_rate": 0.18745147679324894
+     }
+    },
+    "failing_ues": {
+     "count": 584,
+     "classes": {
+      "0": 238,
+      "1": 191,
+      "2": 155
+     },
+     "mean_snr_db_median": 13.976867755455054,
+     "window_share_median": 0.25,
+     "predicted_outage_median": 0.039275
+    }
+   },
+   "20": {
+    "episodes": 64,
+    "infeasible_for_all": 0,
+    "assigned_share_mean": 1.0,
+    "used_share": 0.8531346689356436,
+    "blocked_per_episode": 1.890625,
+    "episodes_with_blocked": 39,
+    "by_class": {
+     "0": {
+      "ues": 448,
+      "occasions_mean": 2.1785714285714284,
+      "window_share_mean": 0.21785714285714314
+     },
+     "1": {
+      "ues": 448,
+      "occasions_mean": 3.908482142857143,
+      "window_share_mean": 0.19542410714285727
+     },
+     "2": {
+      "ues": 384,
+      "occasions_mean": 7.380208333333333,
+      "window_share_mean": 0.18450520833333325
+     }
+    },
+    "by_mean_snr_db": {
+     "<10": {
+      "ues": 220,
+      "window_share_mean": 0.3807954545454543,
+      "predicted_outage_mean": 0.2600254545454545,
+      "violation_rate": 0.2563795066413662
+     },
+     "10-20": {
+      "ues": 575,
+      "window_share_mean": 0.2025217391304356,
+      "predicted_outage_mean": 0.13071921739130413,
+      "violation_rate": 0.12578409919766595
+     },
+     "20-30": {
+      "ues": 330,
+      "window_share_mean": 0.12787878787878829,
+      "predicted_outage_mean": 0.08910045454545455,
+      "violation_rate": 0.0990497512437811
+     },
+     ">=30": {
+      "ues": 155,
+      "window_share_mean": 0.0875806451612902,
+      "predicted_outage_mean": 0.025105806451612898,
+      "violation_rate": 0.02395135135135135
+     }
+    },
+    "predicted_vs_realized": {
+     "<0.001": {
+      "ues": 26,
+      "predicted_outage_mean": 0.00040192307692307695,
+      "violation_rate": 0.0005517241379310345
+     },
+     "0.001-0.005": {
+      "ues": 63,
+      "predicted_outage_mean": 0.002645238095238095,
+      "violation_rate": 0.0025657894736842105
+     },
+     "0.005-0.01": {
+      "ues": 51,
+      "predicted_outage_mean": 0.007115686274509804,
+      "violation_rate": 0.006763358778625954
+     },
+     "0.01-0.02": {
+      "ues": 108,
+      "predicted_outage_mean": 0.014890277777777784,
+      "violation_rate": 0.01542124542124542
+     },
+     "0.02-0.05": {
+      "ues": 227,
+      "predicted_outage_mean": 0.035204185022026435,
+      "violation_rate": 0.03491489361702128
+     },
+     "0.05-0.1": {
+      "ues": 224,
+      "predicted_outage_mean": 0.07422209821428573,
+      "violation_rate": 0.0745104761904762
+     },
+     ">=0.1": {
+      "ues": 581,
+      "predicted_outage_mean": 0.2390679001721175,
+      "violation_rate": 0.24231701972242511
+     }
+    },
+    "failing_ues": {
+     "count": 1126,
+     "classes": {
+      "0": 395,
+      "1": 400,
+      "2": 331
+     },
+     "mean_snr_db_median": 16.03390073579329,
+     "window_share_median": 0.2,
+     "predicted_outage_median": 0.106575
+    }
+   },
+   "24": {
+    "episodes": 64,
+    "infeasible_for_all": 0,
+    "assigned_share_mean": 1.0,
+    "used_share": 0.9405573174504951,
+    "blocked_per_episode": 1.203125,
+    "episodes_with_blocked": 33,
+    "by_class": {
+     "0": {
+      "ues": 512,
+      "occasions_mean": 1.7734375,
+      "window_share_mean": 0.17734375000000024
+     },
+     "1": {
+      "ues": 512,
+      "occasions_mean": 3.294921875,
+      "window_share_mean": 0.1647460937500002
+     },
+     "2": {
+      "ues": 512,
+      "occasions_mean": 6.31640625,
+      "window_share_mean": 0.15791015625000007
+     }
+    },
+    "by_mean_snr_db": {
+     "<10": {
+      "ues": 260,
+      "window_share_mean": 0.3097115384615382,
+      "predicted_outage_mean": 0.4946507692307694,
+      "violation_rate": 0.48145394736842106
+     },
+     "10-20": {
+      "ues": 696,
+      "window_share_mean": 0.1721982758620701,
+      "predicted_outage_mean": 0.30228936781609195,
+      "violation_rate": 0.2869088669950739
+     },
+     "20-30": {
+      "ues": 388,
+      "window_share_mean": 0.10328608247422742,
+      "predicted_outage_mean": 0.22006365979381454,
+      "violation_rate": 0.22878128400435255
+     },
+     ">=30": {
+      "ues": 192,
+      "window_share_mean": 0.08098958333333327,
+      "predicted_outage_mean": 0.06448958333333336,
+      "violation_rate": 0.052872979214780604
+     }
+    },
+    "predicted_vs_realized": {
+     "<0.001": {
+      "ues": 21,
+      "predicted_outage_mean": 0.0004261904761904761,
+      "violation_rate": 0.0005555555555555556
+     },
+     "0.001-0.005": {
+      "ues": 26,
+      "predicted_outage_mean": 0.0025076923076923076,
+      "violation_rate": 0.002074074074074074
+     },
+     "0.005-0.01": {
+      "ues": 22,
+      "predicted_outage_mean": 0.007706818181818182,
+      "violation_rate": 0.006897959183673469
+     },
+     "0.01-0.02": {
+      "ues": 52,
+      "predicted_outage_mean": 0.01452019230769231,
+      "violation_rate": 0.014809523809523809
+     },
+     "0.02-0.05": {
+      "ues": 129,
+      "predicted_outage_mean": 0.035943410852713166,
+      "violation_rate": 0.035443786982248524
+     },
+     "0.05-0.1": {
+      "ues": 144,
+      "predicted_outage_mean": 0.0766201388888889,
+      "violation_rate": 0.07792837465564738
+     },
+     ">=0.1": {
+      "ues": 1142,
+      "predicted_outage_mean": 0.36786387915937,
+      "violation_rate": 0.3650746153846154
+     }
+    },
+    "failing_ues": {
+     "count": 1456,
+     "classes": {
+      "0": 489,
+      "1": 479,
+      "2": 488
+     },
+     "mean_snr_db_median": 16.636614104691283,
+     "window_share_median": 0.15,
+     "predicted_outage_median": 0.262425
+    }
+   },
+   "28": {
+    "episodes": 64,
+    "infeasible_for_all": 0,
+    "assigned_share_mean": 1.0,
+    "used_share": 0.9837811339727722,
+    "blocked_per_episode": 1.015625,
+    "episodes_with_blocked": 26,
+    "by_class": {
+     "0": {
+      "ues": 640,
+      "occasions_mean": 1.4796875,
+      "window_share_mean": 0.14796875
+     },
+     "1": {
+      "ues": 576,
+      "occasions_mean": 2.842013888888889,
+      "window_share_mean": 0.14210069444444443
+     },
+     "2": {
+      "ues": 576,
+      "occasions_mean": 5.517361111111111,
+      "window_share_mean": 0.13793402777777777
+     }
+    },
+    "by_mean_snr_db": {
+     "<10": {
+      "ues": 307,
+      "window_share_mean": 0.25276872964169406,
+      "predicted_outage_mean": 0.7328553745928337,
+      "violation_rate": 0.7293930481283423
+     },
+     "10-20": {
+      "ues": 799,
+      "window_share_mean": 0.1456195244055073,
+      "predicted_outage_mean": 0.5352746558197746,
+      "violation_rate": 0.5171276931161324
+     },
+     "20-30": {
+      "ues": 462,
+      "window_share_mean": 0.09680735930736008,
+      "predicted_outage_mean": 0.2895069264069264,
+      "violation_rate": 0.27513746630727764
+     },
+     ">=30": {
+      "ues": 224,
+      "window_share_mean": 0.07734375000000003,
+      "predicted_outage_mean": 0.13883147321428588,
+      "violation_rate": 0.1026412213740458
+     }
+    },
+    "predicted_vs_realized": {
+     "<0.001": {
+      "ues": 18,
+      "predicted_outage_mean": 0.00031388888888888883,
+      "violation_rate": 0.0005555555555555556
+     },
+     "0.001-0.005": {
+      "ues": 16,
+      "predicted_outage_mean": 0.0026875000000000002,
+      "violation_rate": 0.00295
+     },
+     "0.005-0.01": {
+      "ues": 20,
+      "predicted_outage_mean": 0.007355,
+      "violation_rate": 0.006464285714285714
+     },
+     "0.01-0.02": {
+      "ues": 43,
+      "predicted_outage_mean": 0.014597674418604652,
+      "violation_rate": 0.015127272727272727
+     },
+     "0.02-0.05": {
+      "ues": 70,
+      "predicted_outage_mean": 0.03353571428571429,
+      "violation_rate": 0.033774011299435025
+     },
+     "0.05-0.1": {
+      "ues": 87,
+      "predicted_outage_mean": 0.07635632183908043,
+      "violation_rate": 0.07692640692640693
+     },
+     ">=0.1": {
+      "ues": 1538,
+      "predicted_outage_mean": 0.5251674577373211,
+      "violation_rate": 0.514853591160221
+     }
+    },
+    "failing_ues": {
+     "count": 1730,
+     "classes": {
+      "0": 610,
+      "1": 559,
+      "2": 561
+     },
+     "mean_snr_db_median": 16.92520384642026,
+     "window_share_median": 0.1125,
+     "predicted_outage_median": 0.48002500000000003
+    }
+   },
+   "32": {
+    "episodes": 64,
+    "infeasible_for_all": 0,
+    "assigned_share_mean": 1.0,
+    "used_share": 0.9968382580445545,
+    "blocked_per_episode": 0.421875,
+    "episodes_with_blocked": 21,
+    "by_class": {
+     "0": {
+      "ues": 704,
+      "occasions_mean": 1.3039772727272727,
+      "window_share_mean": 0.13039772727272703
+     },
+     "1": {
+      "ues": 704,
+      "occasions_mean": 2.4744318181818183,
+      "window_share_mean": 0.1237215909090907
+     },
+     "2": {
+      "ues": 640,
+      "occasions_mean": 4.81875,
+      "window_share_mean": 0.1204687500000001
+     }
+    },
+    "by_mean_snr_db": {
+     "<10": {
+      "ues": 351,
+      "window_share_mean": 0.21260683760683827,
+      "predicted_outage_mean": 0.8734803418803424,
+      "violation_rate": 0.8480827423167848
+     },
+     "10-20": {
+      "ues": 907,
+      "window_share_mean": 0.12378721058434353,
+      "predicted_outage_mean": 0.7449259647188536,
+      "violation_rate": 0.7207746413697362
+     },
+     "20-30": {
+      "ues": 537,
+      "window_share_mean": 0.0945996275605223,
+      "predicted_outage_mean": 0.3429907821229053,
+      "violation_rate": 0.29658980392156864
+     },
+     ">=30": {
+      "ues": 253,
+      "window_share_mean": 0.0723320158102768,
+      "predicted_outage_mean": 0.24017885375494044,
+      "violation_rate": 0.17913058419243985
+     }
+    },
+    "predicted_vs_realized": {
+     "<0.001": {
+      "ues": 21,
+      "predicted_outage_mean": 0.00027380952380952377,
+      "violation_rate": 0.0005573770491803278
+     },
+     "0.001-0.005": {
+      "ues": 14,
+      "predicted_outage_mean": 0.0029321428571428576,
+      "violation_rate": 0.003081081081081081
+     },
+     "0.005-0.01": {
+      "ues": 15,
+      "predicted_outage_mean": 0.007096666666666665,
+      "violation_rate": 0.006595744680851064
+     },
+     "0.01-0.02": {
+      "ues": 30,
+      "predicted_outage_mean": 0.014970000000000002,
+      "violation_rate": 0.015931818181818182
+     },
+     "0.02-0.05": {
+      "ues": 75,
+      "predicted_outage_mean": 0.033867333333333326,
+      "violation_rate": 0.03424598930481283
+     },
+     "0.05-0.1": {
+      "ues": 83,
+      "predicted_outage_mean": 0.07630542168674699,
+      "violation_rate": 0.07652727272727272
+     },
+     ">=0.1": {
+      "ues": 1810,
+      "predicted_outage_mean": 0.6727707182320436,
+      "violation_rate": 0.6468697916666667
+     }
+    },
+    "failing_ues": {
+     "count": 1996,
+     "classes": {
+      "0": 673,
+      "1": 696,
+      "2": 627
+     },
+     "mean_snr_db_median": 17.0895647240217,
+     "window_share_median": 0.1,
+     "predicted_outage_median": 0.682925
+    }
+   }
+  },
+  "exp010-eval512": {
+   "6": {
+    "episodes": 512,
+    "infeasible_for_all": 2,
+    "assigned_share_mean": 0.994677734375,
+    "used_share": 0.27325087449592245,
+    "blocked_per_episode": 3.537109375,
+    "episodes_with_blocked": 500,
+    "by_class": {
+     "0": {
+      "ues": 1024,
+      "occasions_mean": 6.7548828125,
+      "window_share_mean": 0.6754882812499984
+     },
+     "1": {
+      "ues": 1024,
+      "occasions_mean": 12.818359375,
+      "window_share_mean": 0.6409179687499996
+     },
+     "2": {
+      "ues": 1024,
+      "occasions_mean": 26.91796875,
+      "window_share_mean": 0.6729492187500005
+     }
+    },
+    "by_mean_snr_db": {
+     "<10": {
+      "ues": 520,
+      "window_share_mean": 0.9384134615384603,
+      "predicted_outage_mean": 0.0047475000000000035,
+      "violation_rate": 0.006209302325581395
+     },
+     "10-20": {
+      "ues": 1389,
+      "window_share_mean": 0.7239200863930892,
+      "predicted_outage_mean": 1.9258459323254163e-05,
+      "violation_rate": 2.804878048780488e-05
+     },
+     "20-30": {
+      "ues": 770,
+      "window_share_mean": 0.5151623376623375,
+      "predicted_outage_mean": 3.246753246753247e-07,
+      "violation_rate": 1.1305822498586772e-06
+     },
+     ">=30": {
+      "ues": 393,
+      "window_share_mean": 0.3738549618320615,
+      "predicted_outage_mean": 1.272264631043257e-07,
+      "violation_rate": 2.185792349726776e-06
+     }
+    },
+    "predicted_vs_realized": {
+     "<0.001": {
+      "ues": 2869,
+      "predicted_outage_mean": 2.7500871383757435e-05,
+      "violation_rate": 3.0839002267573696e-05
+     },
+     "0.001-0.005": {
+      "ues": 96,
+      "predicted_outage_mean": 0.002365104166666667,
+      "violation_rate": 0.0024644194756554307
+     },
+     "0.005-0.01": {
+      "ues": 40,
+      "predicted_outage_mean": 0.006646250000000001,
+      "violation_rate": 0.006961538461538462
+     },
+     "0.01-0.02": {
+      "ues": 32,
+      "predicted_outage_mean": 0.0140734375,
+      "violation_rate": 0.015407407407407408
+     },
+     "0.02-0.05": {
+      "ues": 26,
+      "predicted_outage_mean": 0.03001730769230769,
+      "violation_rate": 0.03224657534246576
+     },
+     "0.05-0.1": {
+      "ues": 9,
+      "predicted_outage_mean": 0.07701666666666666,
+      "violation_rate": 0.08514285714285715
+     }
+    },
+    "failing_ues": {
+     "count": 63,
+     "classes": {
+      "0": 28,
+      "2": 13,
+      "1": 22
+     },
+     "mean_snr_db_median": 3.106222984740405,
+     "window_share_median": 1.0,
+     "predicted_outage_median": 0.0219
+    }
+   },
+   "8": {
+    "episodes": 512,
+    "infeasible_for_all": 4,
+    "assigned_share_mean": 0.9976806640625,
+    "used_share": 0.36668157529077267,
+    "blocked_per_episode": 4.00390625,
+    "episodes_with_blocked": 496,
+    "by_class": {
+     "0": {
+      "ues": 1536,
+      "occasions_mean": 5.353515625,
+      "window_share_mean": 0.5353515624999959
+     },
+     "1": {
+      "ues": 1536,
+      "occasions_mean": 9.497395833333334,
+      "window_share_mean": 0.4748697916666669
+     },
+     "2": {
+      "ues": 1024,
+      "occasions_mean": 19.201171875,
+      "window_share_mean": 0.48002929687499984
+     }
+    },
+    "by_mean_snr_db": {
+     "<10": {
+      "ues": 688,
+      "window_share_mean": 0.8405523255813935,
+      "predicted_outage_mean": 0.008025508720930231,
+      "violation_rate": 0.00970949074074074
+     },
+     "10-20": {
+      "ues": 1855,
+      "window_share_mean": 0.5314285714285715,
+      "predicted_outage_mean": 0.0001950404312668449,
+      "violation_rate": 0.00024357876712328768
+     },
+     "20-30": {
+      "ues": 1034,
+      "window_share_mean": 0.3426257253384917,
+      "predicted_outage_mean": 7.25338491295938e-05,
+      "violation_rate": 6.753042795445623e-05
+     },
+     ">=30": {
+      "ues": 519,
+      "window_share_mean": 0.2406069364161853,
+      "predicted_outage_mean": 3.02504816955684e-05,
+      "violation_rate": 6.34184068058778e-05
+     }
+    },
+    "predicted_vs_realized": {
+     "<0.001": {
+      "ues": 3643,
+      "predicted_outage_mean": 6.663464177875353e-05,
+      "violation_rate": 7.33370598099497e-05
+     },
+     "0.001-0.005": {
+      "ues": 249,
+      "predicted_outage_mean": 0.0022712851405622494,
+      "violation_rate": 0.00239943741209564
+     },
+     "0.005-0.01": {
+      "ues": 64,
+      "predicted_outage_mean": 0.006960156250000001,
+      "violation_rate": 0.007956989247311828
+     },
+     "0.01-0.02": {
+      "ues": 59,
+      "predicted_outage_mean": 0.013764406779661018,
+      "violation_rate": 0.01440506329113924
+     },
+     "0.02-0.05": {
+      "ues": 53,
+      "predicted_outage_mean": 0.03262830188679246,
+      "violation_rate": 0.032736842105263154
+     },
+     "0.05-0.1": {
+      "ues": 25,
+      "predicted_outage_mean": 0.071952,
+      "violation_rate": 0.0728
+     },
+     ">=0.1": {
+      "ues": 3,
+      "predicted_outage_mean": 0.1267,
+      "violation_rate": 0.1565
+     }
+    },
+    "failing_ues": {
+     "count": 138,
+     "classes": {
+      "0": 70,
+      "2": 17,
+      "1": 51
+     },
+     "mean_snr_db_median": 3.5543867774936855,
+     "window_share_median": 0.9,
+     "predicted_outage_median": 0.023275
+    }
+   },
+   "10": {
+    "episodes": 512,
+    "infeasible_for_all": 5,
+    "assigned_share_mean": 0.9998779296875,
+    "used_share": 0.4550912798519505,
+    "blocked_per_episode": 4.10546875,
+    "episodes_with_blocked": 495,
+    "by_class": {
+     "0": {
+      "ues": 2048,
+      "occasions_mean": 4.45166015625,
+      "window_share_mean": 0.44516601562499614
+     },
+     "1": {
+      "ues": 1536,
+      "occasions_mean": 7.596354166666667,
+      "window_share_mean": 0.3798177083333331
+     },
+     "2": {
+      "ues": 1536,
+      "occasions_mean": 14.391927083333334,
+      "window_share_mean": 0.3597981770833331
+     }
+    },
+    "by_mean_snr_db": {
+     "<10": {
+      "ues": 854,
+      "window_share_mean": 0.7318793911007025,
+      "predicted_outage_mean": 0.014002400468384068,
+      "violation_rate": 0.016444865120681496
+     },
+     "10-20": {
+      "ues": 2309,
+      "window_share_mean": 0.4188393243828466,
+      "predicted_outage_mean": 0.0012702252057167627,
+      "violation_rate": 0.0015097904500171763
+     },
+     "20-30": {
+      "ues": 1300,
+      "window_share_mean": 0.261769230769231,
+      "predicted_outage_mean": 0.0003095384615384607,
+      "violation_rate": 0.0003550077041602465
+     },
+     ">=30": {
+      "ues": 657,
+      "window_share_mean": 0.17553272450532795,
+      "predicted_outage_mean": 0.00030837138508371355,
+      "violation_rate": 0.0005111111111111112
+     }
+    },
+    "predicted_vs_realized": {
+     "<0.001": {
+      "ues": 3946,
+      "predicted_outage_mean": 0.00012781297516472224,
+      "violation_rate": 0.0001402915698288612
+     },
+     "0.001-0.005": {
+      "ues": 665,
+      "predicted_outage_mean": 0.0022348872180451133,
+      "violation_rate": 0.002334736842105263
+     },
+     "0.005-0.01": {
+      "ues": 168,
+      "predicted_outage_mean": 0.006947619047619046,
+      "violation_rate": 0.007159041394335512
+     },
+     "0.01-0.02": {
+      "ues": 145,
+      "predicted_outage_mean": 0.014028275862068963,
+      "violation_rate": 0.014956521739130434
+     },
+     "0.02-0.05": {
+      "ues": 123,
+      "predicted_outage_mean": 0.02945162601626017,
+      "violation_rate": 0.028903790087463556
+     },
+     "0.05-0.1": {
+      "ues": 52,
+      "predicted_outage_mean": 0.07310384615384614,
+      "violation_rate": 0.07147096774193548
+     },
+     ">=0.1": {
+      "ues": 21,
+      "predicted_outage_mean": 0.13715238095238097,
+      "violation_rate": 0.14736507936507937
+     }
+    },
+    "failing_ues": {
+     "count": 338,
+     "classes": {
+      "0": 173,
+      "1": 109,
+      "2": 56
+     },
+     "mean_snr_db_median": 5.1455256360681485,
+     "window_share_median": 0.7,
+     "predicted_outage_median": 0.022475000000000002
+    }
+   }
+  }
+ },
+ "CG_single": {
+  "validation": {
+   "2": {
+    "episodes": 64,
+    "infeasible_for_all": 0,
+    "assigned_share_mean": 0.5,
+    "used_share": 0.2215079672029703,
+    "blocked_per_episode": 0.0,
+    "episodes_with_blocked": 0,
+    "by_class": {
+     "0": {
+      "ues": 64,
+      "occasions_mean": 10.0,
+      "window_share_mean": 1.0
+     },
+     "1": {
+      "ues": 64,
+      "occasions_mean": 20.0,
+      "window_share_mean": 1.0
+     }
+    },
+    "by_mean_snr_db": {
+     "<10": {
+      "ues": 25,
+      "window_share_mean": 1.0,
+      "predicted_outage_mean": 0.09485999999999999,
+      "violation_rate": 0.0925945945945946
+     },
+     "10-20": {
+      "ues": 55,
+      "window_share_mean": 1.0,
+      "predicted_outage_mean": 0.0060545454545454565,
+      "violation_rate": 0.00664367816091954
+     },
+     "20-30": {
+      "ues": 32,
+      "window_share_mean": 1.0,
+      "predicted_outage_mean": 0.00012812499999999998,
+      "violation_rate": 0.00015217391304347825
+     },
+     ">=30": {
+      "ues": 16,
+      "window_share_mean": 1.0,
+      "predicted_outage_mean": 0.0,
+      "violation_rate": 0.0
+     }
+    },
+    "predicted_vs_realized": {
+     "<0.001": {
+      "ues": 56,
+      "predicted_outage_mean": 0.00013928571428571427,
+      "violation_rate": 0.00014473684210526317
+     },
+     "0.001-0.005": {
+      "ues": 27,
+      "predicted_outage_mean": 0.0023166666666666665,
+      "violation_rate": 0.002325581395348837
+     },
+     "0.005-0.01": {
+      "ues": 9,
+      "predicted_outage_mean": 0.007433333333333332,
+      "violation_rate": 0.0074375
+     },
+     "0.01-0.02": {
+      "ues": 7,
+      "predicted_outage_mean": 0.013414285714285714,
+      "violation_rate": 0.011583333333333333
+     },
+     "0.02-0.05": {
+      "ues": 11,
+      "predicted_outage_mean": 0.036813636363636375,
+      "violation_rate": 0.0371764705882353
+     },
+     "0.05-0.1": {
+      "ues": 9,
+      "predicted_outage_mean": 0.06863333333333334,
+      "violation_rate": 0.0659375
+     },
+     ">=0.1": {
+      "ues": 9,
+      "predicted_outage_mean": 0.16164444444444445,
+      "violation_rate": 0.16291666666666665
+     }
+    },
+    "failing_ues": {
+     "count": 36,
+     "classes": {
+      "0": 21,
+      "1": 15
+     },
+     "mean_snr_db_median": 8.24865136942177,
+     "window_share_median": 1.0,
+     "predicted_outage_median": 0.052099999999999994
+    }
+   },
+   "4": {
+    "episodes": 64,
+    "infeasible_for_all": 0,
+    "assigned_share_mean": 1.0,
+    "used_share": 0.22169051670792078,
+    "blocked_per_episode": 0.0,
+    "episodes_with_blocked": 0,
+    "by_class": {
+     "0": {
+      "ues": 128,
+      "occasions_mean": 10.0,
+      "window_share_mean": 1.0
+     },
+     "1": {
+      "ues": 64,
+      "occasions_mean": 20.0,
+      "window_share_mean": 1.0
+     },
+     "2": {
+      "ues": 64,
+      "occasions_mean": 40.0,
+      "window_share_mean": 1.0
+     }
+    },
+    "by_mean_snr_db": {
+     "<10": {
+      "ues": 49,
+      "window_share_mean": 1.0,
+      "predicted_outage_mean": 0.0957612244897959,
+      "violation_rate": 0.10411678832116789
+     },
+     "10-20": {
+      "ues": 114,
+      "window_share_mean": 1.0,
+      "predicted_outage_mean": 0.005952192982456138,
+      "violation_rate": 0.007319018404907975
+     },
+     "20-30": {
+      "ues": 65,
+      "window_share_mean": 1.0,
+      "predicted_outage_mean": 8.999999999999999e-05,
+      "violation_rate": 0.00020809248554913294
+     },
+     ">=30": {
+      "ues": 28,
+      "window_share_mean": 1.0,
+      "predicted_outage_mean": 0.0,
+      "violation_rate": 0.0
+     }
+    },
+    "predicted_vs_realized": {
+     "<0.001": {
+      "ues": 117,
+      "predicted_outage_mean": 0.00012991452991452992,
+      "violation_rate": 0.00022939068100358422
+     },
+     "0.001-0.005": {
+      "ues": 51,
+      "predicted_outage_mean": 0.0025754901960784306,
+      "violation_rate": 0.0025921052631578947
+     },
+     "0.005-0.01": {
+      "ues": 20,
+      "predicted_outage_mean": 0.00711,
+      "violation_rate": 0.007206896551724138
+     },
+     "0.01-0.02": {
+      "ues": 13,
+      "predicted_outage_mean": 0.013534615384615386,
+      "violation_rate": 0.012933333333333333
+     },
+     "0.02-0.05": {
+      "ues": 20,
+      "predicted_outage_mean": 0.0336925,
+      "violation_rate": 0.03432786885245902
+     },
+     "0.05-0.1": {
+      "ues": 20,
+      "predicted_outage_mean": 0.06999,
+      "violation_rate": 0.0684375
+     },
+     ">=0.1": {
+      "ues": 15,
+      "predicted_outage_mean": 0.18922333333333333,
+      "violation_rate": 0.19453333333333334
+     }
+    },
+    "failing_ues": {
+     "count": 67,
+     "classes": {
+      "0": 43,
+      "1": 15,
+      "2": 9
+     },
+     "mean_snr_db_median": 8.07824437252738,
+     "window_share_median": 1.0,
+     "predicted_outage_median": 0.0549
+    }
+   },
+   "6": {
+    "episodes": 64,
+    "infeasible_for_all": 0,
+    "assigned_share_mean": 1.0,
+    "used_share": 0.3092744430693069,
+    "blocked_per_episode": 3.203125,
+    "episodes_with_blocked": 64,
+    "by_class": {
+     "0": {
+      "ues": 128,
+      "occasions_mean": 10.0,
+      "window_share_mean": 1.0
+     },
+     "1": {
+      "ues": 128,
+      "occasions_mean": 10.171875,
+      "window_share_mean": 0.5085937499999996
+     },
+     "2": {
+      "ues": 128,
+      "occasions_mean": 19.65625,
+      "window_share_mean": 0.49140625000000027
+     }
+    },
+    "by_mean_snr_db": {
+     "<10": {
+      "ues": 71,
+      "window_share_mean": 0.8154929577464788,
+      "predicted_outage_mean": 0.123362676056338,
+      "violation_rate": 0.1237764705882353
+     },
+     "10-20": {
+      "ues": 171,
+      "window_share_mean": 0.7213450292397661,
+      "predicted_outage_mean": 0.01846754385964913,
+      "violation_rate": 0.016009708737864076
+     },
+     "20-30": {
+      "ues": 99,
+      "window_share_mean": 0.56010101010101,
+      "predicted_outage_mean": 0.004337373737373736,
+      "violation_rate": 0.003607142857142857
+     },
+     ">=30": {
+      "ues": 43,
+      "window_share_mean": 0.4488372093023255,
+      "predicted_outage_mean": 0.0008174418604651163,
+      "violation_rate": 0.0007111111111111111
+     }
+    },
+    "predicted_vs_realized": {
+     "<0.001": {
+      "ues": 113,
+      "predicted_outage_mean": 0.00019070796460177,
+      "violation_rate": 0.00024354243542435425
+     },
+     "0.001-0.005": {
+      "ues": 75,
+      "predicted_outage_mean": 0.0026546666666666654,
+      "violation_rate": 0.0028342245989304814
+     },
+     "0.005-0.01": {
+      "ues": 39,
+      "predicted_outage_mean": 0.007485897435897435,
+      "violation_rate": 0.007395348837209302
+     },
+     "0.01-0.02": {
+      "ues": 38,
+      "predicted_outage_mean": 0.013994736842105261,
+      "violation_rate": 0.013128205128205127
+     },
+     "0.02-0.05": {
+      "ues": 44,
+      "predicted_outage_mean": 0.0317090909090909,
+      "violation_rate": 0.03195918367346939
+     },
+     "0.05-0.1": {
+      "ues": 38,
+      "predicted_outage_mean": 0.06831973684210528,
+      "violation_rate": 0.06812765957446809
+     },
+     ">=0.1": {
+      "ues": 37,
+      "predicted_outage_mean": 0.198527027027027,
+      "violation_rate": 0.2038780487804878
+     }
+    },
+    "failing_ues": {
+     "count": 152,
+     "classes": {
+      "1": 64,
+      "2": 45,
+      "0": 43
+     },
+     "mean_snr_db_median": 10.374667357362988,
+     "window_share_median": 0.7,
+     "predicted_outage_median": 0.048350000000000004
+    }
+   },
+   "8": {
+    "episodes": 64,
+    "infeasible_for_all": 0,
+    "assigned_share_mean": 1.0,
+    "used_share": 0.394390083539604,
+    "blocked_per_episode": 5.34375,
+    "episodes_with_blocked": 64,
+    "by_class": {
+     "0": {
+      "ues": 192,
+      "occasions_mean": 7.786458333333333,
+      "window_share_mean": 0.778645833333333
+     },
+     "1": {
+      "ues": 192,
+      "occasions_mean": 6.619791666666667,
+      "window_share_mean": 0.3309895833333331
+     },
+     "2": {
+      "ues": 128,
+      "occasions_mean": 13.421875,
+      "window_share_mean": 0.3355468749999999
+     }
+    },
+    "by_mean_snr_db": {
+     "<10": {
+      "ues": 91,
+      "window_share_mean": 0.6648351648351646,
+      "predicted_outage_mean": 0.19197142857142857,
+      "violation_rate": 0.19302586206896552
+     },
+     "10-20": {
+      "ues": 230,
+      "window_share_mean": 0.55,
+      "predicted_outage_mean": 0.05423717391304349,
+      "violation_rate": 0.04864067796610169
+     },
+     "20-30": {
+      "ues": 127,
+      "window_share_mean": 0.40905511811023604,
+      "predicted_outage_mean": 0.016799212598425203,
+      "violation_rate": 0.019072368421052633
+     },
+     ">=30": {
+      "ues": 64,
+      "window_share_mean": 0.26640625,
+      "predicted_outage_mean": 0.0043687499999999985,
+      "violation_rate": 0.004571428571428572
+     }
+    },
+    "predicted_vs_realized": {
+     "<0.001": {
+      "ues": 90,
+      "predicted_outage_mean": 0.000195,
+      "violation_rate": 0.00029019607843137256
+     },
+     "0.001-0.005": {
+      "ues": 71,
+      "predicted_outage_mean": 0.002485211267605634,
+      "violation_rate": 0.0024974093264248706
+     },
+     "0.005-0.01": {
+      "ues": 38,
+      "predicted_outage_mean": 0.007332894736842105,
+      "violation_rate": 0.00754
+     },
+     "0.01-0.02": {
+      "ues": 41,
+      "predicted_outage_mean": 0.014440243902439023,
+      "violation_rate": 0.014442105263157895
+     },
+     "0.02-0.05": {
+      "ues": 91,
+      "predicted_outage_mean": 0.03292967032967033,
+      "violation_rate": 0.032542857142857144
+     },
+     "0.05-0.1": {
+      "ues": 73,
+      "predicted_outage_mean": 0.07259041095890412,
+      "violation_rate": 0.07359537572254335
+     },
+     ">=0.1": {
+      "ues": 108,
+      "predicted_outage_mean": 0.21293194444444444,
+      "violation_rate": 0.2272992125984252
+     }
+    },
+    "failing_ues": {
+     "count": 312,
+     "classes": {
+      "1": 146,
+      "2": 76,
+      "0": 90
+     },
+     "mean_snr_db_median": 12.750114573360902,
+     "window_share_median": 0.4,
+     "predicted_outage_median": 0.064
+    }
+   },
+   "10": {
+    "episodes": 64,
+    "infeasible_for_all": 0,
+    "assigned_share_mean": 1.0,
+    "used_share": 0.47976678527227723,
+    "blocked_per_episode": 7.9375,
+    "episodes_with_blocked": 64,
+    "by_class": {
+     "0": {
+      "ues": 256,
+      "occasions_mean": 4.38671875,
+      "window_share_mean": 0.43867187499999993
+     },
+     "1": {
+      "ues": 192,
+      "occasions_mean": 6.619791666666667,
+      "window_share_mean": 0.3309895833333331
+     },
+     "2": {
+      "ues": 192,
+      "occasions_mean": 16.697916666666668,
+      "window_share_mean": 0.4174479166666665
+     }
+    },
+    "by_mean_snr_db": {
+     "<10": {
+      "ues": 109,
+      "window_share_mean": 0.5990825688073393,
+      "predicted_outage_mean": 0.20077155963302754,
+      "violation_rate": 0.2209051094890511
+     },
+     "10-20": {
+      "ues": 286,
+      "window_share_mean": 0.4611888111888112,
+      "predicted_outage_mean": 0.056149650349650415,
+      "violation_rate": 0.059168508287292816
+     },
+     "20-30": {
+      "ues": 163,
+      "window_share_mean": 0.27515337423312874,
+      "predicted_outage_mean": 0.021124539877300612,
+      "violation_rate": 0.02719
+     },
+     ">=30": {
+      "ues": 82,
+      "window_share_mean": 0.17012195121951207,
+      "predicted_outage_mean": 0.004071951219512193,
+      "violation_rate": 0.004683168316831683
+     }
+    },
+    "predicted_vs_realized": {
+     "<0.001": {
+      "ues": 101,
+      "predicted_outage_mean": 0.0002430693069306931,
+      "violation_rate": 0.0003349753694581281
+     },
+     "0.001-0.005": {
+      "ues": 79,
+      "predicted_outage_mean": 0.0024474683544303804,
+      "violation_rate": 0.0026984126984126986
+     },
+     "0.005-0.01": {
+      "ues": 47,
+      "predicted_outage_mean": 0.006922340425531917,
+      "violation_rate": 0.007050847457627118
+     },
+     "0.01-0.02": {
+      "ues": 57,
+      "predicted_outage_mean": 0.015012280701754388,
+      "violation_rate": 0.016541666666666666
+     },
+     "0.02-0.05": {
+      "ues": 124,
+      "predicted_outage_mean": 0.03257500000000001,
+      "violation_rate": 0.03286666666666667
+     },
+     "0.05-0.1": {
+      "ues": 90,
+      "predicted_outage_mean": 0.07224944444444444,
+      "violation_rate": 0.07245414847161571
+     },
+     ">=0.1": {
+      "ues": 142,
+      "predicted_outage_mean": 0.2097140845070422,
+      "violation_rate": 0.21694573643410853
+     }
+    },
+    "failing_ues": {
+     "count": 410,
+     "classes": {
+      "1": 146,
+      "2": 88,
+      "0": 176
+     },
+     "mean_snr_db_median": 13.716650784212053,
+     "window_share_median": 0.4,
+     "predicted_outage_median": 0.063225
+    }
+   },
+   "12": {
+    "episodes": 64,
+    "infeasible_for_all": 0,
+    "assigned_share_mean": 1.0,
+    "used_share": 0.5510581683168316,
+    "blocked_per_episode": 8.78125,
+    "episodes_with_blocked": 64,
+    "by_class": {
+     "0": {
+      "ues": 256,
+      "occasions_mean": 4.24609375,
+      "window_share_mean": 0.4246093749999998
+     },
+     "1": {
+      "ues": 256,
+      "occasions_mean": 5.73046875,
+      "window_share_mean": 0.2865234374999999
+     },
+     "2": {
+      "ues": 256,
+      "occasions_mean": 11.5546875,
+      "window_share_mean": 0.28886718749999996
+     }
+    },
+    "by_mean_snr_db": {
+     "<10": {
+      "ues": 125,
+      "window_share_mean": 0.5236,
+      "predicted_outage_mean": 0.23826160000000007,
+      "violation_rate": 0.24506
+     },
+     "10-20": {
+      "ues": 352,
+      "window_share_mean": 0.3796875,
+      "predicted_outage_mean": 0.07708224431818177,
+      "violation_rate": 0.07245421245421245
+     },
+     "20-30": {
+      "ues": 195,
+      "window_share_mean": 0.22307692307692314,
+      "predicted_outage_mean": 0.03649102564102563,
+      "violation_rate": 0.03902439024390244
+     },
+     ">=30": {
+      "ues": 96,
+      "window_share_mean": 0.13958333333333325,
+      "predicted_outage_mean": 0.007369270833333331,
+      "violation_rate": 0.006333333333333333
+     }
+    },
+    "predicted_vs_realized": {
+     "<0.001": {
+      "ues": 66,
+      "predicted_outage_mean": 0.0002174242424242424,
+      "violation_rate": 0.0003333333333333333
+     },
+     "0.001-0.005": {
+      "ues": 78,
+      "predicted_outage_mean": 0.0026782051282051296,
+      "violation_rate": 0.0028324324324324325
+     },
+     "0.005-0.01": {
+      "ues": 54,
+      "predicted_outage_mean": 0.007103703703703703,
+      "violation_rate": 0.007433070866141732
+     },
+     "0.01-0.02": {
+      "ues": 70,
+      "predicted_outage_mean": 0.014839285714285715,
+      "violation_rate": 0.015707317073170732
+     },
+     "0.02-0.05": {
+      "ues": 149,
+      "predicted_outage_mean": 0.03246308724832215,
+      "violation_rate": 0.032575498575498574
+     },
+     "0.05-0.1": {
+      "ues": 132,
+      "predicted_outage_mean": 0.07197234848484849,
+      "violation_rate": 0.07253872053872054
+     },
+     ">=0.1": {
+      "ues": 219,
+      "predicted_outage_mean": 0.2226296803652968,
+      "violation_rate": 0.22685375494071147
+     }
+    },
+    "failing_ues": {
+     "count": 565,
+     "classes": {
+      "0": 180,
+      "1": 200,
+      "2": 185
+     },
+     "mean_snr_db_median": 14.665844615753329,
+     "window_share_median": 0.3,
+     "predicted_outage_median": 0.07025
+    }
+   },
+   "16": {
+    "episodes": 64,
+    "infeasible_for_all": 0,
+    "assigned_share_mean": 1.0,
+    "used_share": 0.6839400912747525,
+    "blocked_per_episode": 11.796875,
+    "episodes_with_blocked": 64,
+    "by_class": {
+     "0": {
+      "ues": 384,
+      "occasions_mean": 3.15625,
+      "window_share_mean": 0.31562500000000004
+     },
+     "1": {
+      "ues": 320,
+      "occasions_mean": 4.253125,
+      "window_share_mean": 0.2126562500000002
+     },
+     "2": {
+      "ues": 320,
+      "occasions_mean": 8.34375,
+      "window_share_mean": 0.20859375000000013
+     }
+    },
+    "by_mean_snr_db": {
+     "<10": {
+      "ues": 171,
+      "window_share_mean": 0.39795321637426867,
+      "predicted_outage_mean": 0.3950883040935672,
+      "violation_rate": 0.39481670533642693
+     },
+     "10-20": {
+      "ues": 461,
+      "window_share_mean": 0.27895878524945833,
+      "predicted_outage_mean": 0.17104967462039072,
+      "violation_rate": 0.1569883198562444
+     },
+     "20-30": {
+      "ues": 262,
+      "window_share_mean": 0.17280534351145066,
+      "predicted_outage_mean": 0.09106984732824437,
+      "violation_rate": 0.08882260596546311
+     },
+     ">=30": {
+      "ues": 130,
+      "window_share_mean": 0.10826923076923069,
+      "predicted_outage_mean": 0.028718846153846164,
+      "violation_rate": 0.023314285714285714
+     }
+    },
+    "predicted_vs_realized": {
+     "<0.001": {
+      "ues": 43,
+      "predicted_outage_mean": 0.00032558139534883724,
+      "violation_rate": 0.0004
+     },
+     "0.001-0.005": {
+      "ues": 50,
+      "predicted_outage_mean": 0.0025789999999999997,
+      "violation_rate": 0.0029361702127659573
+     },
+     "0.005-0.01": {
+      "ues": 43,
+      "predicted_outage_mean": 0.007318604651162789,
+      "violation_rate": 0.007294117647058823
+     },
+     "0.01-0.02": {
+      "ues": 52,
+      "predicted_outage_mean": 0.015451923076923073,
+      "violation_rate": 0.016454545454545454
+     },
+     "0.02-0.05": {
+      "ues": 152,
+      "predicted_outage_mean": 0.03407730263157895,
+      "violation_rate": 0.03367032967032967
+     },
+     "0.05-0.1": {
+      "ues": 154,
+      "predicted_outage_mean": 0.07525876623376623,
+      "violation_rate": 0.07514814814814814
+     },
+     ">=0.1": {
+      "ues": 530,
+      "predicted_outage_mean": 0.2942962264150942,
+      "violation_rate": 0.2957905844155844
+     }
+    },
+    "failing_ues": {
+     "count": 893,
+     "classes": {
+      "0": 319,
+      "1": 286,
+      "2": 288
+     },
+     "mean_snr_db_median": 16.125530918890803,
+     "window_share_median": 0.2,
+     "predicted_outage_median": 0.13115
+    }
+   },
+   "20": {
+    "episodes": 64,
+    "infeasible_for_all": 0,
+    "assigned_share_mean": 1.0,
+    "used_share": 0.8125551129331683,
+    "blocked_per_episode": 11.703125,
+    "episodes_with_blocked": 64,
+    "by_class": {
+     "0": {
+      "ues": 448,
+      "occasions_mean": 2.0870535714285716,
+      "window_share_mean": 0.2087053571428572
+     },
+     "1": {
+      "ues": 448,
+      "occasions_mean": 4.017857142857143,
+      "window_share_mean": 0.20089285714285718
+     },
+     "2": {
+      "ues": 384,
+      "occasions_mean": 7.552083333333333,
+      "window_share_mean": 0.18880208333333345
+     }
+    },
+    "by_mean_snr_db": {
+     "<10": {
+      "ues": 220,
+      "window_share_mean": 0.33647727272727235,
+      "predicted_outage_mean": 0.46881840909090927,
+      "violation_rate": 0.4734003795066414
+     },
+     "10-20": {
+      "ues": 575,
+      "window_share_mean": 0.21608695652173998,
+      "predicted_outage_mean": 0.23938652173913022,
+      "violation_rate": 0.235018234865062
+     },
+     "20-30": {
+      "ues": 330,
+      "window_share_mean": 0.13174242424242466,
+      "predicted_outage_mean": 0.1449645454545454,
+      "violation_rate": 0.1514179104477612
+     },
+     ">=30": {
+      "ues": 155,
+      "window_share_mean": 0.09193548387096764,
+      "predicted_outage_mean": 0.05041129032258064,
+      "violation_rate": 0.04003783783783784
+     }
+    },
+    "predicted_vs_realized": {
+     "<0.001": {
+      "ues": 25,
+      "predicted_outage_mean": 0.00033600000000000004,
+      "violation_rate": 0.0004
+     },
+     "0.001-0.005": {
+      "ues": 30,
+      "predicted_outage_mean": 0.002986666666666667,
+      "violation_rate": 0.002647887323943662
+     },
+     "0.005-0.01": {
+      "ues": 29,
+      "predicted_outage_mean": 0.007322413793103449,
+      "violation_rate": 0.00821875
+     },
+     "0.01-0.02": {
+      "ues": 37,
+      "predicted_outage_mean": 0.015018918918918916,
+      "violation_rate": 0.015258426966292135
+     },
+     "0.02-0.05": {
+      "ues": 130,
+      "predicted_outage_mean": 0.0351273076923077,
+      "violation_rate": 0.03327392739273927
+     },
+     "0.05-0.1": {
+      "ues": 186,
+      "predicted_outage_mean": 0.07613629032258065,
+      "violation_rate": 0.07442082429501085
+     },
+     ">=0.1": {
+      "ues": 843,
+      "predicted_outage_mean": 0.32840498220640507,
+      "violation_rate": 0.32776523031203564
+     }
+    },
+    "failing_ues": {
+     "count": 1200,
+     "classes": {
+      "0": 424,
+      "1": 413,
+      "2": 363
+     },
+     "mean_snr_db_median": 16.678110821824582,
+     "window_share_median": 0.2,
+     "predicted_outage_median": 0.19055
+    }
+   },
+   "24": {
+    "episodes": 64,
+    "infeasible_for_all": 0,
+    "assigned_share_mean": 1.0,
+    "used_share": 0.8942199102722772,
+    "blocked_per_episode": 13.875,
+    "episodes_with_blocked": 64,
+    "by_class": {
+     "0": {
+      "ues": 512,
+      "occasions_mean": 1.73046875,
+      "window_share_mean": 0.1730468750000003
+     },
+     "1": {
+      "ues": 512,
+      "occasions_mean": 3.275390625,
+      "window_share_mean": 0.1637695312500001
+     },
+     "2": {
+      "ues": 512,
+      "occasions_mean": 6.52734375,
+      "window_share_mean": 0.16318359375000008
+     }
+    },
+    "by_mean_snr_db": {
+     "<10": {
+      "ues": 260,
+      "window_share_mean": 0.2743269230769231,
+      "predicted_outage_mean": 0.6032886538461539,
+      "violation_rate": 0.6059802631578948
+     },
+     "10-20": {
+      "ues": 696,
+      "window_share_mean": 0.17905890804597796,
+      "predicted_outage_mean": 0.3622791666666665,
+      "violation_rate": 0.35542364532019705
+     },
+     "20-30": {
+      "ues": 388,
+      "window_share_mean": 0.11359536082474281,
+      "predicted_outage_mean": 0.20893389175257746,
+      "violation_rate": 0.20913384113166486
+     },
+     ">=30": {
+      "ues": 192,
+      "window_share_mean": 0.08320312499999993,
+      "predicted_outage_mean": 0.07145052083333334,
+      "violation_rate": 0.057866050808314085
+     }
+    },
+    "predicted_vs_realized": {
+     "<0.001": {
+      "ues": 16,
+      "predicted_outage_mean": 0.000353125,
+      "violation_rate": 0.00035
+     },
+     "0.001-0.005": {
+      "ues": 22,
+      "predicted_outage_mean": 0.0027818181818181813,
+      "violation_rate": 0.0026666666666666666
+     },
+     "0.005-0.01": {
+      "ues": 22,
+      "predicted_outage_mean": 0.007238636363636364,
+      "violation_rate": 0.00795
+     },
+     "0.01-0.02": {
+      "ues": 40,
+      "predicted_outage_mean": 0.015148750000000002,
+      "violation_rate": 0.01526
+     },
+     "0.02-0.05": {
+      "ues": 109,
+      "predicted_outage_mean": 0.03419633027522936,
+      "violation_rate": 0.03323577235772358
+     },
+     "0.05-0.1": {
+      "ues": 135,
+      "predicted_outage_mean": 0.07644296296296296,
+      "violation_rate": 0.07492211838006231
+     },
+     ">=0.1": {
+      "ues": 1192,
+      "predicted_outage_mean": 0.41015683724832175,
+      "violation_rate": 0.40555731225296443
+     }
+    },
+    "failing_ues": {
+     "count": 1476,
+     "classes": {
+      "0": 494,
+      "1": 493,
+      "2": 489
+     },
+     "mean_snr_db_median": 16.818246886830636,
+     "window_share_median": 0.15,
+     "predicted_outage_median": 0.298875
+    }
+   },
+   "28": {
+    "episodes": 64,
+    "infeasible_for_all": 0,
+    "assigned_share_mean": 1.0,
+    "used_share": 0.9499673189975247,
+    "blocked_per_episode": 14.640625,
+    "episodes_with_blocked": 64,
+    "by_class": {
+     "0": {
+      "ues": 640,
+      "occasions_mean": 1.50625,
+      "window_share_mean": 0.1506250000000002
+     },
+     "1": {
+      "ues": 576,
+      "occasions_mean": 2.7916666666666665,
+      "window_share_mean": 0.13958333333333334
+     },
+     "2": {
+      "ues": 576,
+      "occasions_mean": 5.5,
+      "window_share_mean": 0.13750000000000015
+     }
+    },
+    "by_mean_snr_db": {
+     "<10": {
+      "ues": 307,
+      "window_share_mean": 0.22557003257329028,
+      "predicted_outage_mean": 0.7330636807817585,
+      "violation_rate": 0.7242914438502673
+     },
+     "10-20": {
+      "ues": 799,
+      "window_share_mean": 0.1515644555694622,
+      "predicted_outage_mean": 0.5083391113892362,
+      "violation_rate": 0.4898486600105097
+     },
+     "20-30": {
+      "ues": 462,
+      "window_share_mean": 0.10211038961039035,
+      "predicted_outage_mean": 0.2837194805194807,
+      "violation_rate": 0.26430548068283916
+     },
+     ">=30": {
+      "ues": 224,
+      "window_share_mean": 0.08247767857142861,
+      "predicted_outage_mean": 0.09600669642857143,
+      "violation_rate": 0.06858396946564886
+     }
+    },
+    "predicted_vs_realized": {
+     "<0.001": {
+      "ues": 18,
+      "predicted_outage_mean": 0.00027222222222222215,
+      "violation_rate": 0.00031372549019607844
+     },
+     "0.001-0.005": {
+      "ues": 23,
+      "predicted_outage_mean": 0.0030978260869565215,
+      "violation_rate": 0.003423728813559322
+     },
+     "0.005-0.01": {
+      "ues": 24,
+      "predicted_outage_mean": 0.007256249999999999,
+      "violation_rate": 0.007547169811320755
+     },
+     "0.01-0.02": {
+      "ues": 31,
+      "predicted_outage_mean": 0.01571774193548387,
+      "violation_rate": 0.015844444444444446
+     },
+     "0.02-0.05": {
+      "ues": 83,
+      "predicted_outage_mean": 0.03462048192771084,
+      "violation_rate": 0.03435233160621762
+     },
+     "0.05-0.1": {
+      "ues": 103,
+      "predicted_outage_mean": 0.07519126213592232,
+      "violation_rate": 0.07395419847328244
+     },
+     ">=0.1": {
+      "ues": 1510,
+      "predicted_outage_mean": 0.5115507615894044,
+      "violation_rate": 0.4960927374301676
+     }
+    },
+    "failing_ues": {
+     "count": 1730,
+     "classes": {
+      "0": 614,
+      "1": 561,
+      "2": 555
+     },
+     "mean_snr_db_median": 16.92520384642026,
+     "window_share_median": 0.125,
+     "predicted_outage_median": 0.438525
+    }
+   },
+   "32": {
+    "episodes": 64,
+    "infeasible_for_all": 0,
+    "assigned_share_mean": 1.0,
+    "used_share": 0.9707849241955445,
+    "blocked_per_episode": 17.5,
+    "episodes_with_blocked": 64,
+    "by_class": {
+     "0": {
+      "ues": 704,
+      "occasions_mean": 1.3565340909090908,
+      "window_share_mean": 0.1356534090909089
+     },
+     "1": {
+      "ues": 704,
+      "occasions_mean": 2.4005681818181817,
+      "window_share_mean": 0.1200284090909089
+     },
+     "2": {
+      "ues": 640,
+      "occasions_mean": 4.75,
+      "window_share_mean": 0.11875000000000013
+     }
+    },
+    "by_mean_snr_db": {
+     "<10": {
+      "ues": 351,
+      "window_share_mean": 0.1942307692307696,
+      "predicted_outage_mean": 0.8308119658119655,
+      "violation_rate": 0.8070685579196217
+     },
+     "10-20": {
+      "ues": 907,
+      "window_share_mean": 0.12913450937155424,
+      "predicted_outage_mean": 0.6663772877618515,
+      "violation_rate": 0.6447903748264693
+     },
+     "20-30": {
+      "ues": 537,
+      "window_share_mean": 0.09571694599627639,
+      "predicted_outage_mean": 0.3632793296089384,
+      "violation_rate": 0.31194352941176473
+     },
+     ">=30": {
+      "ues": 253,
+      "window_share_mean": 0.07628458498023728,
+      "predicted_outage_mean": 0.1997073122529645,
+      "violation_rate": 0.14589003436426118
+     }
+    },
+    "predicted_vs_realized": {
+     "<0.001": {
+      "ues": 21,
+      "predicted_outage_mean": 0.00024761904761904757,
+      "violation_rate": 0.00027586206896551725
+     },
+     "0.001-0.005": {
+      "ues": 19,
+      "predicted_outage_mean": 0.0030815789473684213,
+      "violation_rate": 0.0034615384615384616
+     },
+     "0.005-0.01": {
+      "ues": 17,
+      "predicted_outage_mean": 0.007261764705882353,
+      "violation_rate": 0.007302325581395349
+     },
+     "0.01-0.02": {
+      "ues": 27,
+      "predicted_outage_mean": 0.01554074074074074,
+      "violation_rate": 0.015734939759036146
+     },
+     "0.02-0.05": {
+      "ues": 76,
+      "predicted_outage_mean": 0.03388552631578948,
+      "violation_rate": 0.03408648648648649
+     },
+     "0.05-0.1": {
+      "ues": 93,
+      "predicted_outage_mean": 0.07564354838709676,
+      "violation_rate": 0.07411155378486056
+     },
+     ">=0.1": {
+      "ues": 1795,
+      "predicted_outage_mean": 0.6303115320334264,
+      "violation_rate": 0.6040276717557251
+     }
+    },
+    "failing_ues": {
+     "count": 1992,
+     "classes": {
+      "0": 677,
+      "1": 693,
+      "2": 622
+     },
+     "mean_snr_db_median": 17.08040478983233,
+     "window_share_median": 0.1,
+     "predicted_outage_median": 0.604525
+    }
+   }
+  },
+  "exp010-eval512": {
+   "6": {
+    "episodes": 512,
+    "infeasible_for_all": 2,
+    "assigned_share_mean": 1.0,
+    "used_share": 0.30065818862159654,
+    "blocked_per_episode": 3.33203125,
+    "episodes_with_blocked": 512,
+    "by_class": {
+     "0": {
+      "ues": 1024,
+      "occasions_mean": 10.0,
+      "window_share_mean": 1.0
+     },
+     "1": {
+      "ues": 1024,
+      "occasions_mean": 10.4658203125,
+      "window_share_mean": 0.5232910156250005
+     },
+     "2": {
+      "ues": 1024,
+      "occasions_mean": 19.068359375,
+      "window_share_mean": 0.4767089843749995
+     }
+    },
+    "by_mean_snr_db": {
+     "<10": {
+      "ues": 520,
+      "window_share_mean": 0.8227884615384616,
+      "predicted_outage_mean": 0.11379990384615381,
+      "violation_rate": 0.11499335548172758
+     },
+     "10-20": {
+      "ues": 1389,
+      "window_share_mean": 0.7156227501799851,
+      "predicted_outage_mean": 0.018890064794816412,
+      "violation_rate": 0.017579878048780487
+     },
+     "20-30": {
+      "ues": 770,
+      "window_share_mean": 0.5683766233766226,
+      "predicted_outage_mean": 0.006514545454545462,
+      "violation_rate": 0.005178066704352741
+     },
+     ">=30": {
+      "ues": 393,
+      "window_share_mean": 0.47964376590330754,
+      "predicted_outage_mean": 0.001902798982188294,
+      "violation_rate": 0.0016262295081967213
+     }
+    },
+    "predicted_vs_realized": {
+     "<0.001": {
+      "ues": 1022,
+      "predicted_outage_mean": 0.00021594911937377644,
+      "violation_rate": 0.000259529602595296
+     },
+     "0.001-0.005": {
+      "ues": 542,
+      "predicted_outage_mean": 0.0024768450184501833,
+      "violation_rate": 0.002860676009892828
+     },
+     "0.005-0.01": {
+      "ues": 281,
+      "predicted_outage_mean": 0.007197153024911029,
+      "violation_rate": 0.007535232383808096
+     },
+     "0.01-0.02": {
+      "ues": 305,
+      "predicted_outage_mean": 0.014514262295081978,
+      "violation_rate": 0.014303523035230352
+     },
+     "0.02-0.05": {
+      "ues": 384,
+      "predicted_outage_mean": 0.032040885416666685,
+      "violation_rate": 0.03218052256532067
+     },
+     "0.05-0.1": {
+      "ues": 251,
+      "predicted_outage_mean": 0.07111394422310757,
+      "violation_rate": 0.07054666666666666
+     },
+     ">=0.1": {
+      "ues": 287,
+      "predicted_outage_mean": 0.18471271777003487,
+      "violation_rate": 0.18324922118380063
+     }
+    },
+    "failing_ues": {
+     "count": 1201,
+     "classes": {
+      "0": 366,
+      "1": 480,
+      "2": 355
+     },
+     "mean_snr_db_median": 10.801095145686702,
+     "window_share_median": 0.75,
+     "predicted_outage_median": 0.04165
+    }
+   },
+   "8": {
+    "episodes": 512,
+    "infeasible_for_all": 4,
+    "assigned_share_mean": 1.0,
+    "used_share": 0.3870170608369431,
+    "blocked_per_episode": 5.376953125,
+    "episodes_with_blocked": 512,
+    "by_class": {
+     "0": {
+      "ues": 1536,
+      "occasions_mean": 7.813151041666667,
+      "window_share_mean": 0.7813151041666678
+     },
+     "1": {
+      "ues": 1536,
+      "occasions_mean": 6.720052083333333,
+      "window_share_mean": 0.3360026041666662
+     },
+     "2": {
+      "ues": 1024,
+      "occasions_mean": 12.9609375,
+      "window_share_mean": 0.3240234374999996
+     }
+    },
+    "by_mean_snr_db": {
+     "<10": {
+      "ues": 688,
+      "window_share_mean": 0.6608284883720936,
+      "predicted_outage_mean": 0.188593531976744,
+      "violation_rate": 0.18555671296296297
+     },
+     "10-20": {
+      "ues": 1855,
+      "window_share_mean": 0.531320754716982,
+      "predicted_outage_mean": 0.05217369272237189,
+      "violation_rate": 0.04890967465753425
+     },
+     "20-30": {
+      "ues": 1034,
+      "window_share_mean": 0.4126692456479674,
+      "predicted_outage_mean": 0.02133994197292069,
+      "violation_rate": 0.01978955634079309
+     },
+     ">=30": {
+      "ues": 519,
+      "window_share_mean": 0.3488439306358375,
+      "predicted_outage_mean": 0.005427842003853575,
+      "violation_rate": 0.00559938128383604
+     }
+    },
+    "predicted_vs_realized": {
+     "<0.001": {
+      "ues": 731,
+      "predicted_outage_mean": 0.00021196990424076584,
+      "violation_rate": 0.0002749651648862053
+     },
+     "0.001-0.005": {
+      "ues": 540,
+      "predicted_outage_mean": 0.0026508333333333314,
+      "violation_rate": 0.0029165402124430957
+     },
+     "0.005-0.01": {
+      "ues": 325,
+      "predicted_outage_mean": 0.007344153846153843,
+      "violation_rate": 0.007487864077669903
+     },
+     "0.01-0.02": {
+      "ues": 437,
+      "predicted_outage_mean": 0.014453318077803217,
+      "violation_rate": 0.014475302889095992
+     },
+     "0.02-0.05": {
+      "ues": 689,
+      "predicted_outage_mean": 0.03289114658925978,
+      "violation_rate": 0.03325897920604915
+     },
+     "0.05-0.1": {
+      "ues": 532,
+      "predicted_outage_mean": 0.07187161654135335,
+      "violation_rate": 0.07221207430340558
+     },
+     ">=0.1": {
+      "ues": 842,
+      "predicted_outage_mean": 0.2140499406175769,
+      "violation_rate": 0.2180501756146513
+     }
+    },
+    "failing_ues": {
+     "count": 2458,
+     "classes": {
+      "0": 777,
+      "1": 1097,
+      "2": 584
+     },
+     "mean_snr_db_median": 13.301502296690217,
+     "window_share_median": 0.4,
+     "predicted_outage_median": 0.06035
+    }
+   },
+   "10": {
+    "episodes": 512,
+    "infeasible_for_all": 5,
+    "assigned_share_mean": 1.0,
+    "used_share": 0.4748849396658416,
+    "blocked_per_episode": 8.130859375,
+    "episodes_with_blocked": 512,
+    "by_class": {
+     "0": {
+      "ues": 2048,
+      "occasions_mean": 4.3779296875,
+      "window_share_mean": 0.4377929687500017
+     },
+     "1": {
+      "ues": 1536,
+      "occasions_mean": 6.720052083333333,
+      "window_share_mean": 0.3360026041666662
+     },
+     "2": {
+      "ues": 1536,
+      "occasions_mean": 16.544270833333332,
+      "window_share_mean": 0.4136067708333322
+     }
+    },
+    "by_mean_snr_db": {
+     "<10": {
+      "ues": 854,
+      "window_share_mean": 0.6046252927400474,
+      "predicted_outage_mean": 0.199220550351288,
+      "violation_rate": 0.21609843823946995
+     },
+     "10-20": {
+      "ues": 2309,
+      "window_share_mean": 0.44872239064530145,
+      "predicted_outage_mean": 0.0568812256388044,
+      "violation_rate": 0.061905874270010305
+     },
+     "20-30": {
+      "ues": 1300,
+      "window_share_mean": 0.29330769230769116,
+      "predicted_outage_mean": 0.022195461538461574,
+      "violation_rate": 0.02386255778120185
+     },
+     ">=30": {
+      "ues": 657,
+      "window_share_mean": 0.17389649923896452,
+      "predicted_outage_mean": 0.006238660578386607,
+      "violation_rate": 0.0076160493827160496
+     }
+    },
+    "predicted_vs_realized": {
+     "<0.001": {
+      "ues": 793,
+      "predicted_outage_mean": 0.00023682219419924317,
+      "violation_rate": 0.0003558282208588957
+     },
+     "0.001-0.005": {
+      "ues": 654,
+      "predicted_outage_mean": 0.002672247706422016,
+      "violation_rate": 0.002908244680851064
+     },
+     "0.005-0.01": {
+      "ues": 403,
+      "predicted_outage_mean": 0.007207692307692304,
+      "violation_rate": 0.00737286432160804
+     },
+     "0.01-0.02": {
+      "ues": 552,
+      "predicted_outage_mean": 0.014636231884057984,
+      "violation_rate": 0.015207207207207207
+     },
+     "0.02-0.05": {
+      "ues": 883,
+      "predicted_outage_mean": 0.03241959229898072,
+      "violation_rate": 0.03274610938194753
+     },
+     "0.05-0.1": {
+      "ues": 725,
+      "predicted_outage_mean": 0.07163241379310357,
+      "violation_rate": 0.07075716440422322
+     },
+     ">=0.1": {
+      "ues": 1110,
+      "predicted_outage_mean": 0.21706905405405405,
+      "violation_rate": 0.22012976588628763
+     }
+    },
+    "failing_ues": {
+     "count": 3220,
+     "classes": {
+      "0": 1419,
+      "1": 1097,
+      "2": 704
+     },
+     "mean_snr_db_median": 13.850814776452346,
+     "window_share_median": 0.4,
+     "predicted_outage_median": 0.061924999999999994
+    }
+   }
+  }
+ }
+}

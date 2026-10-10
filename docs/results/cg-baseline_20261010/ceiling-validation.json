@@ -1,0 +1,137 @@
+{
+ "run": "outputs/cg-baseline/validation",
+ "by_n": {
+  "2": {
+   "deployments": 64,
+   "F_0.01": 0.953125,
+   "ceiling": {
+    "0.01": 0.9375,
+    "0.05": 0.984375
+   },
+   "failing_0.01": 3,
+   "failing_with_lone_outage_above_0.01": 3,
+   "ues_with_lone_outage_above_0.01": 4,
+   "ues": 128
+  },
+  "4": {
+   "deployments": 64,
+   "F_0.01": 0.875,
+   "ceiling": {
+    "0.01": 0.859375,
+    "0.05": 0.953125
+   },
+   "failing_0.01": 8,
+   "failing_with_lone_outage_above_0.01": 8,
+   "ues_with_lone_outage_above_0.01": 10,
+   "ues": 256
+  },
+  "6": {
+   "deployments": 64,
+   "F_0.01": 0.84375,
+   "ceiling": {
+    "0.01": 0.84375,
+    "0.05": 0.953125
+   },
+   "failing_0.01": 10,
+   "failing_with_lone_outage_above_0.01": 10,
+   "ues_with_lone_outage_above_0.01": 11,
+   "ues": 384
+  },
+  "8": {
+   "deployments": 64,
+   "F_0.01": 0.75,
+   "ceiling": {
+    "0.01": 0.8125,
+    "0.05": 0.953125
+   },
+   "failing_0.01": 16,
+   "failing_with_lone_outage_above_0.01": 12,
+   "ues_with_lone_outage_above_0.01": 13,
+   "ues": 512
+  },
+  "10": {
+   "deployments": 64,
+   "F_0.01": 0.6875,
+   "ceiling": {
+    "0.01": 0.796875,
+    "0.05": 0.953125
+   },
+   "failing_0.01": 20,
+   "failing_with_lone_outage_above_0.01": 13,
+   "ues_with_lone_outage_above_0.01": 14,
+   "ues": 640
+  },
+  "12": {
+   "deployments": 64,
+   "F_0.01": 0.515625,
+   "ceiling": {
+    "0.01": 0.78125,
+    "0.05": 0.9375
+   },
+   "failing_0.01": 31,
+   "failing_with_lone_outage_above_0.01": 14,
+   "ues_with_lone_outage_above_0.01": 16,
+   "ues": 768
+  },
+  "16": {
+   "deployments": 64,
+   "F_0.01": 0.03125,
+   "ceiling": {
+    "0.01": 0.671875,
+    "0.05": 0.921875
+   },
+   "failing_0.01": 62,
+   "failing_with_lone_outage_above_0.01": 21,
+   "ues_with_lone_outage_above_0.01": 25,
+   "ues": 1024
+  },
+  "20": {
+   "deployments": 64,
+   "F_0.01": 0.0,
+   "ceiling": {
+    "0.01": 0.625,
+    "0.05": 0.921875
+   },
+   "failing_0.01": 64,
+   "failing_with_lone_outage_above_0.01": 24,
+   "ues_with_lone_outage_above_0.01": 32,
+   "ues": 1280
+  },
+  "24": {
+   "deployments": 64,
+   "F_0.01": 0.0,
+   "ceiling": {
+    "0.01": 0.5625,
+    "0.05": 0.921875
+   },
+   "failing_0.01": 64,
+   "failing_with_lone_outage_above_0.01": 28,
+   "ues_with_lone_outage_above_0.01": 37,
+   "ues": 1536
+  },
+  "28": {
+   "deployments": 64,
+   "F_0.01": 0.0,
+   "ceiling": {
+    "0.01": 0.484375,
+    "0.05": 0.90625
+   },
+   "failing_0.01": 64,
+   "failing_with_lone_outage_above_0.01": 33,
+   "ues_with_lone_outage_above_0.01": 44,
+   "ues": 1792
+  },
+  "32": {
+   "deployments": 64,
+   "F_0.01": 0.0,
+   "ceiling": {
+    "0.01": 0.453125,
+    "0.05": 0.90625
+   },
+   "failing_0.01": 64,
+   "failing_with_lone_outage_above_0.01": 35,
+   "ues_with_lone_outage_above_0.01": 50,
+   "ues": 2048
+  }
+ }
+}
