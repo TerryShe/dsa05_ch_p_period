@@ -1,0 +1,298 @@
+{
+  "date": "2026-10-10",
+  "existing_analysis_count_before_task": 43,
+  "new_analysis_count": 15,
+  "downloaded_pdf_count": 14,
+  "unavailable_pdf_count": 1,
+  "notes": [
+    "Published year and local preprint version are deliberately distinguished.",
+    "Availability for reading is not an unrestricted redistribution license.",
+    "No experiment training/evaluation or unopened confirmation samples were run/read."
+  ],
+  "papers": [
+    {
+      "directory": "papers/SeqDQN-EuCNC2023",
+      "publication_year": 2023,
+      "local_version": "作者公开稿，6页，未逐字比对出版社终版",
+      "download_url": "https://marceaucoupechoux.wp.imt.fr/files/2023/04/eucnc23.pdf",
+      "status": "downloaded",
+      "pdf": "papers/SeqDQN-EuCNC2023/SeqDQN-EuCNC2023.pdf",
+      "analysis": "papers/SeqDQN-EuCNC2023/analysis.md",
+      "bytes": 1896234,
+      "pages": 6,
+      "sha256": "7812a47a7e04dd3d5946fcff416981ea1dcb82e523847241b5b3896cdf494c8c",
+      "git_ignored_local_copy": false,
+      "validation": [
+        "PDF signature",
+        "pdfinfo",
+        "text extraction",
+        "SHA-256"
+      ]
+    },
+    {
+      "directory": "papers/SMART-TCCN2021",
+      "publication_year": 2021,
+      "local_version": "出版社排版全文，14页，仅本地阅读",
+      "download_url": "https://network.ee.tsinghua.edu.cn/niulab/wp-content/uploads/2022/08/SMART_Situationally-Aware_Multi-Agent_Reinforcement_Learning-Based_Transmissions.pdf",
+      "status": "downloaded",
+      "pdf": "papers/SMART-TCCN2021/SMART-TCCN2021.pdf",
+      "analysis": "papers/SMART-TCCN2021/analysis.md",
+      "bytes": 2225935,
+      "pages": 14,
+      "sha256": "ebac2bc731008dd668ea66bdb6f045bf4725391373503f728549cde6ee262510",
+      "git_ignored_local_copy": true,
+      "validation": [
+        "PDF signature",
+        "pdfinfo",
+        "text extraction",
+        "SHA-256"
+      ]
+    },
+    {
+      "directory": "papers/DIAL-NeurIPS2016",
+      "publication_year": 2016,
+      "local_version": "会议正式主文，9页",
+      "download_url": "https://proceedings.neurips.cc/paper_files/paper/2016/file/c7635bfd99248a2cdef8249ef7bfbef4-Paper.pdf",
+      "status": "downloaded",
+      "pdf": "papers/DIAL-NeurIPS2016/DIAL-NeurIPS2016.pdf",
+      "analysis": "papers/DIAL-NeurIPS2016/analysis.md",
+      "bytes": 1077870,
+      "pages": 9,
+      "sha256": "146e2cddcf9adc2693658ee6165215c8aacf85360f7094710e7cfee85ca21867",
+      "git_ignored_local_copy": false,
+      "validation": [
+        "PDF signature",
+        "pdfinfo",
+        "text extraction",
+        "SHA-256"
+      ]
+    },
+    {
+      "directory": "papers/SchedNet-ICLR2019",
+      "publication_year": 2019,
+      "local_version": "arXiv:1902.01554v1，17页",
+      "download_url": "https://arxiv.org/pdf/1902.01554",
+      "status": "downloaded",
+      "pdf": "papers/SchedNet-ICLR2019/SchedNet-ICLR2019.pdf",
+      "analysis": "papers/SchedNet-ICLR2019/analysis.md",
+      "bytes": 1646021,
+      "pages": 17,
+      "sha256": "aef6079e2a74fce012adef49a57179afe78ff9ed62e650e140f5c9b87d6e5fe1",
+      "git_ignored_local_copy": false,
+      "validation": [
+        "PDF signature",
+        "pdfinfo",
+        "text extraction",
+        "SHA-256"
+      ]
+    },
+    {
+      "directory": "papers/MACSignaling-TCCN2021",
+      "publication_year": 2021,
+      "local_version": "arXiv:2007.09948v4，14页",
+      "download_url": "https://arxiv.org/pdf/2007.09948v4",
+      "status": "downloaded",
+      "pdf": "papers/MACSignaling-TCCN2021/MACSignaling-TCCN2021.pdf",
+      "analysis": "papers/MACSignaling-TCCN2021/analysis.md",
+      "bytes": 798137,
+      "pages": 14,
+      "sha256": "058af762d2d697982be1ef28656cebe67efa986bce425103faadb2f61583cd50",
+      "git_ignored_local_copy": false,
+      "validation": [
+        "PDF signature",
+        "pdfinfo",
+        "text extraction",
+        "SHA-256"
+      ]
+    },
+    {
+      "directory": "papers/ScalableMAC-VTC2022",
+      "publication_year": 2022,
+      "local_version": "arXiv:2206.03844v1，5页",
+      "download_url": "https://arxiv.org/pdf/2206.03844v1",
+      "status": "downloaded",
+      "pdf": "papers/ScalableMAC-VTC2022/ScalableMAC-VTC2022.pdf",
+      "analysis": "papers/ScalableMAC-VTC2022/analysis.md",
+      "bytes": 400005,
+      "pages": 5,
+      "sha256": "a13b91e7d5a15db5ff79adcf601302fd107ef485ac29cf3e9b4da945a6aea27a",
+      "git_ignored_local_copy": false,
+      "validation": [
+        "PDF signature",
+        "pdfinfo",
+        "text extraction",
+        "SHA-256"
+      ]
+    },
+    {
+      "directory": "papers/ECPO-GLOBECOM2023",
+      "publication_year": 2023,
+      "local_version": "arXiv:2401.12914v1，6页",
+      "download_url": "https://arxiv.org/pdf/2401.12914v1",
+      "status": "downloaded",
+      "pdf": "papers/ECPO-GLOBECOM2023/ECPO-GLOBECOM2023.pdf",
+      "analysis": "papers/ECPO-GLOBECOM2023/analysis.md",
+      "bytes": 4167401,
+      "pages": 6,
+      "sha256": "60144736c3ddbb24b556aca3a4084dda08589d78ed83c93e14e240fc22d9e922",
+      "git_ignored_local_copy": false,
+      "validation": [
+        "PDF signature",
+        "pdfinfo",
+        "text extraction",
+        "SHA-256"
+      ]
+    },
+    {
+      "directory": "papers/LPPC-EuCNC2025",
+      "publication_year": 2025,
+      "local_version": "arXiv:2505.05967v1，6页",
+      "download_url": "https://arxiv.org/pdf/2505.05967v1",
+      "status": "downloaded",
+      "pdf": "papers/LPPC-EuCNC2025/LPPC-EuCNC2025.pdf",
+      "analysis": "papers/LPPC-EuCNC2025/analysis.md",
+      "bytes": 440765,
+      "pages": 6,
+      "sha256": "81644b3aa916d1318f728d725fd395f35ee4c15c2e92a0b73f1bef5fcc944994",
+      "git_ignored_local_copy": false,
+      "validation": [
+        "PDF signature",
+        "pdfinfo",
+        "text extraction",
+        "SHA-256"
+      ]
+    },
+    {
+      "directory": "papers/Pitfalls-AAMAS2019",
+      "publication_year": 2019,
+      "local_version": "会议正式版，9页，仅本地阅读",
+      "download_url": "https://ifaamas.org/Proceedings/aamas2019/pdfs/p693.pdf",
+      "status": "downloaded",
+      "pdf": "papers/Pitfalls-AAMAS2019/Pitfalls-AAMAS2019.pdf",
+      "analysis": "papers/Pitfalls-AAMAS2019/analysis.md",
+      "bytes": 1194878,
+      "pages": 9,
+      "sha256": "2eeb78c2d58524d076cf4bf7d2f4af4a3d4ef078d0b710f700f2e15122b78f6d",
+      "git_ignored_local_copy": true,
+      "validation": [
+        "PDF signature",
+        "pdfinfo",
+        "text extraction",
+        "SHA-256"
+      ]
+    },
+    {
+      "directory": "papers/FadingEE-TAC2009",
+      "publication_year": 2009,
+      "local_version": "MIT作者J58预印本，12页",
+      "download_url": "https://www.mit.edu/~modiano/papers/J58.pdf",
+      "status": "downloaded",
+      "pdf": "papers/FadingEE-TAC2009/FadingEE-TAC2009.pdf",
+      "analysis": "papers/FadingEE-TAC2009/analysis.md",
+      "bytes": 497249,
+      "pages": 12,
+      "sha256": "07b46dc9991afdd68409d0a006a2d19cd656bd0e5a2461e025fdc447437123f5",
+      "git_ignored_local_copy": false,
+      "validation": [
+        "PDF signature",
+        "pdfinfo",
+        "text extraction",
+        "SHA-256"
+      ]
+    },
+    {
+      "directory": "papers/SP-Detect-ICASSP2018",
+      "publication_year": 2018,
+      "local_version": "arXiv:1802.10407v2，7页",
+      "download_url": "https://arxiv.org/pdf/1802.10407v2",
+      "status": "downloaded",
+      "pdf": "papers/SP-Detect-ICASSP2018/SP-Detect-ICASSP2018.pdf",
+      "analysis": "papers/SP-Detect-ICASSP2018/analysis.md",
+      "bytes": 731183,
+      "pages": 7,
+      "sha256": "6e96d987007eb4452906f89817e4900eb2d5e7b8299d26901e5c4832cd8127fc",
+      "git_ignored_local_copy": false,
+      "validation": [
+        "PDF signature",
+        "pdfinfo",
+        "text extraction",
+        "SHA-256"
+      ]
+    },
+    {
+      "directory": "papers/SP-Fading-TCOM2016",
+      "publication_year": 2016,
+      "local_version": "arXiv:1412.7512v3，11页",
+      "download_url": "https://arxiv.org/pdf/1412.7512v3",
+      "status": "downloaded",
+      "pdf": "papers/SP-Fading-TCOM2016/SP-Fading-TCOM2016.pdf",
+      "analysis": "papers/SP-Fading-TCOM2016/analysis.md",
+      "bytes": 523659,
+      "pages": 11,
+      "sha256": "d7b592eb221d0aa4d67c4f79a1150902bb9d6bce7331de720c2cf28c2b5938ca",
+      "git_ignored_local_copy": false,
+      "validation": [
+        "PDF signature",
+        "pdfinfo",
+        "text extraction",
+        "SHA-256"
+      ]
+    },
+    {
+      "directory": "papers/CG-TSN-COMCOM2024",
+      "publication_year": 2024,
+      "local_version": "作者公开稿，11页，CC BY-NC-ND4.0",
+      "download_url": "https://arvc.umh.es/documentos/articulos/COMCOM2024_5G_Configured_Grant_Scheduling_LarranagaLucasGozalvez.pdf",
+      "status": "downloaded",
+      "pdf": "papers/CG-TSN-COMCOM2024/CG-TSN-COMCOM2024.pdf",
+      "analysis": "papers/CG-TSN-COMCOM2024/analysis.md",
+      "bytes": 749642,
+      "pages": 11,
+      "sha256": "1d8c2ab2df94c9fb3019eb5a4c8b5203b34c7d19c26d4b5e4ac3f92a89362d6c",
+      "git_ignored_local_copy": false,
+      "validation": [
+        "PDF signature",
+        "pdfinfo",
+        "text extraction",
+        "SHA-256"
+      ]
+    },
+    {
+      "directory": "papers/PGDS-ToN2026",
+      "publication_year": 2026,
+      "local_version": "arXiv:2407.10407v1，15页；非期刊终版",
+      "download_url": "https://arxiv.org/pdf/2407.10407v1",
+      "status": "downloaded",
+      "pdf": "papers/PGDS-ToN2026/PGDS-ToN2026.pdf",
+      "analysis": "papers/PGDS-ToN2026/analysis.md",
+      "bytes": 797115,
+      "pages": 15,
+      "sha256": "d6528b0b00f0da5f0fdb07bf34e8bbcdcbdad798dd298f1c04bdaae76e5ad31b",
+      "git_ignored_local_copy": false,
+      "validation": [
+        "PDF signature",
+        "pdfinfo",
+        "text extraction",
+        "SHA-256"
+      ]
+    },
+    {
+      "directory": "papers/REEMAC-TMLCN2026",
+      "publication_year": 2026,
+      "status": "pdf_unavailable",
+      "analysis": "papers/REEMAC-TMLCN2026/analysis.md",
+      "doi": "10.1109/TMLCN.2026.3683651",
+      "source_urls": [
+        "https://ieeexplore.ieee.org/document/11481086/",
+        "https://www.iris.unict.it/handle/20.500.11769/718789",
+        "https://api.crossref.org/works/10.1109/TMLCN.2026.3683651"
+      ],
+      "read_scope": "作者公开原文网页关键章节；未取得PDF、未逐图核验",
+      "failed_downloads": [
+        "IEEE verification page / HTTP 418",
+        "Author public ResearchGate PDF links HTTP 403",
+        "Institutional record has no attachment"
+      ]
+    }
+  ]
+}

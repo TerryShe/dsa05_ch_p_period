@@ -6,6 +6,36 @@
 
 少数 PDF 的来源限制再分发（例如机构库封面或 IEEE 页脚注明仅限个人使用），这些 PDF 只保留本地副本，列在 [`.gitignore`](.gitignore) 中，不纳入 Git；对应的 `analysis.md` 注明了下载地址。
 
+## V2 紧迫摘要、通信代价与当前研究评估（2026-10-10）
+
+本次先检查库中原有 **43 篇分析**，重点重读直接近邻，再联网补充 **15 篇分析、14 篇可验证 PDF**；REEMAC 2026 的 PDF 下载遭来源网站拒绝，单独登记为待获取。每篇均区分原论文内容、本课题推论、阅读范围和本地版本；已下载预印本不等于已逐字核读期刊终版。
+
+- [完整实验状态、V2 创新性与 TCCN/TCOM 投稿条件](../docs/research/dsa05-state-novelty-literature_20261010.md)
+- [检索范围、筛选记录与待读线索](../docs/research/literature-search_20261010.md)
+- [本次下载清单与文件校验值](../docs/research/literature-downloads_20261010.json)
+
+当前 V2 已改为“紧迫摘要改善最差 UE 按期可靠性”。早期逐篇笔记中的节能差异仍属 V1 历史背景；DCGFRA、XR-SBPC、MARLSPA 已追加 V2 更新。DCGFRA 已核实正式发表于 **TCCN 2025，11(3):1535–1550**，旧目录 `DCGFRA-2024` 保留以兼容链接，引用应使用正式年份。
+
+| 优先级 | 文件夹 / 论文 | 发表与本地版本 | 对当前 V2 的关键作用 |
+|---|---|---|---|
+| P0 | [SeqDQN](SeqDQN-EuCNC2023/analysis.md)：Multi-Agent Deep Reinforcement Learning for Uplink URLLC with Strict Deadlines | EuCNC 2023；作者公开稿，PDF已下载 | 异步周期上行、严格截止期与本地执行已有先例 |
+| P0 | [SMART](SMART-TCCN2021/analysis.md)：Situationally-Aware Multi-Agent Reinforcement Learning-Based Transmissions | TCCN 2021；期刊全文，PDF仅本地 | 紧迫性接入与低频公共传输税，比2019会议版更完整 |
+| P0 | [MACSignaling](MACSignaling-TCCN2021/analysis.md)：Toward Joint Learning of Optimal MAC Signaling and Wireless Channel Access | TCCN 2021；arXiv v4，PDF已下载 | 预定义MAC信令的学习使用、消息—动作诊断 |
+| P0 | [ScalableMAC](ScalableMAC-VTC2022/analysis.md)：Scalable Joint Learning of Wireless Multiple-Access Policies and their Signaling | VTC Spring Workshops 2022；arXiv v1，PDF已下载 | BS与UE联合学习、小词表信令；L对照的重要来源 |
+| P0 | [ECPO](ECPO-GLOBECOM2023/analysis.md)：Emergent Communication Protocol Learning for Task Offloading in Industrial Internet of Things | GLOBECOM 2023；2024 arXiv v1，PDF已下载 | 已有截止期、多信道、MAPPO及通信开关对照 |
+| P0 | [LPPC](LPPC-EuCNC2025/analysis.md)：Learning Power Control Protocol for In-Factory 6G Subnetworks | EuCNC 2025；arXiv v1，PDF已下载 | 学习何时请求/上报，开销—性能比较；不是任意学习消息内容 |
+| P0（机制） | [PGDS](PGDS-ToN2026/analysis.md)：Distributed Scheduling for Throughput Maximization Under Deadline Constraint in Wireless Mesh Networks | ToN 2026；本地2024 arXiv v1，PDF已下载 | 资源/价值广播及低价值包让路已有；终版细节未逐项核对 |
+| P0（接收） | [Short Packet Structure](SP-Detect-ICASSP2018/analysis.md)：Tradeoff between Detection and Decoding | ICASSP 2018；arXiv v2，PDF已下载 | 漏检、误警、前导/功率成本；不能据此声称−10dB必可读 |
+| P0（诊断） | [Pitfalls](Pitfalls-AAMAS2019/analysis.md)：On the Pitfalls of Measuring Emergent Communication | AAMAS 2019；会议PDF仅本地 | 测试时隐去消息导致性能变差不充分证明信息价值 |
+| P0（待PDF） | [REEMAC](REEMAC-TMLCN2026/analysis.md)：Reliable and Energy-Efficient MAC Protocols in Industrial IoT Networks via Multi-Agent Reinforcement Learning | TMLCN 2026，4:677–705；读作者全文网页，**PDF未取得** | 逐资源公共反馈、FD-MAPPO与控制丢失敏感性的重要近邻 |
+| P1 | [DIAL](DIAL-NeurIPS2016/analysis.md)：Learning to Communicate with Deep Multi-Agent Reinforcement Learning | NIPS 2016；会议PDF已下载 | 离散消息的训练难度；L失败不证明手工语义最优 |
+| P1 | [SchedNet](SchedNet-ICLR2019/analysis.md)：Learning to Schedule Communication in Multi-agent Reinforcement Learning | ICLR 2019；arXiv v1，PDF已下载 | 谁发消息、何时发、发什么的联合优化 |
+| P1 | [Short-Packet Fading](SP-Fading-TCOM2016/analysis.md)：Short-Packet Communications over Multiple-Antenna Rayleigh-Fading Channels | TCOM 2016；arXiv v3，PDF已下载 | 有限块长、信道估计和分集的可靠性代价 |
+| P1 | [C-FAST / CG-TSN](CG-TSN-COMCOM2024/analysis.md)：5G Configured Grant Scheduling for Seamless Integration with TSN Industrial Networks | Computer Communications 2024；作者公开稿，PDF已下载 | 多CG与预下发激活向量；强静态/混合协议参照 |
+| P2（V1扩展） | [FadingEE](FadingEE-TAC2009/analysis.md)：Minimum Energy Transmission over a Wireless Channel with Deadline and Power Constraints | TAC 2009；作者预印本，PDF已下载 | 补齐衰落节能经典；不能直接作为V2严格最优界 |
+
+SMART 与 Pitfalls 的受限阅读 PDF 分别由本目录及论文子目录 `.gitignore` 排除。公开预印本的可下载性不等于拥有任意再出版许可；具体来源/许可见各篇笔记。
+
 ## 固定 OBS 的 MARL 算法研究（2026-10-02 检索）
 
 新增 11 篇 PDF 与分析，并补读已有 GPAE。重点是训练目标、尾部覆盖、本地历史表示与信用分配；执行仍只使用现有本地信息。详细适配、阅读范围与实验建议见各篇笔记及[综合分析](../docs/research/literature-fixed-obs-marl_20261002.md)。SOTO 原方案需要执行通信，仅借鉴其公平目标；WCMASAC 需重新核对执行信息与共享参数结构。
@@ -77,6 +107,7 @@ dsa04 的 [`papers/AP-DECA/`](../../dsa_marl_test04_mcs_p_subchannel/papers/AP-D
 ## 尚缺的文献
 
 - MARL 用于无线资源管理的近年综述，用于引言的概括性引用；
-- 衰落信道下截止期约束的最小能耗（Zafer 与 Modiano 的衰落版本已找到链接，未下载），为衰落扩展做准备；
+- 衰落信道下截止期最小能耗的经典已于2026-10-10补入 [FadingEE-TAC2009](FadingEE-TAC2009/analysis.md)；若重启能耗方向，仍需查与本模型功率/终端约束完全匹配的参照；
 - 电路功耗对能耗最优调度的影响：FRL-EE-2010 部分覆盖（单链路，计入开关与切换功率），多用户场景仍缺；
 - 检索到但未读全文的工作（Hou、Borkar、Kumar 2009，Huang 等 TWC 2021，Caire 与 Tuninetti 2001 等）列在[问题侧笔记](../docs/research/literature-problem-side_20260926.md) §4。
+- 当前V2优先补取 [REEMAC-TMLCN2026](REEMAC-TMLCN2026/analysis.md) 的PDF、PGDS期刊终版及[本次待读列表](../docs/research/literature-search_20261010.md)中的强理论/泛化工作；这些不计为已完成全文归档。

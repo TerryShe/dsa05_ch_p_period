@@ -1,12 +1,14 @@
 # DCGFRA-2024：截止期约束的免授权随机接入，分布式导频选择与功率控制
 
+> **2026-10-10 V2 更新**：本文是当前“最差 UE 可靠性”目标的直接前作，不能再用“DSA05 以能耗为目标”作当前差异。下面原分析保留其 V1 历史语境；最新判断见末节。
+
 ## 基本信息
 
 | 项目 | 内容 |
 |---|---|
 | 标题 | Delay-Constrained Grant-Free Random Access in MIMO Systems: Distributed Pilot Allocation and Power Control |
 | 作者 | Jianan Bai, Zheng Chen, Erik G. Larsson |
-| 来源 | IEEE Transactions on Cognitive Communications and Networking（arXiv 页面注明已接收，卷期未查）；arXiv:2410.17068（2024）；部分内容见 Asilomar 2021 |
+| 来源 | IEEE Transactions on Cognitive Communications and Networking **11(3), 1535–1550, 2025**，DOI [10.1109/TCCN.2024.3486715](https://doi.org/10.1109/TCCN.2024.3486715)；本地仍为 arXiv:2410.17068v1（2024），未逐字比对终版；部分内容见 Asilomar 2021。正式发表信息于 2026-10-10 经[作者机构书目](https://staff.gitlab-pages.liu.se/publications/en/liu/isy/ks/jiaba12/)与[机构库封面](https://liu.diva-portal.org/smash/get/diva2%3A1975827/FULLTEXT01.pdf)核实；旧目录名保留以兼容已有链接，引用用 2025 |
 | 本地 PDF | [DCGFRA-2024.pdf](DCGFRA-2024.pdf)（15 页） |
 | 阅读范围 | 摘要、引言、相关工作、系统模型（物理层与网络层）、速率代理 |
 
@@ -32,3 +34,11 @@
 
 - 相关工作：免授权接入中的分布式资源选择与功率控制、截止期约束。
 - 讨论：模型辅助学习对样本效率的作用。
+
+## 当前 V2 的重读结论（2026-10-10）
+
+本次补读本地全文 §III-D 的 Remark 2 和 §IV 的观测/训练目标：精确求解逐时隙的优先级和最大化需要交换优先级，作者为保持免授权开环操作选择本地策略近似。优先级结合本地历史丢包与当前紧迫度，BS 可提供逐导频反馈；不是完全无反馈系统。
+
+因此 DSA05 不能声称最差用户目标、截止期加分布式资源/功率或紧迫优先接入本身新颖。真正待检验的是：在跨时隙服务累积、时变衰落场景，用可实际接收且付出资源成本的压缩紧迫信息，能否改善最差用户，并给出公平的信息匹配比较。
+
+不宜将 Remark 2 写成“已有工作证明共享这一比特会有效”；它只是说明集中求解需要更多状态。DSA05 的 OR 摘要既不等于逐用户优先级，也未恢复完整排序。该文适合构造模型辅助或优先级式基线，但它的 MIMO、导频碰撞及单时隙包模型不能原样搬入 TIN 仿真。
