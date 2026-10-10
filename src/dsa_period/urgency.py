@@ -111,6 +111,13 @@ class SummaryLink:
 
     @property
     def own_previous(self) -> NDArray[np.bool_]:
+        """The UE's own uplink bit of the previous slot; always 0 for occupancy (design §2.5).
+
+        Occupancy carries no uplink bit: the AP detects the transmission itself, so
+        the actor's own-bit input stays 0 rather than repeating "I transmitted".
+        """
+        if self.settings.content == "occupancy":
+            return np.zeros(self.num_ues, dtype=np.bool_)
         return self.sent.copy()
 
     def broadcast(self, obs: ObsArrays) -> NDArray[np.bool_]:

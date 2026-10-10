@@ -142,6 +142,10 @@ def test_uplink_contents():
     assert link.uplink(obs, sending, np.array([0, 1, 1])).tolist() == [False, True, False]
     with pytest.raises(ValueError):
         link.uplink(obs, sending)
+    for content, own in (("urgency", [True, True, False]), ("occupancy", [False] * 3)):
+        link = SummaryLink(SummarySettings(content), config, menu, 3)
+        link.commit(np.ones(3, bool), sending)
+        assert link.own_previous.tolist() == own  # occupancy has no own bit (design §2.5)
 
 
 def test_hiding_masks_act_on_the_named_ues_only():
@@ -264,6 +268,11 @@ def test_summary_training_replays_its_joint_log_probabilities(trained):
         dims = model_dims(trainer.config, trainer.menu, trainer.information)
         assert rollout.tokens.shape[-1] == dims[0] and rollout.context.shape[-1] == dims[1]
         assert rollout.critic_ue.shape[-1] == dims[2]
+        own_bit = rollout.context[..., -1]
+        if content == "occupancy":
+            assert not own_bit.any()  # no uplink bit (design §2.5)
+        if content == "message":
+            assert own_bit.any()  # random messages of transmitting UEs
     assert (
         trained["occupancy"][2]["summary"]["bits_sent"]
         >= trained["urgency"][2]["summary"]["bits_sent"]

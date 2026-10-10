@@ -138,7 +138,10 @@ def analyze(episodes: dict, plan: dict, instances: list[int], draws: int) -> dic
     out["all_ue_mean_rate"] = {
         g: {n: float(mat(g, n, "mean_rate").mean()) for n in grids[g]} for g in groups
     }
-    out["p90_w"] = {g: {n: float(np.percentile(mat(g, n), 90)) for n in grids[g]} for g in groups}
+    # 90% quantile of w per seed layer, then the mean over layers (framing §3.3).
+    out["p90_w"] = {
+        g: {n: float(np.percentile(mat(g, n), 90, axis=1).mean()) for n in grids[g]} for g in groups
+    }
 
     # Main rule (§5.2) and the load profile (§5.3 item 5).
     d = {n: compare(mat("U", n), mat("M", n), draws) for n in GRID}
