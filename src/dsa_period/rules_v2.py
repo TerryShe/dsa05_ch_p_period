@@ -17,6 +17,8 @@ Common quantities of one UE, all local:
 current gains at once, so it is not a local rule. ``ConfiguredGrantPolicy`` is
 the semi-static reference N_CG (2026-10-09 supplement to §7): exclusive periodic
 occasions allocated once from mean gains, traffic and fading statistics.
+``ConfiguredGrantOptPolicy`` (CG-opt, 2026-10-10 supplement) keeps its knowledge
+and transmission rule and optimizes the allocation (``cg_opt``).
 """
 
 import json
@@ -301,7 +303,7 @@ CG_BANK_SAMPLES = 20_000
 _BANK_CHUNK = 500
 
 
-@lru_cache(maxsize=2)
+@lru_cache(maxsize=4)  # banks A and B of CG-opt, two window lengths
 def fading_bank(
     num_subchannels: int,
     doppler_hz: float,
@@ -552,6 +554,64 @@ class ConfiguredGrantPolicy:
         }
 
 
+class ConfiguredGrantOptPolicy(ConfiguredGrantPolicy):
+    """Optimized static configured grant CG-opt (configured-grant-optimized_20261010.md).
+
+    The knowledge, configuration form and transmission rule of
+    ``ConfiguredGrantPolicy``; ``configure`` replaces the greedy by
+    ``cg_opt.optimize_grants`` on the optimization bank A (seed 20,261,010) under
+    the frozen budget. ``allocation.outage`` is the prediction on bank A; the
+    diagnostics add the prediction on the CG bank B (out of sample) and the
+    solver record. Deterministic unless a solve hits the time limit (recorded).
+    """
+
+    def __init__(self, config: PhysicalConfig, menu: PowerMenu) -> None:
+        super().__init__(config, menu)
+        self.name = "configured_grant_opt"
+
+    def configure(
+        self, mean_gain_linear: NDArray[np.float64], traffic: TrafficPattern, fading: object
+    ) -> None:
+        from dsa_period import cg_opt
+
+        period = np.asarray(traffic.period_slots, dtype=np.int64)
+        self._period, self._phase = period, np.asarray(traffic.phase_slots, dtype=np.int64)
+        packet_bits = np.asarray(traffic.packet_bits, dtype=np.float64)
+        banks = [
+            fading_bank(
+                self.config.num_subchannels,
+                float(fading.doppler_hz),
+                int(fading.sinusoids),
+                float(self.config.slot_duration_s),
+                int(period.max()),
+                samples,
+                seed,
+            )
+            for samples, seed in (
+                (cg_opt.CG_OPT_BANK_SAMPLES, cg_opt.CG_OPT_BANK_SEED),
+                (CG_BANK_SAMPLES, CG_BANK_SEED),
+            )
+        ]
+        snr = self.menu.power_w[-1] * np.asarray(mean_gain_linear) / self.config.noise_power_w
+        self._snr = snr
+        result = cg_opt.optimize_grants(
+            self.config, snr, packet_bits, period, self._phase, banks[0]
+        )
+        self.allocation = result.allocation
+        self._record = result.record
+        self._outage_b = cg_opt.predicted_outage(
+            cg_opt.deployment(self.config, snr, packet_bits, period, self._phase, banks[1]),
+            self.allocation.occasions,
+        )
+        self._grant = [dict(o) for o in self.allocation.occasions]
+
+    def episode_diagnostics(self) -> dict:
+        return super().episode_diagnostics() | {
+            "predicted_outage_bank_b": self._outage_b,
+            "solver": self._record,
+        }
+
+
 def _params(raw: str, allowed: dict[str, type]) -> dict:
     params = {}
     for item in filter(None, raw.split(",")):
@@ -572,6 +632,7 @@ RULES = {
     ),
     "central_edf": (CentralEdfPolicy, {"defer_hopeless": bool}),
     "configured_grant": (ConfiguredGrantPolicy, {"single_channel": bool}),
+    "configured_grant_opt": (ConfiguredGrantOptPolicy, {}),
 }
 
 
