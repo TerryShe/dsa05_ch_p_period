@@ -33,7 +33,7 @@ from dsa_period.rules_v2 import make_policy_v2
 
 def _episode(job: tuple) -> tuple:
     config, spec, n, split, instance = job
-    if spec.startswith("marl:"):
+    if "marl:" in spec:  # wrapped specs too: a worker on the forked thread pool deadlocks
         import torch
 
         torch.set_num_threads(1)  # one core per worker process

@@ -13,6 +13,7 @@ import torch
 from dsa_period import splits_v2
 from dsa_period.capacity import run_capacity_episode
 from dsa_period.config import load_scenario
+from dsa_period.experiments import evaluate_capacity
 from dsa_period.experiments import select_exp011 as sel
 from dsa_period.experiments.train_capacity_mappo import information_from, settings_from
 from dsa_period.marl.features import ObsArrays, stack
@@ -209,6 +210,22 @@ def test_wrapper_specs():
     scenario = load_scenario(CONFIG, 4)
     policy = make_policy_v2("yield[theta=-10]@best_local", scenario.physical, scenario.menu)
     assert isinstance(policy, YieldPolicy) and policy.settings.theta_db == -10.0
+
+
+def test_evaluation_workers_pin_one_thread_for_wrapped_marl_specs(monkeypatch):
+    """A forked worker left on the parent's torch thread pool deadlocks (EXP-011 run)."""
+    calls = []
+    monkeypatch.setattr(torch, "set_num_threads", calls.append)
+    monkeypatch.setattr(evaluate_capacity, "make_policy_v2", lambda *args: None)
+    monkeypatch.setattr(evaluate_capacity, "run_capacity_episode", lambda *args: {})
+    for spec in (
+        "marl:x.pt",
+        "yield[theta=-10]@marl:x.pt",
+        "summary[theta=0,hide=all]@marl:x.pt",
+        "yield[theta=-10]@best_local",
+    ):
+        evaluate_capacity._episode((str(CONFIG), spec, 4, "dev", 0))
+    assert calls == [1, 1, 1]
 
 
 # --------------------------------------------------------------- actor and PPO
