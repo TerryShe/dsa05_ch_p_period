@@ -1,0 +1,137 @@
+{
+  "U": [
+    {
+      "6": "marl:outputs/exp011/u-seed101/checkpoints/step-005001472.pt",
+      "8": "marl:outputs/exp011/u-seed101/checkpoints/step-005001472.pt",
+      "10": "marl:outputs/exp011/u-seed101/checkpoints/step-004001536.pt",
+      "12": "marl:outputs/exp011/u-seed101/checkpoints/step-005001472.pt",
+      "16": "marl:outputs/exp011/u-seed101/checkpoints/step-005001472.pt"
+    },
+    {
+      "6": "marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt",
+      "8": "marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt",
+      "10": "marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt",
+      "12": "marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt",
+      "16": "marl:outputs/exp011/u-seed202/checkpoints/step-005001472.pt"
+    },
+    {
+      "6": "marl:outputs/exp011/u-seed303/checkpoints/step-004001536.pt",
+      "8": "marl:outputs/exp011/u-seed303/checkpoints/step-005001472.pt",
+      "10": "marl:outputs/exp011/u-seed303/checkpoints/step-005001472.pt",
+      "12": "marl:outputs/exp011/u-seed303/checkpoints/step-005001472.pt",
+      "16": "marl:outputs/exp011/u-seed303/checkpoints/step-004001536.pt"
+    }
+  ],
+  "O": [
+    {
+      "6": "marl:outputs/exp011/o-seed101/checkpoints/step-004001536.pt",
+      "8": "marl:outputs/exp011/o-seed101/checkpoints/step-004001536.pt",
+      "10": "marl:outputs/exp011/o-seed101/checkpoints/step-004001536.pt",
+      "12": "marl:outputs/exp011/o-seed101/checkpoints/step-005001472.pt",
+      "16": "marl:outputs/exp011/o-seed101/checkpoints/step-004001536.pt"
+    },
+    {
+      "6": "marl:outputs/exp011/o-seed202/checkpoints/step-005001472.pt",
+      "8": "marl:outputs/exp011/o-seed202/checkpoints/step-005001472.pt",
+      "10": "marl:outputs/exp011/o-seed202/checkpoints/step-005001472.pt",
+      "12": "marl:outputs/exp011/o-seed202/checkpoints/step-005001472.pt",
+      "16": "marl:outputs/exp011/o-seed202/checkpoints/step-005001472.pt"
+    },
+    {
+      "6": "marl:outputs/exp011/o-seed303/checkpoints/step-003001600.pt",
+      "8": "marl:outputs/exp011/o-seed303/checkpoints/step-005001472.pt",
+      "10": "marl:outputs/exp011/o-seed303/checkpoints/step-005001472.pt",
+      "12": "marl:outputs/exp011/o-seed303/checkpoints/step-004001536.pt",
+      "16": "marl:outputs/exp011/o-seed303/checkpoints/step-004001536.pt"
+    }
+  ],
+  "L": [
+    {
+      "6": "marl:outputs/exp011/l-seed101/checkpoints/step-004001536.pt",
+      "8": "marl:outputs/exp011/l-seed101/checkpoints/step-004001536.pt",
+      "10": "marl:outputs/exp011/l-seed101/checkpoints/step-004001536.pt",
+      "12": "marl:outputs/exp011/l-seed101/checkpoints/step-004001536.pt",
+      "16": "marl:outputs/exp011/l-seed101/checkpoints/step-004001536.pt"
+    },
+    {
+      "6": "marl:outputs/exp011/l-seed202/checkpoints/step-005001472.pt",
+      "8": "marl:outputs/exp011/l-seed202/checkpoints/step-005001472.pt",
+      "10": "marl:outputs/exp011/l-seed202/checkpoints/step-005001472.pt",
+      "12": "marl:outputs/exp011/l-seed202/checkpoints/step-005001472.pt",
+      "16": "marl:outputs/exp011/l-seed202/checkpoints/step-004001536.pt"
+    },
+    {
+      "6": "marl:outputs/exp011/l-seed303/checkpoints/step-005001472.pt",
+      "8": "marl:outputs/exp011/l-seed303/checkpoints/step-005001472.pt",
+      "10": "marl:outputs/exp011/l-seed303/checkpoints/step-005001472.pt",
+      "12": "marl:outputs/exp011/l-seed303/checkpoints/step-005001472.pt",
+      "16": "marl:outputs/exp011/l-seed303/checkpoints/step-005001472.pt"
+    }
+  ],
+  "U0": [
+    {
+      "8": "marl:outputs/exp011/u0-seed101/checkpoints/step-005001472.pt",
+      "10": "marl:outputs/exp011/u0-seed101/checkpoints/step-005001472.pt",
+      "12": "marl:outputs/exp011/u0-seed101/checkpoints/step-005001472.pt"
+    },
+    {
+      "8": "marl:outputs/exp011/u0-seed202/checkpoints/step-005001472.pt",
+      "10": "marl:outputs/exp011/u0-seed202/checkpoints/step-005001472.pt",
+      "12": "marl:outputs/exp011/u0-seed202/checkpoints/step-005001472.pt"
+    },
+    {
+      "8": "marl:outputs/exp011/u0-seed303/checkpoints/step-004001536.pt",
+      "10": "marl:outputs/exp011/u0-seed303/checkpoints/step-005001472.pt",
+      "12": "marl:outputs/exp011/u0-seed303/checkpoints/step-004001536.pt"
+    }
+  ],
+  "M": [
+    {
+      "6": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+      "8": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+      "10": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+      "12": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+      "16": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt"
+    },
+    {
+      "6": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+      "8": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+      "10": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+      "12": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+      "16": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-003001600.pt"
+    },
+    {
+      "6": "marl:outputs/exp009-final/s1-seed303/checkpoints/step-003001600.pt",
+      "8": "marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt",
+      "10": "marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt",
+      "12": "marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt",
+      "16": "marl:outputs/exp009-final/s1-seed303/checkpoints/step-003001600.pt"
+    }
+  ],
+  "M_exp009": [
+    {
+      "6": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+      "8": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+      "10": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+      "12": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+      "16": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt"
+    },
+    {
+      "6": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+      "8": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+      "10": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+      "12": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+      "16": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-004001536.pt"
+    },
+    {
+      "6": "marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt",
+      "8": "marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt",
+      "10": "marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt",
+      "12": "marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt",
+      "16": "marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt"
+    }
+  ],
+  "best_local": "best_local",
+  "cg_opt": "configured_grant_opt",
+  "edf": "central_edf"
+}

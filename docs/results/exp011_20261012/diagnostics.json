@@ -1,0 +1,2713 @@
+{
+  "set": "exp011-eval512",
+  "formal": true,
+  "provenance": {
+    "commit": "4c8cc4fb687b4a71d0bba8fa0ae676e071d869cd",
+    "dirty": false
+  },
+  "specs": [
+    "marl:outputs/exp011/u-seed101/checkpoints/step-005001472.pt@8",
+    "marl:outputs/exp011/u-seed101/checkpoints/step-004001536.pt@10",
+    "marl:outputs/exp011/u-seed101/checkpoints/step-005001472.pt@12",
+    "marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt@8",
+    "marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt@10",
+    "marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt@12",
+    "marl:outputs/exp011/u-seed303/checkpoints/step-005001472.pt@8",
+    "marl:outputs/exp011/u-seed303/checkpoints/step-005001472.pt@10",
+    "marl:outputs/exp011/u-seed303/checkpoints/step-005001472.pt@12",
+    "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt@8",
+    "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt@10",
+    "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt@12",
+    "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt@8",
+    "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt@10",
+    "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt@12",
+    "marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt@8",
+    "marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt@10",
+    "marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt@12",
+    "yield[theta=-10]@marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt@8",
+    "yield[theta=-10]@marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt@10",
+    "yield[theta=-10]@marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt@12",
+    "yield[theta=-10]@marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt@8",
+    "yield[theta=-10]@marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt@10",
+    "yield[theta=-10]@marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt@12",
+    "yield[theta=-10]@marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt@8",
+    "yield[theta=-10]@marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt@10",
+    "yield[theta=-10]@marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt@12"
+  ],
+  "checked_against_evaluation": 13824,
+  "summary": {
+    "marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt|N=8": {
+      "episodes": 512,
+      "marked_choice": {
+        "<3": {
+          "options": 18404,
+          "rate": 0.29145837861334495,
+          "relative_to_unmarked": 0.9602023402247282
+        },
+        "3-10": {
+          "options": 11812,
+          "rate": 0.2594818828310193,
+          "relative_to_unmarked": 1.117223921833933
+        },
+        "10-20": {
+          "options": 924,
+          "rate": 0.21428571428571427,
+          "relative_to_unmarked": 1.2157386938433747
+        },
+        ">=20": {
+          "options": 20,
+          "rate": 0.3,
+          "relative_to_unmarked": 2.7674840654043784
+        }
+      },
+      "deferral": {
+        "best_marked": 0.0003594536304816679,
+        "best_unmarked": 0.0003277972375777484
+      },
+      "deferral_counts": {
+        "best_unmarked|decisions": 15707881,
+        "best_unmarked|off": 5149,
+        "best_marked|decisions": 19474,
+        "best_marked|off": 7
+      },
+      "pairs": {
+        "victim_entry": 16773,
+        "entry": 35433,
+        "co_residence": 22609,
+        "both_new": 25472
+      },
+      "yield_bins": {
+        "0": {
+          "ues": 2699,
+          "mean_violation_rate": 7.447202667654692e-05
+        },
+        "1": {
+          "ues": 1214,
+          "mean_violation_rate": 0.0010374794069192732
+        },
+        "11": {
+          "ues": 181,
+          "mean_violation_rate": 0.0018121546961325974
+        },
+        "101": {
+          "ues": 2,
+          "mean_violation_rate": 0.0
+        }
+      },
+      "failing_share_by_snr_class": {
+        "10-20|class0": {
+          "ues": 640,
+          "failing": 0.0
+        },
+        "10-20|class1": {
+          "ues": 655,
+          "failing": 0.0
+        },
+        "0-10|class2": {
+          "ues": 182,
+          "failing": 0.0
+        },
+        "0-10|class0": {
+          "ues": 266,
+          "failing": 0.10150375939849623
+        },
+        "0-10|class1": {
+          "ues": 259,
+          "failing": 0.0694980694980695
+        },
+        ">=20|class2": {
+          "ues": 417,
+          "failing": 0.0
+        },
+        ">=20|class0": {
+          "ues": 630,
+          "failing": 0.0
+        },
+        ">=20|class1": {
+          "ues": 622,
+          "failing": 0.0
+        },
+        "10-20|class2": {
+          "ues": 425,
+          "failing": 0.0
+        }
+      },
+      "bits_sent": 71529,
+      "bits_read": 59927
+    },
+    "marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt|N=10": {
+      "episodes": 512,
+      "marked_choice": {
+        "<3": {
+          "options": 35592,
+          "rate": 0.30363564846032814,
+          "relative_to_unmarked": 0.9518269094000806
+        },
+        "10-20": {
+          "options": 5843,
+          "rate": 0.22026356323806265,
+          "relative_to_unmarked": 1.1716277655607956
+        },
+        "3-10": {
+          "options": 42201,
+          "rate": 0.2707044856756949,
+          "relative_to_unmarked": 1.0978919823128108
+        },
+        ">=20": {
+          "options": 184,
+          "rate": 0.18478260869565216,
+          "relative_to_unmarked": 1.474961112343277
+        }
+      },
+      "deferral": {
+        "best_marked": 0.0018886270989939787,
+        "best_unmarked": 0.0016580954199359723
+      },
+      "deferral_counts": {
+        "best_unmarked|decisions": 21227367,
+        "best_unmarked|off": 35197,
+        "best_marked|decisions": 53478,
+        "best_marked|off": 101
+      },
+      "pairs": {
+        "entry": 126059,
+        "both_new": 111301,
+        "victim_entry": 70959,
+        "co_residence": 86996
+      },
+      "yield_bins": {
+        "0": {
+          "ues": 2342,
+          "mean_violation_rate": 0.0001246797608881299
+        },
+        "1": {
+          "ues": 2219,
+          "mean_violation_rate": 0.0010209553853086938
+        },
+        "11": {
+          "ues": 544,
+          "mean_violation_rate": 0.0034301470588235265
+        },
+        "101": {
+          "ues": 15,
+          "mean_violation_rate": 0.009466666666666668
+        }
+      },
+      "failing_share_by_snr_class": {
+        "10-20|class0": {
+          "ues": 860,
+          "failing": 0.0
+        },
+        "10-20|class1": {
+          "ues": 655,
+          "failing": 0.0
+        },
+        "0-10|class2": {
+          "ues": 279,
+          "failing": 0.04659498207885305
+        },
+        "0-10|class0": {
+          "ues": 350,
+          "failing": 0.2
+        },
+        "0-10|class1": {
+          "ues": 259,
+          "failing": 0.11196911196911197
+        },
+        ">=20|class2": {
+          "ues": 634,
+          "failing": 0.0
+        },
+        ">=20|class0": {
+          "ues": 838,
+          "failing": 0.0
+        },
+        "10-20|class2": {
+          "ues": 623,
+          "failing": 0.0
+        },
+        ">=20|class1": {
+          "ues": 622,
+          "failing": 0.0
+        }
+      },
+      "bits_sent": 144836,
+      "bits_read": 115426
+    },
+    "marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt|N=12": {
+      "episodes": 512,
+      "marked_choice": {
+        "10-20": {
+          "options": 23002,
+          "rate": 0.22654551778106252,
+          "relative_to_unmarked": 1.142016911907094
+        },
+        "3-10": {
+          "options": 95777,
+          "rate": 0.28086074944924144,
+          "relative_to_unmarked": 1.080864450063368
+        },
+        "<3": {
+          "options": 51836,
+          "rate": 0.3200478431977776,
+          "relative_to_unmarked": 0.9504821600013122
+        },
+        ">=20": {
+          "options": 969,
+          "rate": 0.18575851393188855,
+          "relative_to_unmarked": 1.2679446098454648
+        }
+      },
+      "deferral": {
+        "best_marked": 0.006639140633791235,
+        "best_unmarked": 0.005188033345624245
+      },
+      "deferral_counts": {
+        "best_unmarked|decisions": 27272184,
+        "best_unmarked|off": 141489,
+        "best_marked|decisions": 115527,
+        "best_marked|off": 767
+      },
+      "pairs": {
+        "victim_entry": 210717,
+        "both_new": 305248,
+        "entry": 307913,
+        "co_residence": 241344
+      },
+      "yield_bins": {
+        "1": {
+          "ues": 3122,
+          "mean_violation_rate": 0.0010566944266495782
+        },
+        "11": {
+          "ues": 1242,
+          "mean_violation_rate": 0.004877214170692418
+        },
+        "0": {
+          "ues": 1738,
+          "mean_violation_rate": 0.00017721518987341784
+        },
+        "101": {
+          "ues": 42,
+          "mean_violation_rate": 0.01466666666666667
+        }
+      },
+      "failing_share_by_snr_class": {
+        "10-20|class0": {
+          "ues": 860,
+          "failing": 0.0
+        },
+        "10-20|class1": {
+          "ues": 891,
+          "failing": 0.0
+        },
+        "0-10|class2": {
+          "ues": 373,
+          "failing": 0.07506702412868632
+        },
+        "0-10|class0": {
+          "ues": 350,
+          "failing": 0.3628571428571429
+        },
+        "0-10|class1": {
+          "ues": 348,
+          "failing": 0.16666666666666666
+        },
+        ">=20|class2": {
+          "ues": 827,
+          "failing": 0.0
+        },
+        ">=20|class0": {
+          "ues": 838,
+          "failing": 0.0
+        },
+        "10-20|class2": {
+          "ues": 848,
+          "failing": 0.0
+        },
+        ">=20|class1": {
+          "ues": 809,
+          "failing": 0.0
+        }
+      },
+      "bits_sent": 249726,
+      "bits_read": 188928
+    },
+    "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt|N=8": {
+      "episodes": 512,
+      "marked_choice": {
+        "<3": {
+          "options": 15853,
+          "rate": 0.24569482116949473,
+          "relative_to_unmarked": 0.7415636212759861
+        },
+        "3-10": {
+          "options": 7834,
+          "rate": 0.16058207812101097,
+          "relative_to_unmarked": 1.2576167255960717
+        },
+        "10-20": {
+          "options": 647,
+          "rate": 0.04327666151468315,
+          "relative_to_unmarked": 0.7338713044940709
+        },
+        ">=20": {
+          "options": 31,
+          "rate": 0.03225806451612903,
+          "relative_to_unmarked": 0.6947683150229546
+        }
+      },
+      "deferral": {
+        "best_marked": 0.004683068399182112,
+        "best_unmarked": 0.007040039731220915
+      },
+      "deferral_counts": {
+        "best_unmarked|decisions": 14022222,
+        "best_unmarked|off": 98717,
+        "best_marked|decisions": 15161,
+        "best_marked|off": 71
+      },
+      "pairs": {
+        "both_new": 21651,
+        "victim_entry": 12038,
+        "entry": 19661,
+        "co_residence": 10139
+      },
+      "yield_bins": {
+        "1": {
+          "ues": 1115,
+          "mean_violation_rate": 0.0009735426008968601
+        },
+        "0": {
+          "ues": 2771,
+          "mean_violation_rate": 8.823529411764709e-05
+        },
+        "11": {
+          "ues": 209,
+          "mean_violation_rate": 0.00031339712918660286
+        },
+        "101": {
+          "ues": 1,
+          "mean_violation_rate": 0.001
+        }
+      },
+      "failing_share_by_snr_class": {
+        "10-20|class0": {
+          "ues": 640,
+          "failing": 0.0
+        },
+        "10-20|class1": {
+          "ues": 655,
+          "failing": 0.0
+        },
+        "0-10|class2": {
+          "ues": 182,
+          "failing": 0.0
+        },
+        "0-10|class0": {
+          "ues": 266,
+          "failing": 0.09774436090225563
+        },
+        "0-10|class1": {
+          "ues": 259,
+          "failing": 0.04633204633204633
+        },
+        ">=20|class2": {
+          "ues": 417,
+          "failing": 0.002398081534772182
+        },
+        ">=20|class0": {
+          "ues": 630,
+          "failing": 0.0
+        },
+        ">=20|class1": {
+          "ues": 622,
+          "failing": 0.0
+        },
+        "10-20|class2": {
+          "ues": 425,
+          "failing": 0.0
+        }
+      },
+      "bits_sent": 63739,
+      "bits_read": 53085
+    },
+    "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt|N=10": {
+      "episodes": 512,
+      "marked_choice": {
+        "3-10": {
+          "options": 28241,
+          "rate": 0.19269855883290252,
+          "relative_to_unmarked": 1.2576232276593162
+        },
+        "<3": {
+          "options": 31004,
+          "rate": 0.2801896529480067,
+          "relative_to_unmarked": 0.7808634173280203
+        },
+        "10-20": {
+          "options": 4070,
+          "rate": 0.06167076167076167,
+          "relative_to_unmarked": 0.8102872158672367
+        },
+        ">=20": {
+          "options": 237,
+          "rate": 0.046413502109704644,
+          "relative_to_unmarked": 0.7222051969855501
+        }
+      },
+      "deferral": {
+        "best_marked": 0.007699711260827719,
+        "best_unmarked": 0.009950170350672869
+      },
+      "deferral_counts": {
+        "best_unmarked|decisions": 18591943,
+        "best_unmarked|off": 184993,
+        "best_marked|decisions": 40521,
+        "best_marked|off": 312
+      },
+      "pairs": {
+        "entry": 73899,
+        "both_new": 97148,
+        "victim_entry": 52108,
+        "co_residence": 41908
+      },
+      "yield_bins": {
+        "1": {
+          "ues": 1885,
+          "mean_violation_rate": 0.001066047745358087
+        },
+        "0": {
+          "ues": 2623,
+          "mean_violation_rate": 0.0001080823484559665
+        },
+        "11": {
+          "ues": 601,
+          "mean_violation_rate": 0.0017179700499168045
+        },
+        "101": {
+          "ues": 11,
+          "mean_violation_rate": 0.010227272727272727
+        }
+      },
+      "failing_share_by_snr_class": {
+        "10-20|class0": {
+          "ues": 860,
+          "failing": 0.0
+        },
+        "10-20|class1": {
+          "ues": 655,
+          "failing": 0.0
+        },
+        "0-10|class2": {
+          "ues": 279,
+          "failing": 0.021505376344086023
+        },
+        "0-10|class0": {
+          "ues": 350,
+          "failing": 0.19714285714285715
+        },
+        "0-10|class1": {
+          "ues": 259,
+          "failing": 0.0888030888030888
+        },
+        ">=20|class2": {
+          "ues": 634,
+          "failing": 0.0015772870662460567
+        },
+        ">=20|class0": {
+          "ues": 838,
+          "failing": 0.0
+        },
+        "10-20|class2": {
+          "ues": 623,
+          "failing": 0.0
+        },
+        ">=20|class1": {
+          "ues": 622,
+          "failing": 0.0
+        }
+      },
+      "bits_sent": 126446,
+      "bits_read": 99819
+    },
+    "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt|N=12": {
+      "episodes": 512,
+      "marked_choice": {
+        "10-20": {
+          "options": 14513,
+          "rate": 0.08916144146627161,
+          "relative_to_unmarked": 0.9491574357432887
+        },
+        "3-10": {
+          "options": 64849,
+          "rate": 0.20721984918811392,
+          "relative_to_unmarked": 1.1626344516735172
+        },
+        ">=20": {
+          "options": 982,
+          "rate": 0.06822810590631365,
+          "relative_to_unmarked": 0.7771660775500693
+        },
+        "<3": {
+          "options": 44723,
+          "rate": 0.30970641504371355,
+          "relative_to_unmarked": 0.7995590042796703
+        }
+      },
+      "deferral": {
+        "best_marked": 0.016001711921632033,
+        "best_unmarked": 0.016170971127276185
+      },
+      "deferral_counts": {
+        "best_unmarked|decisions": 23475028,
+        "best_unmarked|off": 379614,
+        "best_marked|decisions": 84116,
+        "best_marked|off": 1346
+      },
+      "pairs": {
+        "victim_entry": 152016,
+        "entry": 201495,
+        "co_residence": 131086,
+        "both_new": 275932
+      },
+      "yield_bins": {
+        "11": {
+          "ues": 1169,
+          "mean_violation_rate": 0.0032643284858853666
+        },
+        "1": {
+          "ues": 2722,
+          "mean_violation_rate": 0.0010940484937545893
+        },
+        "0": {
+          "ues": 2215,
+          "mean_violation_rate": 0.00016139954853273148
+        },
+        "101": {
+          "ues": 38,
+          "mean_violation_rate": 0.015092105263157898
+        }
+      },
+      "failing_share_by_snr_class": {
+        "10-20|class0": {
+          "ues": 860,
+          "failing": 0.002325581395348837
+        },
+        "10-20|class1": {
+          "ues": 891,
+          "failing": 0.0
+        },
+        "0-10|class2": {
+          "ues": 373,
+          "failing": 0.064343163538874
+        },
+        "0-10|class0": {
+          "ues": 350,
+          "failing": 0.34285714285714286
+        },
+        "0-10|class1": {
+          "ues": 348,
+          "failing": 0.14942528735632185
+        },
+        ">=20|class2": {
+          "ues": 827,
+          "failing": 0.0012091898428053204
+        },
+        ">=20|class0": {
+          "ues": 838,
+          "failing": 0.0
+        },
+        "10-20|class2": {
+          "ues": 848,
+          "failing": 0.0
+        },
+        ">=20|class1": {
+          "ues": 809,
+          "failing": 0.0
+        }
+      },
+      "bits_sent": 214257,
+      "bits_read": 160549
+    },
+    "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt|N=8": {
+      "episodes": 512,
+      "marked_choice": {
+        "<3": {
+          "options": 14987,
+          "rate": 0.2631614065523454,
+          "relative_to_unmarked": 0.8149133444929547
+        },
+        "3-10": {
+          "options": 6614,
+          "rate": 0.18173571212579376,
+          "relative_to_unmarked": 1.1932263191608228
+        },
+        "10-20": {
+          "options": 397,
+          "rate": 0.10327455919395466,
+          "relative_to_unmarked": 1.1804385325202982
+        },
+        ">=20": {
+          "options": 14,
+          "rate": 0.07142857142857142,
+          "relative_to_unmarked": 1.1337666786412182
+        }
+      },
+      "deferral": {
+        "best_marked": 0.00015508684863523573,
+        "best_unmarked": 0.0013175044075122708
+      },
+      "deferral_counts": {
+        "best_unmarked|decisions": 13423105,
+        "best_unmarked|off": 17685,
+        "best_marked|decisions": 12896,
+        "best_marked|off": 2
+      },
+      "pairs": {
+        "both_new": 11971,
+        "entry": 10466,
+        "victim_entry": 4714,
+        "co_residence": 1899
+      },
+      "yield_bins": {
+        "1": {
+          "ues": 1019,
+          "mean_violation_rate": 0.0007659470068694791
+        },
+        "0": {
+          "ues": 2909,
+          "mean_violation_rate": 7.408044001375047e-05
+        },
+        "11": {
+          "ues": 167,
+          "mean_violation_rate": 0.0003413173652694611
+        },
+        "101": {
+          "ues": 1,
+          "mean_violation_rate": 0.001
+        }
+      },
+      "failing_share_by_snr_class": {
+        "10-20|class0": {
+          "ues": 640,
+          "failing": 0.0
+        },
+        "10-20|class1": {
+          "ues": 655,
+          "failing": 0.0
+        },
+        "0-10|class2": {
+          "ues": 182,
+          "failing": 0.0
+        },
+        "0-10|class0": {
+          "ues": 266,
+          "failing": 0.07142857142857142
+        },
+        "0-10|class1": {
+          "ues": 259,
+          "failing": 0.011583011583011582
+        },
+        ">=20|class2": {
+          "ues": 417,
+          "failing": 0.0
+        },
+        ">=20|class0": {
+          "ues": 630,
+          "failing": 0.0
+        },
+        ">=20|class1": {
+          "ues": 622,
+          "failing": 0.0
+        },
+        "10-20|class2": {
+          "ues": 425,
+          "failing": 0.0
+        }
+      },
+      "bits_sent": 58478,
+      "bits_read": 50415
+    },
+    "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt|N=10": {
+      "episodes": 512,
+      "marked_choice": {
+        "<3": {
+          "options": 29829,
+          "rate": 0.2861644708169902,
+          "relative_to_unmarked": 0.821645718124314
+        },
+        "3-10": {
+          "options": 25662,
+          "rate": 0.2026732133115112,
+          "relative_to_unmarked": 1.183797530351599
+        },
+        "10-20": {
+          "options": 3007,
+          "rate": 0.11306950448952444,
+          "relative_to_unmarked": 1.0775161333141408
+        },
+        ">=20": {
+          "options": 156,
+          "rate": 0.16025641025641027,
+          "relative_to_unmarked": 1.8221821056103416
+        }
+      },
+      "deferral": {
+        "best_marked": 0.002693934302763455,
+        "best_unmarked": 0.004695315540455071
+      },
+      "deferral_counts": {
+        "best_unmarked|decisions": 17953213,
+        "best_unmarked|off": 84296,
+        "best_marked|decisions": 34522,
+        "best_marked|off": 93
+      },
+      "pairs": {
+        "both_new": 76083,
+        "entry": 56207,
+        "victim_entry": 30803,
+        "co_residence": 13106
+      },
+      "yield_bins": {
+        "1": {
+          "ues": 1897,
+          "mean_violation_rate": 0.0008579335793357893
+        },
+        "0": {
+          "ues": 2736,
+          "mean_violation_rate": 0.00012646198830409361
+        },
+        "11": {
+          "ues": 480,
+          "mean_violation_rate": 0.001461458333333333
+        },
+        "101": {
+          "ues": 7,
+          "mean_violation_rate": 0.0125
+        }
+      },
+      "failing_share_by_snr_class": {
+        "10-20|class0": {
+          "ues": 860,
+          "failing": 0.0
+        },
+        "10-20|class1": {
+          "ues": 655,
+          "failing": 0.0
+        },
+        "0-10|class2": {
+          "ues": 279,
+          "failing": 0.010752688172043012
+        },
+        "0-10|class0": {
+          "ues": 350,
+          "failing": 0.14285714285714285
+        },
+        "0-10|class1": {
+          "ues": 259,
+          "failing": 0.07335907335907337
+        },
+        ">=20|class2": {
+          "ues": 634,
+          "failing": 0.0
+        },
+        ">=20|class0": {
+          "ues": 838,
+          "failing": 0.0
+        },
+        "10-20|class2": {
+          "ues": 623,
+          "failing": 0.0
+        },
+        ">=20|class1": {
+          "ues": 622,
+          "failing": 0.0
+        }
+      },
+      "bits_sent": 118128,
+      "bits_read": 96388
+    },
+    "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt|N=12": {
+      "episodes": 512,
+      "marked_choice": {
+        "10-20": {
+          "options": 11821,
+          "rate": 0.1202097961255393,
+          "relative_to_unmarked": 1.0072800112168907
+        },
+        "3-10": {
+          "options": 61685,
+          "rate": 0.21546567236767447,
+          "relative_to_unmarked": 1.1670734297074796
+        },
+        "<3": {
+          "options": 43555,
+          "rate": 0.3093330272069797,
+          "relative_to_unmarked": 0.8285670878559208
+        },
+        ">=20": {
+          "options": 675,
+          "rate": 0.14222222222222222,
+          "relative_to_unmarked": 1.1989317448413173
+        }
+      },
+      "deferral": {
+        "best_marked": 0.01476867843446569,
+        "best_unmarked": 0.013651384117751799
+      },
+      "deferral_counts": {
+        "best_unmarked|decisions": 22706269,
+        "best_unmarked|off": 309972,
+        "best_marked|decisions": 73534,
+        "best_marked|off": 1086
+      },
+      "pairs": {
+        "victim_entry": 117419,
+        "entry": 179570,
+        "both_new": 244362,
+        "co_residence": 58083
+      },
+      "yield_bins": {
+        "1": {
+          "ues": 2844,
+          "mean_violation_rate": 0.0010226793248945105
+        },
+        "11": {
+          "ues": 1015,
+          "mean_violation_rate": 0.002791133004926099
+        },
+        "0": {
+          "ues": 2254,
+          "mean_violation_rate": 0.00022249334516415275
+        },
+        "101": {
+          "ues": 31,
+          "mean_violation_rate": 0.015693548387096773
+        }
+      },
+      "failing_share_by_snr_class": {
+        "10-20|class0": {
+          "ues": 860,
+          "failing": 0.0
+        },
+        "10-20|class1": {
+          "ues": 891,
+          "failing": 0.0
+        },
+        "0-10|class2": {
+          "ues": 373,
+          "failing": 0.05361930294906166
+        },
+        "0-10|class0": {
+          "ues": 350,
+          "failing": 0.2885714285714286
+        },
+        "0-10|class1": {
+          "ues": 348,
+          "failing": 0.14080459770114942
+        },
+        ">=20|class2": {
+          "ues": 827,
+          "failing": 0.0
+        },
+        ">=20|class0": {
+          "ues": 838,
+          "failing": 0.0
+        },
+        "10-20|class2": {
+          "ues": 848,
+          "failing": 0.0
+        },
+        ">=20|class1": {
+          "ues": 809,
+          "failing": 0.0
+        }
+      },
+      "bits_sent": 200161,
+      "bits_read": 153463
+    },
+    "marl:outputs/exp011/u-seed101/checkpoints/step-004001536.pt|N=10": {
+      "episodes": 512,
+      "marked_choice": {
+        "10-20": {
+          "options": 6043,
+          "rate": 0.05659440675161344,
+          "relative_to_unmarked": 0.3926674966357927
+        },
+        "3-10": {
+          "options": 45951,
+          "rate": 0.06811603664773346,
+          "relative_to_unmarked": 0.2945192289691051
+        },
+        "<3": {
+          "options": 34974,
+          "rate": 0.08283296162863842,
+          "relative_to_unmarked": 0.2497175316714416
+        },
+        ">=20": {
+          "options": 63,
+          "rate": 0.1111111111111111,
+          "relative_to_unmarked": 0.992160204328359
+        }
+      },
+      "deferral": {
+        "best_marked": 0.003524350054924936,
+        "best_unmarked": 0.0011438360644811724
+      },
+      "deferral_counts": {
+        "best_unmarked|decisions": 20255525,
+        "best_unmarked|off": 23169,
+        "best_marked|decisions": 65544,
+        "best_marked|off": 231
+      },
+      "pairs": {
+        "co_residence": 132465,
+        "entry": 109730,
+        "both_new": 73124,
+        "victim_entry": 70929
+      },
+      "yield_bins": {
+        "1": {
+          "ues": 1881,
+          "mean_violation_rate": 0.0009670388091440693
+        },
+        "0": {
+          "ues": 2114,
+          "mean_violation_rate": 9.366130558183543e-05
+        },
+        "11": {
+          "ues": 1068,
+          "mean_violation_rate": 0.0011975655430711595
+        },
+        "101": {
+          "ues": 57,
+          "mean_violation_rate": 0.00456140350877193
+        }
+      },
+      "failing_share_by_snr_class": {
+        "10-20|class0": {
+          "ues": 860,
+          "failing": 0.0
+        },
+        "10-20|class1": {
+          "ues": 655,
+          "failing": 0.0
+        },
+        "0-10|class2": {
+          "ues": 279,
+          "failing": 0.03942652329749104
+        },
+        "0-10|class0": {
+          "ues": 350,
+          "failing": 0.19142857142857142
+        },
+        "0-10|class1": {
+          "ues": 259,
+          "failing": 0.09266409266409266
+        },
+        ">=20|class2": {
+          "ues": 634,
+          "failing": 0.0
+        },
+        ">=20|class0": {
+          "ues": 838,
+          "failing": 0.0
+        },
+        "10-20|class2": {
+          "ues": 623,
+          "failing": 0.0
+        },
+        ">=20|class1": {
+          "ues": 622,
+          "failing": 0.0
+        }
+      },
+      "bits_sent": 163441,
+      "bits_read": 131934
+    },
+    "marl:outputs/exp011/u-seed101/checkpoints/step-005001472.pt|N=8": {
+      "episodes": 512,
+      "marked_choice": {
+        "<3": {
+          "options": 19308,
+          "rate": 0.04728609902631034,
+          "relative_to_unmarked": 0.1466279723503018
+        },
+        "3-10": {
+          "options": 8800,
+          "rate": 0.04988636363636364,
+          "relative_to_unmarked": 0.2761347277857247
+        },
+        "10-20": {
+          "options": 523,
+          "rate": 0.036328871892925434,
+          "relative_to_unmarked": 0.4112114742606495
+        },
+        ">=20": {
+          "options": 5,
+          "rate": 0.0,
+          "relative_to_unmarked": 0.0
+        }
+      },
+      "deferral": {
+        "best_marked": 0.04113533525298231,
+        "best_unmarked": 0.02520062909234366
+      },
+      "deferral_counts": {
+        "best_unmarked|decisions": 15107480,
+        "best_unmarked|off": 380718,
+        "best_marked|decisions": 21879,
+        "best_marked|off": 900
+      },
+      "pairs": {
+        "both_new": 11714,
+        "entry": 15039,
+        "victim_entry": 10387,
+        "co_residence": 8270
+      },
+      "yield_bins": {
+        "0": {
+          "ues": 2566,
+          "mean_violation_rate": 0.0003908807482462972
+        },
+        "1": {
+          "ues": 1079,
+          "mean_violation_rate": 0.0004508804448563486
+        },
+        "11": {
+          "ues": 434,
+          "mean_violation_rate": 0.002539170506912442
+        },
+        "101": {
+          "ues": 17,
+          "mean_violation_rate": 0.00011764705882352942
+        }
+      },
+      "failing_share_by_snr_class": {
+        "10-20|class0": {
+          "ues": 640,
+          "failing": 0.0
+        },
+        "10-20|class1": {
+          "ues": 655,
+          "failing": 0.0
+        },
+        "0-10|class2": {
+          "ues": 182,
+          "failing": 0.0
+        },
+        "0-10|class0": {
+          "ues": 266,
+          "failing": 0.07142857142857142
+        },
+        "0-10|class1": {
+          "ues": 259,
+          "failing": 0.023166023166023165
+        },
+        ">=20|class2": {
+          "ues": 417,
+          "failing": 0.007194244604316547
+        },
+        ">=20|class0": {
+          "ues": 630,
+          "failing": 0.0
+        },
+        ">=20|class1": {
+          "ues": 622,
+          "failing": 0.0
+        },
+        "10-20|class2": {
+          "ues": 425,
+          "failing": 0.0
+        }
+      },
+      "bits_sent": 68385,
+      "bits_read": 62484
+    },
+    "marl:outputs/exp011/u-seed101/checkpoints/step-005001472.pt|N=12": {
+      "episodes": 512,
+      "marked_choice": {
+        "10-20": {
+          "options": 12223,
+          "rate": 0.08753988382557473,
+          "relative_to_unmarked": 0.687648756016754
+        },
+        "3-10": {
+          "options": 82425,
+          "rate": 0.08451319381255687,
+          "relative_to_unmarked": 0.376757176312824
+        },
+        "<3": {
+          "options": 62963,
+          "rate": 0.08614583167892254,
+          "relative_to_unmarked": 0.23043989048496935
+        },
+        ">=20": {
+          "options": 158,
+          "rate": 0.08860759493670886,
+          "relative_to_unmarked": 0.8516588684237638
+        }
+      },
+      "deferral": {
+        "best_marked": 0.08443837095522488,
+        "best_unmarked": 0.04893878868318264
+      },
+      "deferral_counts": {
+        "best_unmarked|decisions": 26281382,
+        "best_unmarked|off": 1286179,
+        "best_marked|decisions": 118548,
+        "best_marked|off": 10010
+      },
+      "pairs": {
+        "both_new": 177771,
+        "victim_entry": 145517,
+        "entry": 177359,
+        "co_residence": 110194
+      },
+      "yield_bins": {
+        "11": {
+          "ues": 1725,
+          "mean_violation_rate": 0.00218173913043478
+        },
+        "1": {
+          "ues": 2353,
+          "mean_violation_rate": 0.0019060773480662966
+        },
+        "0": {
+          "ues": 1901,
+          "mean_violation_rate": 0.00018963703314045245
+        },
+        "101": {
+          "ues": 165,
+          "mean_violation_rate": 0.004596969696969696
+        }
+      },
+      "failing_share_by_snr_class": {
+        "10-20|class0": {
+          "ues": 860,
+          "failing": 0.0
+        },
+        "10-20|class1": {
+          "ues": 891,
+          "failing": 0.0
+        },
+        "0-10|class2": {
+          "ues": 373,
+          "failing": 0.03753351206434316
+        },
+        "0-10|class0": {
+          "ues": 350,
+          "failing": 0.2342857142857143
+        },
+        "0-10|class1": {
+          "ues": 348,
+          "failing": 0.10919540229885058
+        },
+        ">=20|class2": {
+          "ues": 827,
+          "failing": 0.015719467956469165
+        },
+        ">=20|class0": {
+          "ues": 838,
+          "failing": 0.0
+        },
+        "10-20|class2": {
+          "ues": 848,
+          "failing": 0.0
+        },
+        ">=20|class1": {
+          "ues": 809,
+          "failing": 0.0
+        }
+      },
+      "bits_sent": 216515,
+      "bits_read": 183444
+    },
+    "marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt|N=8": {
+      "episodes": 512,
+      "marked_choice": {
+        "<3": {
+          "options": 16550,
+          "rate": 0.055468277945619336,
+          "relative_to_unmarked": 0.18496862105987624
+        },
+        "3-10": {
+          "options": 7103,
+          "rate": 0.04828945515979164,
+          "relative_to_unmarked": 0.20719523104344578
+        },
+        "10-20": {
+          "options": 409,
+          "rate": 0.03667481662591687,
+          "relative_to_unmarked": 0.23430433445360033
+        },
+        ">=20": {
+          "options": 13,
+          "rate": 0.07692307692307693,
+          "relative_to_unmarked": 0.7039953595837486
+        }
+      },
+      "deferral": {
+        "best_marked": 0.0044825819672131145,
+        "best_unmarked": 0.001884601254914289
+      },
+      "deferral_counts": {
+        "best_unmarked|decisions": 13678225,
+        "best_unmarked|off": 25778,
+        "best_marked|decisions": 15616,
+        "best_marked|off": 70
+      },
+      "pairs": {
+        "entry": 10135,
+        "victim_entry": 4668,
+        "co_residence": 5391,
+        "both_new": 7211
+      },
+      "yield_bins": {
+        "1": {
+          "ues": 1034,
+          "mean_violation_rate": 0.0004453578336557062
+        },
+        "0": {
+          "ues": 2747,
+          "mean_violation_rate": 9.992719330178381e-05
+        },
+        "11": {
+          "ues": 313,
+          "mean_violation_rate": 0.0002891373801916933
+        },
+        "101": {
+          "ues": 2,
+          "mean_violation_rate": 0.0
+        }
+      },
+      "failing_share_by_snr_class": {
+        "10-20|class0": {
+          "ues": 640,
+          "failing": 0.0
+        },
+        "10-20|class1": {
+          "ues": 655,
+          "failing": 0.0
+        },
+        "0-10|class2": {
+          "ues": 182,
+          "failing": 0.0
+        },
+        "0-10|class0": {
+          "ues": 266,
+          "failing": 0.05639097744360902
+        },
+        "0-10|class1": {
+          "ues": 259,
+          "failing": 0.007722007722007722
+        },
+        ">=20|class2": {
+          "ues": 417,
+          "failing": 0.0
+        },
+        ">=20|class0": {
+          "ues": 630,
+          "failing": 0.0
+        },
+        ">=20|class1": {
+          "ues": 622,
+          "failing": 0.0
+        },
+        "10-20|class2": {
+          "ues": 425,
+          "failing": 0.0
+        }
+      },
+      "bits_sent": 60026,
+      "bits_read": 53150
+    },
+    "marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt|N=10": {
+      "episodes": 512,
+      "marked_choice": {
+        "3-10": {
+          "options": 28411,
+          "rate": 0.0582520854598571,
+          "relative_to_unmarked": 0.23710241436463758
+        },
+        "<3": {
+          "options": 32770,
+          "rate": 0.06878242294781813,
+          "relative_to_unmarked": 0.21824959170344457
+        },
+        "10-20": {
+          "options": 3023,
+          "rate": 0.052596758187231224,
+          "relative_to_unmarked": 0.307620431363389
+        },
+        ">=20": {
+          "options": 126,
+          "rate": 0.10317460317460317,
+          "relative_to_unmarked": 0.7638105184783884
+        }
+      },
+      "deferral": {
+        "best_marked": 0.005934497057582003,
+        "best_unmarked": 0.0031262265279835867
+      },
+      "deferral_counts": {
+        "best_unmarked|decisions": 18268030,
+        "best_unmarked|off": 57110,
+        "best_marked|decisions": 40273,
+        "best_marked|off": 239
+      },
+      "pairs": {
+        "victim_entry": 27296,
+        "entry": 51047,
+        "both_new": 45247,
+        "co_residence": 27223
+      },
+      "yield_bins": {
+        "1": {
+          "ues": 1769,
+          "mean_violation_rate": 0.0006681741096664769
+        },
+        "0": {
+          "ues": 2577,
+          "mean_violation_rate": 6.208769887466049e-05
+        },
+        "11": {
+          "ues": 749,
+          "mean_violation_rate": 0.0007102803738317762
+        },
+        "101": {
+          "ues": 25,
+          "mean_violation_rate": 0.00542
+        }
+      },
+      "failing_share_by_snr_class": {
+        "10-20|class0": {
+          "ues": 860,
+          "failing": 0.0
+        },
+        "10-20|class1": {
+          "ues": 655,
+          "failing": 0.0
+        },
+        "0-10|class2": {
+          "ues": 279,
+          "failing": 0.007168458781362007
+        },
+        "0-10|class0": {
+          "ues": 350,
+          "failing": 0.12285714285714286
+        },
+        "0-10|class1": {
+          "ues": 259,
+          "failing": 0.03861003861003861
+        },
+        ">=20|class2": {
+          "ues": 634,
+          "failing": 0.0
+        },
+        ">=20|class0": {
+          "ues": 838,
+          "failing": 0.0
+        },
+        "10-20|class2": {
+          "ues": 623,
+          "failing": 0.0
+        },
+        ">=20|class1": {
+          "ues": 622,
+          "failing": 0.0
+        }
+      },
+      "bits_sent": 119814,
+      "bits_read": 101281
+    },
+    "marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt|N=12": {
+      "episodes": 512,
+      "marked_choice": {
+        "10-20": {
+          "options": 13290,
+          "rate": 0.06305492851768246,
+          "relative_to_unmarked": 0.34434943987150635
+        },
+        "3-10": {
+          "options": 70883,
+          "rate": 0.06727988375209853,
+          "relative_to_unmarked": 0.26670414885854576
+        },
+        "<3": {
+          "options": 48621,
+          "rate": 0.08255691984944777,
+          "relative_to_unmarked": 0.24937504682066633
+        },
+        ">=20": {
+          "options": 545,
+          "rate": 0.08990825688073395,
+          "relative_to_unmarked": 0.5383596636130872
+        }
+      },
+      "deferral": {
+        "best_marked": 0.01270086633520597,
+        "best_unmarked": 0.006141722005171353
+      },
+      "deferral_counts": {
+        "best_unmarked|decisions": 23150999,
+        "best_unmarked|off": 142187,
+        "best_marked|decisions": 86687,
+        "best_marked|off": 1101
+      },
+      "pairs": {
+        "both_new": 174710,
+        "entry": 175126,
+        "victim_entry": 118204,
+        "co_residence": 103991
+      },
+      "yield_bins": {
+        "1": {
+          "ues": 2492,
+          "mean_violation_rate": 0.0008204253611556947
+        },
+        "11": {
+          "ues": 1413,
+          "mean_violation_rate": 0.0014918612880396277
+        },
+        "0": {
+          "ues": 2154,
+          "mean_violation_rate": 8.611884865366765e-05
+        },
+        "101": {
+          "ues": 85,
+          "mean_violation_rate": 0.008188235294117647
+        }
+      },
+      "failing_share_by_snr_class": {
+        "10-20|class0": {
+          "ues": 860,
+          "failing": 0.0
+        },
+        "10-20|class1": {
+          "ues": 891,
+          "failing": 0.0
+        },
+        "0-10|class2": {
+          "ues": 373,
+          "failing": 0.040214477211796246
+        },
+        "0-10|class0": {
+          "ues": 350,
+          "failing": 0.2742857142857143
+        },
+        "0-10|class1": {
+          "ues": 348,
+          "failing": 0.09195402298850575
+        },
+        ">=20|class2": {
+          "ues": 827,
+          "failing": 0.0
+        },
+        ">=20|class0": {
+          "ues": 838,
+          "failing": 0.0
+        },
+        "10-20|class2": {
+          "ues": 848,
+          "failing": 0.0
+        },
+        ">=20|class1": {
+          "ues": 809,
+          "failing": 0.0
+        }
+      },
+      "bits_sent": 207547,
+      "bits_read": 165417
+    },
+    "marl:outputs/exp011/u-seed303/checkpoints/step-005001472.pt|N=8": {
+      "episodes": 512,
+      "marked_choice": {
+        "<3": {
+          "options": 15963,
+          "rate": 0.08457056944183425,
+          "relative_to_unmarked": 0.2608359145991341
+        },
+        "3-10": {
+          "options": 8920,
+          "rate": 0.04809417040358745,
+          "relative_to_unmarked": 0.35817063771836166
+        },
+        ">=20": {
+          "options": 81,
+          "rate": 0.07407407407407407,
+          "relative_to_unmarked": 1.0720414435426415
+        },
+        "10-20": {
+          "options": 520,
+          "rate": 0.026923076923076925,
+          "relative_to_unmarked": 0.35659262966530336
+        }
+      },
+      "deferral": {
+        "best_marked": 0.0010346926354230068,
+        "best_unmarked": 0.001002553817032558
+      },
+      "deferral_counts": {
+        "best_unmarked|decisions": 13134457,
+        "best_unmarked|off": 13168,
+        "best_marked|decisions": 16430,
+        "best_marked|off": 17
+      },
+      "pairs": {
+        "victim_entry": 10011,
+        "both_new": 9186,
+        "entry": 9312,
+        "co_residence": 8372
+      },
+      "yield_bins": {
+        "1": {
+          "ues": 1138,
+          "mean_violation_rate": 0.0006133567662565904
+        },
+        "0": {
+          "ues": 2639,
+          "mean_violation_rate": 6.252368321333843e-05
+        },
+        "11": {
+          "ues": 316,
+          "mean_violation_rate": 0.000375
+        },
+        "101": {
+          "ues": 3,
+          "mean_violation_rate": 0.0
+        }
+      },
+      "failing_share_by_snr_class": {
+        "10-20|class0": {
+          "ues": 640,
+          "failing": 0.0
+        },
+        "10-20|class1": {
+          "ues": 655,
+          "failing": 0.0
+        },
+        "0-10|class2": {
+          "ues": 182,
+          "failing": 0.0
+        },
+        "0-10|class0": {
+          "ues": 266,
+          "failing": 0.07142857142857142
+        },
+        "0-10|class1": {
+          "ues": 259,
+          "failing": 0.019305019305019305
+        },
+        ">=20|class2": {
+          "ues": 417,
+          "failing": 0.0
+        },
+        ">=20|class0": {
+          "ues": 630,
+          "failing": 0.0
+        },
+        ">=20|class1": {
+          "ues": 622,
+          "failing": 0.0
+        },
+        "10-20|class2": {
+          "ues": 425,
+          "failing": 0.0
+        }
+      },
+      "bits_sent": 64796,
+      "bits_read": 56241
+    },
+    "marl:outputs/exp011/u-seed303/checkpoints/step-005001472.pt|N=10": {
+      "episodes": 512,
+      "marked_choice": {
+        "10-20": {
+          "options": 3826,
+          "rate": 0.04077365394668061,
+          "relative_to_unmarked": 0.45051541336667805
+        },
+        "3-10": {
+          "options": 29995,
+          "rate": 0.060776796132688785,
+          "relative_to_unmarked": 0.387423079177827
+        },
+        "<3": {
+          "options": 29807,
+          "rate": 0.10383466970845774,
+          "relative_to_unmarked": 0.29587957785734864
+        },
+        ">=20": {
+          "options": 445,
+          "rate": 0.07191011235955057,
+          "relative_to_unmarked": 0.8337305149616677
+        }
+      },
+      "deferral": {
+        "best_marked": 0.0033995171700251267,
+        "best_unmarked": 0.0023424101057807106
+      },
+      "deferral_counts": {
+        "best_unmarked|decisions": 17487971,
+        "best_unmarked|off": 40964,
+        "best_marked|decisions": 40594,
+        "best_marked|off": 138
+      },
+      "pairs": {
+        "victim_entry": 38644,
+        "both_new": 51524,
+        "co_residence": 37680,
+        "entry": 42595
+      },
+      "yield_bins": {
+        "1": {
+          "ues": 1915,
+          "mean_violation_rate": 0.0006318537859007808
+        },
+        "0": {
+          "ues": 2477,
+          "mean_violation_rate": 9.507468712151803e-05
+        },
+        "11": {
+          "ues": 702,
+          "mean_violation_rate": 0.0009366096866096866
+        },
+        "101": {
+          "ues": 26,
+          "mean_violation_rate": 0.006269230769230769
+        }
+      },
+      "failing_share_by_snr_class": {
+        "10-20|class0": {
+          "ues": 860,
+          "failing": 0.0
+        },
+        "10-20|class1": {
+          "ues": 655,
+          "failing": 0.0
+        },
+        "0-10|class2": {
+          "ues": 279,
+          "failing": 0.007168458781362007
+        },
+        "0-10|class0": {
+          "ues": 350,
+          "failing": 0.1457142857142857
+        },
+        "0-10|class1": {
+          "ues": 259,
+          "failing": 0.05791505791505792
+        },
+        ">=20|class2": {
+          "ues": 634,
+          "failing": 0.0
+        },
+        ">=20|class0": {
+          "ues": 838,
+          "failing": 0.0
+        },
+        "10-20|class2": {
+          "ues": 623,
+          "failing": 0.0
+        },
+        ">=20|class1": {
+          "ues": 622,
+          "failing": 0.0
+        }
+      },
+      "bits_sent": 122492,
+      "bits_read": 101462
+    },
+    "marl:outputs/exp011/u-seed303/checkpoints/step-005001472.pt|N=12": {
+      "episodes": 512,
+      "marked_choice": {
+        "10-20": {
+          "options": 15033,
+          "rate": 0.049158517927226766,
+          "relative_to_unmarked": 0.49283153779832206
+        },
+        "<3": {
+          "options": 42256,
+          "rate": 0.11972264293828096,
+          "relative_to_unmarked": 0.3135916317787418
+        },
+        "3-10": {
+          "options": 66754,
+          "rate": 0.06950894328429758,
+          "relative_to_unmarked": 0.3980124872460717
+        },
+        ">=20": {
+          "options": 1223,
+          "rate": 0.07031888798037612,
+          "relative_to_unmarked": 0.6813967579338936
+        }
+      },
+      "deferral": {
+        "best_marked": 0.014038727524204703,
+        "best_unmarked": 0.006372458193414861
+      },
+      "deferral_counts": {
+        "best_unmarked|decisions": 22047065,
+        "best_unmarked|off": 140494,
+        "best_marked|decisions": 86760,
+        "best_marked|off": 1218
+      },
+      "pairs": {
+        "both_new": 152243,
+        "victim_entry": 100540,
+        "entry": 124205,
+        "co_residence": 115643
+      },
+      "yield_bins": {
+        "11": {
+          "ues": 1373,
+          "mean_violation_rate": 0.0015251274581208985
+        },
+        "1": {
+          "ues": 2688,
+          "mean_violation_rate": 0.0008584449404761874
+        },
+        "0": {
+          "ues": 2013,
+          "mean_violation_rate": 0.00010109289617486343
+        },
+        "101": {
+          "ues": 70,
+          "mean_violation_rate": 0.0070357142857142875
+        }
+      },
+      "failing_share_by_snr_class": {
+        "10-20|class0": {
+          "ues": 860,
+          "failing": 0.0
+        },
+        "10-20|class1": {
+          "ues": 891,
+          "failing": 0.0
+        },
+        "0-10|class2": {
+          "ues": 373,
+          "failing": 0.024128686327077747
+        },
+        "0-10|class0": {
+          "ues": 350,
+          "failing": 0.26285714285714284
+        },
+        "0-10|class1": {
+          "ues": 348,
+          "failing": 0.11494252873563218
+        },
+        ">=20|class2": {
+          "ues": 827,
+          "failing": 0.0
+        },
+        ">=20|class0": {
+          "ues": 838,
+          "failing": 0.0
+        },
+        "10-20|class2": {
+          "ues": 848,
+          "failing": 0.0
+        },
+        ">=20|class1": {
+          "ues": 809,
+          "failing": 0.0
+        }
+      },
+      "bits_sent": 203151,
+      "bits_read": 160831
+    },
+    "yield[theta=-10]@marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt|N=8": {
+      "episodes": 512,
+      "marked_choice": {
+        "<3": {
+          "options": 17106,
+          "rate": 0.0,
+          "relative_to_unmarked": 0.0
+        },
+        "3-10": {
+          "options": 11505,
+          "rate": 0.0,
+          "relative_to_unmarked": 0.0
+        },
+        "10-20": {
+          "options": 891,
+          "rate": 0.0,
+          "relative_to_unmarked": 0.0
+        },
+        ">=20": {
+          "options": 44,
+          "rate": 0.0,
+          "relative_to_unmarked": 0.0
+        }
+      },
+      "deferral": {
+        "best_marked": 0.5134692246203038,
+        "best_unmarked": 0.0007047899263111738
+      },
+      "deferral_counts": {
+        "best_unmarked|decisions": 15726672,
+        "best_unmarked|off": 11084,
+        "best_marked|decisions": 25020,
+        "best_marked|off": 12847
+      },
+      "pairs": {
+        "victim_entry": 12503,
+        "entry": 24922,
+        "co_residence": 16759,
+        "both_new": 20336
+      },
+      "yield_bins": {
+        "1": {
+          "ues": 1333,
+          "mean_violation_rate": 0.0006395348837209297
+        },
+        "0": {
+          "ues": 2222,
+          "mean_violation_rate": 6.750675067506754e-05
+        },
+        "11": {
+          "ues": 517,
+          "mean_violation_rate": 0.0006344294003868474
+        },
+        "101": {
+          "ues": 24,
+          "mean_violation_rate": 0.0007083333333333334
+        }
+      },
+      "failing_share_by_snr_class": {
+        "10-20|class0": {
+          "ues": 640,
+          "failing": 0.0
+        },
+        "10-20|class1": {
+          "ues": 655,
+          "failing": 0.0
+        },
+        "0-10|class2": {
+          "ues": 182,
+          "failing": 0.01098901098901099
+        },
+        "0-10|class0": {
+          "ues": 266,
+          "failing": 0.08646616541353383
+        },
+        "0-10|class1": {
+          "ues": 259,
+          "failing": 0.03088803088803089
+        },
+        ">=20|class2": {
+          "ues": 417,
+          "failing": 0.0
+        },
+        ">=20|class0": {
+          "ues": 630,
+          "failing": 0.0
+        },
+        ">=20|class1": {
+          "ues": 622,
+          "failing": 0.0
+        },
+        "10-20|class2": {
+          "ues": 425,
+          "failing": 0.0
+        }
+      },
+      "bits_sent": 70291,
+      "bits_read": 60888
+    },
+    "yield[theta=-10]@marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt|N=10": {
+      "episodes": 512,
+      "marked_choice": {
+        "3-10": {
+          "options": 42473,
+          "rate": 0.0,
+          "relative_to_unmarked": 0.0
+        },
+        "<3": {
+          "options": 32900,
+          "rate": 0.0,
+          "relative_to_unmarked": 0.0
+        },
+        "10-20": {
+          "options": 5627,
+          "rate": 0.0,
+          "relative_to_unmarked": 0.0
+        },
+        ">=20": {
+          "options": 308,
+          "rate": 0.0,
+          "relative_to_unmarked": 0.0
+        }
+      },
+      "deferral": {
+        "best_marked": 0.5253981288676424,
+        "best_unmarked": 0.002524446113748301
+      },
+      "deferral_counts": {
+        "best_unmarked|decisions": 21278331,
+        "best_unmarked|off": 53716,
+        "best_marked|decisions": 68194,
+        "best_marked|off": 35829
+      },
+      "pairs": {
+        "entry": 91719,
+        "co_residence": 64829,
+        "both_new": 100866,
+        "victim_entry": 56505
+      },
+      "yield_bins": {
+        "1": {
+          "ues": 2177,
+          "mean_violation_rate": 0.0006118511713367005
+        },
+        "11": {
+          "ues": 1162,
+          "mean_violation_rate": 0.0012581755593803756
+        },
+        "0": {
+          "ues": 1677,
+          "mean_violation_rate": 0.00010107334525939182
+        },
+        "101": {
+          "ues": 104,
+          "mean_violation_rate": 0.004216346153846155
+        }
+      },
+      "failing_share_by_snr_class": {
+        "10-20|class0": {
+          "ues": 860,
+          "failing": 0.0
+        },
+        "10-20|class1": {
+          "ues": 655,
+          "failing": 0.0
+        },
+        "0-10|class2": {
+          "ues": 279,
+          "failing": 0.021505376344086023
+        },
+        "0-10|class0": {
+          "ues": 350,
+          "failing": 0.16857142857142857
+        },
+        "0-10|class1": {
+          "ues": 259,
+          "failing": 0.08494208494208494
+        },
+        ">=20|class2": {
+          "ues": 634,
+          "failing": 0.0
+        },
+        ">=20|class0": {
+          "ues": 838,
+          "failing": 0.0
+        },
+        "10-20|class2": {
+          "ues": 623,
+          "failing": 0.0
+        },
+        ">=20|class1": {
+          "ues": 622,
+          "failing": 0.0
+        }
+      },
+      "bits_sent": 145842,
+      "bits_read": 121652
+    },
+    "yield[theta=-10]@marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt|N=12": {
+      "episodes": 512,
+      "marked_choice": {
+        "3-10": {
+          "options": 101731,
+          "rate": 0.0,
+          "relative_to_unmarked": 0.0
+        },
+        "<3": {
+          "options": 47707,
+          "rate": 0.0,
+          "relative_to_unmarked": 0.0
+        },
+        "10-20": {
+          "options": 22173,
+          "rate": 0.0,
+          "relative_to_unmarked": 0.0
+        },
+        ">=20": {
+          "options": 1180,
+          "rate": 0.0,
+          "relative_to_unmarked": 0.0
+        }
+      },
+      "deferral": {
+        "best_marked": 0.5261762315287346,
+        "best_unmarked": 0.006756370891142532
+      },
+      "deferral_counts": {
+        "best_unmarked|decisions": 27421674,
+        "best_unmarked|off": 185271,
+        "best_marked|decisions": 150098,
+        "best_marked|off": 78978
+      },
+      "pairs": {
+        "victim_entry": 184755,
+        "entry": 260287,
+        "co_residence": 202575,
+        "both_new": 319775
+      },
+      "yield_bins": {
+        "11": {
+          "ues": 2088,
+          "mean_violation_rate": 0.001981561302681984
+        },
+        "1": {
+          "ues": 2640,
+          "mean_violation_rate": 0.0005818181818181794
+        },
+        "0": {
+          "ues": 1095,
+          "mean_violation_rate": 7.351598173515984e-05
+        },
+        "101": {
+          "ues": 321,
+          "mean_violation_rate": 0.006633956386292831
+        }
+      },
+      "failing_share_by_snr_class": {
+        "10-20|class0": {
+          "ues": 860,
+          "failing": 0.0
+        },
+        "10-20|class1": {
+          "ues": 891,
+          "failing": 0.0
+        },
+        "0-10|class2": {
+          "ues": 373,
+          "failing": 0.06702412868632708
+        },
+        "0-10|class0": {
+          "ues": 350,
+          "failing": 0.31142857142857144
+        },
+        "0-10|class1": {
+          "ues": 348,
+          "failing": 0.14080459770114942
+        },
+        ">=20|class2": {
+          "ues": 827,
+          "failing": 0.0
+        },
+        ">=20|class0": {
+          "ues": 838,
+          "failing": 0.0
+        },
+        "10-20|class2": {
+          "ues": 848,
+          "failing": 0.0
+        },
+        ">=20|class1": {
+          "ues": 809,
+          "failing": 0.0
+        }
+      },
+      "bits_sent": 258964,
+      "bits_read": 206179
+    },
+    "yield[theta=-10]@marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt|N=8": {
+      "episodes": 512,
+      "marked_choice": {
+        "<3": {
+          "options": 14943,
+          "rate": 0.0,
+          "relative_to_unmarked": 0.0
+        },
+        "3-10": {
+          "options": 7922,
+          "rate": 0.0,
+          "relative_to_unmarked": 0.0
+        },
+        "10-20": {
+          "options": 688,
+          "rate": 0.0,
+          "relative_to_unmarked": 0.0
+        },
+        ">=20": {
+          "options": 33,
+          "rate": 0.0,
+          "relative_to_unmarked": 0.0
+        }
+      },
+      "deferral": {
+        "best_marked": 0.40160766733652803,
+        "best_unmarked": 0.0073298831631022675
+      },
+      "deferral_counts": {
+        "best_unmarked|decisions": 14028873,
+        "best_unmarked|off": 102830,
+        "best_marked|decisions": 19407,
+        "best_marked|off": 7794
+      },
+      "pairs": {
+        "both_new": 13149,
+        "entry": 11642,
+        "victim_entry": 7406,
+        "co_residence": 6797
+      },
+      "yield_bins": {
+        "1": {
+          "ues": 1101,
+          "mean_violation_rate": 0.0005994550408719345
+        },
+        "0": {
+          "ues": 2555,
+          "mean_violation_rate": 8.356164383561648e-05
+        },
+        "11": {
+          "ues": 427,
+          "mean_violation_rate": 0.00033021077283372377
+        },
+        "101": {
+          "ues": 13,
+          "mean_violation_rate": 0.0006538461538461539
+        }
+      },
+      "failing_share_by_snr_class": {
+        "10-20|class0": {
+          "ues": 640,
+          "failing": 0.0
+        },
+        "10-20|class1": {
+          "ues": 655,
+          "failing": 0.0
+        },
+        "0-10|class2": {
+          "ues": 182,
+          "failing": 0.0
+        },
+        "0-10|class0": {
+          "ues": 266,
+          "failing": 0.06015037593984962
+        },
+        "0-10|class1": {
+          "ues": 259,
+          "failing": 0.02702702702702703
+        },
+        ">=20|class2": {
+          "ues": 417,
+          "failing": 0.002398081534772182
+        },
+        ">=20|class0": {
+          "ues": 630,
+          "failing": 0.0
+        },
+        ">=20|class1": {
+          "ues": 622,
+          "failing": 0.0
+        },
+        "10-20|class2": {
+          "ues": 425,
+          "failing": 0.0
+        }
+      },
+      "bits_sent": 63385,
+      "bits_read": 54743
+    },
+    "yield[theta=-10]@marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt|N=10": {
+      "episodes": 512,
+      "marked_choice": {
+        "3-10": {
+          "options": 28825,
+          "rate": 0.0,
+          "relative_to_unmarked": 0.0
+        },
+        "<3": {
+          "options": 29349,
+          "rate": 0.0,
+          "relative_to_unmarked": 0.0
+        },
+        ">=20": {
+          "options": 280,
+          "rate": 0.0,
+          "relative_to_unmarked": 0.0
+        },
+        "10-20": {
+          "options": 3884,
+          "rate": 0.0,
+          "relative_to_unmarked": 0.0
+        }
+      },
+      "deferral": {
+        "best_marked": 0.4234584477264985,
+        "best_unmarked": 0.010617549647357985
+      },
+      "deferral_counts": {
+        "best_unmarked|decisions": 18621434,
+        "best_unmarked|off": 197714,
+        "best_marked|decisions": 49901,
+        "best_marked|off": 21131
+      },
+      "pairs": {
+        "entry": 52881,
+        "both_new": 77746,
+        "victim_entry": 38072,
+        "co_residence": 30405
+      },
+      "yield_bins": {
+        "1": {
+          "ues": 1822,
+          "mean_violation_rate": 0.0006569703622392952
+        },
+        "0": {
+          "ues": 2253,
+          "mean_violation_rate": 8.921438082556595e-05
+        },
+        "11": {
+          "ues": 987,
+          "mean_violation_rate": 0.0008267477203647413
+        },
+        "101": {
+          "ues": 58,
+          "mean_violation_rate": 0.003275862068965518
+        }
+      },
+      "failing_share_by_snr_class": {
+        "10-20|class0": {
+          "ues": 860,
+          "failing": 0.0
+        },
+        "10-20|class1": {
+          "ues": 655,
+          "failing": 0.0
+        },
+        "0-10|class2": {
+          "ues": 279,
+          "failing": 0.014336917562724014
+        },
+        "0-10|class0": {
+          "ues": 350,
+          "failing": 0.13714285714285715
+        },
+        "0-10|class1": {
+          "ues": 259,
+          "failing": 0.06563706563706563
+        },
+        ">=20|class2": {
+          "ues": 634,
+          "failing": 0.0015772870662460567
+        },
+        ">=20|class0": {
+          "ues": 838,
+          "failing": 0.0
+        },
+        "10-20|class2": {
+          "ues": 623,
+          "failing": 0.0
+        },
+        ">=20|class1": {
+          "ues": 622,
+          "failing": 0.0
+        }
+      },
+      "bits_sent": 126597,
+      "bits_read": 105320
+    },
+    "yield[theta=-10]@marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt|N=12": {
+      "episodes": 512,
+      "marked_choice": {
+        "10-20": {
+          "options": 14805,
+          "rate": 0.0,
+          "relative_to_unmarked": 0.0
+        },
+        "<3": {
+          "options": 42117,
+          "rate": 0.0,
+          "relative_to_unmarked": 0.0
+        },
+        "3-10": {
+          "options": 67379,
+          "rate": 0.0,
+          "relative_to_unmarked": 0.0
+        },
+        ">=20": {
+          "options": 997,
+          "rate": 0.0,
+          "relative_to_unmarked": 0.0
+        }
+      },
+      "deferral": {
+        "best_marked": 0.43386739961118187,
+        "best_unmarked": 0.017345781353583348
+      },
+      "deferral_counts": {
+        "best_unmarked|decisions": 23549876,
+        "best_unmarked|off": 408491,
+        "best_marked|decisions": 104419,
+        "best_marked|off": 45304
+      },
+      "pairs": {
+        "victim_entry": 120709,
+        "entry": 154316,
+        "both_new": 235261,
+        "co_residence": 100388
+      },
+      "yield_bins": {
+        "11": {
+          "ues": 1716,
+          "mean_violation_rate": 0.0014991258741258705
+        },
+        "1": {
+          "ues": 2421,
+          "mean_violation_rate": 0.0007610491532424596
+        },
+        "0": {
+          "ues": 1831,
+          "mean_violation_rate": 6.744948115783727e-05
+        },
+        "101": {
+          "ues": 176,
+          "mean_violation_rate": 0.006017045454545453
+        }
+      },
+      "failing_share_by_snr_class": {
+        "10-20|class0": {
+          "ues": 860,
+          "failing": 0.002325581395348837
+        },
+        "10-20|class1": {
+          "ues": 891,
+          "failing": 0.0
+        },
+        "0-10|class2": {
+          "ues": 373,
+          "failing": 0.058981233243967826
+        },
+        "0-10|class0": {
+          "ues": 350,
+          "failing": 0.2571428571428571
+        },
+        "0-10|class1": {
+          "ues": 348,
+          "failing": 0.10919540229885058
+        },
+        ">=20|class2": {
+          "ues": 827,
+          "failing": 0.0012091898428053204
+        },
+        ">=20|class0": {
+          "ues": 838,
+          "failing": 0.0
+        },
+        "10-20|class2": {
+          "ues": 848,
+          "failing": 0.0
+        },
+        ">=20|class1": {
+          "ues": 809,
+          "failing": 0.0
+        }
+      },
+      "bits_sent": 216614,
+      "bits_read": 172165
+    },
+    "yield[theta=-10]@marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt|N=8": {
+      "episodes": 512,
+      "marked_choice": {
+        "<3": {
+          "options": 14168,
+          "rate": 0.0,
+          "relative_to_unmarked": 0.0
+        },
+        "3-10": {
+          "options": 6297,
+          "rate": 0.0,
+          "relative_to_unmarked": 0.0
+        },
+        "10-20": {
+          "options": 365,
+          "rate": 0.0,
+          "relative_to_unmarked": 0.0
+        },
+        ">=20": {
+          "options": 44,
+          "rate": 0.0,
+          "relative_to_unmarked": 0.0
+        }
+      },
+      "deferral": {
+        "best_marked": 0.4449679287052279,
+        "best_unmarked": 0.0016367802740501227
+      },
+      "deferral_counts": {
+        "best_unmarked|decisions": 13430025,
+        "best_unmarked|off": 21982,
+        "best_marked|decisions": 17617,
+        "best_marked|off": 7839
+      },
+      "pairs": {
+        "victim_entry": 3118,
+        "entry": 6920,
+        "co_residence": 1202,
+        "both_new": 9214
+      },
+      "yield_bins": {
+        "1": {
+          "ues": 963,
+          "mean_violation_rate": 0.0004620976116303221
+        },
+        "0": {
+          "ues": 2706,
+          "mean_violation_rate": 4.93348115299335e-05
+        },
+        "11": {
+          "ues": 418,
+          "mean_violation_rate": 0.0002679425837320575
+        },
+        "101": {
+          "ues": 9,
+          "mean_violation_rate": 0.0
+        }
+      },
+      "failing_share_by_snr_class": {
+        "10-20|class0": {
+          "ues": 640,
+          "failing": 0.0
+        },
+        "10-20|class1": {
+          "ues": 655,
+          "failing": 0.0
+        },
+        "0-10|class2": {
+          "ues": 182,
+          "failing": 0.0
+        },
+        "0-10|class0": {
+          "ues": 266,
+          "failing": 0.045112781954887216
+        },
+        "0-10|class1": {
+          "ues": 259,
+          "failing": 0.007722007722007722
+        },
+        ">=20|class2": {
+          "ues": 417,
+          "failing": 0.0
+        },
+        ">=20|class0": {
+          "ues": 630,
+          "failing": 0.0
+        },
+        ">=20|class1": {
+          "ues": 622,
+          "failing": 0.0
+        },
+        "10-20|class2": {
+          "ues": 425,
+          "failing": 0.0
+        }
+      },
+      "bits_sent": 57297,
+      "bits_read": 52122
+    },
+    "yield[theta=-10]@marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt|N=10": {
+      "episodes": 512,
+      "marked_choice": {
+        "<3": {
+          "options": 28141,
+          "rate": 0.0,
+          "relative_to_unmarked": 0.0
+        },
+        "3-10": {
+          "options": 25772,
+          "rate": 0.0,
+          "relative_to_unmarked": 0.0
+        },
+        "10-20": {
+          "options": 3124,
+          "rate": 0.0,
+          "relative_to_unmarked": 0.0
+        },
+        ">=20": {
+          "options": 245,
+          "rate": 0.0,
+          "relative_to_unmarked": 0.0
+        }
+      },
+      "deferral": {
+        "best_marked": 0.46498983195975596,
+        "best_unmarked": 0.005386131187644763
+      },
+      "deferral_counts": {
+        "best_unmarked|decisions": 17982852,
+        "best_unmarked|off": 96858,
+        "best_marked|decisions": 46715,
+        "best_marked|off": 21722
+      },
+      "pairs": {
+        "entry": 33346,
+        "both_new": 56592,
+        "victim_entry": 19785,
+        "co_residence": 7523
+      },
+      "yield_bins": {
+        "1": {
+          "ues": 1786,
+          "mean_violation_rate": 0.0004918812989921599
+        },
+        "0": {
+          "ues": 2340,
+          "mean_violation_rate": 6.410256410256413e-05
+        },
+        "11": {
+          "ues": 938,
+          "mean_violation_rate": 0.0007105543710021322
+        },
+        "101": {
+          "ues": 56,
+          "mean_violation_rate": 0.0026071428571428574
+        }
+      },
+      "failing_share_by_snr_class": {
+        "10-20|class0": {
+          "ues": 860,
+          "failing": 0.0
+        },
+        "10-20|class1": {
+          "ues": 655,
+          "failing": 0.0
+        },
+        "0-10|class2": {
+          "ues": 279,
+          "failing": 0.010752688172043012
+        },
+        "0-10|class0": {
+          "ues": 350,
+          "failing": 0.10857142857142857
+        },
+        "0-10|class1": {
+          "ues": 259,
+          "failing": 0.019305019305019305
+        },
+        ">=20|class2": {
+          "ues": 634,
+          "failing": 0.0
+        },
+        ">=20|class0": {
+          "ues": 838,
+          "failing": 0.0
+        },
+        "10-20|class2": {
+          "ues": 623,
+          "failing": 0.0
+        },
+        ">=20|class1": {
+          "ues": 622,
+          "failing": 0.0
+        }
+      },
+      "bits_sent": 117951,
+      "bits_read": 102321
+    },
+    "yield[theta=-10]@marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt|N=12": {
+      "episodes": 512,
+      "marked_choice": {
+        "10-20": {
+          "options": 11936,
+          "rate": 0.0,
+          "relative_to_unmarked": 0.0
+        },
+        "3-10": {
+          "options": 64071,
+          "rate": 0.0,
+          "relative_to_unmarked": 0.0
+        },
+        "<3": {
+          "options": 41277,
+          "rate": 0.0,
+          "relative_to_unmarked": 0.0
+        },
+        ">=20": {
+          "options": 926,
+          "rate": 0.0,
+          "relative_to_unmarked": 0.0
+        }
+      },
+      "deferral": {
+        "best_marked": 0.4737596847241852,
+        "best_unmarked": 0.014894635973240937
+      },
+      "deferral_counts": {
+        "best_unmarked|decisions": 22760140,
+        "best_unmarked|off": 339004,
+        "best_marked|decisions": 96931,
+        "best_marked|off": 45922
+      },
+      "pairs": {
+        "victim_entry": 76772,
+        "both_new": 178582,
+        "entry": 106133,
+        "co_residence": 33747
+      },
+      "yield_bins": {
+        "11": {
+          "ues": 1667,
+          "mean_violation_rate": 0.0012897420515896778
+        },
+        "1": {
+          "ues": 2518,
+          "mean_violation_rate": 0.0006040508339952312
+        },
+        "0": {
+          "ues": 1814,
+          "mean_violation_rate": 0.00011273428886438816
+        },
+        "101": {
+          "ues": 145,
+          "mean_violation_rate": 0.005851724137931032
+        }
+      },
+      "failing_share_by_snr_class": {
+        "10-20|class0": {
+          "ues": 860,
+          "failing": 0.0
+        },
+        "10-20|class1": {
+          "ues": 891,
+          "failing": 0.0
+        },
+        "0-10|class2": {
+          "ues": 373,
+          "failing": 0.0160857908847185
+        },
+        "0-10|class0": {
+          "ues": 350,
+          "failing": 0.19142857142857142
+        },
+        "0-10|class1": {
+          "ues": 348,
+          "failing": 0.08620689655172414
+        },
+        ">=20|class2": {
+          "ues": 827,
+          "failing": 0.0
+        },
+        ">=20|class0": {
+          "ues": 838,
+          "failing": 0.0
+        },
+        "10-20|class2": {
+          "ues": 848,
+          "failing": 0.0
+        },
+        ">=20|class1": {
+          "ues": 809,
+          "failing": 0.0
+        }
+      },
+      "bits_sent": 202789,
+      "bits_read": 167315
+    }
+  }
+}

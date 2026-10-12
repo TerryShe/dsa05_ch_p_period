@@ -1,0 +1,1955 @@
+{
+  "plan": {
+    "groups": {
+      "U": [
+        {
+          "6": "marl:outputs/exp011/u-seed101/checkpoints/step-005001472.pt",
+          "8": "marl:outputs/exp011/u-seed101/checkpoints/step-005001472.pt",
+          "10": "marl:outputs/exp011/u-seed101/checkpoints/step-004001536.pt",
+          "12": "marl:outputs/exp011/u-seed101/checkpoints/step-005001472.pt",
+          "16": "marl:outputs/exp011/u-seed101/checkpoints/step-005001472.pt"
+        },
+        {
+          "6": "marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt",
+          "8": "marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt",
+          "10": "marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt",
+          "12": "marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt",
+          "16": "marl:outputs/exp011/u-seed202/checkpoints/step-005001472.pt"
+        },
+        {
+          "6": "marl:outputs/exp011/u-seed303/checkpoints/step-004001536.pt",
+          "8": "marl:outputs/exp011/u-seed303/checkpoints/step-005001472.pt",
+          "10": "marl:outputs/exp011/u-seed303/checkpoints/step-005001472.pt",
+          "12": "marl:outputs/exp011/u-seed303/checkpoints/step-005001472.pt",
+          "16": "marl:outputs/exp011/u-seed303/checkpoints/step-004001536.pt"
+        }
+      ],
+      "M": [
+        {
+          "6": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+          "8": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+          "10": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+          "12": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+          "16": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt"
+        },
+        {
+          "6": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+          "8": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+          "10": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+          "12": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+          "16": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-003001600.pt"
+        },
+        {
+          "6": "marl:outputs/exp009-final/s1-seed303/checkpoints/step-003001600.pt",
+          "8": "marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt",
+          "10": "marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt",
+          "12": "marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt",
+          "16": "marl:outputs/exp009-final/s1-seed303/checkpoints/step-003001600.pt"
+        }
+      ],
+      "M+Y": [
+        {
+          "6": "yield[theta=-10]@marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+          "8": "yield[theta=-10]@marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+          "10": "yield[theta=-10]@marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+          "12": "yield[theta=-10]@marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+          "16": "yield[theta=-10]@marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt"
+        },
+        {
+          "6": "yield[theta=-10]@marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+          "8": "yield[theta=-10]@marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+          "10": "yield[theta=-10]@marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+          "12": "yield[theta=-10]@marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+          "16": "yield[theta=-10]@marl:outputs/exp009-step2/s1-seed202/checkpoints/step-003001600.pt"
+        },
+        {
+          "6": "yield[theta=-10]@marl:outputs/exp009-final/s1-seed303/checkpoints/step-003001600.pt",
+          "8": "yield[theta=-10]@marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt",
+          "10": "yield[theta=-10]@marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt",
+          "12": "yield[theta=-10]@marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt",
+          "16": "yield[theta=-10]@marl:outputs/exp009-final/s1-seed303/checkpoints/step-003001600.pt"
+        }
+      ],
+      "O": [
+        {
+          "6": "marl:outputs/exp011/o-seed101/checkpoints/step-004001536.pt",
+          "8": "marl:outputs/exp011/o-seed101/checkpoints/step-004001536.pt",
+          "10": "marl:outputs/exp011/o-seed101/checkpoints/step-004001536.pt",
+          "12": "marl:outputs/exp011/o-seed101/checkpoints/step-005001472.pt",
+          "16": "marl:outputs/exp011/o-seed101/checkpoints/step-004001536.pt"
+        },
+        {
+          "6": "marl:outputs/exp011/o-seed202/checkpoints/step-005001472.pt",
+          "8": "marl:outputs/exp011/o-seed202/checkpoints/step-005001472.pt",
+          "10": "marl:outputs/exp011/o-seed202/checkpoints/step-005001472.pt",
+          "12": "marl:outputs/exp011/o-seed202/checkpoints/step-005001472.pt",
+          "16": "marl:outputs/exp011/o-seed202/checkpoints/step-005001472.pt"
+        },
+        {
+          "6": "marl:outputs/exp011/o-seed303/checkpoints/step-003001600.pt",
+          "8": "marl:outputs/exp011/o-seed303/checkpoints/step-005001472.pt",
+          "10": "marl:outputs/exp011/o-seed303/checkpoints/step-005001472.pt",
+          "12": "marl:outputs/exp011/o-seed303/checkpoints/step-004001536.pt",
+          "16": "marl:outputs/exp011/o-seed303/checkpoints/step-004001536.pt"
+        }
+      ],
+      "L": [
+        {
+          "6": "marl:outputs/exp011/l-seed101/checkpoints/step-004001536.pt",
+          "8": "marl:outputs/exp011/l-seed101/checkpoints/step-004001536.pt",
+          "10": "marl:outputs/exp011/l-seed101/checkpoints/step-004001536.pt",
+          "12": "marl:outputs/exp011/l-seed101/checkpoints/step-004001536.pt",
+          "16": "marl:outputs/exp011/l-seed101/checkpoints/step-004001536.pt"
+        },
+        {
+          "6": "marl:outputs/exp011/l-seed202/checkpoints/step-005001472.pt",
+          "8": "marl:outputs/exp011/l-seed202/checkpoints/step-005001472.pt",
+          "10": "marl:outputs/exp011/l-seed202/checkpoints/step-005001472.pt",
+          "12": "marl:outputs/exp011/l-seed202/checkpoints/step-005001472.pt",
+          "16": "marl:outputs/exp011/l-seed202/checkpoints/step-004001536.pt"
+        },
+        {
+          "6": "marl:outputs/exp011/l-seed303/checkpoints/step-005001472.pt",
+          "8": "marl:outputs/exp011/l-seed303/checkpoints/step-005001472.pt",
+          "10": "marl:outputs/exp011/l-seed303/checkpoints/step-005001472.pt",
+          "12": "marl:outputs/exp011/l-seed303/checkpoints/step-005001472.pt",
+          "16": "marl:outputs/exp011/l-seed303/checkpoints/step-005001472.pt"
+        }
+      ],
+      "U-hide-all": [
+        {
+          "6": "summary[hide=all]@marl:outputs/exp011/u-seed101/checkpoints/step-005001472.pt",
+          "8": "summary[hide=all]@marl:outputs/exp011/u-seed101/checkpoints/step-005001472.pt",
+          "10": "summary[hide=all]@marl:outputs/exp011/u-seed101/checkpoints/step-004001536.pt",
+          "12": "summary[hide=all]@marl:outputs/exp011/u-seed101/checkpoints/step-005001472.pt",
+          "16": "summary[hide=all]@marl:outputs/exp011/u-seed101/checkpoints/step-005001472.pt"
+        },
+        {
+          "6": "summary[hide=all]@marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt",
+          "8": "summary[hide=all]@marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt",
+          "10": "summary[hide=all]@marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt",
+          "12": "summary[hide=all]@marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt",
+          "16": "summary[hide=all]@marl:outputs/exp011/u-seed202/checkpoints/step-005001472.pt"
+        },
+        {
+          "6": "summary[hide=all]@marl:outputs/exp011/u-seed303/checkpoints/step-004001536.pt",
+          "8": "summary[hide=all]@marl:outputs/exp011/u-seed303/checkpoints/step-005001472.pt",
+          "10": "summary[hide=all]@marl:outputs/exp011/u-seed303/checkpoints/step-005001472.pt",
+          "12": "summary[hide=all]@marl:outputs/exp011/u-seed303/checkpoints/step-005001472.pt",
+          "16": "summary[hide=all]@marl:outputs/exp011/u-seed303/checkpoints/step-004001536.pt"
+        }
+      ],
+      "U-hide-nonurgent": [
+        {
+          "6": "summary[hide=nonurgent]@marl:outputs/exp011/u-seed101/checkpoints/step-005001472.pt",
+          "8": "summary[hide=nonurgent]@marl:outputs/exp011/u-seed101/checkpoints/step-005001472.pt",
+          "10": "summary[hide=nonurgent]@marl:outputs/exp011/u-seed101/checkpoints/step-004001536.pt",
+          "12": "summary[hide=nonurgent]@marl:outputs/exp011/u-seed101/checkpoints/step-005001472.pt",
+          "16": "summary[hide=nonurgent]@marl:outputs/exp011/u-seed101/checkpoints/step-005001472.pt"
+        },
+        {
+          "6": "summary[hide=nonurgent]@marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt",
+          "8": "summary[hide=nonurgent]@marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt",
+          "10": "summary[hide=nonurgent]@marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt",
+          "12": "summary[hide=nonurgent]@marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt",
+          "16": "summary[hide=nonurgent]@marl:outputs/exp011/u-seed202/checkpoints/step-005001472.pt"
+        },
+        {
+          "6": "summary[hide=nonurgent]@marl:outputs/exp011/u-seed303/checkpoints/step-004001536.pt",
+          "8": "summary[hide=nonurgent]@marl:outputs/exp011/u-seed303/checkpoints/step-005001472.pt",
+          "10": "summary[hide=nonurgent]@marl:outputs/exp011/u-seed303/checkpoints/step-005001472.pt",
+          "12": "summary[hide=nonurgent]@marl:outputs/exp011/u-seed303/checkpoints/step-005001472.pt",
+          "16": "summary[hide=nonurgent]@marl:outputs/exp011/u-seed303/checkpoints/step-004001536.pt"
+        }
+      ],
+      "U-hide-urgent": [
+        {
+          "6": "summary[hide=urgent]@marl:outputs/exp011/u-seed101/checkpoints/step-005001472.pt",
+          "8": "summary[hide=urgent]@marl:outputs/exp011/u-seed101/checkpoints/step-005001472.pt",
+          "10": "summary[hide=urgent]@marl:outputs/exp011/u-seed101/checkpoints/step-004001536.pt",
+          "12": "summary[hide=urgent]@marl:outputs/exp011/u-seed101/checkpoints/step-005001472.pt",
+          "16": "summary[hide=urgent]@marl:outputs/exp011/u-seed101/checkpoints/step-005001472.pt"
+        },
+        {
+          "6": "summary[hide=urgent]@marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt",
+          "8": "summary[hide=urgent]@marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt",
+          "10": "summary[hide=urgent]@marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt",
+          "12": "summary[hide=urgent]@marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt",
+          "16": "summary[hide=urgent]@marl:outputs/exp011/u-seed202/checkpoints/step-005001472.pt"
+        },
+        {
+          "6": "summary[hide=urgent]@marl:outputs/exp011/u-seed303/checkpoints/step-004001536.pt",
+          "8": "summary[hide=urgent]@marl:outputs/exp011/u-seed303/checkpoints/step-005001472.pt",
+          "10": "summary[hide=urgent]@marl:outputs/exp011/u-seed303/checkpoints/step-005001472.pt",
+          "12": "summary[hide=urgent]@marl:outputs/exp011/u-seed303/checkpoints/step-005001472.pt",
+          "16": "summary[hide=urgent]@marl:outputs/exp011/u-seed303/checkpoints/step-004001536.pt"
+        }
+      ],
+      "best_local": "best_local",
+      "best_local+Y": "yield[theta=-10]@best_local",
+      "CG-opt": "configured_grant_opt",
+      "N_EDF": "central_edf",
+      "M_exp009": [
+        {
+          "6": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+          "8": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+          "10": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+          "12": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+          "16": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt"
+        },
+        {
+          "6": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+          "8": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+          "10": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+          "12": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+          "16": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-004001536.pt"
+        },
+        {
+          "6": "marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt",
+          "8": "marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt",
+          "10": "marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt",
+          "12": "marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt",
+          "16": "marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt"
+        }
+      ],
+      "U0": [
+        {
+          "8": "marl:outputs/exp011/u0-seed101/checkpoints/step-005001472.pt",
+          "10": "marl:outputs/exp011/u0-seed101/checkpoints/step-005001472.pt",
+          "12": "marl:outputs/exp011/u0-seed101/checkpoints/step-005001472.pt"
+        },
+        {
+          "8": "marl:outputs/exp011/u0-seed202/checkpoints/step-005001472.pt",
+          "10": "marl:outputs/exp011/u0-seed202/checkpoints/step-005001472.pt",
+          "12": "marl:outputs/exp011/u0-seed202/checkpoints/step-005001472.pt"
+        },
+        {
+          "8": "marl:outputs/exp011/u0-seed303/checkpoints/step-004001536.pt",
+          "10": "marl:outputs/exp011/u0-seed303/checkpoints/step-005001472.pt",
+          "12": "marl:outputs/exp011/u0-seed303/checkpoints/step-004001536.pt"
+        }
+      ],
+      "U@all": [
+        {
+          "8": "summary[theta=all]@marl:outputs/exp011/u-seed101/checkpoints/step-005001472.pt",
+          "10": "summary[theta=all]@marl:outputs/exp011/u-seed101/checkpoints/step-004001536.pt",
+          "12": "summary[theta=all]@marl:outputs/exp011/u-seed101/checkpoints/step-005001472.pt"
+        },
+        {
+          "8": "summary[theta=all]@marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt",
+          "10": "summary[theta=all]@marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt",
+          "12": "summary[theta=all]@marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt"
+        },
+        {
+          "8": "summary[theta=all]@marl:outputs/exp011/u-seed303/checkpoints/step-005001472.pt",
+          "10": "summary[theta=all]@marl:outputs/exp011/u-seed303/checkpoints/step-005001472.pt",
+          "12": "summary[theta=all]@marl:outputs/exp011/u-seed303/checkpoints/step-005001472.pt"
+        }
+      ],
+      "M+Y@all": [
+        {
+          "8": "yield[theta=all]@marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+          "10": "yield[theta=all]@marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+          "12": "yield[theta=all]@marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt"
+        },
+        {
+          "8": "yield[theta=all]@marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+          "10": "yield[theta=all]@marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+          "12": "yield[theta=all]@marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt"
+        },
+        {
+          "8": "yield[theta=all]@marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt",
+          "10": "yield[theta=all]@marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt",
+          "12": "yield[theta=all]@marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt"
+        }
+      ],
+      "U@-15": [
+        {
+          "8": "summary[theta=-15]@marl:outputs/exp011/u-seed101/checkpoints/step-005001472.pt",
+          "10": "summary[theta=-15]@marl:outputs/exp011/u-seed101/checkpoints/step-004001536.pt",
+          "12": "summary[theta=-15]@marl:outputs/exp011/u-seed101/checkpoints/step-005001472.pt"
+        },
+        {
+          "8": "summary[theta=-15]@marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt",
+          "10": "summary[theta=-15]@marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt",
+          "12": "summary[theta=-15]@marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt"
+        },
+        {
+          "8": "summary[theta=-15]@marl:outputs/exp011/u-seed303/checkpoints/step-005001472.pt",
+          "10": "summary[theta=-15]@marl:outputs/exp011/u-seed303/checkpoints/step-005001472.pt",
+          "12": "summary[theta=-15]@marl:outputs/exp011/u-seed303/checkpoints/step-005001472.pt"
+        }
+      ],
+      "M+Y@-15": [
+        {
+          "8": "yield[theta=-15]@marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+          "10": "yield[theta=-15]@marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+          "12": "yield[theta=-15]@marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt"
+        },
+        {
+          "8": "yield[theta=-15]@marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+          "10": "yield[theta=-15]@marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+          "12": "yield[theta=-15]@marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt"
+        },
+        {
+          "8": "yield[theta=-15]@marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt",
+          "10": "yield[theta=-15]@marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt",
+          "12": "yield[theta=-15]@marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt"
+        }
+      ],
+      "U@-5": [
+        {
+          "8": "summary[theta=-5]@marl:outputs/exp011/u-seed101/checkpoints/step-005001472.pt",
+          "10": "summary[theta=-5]@marl:outputs/exp011/u-seed101/checkpoints/step-004001536.pt",
+          "12": "summary[theta=-5]@marl:outputs/exp011/u-seed101/checkpoints/step-005001472.pt"
+        },
+        {
+          "8": "summary[theta=-5]@marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt",
+          "10": "summary[theta=-5]@marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt",
+          "12": "summary[theta=-5]@marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt"
+        },
+        {
+          "8": "summary[theta=-5]@marl:outputs/exp011/u-seed303/checkpoints/step-005001472.pt",
+          "10": "summary[theta=-5]@marl:outputs/exp011/u-seed303/checkpoints/step-005001472.pt",
+          "12": "summary[theta=-5]@marl:outputs/exp011/u-seed303/checkpoints/step-005001472.pt"
+        }
+      ],
+      "M+Y@-5": [
+        {
+          "8": "yield[theta=-5]@marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+          "10": "yield[theta=-5]@marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+          "12": "yield[theta=-5]@marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt"
+        },
+        {
+          "8": "yield[theta=-5]@marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+          "10": "yield[theta=-5]@marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+          "12": "yield[theta=-5]@marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt"
+        },
+        {
+          "8": "yield[theta=-5]@marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt",
+          "10": "yield[theta=-5]@marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt",
+          "12": "yield[theta=-5]@marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt"
+        }
+      ],
+      "U@0": [
+        {
+          "8": "summary[theta=0]@marl:outputs/exp011/u-seed101/checkpoints/step-005001472.pt",
+          "10": "summary[theta=0]@marl:outputs/exp011/u-seed101/checkpoints/step-004001536.pt",
+          "12": "summary[theta=0]@marl:outputs/exp011/u-seed101/checkpoints/step-005001472.pt"
+        },
+        {
+          "8": "summary[theta=0]@marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt",
+          "10": "summary[theta=0]@marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt",
+          "12": "summary[theta=0]@marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt"
+        },
+        {
+          "8": "summary[theta=0]@marl:outputs/exp011/u-seed303/checkpoints/step-005001472.pt",
+          "10": "summary[theta=0]@marl:outputs/exp011/u-seed303/checkpoints/step-005001472.pt",
+          "12": "summary[theta=0]@marl:outputs/exp011/u-seed303/checkpoints/step-005001472.pt"
+        }
+      ],
+      "M+Y@0": [
+        {
+          "8": "yield[theta=0]@marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+          "10": "yield[theta=0]@marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+          "12": "yield[theta=0]@marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt"
+        },
+        {
+          "8": "yield[theta=0]@marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+          "10": "yield[theta=0]@marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+          "12": "yield[theta=0]@marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt"
+        },
+        {
+          "8": "yield[theta=0]@marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt",
+          "10": "yield[theta=0]@marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt",
+          "12": "yield[theta=0]@marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt"
+        }
+      ]
+    },
+    "grids": {
+      "U": [
+        6,
+        8,
+        10,
+        12,
+        16
+      ],
+      "M": [
+        6,
+        8,
+        10,
+        12,
+        16
+      ],
+      "M+Y": [
+        6,
+        8,
+        10,
+        12,
+        16
+      ],
+      "O": [
+        6,
+        8,
+        10,
+        12,
+        16
+      ],
+      "L": [
+        6,
+        8,
+        10,
+        12,
+        16
+      ],
+      "U-hide-all": [
+        6,
+        8,
+        10,
+        12,
+        16
+      ],
+      "U-hide-nonurgent": [
+        6,
+        8,
+        10,
+        12,
+        16
+      ],
+      "U-hide-urgent": [
+        6,
+        8,
+        10,
+        12,
+        16
+      ],
+      "best_local": [
+        6,
+        8,
+        10,
+        12,
+        16
+      ],
+      "best_local+Y": [
+        6,
+        8,
+        10,
+        12,
+        16
+      ],
+      "CG-opt": [
+        6,
+        8,
+        10,
+        12,
+        16
+      ],
+      "N_EDF": [
+        6,
+        8,
+        10,
+        12,
+        16
+      ],
+      "M_exp009": [
+        6,
+        8,
+        10,
+        12,
+        16
+      ],
+      "U0": [
+        8,
+        10,
+        12
+      ],
+      "U@all": [
+        8,
+        10,
+        12
+      ],
+      "M+Y@all": [
+        8,
+        10,
+        12
+      ],
+      "U@-15": [
+        8,
+        10,
+        12
+      ],
+      "M+Y@-15": [
+        8,
+        10,
+        12
+      ],
+      "U@-5": [
+        8,
+        10,
+        12
+      ],
+      "M+Y@-5": [
+        8,
+        10,
+        12
+      ],
+      "U@0": [
+        8,
+        10,
+        12
+      ],
+      "M+Y@0": [
+        8,
+        10,
+        12
+      ]
+    }
+  },
+  "instances": 512,
+  "delta": 0.0001,
+  "P2": {
+    "U": {
+      "6": 0.0015566406249999996,
+      "8": 0.002778645833333334,
+      "10": 0.0044208984375,
+      "12": 0.010796875,
+      "16": 0.07461328125
+    },
+    "M": {
+      "6": 0.0009169921875000001,
+      "8": 0.0025901692708333334,
+      "10": 0.006041341145833334,
+      "12": 0.012705403645833335,
+      "16": 0.09377018229166667
+    },
+    "M+Y": {
+      "6": 0.000638671875,
+      "8": 0.0018743489583333336,
+      "10": 0.004232747395833333,
+      "12": 0.009015950520833335,
+      "16": 0.07652897135416667
+    },
+    "O": {
+      "6": 0.0008776041666666667,
+      "8": 0.0023447265625,
+      "10": 0.005429361979166668,
+      "12": 0.011069986979166668,
+      "16": 0.079244140625
+    },
+    "L": {
+      "6": 0.0008294270833333334,
+      "8": 0.0022600911458333334,
+      "10": 0.0051376953125,
+      "12": 0.010390950520833334,
+      "16": 0.07067545572916667
+    },
+    "U-hide-all": {
+      "6": 0.00181640625,
+      "8": 0.003645182291666667,
+      "10": 0.007042643229166669,
+      "12": 0.015361002604166668,
+      "16": 0.098353515625
+    },
+    "U-hide-nonurgent": {
+      "6": 0.0018001302083333335,
+      "8": 0.003656901041666667,
+      "10": 0.0068333333333333345,
+      "12": 0.015301757812500002,
+      "16": 0.09841569010416666
+    },
+    "U-hide-urgent": {
+      "6": 0.0015712890625,
+      "8": 0.0027233072916666664,
+      "10": 0.00440234375,
+      "12": 0.0106376953125,
+      "16": 0.07276595052083333
+    },
+    "best_local": {
+      "6": 0.0018281249999999999,
+      "8": 0.0056142578125000005,
+      "10": 0.014615234375000001,
+      "12": 0.03229199218750001,
+      "16": 0.3093935546875
+    },
+    "best_local+Y": {
+      "6": 0.0013691406250000001,
+      "8": 0.0039248046875,
+      "10": 0.009485351562500001,
+      "12": 0.021095703125,
+      "16": 0.31947265625
+    },
+    "CG-opt": {
+      "6": 0.005095703125,
+      "8": 0.00828125,
+      "10": 0.011472656250000001,
+      "12": 0.018901367187500004,
+      "16": 0.09224707031250001
+    },
+    "N_EDF": {
+      "6": 0.00021484375000000003,
+      "8": 0.00039453125,
+      "10": 0.00045996093750000003,
+      "12": 0.00047460937500000004,
+      "16": 0.0006201171875
+    },
+    "M_exp009": {
+      "6": 0.0009762369791666667,
+      "8": 0.0025901692708333334,
+      "10": 0.006041341145833334,
+      "12": 0.012705403645833335,
+      "16": 0.09794205729166666
+    },
+    "U0": {
+      "8": 0.0023323567708333336,
+      "10": 0.0049069010416666675,
+      "12": 0.009512369791666668
+    },
+    "U@all": {
+      "8": 0.0027190755208333327,
+      "10": 0.004060221354166667,
+      "12": 0.010446940104166668
+    },
+    "M+Y@all": {
+      "8": 0.0019996744791666667,
+      "10": 0.0046279296875,
+      "12": 0.010048828125000001
+    },
+    "U@-15": {
+      "8": 0.0027620442708333336,
+      "10": 0.004294270833333333,
+      "12": 0.010535481770833334
+    },
+    "M+Y@-15": {
+      "8": 0.0019270833333333334,
+      "10": 0.004398111979166667,
+      "12": 0.0093583984375
+    },
+    "U@-5": {
+      "8": 0.002809895833333333,
+      "10": 0.004686848958333334,
+      "12": 0.011142578124999998
+    },
+    "M+Y@-5": {
+      "8": 0.0019205729166666668,
+      "10": 0.004268880208333333,
+      "12": 0.00903515625
+    },
+    "U@0": {
+      "8": 0.0034501953125,
+      "10": 0.005888020833333334,
+      "12": 0.013017578124999998
+    },
+    "M+Y@0": {
+      "8": 0.0023567708333333335,
+      "10": 0.0052421874999999995,
+      "12": 0.010551757812500001
+    }
+  },
+  "P1": {
+    "U": {
+      "6": 0.990234375,
+      "8": 0.955078125,
+      "10": 0.865234375,
+      "12": 0.7584635416666666,
+      "16": 0.20377604166666666
+    },
+    "M": {
+      "6": 0.9817708333333334,
+      "8": 0.9309895833333334,
+      "10": 0.8294270833333334,
+      "12": 0.6848958333333334,
+      "16": 0.15885416666666666
+    },
+    "M+Y": {
+      "6": 0.990234375,
+      "8": 0.9537760416666666,
+      "10": 0.8763020833333334,
+      "12": 0.7591145833333334,
+      "16": 0.203125
+    },
+    "O": {
+      "6": 0.9791666666666666,
+      "8": 0.939453125,
+      "10": 0.8333333333333334,
+      "12": 0.7063802083333334,
+      "16": 0.189453125
+    },
+    "L": {
+      "6": 0.984375,
+      "8": 0.9381510416666666,
+      "10": 0.8430989583333334,
+      "12": 0.7200520833333334,
+      "16": 0.23111979166666666
+    },
+    "U-hide-all": {
+      "6": 0.9778645833333334,
+      "8": 0.9283854166666666,
+      "10": 0.8020833333333334,
+      "12": 0.6744791666666666,
+      "16": 0.15755208333333334
+    },
+    "U-hide-nonurgent": {
+      "6": 0.9811197916666666,
+      "8": 0.9264322916666666,
+      "10": 0.8111979166666666,
+      "12": 0.673828125,
+      "16": 0.16015625
+    },
+    "U-hide-urgent": {
+      "6": 0.9908854166666666,
+      "8": 0.95703125,
+      "10": 0.8619791666666666,
+      "12": 0.7630208333333334,
+      "16": 0.203125
+    },
+    "best_local": {
+      "6": 0.943359375,
+      "8": 0.833984375,
+      "10": 0.6640625,
+      "12": 0.435546875,
+      "16": 0.001953125
+    },
+    "best_local+Y": {
+      "6": 0.962890625,
+      "8": 0.873046875,
+      "10": 0.734375,
+      "12": 0.525390625,
+      "16": 0.001953125
+    },
+    "CG-opt": {
+      "6": 0.87109375,
+      "8": 0.80078125,
+      "10": 0.72265625,
+      "12": 0.56640625,
+      "16": 0.08203125
+    },
+    "N_EDF": {
+      "6": 0.998046875,
+      "8": 0.994140625,
+      "10": 0.994140625,
+      "12": 0.994140625,
+      "16": 0.9921875
+    },
+    "M_exp009": {
+      "6": 0.9856770833333334,
+      "8": 0.9309895833333334,
+      "10": 0.8294270833333334,
+      "12": 0.6848958333333334,
+      "16": 0.15104166666666666
+    },
+    "U0": {
+      "8": 0.9361979166666666,
+      "10": 0.8489583333333334,
+      "12": 0.73046875
+    },
+    "U@all": {
+      "8": 0.9622395833333334,
+      "10": 0.8704427083333334,
+      "12": 0.771484375
+    },
+    "M+Y@all": {
+      "8": 0.953125,
+      "10": 0.8626302083333334,
+      "12": 0.748046875
+    },
+    "U@-15": {
+      "8": 0.9596354166666666,
+      "10": 0.8645833333333334,
+      "12": 0.7708333333333334
+    },
+    "M+Y@-15": {
+      "8": 0.9563802083333334,
+      "10": 0.8736979166666666,
+      "12": 0.75
+    },
+    "U@-5": {
+      "8": 0.955078125,
+      "10": 0.8645833333333334,
+      "12": 0.7578125
+    },
+    "M+Y@-5": {
+      "8": 0.958984375,
+      "10": 0.8763020833333334,
+      "12": 0.763671875
+    },
+    "U@0": {
+      "8": 0.9322916666666666,
+      "10": 0.8294270833333334,
+      "12": 0.7180989583333334
+    },
+    "M+Y@0": {
+      "8": 0.9407552083333334,
+      "10": 0.8430989583333334,
+      "12": 0.7259114583333334
+    }
+  },
+  "N_star_on_grid": {
+    "U": 8,
+    "M": 6,
+    "M+Y": 8,
+    "O": 6,
+    "L": 6,
+    "U-hide-all": 6,
+    "U-hide-nonurgent": 6,
+    "U-hide-urgent": 8,
+    "best_local": null,
+    "best_local+Y": 6,
+    "CG-opt": null,
+    "N_EDF": 16,
+    "M_exp009": 6
+  },
+  "all_ue_mean_rate": {
+    "U": {
+      "6": 0.00026378038194444447,
+      "8": 0.0003581136067708334,
+      "10": 0.00050986328125,
+      "12": 0.0010578884548611111,
+      "16": 0.008504801432291667
+    },
+    "M": {
+      "6": 0.0001599392361111111,
+      "8": 0.000344970703125,
+      "10": 0.0007009114583333333,
+      "12": 0.0013419596354166668,
+      "16": 0.011107137044270835
+    },
+    "M+Y": {
+      "6": 0.00011127387152777778,
+      "8": 0.00024910481770833333,
+      "10": 0.0004978515624999999,
+      "12": 0.0009876844618055556,
+      "16": 0.011951212565104168
+    },
+    "O": {
+      "6": 0.0001535373263888889,
+      "8": 0.0003091634114583334,
+      "10": 0.0006311197916666667,
+      "12": 0.0011626790364583333,
+      "16": 0.00937457275390625
+    },
+    "L": {
+      "6": 0.00014534505208333334,
+      "8": 0.00029703776041666664,
+      "10": 0.0005857421875,
+      "12": 0.001060112847222222,
+      "16": 0.007897928873697916
+    },
+    "U-hide-all": {
+      "6": 0.0003099500868055556,
+      "8": 0.00047159830729166666,
+      "10": 0.0008067057291666667,
+      "12": 0.001506239149305556,
+      "16": 0.010219930013020833
+    },
+    "U-hide-nonurgent": {
+      "6": 0.0003068576388888889,
+      "8": 0.0004742024739583333,
+      "10": 0.0007797851562499999,
+      "12": 0.0015032280815972224,
+      "16": 0.010206298828125
+    },
+    "U-hide-urgent": {
+      "6": 0.0002660047743055556,
+      "8": 0.0003501790364583334,
+      "10": 0.0005065755208333334,
+      "12": 0.001034450954861111,
+      "16": 0.008266398111979167
+    },
+    "best_local": {
+      "6": 0.00032861328125,
+      "8": 0.0007604980468749999,
+      "10": 0.0017526367187500002,
+      "12": 0.0035791829427083335,
+      "16": 0.043895812988281255
+    },
+    "best_local+Y": {
+      "6": 0.0002454427083333333,
+      "8": 0.0005323486328125001,
+      "10": 0.00114482421875,
+      "12": 0.00236962890625,
+      "16": 0.05869439697265625
+    },
+    "CG-opt": {
+      "6": 0.0009070638020833334,
+      "8": 0.001254638671875,
+      "10": 0.0025298828125000002,
+      "12": 0.006464436848958333,
+      "16": 0.03996240234375
+    },
+    "N_EDF": {
+      "6": 3.694661458333333e-05,
+      "8": 5.0170898437500004e-05,
+      "10": 4.8925781250000006e-05,
+      "12": 4.3538411458333336e-05,
+      "16": 4.3884277343750005e-05
+    },
+    "M_exp009": {
+      "6": 0.0001740993923611111,
+      "8": 0.000344970703125,
+      "10": 0.0007009114583333333,
+      "12": 0.0013419596354166668,
+      "16": 0.011200276692708335
+    },
+    "U0": {
+      "8": 0.0003102213541666667,
+      "10": 0.0005591796875,
+      "12": 0.0009732259114583333
+    },
+    "U@all": {
+      "8": 0.00034895833333333334,
+      "10": 0.0004643229166666667,
+      "12": 0.00102392578125
+    },
+    "M+Y@all": {
+      "8": 0.00026578776041666667,
+      "10": 0.00054306640625,
+      "12": 0.001130072699652778
+    },
+    "U@-15": {
+      "8": 0.00035498046875,
+      "10": 0.0004944986979166667,
+      "12": 0.0010300564236111111
+    },
+    "M+Y@-15": {
+      "8": 0.0002552897135416667,
+      "10": 0.0005131510416666666,
+      "12": 0.0010336371527777776
+    },
+    "U@-5": {
+      "8": 0.00036206054687499997,
+      "10": 0.0005386393229166666,
+      "12": 0.0010938313802083333
+    },
+    "M+Y@-5": {
+      "8": 0.0002550048828125,
+      "10": 0.0005005533854166667,
+      "12": 0.0009867078993055557
+    },
+    "U@0": {
+      "8": 0.000445556640625,
+      "10": 0.0006696289062500001,
+      "12": 0.0012765570746527779
+    },
+    "M+Y@0": {
+      "8": 0.00031306966145833333,
+      "10": 0.0006106770833333334,
+      "12": 0.0011251898871527779
+    }
+  },
+  "p90_w": {
+    "U": {
+      "6": 0.0016666666666666668,
+      "8": 0.005483333333333339,
+      "10": 0.013816666666666672,
+      "12": 0.02416666666666667,
+      "16": 0.1869166666666667
+    },
+    "M": {
+      "6": 0.0023333333333333335,
+      "8": 0.007983333333333339,
+      "10": 0.018466666666666676,
+      "12": 0.03563333333333334,
+      "16": 0.23716666666666675
+    },
+    "M+Y": {
+      "6": 0.0015000000000000002,
+      "8": 0.005833333333333334,
+      "10": 0.012333333333333333,
+      "12": 0.02481666666666667,
+      "16": 0.19845000000000002
+    },
+    "O": {
+      "6": 0.0025,
+      "8": 0.007483333333333339,
+      "10": 0.017,
+      "12": 0.031133333333333346,
+      "16": 0.19508333333333336
+    },
+    "L": {
+      "6": 0.002,
+      "8": 0.007333333333333333,
+      "10": 0.01681666666666667,
+      "12": 0.029450000000000018,
+      "16": 0.18155000000000002
+    },
+    "U-hide-all": {
+      "6": 0.0023333333333333335,
+      "8": 0.008650000000000007,
+      "10": 0.022616666666666684,
+      "12": 0.03761666666666668,
+      "16": 0.24691666666666676
+    },
+    "U-hide-nonurgent": {
+      "6": 0.002466666666666678,
+      "8": 0.0085,
+      "10": 0.021666666666666667,
+      "12": 0.037916666666666696,
+      "16": 0.24395000000000003
+    },
+    "U-hide-urgent": {
+      "6": 0.0016666666666666668,
+      "8": 0.005150000000000005,
+      "10": 0.013816666666666673,
+      "12": 0.023800000000000012,
+      "16": 0.18225000000000002
+    },
+    "best_local": {
+      "6": 0.005950000000000017,
+      "8": 0.018450000000000015,
+      "10": 0.04645000000000002,
+      "12": 0.08545000000000003,
+      "16": 0.57745
+    },
+    "best_local+Y": {
+      "6": 0.004,
+      "8": 0.012450000000000018,
+      "10": 0.028900000000000037,
+      "12": 0.05845000000000002,
+      "16": 0.6378
+    },
+    "CG-opt": {
+      "6": 0.017800000000000066,
+      "8": 0.028,
+      "10": 0.037,
+      "12": 0.05195000000000002,
+      "16": 0.2224000000000002
+    },
+    "N_EDF": {
+      "6": 0.0005,
+      "8": 0.001,
+      "10": 0.0015,
+      "12": 0.0015,
+      "16": 0.002
+    },
+    "M_exp009": {
+      "6": 0.0026666666666666666,
+      "8": 0.007983333333333339,
+      "10": 0.018466666666666676,
+      "12": 0.03563333333333334,
+      "16": 0.2502000000000001
+    },
+    "U0": {
+      "8": 0.007333333333333333,
+      "10": 0.015816666666666673,
+      "12": 0.028100000000000024
+    },
+    "U@all": {
+      "8": 0.005333333333333333,
+      "10": 0.013,
+      "12": 0.02231666666666667
+    },
+    "M+Y@all": {
+      "8": 0.0065,
+      "10": 0.013966666666666678,
+      "12": 0.027650000000000008
+    },
+    "U@-15": {
+      "8": 0.005483333333333339,
+      "10": 0.013483333333333338,
+      "12": 0.023133333333333343
+    },
+    "M+Y@-15": {
+      "8": 0.005833333333333333,
+      "10": 0.01328333333333335,
+      "12": 0.025300000000000013
+    },
+    "U@-5": {
+      "8": 0.005650000000000006,
+      "10": 0.014300000000000012,
+      "12": 0.02481666666666667
+    },
+    "M+Y@-5": {
+      "8": 0.005816666666666672,
+      "10": 0.012833333333333334,
+      "12": 0.024800000000000013
+    },
+    "U@0": {
+      "8": 0.008,
+      "10": 0.018816666666666673,
+      "12": 0.03061666666666668
+    },
+    "M+Y@0": {
+      "8": 0.007316666666666673,
+      "10": 0.015950000000000016,
+      "12": 0.029116666666666683
+    }
+  },
+  "D_N": {
+    "6": {
+      "difference": 0.0006396484374999996,
+      "ratio": 1.697550585729499,
+      "ci95": [
+        -0.0005641357421875002,
+        0.003760709635416656
+      ]
+    },
+    "8": {
+      "difference": 0.0001884765625000005,
+      "ratio": 1.0727661178836247,
+      "ci95": [
+        -0.001401700846354167,
+        0.003724772135416664
+      ]
+    },
+    "10": {
+      "difference": -0.0016204427083333335,
+      "ratio": 0.7317743412899401,
+      "ci95": [
+        -0.003451847330729167,
+        0.00024415690104166645
+      ]
+    },
+    "12": {
+      "difference": -0.001908528645833336,
+      "ratio": 0.8497860674848196,
+      "ci95": [
+        -0.0066560791015625,
+        0.00523932291666666
+      ]
+    },
+    "16": {
+      "difference": -0.019156901041666674,
+      "ratio": 0.7957037026751185,
+      "ci95": [
+        -0.04139129231770833,
+        0.005157633463541668
+      ]
+    }
+  },
+  "decision": "no evidence",
+  "harmful_N": [],
+  "coordination": {
+    "E_N": {
+      "8": {
+        "difference": 0.0009042968750000004,
+        "ratio": 1.4824591872177841,
+        "ci95": [
+          -0.0006269531249999999,
+          0.0044375976562499985
+        ]
+      },
+      "10": {
+        "difference": 0.00018815104166666676,
+        "ratio": 1.044451280473737,
+        "ci95": [
+          -0.0014554361979166668,
+          0.0019612630208333333
+        ]
+      },
+      "12": {
+        "difference": 0.0017809244791666644,
+        "ratio": 1.1975304184568722,
+        "ci95": [
+          -0.002580476888020833,
+          0.008819018554687499
+        ]
+      }
+    },
+    "learned_better_at": 0,
+    "learned_response_better": false,
+    "core_mean_P2": {
+      "U": 0.005998806423611111,
+      "M+Y": 0.005041015625
+    },
+    "enters_final_confirmation": "M+Y"
+  },
+  "content": {
+    "O": {
+      "6": {
+        "difference": 0.0006790364583333329,
+        "ratio": 1.7737388724035603,
+        "ci95": [
+          -0.0005058675130208332,
+          0.003804427083333318
+        ]
+      },
+      "8": {
+        "difference": 0.0004339192708333341,
+        "ratio": 1.1850617798139667,
+        "ci95": [
+          -0.000993505859375,
+          0.004041064453124999
+        ]
+      },
+      "10": {
+        "difference": -0.0010084635416666675,
+        "ratio": 0.8142574494873792,
+        "ci95": [
+          -0.0026048339843749995,
+          0.0006868896484374993
+        ]
+      },
+      "12": {
+        "difference": -0.0002731119791666691,
+        "ratio": 0.9753286088158318,
+        "ci95": [
+          -0.004676432291666666,
+          0.006828759765624995
+        ]
+      },
+      "16": {
+        "difference": -0.004630859375000004,
+        "ratio": 0.9415621225938431,
+        "ci95": [
+          -0.021918123372395824,
+          0.016523697916666635
+        ]
+      }
+    },
+    "L": {
+      "6": {
+        "difference": 0.0007272135416666663,
+        "ratio": 1.8767660910518047,
+        "ci95": [
+          -0.0003411458333333333,
+          0.003766975911458313
+        ]
+      },
+      "8": {
+        "difference": 0.0005185546875000006,
+        "ratio": 1.2294397234624805,
+        "ci95": [
+          -0.0008837890624999998,
+          0.004085302734374998
+        ]
+      },
+      "10": {
+        "difference": -0.000716796875,
+        "ratio": 0.8604827979471583,
+        "ci95": [
+          -0.002168033854166667,
+          0.0008695149739583327
+        ]
+      },
+      "12": {
+        "difference": 0.0004059244791666649,
+        "ratio": 1.0390651921932268,
+        "ci95": [
+          -0.0034137451171875016,
+          0.007305851236979162
+        ]
+      },
+      "16": {
+        "difference": 0.003937825520833327,
+        "ratio": 1.0557170163277525,
+        "ci95": [
+          -0.015970776367187512,
+          0.026728271484374993
+        ]
+      }
+    }
+  },
+  "mechanism": {
+    "6": {
+      "gain_P2_M_minus_U": -0.0006396484374999996,
+      "all": {
+        "difference": 0.00025976562500000045,
+        "ratio": 1.1668757841907156,
+        "ci95": [
+          -0.0026862548828124997,
+          0.0034366943359374976
+        ]
+      },
+      "nonurgent": {
+        "difference": 0.00024348958333333384,
+        "ratio": 1.1564199079882898,
+        "ci95": [
+          -0.002700537109375,
+          0.0034342610677083325
+        ]
+      },
+      "urgent": {
+        "difference": 1.4648437500000338e-05,
+        "ratio": 1.0094102885821834,
+        "ci95": [
+          -0.002891609700520833,
+          0.0032110514322916646
+        ]
+      },
+      "H_M2": false,
+      "H_M1": false
+    },
+    "8": {
+      "gain_P2_M_minus_U": -0.0001884765625000005,
+      "all": {
+        "difference": 0.0008665364583333329,
+        "ratio": 1.3118556701030926,
+        "ci95": [
+          -0.0024756266276041673,
+          0.004303206380208332
+        ]
+      },
+      "nonurgent": {
+        "difference": 0.0008782552083333329,
+        "ratio": 1.316073102155576,
+        "ci95": [
+          -0.002512394205729167,
+          0.004405314127604166
+        ]
+      },
+      "urgent": {
+        "difference": -5.533854166666751e-05,
+        "ratio": 0.9800843486410493,
+        "ci95": [
+          -0.0033385009765624987,
+          0.0032869303385416643
+        ]
+      },
+      "H_M2": false,
+      "H_M1": false
+    },
+    "10": {
+      "gain_P2_M_minus_U": 0.0016204427083333335,
+      "all": {
+        "difference": 0.0026217447916666685,
+        "ratio": 1.5930343862749434,
+        "ci95": [
+          0.00031927083333333335,
+          0.005272583007812498
+        ]
+      },
+      "nonurgent": {
+        "difference": 0.0024124348958333344,
+        "ratio": 1.545688829983065,
+        "ci95": [
+          0.0001926920572916663,
+          0.004988346354166668
+        ]
+      },
+      "urgent": {
+        "difference": -1.8554687500000125e-05,
+        "ratio": 0.9958029600176718,
+        "ci95": [
+          -0.0017054117838541675,
+          0.0016797363281249999
+        ]
+      },
+      "H_M2": true,
+      "H_M1": true
+    },
+    "12": {
+      "gain_P2_M_minus_U": 0.001908528645833336,
+      "all": {
+        "difference": 0.004564127604166669,
+        "ratio": 1.4227267245537871,
+        "ci95": [
+          -0.003482218424479162,
+          0.012673404947916661
+        ]
+      },
+      "nonurgent": {
+        "difference": 0.004504882812500003,
+        "ratio": 1.4172395079594793,
+        "ci95": [
+          -0.0036699300130208293,
+          0.012835310872395833
+        ]
+      },
+      "urgent": {
+        "difference": -0.00015917968749999852,
+        "ratio": 0.9852568740955139,
+        "ci95": [
+          -0.007561368815104166,
+          0.007139347330729164
+        ]
+      },
+      "H_M2": false,
+      "H_M1": false
+    },
+    "16": {
+      "gain_P2_M_minus_U": 0.019156901041666674,
+      "all": {
+        "difference": 0.023740234375000002,
+        "ratio": 1.3181770587927335,
+        "ci95": [
+          -0.0047625488281249845,
+          0.052136629231770835
+        ]
+      },
+      "nonurgent": {
+        "difference": 0.023802408854166665,
+        "ratio": 1.3190103484983333,
+        "ci95": [
+          -0.005171907552083353,
+          0.05312316894531251
+        ]
+      },
+      "urgent": {
+        "difference": -0.0018473307291666657,
+        "ratio": 0.9752412613650245,
+        "ci95": [
+          -0.025840177408854165,
+          0.021927815755208326
+        ]
+      },
+      "H_M2": false,
+      "H_M1": false
+    }
+  },
+  "receive": {
+    "U": {
+      "8": {
+        "by_theta": {
+          "all": {
+            "difference": 0.00012890624999999925,
+            "ratio": 1.0497675003141884,
+            "ci95": [
+              -0.0014801513671875003,
+              0.003685896809895833
+            ]
+          },
+          "-15": {
+            "difference": 0.00017187500000000015,
+            "ratio": 1.066356667085585,
+            "ci95": [
+              -0.0014358723958333333,
+              0.0037244873046874964
+            ]
+          },
+          "-10": {
+            "difference": 0.0001884765625000005,
+            "ratio": 1.0727661178836247,
+            "ci95": [
+              -0.001401700846354167,
+              0.003724772135416664
+            ]
+          },
+          "-5": {
+            "difference": 0.00021972656249999965,
+            "ratio": 1.0848309664446398,
+            "ci95": [
+              -0.0013685221354166669,
+              0.0037263509114583257
+            ]
+          },
+          "0": {
+            "difference": 0.0008600260416666665,
+            "ratio": 1.3320346864396129,
+            "ci95": [
+              -0.0007487141927083333,
+              0.004477880859374999
+            ]
+          }
+        },
+        "boundary": null
+      },
+      "10": {
+        "by_theta": {
+          "all": {
+            "difference": -0.001981119791666667,
+            "ratio": 0.6720728487526267,
+            "ci95": [
+              -0.003617854817708333,
+              -0.0004511474609375018
+            ]
+          },
+          "-15": {
+            "difference": -0.0017470703125000006,
+            "ratio": 0.7108141602457028,
+            "ci95": [
+              -0.0034646321614583337,
+              -4.879557291666695e-05
+            ]
+          },
+          "-10": {
+            "difference": -0.0016204427083333335,
+            "ratio": 0.7317743412899401,
+            "ci95": [
+              -0.003451847330729167,
+              0.00024415690104166645
+            ]
+          },
+          "-5": {
+            "difference": -0.0013544921874999996,
+            "ratio": 0.7757961097041868,
+            "ci95": [
+              -0.0032083658854166665,
+              0.0005383056640624969
+            ]
+          },
+          "0": {
+            "difference": -0.00015332031250000003,
+            "ratio": 0.9746214774502937,
+            "ci95": [
+              -0.0021175862630208337,
+              0.001991259765624999
+            ]
+          }
+        },
+        "boundary": "-15"
+      },
+      "12": {
+        "by_theta": {
+          "all": {
+            "difference": -0.002258463541666667,
+            "ratio": 0.822243857446645,
+            "ci95": [
+              -0.007035571289062502,
+              0.004921004231770831
+            ]
+          },
+          "-15": {
+            "difference": -0.0021699218750000013,
+            "ratio": 0.8292126771028157,
+            "ci95": [
+              -0.006988321940104166,
+              0.005013004557291663
+            ]
+          },
+          "-10": {
+            "difference": -0.001908528645833336,
+            "ratio": 0.8497860674848196,
+            "ci95": [
+              -0.0066560791015625,
+              0.00523932291666666
+            ]
+          },
+          "-5": {
+            "difference": -0.0015628255208333369,
+            "ratio": 0.8769952089364861,
+            "ci95": [
+              -0.00632172037760417,
+              0.005568457031249992
+            ]
+          },
+          "0": {
+            "difference": 0.0003121744791666631,
+            "ratio": 1.0245702134201018,
+            "ci95": [
+              -0.004732438151041666,
+              0.0077956380208333296
+            ]
+          }
+        },
+        "boundary": null
+      }
+    },
+    "M+Y": {
+      "8": {
+        "by_theta": {
+          "all": {
+            "difference": -0.0005904947916666667,
+            "ratio": 0.7720246323991454,
+            "ci95": [
+              -0.0013951822916666667,
+              0.0001930501302083333
+            ]
+          },
+          "-15": {
+            "difference": -0.0006630859375,
+            "ratio": 0.7439989945959532,
+            "ci95": [
+              -0.0014749430338541667,
+              0.0001344401041666666
+            ]
+          },
+          "-10": {
+            "difference": -0.0007158203124999999,
+            "ratio": 0.7236395626492397,
+            "ci95": [
+              -0.0015456054687499998,
+              7.294108072916652e-05
+            ]
+          },
+          "-5": {
+            "difference": -0.0006695963541666666,
+            "ratio": 0.741485484479075,
+            "ci95": [
+              -0.0014938232421875003,
+              0.00011981608072916655
+            ]
+          },
+          "0": {
+            "difference": -0.00023339843749999988,
+            "ratio": 0.9098906623099159,
+            "ci95": [
+              -0.0010182617187500002,
+              0.0005312581380208332
+            ]
+          }
+        },
+        "boundary": null
+      },
+      "10": {
+        "by_theta": {
+          "all": {
+            "difference": -0.0014134114583333338,
+            "ratio": 0.7660434290640659,
+            "ci95": [
+              -0.003206119791666667,
+              0.0003385579427083331
+            ]
+          },
+          "-15": {
+            "difference": -0.001643229166666667,
+            "ratio": 0.728002586346247,
+            "ci95": [
+              -0.003502018229166667,
+              0.00016862792968750043
+            ]
+          },
+          "-10": {
+            "difference": -0.0018085937500000003,
+            "ratio": 0.7006304218977315,
+            "ci95": [
+              -0.0036484456380208334,
+              -5.826009114583435e-05
+            ]
+          },
+          "-5": {
+            "difference": -0.0017724609375000004,
+            "ratio": 0.7066113475941591,
+            "ci95": [
+              -0.0035625000000000006,
+              -6.89941406249996e-05
+            ]
+          },
+          "0": {
+            "difference": -0.0007991536458333342,
+            "ratio": 0.8677191659033352,
+            "ci95": [
+              -0.0025397298177083348,
+              0.000871492513020833
+            ]
+          }
+        },
+        "boundary": "-5"
+      },
+      "12": {
+        "by_theta": {
+          "all": {
+            "difference": -0.0026565755208333344,
+            "ratio": 0.7909097896543772,
+            "ci95": [
+              -0.006304736328125001,
+              0.0010059244791666667
+            ]
+          },
+          "-15": {
+            "difference": -0.003347005208333335,
+            "ratio": 0.7365683687325458,
+            "ci95": [
+              -0.006934936523437503,
+              0.0001660563151041661
+            ]
+          },
+          "-10": {
+            "difference": -0.0036894531250000005,
+            "ratio": 0.7096154338858855,
+            "ci95": [
+              -0.007060603841145833,
+              -0.00048206380208333494
+            ]
+          },
+          "-5": {
+            "difference": -0.0036702473958333346,
+            "ratio": 0.7111270528554225,
+            "ci95": [
+              -0.007008479817708333,
+              -0.0005296223958333353
+            ]
+          },
+          "0": {
+            "difference": -0.002153645833333334,
+            "ratio": 0.8304937101278471,
+            "ci95": [
+              -0.005480208333333336,
+              0.0010381673177083327
+            ]
+          }
+        },
+        "boundary": "-5"
+      }
+    },
+    "U0": {
+      "8": {
+        "U0_minus_M": {
+          "difference": -0.0002578124999999998,
+          "ratio": 0.9004649993716225,
+          "ci95": [
+            -0.0008597005208333332,
+            0.00035970865885416684
+          ]
+        },
+        "U0_minus_U_at_0dB": {
+          "difference": -0.0011178385416666663,
+          "ratio": 0.6760071704877819,
+          "ci95": [
+            -0.004839925130208333,
+            0.00016601562499999993
+          ]
+        }
+      },
+      "10": {
+        "U0_minus_M": {
+          "difference": -0.0011344401041666662,
+          "ratio": 0.8122204860175657,
+          "ci95": [
+            -0.002612312825520832,
+            0.0002207194010416664
+          ]
+        },
+        "U0_minus_U_at_0dB": {
+          "difference": -0.0009811197916666662,
+          "ratio": 0.8333701901813357,
+          "ci95": [
+            -0.0028206542968749995,
+            0.0003961669921874992
+          ]
+        }
+      },
+      "12": {
+        "U0_minus_M": {
+          "difference": -0.0031930338541666676,
+          "ratio": 0.7486869411493428,
+          "ci95": [
+            -0.006222387695312501,
+            -0.00040654296875000293
+          ]
+        },
+        "U0_minus_U_at_0dB": {
+          "difference": -0.0035052083333333307,
+          "ratio": 0.7307326831707929,
+          "ci95": [
+            -0.010988525390625,
+            0.0008067057291666662
+          ]
+        }
+      }
+    }
+  },
+  "frontier": {
+    "6": {
+      "CG-opt": {
+        "P2": 0.005095703125,
+        "information": "grants at configuration only"
+      },
+      "M": {
+        "P2": 0.0009169921875000001,
+        "information": "K RSSI values + own outcome (L0)"
+      },
+      "U": {
+        "P2": 0.0015566406249999996,
+        "information": "L0 + K = 4 bits down + 1 bit up per transmission"
+      },
+      "N_EDF": {
+        "P2": 0.00021484375000000003,
+        "information": "per-slot grants from a central scheduler with every UE's state"
+      }
+    },
+    "8": {
+      "CG-opt": {
+        "P2": 0.00828125,
+        "information": "grants at configuration only"
+      },
+      "M": {
+        "P2": 0.0025901692708333334,
+        "information": "K RSSI values + own outcome (L0)"
+      },
+      "U": {
+        "P2": 0.002778645833333334,
+        "information": "L0 + K = 4 bits down + 1 bit up per transmission"
+      },
+      "N_EDF": {
+        "P2": 0.00039453125,
+        "information": "per-slot grants from a central scheduler with every UE's state"
+      }
+    },
+    "10": {
+      "CG-opt": {
+        "P2": 0.011472656250000001,
+        "information": "grants at configuration only"
+      },
+      "M": {
+        "P2": 0.006041341145833334,
+        "information": "K RSSI values + own outcome (L0)"
+      },
+      "U": {
+        "P2": 0.0044208984375,
+        "information": "L0 + K = 4 bits down + 1 bit up per transmission"
+      },
+      "N_EDF": {
+        "P2": 0.00045996093750000003,
+        "information": "per-slot grants from a central scheduler with every UE's state"
+      }
+    },
+    "12": {
+      "CG-opt": {
+        "P2": 0.018901367187500004,
+        "information": "grants at configuration only"
+      },
+      "M": {
+        "P2": 0.012705403645833335,
+        "information": "K RSSI values + own outcome (L0)"
+      },
+      "U": {
+        "P2": 0.010796875,
+        "information": "L0 + K = 4 bits down + 1 bit up per transmission"
+      },
+      "N_EDF": {
+        "P2": 0.00047460937500000004,
+        "information": "per-slot grants from a central scheduler with every UE's state"
+      }
+    },
+    "16": {
+      "CG-opt": {
+        "P2": 0.09224707031250001,
+        "information": "grants at configuration only"
+      },
+      "M": {
+        "P2": 0.09377018229166667,
+        "information": "K RSSI values + own outcome (L0)"
+      },
+      "U": {
+        "P2": 0.07461328125,
+        "information": "L0 + K = 4 bits down + 1 bit up per transmission"
+      },
+      "N_EDF": {
+        "P2": 0.0006201171875,
+        "information": "per-slot grants from a central scheduler with every UE's state"
+      }
+    }
+  },
+  "sensitivity": {
+    "6": {
+      "all_ue_mean_rate_U_minus_M": {
+        "difference": 0.00010384114583333336,
+        "ratio": 1.6492537313432838,
+        "ci95": [
+          -9.895968967013887e-05,
+          0.0006271565755208327
+        ]
+      },
+      "log_w_U_minus_M": {
+        "difference": -0.0461616785650647,
+        "ratio": null,
+        "ci95": [
+          -0.09388895685844866,
+          0.006561301706464145
+        ]
+      },
+      "excluding_infeasible_for_all": {
+        "deployments": 511,
+        "difference": 0.0006591650358773648,
+        "ratio": 1.7672741078208052,
+        "ci95": [
+          -0.0005316454664057404,
+          0.0038670743639921696
+        ]
+      },
+      "p90_U_minus_M": -0.0006666666666666668
+    },
+    "8": {
+      "all_ue_mean_rate_U_minus_M": {
+        "difference": 1.3142903645833404e-05,
+        "ratio": 1.0380986081623027,
+        "ci95": [
+          -0.00019580179850260424,
+          0.0004557627360026035
+        ]
+      },
+      "log_w_U_minus_M": {
+        "difference": -0.1357057618846862,
+        "ratio": null,
+        "ci95": [
+          -0.2530852721614274,
+          -0.04379630728149697
+        ]
+      },
+      "excluding_infeasible_for_all": {
+        "deployments": 509,
+        "difference": 0.00026784544859200995,
+        "ratio": 1.1153574954167251,
+        "ci95": [
+          -0.0012897920759659463,
+          0.0037597003929273074
+        ]
+      },
+      "p90_U_minus_M": -0.0024999999999999996
+    },
+    "10": {
+      "all_ue_mean_rate_U_minus_M": {
+        "difference": -0.00019104817708333333,
+        "ratio": 0.7274289429686048,
+        "ci95": [
+          -0.0004186254882812501,
+          3.408203124999993e-05
+        ]
+      },
+      "log_w_U_minus_M": {
+        "difference": -0.18372550001298782,
+        "ratio": null,
+        "ci95": [
+          -0.3630812352325401,
+          -0.020175928873246023
+        ]
+      },
+      "excluding_infeasible_for_all": {
+        "deployments": 509,
+        "difference": -0.001481335952848723,
+        "ratio": 0.7352063213345039,
+        "ci95": [
+          -0.003193524885396202,
+          0.0003048542894564504
+        ]
+      },
+      "p90_U_minus_M": -0.004650000000000005
+    },
+    "12": {
+      "all_ue_mean_rate_U_minus_M": {
+        "difference": -0.00028407118055555564,
+        "ratio": 0.7883161512027491,
+        "ci95": [
+          -0.000739911566840278,
+          0.0003315741644965276
+        ]
+      },
+      "log_w_U_minus_M": {
+        "difference": -0.3178754879480521,
+        "ratio": null,
+        "ci95": [
+          -0.47603624726793303,
+          -0.17390215312668916
+        ]
+      },
+      "excluding_infeasible_for_all": {
+        "deployments": 509,
+        "difference": -0.0016512770137524588,
+        "ratio": 0.8622018198212966,
+        "ci95": [
+          -0.006319277996070728,
+          0.005516421087098886
+        ]
+      },
+      "p90_U_minus_M": -0.011466666666666674
+    },
+    "16": {
+      "all_ue_mean_rate_U_minus_M": {
+        "difference": -0.0026023356119791678,
+        "ratio": 0.7657059959189504,
+        "ci95": [
+          -0.0058167892456054675,
+          0.00039196014404296674
+        ]
+      },
+      "log_w_U_minus_M": {
+        "difference": -0.13502452776579799,
+        "ratio": null,
+        "ci95": [
+          -0.26417658316519227,
+          -0.002398928342450809
+        ]
+      },
+      "excluding_infeasible_for_all": {
+        "deployments": 508,
+        "difference": -0.018533136482939624,
+        "ratio": 0.7978933885746384,
+        "ci95": [
+          -0.04049421751968504,
+          0.005226000656167937
+        ]
+      },
+      "p90_U_minus_M": -0.050250000000000045
+    }
+  }
+}
