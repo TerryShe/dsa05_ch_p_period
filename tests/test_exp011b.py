@@ -15,6 +15,7 @@ from dsa_period import splits_v2, starvation
 from dsa_period.capacity import run_capacity_episode
 from dsa_period.config import load_scenario
 from dsa_period.experiments import evaluate_capacity, select_exp011b, train_capacity_mappo
+from dsa_period.marl.features import stack
 from dsa_period.marl.level_sampler import LevelSampler, SamplerSettings
 from dsa_period.marl.ppo import PPOSettings
 from dsa_period.marl.trainer_v2 import (
@@ -373,3 +374,74 @@ def test_the_gain_probe_leaves_the_episode_unchanged(checkpoint, tmp_path):
     assert probed["violations"] == plain["violations"]
     values = np.array(probe.p_off)
     assert values.shape[1] == 2 and np.all((values >= 0) & (values <= 1))
+
+
+# --------------------------------------------------------------------- input probes
+def _probe_policy(checkpoint, tmp_path):
+    path = tmp_path / "step-000000064.pt"
+    path.write_bytes(checkpoint)
+    scenario = dataclasses.replace(load_scenario(CONFIG, 6), horizon_slots=160, warmup_slots=40)
+    return scenario, lambda: make_policy_v2(f"marl:{path}", scenario.physical, scenario.menu)
+
+
+def test_input_probes_leave_the_episode_unchanged(checkpoint, tmp_path):
+    scenario, policy = _probe_policy(checkpoint, tmp_path)
+    gain = diagnose.GainProbe(policy(), 2, [0.0])
+    plain = run_capacity_episode(scenario, gain, "dev", 3)
+    names = diagnose.variants(scenario, summary=True)
+    probe = diagnose.InputProbe(policy(), 2, names)
+    probed = run_capacity_episode(scenario, probe, "dev", 3)
+    assert probed["violations"] == plain["violations"]
+    assert names == ["actual", "period=10", "period=20", "period=40", "hidden=0",
+                     "broadcast=0", "broadcast=1"]  # fmt: skip
+    values = np.array(probe.p_off)
+    assert len(values) == len(probe.urgent) == len(probe.marked) > 0
+    # "actual" is the policy's own P(OFF); UE 2 is slow (40 slots), so its own period is a no-op
+    np.testing.assert_allclose(values[:, 0], np.array(gain.p_off)[:, 0])
+    np.testing.assert_allclose(values[:, names.index("period=40")], values[:, 0])
+    assert diagnose.variants(scenario, summary=False)[-1] == "hidden=0"
+
+
+def test_each_variant_replaces_one_input_group():
+    context, seen = np.zeros((3, 14), np.float32), np.zeros((3, 4), bool)
+    hidden = torch.ones(3, 4, 8)
+    varied, shown, state = diagnose.edit("period=20", context, seen, hidden, 1)
+    assert varied[1, diagnose.PERIOD_INPUT] == 0.5 and np.count_nonzero(varied) == 1
+    assert torch.equal(state, hidden) and not shown.any()
+    varied, shown, state = diagnose.edit("hidden=0", context, seen, hidden, 1)
+    assert state[1].abs().sum() == 0 and state[[0, 2]].eq(1).all() and hidden.eq(1).all()
+    varied, shown, state = diagnose.edit("broadcast=1", context, seen, hidden, 1)
+    assert shown[1].all() and not shown[[0, 2]].any() and not seen.any()
+    with pytest.raises(ValueError):
+        diagnose.edit("broadcast=1", context, None, hidden, 1)
+    with pytest.raises(ValueError):
+        diagnose.edit("gain=3", context, seen, hidden, 1)
+
+
+def test_hidden_reset_clears_the_ue_at_each_of_its_releases(checkpoint, tmp_path):
+    scenario, policy = _probe_policy(checkpoint, tmp_path)
+    inner, at_release = policy(), []
+    act = inner.act
+
+    def recording(observations):
+        obs = stack(observations)
+        if obs.to_deadline[2] == obs.period[2]:
+            at_release.append(float(inner._hidden[2].abs().sum()))
+        return act(observations)
+
+    inner.act = recording
+    reset = diagnose.HiddenReset(inner, 2)
+    run_capacity_episode(scenario, reset, "dev", 3)
+    assert len(at_release) == reset.resets > 0 and max(at_release) == 0.0
+    assert 0 < reset.pending and 0 <= reset.sent <= reset.pending
+
+
+def test_the_probe_cell_is_the_first_starved_ue_or_the_worst_near_one(monkeypatch, tmp_path):
+    monkeypatch.setattr(starvation, "dev_snr_db", lambda n, i: (30.0, 10.0))
+    rows = [{"instance": 7, "violation_rate": [0.1, 0.9], "distance_m": [3.0, 60.0]},
+            {"instance": 9, "violation_rate": [0.2, 0.0], "distance_m": [4.0, 2.0]}]  # fmt: skip
+    assert diagnose.probe_cell(rows, 2) == {"instance": 9, "ue": 0, "kind": "worst near-AP UE"}
+    rows[1]["violation_rate"][0] = 0.6
+    assert diagnose.probe_cell(rows, 2) == {"instance": 9, "ue": 0, "kind": "starved"}
+    with pytest.raises(SystemExit):  # replays are formal only
+        diagnose.main(["probes", "--pairs", "a=b", "--output", str(tmp_path / "p.json")])
