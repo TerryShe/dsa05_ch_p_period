@@ -10,8 +10,9 @@ never selects, tunes or evaluates a method on a held-out set.
 
 Status: plan approved on 2026-10-11. Revised on 2026-10-12 with the constraints
 agreed for running alongside EXP-011b (design 4f979d9, §8): the viewer slice, the
-EXP-011b sets, the results gate, commit timing and the process cap. Nothing is
-implemented yet.
+EXP-011b sets, the results gate, commit timing and the process cap. Phase 1 (results
+explorer and deployment map) implemented on 2026-10-12 on branch `web/sim-viewer`;
+its deviations from this plan are marked "Phase 1:" below.
 
 ## 1. Decisions
 
@@ -19,9 +20,10 @@ implemented yet.
 |---|---|
 | Repository | Part of the main dsa05 repository, under `web/sim-viewer/`. Other web apps get their own subdirectories of `web/`; shared code moves to `web/shared/` only once a second app needs it. |
 | Development | In a git worktree outside the main checkout (e.g. `git worktree add ../dsa05_web -b web/sim-viewer`), merged into `main` only between formal stages (§2.2). Uncommitted app files then never appear in the main checkout's `git status`. |
-| Python environment | Its own uv project and `.venv` in `web/sim-viewer/`, with `dsa-period` as an editable path dependency (`../..`) and torch (CPU index) listed directly. The root `pyproject.toml`, `uv.lock` and `.venv` are not changed for the app. |
+| Python environment | Its own uv project and `.venv` in `web/sim-viewer/`, with `dsa-period` as an editable path dependency (`../..`), numpy pinned to the root lock's version, and torch (CPU index) added in Phase 2, when policies run. The root `pyproject.toml`, `uv.lock` and `.venv` are not changed for the app. |
 | Backend | FastAPI + uvicorn, bound to `127.0.0.1` only. Use `ssh -L` for remote access. |
-| Frontend | Vite + React + TypeScript. Dense time series drawn on `<canvas>`; aggregate charts with uPlot or ECharts. |
+| Frontend | Vite + React + TypeScript. Dense time series drawn on `<canvas>`. Phase 1: the explorer charts are small hand-written SVG components instead of uPlot or ECharts; they need only a scatter, a step line and interval glyphs. |
+| Dependencies | Only releases at least two weeks old when locked: uv `exclude-newer = 2026-09-27`, npm `--before=2026-09-27` with exact versions. One exception: `source-map-js` 1.2.2 (2026-09-30, a build-time dependency of vite), the fix for GHSA-68fv-2mgg-jv7q. |
 | Urgency, summary and yield internals | Recomputed in the app from the recorded observations (pure functions of `dsa_period.urgency`). `src/` is not changed. A read-only trace hook in `src/` is a later option and needs tests showing that replays stay identical. |
 | Instances the app may simulate | The allowlist in §2.1. |
 
@@ -90,15 +92,26 @@ already have a formal record of a shown experiment.
 
 1. **Results explorer.** Built from `summary.json`, `episodes.json` and
    `analysis.json`; runs no simulation.
-   - A method x N table of P2 and P1 with 95% intervals, taken from the
-     pre-registered analysis as written, never recomputed differently.
+   - A method x N table of P2 and P1, taken from the pre-registered analysis as
+     written, never recomputed differently. Phase 1: `analysis.json` has no
+     per-method intervals, so the table shows point estimates (also p90 and the
+     all-UE mean, and N* on the grid). Intervals appear only for the paired
+     differences.
+   - The pre-registered comparisons (D_N, E_N, content, mechanism, receive
+     conditions, guard and sensitivity), each row with its difference, 95%
+     interval, ratio of means and whether the interval excludes 0.
    - A paired scatter of each deployment's worst-UE violation rate, method A
-     against method B.
-   - Distributions of the worst-UE rate.
+     against method B, on log10(w + 10^-4).
+   - Distributions (ECDF) of the worst-UE rate, and the deployments with the
+     largest A - B differences.
+   - The P2 recomputed from the episode records is shown next to the analysis
+     value; a mismatch is flagged.
    - Clicking a deployment opens views 2-5.
-2. **Deployment map.** The AP, the 100 m coverage disk, and UEs coloured by traffic
-   class (10/20/40-slot periods) and sized by violation rate, with distance and
-   shadowing on hover.
+2. **Deployment map.** The AP, the 100 m coverage disk, and the UEs, with distance and
+   shadowing on hover. Phase 1: colour is reserved for methods A and B across the
+   page, so the traffic class (10/20/40-slot periods) is the marker shape, rings
+   mark each method's worst UE, and a per-UE table next to the map gives the
+   violation rates (seed-layer means, per seed on hover) and undeliverable packets.
 3. **Replay timeline** (the core view). All panels share one time cursor:
    - **Subchannel occupancy:** K = 4 rows by slot, showing which UEs transmit, their
      power level and SINR, and collisions.
@@ -123,11 +136,15 @@ web/sim-viewer/
   README.md
   pyproject.toml       # own uv project
   server/
-    app.py             # FastAPI routes
-    catalog.py         # scans outputs/*; method names from methods-/plan-/selection-*.json
-    guards.py          # §2.1 allowlist
-    trace.py           # runs one episode, recording per-slot arrays
-    jobs.py            # worker pool, progress, disk cache
+    app.py             # FastAPI routes; serves frontend/dist when built
+    settings.py        # paths; finds the main checkout's outputs/ from a worktree
+    registry.py        # experiments the app knows, with method descriptions
+    catalog.py         # report gate, formal-output checks, per-deployment values
+    exp011.py          # EXP-011 adapter: comparisons and tables of analysis.json
+    geometry.py        # deployment geometry from Scenario.instance
+    guards.py          # §2.1: Phase 1 geometry rule; allowlist from Phase 2
+    trace.py           # (Phase 2) runs one episode, recording per-slot arrays
+    jobs.py            # (Phase 2) worker pool, progress, disk cache
   tests/
   frontend/            # Vite + React + TypeScript
   .gitignore           # node_modules/, dist/, .cache/
@@ -140,7 +157,7 @@ web/sim-viewer/
 | `outputs/<exp>/eval/<label>/episodes.json` | `{spec: {N: [record]}}`; a record has instance, repeat, packets, violations, undeliverable, violation_rate, worst_violation_rate, feasible, infeasible_for_all, class_index, distance_m, shadowing_db, mean_power_mw, duty | explorer, map, exactness check |
 | `outputs/<exp>/eval/<label>/summary.json` | protocol id, formal flag, provenance, config, split, screen, grid, per-policy summaries | explorer |
 | `outputs/exp011/analysis.json` | the pre-registered analysis (P2, D_N, intervals) | explorer |
-| `outputs/exp011/{methods-exp011,plan-exp011,selection}.json` | method groups, seed layers, selected checkpoints | readable method names |
+| `outputs/exp011/plan-exp011.json` | method groups, seed layers per N | grouping; descriptions come from design §3.1 via `registry.py` |
 | `Scenario.instance(i)` | UE positions, traffic pattern (no policy run) | map |
 | `trace.py` | per-slot arrays (§4.2) | views 3-5 |
 
@@ -189,7 +206,9 @@ pool size is configurable, 1-2 by default.
 
 - Canvas rendering for the timeline, the subchannel rows and the heatmap (SVG cannot
   handle 20k slots x 16 UEs).
-- uPlot or ECharts for the explorer charts.
+- Hand-written SVG for the explorer charts (Phase 1); colours follow the dataviz
+  reference palette, with methods A and B as slots 1 and 2, validated in light
+  and dark mode.
 - The view state (method(s), N, instance, slot range) lives in the URL, so a view
   can be bookmarked or shared.
 
@@ -226,6 +245,15 @@ Frontend:
 - `vitest` for data transforms (windowing, divergence detection, colour scales);
 - a manual check in the browser at each phase review.
 
+Phase 1 has 37 backend tests: the report gate (shown, hidden before the report,
+hidden for an uncommitted report); refusal of non-formal, dirty, wrong-set,
+wrong-split and wrong-instance outputs; P2 and P1 recomputed from the episodes
+equal `analysis.json` for every group and N; geometry is refused for v2-confirm1/2,
+the EXP-011b sets, the screening sets and instances outside the shown records;
+regenerated geometry equals the formal records (32 instances at each N) and is
+nested across N; the API's status codes. There are 8 frontend tests (ECDF,
+tallies, largest differences, nearest point, scales, formats).
+
 ## 7. Open items
 
 - Whether `exp011b-stress` should stay refused permanently after the EXP-011b
@@ -239,4 +267,36 @@ Frontend:
 
 ## 8. Running
 
-To be written in Phase 1.
+From `web/sim-viewer/` (in the worktree or, after a merge, in the main checkout):
+
+```bash
+uv sync                                  # once: the app's own .venv
+(cd frontend && npm ci)                  # once: node_modules from package-lock.json
+
+(cd frontend && npm run build)           # build the frontend into frontend/dist
+uv run uvicorn server.app:app --host 127.0.0.1 --port 8765
+# open http://127.0.0.1:8765/   (remote: ssh -L 8765:127.0.0.1:8765 <host>)
+```
+
+Development with hot reload: start the backend as above, then
+`(cd frontend && npm run dev)` and open http://127.0.0.1:5173/ (it proxies `/api`
+to port 8765).
+
+Checks:
+
+```bash
+uv run pytest
+uv run ruff check server tests && uv run ruff format --check server tests
+(cd frontend && npm run typecheck && npm test)
+```
+
+Settings (environment variables): `SIM_VIEWER_MAIN` (the main checkout, found from
+Git by default), `SIM_VIEWER_OUTPUTS` (default `<main>/outputs`),
+`SIM_VIEWER_GATE_REF` (default `main`; a report must exist on this ref).
+
+While a formal stage runs, start builds and tests with `nice -n 19`. Phase 1 runs no
+simulation; the backend only reads JSON and regenerates geometry (about 2 ms per
+deployment).
+
+To add an experiment: add an entry to `server/registry.py` with its report path
+and an adapter for its `analysis.json`, like `server/exp011.py`.

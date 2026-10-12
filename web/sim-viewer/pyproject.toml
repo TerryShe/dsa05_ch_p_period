@@ -1,0 +1,38 @@
+[project]
+name = "sim-viewer"
+version = "0.1.0.dev0"
+description = "Local viewer of the dsa05 scenario v2.0 results and simulations"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "dsa-period",
+    "fastapi>=0.115",
+    # Same numpy as the root uv.lock, so regenerated deployments use the same numerics.
+    "numpy==2.5.3",
+    "uvicorn>=0.30",
+]
+
+[dependency-groups]
+dev = [
+    "httpx>=0.27",
+    "pytest>=9.1.1",
+    "ruff>=0.16.6",
+]
+
+[tool.uv]
+package = false
+# Only releases at least two weeks old when the lock was made (supply-chain hygiene).
+exclude-newer = "2026-09-27T00:00:00Z"
+
+[tool.uv.sources]
+dsa-period = { path = "../..", editable = true }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-ra"
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I", "UP"]
