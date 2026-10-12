@@ -22,7 +22,8 @@ the definitions of the broadcast probe so the numbers are comparable:
 * failing share by mean-SNR bin (max power on the mean gain of the best
   subchannel) and traffic class.
 
-Formal use only on exp011-eval512 with a clean committed tree (``--formal``).
+Formal use only on exp011-eval512 with a clean committed tree (``--formal``);
+EXP-DSA05-011B runs the same diagnostics on its slice (``--set exp011b-eval512``).
 """
 
 import argparse
@@ -42,6 +43,7 @@ from dsa_period.rules_v2 import make_policy_v2
 from dsa_period.urgency import SummaryLink, SummarySettings, urgent
 
 SET = "exp011-eval512"
+SETS = (SET, "exp011b-eval512")  # EXP-011 and EXP-011B (design §3.4) evaluation slices
 EXCESS_BINS_DB = (3.0, 10.0, 20.0)
 SNR_BINS_DB = (0.0, 10.0, 20.0)
 YIELD_BINS = (0, 1, 11, 101)  # yield events per UE: 0, 1-10, 11-100, > 100
@@ -254,6 +256,7 @@ def main(argv: list[str] | None = None) -> None:
     parser.add_argument("--check", type=Path, nargs="*", default=[])
     parser.add_argument("--workers", type=int, default=8)
     parser.add_argument("--formal", action="store_true")
+    parser.add_argument("--set", choices=SETS, default=SET)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args(argv)
     if args.output.exists():
@@ -261,8 +264,8 @@ def main(argv: list[str] | None = None) -> None:
     provenance = git_provenance()
     if args.instances is None:
         if not args.formal or provenance["dirty"]:
-            parser.error(f"{SET} is read only with --formal on a clean committed tree")
-        chosen = splits_v2.screening_instances(SET)
+            parser.error(f"{args.set} is read only with --formal on a clean committed tree")
+        chosen = splits_v2.screening_instances(args.set)
     else:
         if args.formal:
             parser.error("--instances is for informal smoke runs")
@@ -281,7 +284,7 @@ def main(argv: list[str] | None = None) -> None:
         row["snr_bin"] = bins[key]
     checked = check(rows, args.check)
     record = {
-        "set": SET if args.instances is None else f"dev {chosen[0]}-{chosen[-1]}",
+        "set": args.set if args.instances is None else f"dev {chosen[0]}-{chosen[-1]}",
         "formal": args.formal,
         "provenance": provenance,
         "specs": args.specs,

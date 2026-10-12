@@ -8,6 +8,10 @@ the allowed N, ``training.num_envs`` the environments) is run once per N with
 ``--num-ues N``: all environments then have N UEs (EXP-009, protocol v2 §4).
 The optional ``[information]`` section adds the EXP-DSA05-011 urgency state
 summary (``urgency.SummarySettings``); without it the actor sees L0 only.
+``--resume CHECKPOINT`` continues that checkpoint's run (EXP-DSA05-011B design
+§2.2) into a new output directory: the config must equal the run's except a
+larger budget with the same entropy decay length; a formal resume needs a formal
+source run. The manifest records the checkpoint and its SHA-256.
 
 ``--formal`` requires a clean committed tree and no overrides; ``--budget-slots``
 and ``--set`` exist only for smoke tests and throughput checks. The output holds
@@ -100,6 +104,7 @@ def main(argv: list[str] | None = None) -> None:
     parser.add_argument("--seed", type=int, required=True)
     parser.add_argument("--num-ues", type=int, help="N of a per-N config")
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--resume", type=Path, metavar="CHECKPOINT", help="continue its run")
     parser.add_argument("--formal", action="store_true")
     parser.add_argument("--budget-slots", type=int, help="non-formal override")
     parser.add_argument(
@@ -148,8 +153,29 @@ def main(argv: list[str] | None = None) -> None:
         information = information_from(raw)
     except ValueError as exc:
         parser.error(str(exc))
+    resume = None
+    if args.resume is not None:
+        source = json.loads((args.resume.parent.parent / "manifest.json").read_text())
+        if args.formal and not source["formal"]:
+            parser.error(f"{args.resume} comes from an informal run")
+        resume = {
+            "checkpoint": str(args.resume),
+            "sha256": hashlib.sha256(args.resume.read_bytes()).hexdigest(),
+            "source_config": source["config"],
+            "source_provenance": source["provenance"],
+        }
     # Any N works: the trainer derives one scenario per environment from it.
     scenario = load_scenario(args.scenario, max(training.env_ues))
+    trainer = CapacityTrainer(
+        scenario, training, ppo, constraint, args.seed, update, sampler, information
+    )
+    start = (0, 0)
+    if args.resume is not None:
+        try:
+            start = trainer.resume(torch.load(args.resume, map_location="cpu", weights_only=False))
+        except ValueError as exc:
+            parser.error(f"{args.resume}: {exc}")
+        resume.update(slots=start[0], iteration=start[1])
     args.output.mkdir(parents=True)
     manifest = {
         "experiment": raw["experiment"],
@@ -164,6 +190,7 @@ def main(argv: list[str] | None = None) -> None:
         "seed": args.seed,
         "num_ues": args.num_ues,
         "overrides": changes,
+        "resume": resume,
         "resolved": {
             "training": resolve_training(raw, args.num_ues),
             "model": raw["model"],
@@ -177,10 +204,7 @@ def main(argv: list[str] | None = None) -> None:
         "python": platform.python_version(),
     }
     (args.output / "manifest.json").write_text(json.dumps(manifest, indent=2))
-    trainer = CapacityTrainer(
-        scenario, training, ppo, constraint, args.seed, update, sampler, information
-    )
-    result = trainer.run(args.output)
+    result = trainer.run(args.output, start=start)
     print(json.dumps(result, indent=2))
 
 

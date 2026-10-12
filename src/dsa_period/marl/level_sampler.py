@@ -173,3 +173,12 @@ class LevelSampler:
             "counts": dict(self.counts),
             "visits": dict(self.visits),
         }
+
+    def load_state_dict(self, state: dict) -> None:
+        """Continue from ``state_dict`` (a resumed training run, EXP-DSA05-011B)."""
+        self.rng.bit_generator.state = state["rng"]
+        self.clock = int(state["clock"])
+        self.levels, self.scores = list(state["levels"]), list(state["scores"])
+        self.stamps = list(state["stamps"])
+        self.counts = dict(state["counts"])
+        self.visits = {int(k): int(v) for k, v in state["visits"].items()}

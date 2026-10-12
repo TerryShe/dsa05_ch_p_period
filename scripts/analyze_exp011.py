@@ -51,21 +51,21 @@ BITS = {  # information per slot, design §2.6 (downlink bits; uplink bit per tr
 }
 
 
-def load(paths: list[Path], formal: bool = True) -> tuple[dict, list[int]]:
-    """spec -> {N: episodes} over formal exp011-eval512 outputs."""
+def load(paths: list[Path], formal: bool = True, screen: str = SET) -> tuple[dict, list[int]]:
+    """spec -> {N: episodes} over formal outputs of an evaluation slice (default exp011-eval512)."""
     episodes: dict[str, dict] = {}
-    instances = splits_v2.screening_instances(SET)
+    instances = splits_v2.screening_instances(screen)
     for path in paths:
         record = json.loads((path / "summary.json").read_text())
         ok = (
             record["protocol_id"] == splits_v2.PROTOCOL_ID
             and record["split"] == "dev"
-            and record.get("screen") == SET
+            and record.get("screen") == screen
             and record["instances"] == instances
             and (record["formal"] or not formal)
         )
         if not ok:
-            raise ValueError(f"{path}: not a formal {SET} evaluation")
+            raise ValueError(f"{path}: not a formal {screen} evaluation")
         for spec, by_n in json.loads((path / "episodes.json").read_text()).items():
             for n, rows in by_n.items():
                 if int(n) in episodes.get(spec, {}):

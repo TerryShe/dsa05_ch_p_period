@@ -49,6 +49,12 @@ SCREENING_SETS: dict[str, dict] = {
     "exp010-eval512": {"range": (4_000, 4_512), "grid": (6, 8, 10)},
     # EXP-DSA05-011 (design §4.2): the evaluation of the urgency summary, dev 5000-5511.
     "exp011-eval512": {"range": (5_000, 5_512), "grid": (6, 8, 10, 12, 16)},
+    # EXP-DSA05-011B (design §2.3, §3.4): the evaluation slice, dev 6000-6511, and the
+    # near-UE stress set. The block 7000-9999 is reserved for it; at each N only the
+    # deployments whose first N UEs include one within near_m of the AP are read
+    # (``starvation.stress_instances``), so ``screening_instances`` refuses it.
+    "exp011b-eval512": {"range": (6_000, 6_512), "grid": (6, 8, 10, 12, 16)},
+    "exp011b-stress": {"range": (7_000, 10_000), "grid": (8, 12, 16), "near_m": 5.0},
 }
 # Confirmation sets, one execution each: v2-confirm1 (EXP-008 §7.1, reserve 30000-30499)
 # and v2-confirm2 (EXP-009 §3, reserve 30500-30999).
@@ -91,6 +97,8 @@ def evaluation_repeats(split: str) -> int:
 
 def screening_instances(name: str) -> list[int]:
     """The dev instances of a registered screening set, in order."""
+    if "near_m" in SCREENING_SETS[name]:
+        raise ValueError(f"{name} is filtered per N; read it with starvation.stress_instances")
     start, stop = SCREENING_SETS[name]["range"]
     return [require("dev", i) for i in range(start, stop)]
 

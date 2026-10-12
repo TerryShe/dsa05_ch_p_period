@@ -1,0 +1,71 @@
+# EXP-DSA05-011B condition O, first stage of the new seeds 404 and 505 (design §2.2):
+# 0 -> 5M slots on the original recipe. Apart from [experiment] the file equals
+# configs/exp011-o.toml (tests/test_exp011b.py checks this).
+[experiment]
+id = "exp011b-guarded-extended"
+design = "docs/experiment-designs/011b-guarded-selection-extended-training_20261012.md"
+condition = "O"
+stage = "base"
+variant = "fixed"
+seeds = [404, 505]
+inherits = "configs/exp011-o.toml"
+
+# Urgency state summary (design §2): content of the uplink bit, AP reading
+# threshold theta_f in dB (TIN SINR of the transmission), urgency threshold in slots.
+[information]
+content = "occupancy"
+theta_db = -10.0
+urgent_slack = 3
+
+[training]
+budget_slots = 5000000
+episode_slots = 600
+env_ues = [4, 4, 6, 6, 8, 8, 10, 10, 12, 12, 16, 16, 20, 20]
+rollout_slots = 128
+entropy_start = 0.01
+entropy_decay_fraction = 0.5
+checkpoint_every_slots = 1000000
+torch_threads = 1
+
+[model]
+hidden = 64
+critic_hidden = 256
+
+[ppo]
+actor_lr = 3e-4
+critic_lr = 1e-3
+gamma = 0.99
+gae_lambda = 0.95
+clip = 0.2
+max_grad_norm = 0.5
+ppo_epochs = 4
+minibatch_envs = 4
+
+[update]
+advantage_norm = "global"
+actor_loss_weighting = "ue"
+value_norm = "none"
+
+# Reliability-only reward: -(1/N) sum_i mu_i c_i (EXP-006 variant A).
+[constraint.fixed]
+weight = 1.0
+
+[constraint.local]
+eta = 2.0
+mu_max = 50.0
+mu0 = 5.0
+
+[sampler]
+kind = "stratified"
+hard_share = 0.5
+
+# configs/exp009-tau.toml (frozen; tests check the copy)
+[sampler.tau]
+"2" = 3.5470138046803963
+"4" = 2.9212198525440263
+"6" = 2.6487739515504347
+"8" = 2.519029717893554
+"10" = 2.4315962174293846
+"12" = 2.372875297249997
+"16" = 2.2831118347237895
+"20" = 2.2349918632173504

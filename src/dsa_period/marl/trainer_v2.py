@@ -31,6 +31,12 @@ With the message content the actor is a ``MessageActor``: the message of a UE
 that transmits enters the joint log-probability, and the entropy bonus is the
 joint entropy H(a) + P(a != OFF) H(m). Without a summary the trainer is the
 EXP-006/008/009 trainer, bit for bit.
+
+EXP-DSA05-011B continues a run from a checkpoint (``CapacityTrainer.resume``):
+networks, optimizers, ValueNorm, random states and deployment samplers are
+restored, every environment starts a fresh episode, and ``run`` goes on from the
+checkpoint's slot count up to a larger budget with the same entropy schedule in
+slots.
 """
 
 import json
@@ -95,6 +101,28 @@ class CapacityTrainingSettings:
         if not values or any(n < 1 for n in values):
             raise ValueError("env_ues must list at least one positive number of UEs")
         object.__setattr__(self, "env_ues", values)
+
+
+def entropy_coef(settings: CapacityTrainingSettings, slots: int) -> float:
+    """The entropy bonus after ``slots`` training slots: linear decay to 0."""
+    progress = slots / (settings.entropy_decay_fraction * settings.budget_slots)
+    return settings.entropy_start * max(0.0, 1.0 - progress)
+
+
+RESUME_FREE = ("budget_slots", "entropy_decay_fraction")  # may change on resume
+
+
+def _plain(value):
+    """Tuples as lists, recursively, so stored and live settings compare equal."""
+    if isinstance(value, dict):
+        return {str(k): _plain(v) for k, v in value.items()}
+    if isinstance(value, list | tuple):
+        return [_plain(v) for v in value]
+    return value
+
+
+def _maybe_asdict(value) -> dict | None:
+    return None if value is None else asdict(value)
 
 
 @dataclass(frozen=True)
@@ -963,12 +991,59 @@ class CapacityTrainer:
             },
         }
 
-    def run(self, output: Path, log=print) -> dict:
+    def resume(self, checkpoint: dict) -> tuple[int, int]:
+        """Continue the run of ``checkpoint``; returns its (slots, iteration).
+
+        The trainer must be built with the checkpoint's seed and settings; only the
+        budget and the decay fraction may differ, with the same decay length in
+        slots, so the entropy bonus follows the original schedule slot for slot.
+        A checkpoint holds no running episode: every environment starts a fresh one
+        from the restored random states. PLR samplers are refused (their pending
+        episode scores are not in the checkpoint).
+        """
+        if checkpoint.get("kind") != CHECKPOINT_KIND or checkpoint["schema"] != CHECKPOINT_SCHEMA:
+            raise ValueError("not a capacity MAPPO checkpoint")
+        old, new = checkpoint["settings"], asdict(self.settings)
+        fixed = [k for k in new if k not in RESUME_FREE and _plain(old[k]) != _plain(new[k])]
+        horizon = old["entropy_decay_fraction"] * old["budget_slots"]
+        expected = {
+            "seed": (checkpoint["seed"], self.seed),
+            "update": (checkpoint["update"], asdict(self.update_settings)),
+            "constraint": (checkpoint["constraint"], asdict(self.constraint)),
+            "duals": (checkpoint["duals"], asdict(self.duals)),
+            "information": (checkpoint.get("information"), _maybe_asdict(self.information)),
+            "sampler": (
+                checkpoint.get("sampler"),
+                asdict(self.sampler_settings) if self.level_samplers else None,
+            ),
+        }
+        differ = [k for k, (a, b) in expected.items() if _plain(a) != _plain(b)]
+        if fixed or differ:
+            raise ValueError(f"the checkpoint's run differs in {fixed + differ}")
+        if self.settings.entropy_decay_fraction * self.settings.budget_slots != horizon:
+            raise ValueError("resuming must keep the entropy decay length in slots")
+        if self.settings.budget_slots <= checkpoint["slots"]:
+            raise ValueError("the budget must exceed the checkpoint's slots")
+        if self.sampler_settings.kind == "plr":
+            raise ValueError("PLR runs cannot be resumed")
+        self.ppo.load_state_dict(checkpoint["ppo"])
+        self.rng.bit_generator.state = checkpoint["rng"]["numpy"]
+        self.sampler.set_state(checkpoint["rng"]["sampler"])
+        torch.set_rng_state(checkpoint["rng"]["torch"])
+        for n, state in checkpoint.get("level_samplers", {}).items():
+            self.level_samplers[int(n)].load_state_dict(state)
+        self.instances_drawn, self.episodes_by_n, self.hardness_drawn = [], {}, {}
+        for env in range(self.env_ues.size):
+            self._reset_env(env)
+        return int(checkpoint["slots"]), int(checkpoint["iteration"])
+
+    def run(self, output: Path, log=print, start: tuple[int, int] = (0, 0)) -> dict:
+        """Train up to the budget from ``start`` = (slots, iteration) (``resume``)."""
         s = self.settings
         (output / "checkpoints").mkdir(parents=True)
         slots_per_iteration = s.rollout_slots * self.env_ues.size
-        slots, iteration = 0, 0
-        next_checkpoint = s.checkpoint_every_slots
+        slots, iteration = start
+        next_checkpoint = (slots // s.checkpoint_every_slots + 1) * s.checkpoint_every_slots
         saved = []
         started = time.perf_counter()
         with open(output / "training.jsonl", "w") as training_log:
@@ -978,8 +1053,7 @@ class CapacityTrainer:
                 collect_s = time.perf_counter() - tick
                 slots += slots_per_iteration
                 iteration += 1
-                progress = slots / (s.entropy_decay_fraction * s.budget_slots)
-                coef = s.entropy_start * max(0.0, 1.0 - progress)
+                coef = entropy_coef(s, slots)
                 tick = time.perf_counter()
                 metrics = self.train_step(rollout, coef)
                 update_s = time.perf_counter() - tick

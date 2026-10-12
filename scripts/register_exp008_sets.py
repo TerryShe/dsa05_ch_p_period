@@ -1,4 +1,4 @@
-"""Write the set manifests of EXP-DSA05-008, -009, -010 and -011 (protocol v2).
+"""Write the set manifests of EXP-DSA05-008, -009, -010, -011 and -011B (protocol v2).
 
 EXP-008 (docs/research/exp008-sets.json): the screening set exp008-screen256
 (dev 2000-2255, N = 6 and 8) and the confirmation set v2-confirm1 (reserve
@@ -6,7 +6,10 @@ EXP-008 (docs/research/exp008-sets.json): the screening set exp008-screen256
 3000-3255, N in {2, ..., 20}) and v2-confirm2 (reserve 30500-30999). EXP-010
 (docs/research/exp010-sets.json): the evaluation slice exp010-eval512 (dev
 4000-4511, N = 6, 8, 10). EXP-011 (docs/research/exp011-sets.json): the
-evaluation slice exp011-eval512 (dev 5000-5511, N = 6, 8, 10, 12, 16). Each set
+evaluation slice exp011-eval512 (dev 5000-5511, N = 6, 8, 10, 12, 16). EXP-011B
+(docs/research/exp011b-sets.json): the evaluation slice exp011b-eval512 (dev
+6000-6511) and the near-UE stress set exp011b-stress (block 7000-9999; at N = 8,
+12, 16 the deployments with a UE within 5 m of the AP, listed per N). Each set
 carries its instance and fading digests (``splits_v2.instance_digest``:
 topology, shadowing, traffic and the fading of slots 0-7) at every N it is read
 at; confirmation sets at every N of the protocol-v2 grid and of N_EDF. No policy
@@ -18,7 +21,7 @@ import hashlib
 import json
 from pathlib import Path
 
-from dsa_period import splits_v2
+from dsa_period import splits_v2, starvation
 from dsa_period.config import load_scenario
 
 ROOT = Path(__file__).parents[1]
@@ -68,6 +71,31 @@ REGISTRY = {
         "selection": "none: evaluation only (checkpoints are selected on exp009-screen256 by P2)",
         "dev_used": [[0, 64], [1000, 1400], [2000, 2256], [3000, 3256], [4000, 4512]],
     },
+    "EXP-DSA05-011B": {
+        "output": "docs/research/exp011b-sets.json",
+        "design": "docs/experiment-designs/011b-guarded-selection-extended-training_20261012.md",
+        "document": "docs/research/exp011b-registration.md",
+        "registered_on": "2026-10-12",
+        "screening": ["exp011b-eval512", "exp011b-stress"],
+        "confirmation": [],
+        "score": {
+            "exp011b-eval512": "P2; D_N = P2(U) - P2(M); U - O, U - L, U - M+Y (design §5)",
+            "exp011b-stress": "starvation cells: a UE with mean SNR >= 20 dB and w >= 0.5",
+        },
+        "selection": {
+            "exp011b-eval512": "none: evaluation only",
+            "exp011b-stress": "anti-starvation guard: a checkpoint with a starvation cell at "
+            "any N is not selected at any N (design §3.3)",
+        },
+        "dev_used": [
+            [0, 64],
+            [1000, 1400],
+            [2000, 2256],
+            [3000, 3256],
+            [4000, 4512],
+            [5000, 5512],
+        ],  # fmt: skip
+    },
 }
 
 
@@ -79,6 +107,12 @@ def build(experiment: str = "EXP-DSA05-008") -> dict:
     for name in spec["screening"]:
         entry = splits_v2.SCREENING_SETS[name]
         start, stop = entry["range"]
+        score, selection = spec["score"], spec["selection"]
+        if isinstance(score, dict):
+            score, selection = score[name], selection[name]
+        if "near_m" in entry:
+            screening[name] = filtered_set(name, entry, score, selection)
+            continue
         screening[name] = {
             "split": "dev",
             "start": start,
@@ -87,8 +121,8 @@ def build(experiment: str = "EXP-DSA05-008") -> dict:
             "grid": list(entry["grid"]),
             "repeats": splits_v2.evaluation_repeats("dev"),
             "seed_code": splits_v2.SPLIT_CODES["dev"],
-            "score": spec["score"],
-            "selection": spec["selection"],
+            "score": score,
+            "selection": selection,
             "entry_point": "evaluate_capacity --split dev --screen " + name + " --formal",
             "digests": {
                 str(n): splits_v2.instance_digest(
@@ -145,6 +179,33 @@ def build(experiment: str = "EXP-DSA05-008") -> dict:
         "usage_checked_on_registration": {
             "v2_dev_ranges_used": spec["dev_used"],
             "v2_reserve_ranges_read": [],
+        },
+    }
+
+
+def filtered_set(name: str, entry: dict, score: str, selection: str) -> dict:
+    """A reserved dev block read per N through a geometric filter (exp011b-stress)."""
+    start, stop = entry["range"]
+    lists = {
+        n: starvation.stress_instances(load_scenario(ROOT / CONFIG, n), name) for n in entry["grid"]
+    }
+    return {
+        "split": "dev",
+        "start": start,
+        "stop": stop,
+        "reserved": stop - start,
+        "filter": f"the first N UEs include one within {entry['near_m']} m of the AP",
+        "grid": list(entry["grid"]),
+        "count": {str(n): len(lists[n]) for n in entry["grid"]},
+        "instances": {str(n): lists[n] for n in entry["grid"]},
+        "repeats": splits_v2.evaluation_repeats("dev"),
+        "seed_code": splits_v2.SPLIT_CODES["dev"],
+        "score": score,
+        "selection": selection,
+        "entry_point": "scripts/stress_exp011b.py --formal",
+        "digests": {
+            str(n): splits_v2.instance_digest(load_scenario(ROOT / CONFIG, n), lists[n], "dev")
+            for n in entry["grid"]
         },
     }
 
