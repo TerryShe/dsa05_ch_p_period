@@ -386,20 +386,34 @@ def _probe_policy(checkpoint, tmp_path):
 
 def test_input_probes_leave_the_episode_unchanged(checkpoint, tmp_path):
     scenario, policy = _probe_policy(checkpoint, tmp_path)
-    gain = diagnose.GainProbe(policy(), 2, [0.0])
+    gain = diagnose.GainProbe(policy(), 2, [0.0, *diagnose.GAIN_DB])
     plain = run_capacity_episode(scenario, gain, "dev", 3)
     names = diagnose.variants(scenario, summary=True)
     probe = diagnose.InputProbe(policy(), 2, names)
     probed = run_capacity_episode(scenario, probe, "dev", 3)
     assert probed["violations"] == plain["violations"]
     assert names == ["actual", "period=10", "period=20", "period=40", "hidden=0",
-                     "broadcast=0", "broadcast=1"]  # fmt: skip
+                     "gain=-10", "gain=-20", "gain=-30", "broadcast=0", "broadcast=1"]  # fmt: skip
     values = np.array(probe.p_off)
-    assert len(values) == len(probe.urgent) == len(probe.marked) > 0
+    assert len(values) == len(probe.urgent) == len(probe.marked) == len(probe.sends) > 0
     # "actual" is the policy's own P(OFF); UE 2 is slow (40 slots), so its own period is a no-op
     np.testing.assert_allclose(values[:, 0], np.array(gain.p_off)[:, 0])
     np.testing.assert_allclose(values[:, names.index("period=40")], values[:, 0])
-    assert diagnose.variants(scenario, summary=False)[-1] == "hidden=0"
+    # the gain variants are the gain counterfactual's values
+    np.testing.assert_allclose(values[:, 5:8], np.array(gain.p_off)[:, 1:])
+    assert probe.sends == gain.sends
+    # pending slots are numbered by release: one number per packet, in order
+    steps = np.diff(probe.packet)
+    assert len(probe.packet) == len(values) and set(steps) <= {0, 1} and steps.sum() > 0
+    assert diagnose.variants(scenario, summary=False)[-1] == "gain=-30"
+
+
+def test_per_packet_products_and_never_sent_packets():
+    p_off = np.array([[0.5, 1.0], [0.5, 0.2], [0.9, 0.9], [0.8, 0.1]])
+    packet, sends = np.array([1, 1, 1, 2]), np.array([False, False, True, False])
+    silent, never = diagnose.per_packet(p_off, packet, sends)
+    np.testing.assert_allclose(silent, [[0.225, 0.18], [0.8, 0.1]])
+    assert never.tolist() == [False, True]
 
 
 def test_each_variant_replaces_one_input_group():

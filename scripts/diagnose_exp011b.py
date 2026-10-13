@@ -28,8 +28,16 @@ group replaced, the policy again acting on the real inputs:
   same rate (packet bits / period), so this is the class-equivalent state: every
   other actor input is a ratio of bits or of slots and does not change;
 * ``hidden=0``: the UE's recurrent state cleared (as at the start of an episode);
+* ``gain=D``: the UE's own gains scaled by D dB, as in ``counterfactual``;
 * ``broadcast=0`` / ``broadcast=1`` (summary policies): no subchannel / every
   subchannel marked in the broadcast the UE sees.
+
+Per packet (the pending slots after one release) the product of these P(OFF) is
+the probability, along the recorded inputs, that the UE stays OFF for the whole
+packet; it is reported as a mean over packets per variant (``p_never_sent``),
+next to the share of packets the UE in fact never transmitted. For a packet that
+was sent the recorded slots stop when it completes, so the product covers fewer
+slots than a silent path would and is an upper bound for it.
 
 A second episode is an intervention: the UE's recurrent state is cleared at each
 of its packet releases (``HiddenReset``), and its violation rate and the other
@@ -63,6 +71,7 @@ EARLY, LATE = 3_000_000, 5_100_000  # the 3M-5M checkpoints of gate A
 GRIDS = select_exp011b.GRIDS  # screening N counted per condition (the evaluation N)
 NEAR_M = splits_v2.SCREENING_SETS[starvation.STRESS_SET]["near_m"]
 PERIOD_INPUT = 3  # context entry period / MAX_PERIOD_SLOTS (LocalMemory.features)
+GAIN_DB = (-10.0, -20.0, -30.0)  # own-gain variants of the input probes
 
 
 # ---------------------------------------------------------------------------- map
@@ -142,6 +151,13 @@ def off_probability(actor, tokens, context, hidden, legal) -> float:
     return float(p[0] / p.sum())
 
 
+def scaled_gain(obs, ue: int, delta_db: float):
+    """The observation with UE ``ue``'s own gains scaled by ``delta_db``."""
+    gains = obs.own_gain.copy()
+    gains[ue] *= 10.0 ** (delta_db / 10.0)
+    return replace(obs, own_gain=gains)
+
+
 class GainProbe:
     """Wraps a MARL policy and scores one UE's P(OFF) with its own gains scaled."""
 
@@ -157,7 +173,7 @@ class GainProbe:
     def reset(self, rngs) -> None:
         self.inner.reset(rngs)
         self.p_off: list[list[float]] = []
-        self.sent = 0
+        self.sends: list[bool] = []  # per pending slot: whether the UE transmitted
 
     def _p_off(self, obs, memory, link) -> list[float]:
         inner, ue = self.inner, self.ue
@@ -170,9 +186,7 @@ class GainProbe:
         legal = legal_mask(obs, inner.actor.num_actions)[ue]
         out = []
         for delta in self.deltas:
-            gains = obs.own_gain.copy()
-            gains[ue] *= 10.0 ** (delta / 10.0)
-            tokens, context = memory.features(replace(obs, own_gain=gains))
+            tokens, context = memory.features(scaled_gain(obs, ue, delta))
             if link is not None:
                 tokens, context = with_summary(tokens, context, seen, own)
             row = slice(ue, ue + 1)
@@ -183,11 +197,13 @@ class GainProbe:
 
     def act(self, observations):
         obs = stack(observations)
-        if obs.remaining[self.ue] > 0:
+        pending = obs.remaining[self.ue] > 0
+        if pending:
             link = copy.deepcopy(self.inner.link) if isinstance(self.inner, SummaryPolicy) else None
             self.p_off.append(self._p_off(obs, copy.deepcopy(self.inner._memory), link))
         actions = self.inner.act(observations)
-        self.sent += int(obs.remaining[self.ue] > 0 and actions[self.ue][1] > 0)
+        if pending:
+            self.sends.append(bool(actions[self.ue][1] > 0))
         return actions
 
 
@@ -203,7 +219,7 @@ def _replay(job: tuple) -> dict:
     return {
         "spec": spec, "N": n, "instance": instance, "ue": ue,
         "violation_rate": record["violation_rate"][ue],
-        "pending_slots": len(p), "send_share": probe.sent / max(len(p), 1),
+        "pending_slots": len(p), "send_share": float(np.mean(probe.sends)) if len(p) else 0.0,
         "mean_p_off": dict(zip(map(str, deltas), p.mean(axis=0).tolist())),
     }  # fmt: skip
 
@@ -227,7 +243,8 @@ def variants(scenario, summary: bool) -> list[str]:
     classes = scenario.traffic_classes
     if len({c.packet_bits / c.period_slots for c in classes}) != 1:
         raise ValueError("the period variant is the class-equivalent state only at equal rates")
-    names = ["actual", *(f"period={c.period_slots}" for c in classes), "hidden=0"]
+    names = ["actual", *(f"period={c.period_slots}" for c in classes), "hidden=0",
+             *(f"gain={d:g}" for d in GAIN_DB)]  # fmt: skip
     return [*names, "broadcast=0", "broadcast=1"] if summary else names
 
 
@@ -250,7 +267,12 @@ def edit(variant: str, context, seen, hidden, ue: int):
 
 
 class InputProbe(GainProbe):
-    """Scores one UE's P(OFF) under each input variant (``edit``) at its pending slots."""
+    """Scores one UE's P(OFF) under each input variant at its pending slots.
+
+    ``gain=D`` recomputes the features from the scaled gains (``scaled_gain``);
+    every other variant edits the actual inputs (``edit``). ``packet`` numbers
+    the pending slots by the UE's releases seen so far.
+    """
 
     def __init__(self, inner, ue: int, names: list[str]) -> None:
         super().__init__(inner, ue, [])
@@ -260,9 +282,14 @@ class InputProbe(GainProbe):
         super().reset(rngs)
         self.urgent: list[bool] = []
         self.marked: list[int] = []
+        self.packet: list[int] = []
+        self.releases = 0
 
     def _p_off(self, obs, memory, link) -> list[float]:
         inner, ue = self.inner, self.ue
+        if obs.to_deadline[ue] == obs.period[ue]:  # a release (LocalMemory.observe)
+            self.releases += 1
+        self.packet.append(self.releases)
         memory.update_duals(memory.observe(obs))
         tokens, context = memory.features(obs)
         threshold = inner.settings.urgent_slack if link is not None else URGENT_SLACK
@@ -275,8 +302,12 @@ class InputProbe(GainProbe):
         legal = legal_mask(obs, inner.actor.num_actions)[ue]
         out = []
         for variant in self.variants:
-            varied, shown, hidden = edit(variant, context, seen, inner._hidden, ue)
-            inputs = (tokens, varied) if shown is None else with_summary(tokens, varied, shown, own)
+            group, _, value = variant.partition("=")
+            toks, ctx = tokens, context
+            if group == "gain":
+                (toks, ctx), variant = memory.features(scaled_gain(obs, ue, float(value))), "actual"
+            varied, shown, hidden = edit(variant, ctx, seen, inner._hidden, ue)
+            inputs = (toks, varied) if shown is None else with_summary(toks, varied, shown, own)
             row = slice(ue, ue + 1)
             out.append(
                 off_probability(inner.actor, inputs[0][row], inputs[1][row], hidden[row], legal)
@@ -313,6 +344,14 @@ class HiddenReset:
             self.pending += 1
             self.sent += int(actions[ue][1] > 0)
         return actions
+
+
+def per_packet(p_off, packet, sends):
+    """Per packet: the product of each variant's P(OFF) over its slots; whether it was never sent."""
+    ids = np.unique(packet)
+    silent = np.array([p_off[packet == i].prod(axis=0) for i in ids])
+    never = np.array([not sends[packet == i].any() for i in ids])
+    return silent, never
 
 
 def probe_cell(rows: list[dict], n: int) -> dict:
@@ -360,6 +399,8 @@ def _probe(job: tuple) -> dict:
     reset = HiddenReset(make_policy_v2(spec, scenario.physical, scenario.menu), ue)
     after = run_capacity_episode(scenario, reset, "dev", instance)
     p, pressing = np.array(probe.p_off), np.array(probe.urgent)
+    sends = np.array(probe.sends)
+    silent, never = per_packet(p, np.array(probe.packet), sends)
     others = [i for i in range(n) if i != ue]
 
     def other_rates(record: dict) -> dict:
@@ -370,12 +411,14 @@ def _probe(job: tuple) -> dict:
         "role": role, "kind": kind, "spec": spec, "N": n, "instance": instance, "ue": ue,
         "class_index": replay["class_index"][ue], "distance_m": replay["distance_m"][ue],
         "violation_rate": replay["violation_rate"][ue],
-        "pending_slots": len(p), "send_share": probe.sent / max(len(p), 1),
+        "pending_slots": len(p), "send_share": float(sends.mean()),
         "urgent_share": float(pressing.mean()),
         "marked_share": float(np.mean(np.array(probe.marked) > 0)) if probe.marked else None,
         "mean_p_off": dict(zip(names, p.mean(axis=0).tolist())),
         "mean_p_off_urgent": dict(zip(names, p[pressing].mean(axis=0).tolist()))
         if pressing.any() else None,
+        "packets": len(never), "never_sent_share": float(never.mean()),
+        "p_never_sent": dict(zip(names, silent.mean(axis=0).tolist())),
         "hidden_reset": {
             "resets": reset.resets,
             "violation_rate": after["violation_rate"][ue],
