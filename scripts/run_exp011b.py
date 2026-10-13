@@ -5,8 +5,9 @@
     run_exp011b.py stage2   training: the 15 existing runs resume from 5M to 10M;
                             seeds 404 and 505 of every condition run 0 -> 5M
                             (configs/exp011b-*-base.toml), then resume to 10M
-    run_exp011b.py stage3   the new checkpoints on exp009-screen256 and the stress
-                            set, the guarded selection, the methods file and the plan
+    run_exp011b.py stage3   the new candidate checkpoints (amendment 1, §13: 3M, 4M,
+                            5M, 6M, 8M, 10M) on exp009-screen256 and the stress set,
+                            the guarded selection, the methods file and the plan
     run_exp011b.py stage4   evaluation on exp011b-eval512, diagnostics, analysis
 
 A stage runs only if ``outputs/exp011b/gates.json`` records the user's approval
@@ -14,15 +15,18 @@ of the gate before it (0, A, B, C; gate A also records branch "G") and the
 previous stage's outputs exist; stages never chain. Gate records are written by
 hand after the user agrees. Everything is --formal on a clean committed tree;
 finished chunks are skipped on a restart and a training run is never restarted.
-``--dry-run`` prints the stage's work.
+``--dry-run`` prints the stage's work; any other argument is refused.
 """
 
 import importlib.util
 import json
+import re
 import subprocess
 import sys
 import time
 from pathlib import Path
+
+from dsa_period.experiments.select_exp011b import CANDIDATES, milestone
 
 ROOT = Path(__file__).parents[1]
 OUT = ROOT / "outputs" / "exp011b"
@@ -73,6 +77,19 @@ def checkpoints(key: str, seed: int, new_only: bool = False) -> list[Path]:
     early = sorted((source_run(key, seed) / "checkpoints").glob("*.pt"))
     late = sorted((OUT / f"{key}-seed{seed}" / "checkpoints").glob("*.pt"))
     return late if new_only and seed in OLD_SEEDS else early + late
+
+
+def is_candidate(name: str) -> bool:
+    """Whether a checkpoint (file or output name with ``step-<slots>``) is selectable (§13)."""
+    found = re.search(r"step-(\d{9})", name)
+    if found is None:
+        raise ValueError(f"no checkpoint step in {name!r}")
+    return milestone(int(found.group(1))) in CANDIDATES
+
+
+def candidates(key: str, seed: int, new_only: bool = False) -> list[Path]:
+    """The selectable ones among ``checkpoints``."""
+    return [p for p in checkpoints(key, seed, new_only) if is_candidate(p.name)]
 
 
 def spec_of(path: Path) -> str:
@@ -142,12 +159,12 @@ def eval_chunk(spec: str, n: int) -> tuple[str, list[str], Path, int]:
 
 
 def screen_dirs_existing() -> list[str]:
-    """exp009-screen256 outputs of the 1M-5M checkpoints of seeds 101-303 (EXP-009, EXP-011)."""
-    found = [str(p.parent) for g in M_SCREENS for p in ROOT.glob(f"{g}/summary.json")]
-    found += [str(p.parent) for p in (ROOT / "outputs/exp011/screen").glob("*/summary.json")]
+    """exp009-screen256 outputs of the 3M-5M checkpoints of seeds 101-303 (EXP-009, EXP-011)."""
+    found = [p.parent for g in M_SCREENS for p in ROOT.glob(f"{g}/summary.json")]
+    found += [p.parent for p in (ROOT / "outputs/exp011/screen").glob("*/summary.json")]
     if len(found) != 120 + 60:
         sys.exit(f"found {len(found)} existing screening outputs, expected 180")
-    return sorted(found)
+    return sorted(str(p) for p in found if is_candidate(p.name))
 
 
 def plan(methods: dict) -> dict:
@@ -271,14 +288,15 @@ def stage3(dry: bool) -> None:
     ]
     if missing:
         sys.exit(f"stage 2 has not finished: {missing}")
-    new = [(k, p) for k, s in runs for p in checkpoints(k, s, new_only=True)]
+    new = [(k, p) for k, s in runs for p in candidates(k, s, new_only=True)]
     if dry:
-        print(f"{len(new)} new checkpoints on exp009-screen256 and the stress set; selection")
+        print(f"{len(new)} new candidate checkpoints on exp009-screen256 and the stress set; "
+              "selection")  # fmt: skip
         return
     run_queue([screen_chunk(k, p) for k, p in new] + [stress_chunk(p) for _, p in new],
               OUT / "chunks")  # fmt: skip
     log("screening and stress runs done")
-    every = [p for k, s in runs for p in checkpoints(k, s)]
+    every = [p for k, s in runs for p in candidates(k, s)]
     stress = sorted(str(OUT / "stress" / label(p)) for p in every)
     screen = screen_dirs_existing() + sorted(str(OUT / "screen" / label(p)) for _, p in new)
     select = [PY, "-m", "dsa_period.experiments.select_exp011b"]
@@ -328,6 +346,8 @@ def main() -> None:
     stages = {"stage1": stage1, "stage2": stage2, "stage3": stage3, "stage4": stage4}
     if not args or args[0] not in stages:
         sys.exit(f"usage: run_exp011b.py {{{','.join(stages)}}} [--dry-run]")
+    if any(flag != "--dry-run" for flag in args[1:]):
+        sys.exit(f"unknown arguments {args[1:]}; the only option is --dry-run")
     dry = "--dry-run" in args[1:]
     if not dry:
         check_gate(args[0])

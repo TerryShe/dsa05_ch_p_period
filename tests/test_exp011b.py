@@ -248,27 +248,31 @@ def _run(tmp_path: Path, name: str, condition: str, seed: int) -> Path:
 
 def test_guarded_selection_excludes_starving_checkpoints_at_every_n(tmp_path):
     u, m = _run(tmp_path, "u", "U", 101), _run(tmp_path, "m", "S1", 101)
-    spec = {f"{r.name}{k}": f"marl:{r}/checkpoints/step-00{k}000000.pt" for r in (u, m)
-            for k in (1, 2, 6)}  # fmt: skip
+    spec = {f"{r.name}{k}": f"marl:{r}/checkpoints/step-{k:03d}000000.pt" for r in (u, m)
+            for k in (2, 3, 4, 6, 7)}  # fmt: skip
     screen, cells = {}, {}
     for name, s in spec.items():
-        p2 = {"1": 0.001, "2": 0.004, "6": 0.003}[name[-1]]
+        p2 = {"2": 0.0, "3": 0.001, "4": 0.004, "6": 0.003, "7": 0.0}[name[1:]]
         screen[s] = {n: {"P2": p2, "F01": 0.9} for n in (6, 8, 10, 12, 16, 20)}
+        if name[1:] in ("2", "7"):  # not candidates (amendment 1): no stress output needed
+            continue
         cells[s] = {"screen": {n: [] for n in (6, 8, 10, 12, 16, 20)},
                     "stress": {n: [] for n in (8, 12, 16)}}  # fmt: skip
-    cells[spec["u1"]]["stress"][16] = [{"instance": 7022}]  # U 1M starves at N = 16 only
-    cells[spec["m1"]]["screen"][20] = [{"instance": 3001}]  # outside M's evaluation grid
+    cells[spec["u3"]]["stress"][16] = [{"instance": 7022}]  # U 3M starves at N = 16 only
+    cells[spec["m3"]]["screen"][20] = [{"instance": 3001}]  # outside M's evaluation grid
     chosen = select_exp011b.select(screen, cells, {"S1": "M"})
     assert {c["selected"] for c in chosen["U"]["101"]["cells"].values()} == {spec["u6"]}
-    assert {c["selected"] for c in chosen["M"]["101"]["cells"].values()} == {spec["m1"]}
+    assert {c["selected"] for c in chosen["M"]["101"]["cells"].values()} == {spec["m3"]}
+    listed = {c["spec"] for c in chosen["U"]["101"]["checkpoints"]}
+    assert listed == {spec["u3"], spec["u4"], spec["u6"]}
     early = select_exp011b.select(screen, cells, {"S1": "M"}, max_slots=5_100_000)
-    assert {c["selected"] for c in early["U"]["101"]["cells"].values()} == {spec["u2"]}
+    assert {c["selected"] for c in early["U"]["101"]["cells"].values()} == {spec["u4"]}
     effect = select_exp011b.budget_effect(chosen, early)
     assert effect["U"]["8"] == pytest.approx(0.003 - 0.004)
-    for s in (spec["u2"], spec["u6"]):
+    for s in (spec["u4"], spec["u6"]):
         cells[s]["stress"][8] = [{"instance": 7022}, {"instance": 7061}]
     fallback = select_exp011b.select(screen, cells, {"S1": "M"})["U"]["101"]["cells"]["8"]
-    assert fallback["fallback"] and fallback["selected"] == spec["u1"]
+    assert fallback["fallback"] and fallback["selected"] == spec["u3"]
 
 
 def test_methods_need_five_seeds_of_every_condition():
@@ -346,6 +350,26 @@ def test_stages_need_their_gate(tmp_path, monkeypatch):
         driver.check_gate("stage2")
     with pytest.raises(SystemExit):
         driver.check_gate("stage3")
+
+
+def test_the_driver_queues_and_selects_only_the_amended_candidates(monkeypatch):
+    slots = [1_001_728 + i * 999_936 for i in range(10)]  # step-001001728 ... step-010001152
+    every = [Path(f"/x/u-seed404/checkpoints/step-{s:09d}.pt") for s in slots]
+    monkeypatch.setattr(driver, "checkpoints", lambda key, seed, new_only=False: every)
+    assert [int(p.stem[5:]) for p in driver.candidates("u", 404)] == [
+        slots[i - 1] for i in (3, 4, 5, 6, 8, 10)
+    ]
+    assert driver.is_candidate("s1-seed101-step-004001536-n10")
+    assert not driver.is_candidate("u-seed404-base-step-002001664")
+    with pytest.raises(ValueError):
+        driver.is_candidate("u-seed404")
+
+
+def test_the_driver_refuses_unknown_arguments(monkeypatch):
+    for argv in (["stage3", "--dry"], ["stage3", "--dry-run", "now"]):
+        monkeypatch.setattr(driver.sys, "argv", ["run_exp011b.py", *argv])
+        with pytest.raises(SystemExit, match="unknown arguments"):
+            driver.main()
 
 
 def test_driver_labels_runs_uniquely():

@@ -1,9 +1,11 @@
 """Per-N checkpoint selection with the anti-starvation guard (EXP-DSA05-011B).
 
 Design: docs/experiment-designs/011b-guarded-selection-extended-training_20261012.md
-§3.3. Every learned method (M, U, O, L, U0; seeds 101-505; checkpoints 1M-10M) is
-selected the same way:
+§3.3 and amendment 1 (§13). Every learned method (M, U, O, L, U0; seeds 101-505)
+is selected the same way:
 
+* candidates: the checkpoints at 3M, 4M, 5M, 6M, 8M and 10M slots (``CANDIDATES``);
+  other checkpoints passed in (1M, 2M, 7M, 9M) are skipped and listed;
 * guard: a checkpoint with a starvation cell (``starvation.cells``: a UE with
   mean SNR >= 20 dB and violation rate >= 0.5) at any N of the stress set
   ``exp011b-stress`` or at any evaluation N of its condition on
@@ -14,7 +16,7 @@ selected the same way:
   (``select_exp011.best``);
 * fallback: if no checkpoint of a (condition, seed) passes, the one with the
   fewest starvation cells, then the rule; reported as a fallback;
-* budget effect (descriptive): the same selection with candidates up to 5M.
+* budget effect (descriptive): the same selection with candidates up to 5M (3M-5M).
 
 ``methods`` writes the evaluation methods file (design §3.4). Conditions come
 from the run manifests (``--rename S1=M`` for EXP-009's S1 runs).
@@ -34,6 +36,12 @@ CORE = (8, 10, 12)
 GRIDS = {"U": GRID, "O": GRID, "L": GRID, "M": GRID, "U0": CORE}
 SEEDS = (101, 202, 303, 404, 505)
 BUDGET_5M = 5_100_000
+CANDIDATES = (3, 4, 5, 6, 8, 10)  # milestones in millions of slots (amendment 1, design §13)
+
+
+def milestone(slots: int) -> int:
+    """A checkpoint's milestone in millions of slots (step-006001408 -> 6)."""
+    return round(slots / 1_000_000)
 
 
 def load_cells(screen_dirs: list[Path], stress_dirs: list[Path]) -> dict[str, dict]:
@@ -76,6 +84,7 @@ def select(
     rename: dict[str, str] | None = None,
     grids: dict | None = None,
     max_slots: int | None = None,
+    candidates: tuple[int, ...] = CANDIDATES,
 ) -> dict:
     """condition -> seed -> N -> the guarded choice and every candidate's record."""
     rename, grids = rename or {}, grids or GRIDS
@@ -84,7 +93,7 @@ def select(
         condition, seed, slots = manifest_of(spec, rename)
         if condition not in grids:
             raise ValueError(f"{spec}: unknown condition {condition}")
-        if max_slots is not None and slots > max_slots:
+        if milestone(slots) not in candidates or (max_slots is not None and slots > max_slots):
             continue
         if spec not in cells or not cells[spec]["stress"]:
             raise ValueError(f"{spec} has no stress-set output")
@@ -180,11 +189,15 @@ def main(argv: list[str] | None = None) -> None:
         cells = load_cells(args.screen, args.stress)
         full = select(screen, cells, rename)
         early = select(screen, cells, rename, max_slots=BUDGET_5M)
+        skipped = [s for s in screen if milestone(manifest_of(s, rename)[2]) not in CANDIDATES]
         record = {
             "screen": SCREEN,
             "stress": starvation.STRESS_SET,
-            "rule": "guard: no starvation cell at any N (stress set, screen); then per "
-            "(condition, seed, N) min P2, max F_0.01, later checkpoint",
+            "rule": "candidates 3M, 4M, 5M, 6M, 8M, 10M; guard: no starvation cell at any N "
+            "(stress set, screen); then per (condition, seed, N) min P2, max F_0.01, later "
+            "checkpoint",
+            "candidates_millions": list(CANDIDATES),
+            "not_candidates": sorted(skipped),
             "sources": {
                 "screen": [str(p) for p in args.screen],
                 "stress": [str(p) for p in args.stress],
