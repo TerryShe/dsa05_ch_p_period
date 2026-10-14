@@ -258,6 +258,8 @@ _SHADOWED_SAMPLING = (
     "per UE in order: r=radius_m*sqrt(U), phi=2*pi*V, S_dB=sigma_db*Z (U,V~U[0,1), Z~N(0,1)); "
     "redraw (r, phi, S_dB) until the coverage predicate holds; one PCG64(topology_seed) stream"
 )
+# Scenario v2.1: a draw closer to the AP than min_distance_m is redrawn too (same stream).
+_MIN_DISTANCE_SAMPLING = "; also redraw while the UE-AP distance is below {:g} m"
 
 
 @dataclass(frozen=True)
@@ -282,12 +284,14 @@ class ShadowedTopology:
 
     ``ue_ap_gain_linear`` is the mean channel gain PL(d_i) * S_i that the fading
     model multiplies; ``path.ue_ap_gain_linear`` is path loss alone. ``redraws``
-    counts how often each UE was redrawn by the coverage rule.
+    counts how often each UE was redrawn by the coverage rule and, from scenario
+    v2.1, by the minimum UE-AP distance ``min_distance_m`` (0: none, as in v2.0).
     """
 
     path: Topology
     shadowing_db: NDArray[np.float64]
     redraws: NDArray[np.int64]
+    min_distance_m: float = 0.0
 
     def __post_init__(self) -> None:
         shadowing = _array(self.shadowing_db, "shadowing_db")
@@ -296,6 +300,10 @@ class ShadowedTopology:
             raise ValueError("shadowing_db and redraws need one entry per UE")
         if redraws.dtype.kind not in "iu" or np.any(redraws < 0):
             raise ValueError("redraws must be nonnegative integers")
+        floor = _finite_real(self.min_distance_m, "min_distance_m")
+        if floor < 0 or np.any(self.path.ue_ap_distances_m < floor):
+            raise ValueError("min_distance_m must be >= 0 and hold for every UE")
+        object.__setattr__(self, "min_distance_m", floor)
         object.__setattr__(self, "shadowing_db", _immutable(shadowing))
         frozen = np.asarray(redraws, dtype=np.int64)
         object.__setattr__(
@@ -319,9 +327,12 @@ class ShadowedTopology:
         return self.path.ue_ap_gain_linear * 10 ** (self.shadowing_db / 10.0)
 
     def to_record(self) -> dict:
+        sampling = _SHADOWED_SAMPLING
+        if self.min_distance_m > 0:
+            sampling += _MIN_DISTANCE_SAMPLING.format(self.min_distance_m)
         return {
             "schema_version": 1,
-            "sampling_method": _SHADOWED_SAMPLING,
+            "sampling_method": sampling,
             "numpy_version": np.__version__,
             "path": self.path.to_record(),
             "shadowing_db": self.shadowing_db.tolist(),
@@ -336,6 +347,7 @@ def generate_shadowed_topology(
     num_ues: int,
     covered,
     max_draws: int = 10_000,
+    min_distance_m: float = 0.0,
 ) -> ShadowedTopology:
     """Sample UEs one at a time with shadowing; redraw a UE until ``covered(ue, gain)``.
 
@@ -343,10 +355,17 @@ def generate_shadowed_topology(
     on the UE's traffic class but not on other UEs. UE i consumes the stream only
     after UEs 0..i-1, so the first n UEs of a larger deployment equal the
     deployment with n UEs (deployments are nested across N).
+
+    Scenario v2.1 also redraws a UE closer than ``min_distance_m`` to the AP, in
+    the same stream: every draw consumes the same three numbers, so a deployment
+    whose UEs are all accepted at least that far away is the v2.0 deployment.
     """
     if not isinstance(spatial, SpatialConfig) or not isinstance(shadowing, ShadowingConfig):
         raise ValueError("spatial and shadowing must be SpatialConfig and ShadowingConfig")
     count = _integer(num_ues, "num_ues", 1)
+    floor = _finite_real(min_distance_m, "min_distance_m")
+    if not 0 <= floor < spatial.radius_m:
+        raise ValueError("min_distance_m must be in [0, radius_m)")
     rng = np.random.Generator(np.random.PCG64(spatial.topology_seed))
     positions = np.empty((count, 2))
     shadow = np.empty(count)
@@ -357,10 +376,10 @@ def generate_shadowed_topology(
             angle = 2.0 * np.pi * rng.random()
             value = shadowing.sigma_db * rng.standard_normal()
             position = [radius * np.cos(angle), radius * np.sin(angle)]
-            _, _, gain = _derive(spatial, [position])
-            if covered(ue, float(gain[0]) * 10 ** (value / 10.0)):
+            _, distance, gain = _derive(spatial, [position])
+            if distance[0] >= floor and covered(ue, float(gain[0]) * 10 ** (value / 10.0)):
                 positions[ue], shadow[ue], redraws[ue] = position, value, draw
                 break
         else:
             raise RuntimeError(f"UE {ue} not covered after {max_draws} draws")
-    return ShadowedTopology(topology_from_positions(spatial, positions), shadow, redraws)
+    return ShadowedTopology(topology_from_positions(spatial, positions), shadow, redraws, floor)

@@ -1,0 +1,77 @@
+# DSA05 periodic uplink scenario v2.1 (docs/research/scenario-v2.1.md): scenario
+# v2.0 (configs/scenario-v2.toml, frozen) plus a 10 m minimum UE-AP distance.
+# Apart from the header, [experiment] and [spatial] min_distance_m, this file equals
+# configs/scenario-v2.toml (tests/test_scenario_v21.py checks this). Same seed bases:
+# a deployment whose UEs are all accepted at >= 10 m is the v2.0 deployment.
+# N is not in this file: load_scenario(path, num_ues) sets it, and UE j joins
+# class j mod 3 (fast, medium, slow).
+[experiment]
+id = "scenario-v2.1"
+scenario_id = "DES-DSA05-PERIODIC"
+scenario_version = "2.1"
+
+[physical]
+num_subchannels = 4
+slot_duration_s = 0.001
+subchannel_bandwidth_hz = 1000000.0
+noise_psd_dbm_per_hz = -174.0
+noise_figure_db = 7.0
+max_tx_power_dbm = 23.0
+
+# New seed bases: v2 instances never coincide with v1 instances.
+[spatial]
+radius_m = 100.0
+reference_distance_m = 1.0
+reference_path_loss_db = 40.0
+path_loss_exponent = 4.0
+topology_seed = 40000000
+# v2.1: UEs closer than this to the AP are redrawn (2D distance).
+min_distance_m = 10.0
+
+[shadowing]
+sigma_db = 6.0
+coverage_window_fraction = 0.5
+
+[fading]
+model = "jakes-sos"
+doppler_hz = 10.0
+sinusoids = 32
+carrier_hz = 2400000000.0
+
+[power]
+power_dbm = ["OFF", 5.0, 10.0, 15.0, 19.0, 23.0]
+
+[traffic]
+assignment = "round-robin"
+phase_seed = 60000000
+
+[[traffic.classes]]
+name = "fast"
+period_slots = 10
+packet_bits = 6144.0
+
+[[traffic.classes]]
+name = "medium"
+period_slots = 20
+packet_bits = 12288.0
+
+[[traffic.classes]]
+name = "slow"
+period_slots = 40
+packet_bits = 24576.0
+
+[run]
+horizon_slots = 20200
+warmup_slots = 200
+
+# Consumed by evaluators and learners, not by the environment.
+[objective]
+kind = "max-ues-subject-to-per-ue-reliability"
+max_violation_rate = 0.01
+comparison_violation_rates = [0.05]
+feasible_episode_share = 0.95
+
+# Methods and local rules use the grid; N_EDF also runs reference_extra.
+[capacity]
+grid = [2, 4, 6, 8, 10, 12, 16, 20, 24, 28, 32]
+reference_extra = [36, 40]

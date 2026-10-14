@@ -8,6 +8,10 @@ sections and round-robin class assignment for any N: its TOML omits
 ``physical.num_ues`` and the class counts, and ``load_scenario(path, num_ues)``
 fixes N. Its topology applies the coverage rule, and ``make_env`` needs the
 per-UE fading seeds of the episode. v1.0 files load and behave exactly as before.
+
+Scenario v2.1 (docs/research/scenario-v2.1.md) adds ``[spatial] min_distance_m``:
+the topology also redraws UEs closer than that to the AP. The key is kept out of
+``SpatialConfig``, so v2.0 topologies and their records are unchanged.
 """
 
 import tomllib
@@ -69,9 +73,14 @@ class Scenario:
     fading: FadingConfig | None = None
     class_assignment: str = "grouped"
     capacity: dict = field(default_factory=dict)
+    min_distance_m: float = 0.0
 
     def __post_init__(self) -> None:
         self.menu.validate_for(self.physical)
+        if not 0 <= self.min_distance_m < self.spatial.radius_m:
+            raise ValueError("min_distance_m must be in [0, radius_m)")
+        if self.min_distance_m > 0 and self.fading is None:
+            raise ValueError("min_distance_m needs a v2 scenario (shadowed topology)")
         if self.class_assignment not in ASSIGNMENTS:
             raise ValueError(f"class_assignment must be one of {ASSIGNMENTS}")
         if (self.shadowing is None) != (self.fading is None):
@@ -103,7 +112,9 @@ class Scenario:
             topology = generate_topology(spatial, n)
             return topology, build_pattern(self.traffic_classes, self.phase_seed + index)
         traffic = build_round_robin_pattern(self.traffic_classes, n, self.phase_seed + index)
-        topology = generate_shadowed_topology(spatial, self.shadowing, n, self.covered(traffic))
+        topology = generate_shadowed_topology(
+            spatial, self.shadowing, n, self.covered(traffic), min_distance_m=self.min_distance_m
+        )
         return topology, traffic
 
     def covered(self, traffic: TrafficPattern):
@@ -192,10 +203,12 @@ def load_scenario(path: str | Path, num_ues: int | None = None) -> Scenario:
             entry["num_ues"] = count
     elif num_ues is not None:
         raise ValueError("this scenario fixes N in its file")
+    spatial = dict(raw["spatial"])
+    min_distance_m = float(spatial.pop("min_distance_m", 0.0))
     return Scenario(
         experiment=dict(raw.get("experiment", {})),
         physical=PhysicalConfig(**physical),
-        spatial=SpatialConfig(**raw["spatial"]),
+        spatial=SpatialConfig(**spatial),
         menu=PowerMenu(tuple(raw["power"]["power_dbm"])),
         traffic_classes=tuple(TrafficClass(**entry) for entry in entries),
         phase_seed=int(traffic["phase_seed"]),
@@ -206,4 +219,5 @@ def load_scenario(path: str | Path, num_ues: int | None = None) -> Scenario:
         fading=FadingConfig(**raw["fading"]) if "fading" in raw else None,
         class_assignment=assignment,
         capacity=dict(raw.get("capacity", {})),
+        min_distance_m=min_distance_m,
     )
