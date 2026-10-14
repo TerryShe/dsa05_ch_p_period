@@ -12,6 +12,9 @@ layers):
 * s = 2 as sensitivity; paired two-level bootstrap intervals of SC against every
   other method (descriptive: two seeds).
 
+An optional group M-S+S (M-S with the M+S yield rule; design §10.4, descriptive)
+is analysed when the plan lists it; it never enters gate A.
+
 Gate A (design §4.1, point estimates at N = 10): continue iff Q_U(SC) is at least
 20% below the best rule (lowest Q_U of M+S, M+Y, R17-like) and below M-S, and
 P2(SC) <= 1.10 P2(M+S); stop iff Q_U(SC) >= Q_U(M); otherwise adjust.
@@ -31,6 +34,7 @@ PILOT_SET = "exp012-pilot256"
 DRAWS = 10_000
 RULES = ("M+S", "M+Y", "R17-like")
 ORDER = ("SC", "SC-B", "M-S", "M", "M+S", "M+Y", "R17-like")
+EXTRA = ("M-S+S",)  # descriptive only (design §10.4)
 
 
 def _exp011():
@@ -80,9 +84,10 @@ def matrix(episodes: dict, layers: list[dict], n: int, field: str, instances, s:
 def pilot(paths: list[Path], plan: dict) -> dict:
     episodes, instances = base.load(paths, screen=PILOT_SET)
     groups, grid = plan["groups"], plan["grid"]
+    names = ORDER + tuple(name for name in EXTRA if name in groups)
     out: dict = {"instances": len(instances), "grid": grid, "methods": {}, "versus_SC": {}}
     for s in (1, 2):
-        for name in ORDER:
+        for name in names:
             for n in grid:
                 values = {
                     field: matrix(episodes, groups[name], n, field, instances, s)
@@ -96,7 +101,7 @@ def pilot(paths: list[Path], plan: dict) -> dict:
                     values["worst_unavailability"].mean(1).tolist()
                 )
                 out["methods"].setdefault(f"s={s}", {}).setdefault(name, {})[str(n)] = row
-        for name in ORDER[1:]:
+        for name in names[1:]:
             for n in grid:
                 comparison = {}
                 for field in ("worst_unavailability", "worst_outages", "w"):

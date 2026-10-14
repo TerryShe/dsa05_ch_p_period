@@ -4,6 +4,10 @@
                            each on scenario v2.1; the last checkpoints and the rules
                            M+S, M+Y and R17-like (on the pilot's M) on exp012-pilot256
                            at N = 8, 10, 12; the gate-A analysis
+    run_exp012.py stage1-extra
+                           after stage 1: M-S+S (the M+S yield rule on the pilot's M-S,
+                           design §10.4) on exp012-pilot256, and the analysis with it
+                           (descriptive; gate A is the stage-1 analysis)
 
 A stage runs only if ``outputs/exp012/gates.json`` records the user's approval of
 the gate before it (stage 1 needs gate 0). Gate records are written by hand after
@@ -31,7 +35,7 @@ RULES = {
     "R17-like": "boost[]@{m}",
 }
 CORES, WORKERS = 28, 7
-GATES = {"stage1": "0"}
+GATES = {"stage1": "0", "stage1-extra": "0"}
 
 
 def log(message: str) -> None:
@@ -138,9 +142,43 @@ def stage1(dry: bool) -> None:
     log("stage 1 done")
 
 
+def stage1_extra(dry: bool) -> None:
+    """M-S+S on the pilot slice after stage 1 (descriptive, design §10.4)."""
+    plan_path, base = OUT / "pilot-plan.json", OUT / "pilot-analysis.json"
+    if not dry and not base.exists():
+        sys.exit("stage 1 has not finished (no pilot-analysis.json)")
+    if dry:
+        print(f"M-S+S x {len(SEEDS)} seeds on {PILOT_SET} at N = {PILOT_GRID}, then the analysis")
+        return
+    plan = json.loads(plan_path.read_text())
+    chunks, layers = [], []
+    for seed in SEEDS:
+        ms = last_checkpoint(OUT / "pilot" / f"ms-seed{seed}").relative_to(ROOT)
+        spec = RULES["M+S"].format(m=f"marl:{ms}")
+        layers.append({str(n): spec for n in PILOT_GRID})
+        label = f"M-SpS-seed{seed}"
+        output = OUT / "pilot-eval" / label
+        command = [PY, "-m", "dsa_period.experiments.evaluate_capacity", "--config", SCENARIO,
+                   "--split", "dev", "--screen", PILOT_SET, "--grid", *map(str, PILOT_GRID),
+                   "--policies", spec, "--formal", "--workers", str(WORKERS),
+                   "--output", str(output)]  # fmt: skip
+        chunks.append((label, command, output))
+    run_parallel(chunks, CORES, WORKERS)
+    extra_plan = {**plan, "groups": {**plan["groups"], "M-S+S": layers}}
+    (OUT / "pilot-plan-extra.json").write_text(json.dumps(extra_plan, indent=2))
+    evaluations = sorted(p.parent for p in (OUT / "pilot-eval").glob("*/summary.json"))
+    analysis = OUT / "pilot-analysis-extra.json"
+    if not analysis.exists():
+        command = [PY, "scripts/analyze_exp012.py", "pilot",
+                   "--plan", str(OUT / "pilot-plan-extra.json"),
+                   "--evaluations", *map(str, evaluations), "--output", str(analysis)]  # fmt: skip
+        subprocess.run(command, cwd=ROOT, check=True)
+    log("stage 1 extra (M-S+S) done")
+
+
 def main() -> None:
     args = sys.argv[1:]
-    stages = {"stage1": stage1}
+    stages = {"stage1": stage1, "stage1-extra": stage1_extra}
     if not args or args[0] not in stages:
         sys.exit(f"usage: run_exp012.py {{{','.join(stages)}}} [--dry-run]")
     if any(flag != "--dry-run" for flag in args[1:]):
