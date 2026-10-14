@@ -1,0 +1,185 @@
+{
+ "date": "2026-10-14",
+ "existing_analysis_count_before_task": 58,
+ "new_analysis_count": 9,
+ "downloaded_pdf_count": 9,
+ "unavailable_pdf_count": 0,
+ "notes": [
+  "Debt / virtual-queue / per-agent-constraint MARL and the survival-time direction (docs/research/literature-rl-engineering_20261014.md).",
+  "Published year and local preprint version are deliberately distinguished.",
+  "Availability for reading is not an unrestricted redistribution license."
+ ],
+ "papers": [
+  {
+   "directory": "papers/uMRA-HAPPO-GLOBECOM2025",
+   "publication_year": 2025,
+   "local_version": "作者主页公开稿，6页，未与出版社终版逐字比对",
+   "download_url": "https://marceaucoupechoux.wp.imt.fr/files/2025/11/globecom25.pdf",
+   "status": "downloaded",
+   "pdf": "papers/uMRA-HAPPO-GLOBECOM2025/uMRA-HAPPO-GLOBECOM2025.pdf",
+   "analysis": "papers/uMRA-HAPPO-GLOBECOM2025/analysis.md",
+   "bytes": 1338686,
+   "pages": 6,
+   "sha256": "1c280e29ebb67454c6386e7cb140a3050acd7a7efaaf904207fbe753072ce0b5",
+   "git_ignored_local_copy": false,
+   "validation": [
+    "PDF signature",
+    "pdfinfo",
+    "text extraction",
+    "SHA-256"
+   ]
+  },
+  {
+   "directory": "papers/MARLTO-2025",
+   "publication_year": 2025,
+   "local_version": "arXiv v2（2025-10-23），30页，未见发表处",
+   "download_url": "https://arxiv.org/pdf/2509.01257",
+   "status": "downloaded",
+   "pdf": "papers/MARLTO-2025/MARLTO-2025.pdf",
+   "analysis": "papers/MARLTO-2025/analysis.md",
+   "bytes": 2576809,
+   "pages": 30,
+   "sha256": "ebd00760d7202203f31fbbe6279c6512d0c7bbc9e9bb5e3505434f7c402b83c3",
+   "git_ignored_local_copy": false,
+   "validation": [
+    "PDF signature",
+    "pdfinfo",
+    "text extraction",
+    "SHA-256"
+   ]
+  },
+  {
+   "directory": "papers/DPD-CP-2025",
+   "publication_year": 2025,
+   "local_version": "arXiv v4（2026-08-29），18页，投稿中",
+   "download_url": "https://arxiv.org/pdf/2511.15053",
+   "status": "downloaded",
+   "pdf": "papers/DPD-CP-2025/DPD-CP-2025.pdf",
+   "analysis": "papers/DPD-CP-2025/analysis.md",
+   "bytes": 1068695,
+   "pages": 18,
+   "sha256": "38379706dee25b7cdc3da69848baa7d9cda915aef11ff144f0caaca19b8cff13",
+   "git_ignored_local_copy": false,
+   "validation": [
+    "PDF signature",
+    "pdfinfo",
+    "text extraction",
+    "SHA-256"
+   ]
+  },
+  {
+   "directory": "papers/HCMAPPOL-2026",
+   "publication_year": 2026,
+   "local_version": "arXiv v1（2026-02-23），14页，未见发表处",
+   "download_url": "https://arxiv.org/pdf/2603.00129",
+   "status": "downloaded",
+   "pdf": "papers/HCMAPPOL-2026/HCMAPPOL-2026.pdf",
+   "analysis": "papers/HCMAPPOL-2026/analysis.md",
+   "bytes": 7868852,
+   "pages": 14,
+   "sha256": "9a7cc2a5b4e1e1ac41246d345291a1be60bada49aa20eef4c80d705a6146877c",
+   "git_ignored_local_copy": false,
+   "validation": [
+    "PDF signature",
+    "pdfinfo",
+    "text extraction",
+    "SHA-256"
+   ]
+  },
+  {
+   "directory": "papers/ScalMAPPOL-NeurIPS2024",
+   "publication_year": 2024,
+   "local_version": "NeurIPS 2024 会议论文集 PDF，33页（含附录）",
+   "download_url": "https://proceedings.neurips.cc/paper_files/paper/2024/file/fa76985f05e0a25c66528308dda33de0-Paper-Conference.pdf",
+   "status": "downloaded",
+   "pdf": "papers/ScalMAPPOL-NeurIPS2024/ScalMAPPOL-NeurIPS2024.pdf",
+   "analysis": "papers/ScalMAPPOL-NeurIPS2024/analysis.md",
+   "bytes": 793963,
+   "pages": 33,
+   "sha256": "56941849f81b82e77e67384309e8871c754f206321a1b479e11aa99108d1907d",
+   "git_ignored_local_copy": false,
+   "validation": [
+    "PDF signature",
+    "pdfinfo",
+    "text extraction",
+    "SHA-256"
+   ]
+  },
+  {
+   "directory": "papers/DPP-RL-2025",
+   "publication_year": 2025,
+   "local_version": "arXiv v2（2026-08-13），14页，未见发表处",
+   "download_url": "https://arxiv.org/pdf/2506.04291",
+   "status": "downloaded",
+   "pdf": "papers/DPP-RL-2025/DPP-RL-2025.pdf",
+   "analysis": "papers/DPP-RL-2025/analysis.md",
+   "bytes": 714866,
+   "pages": 14,
+   "sha256": "e3a5d3f91953c117d18b8685f26e307473074db98bcee7c407721970aa5667c9",
+   "git_ignored_local_copy": false,
+   "validation": [
+    "PDF signature",
+    "pdfinfo",
+    "text extraction",
+    "SHA-256"
+   ]
+  },
+  {
+   "directory": "papers/CRL-Timely-Asilomar2025",
+   "publication_year": 2025,
+   "local_version": "arXiv v1（2026-03-04），7页；arXiv 标注 Asilomar 2025 已接收",
+   "download_url": "https://arxiv.org/pdf/2603.04353",
+   "status": "downloaded",
+   "pdf": "papers/CRL-Timely-Asilomar2025/CRL-Timely-Asilomar2025.pdf",
+   "analysis": "papers/CRL-Timely-Asilomar2025/analysis.md",
+   "bytes": 1472843,
+   "pages": 7,
+   "sha256": "d334654451669fc1e60497ac231c86dad6a9af1fb4028913fd75fb1613896fe6",
+   "git_ignored_local_copy": false,
+   "validation": [
+    "PDF signature",
+    "pdfinfo",
+    "text extraction",
+    "SHA-256"
+   ]
+  },
+  {
+   "directory": "papers/SafeDRL-PAoI-2025",
+   "publication_year": 2025,
+   "local_version": "arXiv v1（2025-07-11），15页，未见发表处",
+   "download_url": "https://arxiv.org/pdf/2507.08653",
+   "status": "downloaded",
+   "pdf": "papers/SafeDRL-PAoI-2025/SafeDRL-PAoI-2025.pdf",
+   "analysis": "papers/SafeDRL-PAoI-2025/analysis.md",
+   "bytes": 3894588,
+   "pages": 15,
+   "sha256": "a7c34970f1402c78c6f87d63123b3831f3816ee157182b567d3c7fa492d30d22",
+   "git_ignored_local_copy": false,
+   "validation": [
+    "PDF signature",
+    "pdfinfo",
+    "text extraction",
+    "SHA-256"
+   ]
+  },
+  {
+   "directory": "papers/FSRL-WiOpt2025",
+   "publication_year": 2025,
+   "local_version": "arXiv v1（2025-03-31），8页；arXiv 标注 WiOpt 2025 已接收",
+   "download_url": "https://arxiv.org/pdf/2503.24296",
+   "status": "downloaded",
+   "pdf": "papers/FSRL-WiOpt2025/FSRL-WiOpt2025.pdf",
+   "analysis": "papers/FSRL-WiOpt2025/analysis.md",
+   "bytes": 4054477,
+   "pages": 8,
+   "sha256": "b8fd637e622bcacbb2aa4327b6640edec88346861e546f5936228d0f2e9db85d",
+   "git_ignored_local_copy": false,
+   "validation": [
+    "PDF signature",
+    "pdfinfo",
+    "text extraction",
+    "SHA-256"
+   ]
+  }
+ ]
+}

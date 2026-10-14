@@ -6,6 +6,22 @@
 
 少数 PDF 的来源限制再分发（例如机构库封面或 IEEE 页脚注明仅限个人使用），这些 PDF 只保留本地副本，列在 [`.gitignore`](.gitignore) 中，不纳入 Git；对应的 `analysis.md` 注明了下载地址。
 
+## 逐设备约束/欠账驱动的 MARL 与生存时间方向（2026-10-14）
+
+为检验"可靠性欠账（逐设备约束状态）驱动的 MARL"能否作为创新点而补充的 **9 篇分析、9 篇 PDF**。结论：核心机制已有先例（连同本库已有的 SALA、SACRL、HeLyMARL、LyMARL-DS），不能单独作为创新点；检索记录与"生存时间"候选方向见 [literature-rl-engineering_20261014.md](../docs/research/literature-rl-engineering_20261014.md)，下载与校验见 [literature-downloads_20261014.json](../docs/research/literature-downloads_20261014.json)。
+
+| 文件夹 | 论文 | 来源 | 与本课题的关系 |
+|---|---|---|---|
+| [uMRA-HAPPO-GLOBECOM2025](uMRA-HAPPO-GLOBECOM2025/analysis.md) | Boumba、Coupechoux、Godlewski，MARL for URLLC Modern Random Access | GLOBECOM 2025；作者主页稿 | **必须正面对比**：BS 广播全体缓存按剩余寿命的汇总，UE 据此协调，消融显示有明显收益；碰撞加 SIC、Poisson 到达、总体成功率 |
+| [MARLTO-2025](MARLTO-2025/analysis.md) | Fox、De Pellegrini、Altman，MARL for Task Offloading in Wireless Edge Networks | arXiv 2025 | 每个智能体一个本地约束 MDP 与本地乘子，以不频繁更新的共享约束向量协调；转移独立、玩具规模 |
+| [DPD-CP-2025](DPD-CP-2025/analysis.md) | Dai 等，Distributed Primal-Dual Algorithm for Constrained MARL under Coupled Policies | arXiv 2025（投稿中） | 逐智能体约束与本地乘子，邻居间交换参数；无线接入控制基准（截止期、碰撞、发送预算） |
+| [HCMAPPOL-2026](HCMAPPOL-2026/analysis.md) | Wang 等，Safe MARL for Privacy-Aware Edge-Device Collaborative DNN Inference | arXiv 2026 | 共享乘子的 MAPPO-Lagrangian（相当于变体 B）；关系较远 |
+| [ScalMAPPOL-NeurIPS2024](ScalMAPPOL-NeurIPS2024/analysis.md) | Zhang 等，Scalable Constrained Policy Optimization for Safe MARL | NeurIPS 2024 | 逐智能体约束、κ 跳截断的去中心化训练；依赖局部性，单 AP 上行不满足 |
+| [DPP-RL-2025](DPP-RL-2025/analysis.md) | Xu 等，A Lyapunov Drift-Plus-Penalty Method Tailored for RL with Queue Stability | arXiv 2025 | 漂移加惩罚的贪心性与 RL 长期目标不匹配；"欠账 × 违约"奖励需要专门处理 |
+| [CRL-Timely-Asilomar2025](CRL-Timely-Asilomar2025/analysis.md) | Aygün 等，A Constrained RL Approach for Cost-Efficient Delivery of Latency-Sensitive Applications | Asilomar 2025（arXiv 2026） | 逐业务流按时吞吐量 ≥ 目标的约束 DRL，逐流乘子在训练轮之间更新；多跳路由调度 |
+| [SafeDRL-PAoI-2025](SafeDRL-PAoI-2025/analysis.md) | Gunes Reyhan、Coleri，Safe DRL for Resource Allocation with PAoI Violation Guarantees | arXiv 2025 | 生存时间方向的最近参照：随机 MATI（相邻成功间隔）与峰值年龄违约约束，集中式安全 DRL |
+| [FSRL-WiOpt2025](FSRL-WiOpt2025/analysis.md) | Zhang 等，Fair Dynamic Spectrum Access via Fully Decentralized MARL | WiOpt 2025 | 只用自身成功/碰撞反馈的公平接入；时间参考计数器作为状态增广 |
+
 ## V2 紧迫摘要、通信代价与当前研究评估（2026-10-10）
 
 本次先检查库中原有 **43 篇分析**，重点重读直接近邻，再联网补充 **15 篇分析、14 篇可验证 PDF**；REEMAC 2026 的 PDF 下载遭来源网站拒绝，单独登记为待获取。每篇均区分原论文内容、本课题推论、阅读范围和本地版本；已下载预印本不等于已逐字核读期刊终版。
