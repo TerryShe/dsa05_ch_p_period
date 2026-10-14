@@ -8,7 +8,7 @@
 
 ## 逐设备约束/欠账驱动的 MARL 与生存时间方向（2026-10-14）
 
-为检验"可靠性欠账（逐设备约束状态）驱动的 MARL"能否作为创新点而补充的 **9 篇分析、9 篇 PDF**。结论：核心机制已有先例（连同本库已有的 SALA、SACRL、HeLyMARL、LyMARL-DS），不能单独作为创新点；检索记录与"生存时间"候选方向见 [literature-rl-engineering_20261014.md](../docs/research/literature-rl-engineering_20261014.md)，下载与校验见 [literature-downloads_20261014.json](../docs/research/literature-downloads_20261014.json)。
+为检验"可靠性欠账（逐设备约束状态）驱动的 MARL"能否作为创新点而补充的 **9 篇分析、9 篇 PDF**；随后为生存时间方向做了更深一轮检索，再补 **4 篇分析、4 篇 PDF**（其中 1 篇只保留本地副本）。结论：核心机制已有先例（连同本库已有的 SALA、SACRL、HeLyMARL、LyMARL-DS），不能单独作为创新点；检索记录与"生存时间"候选方向见 [literature-rl-engineering_20261014.md](../docs/research/literature-rl-engineering_20261014.md)，下载与校验见 [literature-downloads_20261014.json](../docs/research/literature-downloads_20261014.json)。
 
 | 文件夹 | 论文 | 来源 | 与本课题的关系 |
 |---|---|---|---|
@@ -21,6 +21,10 @@
 | [CRL-Timely-Asilomar2025](CRL-Timely-Asilomar2025/analysis.md) | Aygün 等，A Constrained RL Approach for Cost-Efficient Delivery of Latency-Sensitive Applications | Asilomar 2025（arXiv 2026） | 逐业务流按时吞吐量 ≥ 目标的约束 DRL，逐流乘子在训练轮之间更新；多跳路由调度 |
 | [SafeDRL-PAoI-2025](SafeDRL-PAoI-2025/analysis.md) | Gunes Reyhan、Coleri，Safe DRL for Resource Allocation with PAoI Violation Guarantees | arXiv 2025 | 生存时间方向的最近参照：随机 MATI（相邻成功间隔）与峰值年龄违约约束，集中式安全 DRL |
 | [FSRL-WiOpt2025](FSRL-WiOpt2025/analysis.md) | Zhang 等，Fair Dynamic Spectrum Access via Fully Decentralized MARL | WiOpt 2025 | 只用自身成功/碰撞反馈的公平接入；时间参考计数器作为状态增广 |
+| [ConsecOutage-inX-2025](ConsecOutage-inX-2025/analysis.md) | Salehi 等，Towards Ultra-Reliable 6G in-X Subnetworks: Dynamic Link Adaptation by DRL | arXiv 2025（v2 2026） | **生存时间方向必须正面对比**：以连续中断为目标、连续中断次数为状态的 SAC 链路自适应；单链路单智能体，其他子网为外生干扰 |
+| [HRL-URLLC-PIMRC2023](HRL-URLLC-PIMRC2023/analysis.md) | Shi、Ganjalizadeh 等，Communication-Efficient Orchestrations for URLLC Service via HRL | PIMRC 2023；PDF 仅本地 | **生存时间方向必须引用**：按 TS 22.104 生存时间定义服务可用度，网络侧 RL 配置下行功率与 HARQ 次数；同组 TII 2023 前作 PDF 未取得 |
+| [OCO-PAoIHard-2026](OCO-PAoIHard-2026/analysis.md) | Zhang、Mo，Real-Time Hard Peak AoI Safety with No-Regret Learning | arXiv 2026 | 集中式硬峰值年龄约束的在线凸优化调度；综述了 (m,k)-firm 与安全 RL |
+| [DRL-WNCS-2021](DRL-WNCS-2021/analysis.md) | Pang 等，DRL for Wireless Scheduling in Distributed Networked Control | IEEE T-Cybernetics（arXiv 2021） | 集中式 DRL 调度，状态含距上次成功的时间；控制导向的参照 |
 
 ## V2 紧迫摘要、通信代价与当前研究评估（2026-10-10）
 

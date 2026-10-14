@@ -20,7 +20,7 @@ scope: 为"用 RL 解决一个实际通信工程问题"寻找可站住的创新�
    - LyMARL-DS（arXiv 2024-11）：逐用户时延违约概率约束、虚拟队列加 MARL（底层由集中式调度器执行）。
    - 本库 HeLyMARL 笔记已写明："论文不能宣称'逐智能体约束状态进入观测'是我们的创新。"2026-10-14 我在提出这一方向前没有先查本库，这是疏漏。
 2. **仍可能站住的只是组合与场景**：只用本地信息、匿名共享 Actor、事件触发的违约率约束、干扰耦合的上行多址与衰落。这属于"在新场景中应用已知机制"，单独撑不起期刊层次的方法贡献。
-3. **检索中发现一个未被覆盖、且符合"RL 解决实际工程问题"的方向：生存时间（survival time）约束下的分布式周期上行接入**（§3）。在本次范围内，没有找到用 RL 处理生存时间或连续丢包的分布式上行接入工作。3GPP Rel-17 的标准做法是一个固定的反应式规则（失败后激活 PDCP 复制）。
+3. **检索中发现一个未被覆盖、且符合"RL 解决实际工程问题"的方向：生存时间（survival time）约束下的分布式周期上行接入**（§3）。更深一轮检索（§4）补充：生存时间/连续中断作为 RL 目标，在单链路与网络侧已有工作；仍未找到的是多设备自主、共享资源的分布式情形。在本次范围内，没有找到用 RL 处理生存时间或连续丢包的分布式上行接入工作。3GPP Rel-17 的标准做法是一个固定的反应式规则（失败后激活 PDCP 复制）。
 
 ## 2. 已覆盖的方向（不能作为创新点）
 
@@ -72,7 +72,35 @@ scope: 为"用 RL 解决一个实际通信工程问题"寻找可站住的创新�
 3. **指标**：每个设备的生存时间违约次数或可用度，最差设备；生存时间取几个周期须依据 TS 22.104 的用例写定。
 4. **新颖性的深入检索**：IEEE Xplore 上"survival time / consecutive packet loss / burst error / peak AoI violation"与"reinforcement learning / multi-agent / random access / configured grant"的组合，以及 Rel-17/18 的 3GPP 终版条款。
 
-## 4. 来源
+## 4. 更深一轮检索：生存时间、连续丢包与 MARL（2026-10-14）
+
+**范围**：约 12 组检索，部分限定 IEEE Xplore 与 arXiv 站点（通用搜索引擎；没有直接使用 IEEE Xplore 的检索界面，它需要脚本与登录）。新增读原文 5 篇，其中 4 篇收入本库。关键词：生存时间、连续丢包/中断、突发错误、峰值信息年龄违约、弱硬实时 (m,k)-firm，各自与 RL/MARL、随机接入、配置授权的组合。上一轮漏查了弱硬实时，这一轮补上。
+
+### 4.1 已有的工作
+
+| 方面 | 工作 | 与本方向的边界 |
+|---|---|---|
+| 生存时间定义的服务可用度作为 RL 目标 | [HRL-URLLC](../../papers/HRL-URLLC-PIMRC2023/analysis.md)（PIMRC 2023，Ericsson/KTH）及其前作 Ganjalizadeh 等（IEEE TII 2023，PDF 未取得） | 网络侧（gNB 与上层）为各设备配置下行功率与 HARQ 次数；不是设备自主接入 |
+| 连续中断作为 RL 目标与状态 | [ConsecOutage-inX](../../papers/ConsecOutage-inX-2025/analysis.md)（arXiv 2025，Mid Sweden University） | 单链路、单智能体 SAC（功率、码长）；其他子网为外生的伯努利干扰 |
+| 年龄/传输间隔违约约束 | [SafeDRL-PAoI](../../papers/SafeDRL-PAoI-2025/analysis.md)（arXiv 2025）、[OCO-PAoIHard](../../papers/OCO-PAoIHard-2026/analysis.md)（arXiv 2026）、[DRL-WNCS](../../papers/DRL-WNCS-2021/analysis.md)（T-Cybernetics） | 集中式调度器或控制器分配资源 |
+| 弱硬实时 (m,k)-firm | Hamdaoui 与 Ramanathan 的 (m,k)-firm 消息调度（1995）；弱硬实时控制综述（MDPI Sensors 2023） | 实时系统中的优先级提升调度；依赖集中的基础调度器，不涉及学习 |
+| 标准与专利 | Rel-17 生存时间状态加 PDCP 复制；按剩余生存时间动态调整可靠性目标、把连续包分散到不同链路的专利 | 规则性机制；专利中的"剩余生存时间"可以直接作为状态 |
+
+### 4.2 没有找到的组合
+
+**多个设备在共享的上行资源上自主接入（只用本地信息）、各自有生存时间要求、衰落与干扰耦合下用 MARL 学习的工作。**
+
+- 已有工作要么是单链路（干扰外生），要么由网络侧或集中式调度器决策。
+- 多设备的情形有一个单链路中不存在的问题：一个设备进入"生存状态"后的保护动作（换到更好的子信道、提高功率、更积极地发送），会提高其他设备的失败风险，可能把它们推入生存状态。需要协调。
+- 这正是本库的紧迫摘要可以承担的角色，内容改为"处于生存状态"：一个其他设备在本地无法推知、但对协调有用的信息。
+
+### 4.3 新颖性的判断
+
+- **不能宣称**：首次在 RL 中考虑生存时间或连续中断；首次以可用度为 RL 目标。
+- **可能站住**：多设备分布式上行接入中的生存时间约束（以及据此的协调），以 Rel-17 的规则机制为对照。
+- **仍须核对**：IEEE Xplore 的直接检索（本次只能通过搜索引擎间接覆盖）；Ganjalizadeh 等 TII 2023 的全文；Mid Sweden University 组是否有多智能体的后续工作。
+
+## 5. 来源
 
 本库：`papers/SALA-TSP2022`、`papers/SACRL-2021`、`papers/HeLyMARL-2026`、`papers/LyMARL-DS-2024`、`papers/FSAL-DVR-2025`、`papers/SeqDQN-EuCNC2023`、`papers/REEMAC-TMLCN2026`、`papers/DCGFRA-2024`、`papers/HouKumar-INFOCOM2010`。
 
@@ -93,3 +121,11 @@ scope: 为"用 RL 解决一个实际通信工程问题"寻找可站住的创新�
 - [RAN2 #117-e 生存时间讨论稿](https://3gpp.org/ftp/tsg_ran/wg2_rl2/TSGR2_117-e/Inbox/Drafts/%5BOffline-504%5D%5BIIoT%5D%20QoS%20additional%20open%20issues%20(Nokia)/%5BDRAFT%5D%20R2-22xxxxx%20Summary%20of%20%5BAT117-e%5D%5B504%5D%5BIIoT%5D_V0-Rapp.docx)
 - [RAN2 #115-e 生存时间状态的基线 CR 文本提案](https://www.3gpp.org/ftp/Email_Discussions/RAN2/%5BRAN2%23115-e%5D/%5BPost115-e%5D%5B513%5D%5BIIoT%5D%20QoS%20survival%20time%20(Huawei)/Phase%202/R2-210xxxx%20TP%20of%20baseline%20CR%20for%20Survival%20Time%20state%20operation_v05_Rapp_mark.docx)
 - [3GPP 工业 5G 页面](https://www.3gpp.org/technologies/ind-5g)
+- [Hierarchical RL for URLLC, PIMRC 2023（arXiv 2307.13415）](https://arxiv.org/abs/2307.13415)
+- [Consecutive outages in in-X subnetworks（arXiv 2507.12031）](https://arxiv.org/abs/2507.12031)
+- [Hard peak-AoI safety with no-regret learning（arXiv 2607.27626）](https://arxiv.org/pdf/2607.27626)
+- [DRL for wireless scheduling in distributed networked control（arXiv 2109.12562）](https://arxiv.org/abs/2109.12562)
+- [Weakly hard real-time model for control systems: a survey（MDPI Sensors 2023）](https://www.mdpi.com/1424-8220/23/10/4652)
+- [5G Americas: Understanding 5G & Time Critical Services（2022）](https://www.5gamericas.org/wp-content/uploads/2022/08/Understanding-5G-Time-Critical-Services-Aug-2022.pdf)
+- [专利：Survival time dependent flexible handover execution](https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/12490154)
+- [专利：Dynamic reliability target for wireless networks](https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/11991555)

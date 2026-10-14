@@ -1,9 +1,9 @@
 {
  "date": "2026-10-14",
  "existing_analysis_count_before_task": 58,
- "new_analysis_count": 9,
- "downloaded_pdf_count": 9,
- "unavailable_pdf_count": 0,
+ "new_analysis_count": 13,
+ "downloaded_pdf_count": 13,
+ "unavailable_pdf_count": 1,
  "notes": [
   "Debt / virtual-queue / per-agent-constraint MARL and the survival-time direction (docs/research/literature-rl-engineering_20261014.md).",
   "Published year and local preprint version are deliberately distinguished.",
@@ -180,6 +180,94 @@
     "text extraction",
     "SHA-256"
    ]
+  },
+  {
+   "directory": "papers/ConsecOutage-inX-2025",
+   "publication_year": 2025,
+   "local_version": "arXiv v2（2026-10-08），11页，未见发表处",
+   "download_url": "https://arxiv.org/pdf/2507.12031",
+   "status": "downloaded",
+   "pdf": "papers/ConsecOutage-inX-2025/ConsecOutage-inX-2025.pdf",
+   "analysis": "papers/ConsecOutage-inX-2025/analysis.md",
+   "bytes": 1750513,
+   "pages": 11,
+   "sha256": "3284870b2ee70812de3a6a60d4e5328d8462c9fa1723e191d2420fa9187aada6",
+   "git_ignored_local_copy": false,
+   "validation": [
+    "PDF signature",
+    "pdfinfo",
+    "text extraction",
+    "SHA-256"
+   ],
+   "round": "deeper search 2026-10-14"
+  },
+  {
+   "directory": "papers/HRL-URLLC-PIMRC2023",
+   "publication_year": 2023,
+   "local_version": "arXiv v1（2023-07-25），6页，IEEE 版权页脚（仅限个人使用）；arXiv 标注 PIMRC 2023 已接收",
+   "download_url": "https://arxiv.org/pdf/2307.13415",
+   "status": "downloaded",
+   "pdf": "papers/HRL-URLLC-PIMRC2023/HRL-URLLC-PIMRC2023.pdf",
+   "analysis": "papers/HRL-URLLC-PIMRC2023/analysis.md",
+   "bytes": 1350265,
+   "pages": 6,
+   "sha256": "bb8b7d60b7ce4c3c8edf385ccade3138bb7ea1d96e37d0659d037d08a9deded9",
+   "git_ignored_local_copy": true,
+   "validation": [
+    "PDF signature",
+    "pdfinfo",
+    "text extraction",
+    "SHA-256"
+   ],
+   "round": "deeper search 2026-10-14"
+  },
+  {
+   "directory": "papers/OCO-PAoIHard-2026",
+   "publication_year": 2026,
+   "local_version": "arXiv v2（2026-08-03），13页，未见发表处",
+   "download_url": "https://arxiv.org/pdf/2607.27626",
+   "status": "downloaded",
+   "pdf": "papers/OCO-PAoIHard-2026/OCO-PAoIHard-2026.pdf",
+   "analysis": "papers/OCO-PAoIHard-2026/analysis.md",
+   "bytes": 607626,
+   "pages": 13,
+   "sha256": "a21086fde99cbc9188af7aaeb688878634e1975b174f350b3abdcab4bcbfe98d",
+   "git_ignored_local_copy": false,
+   "validation": [
+    "PDF signature",
+    "pdfinfo",
+    "text extraction",
+    "SHA-256"
+   ],
+   "round": "deeper search 2026-10-14"
+  },
+  {
+   "directory": "papers/DRL-WNCS-2021",
+   "publication_year": 2021,
+   "local_version": "arXiv v5（2025-05-18），14页；arXiv 标注 IEEE Trans. Cybernetics 已接收",
+   "download_url": "https://arxiv.org/pdf/2109.12562",
+   "status": "downloaded",
+   "pdf": "papers/DRL-WNCS-2021/DRL-WNCS-2021.pdf",
+   "analysis": "papers/DRL-WNCS-2021/analysis.md",
+   "bytes": 1561261,
+   "pages": 14,
+   "sha256": "c72b12906fbdca2ee1b29b88b30077cae4905ee5106a05d56a986ea981ef6152",
+   "git_ignored_local_copy": false,
+   "validation": [
+    "PDF signature",
+    "pdfinfo",
+    "text extraction",
+    "SHA-256"
+   ],
+   "round": "deeper search 2026-10-14"
+  }
+ ],
+ "unavailable": [
+  {
+   "title": "Saving Energy and Spectrum in Enabling URLLC Services: A Scalable RL Solution",
+   "authors": "M. Ganjalizadeh, H. Shokri Ghadikolaei, A. Azari, A. Alabbasi, M. Petrova",
+   "venue": "IEEE Trans. Ind. Informat. 19(10):10265-10276, 2023",
+   "status": "not obtained (no arXiv version found); summarized from HRL-URLLC-PIMRC2023 and DBLP"
   }
  ]
 }
