@@ -680,14 +680,22 @@ def make_policy_v2(spec: str, config: PhysicalConfig, menu: PowerMenu) -> Policy
     calibrated rule at that N) or ``marl:<checkpoint path>`` (EXP-DSA05-006; a
     summary checkpoint of EXP-DSA05-011 loads as a ``SummaryPolicy``). The
     EXP-DSA05-011 wrappers ``yield[theta=T]@SPEC`` and ``summary[theta=T,hide=H]@marl:PATH``
-    are described in ``urgency.parse_wrapper``.
+    and the EXP-DSA05-012 rules ``yield[theta=T,content=survival]@SPEC`` (M+S) and
+    ``boost[]@SPEC`` (R17-like) are described in ``urgency.parse_wrapper``.
     """
     wrapped = parse_wrapper(spec)
     if wrapped is not None:
         wrapper, options, inner = wrapped
         if wrapper == "yield":
             base = make_policy_v2(inner, config, menu)
-            return YieldPolicy(base, config, menu, SummarySettings(theta_db=options["theta_db"]))
+            settings = SummarySettings(
+                content=options.get("content", "urgency"), theta_db=options["theta_db"]
+            )
+            return YieldPolicy(base, config, menu, settings)
+        if wrapper == "boost":
+            from dsa_period.survival import BoostPolicy
+
+            return BoostPolicy(make_policy_v2(inner, config, menu), config, menu)
         from dsa_period.marl.trainer_v2 import load_capacity_policy
 
         return load_capacity_policy(Path(inner.partition(":")[2]), config, menu, **options)

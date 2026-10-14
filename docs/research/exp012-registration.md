@@ -1,0 +1,39 @@
+---
+doc_id: REG-DSA05-EXP012-SETS
+type: protocol-appendix
+date: 2026-10-14
+protocol: marl-protocol-v2（冻结核心不变）
+scenario: DES-DSA05-PERIODIC v2.1（2026-10-14 冻结）
+design: EXP-DSA05-012（2026-10-14 定稿，第 2 版）
+manifest: exp012-sets.json
+---
+
+# EXP-DSA05-012 的先导切片与评估切片登记
+
+本附录登记 EXP-DSA05-012（生存时间约束下面向关键状态的分布式 MARL 上行接入）使用的两个开发集合，依据[设计](../experiment-designs/012-survival-time-critical-state-marl_20261014.md) §4、§5。
+
+- 两个集合都在**场景 v2.1** 上生成与读取；清单中的摘要按 v2.1 计算（`scenario_config` 为 `configs/scenario-v2.1.toml`）。
+- 协议 v2 的冻结核心不变。EXP-008 至 EXP-011B 的登记不变：重新生成后，六份清单逐字节相同。
+- **机器清单**：[exp012-sets.json](exp012-sets.json)，由 `scripts/register_exp008_sets.py` 生成，`tests/test_exp012.py` 核对。
+
+## exp012-pilot256
+
+| 项目 | 内容 |
+|---|---|
+| 实例 | 开发池 1,400–1,655（半开区间 [1400, 1656)），256 个部署，不经筛选 |
+| N | 8、10、12（关口 A 按 N = 10 判定，N = 8、12 作描述） |
+| 执行 | 每个部署 1 次，完整 20,200 时隙回合 |
+| 用途 | 只用于阶段 1（先导）的评估（设计 §4.1）；先导之后不再用于评估 |
+| 读取方式 | `evaluate_capacity --config configs/scenario-v2.1.toml --split dev --screen exp012-pilot256 --formal`，需干净的已提交工作树 |
+
+## exp012-eval512
+
+| 项目 | 内容 |
+|---|---|
+| 实例 | 开发池 2,256–2,767（半开区间 [2256, 2768)），512 个部署，不经筛选 |
+| N | 6、8、10、12、16 |
+| 用途 | 只用于阶段 4 的评估（设计 §4.2）。不用于任何检查点选择 |
+| 读取方式 | 同上，`--screen exp012-eval512`；在关口 C 之前不读取 |
+
+- **登记时核查**：已登记或已读的开发切片为 0–63、1,000–1,399、2,000–2,255、3,000–3,255、4,000–4,511、5,000–6,511（含网页工具的 5,512–5,999）、7,000–9,999（EXP-011B 压力集预留）。两个新集合都不与之重叠（测试核对）。
+- 两个集合在 v2.0 与 v2.1 中都从未读取过。

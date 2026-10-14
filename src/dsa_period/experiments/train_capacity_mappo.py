@@ -8,6 +8,9 @@ the allowed N, ``training.num_envs`` the environments) is run once per N with
 ``--num-ues N``: all environments then have N UEs (EXP-009, protocol v2 §4).
 The optional ``[information]`` section adds the EXP-DSA05-011 urgency state
 summary (``urgency.SummarySettings``); without it the actor sees L0 only.
+EXP-DSA05-012 adds the optional ``[survival]`` (``survival.SurvivalSettings``)
+and ``[branching]`` (``trainer_v2.BranchSettings``) sections. A config that
+declares ``experiment.scenario`` runs only on that scenario file.
 ``--resume CHECKPOINT`` continues that checkpoint's run (EXP-DSA05-011B design
 §2.2) into a new output directory: the config must equal the run's except a
 larger budget with the same entropy decay length; a formal resume needs a formal
@@ -35,11 +38,13 @@ from dsa_period.experiments.central_reference import git_provenance
 from dsa_period.marl.level_sampler import SamplerSettings
 from dsa_period.marl.ppo import PPOSettings
 from dsa_period.marl.trainer_v2 import (
+    BranchSettings,
     CapacityConstraint,
     CapacityTrainer,
     CapacityTrainingSettings,
     UpdateSettings,
 )
+from dsa_period.survival import SurvivalSettings
 from dsa_period.urgency import SummarySettings
 
 
@@ -87,6 +92,16 @@ def information_from(raw: dict) -> SummarySettings | None:
     return SummarySettings(**table)
 
 
+def survival_from(raw: dict) -> tuple[SurvivalSettings | None, BranchSettings | None]:
+    """The EXP-012 survival settings and branch episodes of a config (None when absent)."""
+    survival = raw.get("survival")
+    branching = raw.get("branching")
+    return (
+        None if survival is None else SurvivalSettings(**survival),
+        None if branching is None else BranchSettings(**branching),
+    )
+
+
 def parse_value(text: str) -> int | float | str:
     for kind in (int, float):
         try:
@@ -126,6 +141,8 @@ def main(argv: list[str] | None = None) -> None:
         parser.error(f"{args.config} declares variant {declared['variant']}")
     if args.formal and args.seed not in declared.get("seeds", [args.seed]):
         parser.error(f"{args.config} declares seeds {declared['seeds']}")
+    if "scenario" in declared and Path(declared["scenario"]) != args.scenario:
+        parser.error(f"{args.config} runs on {declared['scenario']}, not {args.scenario}")
     changes = {}
     if args.budget_slots is not None:
         changes["training.budget_slots"] = args.budget_slots
@@ -144,6 +161,12 @@ def main(argv: list[str] | None = None) -> None:
                 parser.error(f"unknown override {key}")
             raw.setdefault("information", {})[name] = value
             continue
+        if section in ("survival", "branching"):
+            fields = SurvivalSettings if section == "survival" else BranchSettings
+            if name not in fields.__dataclass_fields__:
+                parser.error(f"unknown override {key}")
+            raw.setdefault(section, {})[name] = value
+            continue
         table = raw["constraint"][args.variant] if section == "constraint" else raw[section]
         if name not in table:
             parser.error(f"unknown override {key}")
@@ -151,6 +174,7 @@ def main(argv: list[str] | None = None) -> None:
     try:
         training, ppo, constraint, update, sampler = settings_from(raw, args.variant, args.num_ues)
         information = information_from(raw)
+        survival, branching = survival_from(raw)
     except ValueError as exc:
         parser.error(str(exc))
     resume = None
@@ -167,8 +191,9 @@ def main(argv: list[str] | None = None) -> None:
     # Any N works: the trainer derives one scenario per environment from it.
     scenario = load_scenario(args.scenario, max(training.env_ues))
     trainer = CapacityTrainer(
-        scenario, training, ppo, constraint, args.seed, update, sampler, information
-    )
+        scenario, training, ppo, constraint, args.seed, update, sampler, information,
+        survival, branching,
+    )  # fmt: skip
     start = (0, 0)
     if args.resume is not None:
         try:
@@ -199,6 +224,8 @@ def main(argv: list[str] | None = None) -> None:
             "update": asdict(update),
             "sampler": asdict(sampler),
             "information": None if information is None else asdict(information),
+            "survival": None if survival is None else asdict(survival),
+            "branching": None if branching is None else asdict(branching),
         },
         "torch": torch.__version__,
         "python": platform.python_version(),

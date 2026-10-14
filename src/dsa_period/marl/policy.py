@@ -4,7 +4,10 @@ Each UE runs the shared actor on its own features and samples its action with
 its own protocol RNG: one uniform draw per UE with a packet, inverted through
 the float64 CDF of its masked action distribution. UEs without a packet choose
 OFF and draw nothing. The per-UE dual mu_i (variant C) starts at ``mu0`` and
-evolves only with that UE's own deadline settlements.
+evolves only with that UE's own deadline settlements. With ``survival``
+(EXP-DSA05-012) each UE tracks its consecutive misses; the actor sees its
+survival state when the checkpoint was trained with it, and the survival
+summary content sends it as the uplink bit.
 """
 
 from collections.abc import Sequence
@@ -23,6 +26,7 @@ from dsa_period.marl.features import (
 )
 from dsa_period.marl.networks import ChannelSetActor, MessageActor, split_logits
 from dsa_period.physics import PhysicalConfig, PowerMenu
+from dsa_period.survival import SurvivalSettings, SurvivalTracker
 from dsa_period.urgency import (
     HIDING,
     SummaryLink,
@@ -57,10 +61,15 @@ class MarlPolicy:
         mu0: float = 0.0,
         name: str = "marl",
         lags: tuple[int, ...] = (),
+        survival: SurvivalSettings | None = None,
     ) -> None:
         self.actor, self.config, self.menu, self.duals = actor, config, menu, duals
         self.mu0, self.name = mu0, name
         self._memory = LocalMemory(config, menu, config.num_ues, duals, lags)
+        self.survival = survival
+        self.tracker = (
+            None if survival is None else SurvivalTracker(config.num_ues, survival.tolerance)
+        )
 
     def reset(self, rngs: Sequence[np.random.Generator]) -> None:
         if len(rngs) != self.config.num_ues:
@@ -69,11 +78,23 @@ class MarlPolicy:
         initial = self.mu0 if self.duals.variant == "local" else 0.0
         self._memory.reset(np.full(self.config.num_ues, initial))
         self._hidden = self.actor.initial_hidden(self.config.num_ues)
+        if self.tracker is not None:
+            self.tracker.reset()
+
+    def _features(self, obs) -> tuple:
+        """Observe the boundary, then the actor features (with the survival state if trained so)."""
+        settlement = self._memory.observe(obs)
+        self._memory.update_duals(settlement)
+        tokens, context = self._memory.features(obs)
+        if self.tracker is not None:
+            self.tracker.update(settlement, obs)
+            if self.survival.features:
+                context = np.concatenate((context, self.tracker.features()), axis=1)
+        return tokens, context
 
     def act(self, observations: Sequence[UEObservation]) -> NDArray[np.int64]:
         obs = stack(observations)
-        self._memory.update_duals(self._memory.observe(obs))
-        tokens, context = self._memory.features(obs)
+        tokens, context = self._features(obs)
         with torch.no_grad():
             logits, self._hidden = self.actor.step(
                 torch.from_numpy(tokens), torch.from_numpy(context), self._hidden
@@ -111,8 +132,11 @@ class SummaryPolicy(MarlPolicy):
         mu0: float = 0.0,
         name: str = "marl",
         hide: str = "none",
+        survival: SurvivalSettings | None = None,
     ) -> None:
-        super().__init__(actor, config, menu, duals, mu0, name)
+        super().__init__(actor, config, menu, duals, mu0, name, survival=survival)
+        if settings.content == "survival" and survival is None:
+            raise ValueError("the survival content needs the survival settings")
         if hide not in HIDING:
             raise ValueError(f"hide must be one of {HIDING}")
         if settings.message != isinstance(actor, MessageActor):
@@ -126,8 +150,7 @@ class SummaryPolicy(MarlPolicy):
 
     def act(self, observations: Sequence[UEObservation]) -> NDArray[np.int64]:
         obs = stack(observations)
-        self._memory.update_duals(self._memory.observe(obs))
-        tokens, context = self._memory.features(obs)
+        tokens, context = self._features(obs)
         urgent_now = urgent(self.config, self.menu, obs, self.settings.urgent_slack)
         seen = visible(self.link.broadcast(obs), self.hide, urgent_now)
         tokens, context = with_summary(tokens, context, seen, self.link.own_previous)
@@ -153,5 +176,6 @@ class SummaryPolicy(MarlPolicy):
                 uniforms = np.array([self._rngs[ue].random() for ue in ues])
                 both = np.ones((ues.size, MessageActor.MESSAGES), dtype=np.bool_)
                 messages[ues] = sample_from_logits(message_logits.numpy()[ues], both, uniforms)
-        self.link.commit(self.link.uplink(obs, transmitting, messages), transmitting)
+        state = None if self.tracker is None else self.tracker.in_state & (obs.remaining > 0)
+        self.link.commit(self.link.uplink(obs, transmitting, messages, state), transmitting)
         return decode_actions(index, self.menu)

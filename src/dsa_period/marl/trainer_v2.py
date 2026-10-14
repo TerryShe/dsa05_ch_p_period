@@ -32,6 +32,15 @@ that transmits enters the joint log-probability, and the entropy bonus is the
 joint entropy H(a) + P(a != OFF) H(m). Without a summary the trainer is the
 EXP-006/008/009 trainer, bit for bit.
 
+EXP-DSA05-012 adds the survival time (``survival.SurvivalSettings``): each UE's
+consecutive misses and outage flag are tracked locally; with ``features`` the
+actor's context gets its survival state, and every UE-slot in an outage costs
+``outage_slot_weight`` (C3, a surrogate objective). The summary content ``survival`` sends the survival
+state as the uplink bit. ``BranchSettings`` (C4) snapshots an environment when a
+UE enters the survival state and lets a share of the resets resume a snapshot
+for a few periods; the PPO replay restores the snapshot's recurrent state. Without
+these options the trainer is the EXP-011B trainer, bit for bit.
+
 EXP-DSA05-011B continues a run from a checkpoint (``CapacityTrainer.resume``):
 networks, optimizers, ValueNorm, random states and deployment samplers are
 restored, every environment starts a fresh episode, and ``run`` goes on from the
@@ -39,9 +48,11 @@ checkpoint's slot count up to a larger budget with the same entropy schedule in
 slots.
 """
 
+import copy
 import json
 import resource
 import time
+from collections import deque
 from dataclasses import asdict, dataclass, replace
 from functools import lru_cache
 from pathlib import Path
@@ -76,6 +87,7 @@ from dsa_period.marl.networks import (
 from dsa_period.marl.policy import MarlPolicy, SummaryPolicy
 from dsa_period.marl.ppo import PPOSettings, discounted_gae
 from dsa_period.physics import PhysicalConfig, PowerMenu
+from dsa_period.survival import STATE_DIM, SurvivalSettings, SurvivalTracker
 from dsa_period.urgency import SummaryLink, SummarySettings, with_summary
 
 CHECKPOINT_KIND = "capacity-mappo"
@@ -101,6 +113,28 @@ class CapacityTrainingSettings:
         if not values or any(n < 1 for n in values):
             raise ValueError("env_ues must list at least one positive number of UEs")
         object.__setattr__(self, "env_ues", values)
+
+
+@dataclass(frozen=True)
+class BranchSettings:
+    """Critical-state branch episodes (EXP-DSA05-012 design §3.2, C4).
+
+    When a UE enters the survival state, the environment is snapshotted with
+    probability ``snapshot_probability``; each N keeps its ``buffer`` most recent
+    snapshots. A reset resumes a random snapshot with probability ``fraction``
+    and runs ``periods`` periods of the UE that triggered it, then truncates.
+    """
+
+    fraction: float = 0.25
+    periods: int = 3
+    buffer: int = 64
+    snapshot_probability: float = 1.0
+
+    def __post_init__(self) -> None:
+        if not (0 <= self.fraction <= 1 and 0 < self.snapshot_probability <= 1):
+            raise ValueError("fraction and snapshot_probability are probabilities")
+        if self.periods < 1 or self.buffer < 1:
+            raise ValueError("periods and buffer must be positive")
 
 
 def entropy_coef(settings: CapacityTrainingSettings, slots: int) -> float:
@@ -250,6 +284,7 @@ class RaggedRollout:
     starts: np.ndarray
     initial_hidden: Tensor  # [U, K, h] before obs[0]
     messages: np.ndarray | None = None  # [T, U] message bits (EXP-011 content L), 0 when OFF
+    restart_hidden: Tensor | None = None  # [T, U, K, h] hidden state at episode starts (C4)
 
 
 class RaggedMAPPO:
@@ -390,8 +425,15 @@ class RaggedMAPPO:
             for start in range(0, self.num_envs, s.minibatch_envs):
                 envs = order[start : start + s.minibatch_envs].sort().values
                 cols = torch.isin(self.env_of_ue, envs)
+                restart = (
+                    None if rollout.restart_hidden is None else rollout.restart_hidden[:, cols]
+                )
                 logits, _ = self.actor.sequence(
-                    tokens[:, cols], context[:, cols], rollout.initial_hidden[cols], starts[:, cols]
+                    tokens[:, cols],
+                    context[:, cols],
+                    rollout.initial_hidden[cols],
+                    starts[:, cols],
+                    restart,
                 )
                 mask = legal[:, cols]
                 logits, message_logits = split_logits(logits, self.actor.num_actions)
@@ -578,17 +620,22 @@ def joint_with_message(
 
 
 def model_dims(
-    config: PhysicalConfig, menu: PowerMenu, information: SummarySettings | None
+    config: PhysicalConfig,
+    menu: PowerMenu,
+    information: SummarySettings | None,
+    survival: SurvivalSettings | None = None,
 ) -> tuple[int, int, int]:
     """Actor token and context dims and the critic's per-UE dim, with the summary if any.
 
     The summary adds b_k to every subchannel token and the own previous bit to the
-    context; the critic reads the actor features, so it grows by K + 1.
+    context; the critic reads the actor features, so it grows by K + 1. The
+    survival state (EXP-012 C1) adds ``survival.STATE_DIM`` context entries.
     """
     extra = 0 if information is None else 1
+    state = STATE_DIM if survival is not None and survival.features else 0
     tokens = token_dim(menu, own_csi=True) + extra
-    context = context_dim() + extra
-    critic = critic_ue_dim(config, menu) + (config.num_subchannels + 1) * extra
+    context = context_dim() + extra + state
+    critic = critic_ue_dim(config, menu) + (config.num_subchannels + 1) * extra + state
     return tokens, context, critic
 
 
@@ -597,8 +644,9 @@ def build_actor(
     menu: PowerMenu,
     hidden: int,
     information: SummarySettings | None = None,
+    survival: SurvivalSettings | None = None,
 ) -> ChannelSetActor:
-    tokens, context, _ = model_dims(config, menu, information)
+    tokens, context, _ = model_dims(config, menu, information, survival)
     cls = MessageActor if information is not None and information.message else ChannelSetActor
     return cls(tokens, context, config.num_subchannels, menu.num_levels - 1, hidden)
 
@@ -614,9 +662,15 @@ class CapacityTrainer:
         update: UpdateSettings | None = None,
         sampler: SamplerSettings | None = None,
         information: SummarySettings | None = None,
+        survival: SurvivalSettings | None = None,
+        branching: BranchSettings | None = None,
     ) -> None:
         if not scenario.is_v2:
             raise ValueError("EXP-DSA05-006 trains on scenario v2.0")
+        if branching is not None and survival is None:
+            raise ValueError("branch episodes start at survival-state entries: need survival")
+        if information is not None and information.content == "survival" and survival is None:
+            raise ValueError("the survival content needs the survival settings")
         torch.set_num_threads(settings.torch_threads)
         self.scenario, self.settings, self.constraint, self.seed = (
             scenario,
@@ -632,8 +686,9 @@ class CapacityTrainer:
         self.env_of_ue = np.repeat(np.arange(self.env_ues.size), self.env_ues)
         torch.manual_seed(seed)
         self.information = information
-        dims = model_dims(self.config, self.menu, information)
-        actor = build_actor(self.config, self.menu, settings.hidden, information)
+        self.survival, self.branching = survival, branching
+        dims = model_dims(self.config, self.menu, information, survival)
+        actor = build_actor(self.config, self.menu, settings.hidden, information, survival)
         critic = SetCritic(dims[2], settings.critic_hidden)
         self.update_settings = update or UpdateSettings()
         self.ppo = RaggedMAPPO(
@@ -660,6 +715,14 @@ class CapacityTrainer:
                   for sc in self.scenarios]
         )  # fmt: skip
         self.summary_counts = {"sent": 0, "read": 0, "marked": 0, "subchannel_slots": 0}
+        self.trackers = (
+            None
+            if survival is None
+            else [SurvivalTracker(sc.physical.num_ues, survival.tolerance) for sc in self.scenarios]
+        )
+        self.snapshots: dict[int, deque] = {}
+        self.branch_end = np.zeros(self.env_ues.size, np.int64)  # 0: not a branch episode
+        self.branch_counts = {"snapshots": 0, "branches": 0}
         self.starts = np.zeros(self.env_ues.size, np.bool_)
         self.hidden = actor.initial_hidden(ues)
         self.instances_drawn: list[int] = []
@@ -701,6 +764,8 @@ class CapacityTrainer:
         """Features of a new observation; with a summary, the AP broadcast it carries."""
         rows, memory, obs = self._rows(env), self.memories[env], self.obs[env]
         tokens, context = memory.features(obs)
+        if self.survival is not None and self.survival.features:
+            context = np.concatenate((context, self.trackers[env].features()), axis=1)
         if self.links is not None:
             link = self.links[env]
             sent, read = link.bits_sent, link.bits_read
@@ -719,6 +784,12 @@ class CapacityTrainer:
         )
 
     def _reset_env(self, env: int) -> None:
+        self.branch_end[env] = 0
+        if self.branching is not None:
+            stored = self.snapshots.get(int(self.env_ues[env]))
+            if stored and self.rng.random() < self.branching.fraction:
+                self._branch_env(env, stored[int(self.rng.integers(len(stored)))])
+                return
         group = self.level_samplers.get(int(self.env_ues[env]))
         if group is None:
             index, stamp = splits.sample_train_index(self.rng), 0
@@ -746,9 +817,65 @@ class CapacityTrainer:
         memory.update_duals(memory.observe(self.obs[env]))
         if self.links is not None:
             self.links[env].reset()
+        if self.trackers is not None:
+            self.trackers[env].reset()
         self._refresh(env)
         self.hidden[self._rows(env)] = 0.0
         self.starts[env] = True
+
+    # ------------------------------------------------------ branch episodes (C4)
+    def _snapshot(self, env: int, trigger: int) -> None:
+        """Keep the state of ``env`` right after UE ``trigger`` entered the survival state."""
+        rows = self._rows(env)
+        state = {
+            "env": self.envs[env],
+            "memory": self.memories[env],
+            "link": None if self.links is None else self.links[env],
+            "tracker": self.trackers[env],
+            "obs": self.obs[env],
+            "traffic": self.traffic[env],
+            "level": self.level[env],
+            "class_index": self.class_index[env],
+            "episode_slot": int(self.episode_slot[env]),
+            "hidden": self.hidden[rows].clone(),
+            "features": (
+                self.tokens[rows],
+                self.context[rows],
+                self.legal[rows],
+                self.critic_ue[rows],
+            ),
+            "length": self.branching.periods * int(self.traffic[env].period_slots[trigger]),
+        }
+        n = int(self.env_ues[env])
+        self.snapshots.setdefault(n, deque(maxlen=self.branching.buffer)).append(
+            copy.deepcopy(state)
+        )
+        self.branch_counts["snapshots"] += 1
+
+    def _branch_env(self, env: int, snapshot: dict) -> None:
+        """Start a branch episode from a copy of ``snapshot`` (its recurrent state included)."""
+        state = copy.deepcopy(snapshot)
+        rows = self._rows(env)
+        self.envs[env], self.memories[env], self.obs[env] = (
+            state["env"],
+            state["memory"],
+            state["obs"],
+        )
+        if self.links is not None:
+            self.links[env] = state["link"]
+        self.trackers[env] = state["tracker"]
+        self.traffic[env], self.level[env] = state["traffic"], state["level"]
+        self.class_index[env] = state["class_index"]
+        self.episode_slot[env] = state["episode_slot"]
+        self.branch_end[env] = state["episode_slot"] + state["length"]
+        self.episode_ids[env] = self.next_episode_id
+        self.next_episode_id += 1
+        (self.tokens[rows], self.context[rows], self.legal[rows], self.critic_ue[rows]) = state[
+            "features"
+        ]
+        self.hidden[rows] = state["hidden"]
+        self.starts[env] = True
+        self.branch_counts["branches"] += 1
 
     def _values(self) -> np.ndarray:
         with torch.no_grad():
@@ -783,6 +910,11 @@ class CapacityTrainer:
         message = self.information is not None and self.information.message
         if message:
             buf["messages"] = np.zeros((steps, ues), np.int64)
+        restart = None
+        if self.branching is not None:
+            restart = torch.zeros((steps, *self.hidden.shape), dtype=self.hidden.dtype)
+        survival_stats = {"outage_ue_slots": 0, "entries": 0, "state_decisions": 0}
+        branch_ue_slots = 0
         for key in self.summary_counts:
             self.summary_counts[key] = 0
         initial_hidden = self.hidden.clone()
@@ -802,6 +934,10 @@ class CapacityTrainer:
             )
             buf["critic_ue"][t], buf["starts"][t] = self.critic_ue, self.starts
             buf["active"][t] = self.legal[:, 1:].any(axis=-1)
+            if restart is not None:
+                for env in np.flatnonzero(self.starts):
+                    restart[t, self._rows(int(env))] = self.hidden[self._rows(int(env))]
+                branch_ue_slots += int(self.env_ues[self.branch_end > 0].sum())
             with torch.no_grad():
                 logits, self.hidden = actor.step(
                     torch.from_numpy(self.tokens), torch.from_numpy(self.context), self.hidden
@@ -824,10 +960,14 @@ class CapacityTrainer:
             self.starts[:] = False
             for env in range(envs):
                 rows = self._rows(env)
+                state = None
+                if self.trackers is not None:
+                    state = self.trackers[env].in_state & (self.obs[env].remaining > 0)
+                    survival_stats["state_decisions"] += int(state.sum())
                 if self.links is not None:
                     link, sending = self.links[env], chosen[rows] > 0
                     words = buf["messages"][t, rows] if message else None
-                    link.commit(link.uplink(self.obs[env], sending, words), sending)
+                    link.commit(link.uplink(self.obs[env], sending, words, state), sending)
                 step = self.envs[env].step(decode_actions(chosen[rows], self.menu))
                 memory = self.memories[env]
                 self.obs[env] = stack(step.observations)
@@ -851,10 +991,29 @@ class CapacityTrainer:
                         )
                 self.episode_slot[env] += 1
                 cost = float(penalty @ settlement.violated)
+                entered = None
+                if self.trackers is not None:
+                    tracker = self.trackers[env]
+                    down = int(tracker.outage.sum())  # UEs in an outage during this slot
+                    cost += self.survival.outage_slot_weight * down
+                    tracker.update(settlement, self.obs[env])
+                    entered = settlement.violated & (tracker.consecutive == 1)
+                    survival_stats["outage_ue_slots"] += down
+                    survival_stats["entries"] += int(entered.sum())
                 buf["rewards"][t, env] = -cost / self.env_ues[env]
                 memory.update_duals(settlement)
                 self._refresh(env)
-                buf["truncated"][t, env] = step.truncated
+                ended = step.truncated or (
+                    self.branch_end[env] > 0 and self.episode_slot[env] >= self.branch_end[env]
+                )
+                if (
+                    self.branching is not None
+                    and entered.any()
+                    and not ended
+                    and self.rng.random() < self.branching.snapshot_probability
+                ):
+                    self._snapshot(env, int(self.rng.choice(np.flatnonzero(entered))))
+                buf["truncated"][t, env] = ended
                 settled[env] += int(settlement.settled.sum())
                 violations[env] += int(settlement.violated.sum())
                 tx += int(step.physical.active.sum())
@@ -864,7 +1023,7 @@ class CapacityTrainer:
             for env in np.flatnonzero(buf["truncated"][t]):
                 self._finish_episode(int(env))
                 self._reset_env(int(env))
-        rollout = RaggedRollout(**buf, initial_hidden=initial_hidden)
+        rollout = RaggedRollout(**buf, initial_hidden=initial_hidden, restart_hidden=restart)
         self.ue_samples += int(buf["active"].sum())
         by_n, settled_by_n, violations_by_n = {}, {}, {}
         for n in np.unique(self.env_ues):
@@ -885,6 +1044,18 @@ class CapacityTrainer:
         }
         if self.level_samplers:
             stats["sampler"] = {str(n): s.diagnostics() for n, s in self.level_samplers.items()}
+        if self.trackers is not None:
+            stats["survival"] = {
+                **survival_stats,
+                "state_share_of_active": survival_stats["state_decisions"]
+                / max(int(buf["active"].sum()), 1),
+            }
+        if self.branching is not None:
+            stats["branching"] = {
+                **self.branch_counts,
+                "stored": {str(n): len(q) for n, q in sorted(self.snapshots.items())},
+                "branch_ue_slot_share": branch_ue_slots / (steps * int(self.offsets[-1])),
+            }
         if self.links is not None:
             counts = self.summary_counts
             stats["summary"] = {
@@ -955,13 +1126,17 @@ class CapacityTrainer:
 
     # -------------------------------------------------------------- checkpoints
     def checkpoint(self, slots: int, iteration: int) -> dict:
-        dims = model_dims(self.config, self.menu, self.information)
+        dims = model_dims(self.config, self.menu, self.information, self.survival)
         extra = {}
         if self.level_samplers:
             extra = {
                 "sampler": asdict(self.sampler_settings),
                 "level_samplers": {str(n): s.state_dict() for n, s in self.level_samplers.items()},
             }
+        if self.survival is not None:
+            extra["survival"] = asdict(self.survival)
+        if self.branching is not None:
+            extra["branching"] = asdict(self.branching)
         return {
             **extra,
             "kind": CHECKPOINT_KIND,
@@ -1012,6 +1187,8 @@ class CapacityTrainer:
             "constraint": (checkpoint["constraint"], asdict(self.constraint)),
             "duals": (checkpoint["duals"], asdict(self.duals)),
             "information": (checkpoint.get("information"), _maybe_asdict(self.information)),
+            "survival": (checkpoint.get("survival"), _maybe_asdict(self.survival)),
+            "branching": (checkpoint.get("branching"), _maybe_asdict(self.branching)),
             "sampler": (
                 checkpoint.get("sampler"),
                 asdict(self.sampler_settings) if self.level_samplers else None,
@@ -1132,6 +1309,8 @@ def load_capacity_policy(
         raise ValueError(f"{path} is not a capacity checkpoint")
     model = checkpoint["model"]
     information = checkpoint.get("information")
+    survival = checkpoint.get("survival")
+    survival = None if survival is None else SurvivalSettings(**survival)
     if information is None and (theta_db is not KEEP or hide != "none"):
         raise ValueError(f"{path} carries no urgency summary to modify")
     settings = None
@@ -1155,5 +1334,7 @@ def load_capacity_policy(
     constraint = CapacityConstraint(**checkpoint["constraint"])
     start = constraint.mu0 if mu0 is None else mu0
     if settings is None:
-        return MarlPolicy(actor, config, menu, duals, start, name=f"marl:{path}")
-    return SummaryPolicy(actor, config, menu, duals, settings, start, f"marl:{path}", hide)
+        return MarlPolicy(actor, config, menu, duals, start, name=f"marl:{path}", survival=survival)
+    return SummaryPolicy(
+        actor, config, menu, duals, settings, start, f"marl:{path}", hide, survival=survival
+    )

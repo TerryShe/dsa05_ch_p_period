@@ -12,7 +12,9 @@ evaluation slice exp011-eval512 (dev 5000-5511, N = 6, 8, 10, 12, 16). EXP-011B
 12, 16 the deployments with a UE within 5 m of the AP, listed per N). EXP-011B
 amendment 2 (docs/research/exp011b-a2-sets.json): exp011b-eval128 (dev 6000-6127)
 and exp011b-near (the deployments of dev 6128-6511 with a UE within 5 m of the AP
-at N = 6-16, listed per N). Each set
+at N = 6-16, listed per N). EXP-DSA05-012 (docs/research/exp012-sets.json, scenario
+v2.1): the pilot slice exp012-pilot256 (dev 1400-1655, N = 8, 10, 12) and the
+evaluation slice exp012-eval512 (dev 2256-2767, N = 6-16). Each set
 carries its instance and fading digests (``splits_v2.instance_digest``:
 topology, shadowing, traffic and the fading of slots 0-7) at every N it is read
 at; confirmation sets at every N of the protocol-v2 grid and of N_EDF. No policy
@@ -125,12 +127,39 @@ REGISTRY = {
             [7000, 10000],
         ],  # fmt: skip
     },
+    "EXP-DSA05-012": {
+        "output": "docs/research/exp012-sets.json",
+        "design": "docs/experiment-designs/012-survival-time-critical-state-marl_20261014.md",
+        "document": "docs/research/exp012-registration.md",
+        "registered_on": "2026-10-14",
+        "scenario_config": "configs/scenario-v2.1.toml",
+        "screening": ["exp012-pilot256", "exp012-eval512"],
+        "confirmation": [],
+        "score": {
+            "exp012-pilot256": "gate A of stage 1: Q2 (worst UE's outages, s = 1) and P2 (design §4.1)",
+            "exp012-eval512": "Q2; D_N = Q2(SC) - Q2(M+S) at N = 8, 10, 12 (design §4.2)",
+        },
+        "selection": {
+            "exp012-pilot256": "none: the pilot evaluates the last checkpoint",
+            "exp012-eval512": "none: evaluation only",
+        },
+        "dev_used": [
+            [0, 64],
+            [1000, 1400],
+            [2000, 2256],
+            [3000, 3256],
+            [4000, 4512],
+            [5000, 6512],
+            [7000, 10000],
+        ],  # fmt: skip
+    },
 }
 
 
 def build(experiment: str = "EXP-DSA05-008") -> dict:
     spec = REGISTRY[experiment]
-    base = load_scenario(ROOT / CONFIG, 2)
+    config = spec.get("scenario_config", CONFIG)
+    base = load_scenario(ROOT / config, 2)
     every_n = sorted({*base.capacity["grid"], *base.capacity["reference_extra"]})
     screening = {}
     for name in spec["screening"]:
@@ -155,7 +184,7 @@ def build(experiment: str = "EXP-DSA05-008") -> dict:
             "entry_point": "evaluate_capacity --split dev --screen " + name + " --formal",
             "digests": {
                 str(n): splits_v2.instance_digest(
-                    load_scenario(ROOT / CONFIG, n), range(start, stop), "dev"
+                    load_scenario(ROOT / config, n), range(start, stop), "dev"
                 )
                 for n in entry["grid"]
             },
@@ -179,7 +208,7 @@ def build(experiment: str = "EXP-DSA05-008") -> dict:
             + " --formal",
             "digests": {
                 str(n): splits_v2.instance_digest(
-                    load_scenario(ROOT / CONFIG, n), range(start, stop), name
+                    load_scenario(ROOT / config, n), range(start, stop), name
                 )
                 for n in every_n
             },
@@ -191,8 +220,8 @@ def build(experiment: str = "EXP-DSA05-008") -> dict:
         "document": spec["document"],
         "protocol_id": splits_v2.PROTOCOL_ID,
         "registered_on": spec["registered_on"],
-        "scenario_config": CONFIG,
-        "scenario_config_sha256": hashlib.sha256((ROOT / CONFIG).read_bytes()).hexdigest(),
+        "scenario_config": config,
+        "scenario_config_sha256": hashlib.sha256((ROOT / config).read_bytes()).hexdigest(),
         "horizon_slots": base.horizon_slots,
         "warmup_slots": base.warmup_slots,
         "execution_seeds": {

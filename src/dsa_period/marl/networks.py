@@ -68,12 +68,24 @@ class ChannelSetActor(nn.Module):
         return logits, summary, hidden
 
     def sequence(
-        self, tokens: Tensor, context: Tensor, hidden: Tensor, starts: Tensor
+        self,
+        tokens: Tensor,
+        context: Tensor,
+        hidden: Tensor,
+        starts: Tensor,
+        restart: Tensor | None = None,
     ) -> tuple[Tensor, Tensor]:
-        """Ordered replay: tokens (T, B, K, Dt), starts (T, B) clear memory first."""
+        """Ordered replay: tokens (T, B, K, Dt), starts (T, B) clear memory first.
+
+        With ``restart`` (T, B, K, h) an episode start takes that hidden state
+        instead of zeros (EXP-DSA05-012 branch episodes resume a snapshot's memory).
+        """
         outputs = []
         for t in range(tokens.shape[0]):
-            hidden = hidden * (~starts[t]).to(hidden.dtype)[:, None, None]
+            if restart is None:
+                hidden = hidden * (~starts[t]).to(hidden.dtype)[:, None, None]
+            else:
+                hidden = torch.where(starts[t][:, None, None], restart[t], hidden)
             logits, hidden = self.step(tokens[t], context[t], hidden)
             outputs.append(logits)
         return torch.stack(outputs), hidden

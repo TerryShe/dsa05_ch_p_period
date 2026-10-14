@@ -60,6 +60,10 @@ SCREENING_SETS: dict[str, dict] = {
     # the rest of that slice whose first N UEs include one within near_m of the AP.
     "exp011b-eval128": {"range": (6_000, 6_128), "grid": (6, 8, 10, 12, 16)},
     "exp011b-near": {"range": (6_128, 6_512), "grid": (6, 8, 10, 12, 16), "near_m": 5.0},
+    # EXP-DSA05-012 (design §5, scenario v2.1): the pilot slice of stage 1 and the
+    # evaluation slice of stage 4.
+    "exp012-pilot256": {"range": (1_400, 1_656), "grid": (8, 10, 12)},
+    "exp012-eval512": {"range": (2_256, 2_768), "grid": (6, 8, 10, 12, 16)},
 }
 # Confirmation sets, one execution each: v2-confirm1 (EXP-008 §7.1, reserve 30000-30499)
 # and v2-confirm2 (EXP-009 §3, reserve 30500-30999).

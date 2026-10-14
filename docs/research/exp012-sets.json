@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "experiment": "EXP-DSA05-012",
+  "design": "docs/experiment-designs/012-survival-time-critical-state-marl_20261014.md",
+  "document": "docs/research/exp012-registration.md",
+  "protocol_id": "marl-protocol-v2",
+  "registered_on": "2026-10-14",
+  "scenario_config": "configs/scenario-v2.1.toml",
+  "scenario_config_sha256": "61218a2f3ecc1db5c8ef1e3e59c4709ddfcc2b665043e4a6cb9c1549d748de0e",
+  "horizon_slots": 20200,
+  "warmup_slots": 200,
+  "execution_seeds": {
+    "base": 20260930,
+    "scheme": "SeedSequence([base, seed_code, instance, repeat]).spawn(N)[j]"
+  },
+  "fading_seeds": {
+    "base": 20261001,
+    "scheme": "SeedSequence([base, seed_code, instance, repeat]).spawn(N)[j]"
+  },
+  "screening": {
+    "exp012-pilot256": {
+      "split": "dev",
+      "start": 1400,
+      "stop": 1656,
+      "count": 256,
+      "grid": [
+        8,
+        10,
+        12
+      ],
+      "repeats": 1,
+      "seed_code": 0,
+      "score": "gate A of stage 1: Q2 (worst UE's outages, s = 1) and P2 (design \u00a74.1)",
+      "selection": "none: the pilot evaluates the last checkpoint",
+      "entry_point": "evaluate_capacity --split dev --screen exp012-pilot256 --formal",
+      "digests": {
+        "8": "17fb1dc956ad9df6ecd87879f21469060ca0762abcc4b85100203c4fc7c38243",
+        "10": "3b43513334addf03f753ce845367927987c1d28195cfd9f3687e6b4667283a71",
+        "12": "6397f25136eaab20827874338b4f34c6ca6c055f222f8f8a71460024d8b968cd"
+      }
+    },
+    "exp012-eval512": {
+      "split": "dev",
+      "start": 2256,
+      "stop": 2768,
+      "count": 512,
+      "grid": [
+        6,
+        8,
+        10,
+        12,
+        16
+      ],
+      "repeats": 1,
+      "seed_code": 0,
+      "score": "Q2; D_N = Q2(SC) - Q2(M+S) at N = 8, 10, 12 (design \u00a74.2)",
+      "selection": "none: evaluation only",
+      "entry_point": "evaluate_capacity --split dev --screen exp012-eval512 --formal",
+      "digests": {
+        "6": "5643827bbf9a7d05b150428e68eac6406f34860023a0c1860450df6eaeb851f0",
+        "8": "16b9e75f649d1ed73c3d2f66dddc52d4261c15d2cee631628d2e1ed5f49276ba",
+        "10": "0d27cbc31f472708b02786f03d51d2c4c3865d42c49c817478970937d40f0081",
+        "12": "fdcad888d7f4d9edce46da1febfe8b8ea8b92d9efed5a43a5e7cfff280ad3fb9",
+        "16": "ae256a098ce3e1e6f6ce885af3a36c601c85ffd45826163dfc9cac6ebb67357f"
+      }
+    }
+  },
+  "confirmation": {},
+  "usage_checked_on_registration": {
+    "v2_dev_ranges_used": [
+      [
+        0,
+        64
+      ],
+      [
+        1000,
+        1400
+      ],
+      [
+        2000,
+        2256
+      ],
+      [
+        3000,
+        3256
+      ],
+      [
+        4000,
+        4512
+      ],
+      [
+        5000,
+        6512
+      ],
+      [
+        7000,
+        10000
+      ]
+    ],
+    "v2_reserve_ranges_read": []
+  }
+}

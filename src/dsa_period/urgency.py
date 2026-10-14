@@ -13,7 +13,9 @@ the UEs use it to decide slot t + 1. Contents of the uplink bit (design §2.2):
   probe);
 * occupancy: every transmission (no uplink bit; the AP detects the
   transmission under the same reading condition);
-* message: chosen by the policy's message head.
+* message: chosen by the policy's message head;
+* survival (EXP-DSA05-012): the UE is in the survival state, its last settled
+  packet missed (``survival.SurvivalTracker``; the caller passes the state).
 
 A UE's actor sees only the K broadcast bits (after an optional evaluation-time
 hiding mask, design §3.3) and its own previous uplink bit; nothing else about
@@ -28,7 +30,7 @@ from numpy.typing import NDArray
 from dsa_period.marl.features import ObsArrays, stack
 from dsa_period.physics import PhysicalConfig, PowerMenu, shannon_bits
 
-CONTENTS = ("urgency", "occupancy", "message")
+CONTENTS = ("urgency", "occupancy", "message", "survival")
 HIDING = ("none", "all", "nonurgent", "urgent")
 URGENT_SLACK = 3
 PRIMARY_THETA_DB = -10.0
@@ -141,13 +143,21 @@ class SummaryLink:
         obs: ObsArrays,
         transmitting: NDArray[np.bool_],
         messages: NDArray[np.int64] | None = None,
+        state: NDArray[np.bool_] | None = None,
     ) -> NDArray[np.bool_]:
-        """The bit each transmitting UE attaches to the slot being decided."""
+        """The bit each transmitting UE attaches to the slot being decided.
+
+        ``state`` is each UE's survival state, needed by the survival content.
+        """
         content = self.settings.content
         if content == "urgency":
             bits = urgent(self.config, self.menu, obs, self.settings.urgent_slack)
         elif content == "occupancy":
             bits = np.ones(self.num_ues, dtype=np.bool_)
+        elif content == "survival":
+            if state is None:
+                raise ValueError("the survival content needs the UEs' survival state")
+            bits = np.asarray(state, dtype=np.bool_)
         else:
             if messages is None:
                 raise ValueError("the message content needs the policy's messages")
@@ -179,46 +189,67 @@ class YieldPolicy:
     used itself in the previous slot when it attached a bit there (the 1-bit OR
     cannot tell whether the mark is its own). Urgent UEs act as the inner policy
     says. The rule draws no random numbers.
+
+    With the survival content (EXP-DSA05-012, M+S) the bit and the exemption are
+    the survival state instead of urgency: UEs in the survival state send their
+    bit and never yield; the others yield as above.
     """
 
     def __init__(self, inner, config: PhysicalConfig, menu: PowerMenu, settings: SummarySettings):
-        if settings.content != "urgency":
-            raise ValueError("the yield rule reads the urgency content")
+        if settings.content not in ("urgency", "survival"):
+            raise ValueError("the yield rule reads the urgency or the survival content")
         self.inner, self.config, self.menu, self.settings = inner, config, menu, settings
         self.link = SummaryLink(settings, config, menu, config.num_ues)
         theta = "all" if settings.theta_db is None else f"{settings.theta_db:g}"
-        self.name = f"yield[theta={theta}]@{getattr(inner, 'name', 'policy')}"
+        content = "" if settings.content == "urgency" else f",content={settings.content}"
+        self.name = f"yield[theta={theta}{content}]@{getattr(inner, 'name', 'policy')}"
+        self.tracker = None
+        if settings.content == "survival":
+            from dsa_period.survival import SurvivalTracker, settlement_memory
+
+            self._memory = settlement_memory(config, menu)
+            self.tracker = SurvivalTracker(config.num_ues, 1)
 
     def reset(self, rngs) -> None:
         self.inner.reset(rngs)
         self.link.reset()
         self.deferred = np.zeros(self.config.num_ues, dtype=np.int64)
+        if self.tracker is not None:
+            self._memory.reset(np.zeros(self.config.num_ues))
+            self.tracker.reset()
 
     def act(self, observations) -> NDArray[np.int64]:
         obs = stack(observations)
-        urgent_now = urgent(self.config, self.menu, obs, self.settings.urgent_slack)
+        state = None
+        if self.tracker is None:
+            exempt = urgent(self.config, self.menu, obs, self.settings.urgent_slack)
+        else:
+            self.tracker.update(self._memory.observe(obs), obs)
+            state = exempt = self.tracker.in_state & (obs.remaining > 0)
         marked = self.link.broadcast(obs)
         own = self.link.own_previous & (obs.prev_power > 0)
         actions = np.array(self.inner.act(observations), dtype=np.int64, copy=True)
-        for ue in np.flatnonzero((obs.remaining > 0) & ~urgent_now & (actions[:, 1] > 0)):
+        for ue in np.flatnonzero((obs.remaining > 0) & ~exempt & (actions[:, 1] > 0)):
             k = actions[ue, 0]
             if marked[k] and not (own[ue] and obs.prev_channel[ue] == k):
                 actions[ue] = 0
                 self.deferred[ue] += 1
         transmitting = actions[:, 1] > 0
-        self.link.commit(self.link.uplink(obs, transmitting), transmitting)
+        self.link.commit(self.link.uplink(obs, transmitting, state=state), transmitting)
         return actions
 
 
-WRAPPERS = ("yield", "summary")
+WRAPPERS = ("yield", "summary", "boost")
 
 
 def parse_wrapper(spec: str) -> tuple[str, dict, str] | None:
     """``name[key=value,...]@inner`` -> (name, options, inner spec); None if not wrapped.
 
-    ``yield[theta=T]@SPEC`` puts the yield rule on any policy; ``summary[theta=T,
-    hide=H]@marl:PATH`` evaluates a summary checkpoint under another reading
-    threshold or hiding mask. T is a number of dB or ``all`` (every bit read).
+    ``yield[theta=T]@SPEC`` puts the yield rule on any policy (``content=survival``
+    makes it the M+S rule of EXP-DSA05-012); ``summary[theta=T, hide=H]@marl:PATH``
+    evaluates a summary checkpoint under another reading threshold or hiding mask;
+    ``boost[]@SPEC`` adds the R17-like survival-state rule (EXP-DSA05-012). T is a
+    number of dB or ``all`` (every bit read).
     """
     name, bracket, rest = spec.partition("[")
     if not bracket or name not in WRAPPERS:
@@ -237,6 +268,10 @@ def parse_wrapper(spec: str) -> tuple[str, dict, str] | None:
             if value not in HIDING:
                 raise ValueError(f"hide must be one of {HIDING}")
             options["hide"] = value
+        elif key == "content" and name == "yield":
+            if value not in ("urgency", "survival"):
+                raise ValueError("the yield rule reads the urgency or the survival content")
+            options["content"] = value
         else:
             raise ValueError(f"unknown option {key!r} for {name}")
     if name == "yield" and "theta_db" not in options:

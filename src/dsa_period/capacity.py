@@ -27,6 +27,8 @@ from dsa_period.config import Scenario
 from dsa_period.evaluation import _bootstrap, _interval
 from dsa_period.physics import shannon_bits
 from dsa_period.policies import Policy
+from dsa_period.survival import TOLERANCES as SURVIVAL_TOLERANCES
+from dsa_period.survival import service_record
 from dsa_period.traffic import TrafficPattern
 
 EPSILONS = (0.01, 0.05)
@@ -99,9 +101,17 @@ def run_capacity_episode(
     lost = undeliverable(packets, best)
     count = np.bincount(packets["ue"], minlength=n)
     missed = np.zeros(n, dtype=np.int64)
+    scored: list[list[tuple[int, bool]]] = [[] for _ in range(n)]
     for job in env.job_records():
-        if warmup < job["deadline_slot"] <= horizon and not job["success"]:
-            missed[job["ue"]] += 1
+        if warmup < job["deadline_slot"] <= horizon:
+            scored[job["ue"]].append((job["deadline_slot"], bool(job["success"])))
+            if not job["success"]:
+                missed[job["ue"]] += 1
+    # EXP-DSA05-012: per UE, the indices (in deadline order) of its missed scored packets,
+    # and outages / unavailable slots at survival times of 1 and 2 intervals (design §2).
+    missed_packets = [[k for k, (_, ok) in enumerate(sorted(rows)) if not ok] for rows in scored]
+    jobs = env.job_records()
+    service = {str(s): service_record(jobs, n, warmup, horizon, s) for s in SURVIVAL_TOLERANCES}
     impossible = np.bincount(packets["ue"], weights=lost, minlength=n).astype(np.int64)
     energy = env.energy_by_slot()[warmup:horizon]
     window_s = (horizon - warmup) * scenario.physical.slot_duration_s
@@ -117,6 +127,9 @@ def run_capacity_episode(
         "repeat": repeat,
         "packets": count.tolist(),
         "violations": missed.tolist(),
+        "missed_packets": missed_packets,
+        "survival": service,
+        "survival_window": horizon - warmup,
         "undeliverable": impossible.tolist(),
         "violation_rate": rate.tolist(),
         "worst_violation_rate": float(rate.max()),
