@@ -1,0 +1,60 @@
+{
+  "formal": true,
+  "provenance": {
+    "commit": "fd419d09bfbb199b021e9445d31fc345625b2609",
+    "dirty": false
+  },
+  "deltas_db": [
+    0.0,
+    -10.0,
+    -20.0,
+    -30.0
+  ],
+  "cells": [
+    {
+      "spec": "marl:outputs/exp011/u-seed101/checkpoints/step-005001472.pt",
+      "N": 8,
+      "instance": 7191,
+      "ue": 2,
+      "violation_rate": 0.86,
+      "pending_slots": 18117,
+      "send_share": 0.005630071203841696,
+      "mean_p_off": {
+        "0.0": 0.9940637048073269,
+        "-10.0": 0.9867262819059895,
+        "-20.0": 0.9648389159311155,
+        "-30.0": 0.9194210309667202
+      }
+    },
+    {
+      "spec": "marl:outputs/exp011/u-seed101/checkpoints/step-005001472.pt",
+      "N": 12,
+      "instance": 7191,
+      "ue": 2,
+      "violation_rate": 0.924,
+      "pending_slots": 18908,
+      "send_share": 0.0033848106621535857,
+      "mean_p_off": {
+        "0.0": 0.9961237291310717,
+        "-10.0": 0.9925244766218777,
+        "-20.0": 0.9816983637186038,
+        "-30.0": 0.956590392788386
+      }
+    },
+    {
+      "spec": "marl:outputs/exp011/u-seed101/checkpoints/step-005001472.pt",
+      "N": 16,
+      "instance": 7022,
+      "ue": 2,
+      "violation_rate": 0.748,
+      "pending_slots": 15909,
+      "send_share": 0.016154378025017287,
+      "mean_p_off": {
+        "0.0": 0.9837895447675297,
+        "-10.0": 0.9685801641479996,
+        "-20.0": 0.941855712354901,
+        "-30.0": 0.9257802141857288
+      }
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "0": {
+    "date": "2026-10-12 03:02:06",
+    "commit": "fd419d0",
+    "user": "All 4 confirmed, commit and launch stage 1",
+    "decision": "phase 0 approved (design \u00a710, clarifications 1-4 confirmed); launch stage 1"
+  },
+  "A": {
+    "date": "2026-10-12 10:08:56",
+    "commit": "fd419d0",
+    "user": "All Confirmed.",
+    "branch": "G",
+    "decision": "branch G (no T condition: every (condition, seed) has a clean 3M-5M checkpoint; growing starvation only in seed 101 of M and of U); descriptive probes a/b/c (traffic-class inputs, summary bits, hidden reset) built in a separate worktree while stage 2 runs, results at gate B; starvation definition unchanged, revisited at gate C on selection data only"
+  },
+  "B": {
+    "date": "2026-10-12 21:52:00",
+    "commit": "6fca368",
+    "user": "All agreed. start probes first.",
+    "decision": "continue to stage 3 without changing training (no divergence in the stage-2 curves); probe branch exp011b/probes (per-packet metric bf441e0, gate-B record and own-gain correction 5944e47) fast-forwarded into main after the formal probe rerun (outputs/exp011b/stage1/probes-gateB.json); web/sim-viewer phase 1 (85f140e) merged into main between stages (6fca368); stage 3 runs at 6fca368"
+  },
+  "amendment-1": {
+    "date": "2026-10-13 02:15:00",
+    "commit": "d4f5cd0",
+    "user": "\u9009B.",
+    "decision": "stage-3 candidates 3M, 4M, 5M, 6M, 8M, 10M for every condition and seed (design \u00a713); other screened checkpoints are not candidates; stage 3 restarted at d4f5cd0 (the in-flight m505-base 2M and 3M screens were stopped and rerun as needed)"
+  },
+  "C": {
+    "date": "2026-10-13 22:08:54",
+    "commit": "3579a5a",
+    "user": "1)\u7ee7\u7eed\u9636\u6bb54\uff0c\u6309\u73b0\u5728\u7684\u9009\u6a21\u7ed3\u679c 2\uff09\u5b9a\u4e49\u4e0d\u53d8 3\uff09\u540c\u610f\u66f4\u6b63",
+    "decision": "continue to stage 4 with outputs/exp011b/selection.json unchanged (no fallback; 6 of 150 candidates guarded out); starvation definition unchanged (no exclusion from far high-load cells); correct the amendment-1 note on not_candidates (empty: the driver passes only candidates), no rerun (design \u00a714)"
+  },
+  "amendment-2": {
+    "date": "2026-10-14 01:18:52",
+    "commit": "6a8ac47",
+    "user": "1\uff0910\u7c73 2\uff09\u540c\u610f\uff0c\u4f46\u662f\u8981\u6ce8\u610f\u58f0\u660e\u8868\u8fbe\uff0c\u8fd9\u90e8\u5206\u58f0\u660e\u4e0d\u8981\u52a0\u5165\u5230\u8bba\u6587\u4e2d\uff0c\u4e00\u5b9a\u8981\u533a\u5206\u8bba\u6587\u8868\u8fbe\u548c\u5b9e\u9a8c\u7ed3\u8bba\uff0c\u4e0d\u662f\u6240\u6709\u5b9e\u9a8c\u7ed3\u8bba\u90fd\u8981\u5199\u5728\u8bba\u6587\u91cc\u7684\u3002 3\uff09\u9009A",
+    "decision": "stage 4 on exp011b-eval128 (dev 6000-6127) for P2 and every design-5 comparison; starvation also counted on exp011b-near (near-AP deployments of dev 6128-6511); pre-declared descriptive recomputation on deployments with all UEs >= 5 m / >= 10 m (decides nothing; an experiment record, not paper text); criteria and selection unchanged; the stopped 512 run (42 chunks) set aside unread in outputs/exp011b/eval512-partial; protocol revision later adds a 10 m minimum UE-AP distance (3GPP TR 38.901 UMi), separate design (design \u00a715)"
+  },
+  "D": {
+    "date": "2026-10-14 07:20:42",
+    "commit": "6a8ac47",
+    "user": "\u5148\u786e\u8ba4\u5224\u8bfb\u3002",
+    "decision": "gate-D reading confirmed (report docs/results/exp011b_20261014/report.md, design \u00a716): main rule effective; 0 starvation cells on eval128 + near; U is the proposed method under \u00a75.4; content not supported (U = O = L); M+Y significantly better than U at N = 12. Framing / positioning of U, order of framing and protocol revision, and use of unread dev instances are still open"
+  }
+}

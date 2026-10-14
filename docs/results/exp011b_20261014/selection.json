@@ -1,0 +1,4569 @@
+{
+  "screen": "exp009-screen256",
+  "stress": "exp011b-stress",
+  "rule": "candidates 3M, 4M, 5M, 6M, 8M, 10M; guard: no starvation cell at any N (stress set, screen); then per (condition, seed, N) min P2, max F_0.01, later checkpoint",
+  "candidates_millions": [
+    3,
+    4,
+    5,
+    6,
+    8,
+    10
+  ],
+  "not_candidates": [],
+  "sources": {
+    "screen": [
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-final/screen/s1-seed303-step-003001600-n10",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-final/screen/s1-seed303-step-003001600-n12",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-final/screen/s1-seed303-step-003001600-n16",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-final/screen/s1-seed303-step-003001600-n2",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-final/screen/s1-seed303-step-003001600-n20",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-final/screen/s1-seed303-step-003001600-n4",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-final/screen/s1-seed303-step-003001600-n6",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-final/screen/s1-seed303-step-003001600-n8",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-final/screen/s1-seed303-step-004001536-n10",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-final/screen/s1-seed303-step-004001536-n12",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-final/screen/s1-seed303-step-004001536-n16",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-final/screen/s1-seed303-step-004001536-n2",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-final/screen/s1-seed303-step-004001536-n20",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-final/screen/s1-seed303-step-004001536-n4",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-final/screen/s1-seed303-step-004001536-n6",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-final/screen/s1-seed303-step-004001536-n8",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-final/screen/s1-seed303-step-005001472-n10",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-final/screen/s1-seed303-step-005001472-n12",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-final/screen/s1-seed303-step-005001472-n16",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-final/screen/s1-seed303-step-005001472-n2",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-final/screen/s1-seed303-step-005001472-n20",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-final/screen/s1-seed303-step-005001472-n4",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-final/screen/s1-seed303-step-005001472-n6",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-final/screen/s1-seed303-step-005001472-n8",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-step2/screen/s1-seed101-step-003001600-n10",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-step2/screen/s1-seed101-step-003001600-n12",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-step2/screen/s1-seed101-step-003001600-n16",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-step2/screen/s1-seed101-step-003001600-n2",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-step2/screen/s1-seed101-step-003001600-n20",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-step2/screen/s1-seed101-step-003001600-n4",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-step2/screen/s1-seed101-step-003001600-n6",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-step2/screen/s1-seed101-step-003001600-n8",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-step2/screen/s1-seed101-step-004001536-n10",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-step2/screen/s1-seed101-step-004001536-n12",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-step2/screen/s1-seed101-step-004001536-n16",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-step2/screen/s1-seed101-step-004001536-n2",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-step2/screen/s1-seed101-step-004001536-n20",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-step2/screen/s1-seed101-step-004001536-n4",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-step2/screen/s1-seed101-step-004001536-n6",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-step2/screen/s1-seed101-step-004001536-n8",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-step2/screen/s1-seed101-step-005001472-n10",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-step2/screen/s1-seed101-step-005001472-n12",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-step2/screen/s1-seed101-step-005001472-n16",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-step2/screen/s1-seed101-step-005001472-n2",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-step2/screen/s1-seed101-step-005001472-n20",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-step2/screen/s1-seed101-step-005001472-n4",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-step2/screen/s1-seed101-step-005001472-n6",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-step2/screen/s1-seed101-step-005001472-n8",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-step2/screen/s1-seed202-step-003001600-n10",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-step2/screen/s1-seed202-step-003001600-n12",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-step2/screen/s1-seed202-step-003001600-n16",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-step2/screen/s1-seed202-step-003001600-n2",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-step2/screen/s1-seed202-step-003001600-n20",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-step2/screen/s1-seed202-step-003001600-n4",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-step2/screen/s1-seed202-step-003001600-n6",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-step2/screen/s1-seed202-step-003001600-n8",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-step2/screen/s1-seed202-step-004001536-n10",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-step2/screen/s1-seed202-step-004001536-n12",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-step2/screen/s1-seed202-step-004001536-n16",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-step2/screen/s1-seed202-step-004001536-n2",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-step2/screen/s1-seed202-step-004001536-n20",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-step2/screen/s1-seed202-step-004001536-n4",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-step2/screen/s1-seed202-step-004001536-n6",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-step2/screen/s1-seed202-step-004001536-n8",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-step2/screen/s1-seed202-step-005001472-n10",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-step2/screen/s1-seed202-step-005001472-n12",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-step2/screen/s1-seed202-step-005001472-n16",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-step2/screen/s1-seed202-step-005001472-n2",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-step2/screen/s1-seed202-step-005001472-n20",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-step2/screen/s1-seed202-step-005001472-n4",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-step2/screen/s1-seed202-step-005001472-n6",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp009-step2/screen/s1-seed202-step-005001472-n8",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011/screen/l-seed101-step-003001600",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011/screen/l-seed101-step-004001536",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011/screen/l-seed101-step-005001472",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011/screen/l-seed202-step-003001600",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011/screen/l-seed202-step-004001536",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011/screen/l-seed202-step-005001472",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011/screen/l-seed303-step-003001600",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011/screen/l-seed303-step-004001536",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011/screen/l-seed303-step-005001472",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011/screen/o-seed101-step-003001600",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011/screen/o-seed101-step-004001536",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011/screen/o-seed101-step-005001472",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011/screen/o-seed202-step-003001600",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011/screen/o-seed202-step-004001536",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011/screen/o-seed202-step-005001472",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011/screen/o-seed303-step-003001600",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011/screen/o-seed303-step-004001536",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011/screen/o-seed303-step-005001472",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011/screen/u-seed101-step-003001600",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011/screen/u-seed101-step-004001536",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011/screen/u-seed101-step-005001472",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011/screen/u-seed202-step-003001600",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011/screen/u-seed202-step-004001536",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011/screen/u-seed202-step-005001472",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011/screen/u-seed303-step-003001600",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011/screen/u-seed303-step-004001536",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011/screen/u-seed303-step-005001472",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011/screen/u0-seed101-step-003001600",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011/screen/u0-seed101-step-004001536",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011/screen/u0-seed101-step-005001472",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011/screen/u0-seed202-step-003001600",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011/screen/u0-seed202-step-004001536",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011/screen/u0-seed202-step-005001472",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011/screen/u0-seed303-step-003001600",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011/screen/u0-seed303-step-004001536",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011/screen/u0-seed303-step-005001472",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/l-seed101-step-006001408",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/l-seed101-step-008001280",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/l-seed101-step-010001152",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/l-seed202-step-006001408",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/l-seed202-step-008001280",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/l-seed202-step-010001152",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/l-seed303-step-006001408",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/l-seed303-step-008001280",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/l-seed303-step-010001152",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/l-seed404-base-step-003001600",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/l-seed404-base-step-004001536",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/l-seed404-base-step-005001472",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/l-seed404-step-006001408",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/l-seed404-step-008001280",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/l-seed404-step-010001152",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/l-seed505-base-step-003001600",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/l-seed505-base-step-004001536",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/l-seed505-base-step-005001472",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/l-seed505-step-006001408",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/l-seed505-step-008001280",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/l-seed505-step-010001152",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/m-seed101-step-006001408",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/m-seed101-step-008001280",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/m-seed101-step-010001152",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/m-seed202-step-006001408",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/m-seed202-step-008001280",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/m-seed202-step-010001152",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/m-seed303-step-006001408",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/m-seed303-step-008001280",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/m-seed303-step-010001152",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/m-seed404-base-step-003001600",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/m-seed404-base-step-004001536",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/m-seed404-base-step-005001472",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/m-seed404-step-006001408",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/m-seed404-step-008001280",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/m-seed404-step-010001152",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/m-seed505-base-step-003001600",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/m-seed505-base-step-004001536",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/m-seed505-base-step-005001472",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/m-seed505-step-006001408",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/m-seed505-step-008001280",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/m-seed505-step-010001152",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/o-seed101-step-006001408",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/o-seed101-step-008001280",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/o-seed101-step-010001152",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/o-seed202-step-006001408",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/o-seed202-step-008001280",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/o-seed202-step-010001152",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/o-seed303-step-006001408",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/o-seed303-step-008001280",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/o-seed303-step-010001152",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/o-seed404-base-step-003001600",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/o-seed404-base-step-004001536",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/o-seed404-base-step-005001472",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/o-seed404-step-006001408",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/o-seed404-step-008001280",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/o-seed404-step-010001152",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/o-seed505-base-step-003001600",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/o-seed505-base-step-004001536",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/o-seed505-base-step-005001472",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/o-seed505-step-006001408",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/o-seed505-step-008001280",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/o-seed505-step-010001152",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/u-seed101-step-006001408",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/u-seed101-step-008001280",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/u-seed101-step-010001152",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/u-seed202-step-006001408",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/u-seed202-step-008001280",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/u-seed202-step-010001152",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/u-seed303-step-006001408",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/u-seed303-step-008001280",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/u-seed303-step-010001152",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/u-seed404-base-step-003001600",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/u-seed404-base-step-004001536",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/u-seed404-base-step-005001472",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/u-seed404-step-006001408",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/u-seed404-step-008001280",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/u-seed404-step-010001152",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/u-seed505-base-step-003001600",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/u-seed505-base-step-004001536",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/u-seed505-base-step-005001472",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/u-seed505-step-006001408",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/u-seed505-step-008001280",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/u-seed505-step-010001152",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/u0-seed101-step-006001408",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/u0-seed101-step-008001280",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/u0-seed101-step-010001152",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/u0-seed202-step-006001408",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/u0-seed202-step-008001280",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/u0-seed202-step-010001152",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/u0-seed303-step-006001408",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/u0-seed303-step-008001280",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/u0-seed303-step-010001152",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/u0-seed404-base-step-003001600",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/u0-seed404-base-step-004001536",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/u0-seed404-base-step-005001472",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/u0-seed404-step-006001408",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/u0-seed404-step-008001280",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/u0-seed404-step-010001152",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/u0-seed505-base-step-003001600",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/u0-seed505-base-step-004001536",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/u0-seed505-base-step-005001472",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/u0-seed505-step-006001408",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/u0-seed505-step-008001280",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/screen/u0-seed505-step-010001152"
+    ],
+    "stress": [
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/l-seed101-step-003001600",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/l-seed101-step-004001536",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/l-seed101-step-005001472",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/l-seed101-step-006001408",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/l-seed101-step-008001280",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/l-seed101-step-010001152",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/l-seed202-step-003001600",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/l-seed202-step-004001536",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/l-seed202-step-005001472",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/l-seed202-step-006001408",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/l-seed202-step-008001280",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/l-seed202-step-010001152",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/l-seed303-step-003001600",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/l-seed303-step-004001536",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/l-seed303-step-005001472",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/l-seed303-step-006001408",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/l-seed303-step-008001280",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/l-seed303-step-010001152",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/l-seed404-base-step-003001600",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/l-seed404-base-step-004001536",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/l-seed404-base-step-005001472",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/l-seed404-step-006001408",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/l-seed404-step-008001280",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/l-seed404-step-010001152",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/l-seed505-base-step-003001600",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/l-seed505-base-step-004001536",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/l-seed505-base-step-005001472",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/l-seed505-step-006001408",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/l-seed505-step-008001280",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/l-seed505-step-010001152",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/m-seed101-step-003001600",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/m-seed101-step-004001536",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/m-seed101-step-005001472",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/m-seed101-step-006001408",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/m-seed101-step-008001280",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/m-seed101-step-010001152",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/m-seed202-step-003001600",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/m-seed202-step-004001536",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/m-seed202-step-005001472",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/m-seed202-step-006001408",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/m-seed202-step-008001280",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/m-seed202-step-010001152",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/m-seed303-step-003001600",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/m-seed303-step-004001536",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/m-seed303-step-005001472",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/m-seed303-step-006001408",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/m-seed303-step-008001280",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/m-seed303-step-010001152",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/m-seed404-base-step-003001600",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/m-seed404-base-step-004001536",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/m-seed404-base-step-005001472",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/m-seed404-step-006001408",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/m-seed404-step-008001280",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/m-seed404-step-010001152",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/m-seed505-base-step-003001600",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/m-seed505-base-step-004001536",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/m-seed505-base-step-005001472",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/m-seed505-step-006001408",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/m-seed505-step-008001280",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/m-seed505-step-010001152",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/o-seed101-step-003001600",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/o-seed101-step-004001536",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/o-seed101-step-005001472",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/o-seed101-step-006001408",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/o-seed101-step-008001280",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/o-seed101-step-010001152",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/o-seed202-step-003001600",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/o-seed202-step-004001536",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/o-seed202-step-005001472",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/o-seed202-step-006001408",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/o-seed202-step-008001280",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/o-seed202-step-010001152",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/o-seed303-step-003001600",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/o-seed303-step-004001536",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/o-seed303-step-005001472",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/o-seed303-step-006001408",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/o-seed303-step-008001280",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/o-seed303-step-010001152",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/o-seed404-base-step-003001600",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/o-seed404-base-step-004001536",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/o-seed404-base-step-005001472",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/o-seed404-step-006001408",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/o-seed404-step-008001280",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/o-seed404-step-010001152",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/o-seed505-base-step-003001600",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/o-seed505-base-step-004001536",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/o-seed505-base-step-005001472",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/o-seed505-step-006001408",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/o-seed505-step-008001280",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/o-seed505-step-010001152",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u-seed101-step-003001600",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u-seed101-step-004001536",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u-seed101-step-005001472",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u-seed101-step-006001408",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u-seed101-step-008001280",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u-seed101-step-010001152",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u-seed202-step-003001600",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u-seed202-step-004001536",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u-seed202-step-005001472",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u-seed202-step-006001408",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u-seed202-step-008001280",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u-seed202-step-010001152",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u-seed303-step-003001600",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u-seed303-step-004001536",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u-seed303-step-005001472",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u-seed303-step-006001408",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u-seed303-step-008001280",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u-seed303-step-010001152",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u-seed404-base-step-003001600",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u-seed404-base-step-004001536",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u-seed404-base-step-005001472",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u-seed404-step-006001408",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u-seed404-step-008001280",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u-seed404-step-010001152",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u-seed505-base-step-003001600",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u-seed505-base-step-004001536",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u-seed505-base-step-005001472",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u-seed505-step-006001408",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u-seed505-step-008001280",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u-seed505-step-010001152",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u0-seed101-step-003001600",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u0-seed101-step-004001536",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u0-seed101-step-005001472",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u0-seed101-step-006001408",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u0-seed101-step-008001280",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u0-seed101-step-010001152",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u0-seed202-step-003001600",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u0-seed202-step-004001536",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u0-seed202-step-005001472",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u0-seed202-step-006001408",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u0-seed202-step-008001280",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u0-seed202-step-010001152",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u0-seed303-step-003001600",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u0-seed303-step-004001536",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u0-seed303-step-005001472",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u0-seed303-step-006001408",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u0-seed303-step-008001280",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u0-seed303-step-010001152",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u0-seed404-base-step-003001600",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u0-seed404-base-step-004001536",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u0-seed404-base-step-005001472",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u0-seed404-step-006001408",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u0-seed404-step-008001280",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u0-seed404-step-010001152",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u0-seed505-base-step-003001600",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u0-seed505-base-step-004001536",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u0-seed505-base-step-005001472",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u0-seed505-step-006001408",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u0-seed505-step-008001280",
+      "/home/abscom01/Documents/claude_examples/dsa05_ch_p_period/outputs/exp011b/stress/u0-seed505-step-010001152"
+    ]
+  },
+  "rename": {
+    "S1": "M"
+  },
+  "selection": {
+    "L": {
+      "101": {
+        "cells": {
+          "6": {
+            "selected": "marl:outputs/exp011b/l-seed101/checkpoints/step-008001280.pt",
+            "P2": 0.000732421875,
+            "F01": 0.984375,
+            "slots": 8001280,
+            "fallback": false
+          },
+          "8": {
+            "selected": "marl:outputs/exp011b/l-seed101/checkpoints/step-010001152.pt",
+            "P2": 0.001462890625,
+            "F01": 0.95703125,
+            "slots": 10001152,
+            "fallback": false
+          },
+          "10": {
+            "selected": "marl:outputs/exp011b/l-seed101/checkpoints/step-010001152.pt",
+            "P2": 0.0034707031250000003,
+            "F01": 0.8984375,
+            "slots": 10001152,
+            "fallback": false
+          },
+          "12": {
+            "selected": "marl:outputs/exp011b/l-seed101/checkpoints/step-010001152.pt",
+            "P2": 0.006841796875,
+            "F01": 0.80859375,
+            "slots": 10001152,
+            "fallback": false
+          },
+          "16": {
+            "selected": "marl:outputs/exp011b/l-seed101/checkpoints/step-010001152.pt",
+            "P2": 0.060220703125,
+            "F01": 0.33203125,
+            "slots": 10001152,
+            "fallback": false
+          }
+        },
+        "checkpoints": [
+          {
+            "spec": "marl:outputs/exp011/l-seed101/checkpoints/step-003001600.pt",
+            "slots": 3001600,
+            "starvation": 0,
+            "P2@6": 0.0011582031250000002,
+            "P2@8": 0.0027519531250000005,
+            "P2@10": 0.007365234375000001,
+            "P2@12": 0.015544921875000001,
+            "P2@16": 0.11769531250000001
+          },
+          {
+            "spec": "marl:outputs/exp011/l-seed101/checkpoints/step-004001536.pt",
+            "slots": 4001536,
+            "starvation": 0,
+            "P2@6": 0.000884765625,
+            "P2@8": 0.0019824218750000002,
+            "P2@10": 0.004908203125000001,
+            "P2@12": 0.010101562500000001,
+            "P2@16": 0.069859375
+          },
+          {
+            "spec": "marl:outputs/exp011/l-seed101/checkpoints/step-005001472.pt",
+            "slots": 5001472,
+            "starvation": 0,
+            "P2@6": 0.001078125,
+            "P2@8": 0.002119140625,
+            "P2@10": 0.005029296875,
+            "P2@12": 0.01034375,
+            "P2@16": 0.076517578125
+          },
+          {
+            "spec": "marl:outputs/exp011b/l-seed101/checkpoints/step-006001408.pt",
+            "slots": 6001408,
+            "starvation": 0,
+            "P2@6": 0.001265625,
+            "P2@8": 0.002142578125,
+            "P2@10": 0.004880859375000001,
+            "P2@12": 0.009400390625000001,
+            "P2@16": 0.07199414062500001
+          },
+          {
+            "spec": "marl:outputs/exp011b/l-seed101/checkpoints/step-008001280.pt",
+            "slots": 8001280,
+            "starvation": 0,
+            "P2@6": 0.000732421875,
+            "P2@8": 0.001623046875,
+            "P2@10": 0.004300781250000001,
+            "P2@12": 0.00905859375,
+            "P2@16": 0.07098046875
+          },
+          {
+            "spec": "marl:outputs/exp011b/l-seed101/checkpoints/step-010001152.pt",
+            "slots": 10001152,
+            "starvation": 0,
+            "P2@6": 0.0008203125000000001,
+            "P2@8": 0.001462890625,
+            "P2@10": 0.0034707031250000003,
+            "P2@12": 0.006841796875,
+            "P2@16": 0.060220703125
+          }
+        ]
+      },
+      "202": {
+        "cells": {
+          "6": {
+            "selected": "marl:outputs/exp011b/l-seed202/checkpoints/step-006001408.pt",
+            "P2": 0.000490234375,
+            "F01": 0.98828125,
+            "slots": 6001408,
+            "fallback": false
+          },
+          "8": {
+            "selected": "marl:outputs/exp011b/l-seed202/checkpoints/step-006001408.pt",
+            "P2": 0.000994140625,
+            "F01": 0.9765625,
+            "slots": 6001408,
+            "fallback": false
+          },
+          "10": {
+            "selected": "marl:outputs/exp011b/l-seed202/checkpoints/step-006001408.pt",
+            "P2": 0.00254296875,
+            "F01": 0.921875,
+            "slots": 6001408,
+            "fallback": false
+          },
+          "12": {
+            "selected": "marl:outputs/exp011b/l-seed202/checkpoints/step-010001152.pt",
+            "P2": 0.005453125000000001,
+            "F01": 0.81640625,
+            "slots": 10001152,
+            "fallback": false
+          },
+          "16": {
+            "selected": "marl:outputs/exp011b/l-seed202/checkpoints/step-010001152.pt",
+            "P2": 0.046605468750000004,
+            "F01": 0.328125,
+            "slots": 10001152,
+            "fallback": false
+          }
+        },
+        "checkpoints": [
+          {
+            "spec": "marl:outputs/exp011/l-seed202/checkpoints/step-003001600.pt",
+            "slots": 3001600,
+            "starvation": 0,
+            "P2@6": 0.00094140625,
+            "P2@8": 0.002046875,
+            "P2@10": 0.005378906250000001,
+            "P2@12": 0.011910156250000001,
+            "P2@16": 0.10551171875
+          },
+          {
+            "spec": "marl:outputs/exp011/l-seed202/checkpoints/step-004001536.pt",
+            "slots": 4001536,
+            "starvation": 0,
+            "P2@6": 0.0014101562500000002,
+            "P2@8": 0.002310546875,
+            "P2@10": 0.004630859375,
+            "P2@12": 0.008398437500000001,
+            "P2@16": 0.058857421874999996
+          },
+          {
+            "spec": "marl:outputs/exp011/l-seed202/checkpoints/step-005001472.pt",
+            "slots": 5001472,
+            "starvation": 0,
+            "P2@6": 0.000787109375,
+            "P2@8": 0.001458984375,
+            "P2@10": 0.0035195312500000005,
+            "P2@12": 0.008126953125000001,
+            "P2@16": 0.0714453125
+          },
+          {
+            "spec": "marl:outputs/exp011b/l-seed202/checkpoints/step-006001408.pt",
+            "slots": 6001408,
+            "starvation": 0,
+            "P2@6": 0.000490234375,
+            "P2@8": 0.000994140625,
+            "P2@10": 0.00254296875,
+            "P2@12": 0.005958984375000001,
+            "P2@16": 0.07253515624999998
+          },
+          {
+            "spec": "marl:outputs/exp011b/l-seed202/checkpoints/step-008001280.pt",
+            "slots": 8001280,
+            "starvation": 0,
+            "P2@6": 0.000509765625,
+            "P2@8": 0.00103125,
+            "P2@10": 0.0025488281250000003,
+            "P2@12": 0.005517578125,
+            "P2@16": 0.047498046875
+          },
+          {
+            "spec": "marl:outputs/exp011b/l-seed202/checkpoints/step-010001152.pt",
+            "slots": 10001152,
+            "starvation": 0,
+            "P2@6": 0.0005722656250000001,
+            "P2@8": 0.001052734375,
+            "P2@10": 0.0025937500000000006,
+            "P2@12": 0.005453125000000001,
+            "P2@16": 0.046605468750000004
+          }
+        ]
+      },
+      "303": {
+        "cells": {
+          "6": {
+            "selected": "marl:outputs/exp011/l-seed303/checkpoints/step-005001472.pt",
+            "P2": 0.00095703125,
+            "F01": 0.9765625,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "8": {
+            "selected": "marl:outputs/exp011/l-seed303/checkpoints/step-005001472.pt",
+            "P2": 0.0019277343750000002,
+            "F01": 0.9375,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "10": {
+            "selected": "marl:outputs/exp011/l-seed303/checkpoints/step-005001472.pt",
+            "P2": 0.00496484375,
+            "F01": 0.859375,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "12": {
+            "selected": "marl:outputs/exp011/l-seed303/checkpoints/step-005001472.pt",
+            "P2": 0.009951171875000001,
+            "F01": 0.73828125,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "16": {
+            "selected": "marl:outputs/exp011b/l-seed303/checkpoints/step-006001408.pt",
+            "P2": 0.085169921875,
+            "F01": 0.20703125,
+            "slots": 6001408,
+            "fallback": false
+          }
+        },
+        "checkpoints": [
+          {
+            "spec": "marl:outputs/exp011/l-seed303/checkpoints/step-003001600.pt",
+            "slots": 3001600,
+            "starvation": 0,
+            "P2@6": 0.001015625,
+            "P2@8": 0.002287109375,
+            "P2@10": 0.006076171875,
+            "P2@12": 0.012802734375,
+            "P2@16": 0.1155703125
+          },
+          {
+            "spec": "marl:outputs/exp011/l-seed303/checkpoints/step-004001536.pt",
+            "slots": 4001536,
+            "starvation": 0,
+            "P2@6": 0.0010390625,
+            "P2@8": 0.002318359375,
+            "P2@10": 0.0063593750000000004,
+            "P2@12": 0.01358984375,
+            "P2@16": 0.10103515625000001
+          },
+          {
+            "spec": "marl:outputs/exp011/l-seed303/checkpoints/step-005001472.pt",
+            "slots": 5001472,
+            "starvation": 0,
+            "P2@6": 0.00095703125,
+            "P2@8": 0.0019277343750000002,
+            "P2@10": 0.00496484375,
+            "P2@12": 0.009951171875000001,
+            "P2@16": 0.08695117187500001
+          },
+          {
+            "spec": "marl:outputs/exp011b/l-seed303/checkpoints/step-006001408.pt",
+            "slots": 6001408,
+            "starvation": 0,
+            "P2@6": 0.0011523437500000002,
+            "P2@8": 0.00246484375,
+            "P2@10": 0.006384765625,
+            "P2@12": 0.012794921875,
+            "P2@16": 0.085169921875
+          },
+          {
+            "spec": "marl:outputs/exp011b/l-seed303/checkpoints/step-008001280.pt",
+            "slots": 8001280,
+            "starvation": 0,
+            "P2@6": 0.00101171875,
+            "P2@8": 0.002328125,
+            "P2@10": 0.006173828125000001,
+            "P2@12": 0.013251953125,
+            "P2@16": 0.0882265625
+          },
+          {
+            "spec": "marl:outputs/exp011b/l-seed303/checkpoints/step-010001152.pt",
+            "slots": 10001152,
+            "starvation": 0,
+            "P2@6": 0.000978515625,
+            "P2@8": 0.0021933593750000004,
+            "P2@10": 0.005595703125,
+            "P2@12": 0.011146484375000001,
+            "P2@16": 0.08672265625
+          }
+        ]
+      },
+      "404": {
+        "cells": {
+          "6": {
+            "selected": "marl:outputs/exp011b/l-seed404-base/checkpoints/step-005001472.pt",
+            "P2": 0.0005585937500000001,
+            "F01": 0.98828125,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "8": {
+            "selected": "marl:outputs/exp011b/l-seed404-base/checkpoints/step-005001472.pt",
+            "P2": 0.001041015625,
+            "F01": 0.97265625,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "10": {
+            "selected": "marl:outputs/exp011b/l-seed404-base/checkpoints/step-005001472.pt",
+            "P2": 0.0022187500000000002,
+            "F01": 0.93359375,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "12": {
+            "selected": "marl:outputs/exp011b/l-seed404-base/checkpoints/step-005001472.pt",
+            "P2": 0.004572265625,
+            "F01": 0.8515625,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "16": {
+            "selected": "marl:outputs/exp011b/l-seed404/checkpoints/step-008001280.pt",
+            "P2": 0.037271484375,
+            "F01": 0.3984375,
+            "slots": 8001280,
+            "fallback": false
+          }
+        },
+        "checkpoints": [
+          {
+            "spec": "marl:outputs/exp011b/l-seed404-base/checkpoints/step-003001600.pt",
+            "slots": 3001600,
+            "starvation": 0,
+            "P2@6": 0.0006875,
+            "P2@8": 0.001220703125,
+            "P2@10": 0.0035859375000000006,
+            "P2@12": 0.00802734375,
+            "P2@16": 0.094375
+          },
+          {
+            "spec": "marl:outputs/exp011b/l-seed404-base/checkpoints/step-004001536.pt",
+            "slots": 4001536,
+            "starvation": 0,
+            "P2@6": 0.001482421875,
+            "P2@8": 0.002173828125,
+            "P2@10": 0.004185546875,
+            "P2@12": 0.008181640625,
+            "P2@16": 0.057070312500000005
+          },
+          {
+            "spec": "marl:outputs/exp011b/l-seed404-base/checkpoints/step-005001472.pt",
+            "slots": 5001472,
+            "starvation": 0,
+            "P2@6": 0.0005585937500000001,
+            "P2@8": 0.001041015625,
+            "P2@10": 0.0022187500000000002,
+            "P2@12": 0.004572265625,
+            "P2@16": 0.049414062499999994
+          },
+          {
+            "spec": "marl:outputs/exp011b/l-seed404/checkpoints/step-006001408.pt",
+            "slots": 6001408,
+            "starvation": 0,
+            "P2@6": 0.0008007812500000001,
+            "P2@8": 0.0014804687500000002,
+            "P2@10": 0.0033789062500000004,
+            "P2@12": 0.006902343750000001,
+            "P2@16": 0.05807812500000001
+          },
+          {
+            "spec": "marl:outputs/exp011b/l-seed404/checkpoints/step-008001280.pt",
+            "slots": 8001280,
+            "starvation": 0,
+            "P2@6": 0.0009453125000000001,
+            "P2@8": 0.0015566406249999999,
+            "P2@10": 0.003279296875,
+            "P2@12": 0.005646484375,
+            "P2@16": 0.037271484375
+          },
+          {
+            "spec": "marl:outputs/exp011b/l-seed404/checkpoints/step-010001152.pt",
+            "slots": 10001152,
+            "starvation": 0,
+            "P2@6": 0.0005800781250000001,
+            "P2@8": 0.0011113281250000001,
+            "P2@10": 0.0025625,
+            "P2@12": 0.005560546875000001,
+            "P2@16": 0.052958984375000004
+          }
+        ]
+      },
+      "505": {
+        "cells": {
+          "6": {
+            "selected": "marl:outputs/exp011b/l-seed505-base/checkpoints/step-005001472.pt",
+            "P2": 0.0006347656250000001,
+            "F01": 0.98828125,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "8": {
+            "selected": "marl:outputs/exp011b/l-seed505/checkpoints/step-008001280.pt",
+            "P2": 0.001197265625,
+            "F01": 0.96875,
+            "slots": 8001280,
+            "fallback": false
+          },
+          "10": {
+            "selected": "marl:outputs/exp011b/l-seed505/checkpoints/step-008001280.pt",
+            "P2": 0.00293359375,
+            "F01": 0.90625,
+            "slots": 8001280,
+            "fallback": false
+          },
+          "12": {
+            "selected": "marl:outputs/exp011b/l-seed505/checkpoints/step-008001280.pt",
+            "P2": 0.00582421875,
+            "F01": 0.83203125,
+            "slots": 8001280,
+            "fallback": false
+          },
+          "16": {
+            "selected": "marl:outputs/exp011b/l-seed505/checkpoints/step-008001280.pt",
+            "P2": 0.0556875,
+            "F01": 0.3359375,
+            "slots": 8001280,
+            "fallback": false
+          }
+        },
+        "checkpoints": [
+          {
+            "spec": "marl:outputs/exp011b/l-seed505-base/checkpoints/step-003001600.pt",
+            "slots": 3001600,
+            "starvation": 0,
+            "P2@6": 0.0006972656250000001,
+            "P2@8": 0.0015996093750000003,
+            "P2@10": 0.004228515625,
+            "P2@12": 0.0097578125,
+            "P2@16": 0.111759765625
+          },
+          {
+            "spec": "marl:outputs/exp011b/l-seed505-base/checkpoints/step-004001536.pt",
+            "slots": 4001536,
+            "starvation": 0,
+            "P2@6": 0.000755859375,
+            "P2@8": 0.0015214843749999998,
+            "P2@10": 0.004117187500000001,
+            "P2@12": 0.008994140625,
+            "P2@16": 0.09106640625000001
+          },
+          {
+            "spec": "marl:outputs/exp011b/l-seed505-base/checkpoints/step-005001472.pt",
+            "slots": 5001472,
+            "starvation": 0,
+            "P2@6": 0.0006347656250000001,
+            "P2@8": 0.00130859375,
+            "P2@10": 0.0035156250000000005,
+            "P2@12": 0.008144531250000002,
+            "P2@16": 0.08891210937499999
+          },
+          {
+            "spec": "marl:outputs/exp011b/l-seed505/checkpoints/step-006001408.pt",
+            "slots": 6001408,
+            "starvation": 0,
+            "P2@6": 0.000767578125,
+            "P2@8": 0.0015859375,
+            "P2@10": 0.0042949218750000006,
+            "P2@12": 0.009908203125,
+            "P2@16": 0.1336953125
+          },
+          {
+            "spec": "marl:outputs/exp011b/l-seed505/checkpoints/step-008001280.pt",
+            "slots": 8001280,
+            "starvation": 0,
+            "P2@6": 0.0006406250000000001,
+            "P2@8": 0.001197265625,
+            "P2@10": 0.00293359375,
+            "P2@12": 0.00582421875,
+            "P2@16": 0.0556875
+          },
+          {
+            "spec": "marl:outputs/exp011b/l-seed505/checkpoints/step-010001152.pt",
+            "slots": 10001152,
+            "starvation": 0,
+            "P2@6": 0.000685546875,
+            "P2@8": 0.00120703125,
+            "P2@10": 0.0030625,
+            "P2@12": 0.0063359375,
+            "P2@16": 0.057755859375
+          }
+        ]
+      }
+    },
+    "M": {
+      "101": {
+        "cells": {
+          "6": {
+            "selected": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+            "P2": 0.000951171875,
+            "F01": 0.9765625,
+            "slots": 4001536,
+            "fallback": false
+          },
+          "8": {
+            "selected": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+            "P2": 0.0020058593750000003,
+            "F01": 0.9375,
+            "slots": 4001536,
+            "fallback": false
+          },
+          "10": {
+            "selected": "marl:outputs/exp011b/m-seed101/checkpoints/step-010001152.pt",
+            "P2": 0.004976562500000001,
+            "F01": 0.85546875,
+            "slots": 10001152,
+            "fallback": false
+          },
+          "12": {
+            "selected": "marl:outputs/exp011b/m-seed101/checkpoints/step-010001152.pt",
+            "P2": 0.0103984375,
+            "F01": 0.71484375,
+            "slots": 10001152,
+            "fallback": false
+          },
+          "16": {
+            "selected": "marl:outputs/exp011b/m-seed101/checkpoints/step-010001152.pt",
+            "P2": 0.077080078125,
+            "F01": 0.1953125,
+            "slots": 10001152,
+            "fallback": false
+          }
+        },
+        "checkpoints": [
+          {
+            "spec": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-003001600.pt",
+            "slots": 3001600,
+            "starvation": 0,
+            "P2@2": 0.000251953125,
+            "P2@4": 0.0005761718750000001,
+            "P2@6": 0.001158203125,
+            "P2@8": 0.00265234375,
+            "P2@10": 0.0072734375,
+            "P2@12": 0.015884765625000002,
+            "P2@16": 0.12879882812500001,
+            "P2@20": 0.613544921875
+          },
+          {
+            "spec": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+            "slots": 4001536,
+            "starvation": 0,
+            "P2@2": 0.0002265625,
+            "P2@4": 0.00051171875,
+            "P2@6": 0.000951171875,
+            "P2@8": 0.0020058593750000003,
+            "P2@10": 0.005308593750000001,
+            "P2@12": 0.011384765625000001,
+            "P2@16": 0.090640625,
+            "P2@20": 0.45705859375
+          },
+          {
+            "spec": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-005001472.pt",
+            "slots": 5001472,
+            "starvation": 3,
+            "P2@2": 0.000298828125,
+            "P2@4": 0.012574218750000003,
+            "P2@6": 0.018677734375000005,
+            "P2@8": 0.016861328125000002,
+            "P2@10": 0.027187500000000003,
+            "P2@12": 0.041109375000000004,
+            "P2@16": 0.1305703125,
+            "P2@20": 0.467681640625
+          },
+          {
+            "spec": "marl:outputs/exp011b/m-seed101/checkpoints/step-006001408.pt",
+            "slots": 6001408,
+            "starvation": 1,
+            "P2@6": 0.002072265625,
+            "P2@8": 0.002322265625,
+            "P2@10": 0.006160156250000001,
+            "P2@12": 0.012603515625,
+            "P2@16": 0.148263671875
+          },
+          {
+            "spec": "marl:outputs/exp011b/m-seed101/checkpoints/step-008001280.pt",
+            "slots": 8001280,
+            "starvation": 0,
+            "P2@6": 0.001072265625,
+            "P2@8": 0.0021855468750000004,
+            "P2@10": 0.005361328125,
+            "P2@12": 0.01179296875,
+            "P2@16": 0.08262890625
+          },
+          {
+            "spec": "marl:outputs/exp011b/m-seed101/checkpoints/step-010001152.pt",
+            "slots": 10001152,
+            "starvation": 0,
+            "P2@6": 0.0011035156250000001,
+            "P2@8": 0.0021425781250000004,
+            "P2@10": 0.004976562500000001,
+            "P2@12": 0.0103984375,
+            "P2@16": 0.077080078125
+          }
+        ]
+      },
+      "202": {
+        "cells": {
+          "6": {
+            "selected": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+            "P2": 0.000677734375,
+            "F01": 0.984375,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "8": {
+            "selected": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+            "P2": 0.0015058593749999998,
+            "F01": 0.94921875,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "10": {
+            "selected": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+            "P2": 0.0042421875,
+            "F01": 0.87890625,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "12": {
+            "selected": "marl:outputs/exp011b/m-seed202/checkpoints/step-010001152.pt",
+            "P2": 0.008787109375000001,
+            "F01": 0.76171875,
+            "slots": 10001152,
+            "fallback": false
+          },
+          "16": {
+            "selected": "marl:outputs/exp011b/m-seed202/checkpoints/step-010001152.pt",
+            "P2": 0.071814453125,
+            "F01": 0.21484375,
+            "slots": 10001152,
+            "fallback": false
+          }
+        },
+        "checkpoints": [
+          {
+            "spec": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-003001600.pt",
+            "slots": 3001600,
+            "starvation": 0,
+            "P2@2": 0.00023632812500000002,
+            "P2@4": 0.000529296875,
+            "P2@6": 0.0009160156250000001,
+            "P2@8": 0.0020644531250000003,
+            "P2@10": 0.005158203125,
+            "P2@12": 0.010466796875000002,
+            "P2@16": 0.077423828125,
+            "P2@20": 0.499765625
+          },
+          {
+            "spec": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-004001536.pt",
+            "slots": 4001536,
+            "starvation": 0,
+            "P2@2": 0.0002265625,
+            "P2@4": 0.0005234375,
+            "P2@6": 0.0008808593750000001,
+            "P2@8": 0.001830078125,
+            "P2@10": 0.0046425781250000004,
+            "P2@12": 0.009947265625,
+            "P2@16": 0.08422070312499999,
+            "P2@20": 0.5506640625
+          },
+          {
+            "spec": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+            "slots": 5001472,
+            "starvation": 0,
+            "P2@2": 0.000185546875,
+            "P2@4": 0.000384765625,
+            "P2@6": 0.000677734375,
+            "P2@8": 0.0015058593749999998,
+            "P2@10": 0.0042421875,
+            "P2@12": 0.009205078125000002,
+            "P2@16": 0.137169921875,
+            "P2@20": 0.75694140625
+          },
+          {
+            "spec": "marl:outputs/exp011b/m-seed202/checkpoints/step-006001408.pt",
+            "slots": 6001408,
+            "starvation": 0,
+            "P2@6": 0.000771484375,
+            "P2@8": 0.0016210937500000001,
+            "P2@10": 0.0045078125000000005,
+            "P2@12": 0.00985546875,
+            "P2@16": 0.096666015625
+          },
+          {
+            "spec": "marl:outputs/exp011b/m-seed202/checkpoints/step-008001280.pt",
+            "slots": 8001280,
+            "starvation": 0,
+            "P2@6": 0.000765625,
+            "P2@8": 0.001650390625,
+            "P2@10": 0.004402343750000001,
+            "P2@12": 0.009474609375000002,
+            "P2@16": 0.085001953125
+          },
+          {
+            "spec": "marl:outputs/exp011b/m-seed202/checkpoints/step-010001152.pt",
+            "slots": 10001152,
+            "starvation": 0,
+            "P2@6": 0.001673828125,
+            "P2@8": 0.0019296875000000002,
+            "P2@10": 0.004496093750000001,
+            "P2@12": 0.008787109375000001,
+            "P2@16": 0.071814453125
+          }
+        ]
+      },
+      "303": {
+        "cells": {
+          "6": {
+            "selected": "marl:outputs/exp011b/m-seed303/checkpoints/step-008001280.pt",
+            "P2": 0.00098046875,
+            "F01": 0.9765625,
+            "slots": 8001280,
+            "fallback": false
+          },
+          "8": {
+            "selected": "marl:outputs/exp011b/m-seed303/checkpoints/step-008001280.pt",
+            "P2": 0.0018789062500000002,
+            "F01": 0.94140625,
+            "slots": 8001280,
+            "fallback": false
+          },
+          "10": {
+            "selected": "marl:outputs/exp011b/m-seed303/checkpoints/step-008001280.pt",
+            "P2": 0.004560546875,
+            "F01": 0.85546875,
+            "slots": 8001280,
+            "fallback": false
+          },
+          "12": {
+            "selected": "marl:outputs/exp011b/m-seed303/checkpoints/step-008001280.pt",
+            "P2": 0.008740234375,
+            "F01": 0.74609375,
+            "slots": 8001280,
+            "fallback": false
+          },
+          "16": {
+            "selected": "marl:outputs/exp011b/m-seed303/checkpoints/step-008001280.pt",
+            "P2": 0.060892578125,
+            "F01": 0.2890625,
+            "slots": 8001280,
+            "fallback": false
+          }
+        },
+        "checkpoints": [
+          {
+            "spec": "marl:outputs/exp009-final/s1-seed303/checkpoints/step-003001600.pt",
+            "slots": 3001600,
+            "starvation": 0,
+            "P2@2": 0.00026171875,
+            "P2@4": 0.0006484375,
+            "P2@6": 0.0012285156250000002,
+            "P2@8": 0.003115234375,
+            "P2@10": 0.008273437500000001,
+            "P2@12": 0.016673828125,
+            "P2@16": 0.113228515625,
+            "P2@20": 0.722708984375
+          },
+          {
+            "spec": "marl:outputs/exp009-final/s1-seed303/checkpoints/step-004001536.pt",
+            "slots": 4001536,
+            "starvation": 0,
+            "P2@2": 0.000212890625,
+            "P2@4": 0.0011328125000000001,
+            "P2@6": 0.0019921875,
+            "P2@8": 0.003859375,
+            "P2@10": 0.00969921875,
+            "P2@12": 0.01935546875,
+            "P2@16": 0.13158593750000003,
+            "P2@20": 0.70794140625
+          },
+          {
+            "spec": "marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt",
+            "slots": 5001472,
+            "starvation": 0,
+            "P2@2": 0.0002578125,
+            "P2@4": 0.000767578125,
+            "P2@6": 0.0013496093750000001,
+            "P2@8": 0.002841796875,
+            "P2@10": 0.006873046875000001,
+            "P2@12": 0.014205078125,
+            "P2@16": 0.11990429687500001,
+            "P2@20": 0.737904296875
+          },
+          {
+            "spec": "marl:outputs/exp011b/m-seed303/checkpoints/step-006001408.pt",
+            "slots": 6001408,
+            "starvation": 0,
+            "P2@6": 0.0024687500000000005,
+            "P2@8": 0.0043515625,
+            "P2@10": 0.01005859375,
+            "P2@12": 0.018130859375000002,
+            "P2@16": 0.1251484375
+          },
+          {
+            "spec": "marl:outputs/exp011b/m-seed303/checkpoints/step-008001280.pt",
+            "slots": 8001280,
+            "starvation": 0,
+            "P2@6": 0.00098046875,
+            "P2@8": 0.0018789062500000002,
+            "P2@10": 0.004560546875,
+            "P2@12": 0.008740234375,
+            "P2@16": 0.060892578125
+          },
+          {
+            "spec": "marl:outputs/exp011b/m-seed303/checkpoints/step-010001152.pt",
+            "slots": 10001152,
+            "starvation": 0,
+            "P2@6": 0.001083984375,
+            "P2@8": 0.002392578125,
+            "P2@10": 0.005603515625000001,
+            "P2@12": 0.011099609375000001,
+            "P2@16": 0.06883984375
+          }
+        ]
+      },
+      "404": {
+        "cells": {
+          "6": {
+            "selected": "marl:outputs/exp011b/m-seed404/checkpoints/step-008001280.pt",
+            "P2": 0.000693359375,
+            "F01": 0.984375,
+            "slots": 8001280,
+            "fallback": false
+          },
+          "8": {
+            "selected": "marl:outputs/exp011b/m-seed404/checkpoints/step-008001280.pt",
+            "P2": 0.00150390625,
+            "F01": 0.94921875,
+            "slots": 8001280,
+            "fallback": false
+          },
+          "10": {
+            "selected": "marl:outputs/exp011b/m-seed404/checkpoints/step-008001280.pt",
+            "P2": 0.004123046875,
+            "F01": 0.86328125,
+            "slots": 8001280,
+            "fallback": false
+          },
+          "12": {
+            "selected": "marl:outputs/exp011b/m-seed404/checkpoints/step-008001280.pt",
+            "P2": 0.008486328125000001,
+            "F01": 0.75,
+            "slots": 8001280,
+            "fallback": false
+          },
+          "16": {
+            "selected": "marl:outputs/exp011b/m-seed404/checkpoints/step-008001280.pt",
+            "P2": 0.079380859375,
+            "F01": 0.18359375,
+            "slots": 8001280,
+            "fallback": false
+          }
+        },
+        "checkpoints": [
+          {
+            "spec": "marl:outputs/exp011b/m-seed404-base/checkpoints/step-003001600.pt",
+            "slots": 3001600,
+            "starvation": 0,
+            "P2@6": 0.001046875,
+            "P2@8": 0.00248828125,
+            "P2@10": 0.006357421875000001,
+            "P2@12": 0.013093750000000001,
+            "P2@16": 0.09071289062500001
+          },
+          {
+            "spec": "marl:outputs/exp011b/m-seed404-base/checkpoints/step-004001536.pt",
+            "slots": 4001536,
+            "starvation": 0,
+            "P2@6": 0.0008164062500000001,
+            "P2@8": 0.0018632812500000001,
+            "P2@10": 0.004982421875,
+            "P2@12": 0.010820312500000002,
+            "P2@16": 0.10376171875
+          },
+          {
+            "spec": "marl:outputs/exp011b/m-seed404-base/checkpoints/step-005001472.pt",
+            "slots": 5001472,
+            "starvation": 0,
+            "P2@6": 0.000982421875,
+            "P2@8": 0.0021699218750000004,
+            "P2@10": 0.00571484375,
+            "P2@12": 0.011880859375,
+            "P2@16": 0.09808203125
+          },
+          {
+            "spec": "marl:outputs/exp011b/m-seed404/checkpoints/step-006001408.pt",
+            "slots": 6001408,
+            "starvation": 0,
+            "P2@6": 0.00151171875,
+            "P2@8": 0.00304296875,
+            "P2@10": 0.0069921875,
+            "P2@12": 0.014171875,
+            "P2@16": 0.09992578125
+          },
+          {
+            "spec": "marl:outputs/exp011b/m-seed404/checkpoints/step-008001280.pt",
+            "slots": 8001280,
+            "starvation": 0,
+            "P2@6": 0.000693359375,
+            "P2@8": 0.00150390625,
+            "P2@10": 0.004123046875,
+            "P2@12": 0.008486328125000001,
+            "P2@16": 0.079380859375
+          },
+          {
+            "spec": "marl:outputs/exp011b/m-seed404/checkpoints/step-010001152.pt",
+            "slots": 10001152,
+            "starvation": 0,
+            "P2@6": 0.001,
+            "P2@8": 0.0019277343750000002,
+            "P2@10": 0.005015625000000001,
+            "P2@12": 0.00966015625,
+            "P2@16": 0.085876953125
+          }
+        ]
+      },
+      "505": {
+        "cells": {
+          "6": {
+            "selected": "marl:outputs/exp011b/m-seed505-base/checkpoints/step-005001472.pt",
+            "P2": 0.000771484375,
+            "F01": 0.984375,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "8": {
+            "selected": "marl:outputs/exp011b/m-seed505/checkpoints/step-006001408.pt",
+            "P2": 0.001669921875,
+            "F01": 0.94921875,
+            "slots": 6001408,
+            "fallback": false
+          },
+          "10": {
+            "selected": "marl:outputs/exp011b/m-seed505-base/checkpoints/step-005001472.pt",
+            "P2": 0.004300781250000001,
+            "F01": 0.8671875,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "12": {
+            "selected": "marl:outputs/exp011b/m-seed505/checkpoints/step-006001408.pt",
+            "P2": 0.009832031250000001,
+            "F01": 0.70703125,
+            "slots": 6001408,
+            "fallback": false
+          },
+          "16": {
+            "selected": "marl:outputs/exp011b/m-seed505/checkpoints/step-008001280.pt",
+            "P2": 0.07063085937500001,
+            "F01": 0.2578125,
+            "slots": 8001280,
+            "fallback": false
+          }
+        },
+        "checkpoints": [
+          {
+            "spec": "marl:outputs/exp011b/m-seed505-base/checkpoints/step-003001600.pt",
+            "slots": 3001600,
+            "starvation": 0,
+            "P2@6": 0.0008359375000000001,
+            "P2@8": 0.001984375,
+            "P2@10": 0.005585937500000001,
+            "P2@12": 0.012386718750000001,
+            "P2@16": 0.150447265625
+          },
+          {
+            "spec": "marl:outputs/exp011b/m-seed505-base/checkpoints/step-004001536.pt",
+            "slots": 4001536,
+            "starvation": 0,
+            "P2@6": 0.0011093750000000001,
+            "P2@8": 0.0025292968750000003,
+            "P2@10": 0.006611328125,
+            "P2@12": 0.01312109375,
+            "P2@16": 0.09789648437500001
+          },
+          {
+            "spec": "marl:outputs/exp011b/m-seed505-base/checkpoints/step-005001472.pt",
+            "slots": 5001472,
+            "starvation": 0,
+            "P2@6": 0.000771484375,
+            "P2@8": 0.0017148437500000002,
+            "P2@10": 0.004300781250000001,
+            "P2@12": 0.00987109375,
+            "P2@16": 0.08668359375
+          },
+          {
+            "spec": "marl:outputs/exp011b/m-seed505/checkpoints/step-006001408.pt",
+            "slots": 6001408,
+            "starvation": 0,
+            "P2@6": 0.000861328125,
+            "P2@8": 0.001669921875,
+            "P2@10": 0.004490234375000001,
+            "P2@12": 0.009832031250000001,
+            "P2@16": 0.085369140625
+          },
+          {
+            "spec": "marl:outputs/exp011b/m-seed505/checkpoints/step-008001280.pt",
+            "slots": 8001280,
+            "starvation": 0,
+            "P2@6": 0.000861328125,
+            "P2@8": 0.001919921875,
+            "P2@10": 0.004886718750000001,
+            "P2@12": 0.00985546875,
+            "P2@16": 0.07063085937500001
+          },
+          {
+            "spec": "marl:outputs/exp011b/m-seed505/checkpoints/step-010001152.pt",
+            "slots": 10001152,
+            "starvation": 0,
+            "P2@6": 0.000931640625,
+            "P2@8": 0.001830078125,
+            "P2@10": 0.004748046875,
+            "P2@12": 0.01013671875,
+            "P2@16": 0.09423046874999999
+          }
+        ]
+      }
+    },
+    "O": {
+      "101": {
+        "cells": {
+          "6": {
+            "selected": "marl:outputs/exp011b/o-seed101/checkpoints/step-010001152.pt",
+            "P2": 0.000494140625,
+            "F01": 0.9921875,
+            "slots": 10001152,
+            "fallback": false
+          },
+          "8": {
+            "selected": "marl:outputs/exp011b/o-seed101/checkpoints/step-010001152.pt",
+            "P2": 0.0009140625,
+            "F01": 0.98046875,
+            "slots": 10001152,
+            "fallback": false
+          },
+          "10": {
+            "selected": "marl:outputs/exp011b/o-seed101/checkpoints/step-010001152.pt",
+            "P2": 0.00200390625,
+            "F01": 0.9375,
+            "slots": 10001152,
+            "fallback": false
+          },
+          "12": {
+            "selected": "marl:outputs/exp011b/o-seed101/checkpoints/step-010001152.pt",
+            "P2": 0.00422265625,
+            "F01": 0.8671875,
+            "slots": 10001152,
+            "fallback": false
+          },
+          "16": {
+            "selected": "marl:outputs/exp011b/o-seed101/checkpoints/step-010001152.pt",
+            "P2": 0.051984375,
+            "F01": 0.29296875,
+            "slots": 10001152,
+            "fallback": false
+          }
+        },
+        "checkpoints": [
+          {
+            "spec": "marl:outputs/exp011/o-seed101/checkpoints/step-003001600.pt",
+            "slots": 3001600,
+            "starvation": 0,
+            "P2@6": 0.00140625,
+            "P2@8": 0.00248046875,
+            "P2@10": 0.0061464843750000005,
+            "P2@12": 0.013587890625000001,
+            "P2@16": 0.13426171874999998
+          },
+          {
+            "spec": "marl:outputs/exp011/o-seed101/checkpoints/step-004001536.pt",
+            "slots": 4001536,
+            "starvation": 0,
+            "P2@6": 0.00075390625,
+            "P2@8": 0.0015488281250000003,
+            "P2@10": 0.003576171875,
+            "P2@12": 0.0073906250000000005,
+            "P2@16": 0.068609375
+          },
+          {
+            "spec": "marl:outputs/exp011/o-seed101/checkpoints/step-005001472.pt",
+            "slots": 5001472,
+            "starvation": 0,
+            "P2@6": 0.00098046875,
+            "P2@8": 0.0017285156250000002,
+            "P2@10": 0.0037050781250000005,
+            "P2@12": 0.007310546875000001,
+            "P2@16": 0.077421875
+          },
+          {
+            "spec": "marl:outputs/exp011b/o-seed101/checkpoints/step-006001408.pt",
+            "slots": 6001408,
+            "starvation": 0,
+            "P2@6": 0.000630859375,
+            "P2@8": 0.001228515625,
+            "P2@10": 0.002892578125,
+            "P2@12": 0.0063203124999999995,
+            "P2@16": 0.07024023437499999
+          },
+          {
+            "spec": "marl:outputs/exp011b/o-seed101/checkpoints/step-008001280.pt",
+            "slots": 8001280,
+            "starvation": 0,
+            "P2@6": 0.0005585937500000001,
+            "P2@8": 0.0011484375000000002,
+            "P2@10": 0.00297265625,
+            "P2@12": 0.007007812500000002,
+            "P2@16": 0.086296875
+          },
+          {
+            "spec": "marl:outputs/exp011b/o-seed101/checkpoints/step-010001152.pt",
+            "slots": 10001152,
+            "starvation": 0,
+            "P2@6": 0.000494140625,
+            "P2@8": 0.0009140625,
+            "P2@10": 0.00200390625,
+            "P2@12": 0.00422265625,
+            "P2@16": 0.051984375
+          }
+        ]
+      },
+      "202": {
+        "cells": {
+          "6": {
+            "selected": "marl:outputs/exp011b/o-seed202/checkpoints/step-010001152.pt",
+            "P2": 0.000771484375,
+            "F01": 0.984375,
+            "slots": 10001152,
+            "fallback": false
+          },
+          "8": {
+            "selected": "marl:outputs/exp011b/o-seed202/checkpoints/step-008001280.pt",
+            "P2": 0.0017031250000000002,
+            "F01": 0.953125,
+            "slots": 8001280,
+            "fallback": false
+          },
+          "10": {
+            "selected": "marl:outputs/exp011b/o-seed202/checkpoints/step-008001280.pt",
+            "P2": 0.0043203124999999995,
+            "F01": 0.87890625,
+            "slots": 8001280,
+            "fallback": false
+          },
+          "12": {
+            "selected": "marl:outputs/exp011b/o-seed202/checkpoints/step-010001152.pt",
+            "P2": 0.009347656250000001,
+            "F01": 0.73828125,
+            "slots": 10001152,
+            "fallback": false
+          },
+          "16": {
+            "selected": "marl:outputs/exp011b/o-seed202/checkpoints/step-010001152.pt",
+            "P2": 0.0806328125,
+            "F01": 0.18359375,
+            "slots": 10001152,
+            "fallback": false
+          }
+        },
+        "checkpoints": [
+          {
+            "spec": "marl:outputs/exp011/o-seed202/checkpoints/step-003001600.pt",
+            "slots": 3001600,
+            "starvation": 0,
+            "P2@6": 0.0011308593750000001,
+            "P2@8": 0.0030625,
+            "P2@10": 0.008835937500000002,
+            "P2@12": 0.02029296875,
+            "P2@16": 0.1424921875
+          },
+          {
+            "spec": "marl:outputs/exp011/o-seed202/checkpoints/step-004001536.pt",
+            "slots": 4001536,
+            "starvation": 0,
+            "P2@6": 0.001080078125,
+            "P2@8": 0.00247265625,
+            "P2@10": 0.006361328125,
+            "P2@12": 0.013761718750000002,
+            "P2@16": 0.114025390625
+          },
+          {
+            "spec": "marl:outputs/exp011/o-seed202/checkpoints/step-005001472.pt",
+            "slots": 5001472,
+            "starvation": 0,
+            "P2@6": 0.0009453125,
+            "P2@8": 0.0019863281250000002,
+            "P2@10": 0.005082031250000001,
+            "P2@12": 0.011767578125,
+            "P2@16": 0.08634765625
+          },
+          {
+            "spec": "marl:outputs/exp011b/o-seed202/checkpoints/step-006001408.pt",
+            "slots": 6001408,
+            "starvation": 0,
+            "P2@6": 0.00091796875,
+            "P2@8": 0.0020234375,
+            "P2@10": 0.005355468750000001,
+            "P2@12": 0.012050781250000002,
+            "P2@16": 0.105880859375
+          },
+          {
+            "spec": "marl:outputs/exp011b/o-seed202/checkpoints/step-008001280.pt",
+            "slots": 8001280,
+            "starvation": 0,
+            "P2@6": 0.0008242187500000001,
+            "P2@8": 0.0017031250000000002,
+            "P2@10": 0.0043203124999999995,
+            "P2@12": 0.00978125,
+            "P2@16": 0.14688671874999998
+          },
+          {
+            "spec": "marl:outputs/exp011b/o-seed202/checkpoints/step-010001152.pt",
+            "slots": 10001152,
+            "starvation": 0,
+            "P2@6": 0.000771484375,
+            "P2@8": 0.001705078125,
+            "P2@10": 0.0043359375,
+            "P2@12": 0.009347656250000001,
+            "P2@16": 0.0806328125
+          }
+        ]
+      },
+      "303": {
+        "cells": {
+          "6": {
+            "selected": "marl:outputs/exp011b/o-seed303/checkpoints/step-010001152.pt",
+            "P2": 0.000697265625,
+            "F01": 0.98828125,
+            "slots": 10001152,
+            "fallback": false
+          },
+          "8": {
+            "selected": "marl:outputs/exp011b/o-seed303/checkpoints/step-010001152.pt",
+            "P2": 0.0013359375,
+            "F01": 0.96875,
+            "slots": 10001152,
+            "fallback": false
+          },
+          "10": {
+            "selected": "marl:outputs/exp011b/o-seed303/checkpoints/step-008001280.pt",
+            "P2": 0.00356640625,
+            "F01": 0.890625,
+            "slots": 8001280,
+            "fallback": false
+          },
+          "12": {
+            "selected": "marl:outputs/exp011b/o-seed303/checkpoints/step-008001280.pt",
+            "P2": 0.007507812500000001,
+            "F01": 0.79296875,
+            "slots": 8001280,
+            "fallback": false
+          },
+          "16": {
+            "selected": "marl:outputs/exp011b/o-seed303/checkpoints/step-008001280.pt",
+            "P2": 0.06751171875,
+            "F01": 0.25390625,
+            "slots": 8001280,
+            "fallback": false
+          }
+        },
+        "checkpoints": [
+          {
+            "spec": "marl:outputs/exp011/o-seed303/checkpoints/step-003001600.pt",
+            "slots": 3001600,
+            "starvation": 0,
+            "P2@6": 0.0012148437500000002,
+            "P2@8": 0.0028750000000000004,
+            "P2@10": 0.007515625000000001,
+            "P2@12": 0.01572265625,
+            "P2@16": 0.1036015625
+          },
+          {
+            "spec": "marl:outputs/exp011/o-seed303/checkpoints/step-004001536.pt",
+            "slots": 4001536,
+            "starvation": 0,
+            "P2@6": 0.0014140625,
+            "P2@8": 0.0026640625,
+            "P2@10": 0.006082031250000001,
+            "P2@12": 0.011685546875000001,
+            "P2@16": 0.084380859375
+          },
+          {
+            "spec": "marl:outputs/exp011/o-seed303/checkpoints/step-005001472.pt",
+            "slots": 5001472,
+            "starvation": 0,
+            "P2@6": 0.0012304687500000002,
+            "P2@8": 0.00223828125,
+            "P2@10": 0.005912109375,
+            "P2@12": 0.012843750000000001,
+            "P2@16": 0.09736718750000001
+          },
+          {
+            "spec": "marl:outputs/exp011b/o-seed303/checkpoints/step-006001408.pt",
+            "slots": 6001408,
+            "starvation": 0,
+            "P2@6": 0.0016132812500000001,
+            "P2@8": 0.002865234375,
+            "P2@10": 0.0074609375000000006,
+            "P2@12": 0.014771484375000001,
+            "P2@16": 0.10055859375000001
+          },
+          {
+            "spec": "marl:outputs/exp011b/o-seed303/checkpoints/step-008001280.pt",
+            "slots": 8001280,
+            "starvation": 0,
+            "P2@6": 0.000712890625,
+            "P2@8": 0.0013984375,
+            "P2@10": 0.00356640625,
+            "P2@12": 0.007507812500000001,
+            "P2@16": 0.06751171875
+          },
+          {
+            "spec": "marl:outputs/exp011b/o-seed303/checkpoints/step-010001152.pt",
+            "slots": 10001152,
+            "starvation": 0,
+            "P2@6": 0.000697265625,
+            "P2@8": 0.0013359375,
+            "P2@10": 0.0036328125000000006,
+            "P2@12": 0.008095703125,
+            "P2@16": 0.08075585937499999
+          }
+        ]
+      },
+      "404": {
+        "cells": {
+          "6": {
+            "selected": "marl:outputs/exp011b/o-seed404/checkpoints/step-008001280.pt",
+            "P2": 0.0005800781250000001,
+            "F01": 0.984375,
+            "slots": 8001280,
+            "fallback": false
+          },
+          "8": {
+            "selected": "marl:outputs/exp011b/o-seed404/checkpoints/step-008001280.pt",
+            "P2": 0.001060546875,
+            "F01": 0.96875,
+            "slots": 8001280,
+            "fallback": false
+          },
+          "10": {
+            "selected": "marl:outputs/exp011b/o-seed404/checkpoints/step-008001280.pt",
+            "P2": 0.0024296875000000004,
+            "F01": 0.92578125,
+            "slots": 8001280,
+            "fallback": false
+          },
+          "12": {
+            "selected": "marl:outputs/exp011b/o-seed404/checkpoints/step-008001280.pt",
+            "P2": 0.004771484375,
+            "F01": 0.85546875,
+            "slots": 8001280,
+            "fallback": false
+          },
+          "16": {
+            "selected": "marl:outputs/exp011b/o-seed404/checkpoints/step-010001152.pt",
+            "P2": 0.044232421875,
+            "F01": 0.41796875,
+            "slots": 10001152,
+            "fallback": false
+          }
+        },
+        "checkpoints": [
+          {
+            "spec": "marl:outputs/exp011b/o-seed404-base/checkpoints/step-003001600.pt",
+            "slots": 3001600,
+            "starvation": 0,
+            "P2@6": 0.0006835937500000001,
+            "P2@8": 0.0014609375,
+            "P2@10": 0.0042421875,
+            "P2@12": 0.010041015625,
+            "P2@16": 0.10770312499999998
+          },
+          {
+            "spec": "marl:outputs/exp011b/o-seed404-base/checkpoints/step-004001536.pt",
+            "slots": 4001536,
+            "starvation": 0,
+            "P2@6": 0.0006250000000000001,
+            "P2@8": 0.001271484375,
+            "P2@10": 0.003345703125,
+            "P2@12": 0.007396484375000001,
+            "P2@16": 0.09961914062499999
+          },
+          {
+            "spec": "marl:outputs/exp011b/o-seed404-base/checkpoints/step-005001472.pt",
+            "slots": 5001472,
+            "starvation": 0,
+            "P2@6": 0.00059375,
+            "P2@8": 0.001279296875,
+            "P2@10": 0.0034316406250000002,
+            "P2@12": 0.008417968750000001,
+            "P2@16": 0.0844296875
+          },
+          {
+            "spec": "marl:outputs/exp011b/o-seed404/checkpoints/step-006001408.pt",
+            "slots": 6001408,
+            "starvation": 0,
+            "P2@6": 0.0007988281250000001,
+            "P2@8": 0.0016406250000000002,
+            "P2@10": 0.003916015625,
+            "P2@12": 0.008910156250000002,
+            "P2@16": 0.07628125
+          },
+          {
+            "spec": "marl:outputs/exp011b/o-seed404/checkpoints/step-008001280.pt",
+            "slots": 8001280,
+            "starvation": 0,
+            "P2@6": 0.0005800781250000001,
+            "P2@8": 0.001060546875,
+            "P2@10": 0.0024296875000000004,
+            "P2@12": 0.004771484375,
+            "P2@16": 0.0455
+          },
+          {
+            "spec": "marl:outputs/exp011b/o-seed404/checkpoints/step-010001152.pt",
+            "slots": 10001152,
+            "starvation": 0,
+            "P2@6": 0.0006542968750000001,
+            "P2@8": 0.00115625,
+            "P2@10": 0.0026074218750000004,
+            "P2@12": 0.0048125,
+            "P2@16": 0.044232421875
+          }
+        ]
+      },
+      "505": {
+        "cells": {
+          "6": {
+            "selected": "marl:outputs/exp011b/o-seed505/checkpoints/step-010001152.pt",
+            "P2": 0.00063671875,
+            "F01": 0.98828125,
+            "slots": 10001152,
+            "fallback": false
+          },
+          "8": {
+            "selected": "marl:outputs/exp011b/o-seed505/checkpoints/step-006001408.pt",
+            "P2": 0.001271484375,
+            "F01": 0.9609375,
+            "slots": 6001408,
+            "fallback": false
+          },
+          "10": {
+            "selected": "marl:outputs/exp011b/o-seed505/checkpoints/step-006001408.pt",
+            "P2": 0.0035078125000000005,
+            "F01": 0.87890625,
+            "slots": 6001408,
+            "fallback": false
+          },
+          "12": {
+            "selected": "marl:outputs/exp011b/o-seed505/checkpoints/step-006001408.pt",
+            "P2": 0.0071621093750000005,
+            "F01": 0.78125,
+            "slots": 6001408,
+            "fallback": false
+          },
+          "16": {
+            "selected": "marl:outputs/exp011b/o-seed505/checkpoints/step-006001408.pt",
+            "P2": 0.0651171875,
+            "F01": 0.23046875,
+            "slots": 6001408,
+            "fallback": false
+          }
+        },
+        "checkpoints": [
+          {
+            "spec": "marl:outputs/exp011b/o-seed505-base/checkpoints/step-003001600.pt",
+            "slots": 3001600,
+            "starvation": 0,
+            "P2@6": 0.0008398437500000001,
+            "P2@8": 0.0017812500000000003,
+            "P2@10": 0.004857421875,
+            "P2@12": 0.010373046875000002,
+            "P2@16": 0.10194140625
+          },
+          {
+            "spec": "marl:outputs/exp011b/o-seed505-base/checkpoints/step-004001536.pt",
+            "slots": 4001536,
+            "starvation": 0,
+            "P2@6": 0.00104296875,
+            "P2@8": 0.00196875,
+            "P2@10": 0.004587890625,
+            "P2@12": 0.009582031250000001,
+            "P2@16": 0.08309375
+          },
+          {
+            "spec": "marl:outputs/exp011b/o-seed505-base/checkpoints/step-005001472.pt",
+            "slots": 5001472,
+            "starvation": 0,
+            "P2@6": 0.000896484375,
+            "P2@8": 0.001734375,
+            "P2@10": 0.0042480468750000005,
+            "P2@12": 0.0091015625,
+            "P2@16": 0.09404101562499999
+          },
+          {
+            "spec": "marl:outputs/exp011b/o-seed505/checkpoints/step-006001408.pt",
+            "slots": 6001408,
+            "starvation": 0,
+            "P2@6": 0.0006425781250000001,
+            "P2@8": 0.001271484375,
+            "P2@10": 0.0035078125000000005,
+            "P2@12": 0.0071621093750000005,
+            "P2@16": 0.0651171875
+          },
+          {
+            "spec": "marl:outputs/exp011b/o-seed505/checkpoints/step-008001280.pt",
+            "slots": 8001280,
+            "starvation": 0,
+            "P2@6": 0.00075390625,
+            "P2@8": 0.00158203125,
+            "P2@10": 0.0038300781250000006,
+            "P2@12": 0.007765625,
+            "P2@16": 0.06670703124999999
+          },
+          {
+            "spec": "marl:outputs/exp011b/o-seed505/checkpoints/step-010001152.pt",
+            "slots": 10001152,
+            "starvation": 0,
+            "P2@6": 0.00063671875,
+            "P2@8": 0.0014609375000000002,
+            "P2@10": 0.0037988281250000006,
+            "P2@12": 0.009255859375000001,
+            "P2@16": 0.10322851562499999
+          }
+        ]
+      }
+    },
+    "U": {
+      "101": {
+        "cells": {
+          "6": {
+            "selected": "marl:outputs/exp011b/u-seed101/checkpoints/step-010001152.pt",
+            "P2": 0.000693359375,
+            "F01": 0.984375,
+            "slots": 10001152,
+            "fallback": false
+          },
+          "8": {
+            "selected": "marl:outputs/exp011b/u-seed101/checkpoints/step-010001152.pt",
+            "P2": 0.001375,
+            "F01": 0.95703125,
+            "slots": 10001152,
+            "fallback": false
+          },
+          "10": {
+            "selected": "marl:outputs/exp011b/u-seed101/checkpoints/step-010001152.pt",
+            "P2": 0.003482421875,
+            "F01": 0.88671875,
+            "slots": 10001152,
+            "fallback": false
+          },
+          "12": {
+            "selected": "marl:outputs/exp011b/u-seed101/checkpoints/step-006001408.pt",
+            "P2": 0.00773046875,
+            "F01": 0.75,
+            "slots": 6001408,
+            "fallback": false
+          },
+          "16": {
+            "selected": "marl:outputs/exp011b/u-seed101/checkpoints/step-010001152.pt",
+            "P2": 0.07279882812499999,
+            "F01": 0.234375,
+            "slots": 10001152,
+            "fallback": false
+          }
+        },
+        "checkpoints": [
+          {
+            "spec": "marl:outputs/exp011/u-seed101/checkpoints/step-003001600.pt",
+            "slots": 3001600,
+            "starvation": 0,
+            "P2@6": 0.0008457031250000001,
+            "P2@8": 0.0020078125,
+            "P2@10": 0.005617187500000001,
+            "P2@12": 0.012898437500000002,
+            "P2@16": 0.12313867187500002
+          },
+          {
+            "spec": "marl:outputs/exp011/u-seed101/checkpoints/step-004001536.pt",
+            "slots": 4001536,
+            "starvation": 0,
+            "P2@6": 0.0009511718750000001,
+            "P2@8": 0.002,
+            "P2@10": 0.005197265625000001,
+            "P2@12": 0.011685546875000001,
+            "P2@16": 0.100806640625
+          },
+          {
+            "spec": "marl:outputs/exp011/u-seed101/checkpoints/step-005001472.pt",
+            "slots": 5001472,
+            "starvation": 51,
+            "P2@6": 0.0006523437499999999,
+            "P2@8": 0.0013886718750000001,
+            "P2@10": 0.007244140625000001,
+            "P2@12": 0.01153515625,
+            "P2@16": 0.09258203125
+          },
+          {
+            "spec": "marl:outputs/exp011b/u-seed101/checkpoints/step-006001408.pt",
+            "slots": 6001408,
+            "starvation": 0,
+            "P2@6": 0.000724609375,
+            "P2@8": 0.00154296875,
+            "P2@10": 0.0035332031250000003,
+            "P2@12": 0.00773046875,
+            "P2@16": 0.07517968750000001
+          },
+          {
+            "spec": "marl:outputs/exp011b/u-seed101/checkpoints/step-008001280.pt",
+            "slots": 8001280,
+            "starvation": 37,
+            "P2@6": 0.0006953125,
+            "P2@8": 0.0014453125,
+            "P2@10": 0.0072187499999999995,
+            "P2@12": 0.011365234375000002,
+            "P2@16": 0.09877929687499999
+          },
+          {
+            "spec": "marl:outputs/exp011b/u-seed101/checkpoints/step-010001152.pt",
+            "slots": 10001152,
+            "starvation": 0,
+            "P2@6": 0.000693359375,
+            "P2@8": 0.001375,
+            "P2@10": 0.003482421875,
+            "P2@12": 0.007798828125000001,
+            "P2@16": 0.07279882812499999
+          }
+        ]
+      },
+      "202": {
+        "cells": {
+          "6": {
+            "selected": "marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt",
+            "P2": 0.0005800781250000001,
+            "F01": 0.98828125,
+            "slots": 4001536,
+            "fallback": false
+          },
+          "8": {
+            "selected": "marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt",
+            "P2": 0.0012539062500000002,
+            "F01": 0.96875,
+            "slots": 4001536,
+            "fallback": false
+          },
+          "10": {
+            "selected": "marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt",
+            "P2": 0.003251953125,
+            "F01": 0.88671875,
+            "slots": 4001536,
+            "fallback": false
+          },
+          "12": {
+            "selected": "marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt",
+            "P2": 0.007343750000000001,
+            "F01": 0.76953125,
+            "slots": 4001536,
+            "fallback": false
+          },
+          "16": {
+            "selected": "marl:outputs/exp011b/u-seed202/checkpoints/step-008001280.pt",
+            "P2": 0.054673828125,
+            "F01": 0.27734375,
+            "slots": 8001280,
+            "fallback": false
+          }
+        },
+        "checkpoints": [
+          {
+            "spec": "marl:outputs/exp011/u-seed202/checkpoints/step-003001600.pt",
+            "slots": 3001600,
+            "starvation": 0,
+            "P2@6": 0.000701171875,
+            "P2@8": 0.00141796875,
+            "P2@10": 0.0037265625,
+            "P2@12": 0.008533203125,
+            "P2@16": 0.080333984375
+          },
+          {
+            "spec": "marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt",
+            "slots": 4001536,
+            "starvation": 0,
+            "P2@6": 0.0005800781250000001,
+            "P2@8": 0.0012539062500000002,
+            "P2@10": 0.003251953125,
+            "P2@12": 0.007343750000000001,
+            "P2@16": 0.07133984374999999
+          },
+          {
+            "spec": "marl:outputs/exp011/u-seed202/checkpoints/step-005001472.pt",
+            "slots": 5001472,
+            "starvation": 0,
+            "P2@6": 0.0006816406250000001,
+            "P2@8": 0.0013847656250000001,
+            "P2@10": 0.0037265625000000003,
+            "P2@12": 0.008015625,
+            "P2@16": 0.06621093750000001
+          },
+          {
+            "spec": "marl:outputs/exp011b/u-seed202/checkpoints/step-006001408.pt",
+            "slots": 6001408,
+            "starvation": 0,
+            "P2@6": 0.000751953125,
+            "P2@8": 0.0014453125000000002,
+            "P2@10": 0.0037343750000000003,
+            "P2@12": 0.007982421875000001,
+            "P2@16": 0.06258593750000001
+          },
+          {
+            "spec": "marl:outputs/exp011b/u-seed202/checkpoints/step-008001280.pt",
+            "slots": 8001280,
+            "starvation": 0,
+            "P2@6": 0.001556640625,
+            "P2@8": 0.002197265625,
+            "P2@10": 0.004480468750000001,
+            "P2@12": 0.008410156250000002,
+            "P2@16": 0.054673828125
+          },
+          {
+            "spec": "marl:outputs/exp011b/u-seed202/checkpoints/step-010001152.pt",
+            "slots": 10001152,
+            "starvation": 1,
+            "P2@6": 0.0005859375000000001,
+            "P2@8": 0.0011191406250000001,
+            "P2@10": 0.0037109375000000007,
+            "P2@12": 0.006507812500000001,
+            "P2@16": 0.051732421875
+          }
+        ]
+      },
+      "303": {
+        "cells": {
+          "6": {
+            "selected": "marl:outputs/exp011b/u-seed303/checkpoints/step-008001280.pt",
+            "P2": 0.000509765625,
+            "F01": 0.9921875,
+            "slots": 8001280,
+            "fallback": false
+          },
+          "8": {
+            "selected": "marl:outputs/exp011b/u-seed303/checkpoints/step-008001280.pt",
+            "P2": 0.0010703125,
+            "F01": 0.97265625,
+            "slots": 8001280,
+            "fallback": false
+          },
+          "10": {
+            "selected": "marl:outputs/exp011/u-seed303/checkpoints/step-005001472.pt",
+            "P2": 0.0033164062500000003,
+            "F01": 0.8984375,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "12": {
+            "selected": "marl:outputs/exp011/u-seed303/checkpoints/step-005001472.pt",
+            "P2": 0.007046875,
+            "F01": 0.7890625,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "16": {
+            "selected": "marl:outputs/exp011b/u-seed303/checkpoints/step-006001408.pt",
+            "P2": 0.0546953125,
+            "F01": 0.31640625,
+            "slots": 6001408,
+            "fallback": false
+          }
+        },
+        "checkpoints": [
+          {
+            "spec": "marl:outputs/exp011/u-seed303/checkpoints/step-003001600.pt",
+            "slots": 3001600,
+            "starvation": 0,
+            "P2@6": 0.0008828125,
+            "P2@8": 0.0019472656250000002,
+            "P2@10": 0.005291015625000001,
+            "P2@12": 0.011753906250000001,
+            "P2@16": 0.1111953125
+          },
+          {
+            "spec": "marl:outputs/exp011/u-seed303/checkpoints/step-004001536.pt",
+            "slots": 4001536,
+            "starvation": 0,
+            "P2@6": 0.0006367187499999999,
+            "P2@8": 0.0014062500000000002,
+            "P2@10": 0.0034335937500000004,
+            "P2@12": 0.007347656250000001,
+            "P2@16": 0.06091015625
+          },
+          {
+            "spec": "marl:outputs/exp011/u-seed303/checkpoints/step-005001472.pt",
+            "slots": 5001472,
+            "starvation": 0,
+            "P2@6": 0.00066796875,
+            "P2@8": 0.0014023437500000002,
+            "P2@10": 0.0033164062500000003,
+            "P2@12": 0.007046875,
+            "P2@16": 0.10245312499999999
+          },
+          {
+            "spec": "marl:outputs/exp011b/u-seed303/checkpoints/step-006001408.pt",
+            "slots": 6001408,
+            "starvation": 0,
+            "P2@6": 0.000677734375,
+            "P2@8": 0.0013867187500000001,
+            "P2@10": 0.0034121093750000006,
+            "P2@12": 0.007212890625000001,
+            "P2@16": 0.0546953125
+          },
+          {
+            "spec": "marl:outputs/exp011b/u-seed303/checkpoints/step-008001280.pt",
+            "slots": 8001280,
+            "starvation": 0,
+            "P2@6": 0.000509765625,
+            "P2@8": 0.0010703125,
+            "P2@10": 0.0036992187500000007,
+            "P2@12": 0.007136718750000001,
+            "P2@16": 0.06616015624999999
+          },
+          {
+            "spec": "marl:outputs/exp011b/u-seed303/checkpoints/step-010001152.pt",
+            "slots": 10001152,
+            "starvation": 0,
+            "P2@6": 0.00075390625,
+            "P2@8": 0.0014511718750000002,
+            "P2@10": 0.0034296875000000004,
+            "P2@12": 0.007574218750000001,
+            "P2@16": 0.079265625
+          }
+        ]
+      },
+      "404": {
+        "cells": {
+          "6": {
+            "selected": "marl:outputs/exp011b/u-seed404-base/checkpoints/step-005001472.pt",
+            "P2": 0.000640625,
+            "F01": 0.98828125,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "8": {
+            "selected": "marl:outputs/exp011b/u-seed404-base/checkpoints/step-004001536.pt",
+            "P2": 0.0012304687500000002,
+            "F01": 0.96484375,
+            "slots": 4001536,
+            "fallback": false
+          },
+          "10": {
+            "selected": "marl:outputs/exp011b/u-seed404-base/checkpoints/step-004001536.pt",
+            "P2": 0.0027343750000000003,
+            "F01": 0.9140625,
+            "slots": 4001536,
+            "fallback": false
+          },
+          "12": {
+            "selected": "marl:outputs/exp011b/u-seed404-base/checkpoints/step-004001536.pt",
+            "P2": 0.0049101562500000005,
+            "F01": 0.84375,
+            "slots": 4001536,
+            "fallback": false
+          },
+          "16": {
+            "selected": "marl:outputs/exp011b/u-seed404-base/checkpoints/step-004001536.pt",
+            "P2": 0.05176953125,
+            "F01": 0.34375,
+            "slots": 4001536,
+            "fallback": false
+          }
+        },
+        "checkpoints": [
+          {
+            "spec": "marl:outputs/exp011b/u-seed404-base/checkpoints/step-003001600.pt",
+            "slots": 3001600,
+            "starvation": 0,
+            "P2@6": 0.0008613281250000001,
+            "P2@8": 0.0018476562500000003,
+            "P2@10": 0.004970703125,
+            "P2@12": 0.010082031250000002,
+            "P2@16": 0.08577734375000001
+          },
+          {
+            "spec": "marl:outputs/exp011b/u-seed404-base/checkpoints/step-004001536.pt",
+            "slots": 4001536,
+            "starvation": 0,
+            "P2@6": 0.000658203125,
+            "P2@8": 0.0012304687500000002,
+            "P2@10": 0.0027343750000000003,
+            "P2@12": 0.0049101562500000005,
+            "P2@16": 0.05176953125
+          },
+          {
+            "spec": "marl:outputs/exp011b/u-seed404-base/checkpoints/step-005001472.pt",
+            "slots": 5001472,
+            "starvation": 0,
+            "P2@6": 0.000640625,
+            "P2@8": 0.0012734375,
+            "P2@10": 0.0031328125,
+            "P2@12": 0.00569140625,
+            "P2@16": 0.20246875
+          },
+          {
+            "spec": "marl:outputs/exp011b/u-seed404/checkpoints/step-006001408.pt",
+            "slots": 6001408,
+            "starvation": 0,
+            "P2@6": 0.0006796875,
+            "P2@8": 0.0013613281250000001,
+            "P2@10": 0.0037460937500000003,
+            "P2@12": 0.007925781250000001,
+            "P2@16": 0.073119140625
+          },
+          {
+            "spec": "marl:outputs/exp011b/u-seed404/checkpoints/step-008001280.pt",
+            "slots": 8001280,
+            "starvation": 0,
+            "P2@6": 0.000748046875,
+            "P2@8": 0.0014570312500000002,
+            "P2@10": 0.004017578125,
+            "P2@12": 0.009095703125,
+            "P2@16": 0.11144921875000001
+          },
+          {
+            "spec": "marl:outputs/exp011b/u-seed404/checkpoints/step-010001152.pt",
+            "slots": 10001152,
+            "starvation": 0,
+            "P2@6": 0.000693359375,
+            "P2@8": 0.001341796875,
+            "P2@10": 0.0036992187500000002,
+            "P2@12": 0.00818359375,
+            "P2@16": 0.08165234375
+          }
+        ]
+      },
+      "505": {
+        "cells": {
+          "6": {
+            "selected": "marl:outputs/exp011b/u-seed505-base/checkpoints/step-004001536.pt",
+            "P2": 0.0005703125000000001,
+            "F01": 0.98828125,
+            "slots": 4001536,
+            "fallback": false
+          },
+          "8": {
+            "selected": "marl:outputs/exp011b/u-seed505-base/checkpoints/step-004001536.pt",
+            "P2": 0.0011679687500000002,
+            "F01": 0.9609375,
+            "slots": 4001536,
+            "fallback": false
+          },
+          "10": {
+            "selected": "marl:outputs/exp011b/u-seed505-base/checkpoints/step-004001536.pt",
+            "P2": 0.0033046875000000003,
+            "F01": 0.89453125,
+            "slots": 4001536,
+            "fallback": false
+          },
+          "12": {
+            "selected": "marl:outputs/exp011b/u-seed505-base/checkpoints/step-004001536.pt",
+            "P2": 0.007066406250000001,
+            "F01": 0.77734375,
+            "slots": 4001536,
+            "fallback": false
+          },
+          "16": {
+            "selected": "marl:outputs/exp011b/u-seed505-base/checkpoints/step-005001472.pt",
+            "P2": 0.07356640625,
+            "F01": 0.22265625,
+            "slots": 5001472,
+            "fallback": false
+          }
+        },
+        "checkpoints": [
+          {
+            "spec": "marl:outputs/exp011b/u-seed505-base/checkpoints/step-003001600.pt",
+            "slots": 3001600,
+            "starvation": 0,
+            "P2@6": 0.000775390625,
+            "P2@8": 0.00148828125,
+            "P2@10": 0.003923828125000001,
+            "P2@12": 0.008464843750000001,
+            "P2@16": 0.080365234375
+          },
+          {
+            "spec": "marl:outputs/exp011b/u-seed505-base/checkpoints/step-004001536.pt",
+            "slots": 4001536,
+            "starvation": 0,
+            "P2@6": 0.0005703125000000001,
+            "P2@8": 0.0011679687500000002,
+            "P2@10": 0.0033046875000000003,
+            "P2@12": 0.007066406250000001,
+            "P2@16": 0.07800390625
+          },
+          {
+            "spec": "marl:outputs/exp011b/u-seed505-base/checkpoints/step-005001472.pt",
+            "slots": 5001472,
+            "starvation": 0,
+            "P2@6": 0.000763671875,
+            "P2@8": 0.0015214843750000003,
+            "P2@10": 0.0038066406250000006,
+            "P2@12": 0.007644531250000001,
+            "P2@16": 0.07356640625
+          },
+          {
+            "spec": "marl:outputs/exp011b/u-seed505/checkpoints/step-006001408.pt",
+            "slots": 6001408,
+            "starvation": 0,
+            "P2@6": 0.0008164062500000001,
+            "P2@8": 0.001654296875,
+            "P2@10": 0.004175781250000001,
+            "P2@12": 0.00930859375,
+            "P2@16": 0.09193359375000001
+          },
+          {
+            "spec": "marl:outputs/exp011b/u-seed505/checkpoints/step-008001280.pt",
+            "slots": 8001280,
+            "starvation": 0,
+            "P2@6": 0.000703125,
+            "P2@8": 0.0013847656250000001,
+            "P2@10": 0.0038632812500000004,
+            "P2@12": 0.008275390625,
+            "P2@16": 0.08692773437500001
+          },
+          {
+            "spec": "marl:outputs/exp011b/u-seed505/checkpoints/step-010001152.pt",
+            "slots": 10001152,
+            "starvation": 0,
+            "P2@6": 0.0006328125,
+            "P2@8": 0.0015449218749999999,
+            "P2@10": 0.0040195312500000005,
+            "P2@12": 0.00841015625,
+            "P2@16": 0.08707421875
+          }
+        ]
+      }
+    },
+    "U0": {
+      "101": {
+        "cells": {
+          "8": {
+            "selected": "marl:outputs/exp011b/u0-seed101/checkpoints/step-010001152.pt",
+            "P2": 0.0014375000000000002,
+            "F01": 0.95703125,
+            "slots": 10001152,
+            "fallback": false
+          },
+          "10": {
+            "selected": "marl:outputs/exp011b/u0-seed101/checkpoints/step-010001152.pt",
+            "P2": 0.00350390625,
+            "F01": 0.89453125,
+            "slots": 10001152,
+            "fallback": false
+          },
+          "12": {
+            "selected": "marl:outputs/exp011b/u0-seed101/checkpoints/step-010001152.pt",
+            "P2": 0.007097656250000001,
+            "F01": 0.78515625,
+            "slots": 10001152,
+            "fallback": false
+          }
+        },
+        "checkpoints": [
+          {
+            "spec": "marl:outputs/exp011/u0-seed101/checkpoints/step-003001600.pt",
+            "slots": 3001600,
+            "starvation": 0,
+            "P2@8": 0.002427734375,
+            "P2@10": 0.005638671875000001,
+            "P2@12": 0.011683593750000002
+          },
+          {
+            "spec": "marl:outputs/exp011/u0-seed101/checkpoints/step-004001536.pt",
+            "slots": 4001536,
+            "starvation": 0,
+            "P2@8": 0.001802734375,
+            "P2@10": 0.0045234375000000005,
+            "P2@12": 0.009986328125
+          },
+          {
+            "spec": "marl:outputs/exp011/u0-seed101/checkpoints/step-005001472.pt",
+            "slots": 5001472,
+            "starvation": 0,
+            "P2@8": 0.001740234375,
+            "P2@10": 0.0043359375,
+            "P2@12": 0.0087265625
+          },
+          {
+            "spec": "marl:outputs/exp011b/u0-seed101/checkpoints/step-006001408.pt",
+            "slots": 6001408,
+            "starvation": 0,
+            "P2@8": 0.0036113281250000004,
+            "P2@10": 0.0068828125,
+            "P2@12": 0.011119140625000001
+          },
+          {
+            "spec": "marl:outputs/exp011b/u0-seed101/checkpoints/step-008001280.pt",
+            "slots": 8001280,
+            "starvation": 0,
+            "P2@8": 0.011291015625000001,
+            "P2@10": 0.023130859375,
+            "P2@12": 0.041130859375
+          },
+          {
+            "spec": "marl:outputs/exp011b/u0-seed101/checkpoints/step-010001152.pt",
+            "slots": 10001152,
+            "starvation": 0,
+            "P2@8": 0.0014375000000000002,
+            "P2@10": 0.00350390625,
+            "P2@12": 0.007097656250000001
+          }
+        ]
+      },
+      "202": {
+        "cells": {
+          "8": {
+            "selected": "marl:outputs/exp011b/u0-seed202/checkpoints/step-010001152.pt",
+            "P2": 0.0017539062500000003,
+            "F01": 0.953125,
+            "slots": 10001152,
+            "fallback": false
+          },
+          "10": {
+            "selected": "marl:outputs/exp011/u0-seed202/checkpoints/step-005001472.pt",
+            "P2": 0.0038828125000000004,
+            "F01": 0.87890625,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "12": {
+            "selected": "marl:outputs/exp011/u0-seed202/checkpoints/step-005001472.pt",
+            "P2": 0.007068359375000001,
+            "F01": 0.77734375,
+            "slots": 5001472,
+            "fallback": false
+          }
+        },
+        "checkpoints": [
+          {
+            "spec": "marl:outputs/exp011/u0-seed202/checkpoints/step-003001600.pt",
+            "slots": 3001600,
+            "starvation": 0,
+            "P2@8": 0.00366015625,
+            "P2@10": 0.009523437500000002,
+            "P2@12": 0.019646484375000002
+          },
+          {
+            "spec": "marl:outputs/exp011/u0-seed202/checkpoints/step-004001536.pt",
+            "slots": 4001536,
+            "starvation": 0,
+            "P2@8": 0.003669921875,
+            "P2@10": 0.008232421875,
+            "P2@12": 0.01569921875
+          },
+          {
+            "spec": "marl:outputs/exp011/u0-seed202/checkpoints/step-005001472.pt",
+            "slots": 5001472,
+            "starvation": 0,
+            "P2@8": 0.0018320312500000003,
+            "P2@10": 0.0038828125000000004,
+            "P2@12": 0.007068359375000001
+          },
+          {
+            "spec": "marl:outputs/exp011b/u0-seed202/checkpoints/step-006001408.pt",
+            "slots": 6001408,
+            "starvation": 16,
+            "P2@8": 0.002177734375,
+            "P2@10": 0.008892578125000002,
+            "P2@12": 0.013373046874999999
+          },
+          {
+            "spec": "marl:outputs/exp011b/u0-seed202/checkpoints/step-008001280.pt",
+            "slots": 8001280,
+            "starvation": 0,
+            "P2@8": 0.0031171874999999997,
+            "P2@10": 0.0073593750000000005,
+            "P2@12": 0.014261718750000001
+          },
+          {
+            "spec": "marl:outputs/exp011b/u0-seed202/checkpoints/step-010001152.pt",
+            "slots": 10001152,
+            "starvation": 0,
+            "P2@8": 0.0017539062500000003,
+            "P2@10": 0.004501953125,
+            "P2@12": 0.008923828125
+          }
+        ]
+      },
+      "303": {
+        "cells": {
+          "8": {
+            "selected": "marl:outputs/exp011b/u0-seed303/checkpoints/step-006001408.pt",
+            "P2": 0.0014902343750000002,
+            "F01": 0.94921875,
+            "slots": 6001408,
+            "fallback": false
+          },
+          "10": {
+            "selected": "marl:outputs/exp011b/u0-seed303/checkpoints/step-006001408.pt",
+            "P2": 0.0036718750000000002,
+            "F01": 0.87890625,
+            "slots": 6001408,
+            "fallback": false
+          },
+          "12": {
+            "selected": "marl:outputs/exp011b/u0-seed303/checkpoints/step-006001408.pt",
+            "P2": 0.0075,
+            "F01": 0.7890625,
+            "slots": 6001408,
+            "fallback": false
+          }
+        },
+        "checkpoints": [
+          {
+            "spec": "marl:outputs/exp011/u0-seed303/checkpoints/step-003001600.pt",
+            "slots": 3001600,
+            "starvation": 0,
+            "P2@8": 0.0022089843750000004,
+            "P2@10": 0.00565234375,
+            "P2@12": 0.012197265625000002
+          },
+          {
+            "spec": "marl:outputs/exp011/u0-seed303/checkpoints/step-004001536.pt",
+            "slots": 4001536,
+            "starvation": 0,
+            "P2@8": 0.0019101562500000002,
+            "P2@10": 0.004857421875,
+            "P2@12": 0.009914062500000001
+          },
+          {
+            "spec": "marl:outputs/exp011/u0-seed303/checkpoints/step-005001472.pt",
+            "slots": 5001472,
+            "starvation": 0,
+            "P2@8": 0.0019707031250000002,
+            "P2@10": 0.00469921875,
+            "P2@12": 0.010134765625
+          },
+          {
+            "spec": "marl:outputs/exp011b/u0-seed303/checkpoints/step-006001408.pt",
+            "slots": 6001408,
+            "starvation": 0,
+            "P2@8": 0.0014902343750000002,
+            "P2@10": 0.0036718750000000002,
+            "P2@12": 0.0075
+          },
+          {
+            "spec": "marl:outputs/exp011b/u0-seed303/checkpoints/step-008001280.pt",
+            "slots": 8001280,
+            "starvation": 0,
+            "P2@8": 0.0017890625000000003,
+            "P2@10": 0.00428125,
+            "P2@12": 0.008794921875
+          },
+          {
+            "spec": "marl:outputs/exp011b/u0-seed303/checkpoints/step-010001152.pt",
+            "slots": 10001152,
+            "starvation": 0,
+            "P2@8": 0.0018183593749999999,
+            "P2@10": 0.00425390625,
+            "P2@12": 0.008728515625
+          }
+        ]
+      },
+      "404": {
+        "cells": {
+          "8": {
+            "selected": "marl:outputs/exp011b/u0-seed404/checkpoints/step-008001280.pt",
+            "P2": 0.0016171875000000001,
+            "F01": 0.94921875,
+            "slots": 8001280,
+            "fallback": false
+          },
+          "10": {
+            "selected": "marl:outputs/exp011b/u0-seed404/checkpoints/step-008001280.pt",
+            "P2": 0.0038320312500000004,
+            "F01": 0.875,
+            "slots": 8001280,
+            "fallback": false
+          },
+          "12": {
+            "selected": "marl:outputs/exp011b/u0-seed404/checkpoints/step-008001280.pt",
+            "P2": 0.0070429687500000015,
+            "F01": 0.77734375,
+            "slots": 8001280,
+            "fallback": false
+          }
+        },
+        "checkpoints": [
+          {
+            "spec": "marl:outputs/exp011b/u0-seed404-base/checkpoints/step-003001600.pt",
+            "slots": 3001600,
+            "starvation": 0,
+            "P2@8": 0.0018574218750000001,
+            "P2@10": 0.00442578125,
+            "P2@12": 0.009199218750000002
+          },
+          {
+            "spec": "marl:outputs/exp011b/u0-seed404-base/checkpoints/step-004001536.pt",
+            "slots": 4001536,
+            "starvation": 0,
+            "P2@8": 0.0018750000000000004,
+            "P2@10": 0.0047597656250000005,
+            "P2@12": 0.010117187500000001
+          },
+          {
+            "spec": "marl:outputs/exp011b/u0-seed404-base/checkpoints/step-005001472.pt",
+            "slots": 5001472,
+            "starvation": 0,
+            "P2@8": 0.0019140625,
+            "P2@10": 0.004892578125,
+            "P2@12": 0.01034765625
+          },
+          {
+            "spec": "marl:outputs/exp011b/u0-seed404/checkpoints/step-006001408.pt",
+            "slots": 6001408,
+            "starvation": 0,
+            "P2@8": 0.00170703125,
+            "P2@10": 0.004330078124999999,
+            "P2@12": 0.0088828125
+          },
+          {
+            "spec": "marl:outputs/exp011b/u0-seed404/checkpoints/step-008001280.pt",
+            "slots": 8001280,
+            "starvation": 0,
+            "P2@8": 0.0016171875000000001,
+            "P2@10": 0.0038320312500000004,
+            "P2@12": 0.0070429687500000015
+          },
+          {
+            "spec": "marl:outputs/exp011b/u0-seed404/checkpoints/step-010001152.pt",
+            "slots": 10001152,
+            "starvation": 0,
+            "P2@8": 0.00294921875,
+            "P2@10": 0.006412109375000001,
+            "P2@12": 0.011732421875000001
+          }
+        ]
+      },
+      "505": {
+        "cells": {
+          "8": {
+            "selected": "marl:outputs/exp011b/u0-seed505-base/checkpoints/step-005001472.pt",
+            "P2": 0.0015898437500000001,
+            "F01": 0.94921875,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "10": {
+            "selected": "marl:outputs/exp011b/u0-seed505/checkpoints/step-008001280.pt",
+            "P2": 0.0040117187500000005,
+            "F01": 0.8828125,
+            "slots": 8001280,
+            "fallback": false
+          },
+          "12": {
+            "selected": "marl:outputs/exp011b/u0-seed505/checkpoints/step-008001280.pt",
+            "P2": 0.00846484375,
+            "F01": 0.71484375,
+            "slots": 8001280,
+            "fallback": false
+          }
+        },
+        "checkpoints": [
+          {
+            "spec": "marl:outputs/exp011b/u0-seed505-base/checkpoints/step-003001600.pt",
+            "slots": 3001600,
+            "starvation": 0,
+            "P2@8": 0.0020449218750000003,
+            "P2@10": 0.0054140625000000005,
+            "P2@12": 0.011939453125
+          },
+          {
+            "spec": "marl:outputs/exp011b/u0-seed505-base/checkpoints/step-004001536.pt",
+            "slots": 4001536,
+            "starvation": 0,
+            "P2@8": 0.001748046875,
+            "P2@10": 0.004623046875,
+            "P2@12": 0.010001953125
+          },
+          {
+            "spec": "marl:outputs/exp011b/u0-seed505-base/checkpoints/step-005001472.pt",
+            "slots": 5001472,
+            "starvation": 0,
+            "P2@8": 0.0015898437500000001,
+            "P2@10": 0.004171875,
+            "P2@12": 0.008765625
+          },
+          {
+            "spec": "marl:outputs/exp011b/u0-seed505/checkpoints/step-006001408.pt",
+            "slots": 6001408,
+            "starvation": 0,
+            "P2@8": 0.0019667968750000002,
+            "P2@10": 0.0041933593750000005,
+            "P2@12": 0.008689453125
+          },
+          {
+            "spec": "marl:outputs/exp011b/u0-seed505/checkpoints/step-008001280.pt",
+            "slots": 8001280,
+            "starvation": 0,
+            "P2@8": 0.0016718750000000002,
+            "P2@10": 0.0040117187500000005,
+            "P2@12": 0.00846484375
+          },
+          {
+            "spec": "marl:outputs/exp011b/u0-seed505/checkpoints/step-010001152.pt",
+            "slots": 10001152,
+            "starvation": 0,
+            "P2@8": 0.0042109375,
+            "P2@10": 0.007984375,
+            "P2@12": 0.013054687500000002
+          }
+        ]
+      }
+    }
+  },
+  "selection_up_to_5M": {
+    "L": {
+      "101": {
+        "cells": {
+          "6": {
+            "selected": "marl:outputs/exp011/l-seed101/checkpoints/step-004001536.pt",
+            "P2": 0.000884765625,
+            "F01": 0.98046875,
+            "slots": 4001536,
+            "fallback": false
+          },
+          "8": {
+            "selected": "marl:outputs/exp011/l-seed101/checkpoints/step-004001536.pt",
+            "P2": 0.0019824218750000002,
+            "F01": 0.9375,
+            "slots": 4001536,
+            "fallback": false
+          },
+          "10": {
+            "selected": "marl:outputs/exp011/l-seed101/checkpoints/step-004001536.pt",
+            "P2": 0.004908203125000001,
+            "F01": 0.87109375,
+            "slots": 4001536,
+            "fallback": false
+          },
+          "12": {
+            "selected": "marl:outputs/exp011/l-seed101/checkpoints/step-004001536.pt",
+            "P2": 0.010101562500000001,
+            "F01": 0.7421875,
+            "slots": 4001536,
+            "fallback": false
+          },
+          "16": {
+            "selected": "marl:outputs/exp011/l-seed101/checkpoints/step-004001536.pt",
+            "P2": 0.069859375,
+            "F01": 0.2421875,
+            "slots": 4001536,
+            "fallback": false
+          }
+        },
+        "checkpoints": [
+          {
+            "spec": "marl:outputs/exp011/l-seed101/checkpoints/step-003001600.pt",
+            "slots": 3001600,
+            "starvation": 0,
+            "P2@6": 0.0011582031250000002,
+            "P2@8": 0.0027519531250000005,
+            "P2@10": 0.007365234375000001,
+            "P2@12": 0.015544921875000001,
+            "P2@16": 0.11769531250000001
+          },
+          {
+            "spec": "marl:outputs/exp011/l-seed101/checkpoints/step-004001536.pt",
+            "slots": 4001536,
+            "starvation": 0,
+            "P2@6": 0.000884765625,
+            "P2@8": 0.0019824218750000002,
+            "P2@10": 0.004908203125000001,
+            "P2@12": 0.010101562500000001,
+            "P2@16": 0.069859375
+          },
+          {
+            "spec": "marl:outputs/exp011/l-seed101/checkpoints/step-005001472.pt",
+            "slots": 5001472,
+            "starvation": 0,
+            "P2@6": 0.001078125,
+            "P2@8": 0.002119140625,
+            "P2@10": 0.005029296875,
+            "P2@12": 0.01034375,
+            "P2@16": 0.076517578125
+          }
+        ]
+      },
+      "202": {
+        "cells": {
+          "6": {
+            "selected": "marl:outputs/exp011/l-seed202/checkpoints/step-005001472.pt",
+            "P2": 0.000787109375,
+            "F01": 0.984375,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "8": {
+            "selected": "marl:outputs/exp011/l-seed202/checkpoints/step-005001472.pt",
+            "P2": 0.001458984375,
+            "F01": 0.94921875,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "10": {
+            "selected": "marl:outputs/exp011/l-seed202/checkpoints/step-005001472.pt",
+            "P2": 0.0035195312500000005,
+            "F01": 0.89453125,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "12": {
+            "selected": "marl:outputs/exp011/l-seed202/checkpoints/step-005001472.pt",
+            "P2": 0.008126953125000001,
+            "F01": 0.76953125,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "16": {
+            "selected": "marl:outputs/exp011/l-seed202/checkpoints/step-004001536.pt",
+            "P2": 0.058857421874999996,
+            "F01": 0.3046875,
+            "slots": 4001536,
+            "fallback": false
+          }
+        },
+        "checkpoints": [
+          {
+            "spec": "marl:outputs/exp011/l-seed202/checkpoints/step-003001600.pt",
+            "slots": 3001600,
+            "starvation": 0,
+            "P2@6": 0.00094140625,
+            "P2@8": 0.002046875,
+            "P2@10": 0.005378906250000001,
+            "P2@12": 0.011910156250000001,
+            "P2@16": 0.10551171875
+          },
+          {
+            "spec": "marl:outputs/exp011/l-seed202/checkpoints/step-004001536.pt",
+            "slots": 4001536,
+            "starvation": 0,
+            "P2@6": 0.0014101562500000002,
+            "P2@8": 0.002310546875,
+            "P2@10": 0.004630859375,
+            "P2@12": 0.008398437500000001,
+            "P2@16": 0.058857421874999996
+          },
+          {
+            "spec": "marl:outputs/exp011/l-seed202/checkpoints/step-005001472.pt",
+            "slots": 5001472,
+            "starvation": 0,
+            "P2@6": 0.000787109375,
+            "P2@8": 0.001458984375,
+            "P2@10": 0.0035195312500000005,
+            "P2@12": 0.008126953125000001,
+            "P2@16": 0.0714453125
+          }
+        ]
+      },
+      "303": {
+        "cells": {
+          "6": {
+            "selected": "marl:outputs/exp011/l-seed303/checkpoints/step-005001472.pt",
+            "P2": 0.00095703125,
+            "F01": 0.9765625,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "8": {
+            "selected": "marl:outputs/exp011/l-seed303/checkpoints/step-005001472.pt",
+            "P2": 0.0019277343750000002,
+            "F01": 0.9375,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "10": {
+            "selected": "marl:outputs/exp011/l-seed303/checkpoints/step-005001472.pt",
+            "P2": 0.00496484375,
+            "F01": 0.859375,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "12": {
+            "selected": "marl:outputs/exp011/l-seed303/checkpoints/step-005001472.pt",
+            "P2": 0.009951171875000001,
+            "F01": 0.73828125,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "16": {
+            "selected": "marl:outputs/exp011/l-seed303/checkpoints/step-005001472.pt",
+            "P2": 0.08695117187500001,
+            "F01": 0.2109375,
+            "slots": 5001472,
+            "fallback": false
+          }
+        },
+        "checkpoints": [
+          {
+            "spec": "marl:outputs/exp011/l-seed303/checkpoints/step-003001600.pt",
+            "slots": 3001600,
+            "starvation": 0,
+            "P2@6": 0.001015625,
+            "P2@8": 0.002287109375,
+            "P2@10": 0.006076171875,
+            "P2@12": 0.012802734375,
+            "P2@16": 0.1155703125
+          },
+          {
+            "spec": "marl:outputs/exp011/l-seed303/checkpoints/step-004001536.pt",
+            "slots": 4001536,
+            "starvation": 0,
+            "P2@6": 0.0010390625,
+            "P2@8": 0.002318359375,
+            "P2@10": 0.0063593750000000004,
+            "P2@12": 0.01358984375,
+            "P2@16": 0.10103515625000001
+          },
+          {
+            "spec": "marl:outputs/exp011/l-seed303/checkpoints/step-005001472.pt",
+            "slots": 5001472,
+            "starvation": 0,
+            "P2@6": 0.00095703125,
+            "P2@8": 0.0019277343750000002,
+            "P2@10": 0.00496484375,
+            "P2@12": 0.009951171875000001,
+            "P2@16": 0.08695117187500001
+          }
+        ]
+      },
+      "404": {
+        "cells": {
+          "6": {
+            "selected": "marl:outputs/exp011b/l-seed404-base/checkpoints/step-005001472.pt",
+            "P2": 0.0005585937500000001,
+            "F01": 0.98828125,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "8": {
+            "selected": "marl:outputs/exp011b/l-seed404-base/checkpoints/step-005001472.pt",
+            "P2": 0.001041015625,
+            "F01": 0.97265625,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "10": {
+            "selected": "marl:outputs/exp011b/l-seed404-base/checkpoints/step-005001472.pt",
+            "P2": 0.0022187500000000002,
+            "F01": 0.93359375,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "12": {
+            "selected": "marl:outputs/exp011b/l-seed404-base/checkpoints/step-005001472.pt",
+            "P2": 0.004572265625,
+            "F01": 0.8515625,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "16": {
+            "selected": "marl:outputs/exp011b/l-seed404-base/checkpoints/step-005001472.pt",
+            "P2": 0.049414062499999994,
+            "F01": 0.375,
+            "slots": 5001472,
+            "fallback": false
+          }
+        },
+        "checkpoints": [
+          {
+            "spec": "marl:outputs/exp011b/l-seed404-base/checkpoints/step-003001600.pt",
+            "slots": 3001600,
+            "starvation": 0,
+            "P2@6": 0.0006875,
+            "P2@8": 0.001220703125,
+            "P2@10": 0.0035859375000000006,
+            "P2@12": 0.00802734375,
+            "P2@16": 0.094375
+          },
+          {
+            "spec": "marl:outputs/exp011b/l-seed404-base/checkpoints/step-004001536.pt",
+            "slots": 4001536,
+            "starvation": 0,
+            "P2@6": 0.001482421875,
+            "P2@8": 0.002173828125,
+            "P2@10": 0.004185546875,
+            "P2@12": 0.008181640625,
+            "P2@16": 0.057070312500000005
+          },
+          {
+            "spec": "marl:outputs/exp011b/l-seed404-base/checkpoints/step-005001472.pt",
+            "slots": 5001472,
+            "starvation": 0,
+            "P2@6": 0.0005585937500000001,
+            "P2@8": 0.001041015625,
+            "P2@10": 0.0022187500000000002,
+            "P2@12": 0.004572265625,
+            "P2@16": 0.049414062499999994
+          }
+        ]
+      },
+      "505": {
+        "cells": {
+          "6": {
+            "selected": "marl:outputs/exp011b/l-seed505-base/checkpoints/step-005001472.pt",
+            "P2": 0.0006347656250000001,
+            "F01": 0.98828125,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "8": {
+            "selected": "marl:outputs/exp011b/l-seed505-base/checkpoints/step-005001472.pt",
+            "P2": 0.00130859375,
+            "F01": 0.95703125,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "10": {
+            "selected": "marl:outputs/exp011b/l-seed505-base/checkpoints/step-005001472.pt",
+            "P2": 0.0035156250000000005,
+            "F01": 0.90625,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "12": {
+            "selected": "marl:outputs/exp011b/l-seed505-base/checkpoints/step-005001472.pt",
+            "P2": 0.008144531250000002,
+            "F01": 0.76953125,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "16": {
+            "selected": "marl:outputs/exp011b/l-seed505-base/checkpoints/step-005001472.pt",
+            "P2": 0.08891210937499999,
+            "F01": 0.1953125,
+            "slots": 5001472,
+            "fallback": false
+          }
+        },
+        "checkpoints": [
+          {
+            "spec": "marl:outputs/exp011b/l-seed505-base/checkpoints/step-003001600.pt",
+            "slots": 3001600,
+            "starvation": 0,
+            "P2@6": 0.0006972656250000001,
+            "P2@8": 0.0015996093750000003,
+            "P2@10": 0.004228515625,
+            "P2@12": 0.0097578125,
+            "P2@16": 0.111759765625
+          },
+          {
+            "spec": "marl:outputs/exp011b/l-seed505-base/checkpoints/step-004001536.pt",
+            "slots": 4001536,
+            "starvation": 0,
+            "P2@6": 0.000755859375,
+            "P2@8": 0.0015214843749999998,
+            "P2@10": 0.004117187500000001,
+            "P2@12": 0.008994140625,
+            "P2@16": 0.09106640625000001
+          },
+          {
+            "spec": "marl:outputs/exp011b/l-seed505-base/checkpoints/step-005001472.pt",
+            "slots": 5001472,
+            "starvation": 0,
+            "P2@6": 0.0006347656250000001,
+            "P2@8": 0.00130859375,
+            "P2@10": 0.0035156250000000005,
+            "P2@12": 0.008144531250000002,
+            "P2@16": 0.08891210937499999
+          }
+        ]
+      }
+    },
+    "M": {
+      "101": {
+        "cells": {
+          "6": {
+            "selected": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+            "P2": 0.000951171875,
+            "F01": 0.9765625,
+            "slots": 4001536,
+            "fallback": false
+          },
+          "8": {
+            "selected": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+            "P2": 0.0020058593750000003,
+            "F01": 0.9375,
+            "slots": 4001536,
+            "fallback": false
+          },
+          "10": {
+            "selected": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+            "P2": 0.005308593750000001,
+            "F01": 0.85546875,
+            "slots": 4001536,
+            "fallback": false
+          },
+          "12": {
+            "selected": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+            "P2": 0.011384765625000001,
+            "F01": 0.6953125,
+            "slots": 4001536,
+            "fallback": false
+          },
+          "16": {
+            "selected": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+            "P2": 0.090640625,
+            "F01": 0.18359375,
+            "slots": 4001536,
+            "fallback": false
+          }
+        },
+        "checkpoints": [
+          {
+            "spec": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-003001600.pt",
+            "slots": 3001600,
+            "starvation": 0,
+            "P2@2": 0.000251953125,
+            "P2@4": 0.0005761718750000001,
+            "P2@6": 0.001158203125,
+            "P2@8": 0.00265234375,
+            "P2@10": 0.0072734375,
+            "P2@12": 0.015884765625000002,
+            "P2@16": 0.12879882812500001,
+            "P2@20": 0.613544921875
+          },
+          {
+            "spec": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+            "slots": 4001536,
+            "starvation": 0,
+            "P2@2": 0.0002265625,
+            "P2@4": 0.00051171875,
+            "P2@6": 0.000951171875,
+            "P2@8": 0.0020058593750000003,
+            "P2@10": 0.005308593750000001,
+            "P2@12": 0.011384765625000001,
+            "P2@16": 0.090640625,
+            "P2@20": 0.45705859375
+          },
+          {
+            "spec": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-005001472.pt",
+            "slots": 5001472,
+            "starvation": 3,
+            "P2@2": 0.000298828125,
+            "P2@4": 0.012574218750000003,
+            "P2@6": 0.018677734375000005,
+            "P2@8": 0.016861328125000002,
+            "P2@10": 0.027187500000000003,
+            "P2@12": 0.041109375000000004,
+            "P2@16": 0.1305703125,
+            "P2@20": 0.467681640625
+          }
+        ]
+      },
+      "202": {
+        "cells": {
+          "6": {
+            "selected": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+            "P2": 0.000677734375,
+            "F01": 0.984375,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "8": {
+            "selected": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+            "P2": 0.0015058593749999998,
+            "F01": 0.94921875,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "10": {
+            "selected": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+            "P2": 0.0042421875,
+            "F01": 0.87890625,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "12": {
+            "selected": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+            "P2": 0.009205078125000002,
+            "F01": 0.765625,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "16": {
+            "selected": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-003001600.pt",
+            "P2": 0.077423828125,
+            "F01": 0.21875,
+            "slots": 3001600,
+            "fallback": false
+          }
+        },
+        "checkpoints": [
+          {
+            "spec": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-003001600.pt",
+            "slots": 3001600,
+            "starvation": 0,
+            "P2@2": 0.00023632812500000002,
+            "P2@4": 0.000529296875,
+            "P2@6": 0.0009160156250000001,
+            "P2@8": 0.0020644531250000003,
+            "P2@10": 0.005158203125,
+            "P2@12": 0.010466796875000002,
+            "P2@16": 0.077423828125,
+            "P2@20": 0.499765625
+          },
+          {
+            "spec": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-004001536.pt",
+            "slots": 4001536,
+            "starvation": 0,
+            "P2@2": 0.0002265625,
+            "P2@4": 0.0005234375,
+            "P2@6": 0.0008808593750000001,
+            "P2@8": 0.001830078125,
+            "P2@10": 0.0046425781250000004,
+            "P2@12": 0.009947265625,
+            "P2@16": 0.08422070312499999,
+            "P2@20": 0.5506640625
+          },
+          {
+            "spec": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+            "slots": 5001472,
+            "starvation": 0,
+            "P2@2": 0.000185546875,
+            "P2@4": 0.000384765625,
+            "P2@6": 0.000677734375,
+            "P2@8": 0.0015058593749999998,
+            "P2@10": 0.0042421875,
+            "P2@12": 0.009205078125000002,
+            "P2@16": 0.137169921875,
+            "P2@20": 0.75694140625
+          }
+        ]
+      },
+      "303": {
+        "cells": {
+          "6": {
+            "selected": "marl:outputs/exp009-final/s1-seed303/checkpoints/step-003001600.pt",
+            "P2": 0.0012285156250000002,
+            "F01": 0.95703125,
+            "slots": 3001600,
+            "fallback": false
+          },
+          "8": {
+            "selected": "marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt",
+            "P2": 0.002841796875,
+            "F01": 0.93359375,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "10": {
+            "selected": "marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt",
+            "P2": 0.006873046875000001,
+            "F01": 0.83984375,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "12": {
+            "selected": "marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt",
+            "P2": 0.014205078125,
+            "F01": 0.6875,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "16": {
+            "selected": "marl:outputs/exp009-final/s1-seed303/checkpoints/step-003001600.pt",
+            "P2": 0.113228515625,
+            "F01": 0.11328125,
+            "slots": 3001600,
+            "fallback": false
+          }
+        },
+        "checkpoints": [
+          {
+            "spec": "marl:outputs/exp009-final/s1-seed303/checkpoints/step-003001600.pt",
+            "slots": 3001600,
+            "starvation": 0,
+            "P2@2": 0.00026171875,
+            "P2@4": 0.0006484375,
+            "P2@6": 0.0012285156250000002,
+            "P2@8": 0.003115234375,
+            "P2@10": 0.008273437500000001,
+            "P2@12": 0.016673828125,
+            "P2@16": 0.113228515625,
+            "P2@20": 0.722708984375
+          },
+          {
+            "spec": "marl:outputs/exp009-final/s1-seed303/checkpoints/step-004001536.pt",
+            "slots": 4001536,
+            "starvation": 0,
+            "P2@2": 0.000212890625,
+            "P2@4": 0.0011328125000000001,
+            "P2@6": 0.0019921875,
+            "P2@8": 0.003859375,
+            "P2@10": 0.00969921875,
+            "P2@12": 0.01935546875,
+            "P2@16": 0.13158593750000003,
+            "P2@20": 0.70794140625
+          },
+          {
+            "spec": "marl:outputs/exp009-final/s1-seed303/checkpoints/step-005001472.pt",
+            "slots": 5001472,
+            "starvation": 0,
+            "P2@2": 0.0002578125,
+            "P2@4": 0.000767578125,
+            "P2@6": 0.0013496093750000001,
+            "P2@8": 0.002841796875,
+            "P2@10": 0.006873046875000001,
+            "P2@12": 0.014205078125,
+            "P2@16": 0.11990429687500001,
+            "P2@20": 0.737904296875
+          }
+        ]
+      },
+      "404": {
+        "cells": {
+          "6": {
+            "selected": "marl:outputs/exp011b/m-seed404-base/checkpoints/step-004001536.pt",
+            "P2": 0.0008164062500000001,
+            "F01": 0.984375,
+            "slots": 4001536,
+            "fallback": false
+          },
+          "8": {
+            "selected": "marl:outputs/exp011b/m-seed404-base/checkpoints/step-004001536.pt",
+            "P2": 0.0018632812500000001,
+            "F01": 0.94140625,
+            "slots": 4001536,
+            "fallback": false
+          },
+          "10": {
+            "selected": "marl:outputs/exp011b/m-seed404-base/checkpoints/step-004001536.pt",
+            "P2": 0.004982421875,
+            "F01": 0.86328125,
+            "slots": 4001536,
+            "fallback": false
+          },
+          "12": {
+            "selected": "marl:outputs/exp011b/m-seed404-base/checkpoints/step-004001536.pt",
+            "P2": 0.010820312500000002,
+            "F01": 0.71875,
+            "slots": 4001536,
+            "fallback": false
+          },
+          "16": {
+            "selected": "marl:outputs/exp011b/m-seed404-base/checkpoints/step-003001600.pt",
+            "P2": 0.09071289062500001,
+            "F01": 0.16796875,
+            "slots": 3001600,
+            "fallback": false
+          }
+        },
+        "checkpoints": [
+          {
+            "spec": "marl:outputs/exp011b/m-seed404-base/checkpoints/step-003001600.pt",
+            "slots": 3001600,
+            "starvation": 0,
+            "P2@6": 0.001046875,
+            "P2@8": 0.00248828125,
+            "P2@10": 0.006357421875000001,
+            "P2@12": 0.013093750000000001,
+            "P2@16": 0.09071289062500001
+          },
+          {
+            "spec": "marl:outputs/exp011b/m-seed404-base/checkpoints/step-004001536.pt",
+            "slots": 4001536,
+            "starvation": 0,
+            "P2@6": 0.0008164062500000001,
+            "P2@8": 0.0018632812500000001,
+            "P2@10": 0.004982421875,
+            "P2@12": 0.010820312500000002,
+            "P2@16": 0.10376171875
+          },
+          {
+            "spec": "marl:outputs/exp011b/m-seed404-base/checkpoints/step-005001472.pt",
+            "slots": 5001472,
+            "starvation": 0,
+            "P2@6": 0.000982421875,
+            "P2@8": 0.0021699218750000004,
+            "P2@10": 0.00571484375,
+            "P2@12": 0.011880859375,
+            "P2@16": 0.09808203125
+          }
+        ]
+      },
+      "505": {
+        "cells": {
+          "6": {
+            "selected": "marl:outputs/exp011b/m-seed505-base/checkpoints/step-005001472.pt",
+            "P2": 0.000771484375,
+            "F01": 0.984375,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "8": {
+            "selected": "marl:outputs/exp011b/m-seed505-base/checkpoints/step-005001472.pt",
+            "P2": 0.0017148437500000002,
+            "F01": 0.94921875,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "10": {
+            "selected": "marl:outputs/exp011b/m-seed505-base/checkpoints/step-005001472.pt",
+            "P2": 0.004300781250000001,
+            "F01": 0.8671875,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "12": {
+            "selected": "marl:outputs/exp011b/m-seed505-base/checkpoints/step-005001472.pt",
+            "P2": 0.00987109375,
+            "F01": 0.7421875,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "16": {
+            "selected": "marl:outputs/exp011b/m-seed505-base/checkpoints/step-005001472.pt",
+            "P2": 0.08668359375,
+            "F01": 0.2109375,
+            "slots": 5001472,
+            "fallback": false
+          }
+        },
+        "checkpoints": [
+          {
+            "spec": "marl:outputs/exp011b/m-seed505-base/checkpoints/step-003001600.pt",
+            "slots": 3001600,
+            "starvation": 0,
+            "P2@6": 0.0008359375000000001,
+            "P2@8": 0.001984375,
+            "P2@10": 0.005585937500000001,
+            "P2@12": 0.012386718750000001,
+            "P2@16": 0.150447265625
+          },
+          {
+            "spec": "marl:outputs/exp011b/m-seed505-base/checkpoints/step-004001536.pt",
+            "slots": 4001536,
+            "starvation": 0,
+            "P2@6": 0.0011093750000000001,
+            "P2@8": 0.0025292968750000003,
+            "P2@10": 0.006611328125,
+            "P2@12": 0.01312109375,
+            "P2@16": 0.09789648437500001
+          },
+          {
+            "spec": "marl:outputs/exp011b/m-seed505-base/checkpoints/step-005001472.pt",
+            "slots": 5001472,
+            "starvation": 0,
+            "P2@6": 0.000771484375,
+            "P2@8": 0.0017148437500000002,
+            "P2@10": 0.004300781250000001,
+            "P2@12": 0.00987109375,
+            "P2@16": 0.08668359375
+          }
+        ]
+      }
+    },
+    "O": {
+      "101": {
+        "cells": {
+          "6": {
+            "selected": "marl:outputs/exp011/o-seed101/checkpoints/step-004001536.pt",
+            "P2": 0.00075390625,
+            "F01": 0.98828125,
+            "slots": 4001536,
+            "fallback": false
+          },
+          "8": {
+            "selected": "marl:outputs/exp011/o-seed101/checkpoints/step-004001536.pt",
+            "P2": 0.0015488281250000003,
+            "F01": 0.95703125,
+            "slots": 4001536,
+            "fallback": false
+          },
+          "10": {
+            "selected": "marl:outputs/exp011/o-seed101/checkpoints/step-004001536.pt",
+            "P2": 0.003576171875,
+            "F01": 0.8828125,
+            "slots": 4001536,
+            "fallback": false
+          },
+          "12": {
+            "selected": "marl:outputs/exp011/o-seed101/checkpoints/step-005001472.pt",
+            "P2": 0.007310546875000001,
+            "F01": 0.79296875,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "16": {
+            "selected": "marl:outputs/exp011/o-seed101/checkpoints/step-004001536.pt",
+            "P2": 0.068609375,
+            "F01": 0.26171875,
+            "slots": 4001536,
+            "fallback": false
+          }
+        },
+        "checkpoints": [
+          {
+            "spec": "marl:outputs/exp011/o-seed101/checkpoints/step-003001600.pt",
+            "slots": 3001600,
+            "starvation": 0,
+            "P2@6": 0.00140625,
+            "P2@8": 0.00248046875,
+            "P2@10": 0.0061464843750000005,
+            "P2@12": 0.013587890625000001,
+            "P2@16": 0.13426171874999998
+          },
+          {
+            "spec": "marl:outputs/exp011/o-seed101/checkpoints/step-004001536.pt",
+            "slots": 4001536,
+            "starvation": 0,
+            "P2@6": 0.00075390625,
+            "P2@8": 0.0015488281250000003,
+            "P2@10": 0.003576171875,
+            "P2@12": 0.0073906250000000005,
+            "P2@16": 0.068609375
+          },
+          {
+            "spec": "marl:outputs/exp011/o-seed101/checkpoints/step-005001472.pt",
+            "slots": 5001472,
+            "starvation": 0,
+            "P2@6": 0.00098046875,
+            "P2@8": 0.0017285156250000002,
+            "P2@10": 0.0037050781250000005,
+            "P2@12": 0.007310546875000001,
+            "P2@16": 0.077421875
+          }
+        ]
+      },
+      "202": {
+        "cells": {
+          "6": {
+            "selected": "marl:outputs/exp011/o-seed202/checkpoints/step-005001472.pt",
+            "P2": 0.0009453125,
+            "F01": 0.9765625,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "8": {
+            "selected": "marl:outputs/exp011/o-seed202/checkpoints/step-005001472.pt",
+            "P2": 0.0019863281250000002,
+            "F01": 0.94140625,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "10": {
+            "selected": "marl:outputs/exp011/o-seed202/checkpoints/step-005001472.pt",
+            "P2": 0.005082031250000001,
+            "F01": 0.859375,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "12": {
+            "selected": "marl:outputs/exp011/o-seed202/checkpoints/step-005001472.pt",
+            "P2": 0.011767578125,
+            "F01": 0.6875,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "16": {
+            "selected": "marl:outputs/exp011/o-seed202/checkpoints/step-005001472.pt",
+            "P2": 0.08634765625,
+            "F01": 0.13671875,
+            "slots": 5001472,
+            "fallback": false
+          }
+        },
+        "checkpoints": [
+          {
+            "spec": "marl:outputs/exp011/o-seed202/checkpoints/step-003001600.pt",
+            "slots": 3001600,
+            "starvation": 0,
+            "P2@6": 0.0011308593750000001,
+            "P2@8": 0.0030625,
+            "P2@10": 0.008835937500000002,
+            "P2@12": 0.02029296875,
+            "P2@16": 0.1424921875
+          },
+          {
+            "spec": "marl:outputs/exp011/o-seed202/checkpoints/step-004001536.pt",
+            "slots": 4001536,
+            "starvation": 0,
+            "P2@6": 0.001080078125,
+            "P2@8": 0.00247265625,
+            "P2@10": 0.006361328125,
+            "P2@12": 0.013761718750000002,
+            "P2@16": 0.114025390625
+          },
+          {
+            "spec": "marl:outputs/exp011/o-seed202/checkpoints/step-005001472.pt",
+            "slots": 5001472,
+            "starvation": 0,
+            "P2@6": 0.0009453125,
+            "P2@8": 0.0019863281250000002,
+            "P2@10": 0.005082031250000001,
+            "P2@12": 0.011767578125,
+            "P2@16": 0.08634765625
+          }
+        ]
+      },
+      "303": {
+        "cells": {
+          "6": {
+            "selected": "marl:outputs/exp011/o-seed303/checkpoints/step-003001600.pt",
+            "P2": 0.0012148437500000002,
+            "F01": 0.95703125,
+            "slots": 3001600,
+            "fallback": false
+          },
+          "8": {
+            "selected": "marl:outputs/exp011/o-seed303/checkpoints/step-005001472.pt",
+            "P2": 0.00223828125,
+            "F01": 0.92578125,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "10": {
+            "selected": "marl:outputs/exp011/o-seed303/checkpoints/step-005001472.pt",
+            "P2": 0.005912109375,
+            "F01": 0.80078125,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "12": {
+            "selected": "marl:outputs/exp011/o-seed303/checkpoints/step-004001536.pt",
+            "P2": 0.011685546875000001,
+            "F01": 0.66796875,
+            "slots": 4001536,
+            "fallback": false
+          },
+          "16": {
+            "selected": "marl:outputs/exp011/o-seed303/checkpoints/step-004001536.pt",
+            "P2": 0.084380859375,
+            "F01": 0.1796875,
+            "slots": 4001536,
+            "fallback": false
+          }
+        },
+        "checkpoints": [
+          {
+            "spec": "marl:outputs/exp011/o-seed303/checkpoints/step-003001600.pt",
+            "slots": 3001600,
+            "starvation": 0,
+            "P2@6": 0.0012148437500000002,
+            "P2@8": 0.0028750000000000004,
+            "P2@10": 0.007515625000000001,
+            "P2@12": 0.01572265625,
+            "P2@16": 0.1036015625
+          },
+          {
+            "spec": "marl:outputs/exp011/o-seed303/checkpoints/step-004001536.pt",
+            "slots": 4001536,
+            "starvation": 0,
+            "P2@6": 0.0014140625,
+            "P2@8": 0.0026640625,
+            "P2@10": 0.006082031250000001,
+            "P2@12": 0.011685546875000001,
+            "P2@16": 0.084380859375
+          },
+          {
+            "spec": "marl:outputs/exp011/o-seed303/checkpoints/step-005001472.pt",
+            "slots": 5001472,
+            "starvation": 0,
+            "P2@6": 0.0012304687500000002,
+            "P2@8": 0.00223828125,
+            "P2@10": 0.005912109375,
+            "P2@12": 0.012843750000000001,
+            "P2@16": 0.09736718750000001
+          }
+        ]
+      },
+      "404": {
+        "cells": {
+          "6": {
+            "selected": "marl:outputs/exp011b/o-seed404-base/checkpoints/step-005001472.pt",
+            "P2": 0.00059375,
+            "F01": 0.984375,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "8": {
+            "selected": "marl:outputs/exp011b/o-seed404-base/checkpoints/step-004001536.pt",
+            "P2": 0.001271484375,
+            "F01": 0.96875,
+            "slots": 4001536,
+            "fallback": false
+          },
+          "10": {
+            "selected": "marl:outputs/exp011b/o-seed404-base/checkpoints/step-004001536.pt",
+            "P2": 0.003345703125,
+            "F01": 0.8984375,
+            "slots": 4001536,
+            "fallback": false
+          },
+          "12": {
+            "selected": "marl:outputs/exp011b/o-seed404-base/checkpoints/step-004001536.pt",
+            "P2": 0.007396484375000001,
+            "F01": 0.76953125,
+            "slots": 4001536,
+            "fallback": false
+          },
+          "16": {
+            "selected": "marl:outputs/exp011b/o-seed404-base/checkpoints/step-005001472.pt",
+            "P2": 0.0844296875,
+            "F01": 0.20703125,
+            "slots": 5001472,
+            "fallback": false
+          }
+        },
+        "checkpoints": [
+          {
+            "spec": "marl:outputs/exp011b/o-seed404-base/checkpoints/step-003001600.pt",
+            "slots": 3001600,
+            "starvation": 0,
+            "P2@6": 0.0006835937500000001,
+            "P2@8": 0.0014609375,
+            "P2@10": 0.0042421875,
+            "P2@12": 0.010041015625,
+            "P2@16": 0.10770312499999998
+          },
+          {
+            "spec": "marl:outputs/exp011b/o-seed404-base/checkpoints/step-004001536.pt",
+            "slots": 4001536,
+            "starvation": 0,
+            "P2@6": 0.0006250000000000001,
+            "P2@8": 0.001271484375,
+            "P2@10": 0.003345703125,
+            "P2@12": 0.007396484375000001,
+            "P2@16": 0.09961914062499999
+          },
+          {
+            "spec": "marl:outputs/exp011b/o-seed404-base/checkpoints/step-005001472.pt",
+            "slots": 5001472,
+            "starvation": 0,
+            "P2@6": 0.00059375,
+            "P2@8": 0.001279296875,
+            "P2@10": 0.0034316406250000002,
+            "P2@12": 0.008417968750000001,
+            "P2@16": 0.0844296875
+          }
+        ]
+      },
+      "505": {
+        "cells": {
+          "6": {
+            "selected": "marl:outputs/exp011b/o-seed505-base/checkpoints/step-003001600.pt",
+            "P2": 0.0008398437500000001,
+            "F01": 0.984375,
+            "slots": 3001600,
+            "fallback": false
+          },
+          "8": {
+            "selected": "marl:outputs/exp011b/o-seed505-base/checkpoints/step-005001472.pt",
+            "P2": 0.001734375,
+            "F01": 0.94921875,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "10": {
+            "selected": "marl:outputs/exp011b/o-seed505-base/checkpoints/step-005001472.pt",
+            "P2": 0.0042480468750000005,
+            "F01": 0.875,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "12": {
+            "selected": "marl:outputs/exp011b/o-seed505-base/checkpoints/step-005001472.pt",
+            "P2": 0.0091015625,
+            "F01": 0.734375,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "16": {
+            "selected": "marl:outputs/exp011b/o-seed505-base/checkpoints/step-004001536.pt",
+            "P2": 0.08309375,
+            "F01": 0.21875,
+            "slots": 4001536,
+            "fallback": false
+          }
+        },
+        "checkpoints": [
+          {
+            "spec": "marl:outputs/exp011b/o-seed505-base/checkpoints/step-003001600.pt",
+            "slots": 3001600,
+            "starvation": 0,
+            "P2@6": 0.0008398437500000001,
+            "P2@8": 0.0017812500000000003,
+            "P2@10": 0.004857421875,
+            "P2@12": 0.010373046875000002,
+            "P2@16": 0.10194140625
+          },
+          {
+            "spec": "marl:outputs/exp011b/o-seed505-base/checkpoints/step-004001536.pt",
+            "slots": 4001536,
+            "starvation": 0,
+            "P2@6": 0.00104296875,
+            "P2@8": 0.00196875,
+            "P2@10": 0.004587890625,
+            "P2@12": 0.009582031250000001,
+            "P2@16": 0.08309375
+          },
+          {
+            "spec": "marl:outputs/exp011b/o-seed505-base/checkpoints/step-005001472.pt",
+            "slots": 5001472,
+            "starvation": 0,
+            "P2@6": 0.000896484375,
+            "P2@8": 0.001734375,
+            "P2@10": 0.0042480468750000005,
+            "P2@12": 0.0091015625,
+            "P2@16": 0.09404101562499999
+          }
+        ]
+      }
+    },
+    "U": {
+      "101": {
+        "cells": {
+          "6": {
+            "selected": "marl:outputs/exp011/u-seed101/checkpoints/step-003001600.pt",
+            "P2": 0.0008457031250000001,
+            "F01": 0.98046875,
+            "slots": 3001600,
+            "fallback": false
+          },
+          "8": {
+            "selected": "marl:outputs/exp011/u-seed101/checkpoints/step-004001536.pt",
+            "P2": 0.002,
+            "F01": 0.93359375,
+            "slots": 4001536,
+            "fallback": false
+          },
+          "10": {
+            "selected": "marl:outputs/exp011/u-seed101/checkpoints/step-004001536.pt",
+            "P2": 0.005197265625000001,
+            "F01": 0.83203125,
+            "slots": 4001536,
+            "fallback": false
+          },
+          "12": {
+            "selected": "marl:outputs/exp011/u-seed101/checkpoints/step-004001536.pt",
+            "P2": 0.011685546875000001,
+            "F01": 0.7109375,
+            "slots": 4001536,
+            "fallback": false
+          },
+          "16": {
+            "selected": "marl:outputs/exp011/u-seed101/checkpoints/step-004001536.pt",
+            "P2": 0.100806640625,
+            "F01": 0.125,
+            "slots": 4001536,
+            "fallback": false
+          }
+        },
+        "checkpoints": [
+          {
+            "spec": "marl:outputs/exp011/u-seed101/checkpoints/step-003001600.pt",
+            "slots": 3001600,
+            "starvation": 0,
+            "P2@6": 0.0008457031250000001,
+            "P2@8": 0.0020078125,
+            "P2@10": 0.005617187500000001,
+            "P2@12": 0.012898437500000002,
+            "P2@16": 0.12313867187500002
+          },
+          {
+            "spec": "marl:outputs/exp011/u-seed101/checkpoints/step-004001536.pt",
+            "slots": 4001536,
+            "starvation": 0,
+            "P2@6": 0.0009511718750000001,
+            "P2@8": 0.002,
+            "P2@10": 0.005197265625000001,
+            "P2@12": 0.011685546875000001,
+            "P2@16": 0.100806640625
+          },
+          {
+            "spec": "marl:outputs/exp011/u-seed101/checkpoints/step-005001472.pt",
+            "slots": 5001472,
+            "starvation": 51,
+            "P2@6": 0.0006523437499999999,
+            "P2@8": 0.0013886718750000001,
+            "P2@10": 0.007244140625000001,
+            "P2@12": 0.01153515625,
+            "P2@16": 0.09258203125
+          }
+        ]
+      },
+      "202": {
+        "cells": {
+          "6": {
+            "selected": "marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt",
+            "P2": 0.0005800781250000001,
+            "F01": 0.98828125,
+            "slots": 4001536,
+            "fallback": false
+          },
+          "8": {
+            "selected": "marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt",
+            "P2": 0.0012539062500000002,
+            "F01": 0.96875,
+            "slots": 4001536,
+            "fallback": false
+          },
+          "10": {
+            "selected": "marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt",
+            "P2": 0.003251953125,
+            "F01": 0.88671875,
+            "slots": 4001536,
+            "fallback": false
+          },
+          "12": {
+            "selected": "marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt",
+            "P2": 0.007343750000000001,
+            "F01": 0.76953125,
+            "slots": 4001536,
+            "fallback": false
+          },
+          "16": {
+            "selected": "marl:outputs/exp011/u-seed202/checkpoints/step-005001472.pt",
+            "P2": 0.06621093750000001,
+            "F01": 0.22265625,
+            "slots": 5001472,
+            "fallback": false
+          }
+        },
+        "checkpoints": [
+          {
+            "spec": "marl:outputs/exp011/u-seed202/checkpoints/step-003001600.pt",
+            "slots": 3001600,
+            "starvation": 0,
+            "P2@6": 0.000701171875,
+            "P2@8": 0.00141796875,
+            "P2@10": 0.0037265625,
+            "P2@12": 0.008533203125,
+            "P2@16": 0.080333984375
+          },
+          {
+            "spec": "marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt",
+            "slots": 4001536,
+            "starvation": 0,
+            "P2@6": 0.0005800781250000001,
+            "P2@8": 0.0012539062500000002,
+            "P2@10": 0.003251953125,
+            "P2@12": 0.007343750000000001,
+            "P2@16": 0.07133984374999999
+          },
+          {
+            "spec": "marl:outputs/exp011/u-seed202/checkpoints/step-005001472.pt",
+            "slots": 5001472,
+            "starvation": 0,
+            "P2@6": 0.0006816406250000001,
+            "P2@8": 0.0013847656250000001,
+            "P2@10": 0.0037265625000000003,
+            "P2@12": 0.008015625,
+            "P2@16": 0.06621093750000001
+          }
+        ]
+      },
+      "303": {
+        "cells": {
+          "6": {
+            "selected": "marl:outputs/exp011/u-seed303/checkpoints/step-004001536.pt",
+            "P2": 0.0006367187499999999,
+            "F01": 0.984375,
+            "slots": 4001536,
+            "fallback": false
+          },
+          "8": {
+            "selected": "marl:outputs/exp011/u-seed303/checkpoints/step-005001472.pt",
+            "P2": 0.0014023437500000002,
+            "F01": 0.9609375,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "10": {
+            "selected": "marl:outputs/exp011/u-seed303/checkpoints/step-005001472.pt",
+            "P2": 0.0033164062500000003,
+            "F01": 0.8984375,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "12": {
+            "selected": "marl:outputs/exp011/u-seed303/checkpoints/step-005001472.pt",
+            "P2": 0.007046875,
+            "F01": 0.7890625,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "16": {
+            "selected": "marl:outputs/exp011/u-seed303/checkpoints/step-004001536.pt",
+            "P2": 0.06091015625,
+            "F01": 0.24609375,
+            "slots": 4001536,
+            "fallback": false
+          }
+        },
+        "checkpoints": [
+          {
+            "spec": "marl:outputs/exp011/u-seed303/checkpoints/step-003001600.pt",
+            "slots": 3001600,
+            "starvation": 0,
+            "P2@6": 0.0008828125,
+            "P2@8": 0.0019472656250000002,
+            "P2@10": 0.005291015625000001,
+            "P2@12": 0.011753906250000001,
+            "P2@16": 0.1111953125
+          },
+          {
+            "spec": "marl:outputs/exp011/u-seed303/checkpoints/step-004001536.pt",
+            "slots": 4001536,
+            "starvation": 0,
+            "P2@6": 0.0006367187499999999,
+            "P2@8": 0.0014062500000000002,
+            "P2@10": 0.0034335937500000004,
+            "P2@12": 0.007347656250000001,
+            "P2@16": 0.06091015625
+          },
+          {
+            "spec": "marl:outputs/exp011/u-seed303/checkpoints/step-005001472.pt",
+            "slots": 5001472,
+            "starvation": 0,
+            "P2@6": 0.00066796875,
+            "P2@8": 0.0014023437500000002,
+            "P2@10": 0.0033164062500000003,
+            "P2@12": 0.007046875,
+            "P2@16": 0.10245312499999999
+          }
+        ]
+      },
+      "404": {
+        "cells": {
+          "6": {
+            "selected": "marl:outputs/exp011b/u-seed404-base/checkpoints/step-005001472.pt",
+            "P2": 0.000640625,
+            "F01": 0.98828125,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "8": {
+            "selected": "marl:outputs/exp011b/u-seed404-base/checkpoints/step-004001536.pt",
+            "P2": 0.0012304687500000002,
+            "F01": 0.96484375,
+            "slots": 4001536,
+            "fallback": false
+          },
+          "10": {
+            "selected": "marl:outputs/exp011b/u-seed404-base/checkpoints/step-004001536.pt",
+            "P2": 0.0027343750000000003,
+            "F01": 0.9140625,
+            "slots": 4001536,
+            "fallback": false
+          },
+          "12": {
+            "selected": "marl:outputs/exp011b/u-seed404-base/checkpoints/step-004001536.pt",
+            "P2": 0.0049101562500000005,
+            "F01": 0.84375,
+            "slots": 4001536,
+            "fallback": false
+          },
+          "16": {
+            "selected": "marl:outputs/exp011b/u-seed404-base/checkpoints/step-004001536.pt",
+            "P2": 0.05176953125,
+            "F01": 0.34375,
+            "slots": 4001536,
+            "fallback": false
+          }
+        },
+        "checkpoints": [
+          {
+            "spec": "marl:outputs/exp011b/u-seed404-base/checkpoints/step-003001600.pt",
+            "slots": 3001600,
+            "starvation": 0,
+            "P2@6": 0.0008613281250000001,
+            "P2@8": 0.0018476562500000003,
+            "P2@10": 0.004970703125,
+            "P2@12": 0.010082031250000002,
+            "P2@16": 0.08577734375000001
+          },
+          {
+            "spec": "marl:outputs/exp011b/u-seed404-base/checkpoints/step-004001536.pt",
+            "slots": 4001536,
+            "starvation": 0,
+            "P2@6": 0.000658203125,
+            "P2@8": 0.0012304687500000002,
+            "P2@10": 0.0027343750000000003,
+            "P2@12": 0.0049101562500000005,
+            "P2@16": 0.05176953125
+          },
+          {
+            "spec": "marl:outputs/exp011b/u-seed404-base/checkpoints/step-005001472.pt",
+            "slots": 5001472,
+            "starvation": 0,
+            "P2@6": 0.000640625,
+            "P2@8": 0.0012734375,
+            "P2@10": 0.0031328125,
+            "P2@12": 0.00569140625,
+            "P2@16": 0.20246875
+          }
+        ]
+      },
+      "505": {
+        "cells": {
+          "6": {
+            "selected": "marl:outputs/exp011b/u-seed505-base/checkpoints/step-004001536.pt",
+            "P2": 0.0005703125000000001,
+            "F01": 0.98828125,
+            "slots": 4001536,
+            "fallback": false
+          },
+          "8": {
+            "selected": "marl:outputs/exp011b/u-seed505-base/checkpoints/step-004001536.pt",
+            "P2": 0.0011679687500000002,
+            "F01": 0.9609375,
+            "slots": 4001536,
+            "fallback": false
+          },
+          "10": {
+            "selected": "marl:outputs/exp011b/u-seed505-base/checkpoints/step-004001536.pt",
+            "P2": 0.0033046875000000003,
+            "F01": 0.89453125,
+            "slots": 4001536,
+            "fallback": false
+          },
+          "12": {
+            "selected": "marl:outputs/exp011b/u-seed505-base/checkpoints/step-004001536.pt",
+            "P2": 0.007066406250000001,
+            "F01": 0.77734375,
+            "slots": 4001536,
+            "fallback": false
+          },
+          "16": {
+            "selected": "marl:outputs/exp011b/u-seed505-base/checkpoints/step-005001472.pt",
+            "P2": 0.07356640625,
+            "F01": 0.22265625,
+            "slots": 5001472,
+            "fallback": false
+          }
+        },
+        "checkpoints": [
+          {
+            "spec": "marl:outputs/exp011b/u-seed505-base/checkpoints/step-003001600.pt",
+            "slots": 3001600,
+            "starvation": 0,
+            "P2@6": 0.000775390625,
+            "P2@8": 0.00148828125,
+            "P2@10": 0.003923828125000001,
+            "P2@12": 0.008464843750000001,
+            "P2@16": 0.080365234375
+          },
+          {
+            "spec": "marl:outputs/exp011b/u-seed505-base/checkpoints/step-004001536.pt",
+            "slots": 4001536,
+            "starvation": 0,
+            "P2@6": 0.0005703125000000001,
+            "P2@8": 0.0011679687500000002,
+            "P2@10": 0.0033046875000000003,
+            "P2@12": 0.007066406250000001,
+            "P2@16": 0.07800390625
+          },
+          {
+            "spec": "marl:outputs/exp011b/u-seed505-base/checkpoints/step-005001472.pt",
+            "slots": 5001472,
+            "starvation": 0,
+            "P2@6": 0.000763671875,
+            "P2@8": 0.0015214843750000003,
+            "P2@10": 0.0038066406250000006,
+            "P2@12": 0.007644531250000001,
+            "P2@16": 0.07356640625
+          }
+        ]
+      }
+    },
+    "U0": {
+      "101": {
+        "cells": {
+          "8": {
+            "selected": "marl:outputs/exp011/u0-seed101/checkpoints/step-005001472.pt",
+            "P2": 0.001740234375,
+            "F01": 0.9453125,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "10": {
+            "selected": "marl:outputs/exp011/u0-seed101/checkpoints/step-005001472.pt",
+            "P2": 0.0043359375,
+            "F01": 0.86328125,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "12": {
+            "selected": "marl:outputs/exp011/u0-seed101/checkpoints/step-005001472.pt",
+            "P2": 0.0087265625,
+            "F01": 0.76171875,
+            "slots": 5001472,
+            "fallback": false
+          }
+        },
+        "checkpoints": [
+          {
+            "spec": "marl:outputs/exp011/u0-seed101/checkpoints/step-003001600.pt",
+            "slots": 3001600,
+            "starvation": 0,
+            "P2@8": 0.002427734375,
+            "P2@10": 0.005638671875000001,
+            "P2@12": 0.011683593750000002
+          },
+          {
+            "spec": "marl:outputs/exp011/u0-seed101/checkpoints/step-004001536.pt",
+            "slots": 4001536,
+            "starvation": 0,
+            "P2@8": 0.001802734375,
+            "P2@10": 0.0045234375000000005,
+            "P2@12": 0.009986328125
+          },
+          {
+            "spec": "marl:outputs/exp011/u0-seed101/checkpoints/step-005001472.pt",
+            "slots": 5001472,
+            "starvation": 0,
+            "P2@8": 0.001740234375,
+            "P2@10": 0.0043359375,
+            "P2@12": 0.0087265625
+          }
+        ]
+      },
+      "202": {
+        "cells": {
+          "8": {
+            "selected": "marl:outputs/exp011/u0-seed202/checkpoints/step-005001472.pt",
+            "P2": 0.0018320312500000003,
+            "F01": 0.953125,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "10": {
+            "selected": "marl:outputs/exp011/u0-seed202/checkpoints/step-005001472.pt",
+            "P2": 0.0038828125000000004,
+            "F01": 0.87890625,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "12": {
+            "selected": "marl:outputs/exp011/u0-seed202/checkpoints/step-005001472.pt",
+            "P2": 0.007068359375000001,
+            "F01": 0.77734375,
+            "slots": 5001472,
+            "fallback": false
+          }
+        },
+        "checkpoints": [
+          {
+            "spec": "marl:outputs/exp011/u0-seed202/checkpoints/step-003001600.pt",
+            "slots": 3001600,
+            "starvation": 0,
+            "P2@8": 0.00366015625,
+            "P2@10": 0.009523437500000002,
+            "P2@12": 0.019646484375000002
+          },
+          {
+            "spec": "marl:outputs/exp011/u0-seed202/checkpoints/step-004001536.pt",
+            "slots": 4001536,
+            "starvation": 0,
+            "P2@8": 0.003669921875,
+            "P2@10": 0.008232421875,
+            "P2@12": 0.01569921875
+          },
+          {
+            "spec": "marl:outputs/exp011/u0-seed202/checkpoints/step-005001472.pt",
+            "slots": 5001472,
+            "starvation": 0,
+            "P2@8": 0.0018320312500000003,
+            "P2@10": 0.0038828125000000004,
+            "P2@12": 0.007068359375000001
+          }
+        ]
+      },
+      "303": {
+        "cells": {
+          "8": {
+            "selected": "marl:outputs/exp011/u0-seed303/checkpoints/step-004001536.pt",
+            "P2": 0.0019101562500000002,
+            "F01": 0.94921875,
+            "slots": 4001536,
+            "fallback": false
+          },
+          "10": {
+            "selected": "marl:outputs/exp011/u0-seed303/checkpoints/step-005001472.pt",
+            "P2": 0.00469921875,
+            "F01": 0.8515625,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "12": {
+            "selected": "marl:outputs/exp011/u0-seed303/checkpoints/step-004001536.pt",
+            "P2": 0.009914062500000001,
+            "F01": 0.734375,
+            "slots": 4001536,
+            "fallback": false
+          }
+        },
+        "checkpoints": [
+          {
+            "spec": "marl:outputs/exp011/u0-seed303/checkpoints/step-003001600.pt",
+            "slots": 3001600,
+            "starvation": 0,
+            "P2@8": 0.0022089843750000004,
+            "P2@10": 0.00565234375,
+            "P2@12": 0.012197265625000002
+          },
+          {
+            "spec": "marl:outputs/exp011/u0-seed303/checkpoints/step-004001536.pt",
+            "slots": 4001536,
+            "starvation": 0,
+            "P2@8": 0.0019101562500000002,
+            "P2@10": 0.004857421875,
+            "P2@12": 0.009914062500000001
+          },
+          {
+            "spec": "marl:outputs/exp011/u0-seed303/checkpoints/step-005001472.pt",
+            "slots": 5001472,
+            "starvation": 0,
+            "P2@8": 0.0019707031250000002,
+            "P2@10": 0.00469921875,
+            "P2@12": 0.010134765625
+          }
+        ]
+      },
+      "404": {
+        "cells": {
+          "8": {
+            "selected": "marl:outputs/exp011b/u0-seed404-base/checkpoints/step-003001600.pt",
+            "P2": 0.0018574218750000001,
+            "F01": 0.9375,
+            "slots": 3001600,
+            "fallback": false
+          },
+          "10": {
+            "selected": "marl:outputs/exp011b/u0-seed404-base/checkpoints/step-003001600.pt",
+            "P2": 0.00442578125,
+            "F01": 0.859375,
+            "slots": 3001600,
+            "fallback": false
+          },
+          "12": {
+            "selected": "marl:outputs/exp011b/u0-seed404-base/checkpoints/step-003001600.pt",
+            "P2": 0.009199218750000002,
+            "F01": 0.734375,
+            "slots": 3001600,
+            "fallback": false
+          }
+        },
+        "checkpoints": [
+          {
+            "spec": "marl:outputs/exp011b/u0-seed404-base/checkpoints/step-003001600.pt",
+            "slots": 3001600,
+            "starvation": 0,
+            "P2@8": 0.0018574218750000001,
+            "P2@10": 0.00442578125,
+            "P2@12": 0.009199218750000002
+          },
+          {
+            "spec": "marl:outputs/exp011b/u0-seed404-base/checkpoints/step-004001536.pt",
+            "slots": 4001536,
+            "starvation": 0,
+            "P2@8": 0.0018750000000000004,
+            "P2@10": 0.0047597656250000005,
+            "P2@12": 0.010117187500000001
+          },
+          {
+            "spec": "marl:outputs/exp011b/u0-seed404-base/checkpoints/step-005001472.pt",
+            "slots": 5001472,
+            "starvation": 0,
+            "P2@8": 0.0019140625,
+            "P2@10": 0.004892578125,
+            "P2@12": 0.01034765625
+          }
+        ]
+      },
+      "505": {
+        "cells": {
+          "8": {
+            "selected": "marl:outputs/exp011b/u0-seed505-base/checkpoints/step-005001472.pt",
+            "P2": 0.0015898437500000001,
+            "F01": 0.94921875,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "10": {
+            "selected": "marl:outputs/exp011b/u0-seed505-base/checkpoints/step-005001472.pt",
+            "P2": 0.004171875,
+            "F01": 0.8671875,
+            "slots": 5001472,
+            "fallback": false
+          },
+          "12": {
+            "selected": "marl:outputs/exp011b/u0-seed505-base/checkpoints/step-005001472.pt",
+            "P2": 0.008765625,
+            "F01": 0.765625,
+            "slots": 5001472,
+            "fallback": false
+          }
+        },
+        "checkpoints": [
+          {
+            "spec": "marl:outputs/exp011b/u0-seed505-base/checkpoints/step-003001600.pt",
+            "slots": 3001600,
+            "starvation": 0,
+            "P2@8": 0.0020449218750000003,
+            "P2@10": 0.0054140625000000005,
+            "P2@12": 0.011939453125
+          },
+          {
+            "spec": "marl:outputs/exp011b/u0-seed505-base/checkpoints/step-004001536.pt",
+            "slots": 4001536,
+            "starvation": 0,
+            "P2@8": 0.001748046875,
+            "P2@10": 0.004623046875,
+            "P2@12": 0.010001953125
+          },
+          {
+            "spec": "marl:outputs/exp011b/u0-seed505-base/checkpoints/step-005001472.pt",
+            "slots": 5001472,
+            "starvation": 0,
+            "P2@8": 0.0015898437500000001,
+            "P2@10": 0.004171875,
+            "P2@12": 0.008765625
+          }
+        ]
+      }
+    }
+  },
+  "budget_effect_P2": {
+    "L": {
+      "6": -8.984375000000001e-05,
+      "8": -0.00021914062500000007,
+      "10": -0.0005992187500000003,
+      "12": -0.0016507812500000003,
+      "16": -0.013807812499999999
+    },
+    "M": {
+      "6": -7.421875000000007e-05,
+      "8": -0.0002734375000000001,
+      "10": -0.0007007812500000002,
+      "12": -0.0018484375000000005,
+      "16": -0.019778125
+    },
+    "O": {
+      "6": -0.00023359375000000002,
+      "8": -0.0004988281249999999,
+      "10": -0.0012671875000000003,
+      "12": -0.0028500000000000005,
+      "16": -0.0194765625
+    },
+    "U": {
+      "6": -5.585937500000001e-05,
+      "8": -0.00019140625000000003,
+      "10": -0.00034296875000000023,
+      "12": -0.0007910156250000002,
+      "16": -0.009151953125000004
+    },
+    "U0": {
+      "8": -0.00020820312499999997,
+      "10": -0.0005226562499999999,
+      "12": -0.0013000000000000004
+    }
+  }
+}

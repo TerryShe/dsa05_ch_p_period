@@ -1,0 +1,2325 @@
+{
+  "plan": {
+    "groups": {
+      "U": [
+        {
+          "6": "marl:outputs/exp011b/u-seed101/checkpoints/step-010001152.pt",
+          "8": "marl:outputs/exp011b/u-seed101/checkpoints/step-010001152.pt",
+          "10": "marl:outputs/exp011b/u-seed101/checkpoints/step-010001152.pt",
+          "12": "marl:outputs/exp011b/u-seed101/checkpoints/step-006001408.pt",
+          "16": "marl:outputs/exp011b/u-seed101/checkpoints/step-010001152.pt"
+        },
+        {
+          "6": "marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt",
+          "8": "marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt",
+          "10": "marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt",
+          "12": "marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt",
+          "16": "marl:outputs/exp011b/u-seed202/checkpoints/step-008001280.pt"
+        },
+        {
+          "6": "marl:outputs/exp011b/u-seed303/checkpoints/step-008001280.pt",
+          "8": "marl:outputs/exp011b/u-seed303/checkpoints/step-008001280.pt",
+          "10": "marl:outputs/exp011/u-seed303/checkpoints/step-005001472.pt",
+          "12": "marl:outputs/exp011/u-seed303/checkpoints/step-005001472.pt",
+          "16": "marl:outputs/exp011b/u-seed303/checkpoints/step-006001408.pt"
+        },
+        {
+          "6": "marl:outputs/exp011b/u-seed404-base/checkpoints/step-005001472.pt",
+          "8": "marl:outputs/exp011b/u-seed404-base/checkpoints/step-004001536.pt",
+          "10": "marl:outputs/exp011b/u-seed404-base/checkpoints/step-004001536.pt",
+          "12": "marl:outputs/exp011b/u-seed404-base/checkpoints/step-004001536.pt",
+          "16": "marl:outputs/exp011b/u-seed404-base/checkpoints/step-004001536.pt"
+        },
+        {
+          "6": "marl:outputs/exp011b/u-seed505-base/checkpoints/step-004001536.pt",
+          "8": "marl:outputs/exp011b/u-seed505-base/checkpoints/step-004001536.pt",
+          "10": "marl:outputs/exp011b/u-seed505-base/checkpoints/step-004001536.pt",
+          "12": "marl:outputs/exp011b/u-seed505-base/checkpoints/step-004001536.pt",
+          "16": "marl:outputs/exp011b/u-seed505-base/checkpoints/step-005001472.pt"
+        }
+      ],
+      "M": [
+        {
+          "6": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+          "8": "marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+          "10": "marl:outputs/exp011b/m-seed101/checkpoints/step-010001152.pt",
+          "12": "marl:outputs/exp011b/m-seed101/checkpoints/step-010001152.pt",
+          "16": "marl:outputs/exp011b/m-seed101/checkpoints/step-010001152.pt"
+        },
+        {
+          "6": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+          "8": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+          "10": "marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+          "12": "marl:outputs/exp011b/m-seed202/checkpoints/step-010001152.pt",
+          "16": "marl:outputs/exp011b/m-seed202/checkpoints/step-010001152.pt"
+        },
+        {
+          "6": "marl:outputs/exp011b/m-seed303/checkpoints/step-008001280.pt",
+          "8": "marl:outputs/exp011b/m-seed303/checkpoints/step-008001280.pt",
+          "10": "marl:outputs/exp011b/m-seed303/checkpoints/step-008001280.pt",
+          "12": "marl:outputs/exp011b/m-seed303/checkpoints/step-008001280.pt",
+          "16": "marl:outputs/exp011b/m-seed303/checkpoints/step-008001280.pt"
+        },
+        {
+          "6": "marl:outputs/exp011b/m-seed404/checkpoints/step-008001280.pt",
+          "8": "marl:outputs/exp011b/m-seed404/checkpoints/step-008001280.pt",
+          "10": "marl:outputs/exp011b/m-seed404/checkpoints/step-008001280.pt",
+          "12": "marl:outputs/exp011b/m-seed404/checkpoints/step-008001280.pt",
+          "16": "marl:outputs/exp011b/m-seed404/checkpoints/step-008001280.pt"
+        },
+        {
+          "6": "marl:outputs/exp011b/m-seed505-base/checkpoints/step-005001472.pt",
+          "8": "marl:outputs/exp011b/m-seed505/checkpoints/step-006001408.pt",
+          "10": "marl:outputs/exp011b/m-seed505-base/checkpoints/step-005001472.pt",
+          "12": "marl:outputs/exp011b/m-seed505/checkpoints/step-006001408.pt",
+          "16": "marl:outputs/exp011b/m-seed505/checkpoints/step-008001280.pt"
+        }
+      ],
+      "M+Y": [
+        {
+          "6": "yield[theta=-10]@marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+          "8": "yield[theta=-10]@marl:outputs/exp009-step2/s1-seed101/checkpoints/step-004001536.pt",
+          "10": "yield[theta=-10]@marl:outputs/exp011b/m-seed101/checkpoints/step-010001152.pt",
+          "12": "yield[theta=-10]@marl:outputs/exp011b/m-seed101/checkpoints/step-010001152.pt",
+          "16": "yield[theta=-10]@marl:outputs/exp011b/m-seed101/checkpoints/step-010001152.pt"
+        },
+        {
+          "6": "yield[theta=-10]@marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+          "8": "yield[theta=-10]@marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+          "10": "yield[theta=-10]@marl:outputs/exp009-step2/s1-seed202/checkpoints/step-005001472.pt",
+          "12": "yield[theta=-10]@marl:outputs/exp011b/m-seed202/checkpoints/step-010001152.pt",
+          "16": "yield[theta=-10]@marl:outputs/exp011b/m-seed202/checkpoints/step-010001152.pt"
+        },
+        {
+          "6": "yield[theta=-10]@marl:outputs/exp011b/m-seed303/checkpoints/step-008001280.pt",
+          "8": "yield[theta=-10]@marl:outputs/exp011b/m-seed303/checkpoints/step-008001280.pt",
+          "10": "yield[theta=-10]@marl:outputs/exp011b/m-seed303/checkpoints/step-008001280.pt",
+          "12": "yield[theta=-10]@marl:outputs/exp011b/m-seed303/checkpoints/step-008001280.pt",
+          "16": "yield[theta=-10]@marl:outputs/exp011b/m-seed303/checkpoints/step-008001280.pt"
+        },
+        {
+          "6": "yield[theta=-10]@marl:outputs/exp011b/m-seed404/checkpoints/step-008001280.pt",
+          "8": "yield[theta=-10]@marl:outputs/exp011b/m-seed404/checkpoints/step-008001280.pt",
+          "10": "yield[theta=-10]@marl:outputs/exp011b/m-seed404/checkpoints/step-008001280.pt",
+          "12": "yield[theta=-10]@marl:outputs/exp011b/m-seed404/checkpoints/step-008001280.pt",
+          "16": "yield[theta=-10]@marl:outputs/exp011b/m-seed404/checkpoints/step-008001280.pt"
+        },
+        {
+          "6": "yield[theta=-10]@marl:outputs/exp011b/m-seed505-base/checkpoints/step-005001472.pt",
+          "8": "yield[theta=-10]@marl:outputs/exp011b/m-seed505/checkpoints/step-006001408.pt",
+          "10": "yield[theta=-10]@marl:outputs/exp011b/m-seed505-base/checkpoints/step-005001472.pt",
+          "12": "yield[theta=-10]@marl:outputs/exp011b/m-seed505/checkpoints/step-006001408.pt",
+          "16": "yield[theta=-10]@marl:outputs/exp011b/m-seed505/checkpoints/step-008001280.pt"
+        }
+      ],
+      "O": [
+        {
+          "6": "marl:outputs/exp011b/o-seed101/checkpoints/step-010001152.pt",
+          "8": "marl:outputs/exp011b/o-seed101/checkpoints/step-010001152.pt",
+          "10": "marl:outputs/exp011b/o-seed101/checkpoints/step-010001152.pt",
+          "12": "marl:outputs/exp011b/o-seed101/checkpoints/step-010001152.pt",
+          "16": "marl:outputs/exp011b/o-seed101/checkpoints/step-010001152.pt"
+        },
+        {
+          "6": "marl:outputs/exp011b/o-seed202/checkpoints/step-010001152.pt",
+          "8": "marl:outputs/exp011b/o-seed202/checkpoints/step-008001280.pt",
+          "10": "marl:outputs/exp011b/o-seed202/checkpoints/step-008001280.pt",
+          "12": "marl:outputs/exp011b/o-seed202/checkpoints/step-010001152.pt",
+          "16": "marl:outputs/exp011b/o-seed202/checkpoints/step-010001152.pt"
+        },
+        {
+          "6": "marl:outputs/exp011b/o-seed303/checkpoints/step-010001152.pt",
+          "8": "marl:outputs/exp011b/o-seed303/checkpoints/step-010001152.pt",
+          "10": "marl:outputs/exp011b/o-seed303/checkpoints/step-008001280.pt",
+          "12": "marl:outputs/exp011b/o-seed303/checkpoints/step-008001280.pt",
+          "16": "marl:outputs/exp011b/o-seed303/checkpoints/step-008001280.pt"
+        },
+        {
+          "6": "marl:outputs/exp011b/o-seed404/checkpoints/step-008001280.pt",
+          "8": "marl:outputs/exp011b/o-seed404/checkpoints/step-008001280.pt",
+          "10": "marl:outputs/exp011b/o-seed404/checkpoints/step-008001280.pt",
+          "12": "marl:outputs/exp011b/o-seed404/checkpoints/step-008001280.pt",
+          "16": "marl:outputs/exp011b/o-seed404/checkpoints/step-010001152.pt"
+        },
+        {
+          "6": "marl:outputs/exp011b/o-seed505/checkpoints/step-010001152.pt",
+          "8": "marl:outputs/exp011b/o-seed505/checkpoints/step-006001408.pt",
+          "10": "marl:outputs/exp011b/o-seed505/checkpoints/step-006001408.pt",
+          "12": "marl:outputs/exp011b/o-seed505/checkpoints/step-006001408.pt",
+          "16": "marl:outputs/exp011b/o-seed505/checkpoints/step-006001408.pt"
+        }
+      ],
+      "L": [
+        {
+          "6": "marl:outputs/exp011b/l-seed101/checkpoints/step-008001280.pt",
+          "8": "marl:outputs/exp011b/l-seed101/checkpoints/step-010001152.pt",
+          "10": "marl:outputs/exp011b/l-seed101/checkpoints/step-010001152.pt",
+          "12": "marl:outputs/exp011b/l-seed101/checkpoints/step-010001152.pt",
+          "16": "marl:outputs/exp011b/l-seed101/checkpoints/step-010001152.pt"
+        },
+        {
+          "6": "marl:outputs/exp011b/l-seed202/checkpoints/step-006001408.pt",
+          "8": "marl:outputs/exp011b/l-seed202/checkpoints/step-006001408.pt",
+          "10": "marl:outputs/exp011b/l-seed202/checkpoints/step-006001408.pt",
+          "12": "marl:outputs/exp011b/l-seed202/checkpoints/step-010001152.pt",
+          "16": "marl:outputs/exp011b/l-seed202/checkpoints/step-010001152.pt"
+        },
+        {
+          "6": "marl:outputs/exp011/l-seed303/checkpoints/step-005001472.pt",
+          "8": "marl:outputs/exp011/l-seed303/checkpoints/step-005001472.pt",
+          "10": "marl:outputs/exp011/l-seed303/checkpoints/step-005001472.pt",
+          "12": "marl:outputs/exp011/l-seed303/checkpoints/step-005001472.pt",
+          "16": "marl:outputs/exp011b/l-seed303/checkpoints/step-006001408.pt"
+        },
+        {
+          "6": "marl:outputs/exp011b/l-seed404-base/checkpoints/step-005001472.pt",
+          "8": "marl:outputs/exp011b/l-seed404-base/checkpoints/step-005001472.pt",
+          "10": "marl:outputs/exp011b/l-seed404-base/checkpoints/step-005001472.pt",
+          "12": "marl:outputs/exp011b/l-seed404-base/checkpoints/step-005001472.pt",
+          "16": "marl:outputs/exp011b/l-seed404/checkpoints/step-008001280.pt"
+        },
+        {
+          "6": "marl:outputs/exp011b/l-seed505-base/checkpoints/step-005001472.pt",
+          "8": "marl:outputs/exp011b/l-seed505/checkpoints/step-008001280.pt",
+          "10": "marl:outputs/exp011b/l-seed505/checkpoints/step-008001280.pt",
+          "12": "marl:outputs/exp011b/l-seed505/checkpoints/step-008001280.pt",
+          "16": "marl:outputs/exp011b/l-seed505/checkpoints/step-008001280.pt"
+        }
+      ],
+      "U-hide-all": [
+        {
+          "6": "summary[hide=all]@marl:outputs/exp011b/u-seed101/checkpoints/step-010001152.pt",
+          "8": "summary[hide=all]@marl:outputs/exp011b/u-seed101/checkpoints/step-010001152.pt",
+          "10": "summary[hide=all]@marl:outputs/exp011b/u-seed101/checkpoints/step-010001152.pt",
+          "12": "summary[hide=all]@marl:outputs/exp011b/u-seed101/checkpoints/step-006001408.pt",
+          "16": "summary[hide=all]@marl:outputs/exp011b/u-seed101/checkpoints/step-010001152.pt"
+        },
+        {
+          "6": "summary[hide=all]@marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt",
+          "8": "summary[hide=all]@marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt",
+          "10": "summary[hide=all]@marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt",
+          "12": "summary[hide=all]@marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt",
+          "16": "summary[hide=all]@marl:outputs/exp011b/u-seed202/checkpoints/step-008001280.pt"
+        },
+        {
+          "6": "summary[hide=all]@marl:outputs/exp011b/u-seed303/checkpoints/step-008001280.pt",
+          "8": "summary[hide=all]@marl:outputs/exp011b/u-seed303/checkpoints/step-008001280.pt",
+          "10": "summary[hide=all]@marl:outputs/exp011/u-seed303/checkpoints/step-005001472.pt",
+          "12": "summary[hide=all]@marl:outputs/exp011/u-seed303/checkpoints/step-005001472.pt",
+          "16": "summary[hide=all]@marl:outputs/exp011b/u-seed303/checkpoints/step-006001408.pt"
+        },
+        {
+          "6": "summary[hide=all]@marl:outputs/exp011b/u-seed404-base/checkpoints/step-005001472.pt",
+          "8": "summary[hide=all]@marl:outputs/exp011b/u-seed404-base/checkpoints/step-004001536.pt",
+          "10": "summary[hide=all]@marl:outputs/exp011b/u-seed404-base/checkpoints/step-004001536.pt",
+          "12": "summary[hide=all]@marl:outputs/exp011b/u-seed404-base/checkpoints/step-004001536.pt",
+          "16": "summary[hide=all]@marl:outputs/exp011b/u-seed404-base/checkpoints/step-004001536.pt"
+        },
+        {
+          "6": "summary[hide=all]@marl:outputs/exp011b/u-seed505-base/checkpoints/step-004001536.pt",
+          "8": "summary[hide=all]@marl:outputs/exp011b/u-seed505-base/checkpoints/step-004001536.pt",
+          "10": "summary[hide=all]@marl:outputs/exp011b/u-seed505-base/checkpoints/step-004001536.pt",
+          "12": "summary[hide=all]@marl:outputs/exp011b/u-seed505-base/checkpoints/step-004001536.pt",
+          "16": "summary[hide=all]@marl:outputs/exp011b/u-seed505-base/checkpoints/step-005001472.pt"
+        }
+      ],
+      "U-hide-nonurgent": [
+        {
+          "6": "summary[hide=nonurgent]@marl:outputs/exp011b/u-seed101/checkpoints/step-010001152.pt",
+          "8": "summary[hide=nonurgent]@marl:outputs/exp011b/u-seed101/checkpoints/step-010001152.pt",
+          "10": "summary[hide=nonurgent]@marl:outputs/exp011b/u-seed101/checkpoints/step-010001152.pt",
+          "12": "summary[hide=nonurgent]@marl:outputs/exp011b/u-seed101/checkpoints/step-006001408.pt",
+          "16": "summary[hide=nonurgent]@marl:outputs/exp011b/u-seed101/checkpoints/step-010001152.pt"
+        },
+        {
+          "6": "summary[hide=nonurgent]@marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt",
+          "8": "summary[hide=nonurgent]@marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt",
+          "10": "summary[hide=nonurgent]@marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt",
+          "12": "summary[hide=nonurgent]@marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt",
+          "16": "summary[hide=nonurgent]@marl:outputs/exp011b/u-seed202/checkpoints/step-008001280.pt"
+        },
+        {
+          "6": "summary[hide=nonurgent]@marl:outputs/exp011b/u-seed303/checkpoints/step-008001280.pt",
+          "8": "summary[hide=nonurgent]@marl:outputs/exp011b/u-seed303/checkpoints/step-008001280.pt",
+          "10": "summary[hide=nonurgent]@marl:outputs/exp011/u-seed303/checkpoints/step-005001472.pt",
+          "12": "summary[hide=nonurgent]@marl:outputs/exp011/u-seed303/checkpoints/step-005001472.pt",
+          "16": "summary[hide=nonurgent]@marl:outputs/exp011b/u-seed303/checkpoints/step-006001408.pt"
+        },
+        {
+          "6": "summary[hide=nonurgent]@marl:outputs/exp011b/u-seed404-base/checkpoints/step-005001472.pt",
+          "8": "summary[hide=nonurgent]@marl:outputs/exp011b/u-seed404-base/checkpoints/step-004001536.pt",
+          "10": "summary[hide=nonurgent]@marl:outputs/exp011b/u-seed404-base/checkpoints/step-004001536.pt",
+          "12": "summary[hide=nonurgent]@marl:outputs/exp011b/u-seed404-base/checkpoints/step-004001536.pt",
+          "16": "summary[hide=nonurgent]@marl:outputs/exp011b/u-seed404-base/checkpoints/step-004001536.pt"
+        },
+        {
+          "6": "summary[hide=nonurgent]@marl:outputs/exp011b/u-seed505-base/checkpoints/step-004001536.pt",
+          "8": "summary[hide=nonurgent]@marl:outputs/exp011b/u-seed505-base/checkpoints/step-004001536.pt",
+          "10": "summary[hide=nonurgent]@marl:outputs/exp011b/u-seed505-base/checkpoints/step-004001536.pt",
+          "12": "summary[hide=nonurgent]@marl:outputs/exp011b/u-seed505-base/checkpoints/step-004001536.pt",
+          "16": "summary[hide=nonurgent]@marl:outputs/exp011b/u-seed505-base/checkpoints/step-005001472.pt"
+        }
+      ],
+      "best_local": "best_local",
+      "CG-opt": "configured_grant_opt",
+      "N_EDF": "central_edf",
+      "U0": [
+        {
+          "8": "marl:outputs/exp011b/u0-seed101/checkpoints/step-010001152.pt",
+          "10": "marl:outputs/exp011b/u0-seed101/checkpoints/step-010001152.pt",
+          "12": "marl:outputs/exp011b/u0-seed101/checkpoints/step-010001152.pt"
+        },
+        {
+          "8": "marl:outputs/exp011b/u0-seed202/checkpoints/step-010001152.pt",
+          "10": "marl:outputs/exp011/u0-seed202/checkpoints/step-005001472.pt",
+          "12": "marl:outputs/exp011/u0-seed202/checkpoints/step-005001472.pt"
+        },
+        {
+          "8": "marl:outputs/exp011b/u0-seed303/checkpoints/step-006001408.pt",
+          "10": "marl:outputs/exp011b/u0-seed303/checkpoints/step-006001408.pt",
+          "12": "marl:outputs/exp011b/u0-seed303/checkpoints/step-006001408.pt"
+        },
+        {
+          "8": "marl:outputs/exp011b/u0-seed404/checkpoints/step-008001280.pt",
+          "10": "marl:outputs/exp011b/u0-seed404/checkpoints/step-008001280.pt",
+          "12": "marl:outputs/exp011b/u0-seed404/checkpoints/step-008001280.pt"
+        },
+        {
+          "8": "marl:outputs/exp011b/u0-seed505-base/checkpoints/step-005001472.pt",
+          "10": "marl:outputs/exp011b/u0-seed505/checkpoints/step-008001280.pt",
+          "12": "marl:outputs/exp011b/u0-seed505/checkpoints/step-008001280.pt"
+        }
+      ],
+      "U@0": [
+        {
+          "8": "summary[theta=0]@marl:outputs/exp011b/u-seed101/checkpoints/step-010001152.pt",
+          "10": "summary[theta=0]@marl:outputs/exp011b/u-seed101/checkpoints/step-010001152.pt",
+          "12": "summary[theta=0]@marl:outputs/exp011b/u-seed101/checkpoints/step-006001408.pt"
+        },
+        {
+          "8": "summary[theta=0]@marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt",
+          "10": "summary[theta=0]@marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt",
+          "12": "summary[theta=0]@marl:outputs/exp011/u-seed202/checkpoints/step-004001536.pt"
+        },
+        {
+          "8": "summary[theta=0]@marl:outputs/exp011b/u-seed303/checkpoints/step-008001280.pt",
+          "10": "summary[theta=0]@marl:outputs/exp011/u-seed303/checkpoints/step-005001472.pt",
+          "12": "summary[theta=0]@marl:outputs/exp011/u-seed303/checkpoints/step-005001472.pt"
+        },
+        {
+          "8": "summary[theta=0]@marl:outputs/exp011b/u-seed404-base/checkpoints/step-004001536.pt",
+          "10": "summary[theta=0]@marl:outputs/exp011b/u-seed404-base/checkpoints/step-004001536.pt",
+          "12": "summary[theta=0]@marl:outputs/exp011b/u-seed404-base/checkpoints/step-004001536.pt"
+        },
+        {
+          "8": "summary[theta=0]@marl:outputs/exp011b/u-seed505-base/checkpoints/step-004001536.pt",
+          "10": "summary[theta=0]@marl:outputs/exp011b/u-seed505-base/checkpoints/step-004001536.pt",
+          "12": "summary[theta=0]@marl:outputs/exp011b/u-seed505-base/checkpoints/step-004001536.pt"
+        }
+      ]
+    },
+    "grids": {
+      "U": [
+        6,
+        8,
+        10,
+        12,
+        16
+      ],
+      "M": [
+        6,
+        8,
+        10,
+        12,
+        16
+      ],
+      "M+Y": [
+        6,
+        8,
+        10,
+        12,
+        16
+      ],
+      "O": [
+        6,
+        8,
+        10,
+        12,
+        16
+      ],
+      "L": [
+        6,
+        8,
+        10,
+        12,
+        16
+      ],
+      "U-hide-all": [
+        6,
+        8,
+        10,
+        12,
+        16
+      ],
+      "U-hide-nonurgent": [
+        6,
+        8,
+        10,
+        12,
+        16
+      ],
+      "best_local": [
+        6,
+        8,
+        10,
+        12,
+        16
+      ],
+      "CG-opt": [
+        6,
+        8,
+        10,
+        12,
+        16
+      ],
+      "N_EDF": [
+        6,
+        8,
+        10,
+        12,
+        16
+      ],
+      "U0": [
+        8,
+        10,
+        12
+      ],
+      "U@0": [
+        8,
+        10,
+        12
+      ]
+    }
+  },
+  "instances": {
+    "6": 128,
+    "8": 128,
+    "10": 128,
+    "12": 128,
+    "16": 128
+  },
+  "delta": 0.0001,
+  "P2": {
+    "U": {
+      "6": 0.000575,
+      "8": 0.0010578125000000002,
+      "10": 0.0025515625,
+      "12": 0.005728125,
+      "16": 0.06318671875000001
+    },
+    "M": {
+      "6": 0.00075234375,
+      "8": 0.00145703125,
+      "10": 0.00356796875,
+      "12": 0.00747421875,
+      "16": 0.06895625000000001
+    },
+    "M+Y": {
+      "6": 0.00059375,
+      "8": 0.00098984375,
+      "10": 0.00218828125,
+      "12": 0.0047453124999999995,
+      "16": 0.06089921875
+    },
+    "O": {
+      "6": 0.00057265625,
+      "8": 0.0010515625,
+      "10": 0.002540625,
+      "12": 0.0055875,
+      "16": 0.0600875
+    },
+    "L": {
+      "6": 0.0006195312500000001,
+      "8": 0.00108046875,
+      "10": 0.00255390625,
+      "12": 0.005415625,
+      "16": 0.05555468749999999
+    },
+    "U-hide-all": {
+      "6": 0.0008859374999999999,
+      "8": 0.0017648437500000004,
+      "10": 0.00433671875,
+      "12": 0.009458593749999999,
+      "16": 0.0865328125
+    },
+    "U-hide-nonurgent": {
+      "6": 0.0007953124999999998,
+      "8": 0.0016929687499999998,
+      "10": 0.004175,
+      "12": 0.008985937500000001,
+      "16": 0.08588124999999999
+    },
+    "best_local": {
+      "6": 0.0016484375,
+      "8": 0.003859375,
+      "10": 0.01122265625,
+      "12": 0.026000000000000002,
+      "16": 0.31048828125
+    },
+    "CG-opt": {
+      "6": 0.0052890625,
+      "8": 0.0063984375000000005,
+      "10": 0.00896484375,
+      "12": 0.016996093750000003,
+      "16": 0.09109765625
+    },
+    "N_EDF": {
+      "6": 0.00022656250000000004,
+      "8": 0.00025390625,
+      "10": 0.00032031250000000007,
+      "12": 0.00036328125,
+      "16": 0.0005585937500000001
+    },
+    "U0": {
+      "8": 0.0013859375,
+      "10": 0.00303203125,
+      "12": 0.0062015625000000005
+    },
+    "U@0": {
+      "8": 0.0015890624999999998,
+      "10": 0.0036414062500000005,
+      "12": 0.007475000000000001
+    }
+  },
+  "P1": {
+    "U": {
+      "6": 0.978125,
+      "8": 0.9734375,
+      "10": 0.9359375,
+      "12": 0.8265625,
+      "16": 0.2984375
+    },
+    "M": {
+      "6": 0.9765625,
+      "8": 0.9609375,
+      "10": 0.90625,
+      "12": 0.7703125,
+      "16": 0.2609375
+    },
+    "M+Y": {
+      "6": 0.9828125,
+      "8": 0.9765625,
+      "10": 0.946875,
+      "12": 0.859375,
+      "16": 0.2921875
+    },
+    "O": {
+      "6": 0.984375,
+      "8": 0.9734375,
+      "10": 0.93125,
+      "12": 0.8328125,
+      "16": 0.284375
+    },
+    "L": {
+      "6": 0.984375,
+      "8": 0.9671875,
+      "10": 0.9328125,
+      "12": 0.840625,
+      "16": 0.3421875
+    },
+    "U-hide-all": {
+      "6": 0.975,
+      "8": 0.95625,
+      "10": 0.88125,
+      "12": 0.7515625,
+      "16": 0.2328125
+    },
+    "U-hide-nonurgent": {
+      "6": 0.9765625,
+      "8": 0.95625,
+      "10": 0.8921875,
+      "12": 0.7578125,
+      "16": 0.2421875
+    },
+    "best_local": {
+      "6": 0.9609375,
+      "8": 0.90625,
+      "10": 0.7421875,
+      "12": 0.53125,
+      "16": 0.0
+    },
+    "CG-opt": {
+      "6": 0.859375,
+      "8": 0.8359375,
+      "10": 0.7578125,
+      "12": 0.59375,
+      "16": 0.1171875
+    },
+    "N_EDF": {
+      "6": 1.0,
+      "8": 1.0,
+      "10": 1.0,
+      "12": 1.0,
+      "16": 1.0
+    },
+    "U0": {
+      "8": 0.9640625,
+      "10": 0.9265625,
+      "12": 0.8140625
+    },
+    "U@0": {
+      "8": 0.959375,
+      "10": 0.9046875,
+      "12": 0.7875
+    }
+  },
+  "N_star_on_grid": {
+    "U": 8,
+    "M": 8,
+    "M+Y": 8,
+    "O": 8,
+    "L": 8,
+    "U-hide-all": 8,
+    "U-hide-nonurgent": 8,
+    "best_local": 6,
+    "CG-opt": null,
+    "N_EDF": 16
+  },
+  "all_ue_mean_rate": {
+    "U": {
+      "6": 9.973958333333333e-05,
+      "8": 0.0001451171875,
+      "10": 0.000300859375,
+      "12": 0.0006012369791666666,
+      "16": 0.007906884765625
+    },
+    "M": {
+      "6": 0.00013111979166666667,
+      "8": 0.00019912109375000003,
+      "10": 0.00042109375,
+      "12": 0.0008076822916666667,
+      "16": 0.008940966796875
+    },
+    "M+Y": {
+      "6": 0.00010403645833333333,
+      "8": 0.000137109375,
+      "10": 0.00026359375000000005,
+      "12": 0.0005350260416666667,
+      "16": 0.009655322265624999
+    },
+    "O": {
+      "6": 9.973958333333333e-05,
+      "8": 0.00014589843750000003,
+      "10": 0.00029624999999999996,
+      "12": 0.0005899739583333333,
+      "16": 0.007142236328125
+    },
+    "L": {
+      "6": 0.00010755208333333333,
+      "8": 0.00014892578125,
+      "10": 0.000293046875,
+      "12": 0.0005606119791666667,
+      "16": 0.006299902343749999
+    },
+    "U-hide-all": {
+      "6": 0.000154296875,
+      "8": 0.00024365234375,
+      "10": 0.000508984375,
+      "12": 0.0009854817708333334,
+      "16": 0.009763037109375
+    },
+    "U-hide-nonurgent": {
+      "6": 0.00013723958333333334,
+      "8": 0.00023125000000000004,
+      "10": 0.000486796875,
+      "12": 0.0009395182291666666,
+      "16": 0.00966494140625
+    },
+    "best_local": {
+      "6": 0.00029947916666666664,
+      "8": 0.0005556640625,
+      "10": 0.0014000000000000002,
+      "12": 0.0030087890625000004,
+      "16": 0.044651123046875
+    },
+    "CG-opt": {
+      "6": 0.0009680989583333334,
+      "8": 0.00117529296875,
+      "10": 0.00223125,
+      "12": 0.0063349609375,
+      "16": 0.04092626953125
+    },
+    "N_EDF": {
+      "6": 3.776041666666667e-05,
+      "8": 3.173828125e-05,
+      "10": 3.203125e-05,
+      "12": 3.059895833333334e-05,
+      "16": 3.6376953125000005e-05
+    },
+    "U0": {
+      "8": 0.00019248046875,
+      "10": 0.00035085937500000004,
+      "12": 0.0006508463541666668
+    },
+    "U@0": {
+      "8": 0.00021845703125,
+      "10": 0.00042710937499999997,
+      "12": 0.0007825520833333333
+    }
+  },
+  "p90_w": {
+    "U": {
+      "6": 0.0013299999999999998,
+      "8": 0.0022599999999999994,
+      "10": 0.006789999999999999,
+      "12": 0.017279999999999997,
+      "16": 0.13813
+    },
+    "M": {
+      "6": 0.0016499999999999987,
+      "8": 0.0036,
+      "10": 0.010039999999999999,
+      "12": 0.020849999999999994,
+      "16": 0.17082999999999998
+    },
+    "M+Y": {
+      "6": 0.0014299999999999996,
+      "8": 0.0028599999999999993,
+      "10": 0.006509999999999999,
+      "12": 0.013019999999999999,
+      "16": 0.14820999999999998
+    },
+    "O": {
+      "6": 0.001189999999999999,
+      "8": 0.0025499999999999984,
+      "10": 0.007209999999999997,
+      "12": 0.016499999999999997,
+      "16": 0.15187
+    },
+    "L": {
+      "6": 0.0013599999999999997,
+      "8": 0.0027599999999999994,
+      "10": 0.006789999999999999,
+      "12": 0.015279999999999997,
+      "16": 0.13726
+    },
+    "U-hide-all": {
+      "6": 0.002019999999999999,
+      "8": 0.0046300000000000004,
+      "10": 0.011709999999999998,
+      "12": 0.026199999999999994,
+      "16": 0.21316999999999994
+    },
+    "U-hide-nonurgent": {
+      "6": 0.0017599999999999994,
+      "8": 0.004349999999999999,
+      "10": 0.010649999999999998,
+      "12": 0.026269999999999998,
+      "16": 0.21264
+    },
+    "best_local": {
+      "6": 0.004,
+      "8": 0.01,
+      "10": 0.03315,
+      "12": 0.0783,
+      "16": 0.5432
+    },
+    "CG-opt": {
+      "6": 0.013149999999999998,
+      "8": 0.017299999999999996,
+      "10": 0.024599999999999993,
+      "12": 0.04484999999999999,
+      "16": 0.20115000000000002
+    },
+    "N_EDF": {
+      "6": 0.00014999999999999858,
+      "8": 0.0005,
+      "10": 0.001,
+      "12": 0.001,
+      "16": 0.002
+    },
+    "U0": {
+      "8": 0.0033,
+      "10": 0.007909999999999997,
+      "12": 0.01719
+    },
+    "U@0": {
+      "8": 0.003919999999999999,
+      "10": 0.009279999999999998,
+      "12": 0.020969999999999996
+    }
+  },
+  "starvation_cells_by_set": {
+    "exp011b-eval128": {
+      "U": {
+        "6": 0,
+        "8": 0,
+        "10": 0,
+        "12": 0,
+        "16": 0
+      },
+      "M": {
+        "6": 0,
+        "8": 0,
+        "10": 0,
+        "12": 0,
+        "16": 0
+      },
+      "M+Y": {
+        "6": 0,
+        "8": 0,
+        "10": 0,
+        "12": 0,
+        "16": 0
+      },
+      "O": {
+        "6": 0,
+        "8": 0,
+        "10": 0,
+        "12": 0,
+        "16": 0
+      },
+      "L": {
+        "6": 0,
+        "8": 0,
+        "10": 0,
+        "12": 0,
+        "16": 0
+      },
+      "U-hide-all": {
+        "6": 0,
+        "8": 0,
+        "10": 0,
+        "12": 0,
+        "16": 0
+      },
+      "U-hide-nonurgent": {
+        "6": 0,
+        "8": 0,
+        "10": 0,
+        "12": 0,
+        "16": 0
+      },
+      "best_local": {
+        "6": 0,
+        "8": 0,
+        "10": 0,
+        "12": 0,
+        "16": 0
+      },
+      "CG-opt": {
+        "6": 0,
+        "8": 0,
+        "10": 0,
+        "12": 0,
+        "16": 0
+      },
+      "N_EDF": {
+        "6": 0,
+        "8": 0,
+        "10": 0,
+        "12": 0,
+        "16": 0
+      },
+      "U0": {
+        "8": 0,
+        "10": 0,
+        "12": 0
+      },
+      "U@0": {
+        "8": 0,
+        "10": 0,
+        "12": 0
+      }
+    },
+    "exp011b-near": {
+      "U": {
+        "6": 0,
+        "8": 0,
+        "10": 0,
+        "12": 0,
+        "16": 0
+      },
+      "M": {
+        "6": 0,
+        "8": 0,
+        "10": 0,
+        "12": 0,
+        "16": 0
+      },
+      "M+Y": {
+        "6": 0,
+        "8": 0,
+        "10": 0,
+        "12": 0,
+        "16": 0
+      },
+      "O": {
+        "6": 0,
+        "8": 0,
+        "10": 0,
+        "12": 0,
+        "16": 0
+      },
+      "L": {
+        "6": 0,
+        "8": 0,
+        "10": 0,
+        "12": 0,
+        "16": 0
+      },
+      "U-hide-all": {
+        "6": 0,
+        "8": 0,
+        "10": 0,
+        "12": 0,
+        "16": 0
+      },
+      "U-hide-nonurgent": {
+        "6": 0,
+        "8": 0,
+        "10": 0,
+        "12": 0,
+        "16": 0
+      },
+      "best_local": {
+        "6": 0,
+        "8": 0,
+        "10": 0,
+        "12": 0,
+        "16": 0
+      },
+      "CG-opt": {
+        "6": 0,
+        "8": 0,
+        "10": 0,
+        "12": 0,
+        "16": 0
+      },
+      "N_EDF": {
+        "6": 0,
+        "8": 0,
+        "10": 0,
+        "12": 0,
+        "16": 0
+      },
+      "U0": {
+        "8": 0,
+        "10": 0,
+        "12": 0
+      },
+      "U@0": {
+        "8": 0,
+        "10": 0,
+        "12": 0
+      }
+    }
+  },
+  "starvation_cells": {
+    "U": {
+      "6": 0,
+      "8": 0,
+      "10": 0,
+      "12": 0,
+      "16": 0
+    },
+    "M": {
+      "6": 0,
+      "8": 0,
+      "10": 0,
+      "12": 0,
+      "16": 0
+    },
+    "M+Y": {
+      "6": 0,
+      "8": 0,
+      "10": 0,
+      "12": 0,
+      "16": 0
+    },
+    "O": {
+      "6": 0,
+      "8": 0,
+      "10": 0,
+      "12": 0,
+      "16": 0
+    },
+    "L": {
+      "6": 0,
+      "8": 0,
+      "10": 0,
+      "12": 0,
+      "16": 0
+    },
+    "U-hide-all": {
+      "6": 0,
+      "8": 0,
+      "10": 0,
+      "12": 0,
+      "16": 0
+    },
+    "U-hide-nonurgent": {
+      "6": 0,
+      "8": 0,
+      "10": 0,
+      "12": 0,
+      "16": 0
+    },
+    "best_local": {
+      "6": 0,
+      "8": 0,
+      "10": 0,
+      "12": 0,
+      "16": 0
+    },
+    "CG-opt": {
+      "6": 0,
+      "8": 0,
+      "10": 0,
+      "12": 0,
+      "16": 0
+    },
+    "N_EDF": {
+      "6": 0,
+      "8": 0,
+      "10": 0,
+      "12": 0,
+      "16": 0
+    },
+    "U0": {
+      "8": 0,
+      "10": 0,
+      "12": 0
+    },
+    "U@0": {
+      "8": 0,
+      "10": 0,
+      "12": 0
+    }
+  },
+  "D_N": {
+    "6": {
+      "difference": -0.00017734374999999998,
+      "ratio": 0.7642782969885774,
+      "ci95": [
+        -0.0003742187500000002,
+        -3.671874999999997e-05
+      ]
+    },
+    "8": {
+      "difference": -0.00039921874999999983,
+      "ratio": 0.726005361930295,
+      "ci95": [
+        -0.0006843750000000001,
+        -0.0001703124999999999
+      ]
+    },
+    "10": {
+      "difference": -0.00101640625,
+      "ratio": 0.7151302824611342,
+      "ci95": [
+        -0.0016164257812499988,
+        -0.0005187304687500009
+      ]
+    },
+    "12": {
+      "difference": -0.0017460937500000002,
+      "ratio": 0.766384446534964,
+      "ci95": [
+        -0.0030390625,
+        -0.0007117187500000014
+      ]
+    },
+    "16": {
+      "difference": -0.005769531250000001,
+      "ratio": 0.916330553793166,
+      "ci95": [
+        -0.017453144531250013,
+        0.007657226562499985
+      ]
+    }
+  },
+  "decision": "effective",
+  "harmful_N": [],
+  "content": {
+    "O": {
+      "rows": {
+        "6": {
+          "difference": 2.3437499999999587e-06,
+          "ratio": 1.0040927694406547,
+          "ci95": [
+            -0.00011484374999999993,
+            0.00012265625
+          ]
+        },
+        "8": {
+          "difference": 6.250000000000179e-06,
+          "ratio": 1.0059435364041607,
+          "ci95": [
+            -0.0002640625,
+            0.0002789062500000001
+          ]
+        },
+        "10": {
+          "difference": 1.0937500000000096e-05,
+          "ratio": 1.0043050430504306,
+          "ci95": [
+            -0.0006390624999999999,
+            0.0006429882812499998
+          ]
+        },
+        "12": {
+          "difference": 0.00014062500000000012,
+          "ratio": 1.0251677852348993,
+          "ci95": [
+            -0.001435957031249999,
+            0.0016703320312499987
+          ]
+        },
+        "16": {
+          "difference": 0.0030992187500000073,
+          "ratio": 1.0515784272935305,
+          "ci95": [
+            -0.01287146484375002,
+            0.020513652343749973
+          ]
+        }
+      },
+      "better_at": 0,
+      "U_better": false
+    },
+    "L": {
+      "rows": {
+        "6": {
+          "difference": -4.453125000000008e-05,
+          "ratio": 0.9281210592686001,
+          "ci95": [
+            -0.00023593749999999993,
+            0.00011171874999999995
+          ]
+        },
+        "8": {
+          "difference": -2.265624999999989e-05,
+          "ratio": 0.9790310918293565,
+          "ci95": [
+            -0.00036251953124999994,
+            0.0002687499999999999
+          ]
+        },
+        "10": {
+          "difference": -2.3437500000001756e-06,
+          "ratio": 0.9990822881615172,
+          "ci95": [
+            -0.0008437695312499999,
+            0.00067890625
+          ]
+        },
+        "12": {
+          "difference": 0.0003124999999999994,
+          "ratio": 1.0577034045008655,
+          "ci95": [
+            -0.0013656640625000006,
+            0.0017101562499999999
+          ]
+        },
+        "16": {
+          "difference": 0.007632031250000018,
+          "ratio": 1.137378709042329,
+          "ci95": [
+            -0.010310234374999994,
+            0.02616337890624999
+          ]
+        }
+      },
+      "better_at": 0,
+      "U_better": false
+    },
+    "supported": false
+  },
+  "coordination": {
+    "E_N": {
+      "8": {
+        "difference": 6.79687500000001e-05,
+        "ratio": 1.068666140489345,
+        "ci95": [
+          -0.00014296875000000008,
+          0.0002726562500000001
+        ]
+      },
+      "10": {
+        "difference": 0.0003632812499999999,
+        "ratio": 1.1660121385219564,
+        "ci95": [
+          -5.468749999999831e-06,
+          0.0007703320312500001
+        ]
+      },
+      "12": {
+        "difference": 0.0009828125000000002,
+        "ratio": 1.2071122818570958,
+        "ci95": [
+          3.125000000000001e-05,
+          0.0019781445312500004
+        ]
+      }
+    },
+    "learned_better_at": 0,
+    "learned_response_better": false,
+    "rule_better_at": 1,
+    "core_mean_P2": {
+      "U": 0.0031125000000000002,
+      "M+Y": 0.0026411458333333335
+    }
+  },
+  "mechanism": {
+    "6": {
+      "gain_P2_M_minus_U": 0.00017734374999999998,
+      "all": {
+        "difference": 0.0003109374999999999,
+        "ratio": 1.5407608695652173,
+        "ci95": [
+          0.00011250000000000002,
+          0.0005984375
+        ]
+      },
+      "nonurgent": {
+        "difference": 0.0002203124999999998,
+        "ratio": 1.3831521739130432,
+        "ci95": [
+          8.203125000000002e-05,
+          0.00041171875
+        ]
+      },
+      "H_M2": true,
+      "H_M1": true
+    },
+    "8": {
+      "gain_P2_M_minus_U": 0.00039921874999999983,
+      "all": {
+        "difference": 0.0007070312500000002,
+        "ratio": 1.6683899556868538,
+        "ci95": [
+          0.00034531250000000013,
+          0.0012023632812499998
+        ]
+      },
+      "nonurgent": {
+        "difference": 0.0006351562499999997,
+        "ratio": 1.6004431314623333,
+        "ci95": [
+          0.00029453125,
+          0.0011078124999999999
+        ]
+      },
+      "H_M2": true,
+      "H_M1": true
+    },
+    "10": {
+      "gain_P2_M_minus_U": 0.00101640625,
+      "all": {
+        "difference": 0.0017851562500000003,
+        "ratio": 1.6996325780771586,
+        "ci95": [
+          0.0009523242187499994,
+          0.0029375195312499997
+        ]
+      },
+      "nonurgent": {
+        "difference": 0.0016234374999999999,
+        "ratio": 1.6362522963870176,
+        "ci95": [
+          0.0007960937499999999,
+          0.0027594140624999986
+        ]
+      },
+      "H_M2": true,
+      "H_M1": true
+    },
+    "12": {
+      "gain_P2_M_minus_U": 0.0017460937500000002,
+      "all": {
+        "difference": 0.0037304687499999994,
+        "ratio": 1.651254773595199,
+        "ci95": [
+          0.0019882617187500003,
+          0.005969550781250002
+        ]
+      },
+      "nonurgent": {
+        "difference": 0.003257812500000001,
+        "ratio": 1.5687397708674307,
+        "ci95": [
+          0.0014968164062500009,
+          0.0054945703125
+        ]
+      },
+      "H_M2": true,
+      "H_M1": true
+    },
+    "16": {
+      "gain_P2_M_minus_U": 0.005769531250000001,
+      "all": {
+        "difference": 0.02334609374999999,
+        "ratio": 1.3694778619913697,
+        "ci95": [
+          0.005222304687499999,
+          0.04247900390625001
+        ]
+      },
+      "nonurgent": {
+        "difference": 0.022694531249999983,
+        "ratio": 1.3591661617972524,
+        "ci95": [
+          0.004430312499999986,
+          0.04244636718749999
+        ]
+      },
+      "H_M2": true,
+      "H_M1": true
+    }
+  },
+  "zero_db": {
+    "8": {
+      "U0_minus_M": {
+        "difference": -7.109374999999998e-05,
+        "ratio": 0.9512064343163539,
+        "ci95": [
+          -0.00024062499999999995,
+          8.593749999999986e-05
+        ]
+      },
+      "U0_minus_U_at_0dB": {
+        "difference": -0.00020312499999999975,
+        "ratio": 0.8721730580137661,
+        "ci95": [
+          -0.00048126953124999987,
+          -1.5625000000002616e-06
+        ]
+      }
+    },
+    "10": {
+      "U0_minus_M": {
+        "difference": -0.0005359375,
+        "ratio": 0.8497919859864244,
+        "ci95": [
+          -0.0009750000000000002,
+          -0.00018828125000000008
+        ]
+      },
+      "U0_minus_U_at_0dB": {
+        "difference": -0.0006093750000000005,
+        "ratio": 0.8326539369234068,
+        "ci95": [
+          -0.0012351562500000001,
+          -0.00014919921875000032
+        ]
+      }
+    },
+    "12": {
+      "U0_minus_M": {
+        "difference": -0.0012726562499999995,
+        "ratio": 0.8297271872060208,
+        "ci95": [
+          -0.002175898437499999,
+          -0.0005148242187500008
+        ]
+      },
+      "U0_minus_U_at_0dB": {
+        "difference": -0.0012734375000000003,
+        "ratio": 0.8296404682274248,
+        "ci95": [
+          -0.0023782226562500015,
+          -0.00035312500000000014
+        ]
+      }
+    }
+  },
+  "sensitivity": {
+    "6": {
+      "all_ue_mean_rate_U_minus_M": {
+        "difference": -3.138020833333335e-05,
+        "ratio": 0.7606752730883812,
+        "ci95": [
+          -6.471679687500002e-05,
+          -7.552083333333328e-06
+        ]
+      },
+      "log_w_U_minus_M": {
+        "difference": -0.0468669566777975,
+        "ratio": null,
+        "ci95": [
+          -0.08653021677324804,
+          -0.009360026341458666
+        ]
+      },
+      "excluding_infeasible_for_all": {
+        "deployments": 128,
+        "difference": -0.00017734374999999988,
+        "ratio": 0.7642782969885775,
+        "ci95": [
+          -0.0003742187500000002,
+          -3.671874999999997e-05
+        ]
+      },
+      "p90_U_minus_M": -0.0003199999999999989
+    },
+    "8": {
+      "all_ue_mean_rate_U_minus_M": {
+        "difference": -5.4003906250000015e-05,
+        "ratio": 0.7287886218734674,
+        "ci95": [
+          -9.218994140625004e-05,
+          -2.3044433593750007e-05
+        ]
+      },
+      "log_w_U_minus_M": {
+        "difference": -0.0536912339770943,
+        "ratio": null,
+        "ci95": [
+          -0.10427440040535127,
+          -0.005896963102255583
+        ]
+      },
+      "excluding_infeasible_for_all": {
+        "deployments": 128,
+        "difference": -0.00039921874999999983,
+        "ratio": 0.726005361930295,
+        "ci95": [
+          -0.0006843750000000001,
+          -0.0001703124999999999
+        ]
+      },
+      "p90_U_minus_M": -0.0013400000000000005
+    },
+    "10": {
+      "all_ue_mean_rate_U_minus_M": {
+        "difference": -0.00012023437500000001,
+        "ratio": 0.7144712430426716,
+        "ci95": [
+          -0.00019343750000000003,
+          -6.085742187500001e-05
+        ]
+      },
+      "log_w_U_minus_M": {
+        "difference": -0.1170489128067751,
+        "ratio": null,
+        "ci95": [
+          -0.21596173707540475,
+          -0.02690922803044095
+        ]
+      },
+      "excluding_infeasible_for_all": {
+        "deployments": 128,
+        "difference": -0.0010164062499999995,
+        "ratio": 0.7151302824611343,
+        "ci95": [
+          -0.0016164257812499988,
+          -0.0005187304687500009
+        ]
+      },
+      "p90_U_minus_M": -0.0032499999999999994
+    },
+    "12": {
+      "all_ue_mean_rate_U_minus_M": {
+        "difference": -0.00020644531250000014,
+        "ratio": 0.7443978719974205,
+        "ci95": [
+          -0.0003710937500000001,
+          -8.313639322916665e-05
+        ]
+      },
+      "log_w_U_minus_M": {
+        "difference": -0.15166053828248582,
+        "ratio": null,
+        "ci95": [
+          -0.2679107254940956,
+          -0.048729825000257555
+        ]
+      },
+      "excluding_infeasible_for_all": {
+        "deployments": 128,
+        "difference": -0.0017460937499999994,
+        "ratio": 0.7663844465349641,
+        "ci95": [
+          -0.0030390625,
+          -0.0007117187500000014
+        ]
+      },
+      "p90_U_minus_M": -0.003569999999999997
+    },
+    "16": {
+      "all_ue_mean_rate_U_minus_M": {
+        "difference": -0.0010340820312499995,
+        "ratio": 0.8843433764219517,
+        "ci95": [
+          -0.002691713867187501,
+          0.0004468823242187493
+        ]
+      },
+      "log_w_U_minus_M": {
+        "difference": -0.09531638813753673,
+        "ratio": null,
+        "ci95": [
+          -0.20748067016908517,
+          0.013690788781574465
+        ]
+      },
+      "excluding_infeasible_for_all": {
+        "deployments": 128,
+        "difference": -0.005769531250000015,
+        "ratio": 0.9163305537931657,
+        "ci95": [
+          -0.017453144531250013,
+          0.007657226562499985
+        ]
+      },
+      "p90_U_minus_M": -0.03269999999999998
+    }
+  },
+  "proposed_method": {
+    "conditions": {
+      "main_rule_at_least_partly_effective": true,
+      "U_without_starvation_cells": true,
+      "M+Y_not_significantly_better_at_two_or_more_N": true
+    },
+    "U_is_the_proposed_method": true
+  },
+  "exp011_slice": {
+    "6": {
+      "exp011_D_N": {
+        "difference": 0.0006396484374999996,
+        "ratio": 1.697550585729499,
+        "ci95": [
+          -0.0005641357421875002,
+          0.003760709635416656
+        ]
+      },
+      "exp011b_D_N": {
+        "difference": -0.00017734374999999998,
+        "ratio": 0.7642782969885774,
+        "ci95": [
+          -0.0003742187500000002,
+          -3.671874999999997e-05
+        ]
+      }
+    },
+    "8": {
+      "exp011_D_N": {
+        "difference": 0.0001884765625000005,
+        "ratio": 1.0727661178836247,
+        "ci95": [
+          -0.001401700846354167,
+          0.003724772135416664
+        ]
+      },
+      "exp011b_D_N": {
+        "difference": -0.00039921874999999983,
+        "ratio": 0.726005361930295,
+        "ci95": [
+          -0.0006843750000000001,
+          -0.0001703124999999999
+        ]
+      }
+    },
+    "10": {
+      "exp011_D_N": {
+        "difference": -0.0016204427083333335,
+        "ratio": 0.7317743412899401,
+        "ci95": [
+          -0.003451847330729167,
+          0.00024415690104166645
+        ]
+      },
+      "exp011b_D_N": {
+        "difference": -0.00101640625,
+        "ratio": 0.7151302824611342,
+        "ci95": [
+          -0.0016164257812499988,
+          -0.0005187304687500009
+        ]
+      }
+    },
+    "12": {
+      "exp011_D_N": {
+        "difference": -0.001908528645833336,
+        "ratio": 0.8497860674848196,
+        "ci95": [
+          -0.0066560791015625,
+          0.00523932291666666
+        ]
+      },
+      "exp011b_D_N": {
+        "difference": -0.0017460937500000002,
+        "ratio": 0.766384446534964,
+        "ci95": [
+          -0.0030390625,
+          -0.0007117187500000014
+        ]
+      }
+    },
+    "16": {
+      "exp011_D_N": {
+        "difference": -0.019156901041666674,
+        "ratio": 0.7957037026751185,
+        "ci95": [
+          -0.04139129231770833,
+          0.005157633463541668
+        ]
+      },
+      "exp011b_D_N": {
+        "difference": -0.005769531250000001,
+        "ratio": 0.916330553793166,
+        "ci95": [
+          -0.017453144531250013,
+          0.007657226562499985
+        ]
+      }
+    }
+  },
+  "min_distance": {
+    "5.0": {
+      "instances": {
+        "6": 127,
+        "8": 126,
+        "10": 126,
+        "12": 125,
+        "16": 125
+      },
+      "P2": {
+        "U": {
+          "6": 0.0005779527559055118,
+          "8": 0.0010714285714285715,
+          "10": 0.00258968253968254,
+          "12": 0.0058608,
+          "16": 0.06429359999999999
+        },
+        "M": {
+          "6": 0.00075748031496063,
+          "8": 0.0014785714285714285,
+          "10": 0.00361984126984127,
+          "12": 0.007636799999999999,
+          "16": 0.0698424
+        },
+        "M+Y": {
+          "6": 0.0005984251968503937,
+          "8": 0.0010047619047619048,
+          "10": 0.0022206349206349207,
+          "12": 0.004848000000000001,
+          "16": 0.0615792
+        },
+        "O": {
+          "6": 0.0005771653543307087,
+          "8": 0.0010666666666666667,
+          "10": 0.002576984126984127,
+          "12": 0.0057104,
+          "16": 0.06107919999999999
+        },
+        "L": {
+          "6": 0.0006236220472440945,
+          "8": 0.0010952380952380953,
+          "10": 0.002592063492063492,
+          "12": 0.005541600000000001,
+          "16": 0.05645999999999999
+        },
+        "U-hide-all": {
+          "6": 0.0008913385826771654,
+          "8": 0.0017904761904761906,
+          "10": 0.004401587301587302,
+          "12": 0.009672,
+          "16": 0.0879944
+        },
+        "U-hide-nonurgent": {
+          "6": 0.0008,
+          "8": 0.0017174603174603177,
+          "10": 0.004235714285714285,
+          "12": 0.009188,
+          "16": 0.08734879999999999
+        },
+        "best_local": {
+          "6": 0.0016614173228346458,
+          "8": 0.003916666666666666,
+          "10": 0.01138095238095238,
+          "12": 0.026536000000000004,
+          "16": 0.314004
+        },
+        "CG-opt": {
+          "6": 0.005326771653543308,
+          "8": 0.006480158730158729,
+          "10": 0.00907142857142857,
+          "12": 0.017311999999999998,
+          "16": 0.091532
+        },
+        "N_EDF": {
+          "6": 0.00022834645669291337,
+          "8": 0.000257936507936508,
+          "10": 0.00032539682539682547,
+          "12": 0.000372,
+          "16": 0.000568
+        },
+        "U0": {
+          "8": 0.0014079365079365082,
+          "10": 0.0030769841269841273,
+          "12": 0.006340800000000001
+        },
+        "U@0": {
+          "8": 0.0016126984126984126,
+          "10": 0.0036944444444444446,
+          "12": 0.007647200000000001
+        }
+      },
+      "D_N": {
+        "6": {
+          "difference": -0.00017952755905511824,
+          "ratio": 0.7629937629937629,
+          "ci95": [
+            -0.0003748031496062993,
+            -3.6220472440944874e-05
+          ]
+        },
+        "8": {
+          "difference": -0.000407142857142857,
+          "ratio": 0.7246376811594204,
+          "ci95": [
+            -0.0006936507936507938,
+            -0.00017140873015873042
+          ]
+        },
+        "10": {
+          "difference": -0.0010301587301587301,
+          "ratio": 0.715413286559965,
+          "ci95": [
+            -0.001637301587301587,
+            -0.0005325396825396826
+          ]
+        },
+        "12": {
+          "difference": -0.001775999999999999,
+          "ratio": 0.7674418604651164,
+          "ci95": [
+            -0.0030928600000000015,
+            -0.0007360000000000014
+          ]
+        },
+        "16": {
+          "difference": -0.0055488000000000065,
+          "ratio": 0.9205525583313288,
+          "ci95": [
+            -0.017334540000000013,
+            0.008085239999999983
+          ]
+        }
+      },
+      "decision": "effective",
+      "harmful_N": [],
+      "content": {
+        "O": {
+          "rows": {
+            "6": {
+              "difference": 7.874015748030646e-07,
+              "ratio": 1.001364256480218,
+              "ci95": [
+                -0.00011811023622047243,
+                0.00012440944881889765
+              ]
+            },
+            "8": {
+              "difference": 4.761904761904764e-06,
+              "ratio": 1.0044642857142858,
+              "ci95": [
+                -0.0002793849206349207,
+                0.0002865079365079365
+              ]
+            },
+            "10": {
+              "difference": 1.2698412698412993e-05,
+              "ratio": 1.004927625500462,
+              "ci95": [
+                -0.0006770039682539682,
+                0.0006643055555555557
+              ]
+            },
+            "12": {
+              "difference": 0.00015040000000000019,
+              "ratio": 1.0263379097786496,
+              "ci95": [
+                -0.0014904800000000002,
+                0.0017096200000000009
+              ]
+            },
+            "16": {
+              "difference": 0.003214399999999999,
+              "ratio": 1.05262675346108,
+              "ci95": [
+                -0.013248279999999996,
+                0.020662559999999996
+              ]
+            }
+          },
+          "better_at": 0,
+          "U_better": false
+        },
+        "L": {
+          "rows": {
+            "6": {
+              "difference": -4.5669291338582734e-05,
+              "ratio": 0.9267676767676767,
+              "ci95": [
+                -0.0002377952755905511,
+                0.00011259842519685038
+              ]
+            },
+            "8": {
+              "difference": -2.380952380952382e-05,
+              "ratio": 0.9782608695652174,
+              "ci95": [
+                -0.0003635317460317463,
+                0.00027144841269841253
+              ]
+            },
+            "10": {
+              "difference": -2.3809523809520568e-06,
+              "ratio": 0.9990814451928967,
+              "ci95": [
+                -0.0008492063492063487,
+                0.0006825595238095238
+              ]
+            },
+            "12": {
+              "difference": 0.0003191999999999995,
+              "ratio": 1.057600692940667,
+              "ci95": [
+                -0.00136006,
+                0.0017655999999999991
+              ]
+            },
+            "16": {
+              "difference": 0.007833600000000003,
+              "ratio": 1.1387460148777897,
+              "ci95": [
+                -0.010569259999999995,
+                0.026388460000000002
+              ]
+            }
+          },
+          "better_at": 0,
+          "U_better": false
+        },
+        "supported": false
+      },
+      "coordination": {
+        "E_N": {
+          "8": {
+            "difference": 6.66666666666667e-05,
+            "ratio": 1.066350710900474,
+            "ci95": [
+              -0.00014841269841269823,
+              0.0002825396825396826
+            ]
+          },
+          "10": {
+            "difference": 0.0003690476190476191,
+            "ratio": 1.1661901358112938,
+            "ci95": [
+              -8.730158730158559e-06,
+              0.0007769841269841273
+            ]
+          },
+          "12": {
+            "difference": 0.0010127999999999995,
+            "ratio": 1.2089108910891089,
+            "ci95": [
+              4.4779999999999385e-05,
+              0.0020112199999999993
+            ]
+          }
+        },
+        "learned_better_at": 0,
+        "learned_response_better": false,
+        "rule_better_at": 1,
+        "core_mean_P2": {
+          "U": 0.00317397037037037,
+          "M+Y": 0.0026911322751322756
+        }
+      },
+      "mechanism": {
+        "6": {
+          "gain_P2_M_minus_U": 0.00017952755905511824,
+          "all": {
+            "difference": 0.00031338582677165364,
+            "ratio": 1.5422343324250682,
+            "ci95": [
+              0.0001094488188976378,
+              0.0005921456692913386
+            ]
+          },
+          "nonurgent": {
+            "difference": 0.00022204724409448828,
+            "ratio": 1.3841961852861038,
+            "ci95": [
+              8.425196850393696e-05,
+              0.0004125984251968502
+            ]
+          },
+          "H_M2": true,
+          "H_M1": true
+        },
+        "8": {
+          "gain_P2_M_minus_U": 0.000407142857142857,
+          "all": {
+            "difference": 0.0007190476190476192,
+            "ratio": 1.6711111111111112,
+            "ci95": [
+              0.000342857142857143,
+              0.0012238293650793646
+            ]
+          },
+          "nonurgent": {
+            "difference": 0.0006460317460317462,
+            "ratio": 1.6029629629629631,
+            "ci95": [
+              0.0002857142857142858,
+              0.0011333928571428563
+            ]
+          },
+          "H_M2": true,
+          "H_M1": true
+        },
+        "10": {
+          "gain_P2_M_minus_U": 0.0010301587301587301,
+          "all": {
+            "difference": 0.0018119047619047624,
+            "ratio": 1.699662886913883,
+            "ci95": [
+              0.0009587103174603175,
+              0.0029794841269841256
+            ]
+          },
+          "nonurgent": {
+            "difference": 0.0016460317460317456,
+            "ratio": 1.6356114005516393,
+            "ci95": [
+              0.0008015674603174602,
+              0.002792876984126984
+            ]
+          },
+          "H_M2": true,
+          "H_M1": true
+        },
+        "12": {
+          "gain_P2_M_minus_U": 0.001775999999999999,
+          "all": {
+            "difference": 0.0038112,
+            "ratio": 1.6502866502866502,
+            "ci95": [
+              0.00207198,
+              0.006101600000000001
+            ]
+          },
+          "nonurgent": {
+            "difference": 0.0033271999999999998,
+            "ratio": 1.5677040677040677,
+            "ci95": [
+              0.0015719799999999995,
+              0.005621640000000001
+            ]
+          },
+          "H_M2": true,
+          "H_M1": true
+        },
+        "16": {
+          "gain_P2_M_minus_U": 0.0055488000000000065,
+          "all": {
+            "difference": 0.023700800000000008,
+            "ratio": 1.3686338920203567,
+            "ci95": [
+              0.005249740000000003,
+              0.04342982
+            ]
+          },
+          "nonurgent": {
+            "difference": 0.023055199999999998,
+            "ratio": 1.3585924571030399,
+            "ci95": [
+              0.004345319999999992,
+              0.04325150000000001
+            ]
+          },
+          "H_M2": true,
+          "H_M1": true
+        }
+      }
+    },
+    "10.0": {
+      "instances": {
+        "6": 120,
+        "8": 118,
+        "10": 115,
+        "12": 114,
+        "16": 111
+      },
+      "P2": {
+        "U": {
+          "6": 0.0005833333333333334,
+          "8": 0.0010966101694915254,
+          "10": 0.002690434782608696,
+          "12": 0.006057894736842106,
+          "16": 0.06727117117117118
+        },
+        "M": {
+          "6": 0.0007616666666666667,
+          "8": 0.001502542372881356,
+          "10": 0.0037469565217391307,
+          "12": 0.007892105263157895,
+          "16": 0.07245585585585586
+        },
+        "M+Y": {
+          "6": 0.0006016666666666667,
+          "8": 0.0010296610169491527,
+          "10": 0.002281739130434783,
+          "12": 0.004980701754385965,
+          "16": 0.06415765765765766
+        },
+        "O": {
+          "6": 0.00058,
+          "8": 0.0010872881355932203,
+          "10": 0.002693913043478261,
+          "12": 0.005904385964912281,
+          "16": 0.06310180180180179
+        },
+        "L": {
+          "6": 0.0006258333333333334,
+          "8": 0.0011118644067796613,
+          "10": 0.002697391304347826,
+          "12": 0.005724561403508773,
+          "16": 0.05836486486486486
+        },
+        "U-hide-all": {
+          "6": 0.0008949999999999999,
+          "8": 0.0018313559322033898,
+          "10": 0.004588695652173913,
+          "12": 0.01007982456140351,
+          "16": 0.09106846846846847
+        },
+        "U-hide-nonurgent": {
+          "6": 0.0008049999999999999,
+          "8": 0.0017559322033898306,
+          "10": 0.00442,
+          "12": 0.009578947368421055,
+          "16": 0.09051441441441442
+        },
+        "best_local": {
+          "6": 0.0016666666666666666,
+          "8": 0.0040296610169491525,
+          "10": 0.011869565217391307,
+          "12": 0.027745614035087723,
+          "16": 0.32756306306306304
+        },
+        "CG-opt": {
+          "6": 0.005370833333333334,
+          "8": 0.006652542372881355,
+          "10": 0.009439130434782608,
+          "12": 0.017758771929824564,
+          "16": 0.0943918918918919
+        },
+        "N_EDF": {
+          "6": 0.00024166666666666667,
+          "8": 0.0002754237288135593,
+          "10": 0.00034782608695652176,
+          "12": 0.00039912280701754385,
+          "16": 0.0006036036036036036
+        },
+        "U0": {
+          "8": 0.001433898305084746,
+          "10": 0.0032069565217391306,
+          "12": 0.0065763157894736845
+        },
+        "U@0": {
+          "8": 0.001643220338983051,
+          "10": 0.003847826086956522,
+          "12": 0.007948245614035088
+        }
+      },
+      "D_N": {
+        "6": {
+          "difference": -0.0001783333333333333,
+          "ratio": 0.7658643326039388,
+          "ci95": [
+            -0.00037666666666666664,
+            -3.4166666666666666e-05
+          ]
+        },
+        "8": {
+          "difference": -0.0004059322033898305,
+          "ratio": 0.7298364354201918,
+          "ci95": [
+            -0.0006999999999999999,
+            -0.00016184322033898336
+          ]
+        },
+        "10": {
+          "difference": -0.0010565217391304347,
+          "ratio": 0.7180320259921096,
+          "ci95": [
+            -0.0016730869565217388,
+            -0.0005356521739130439
+          ]
+        },
+        "12": {
+          "difference": -0.0018342105263157889,
+          "ratio": 0.7675891963987996,
+          "ci95": [
+            -0.0032588596491228083,
+            -0.000747368421052632
+          ]
+        },
+        "16": {
+          "difference": -0.005184684684684679,
+          "ratio": 0.9284435381593018,
+          "ci95": [
+            -0.017593828828828827,
+            0.00929740990990992
+          ]
+        }
+      },
+      "decision": "effective",
+      "harmful_N": [],
+      "content": {
+        "O": {
+          "rows": {
+            "6": {
+              "difference": 3.3333333333333782e-06,
+              "ratio": 1.0057471264367817,
+              "ci95": [
+                -0.00011666666666666672,
+                0.00012085416666666645
+              ]
+            },
+            "8": {
+              "difference": 9.322033898305146e-06,
+              "ratio": 1.0085736554949338,
+              "ci95": [
+                -0.0002729025423728816,
+                0.00028728813559322037
+              ]
+            },
+            "10": {
+              "difference": -3.4782608695650002e-06,
+              "ratio": 0.9987088444157521,
+              "ci95": [
+                -0.0007234782608695652,
+                0.0006626521739130427
+              ]
+            },
+            "12": {
+              "difference": 0.00015350877192982487,
+              "ratio": 1.0259991086019908,
+              "ci95": [
+                -0.0015579166666666667,
+                0.0017596491228070166
+              ]
+            },
+            "16": {
+              "difference": 0.004169369369369388,
+              "ratio": 1.066073697585769,
+              "ci95": [
+                -0.012694211711711702,
+                0.022737297297297305
+              ]
+            }
+          },
+          "better_at": 0,
+          "U_better": false
+        },
+        "L": {
+          "rows": {
+            "6": {
+              "difference": -4.25e-05,
+              "ratio": 0.9320905459387483,
+              "ci95": [
+                -0.0002350208333333335,
+                0.00011916666666666673
+              ]
+            },
+            "8": {
+              "difference": -1.525423728813589e-05,
+              "ratio": 0.9862804878048778,
+              "ci95": [
+                -0.00036610169491525357,
+                0.0002983050847457627
+              ]
+            },
+            "10": {
+              "difference": -6.9565217391300005e-06,
+              "ratio": 0.9974210186976146,
+              "ci95": [
+                -0.0009218260869565222,
+                0.0007043478260869564
+              ]
+            },
+            "12": {
+              "difference": 0.00033333333333333305,
+              "ratio": 1.0582286239656757,
+              "ci95": [
+                -0.0014404166666666656,
+                0.00185
+              ]
+            },
+            "16": {
+              "difference": 0.008906306306306316,
+              "ratio": 1.1525970517866793,
+              "ci95": [
+                -0.01069310810810811,
+                0.02876617117117115
+              ]
+            }
+          },
+          "better_at": 0,
+          "U_better": false
+        },
+        "supported": false
+      },
+      "coordination": {
+        "E_N": {
+          "8": {
+            "difference": 6.694915254237279e-05,
+            "ratio": 1.065020576131687,
+            "ci95": [
+              -0.0001508686440677966,
+              0.00028813559322033886
+            ]
+          },
+          "10": {
+            "difference": 0.0004086956521739131,
+            "ratio": 1.1791158536585367,
+            "ci95": [
+              2.084782608695654e-05,
+              0.0008426086956521734
+            ]
+          },
+          "12": {
+            "difference": 0.001077192982456141,
+            "ratio": 1.2162733356815782,
+            "ci95": [
+              5.0000000000000544e-05,
+              0.0021158333333333337
+            ]
+          }
+        },
+        "learned_better_at": 0,
+        "learned_response_better": false,
+        "rule_better_at": 2,
+        "core_mean_P2": {
+          "U": 0.0032816465629807758,
+          "M+Y": 0.0027640339672566337
+        }
+      },
+      "mechanism": {
+        "6": {
+          "gain_P2_M_minus_U": 0.0001783333333333333,
+          "all": {
+            "difference": 0.00031166666666666647,
+            "ratio": 1.5342857142857138,
+            "ci95": [
+              0.00010166666666666668,
+              0.0006033333333333333
+            ]
+          },
+          "nonurgent": {
+            "difference": 0.00022166666666666656,
+            "ratio": 1.38,
+            "ci95": [
+              7.5e-05,
+              0.0004175000000000001
+            ]
+          },
+          "H_M2": true,
+          "H_M1": true
+        },
+        "8": {
+          "gain_P2_M_minus_U": 0.0004059322033898305,
+          "all": {
+            "difference": 0.0007347457627118643,
+            "ratio": 1.670015455950541,
+            "ci95": [
+              0.0003440677966101695,
+              0.0012720338983050847
+            ]
+          },
+          "nonurgent": {
+            "difference": 0.0006593220338983051,
+            "ratio": 1.6012364760432767,
+            "ci95": [
+              0.00029235169491525424,
+              0.0011652542372881354
+            ]
+          },
+          "H_M2": true,
+          "H_M1": true
+        },
+        "10": {
+          "gain_P2_M_minus_U": 0.0010565217391304347,
+          "all": {
+            "difference": 0.0018982608695652173,
+            "ratio": 1.7055591467356173,
+            "ci95": [
+              0.0009947608695652173,
+              0.003180869565217391
+            ]
+          },
+          "nonurgent": {
+            "difference": 0.0017295652173913044,
+            "ratio": 1.6428571428571428,
+            "ci95": [
+              0.0008382608695652175,
+              0.002974782608695652
+            ]
+          },
+          "H_M2": true,
+          "H_M1": true
+        },
+        "12": {
+          "gain_P2_M_minus_U": 0.0018342105263157889,
+          "all": {
+            "difference": 0.004021929824561404,
+            "ratio": 1.6639154358528816,
+            "ci95": [
+              0.0021499780701754387,
+              0.006475460526315789
+            ]
+          },
+          "nonurgent": {
+            "difference": 0.003521052631578949,
+            "ratio": 1.5812337098175502,
+            "ci95": [
+              0.001630635964912281,
+              0.005925460526315789
+            ]
+          },
+          "H_M2": true,
+          "H_M1": true
+        },
+        "16": {
+          "gain_P2_M_minus_U": 0.005184684684684679,
+          "all": {
+            "difference": 0.023797297297297293,
+            "ratio": 1.3537517911906898,
+            "ci95": [
+              0.004649504504504502,
+              0.04395135135135135
+            ]
+          },
+          "nonurgent": {
+            "difference": 0.023243243243243242,
+            "ratio": 1.345515662037471,
+            "ci95": [
+              0.0041636486486486286,
+              0.043683445945945955
+            ]
+          },
+          "H_M2": true,
+          "H_M1": true
+        }
+      }
+    }
+  }
+}
