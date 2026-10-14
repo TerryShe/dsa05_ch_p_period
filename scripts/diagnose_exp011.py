@@ -23,7 +23,8 @@ the definitions of the broadcast probe so the numbers are comparable:
   subchannel) and traffic class.
 
 Formal use only on exp011-eval512 with a clean committed tree (``--formal``);
-EXP-DSA05-011B runs the same diagnostics on its slice (``--set exp011b-eval512``).
+EXP-DSA05-011B runs the same diagnostics on its slice (``--set exp011b-eval128`` since
+its amendment 2, design §15; ``exp011b-eval512`` before).
 """
 
 import argparse
@@ -43,7 +44,7 @@ from dsa_period.rules_v2 import make_policy_v2
 from dsa_period.urgency import SummaryLink, SummarySettings, urgent
 
 SET = "exp011-eval512"
-SETS = (SET, "exp011b-eval512")  # EXP-011 and EXP-011B (design §3.4) evaluation slices
+SETS = (SET, "exp011b-eval512", "exp011b-eval128")  # EXP-011, EXP-011B (§3.4, §15) slices
 EXCESS_BINS_DB = (3.0, 10.0, 20.0)
 SNR_BINS_DB = (0.0, 10.0, 20.0)
 YIELD_BINS = (0, 1, 11, 101)  # yield events per UE: 0, 1-10, 11-100, > 100

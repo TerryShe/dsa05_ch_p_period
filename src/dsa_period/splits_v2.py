@@ -55,6 +55,11 @@ SCREENING_SETS: dict[str, dict] = {
     # (``starvation.stress_instances``), so ``screening_instances`` refuses it.
     "exp011b-eval512": {"range": (6_000, 6_512), "grid": (6, 8, 10, 12, 16)},
     "exp011b-stress": {"range": (7_000, 10_000), "grid": (8, 12, 16), "near_m": 5.0},
+    # EXP-DSA05-011B amendment 2 (design §15): the evaluation reads the first 128
+    # deployments of exp011b-eval512; starvation is also counted on the deployments of
+    # the rest of that slice whose first N UEs include one within near_m of the AP.
+    "exp011b-eval128": {"range": (6_000, 6_128), "grid": (6, 8, 10, 12, 16)},
+    "exp011b-near": {"range": (6_128, 6_512), "grid": (6, 8, 10, 12, 16), "near_m": 5.0},
 }
 # Confirmation sets, one execution each: v2-confirm1 (EXP-008 §7.1, reserve 30000-30499)
 # and v2-confirm2 (EXP-009 §3, reserve 30500-30999).

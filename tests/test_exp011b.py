@@ -216,6 +216,27 @@ def test_sets_are_registered_nested_and_guarded():
                                 "exp011b-stress", "--policies", "best_local", "--formal"])  # fmt: skip
 
 
+def test_amendment_2_sets_split_the_evaluation_slice():
+    register = _module("register_sets", "scripts/register_exp008_sets.py")
+    manifest = json.loads((ROOT / "docs/research/exp011b-a2-sets.json").read_text())
+    assert manifest == json.loads(json.dumps(register.build("EXP-DSA05-011B-A2")))
+    assert splits_v2.screening_instances("exp011b-eval128") == list(range(6000, 6128))
+    near = manifest["screening"]["exp011b-near"]["instances"]
+    assert {n: len(v) for n, v in near.items()} == {"6": 8, "8": 10, "10": 11, "12": 14, "16": 20}
+    assert all(set(near[a]) <= set(near[b]) for a, b in (("6", "8"), ("8", "10"), ("10", "12"),
+                                                         ("12", "16")))  # fmt: skip
+    assert all(6128 <= i < 6512 for v in near.values() for i in v)
+    for n, listed in near.items():  # every listed deployment has a UE within 5 m at that N
+        scenario = load_scenario(CONFIG, int(n))
+        assert all(scenario.instance(i)[0].ue_ap_distances_m.min() < 5.0 for i in listed)
+    with pytest.raises(ValueError):
+        splits_v2.screening_instances("exp011b-near")
+    stress = _module("stress_exp011b", "scripts/stress_exp011b.py")
+    for argv in (["--set", "exp011b-near", "--grid", "6"], ["--grid", "6"]):
+        with pytest.raises(SystemExit):  # informal reads and unregistered N are refused
+            stress.main(["--specs", "best_local", *argv, "--output", "/nonexistent/x"])
+
+
 def test_mean_snr_is_the_channel_mean_and_starvation_needs_a_strong_ue():
     scenario = load_scenario(CONFIG, 8)
     topology, traffic = scenario.instance(1000)
@@ -339,6 +360,42 @@ def test_the_analysis_applies_the_pre_registered_rules():
     assert not result["proposed_method"]["U_is_the_proposed_method"]
 
 
+def test_near_outputs_must_be_the_registered_deployments(tmp_path):
+    listed = starvation.stress_instances(load_scenario(CONFIG, 6), "exp011b-near")
+    record = {"set": "exp011b-near", "formal": True, "instances": {"6": listed}}
+    (tmp_path / "summary.json").write_text(json.dumps(record))
+    (tmp_path / "episodes.json").write_text(json.dumps({"best_local": {"6": [{"instance": 1}]}}))
+    assert analysis.load_near([tmp_path]) == {"best_local": {6: [{"instance": 1}]}}
+    for change in ({"instances": {"6": listed[:-1]}}, {"set": "exp011b-stress"}, {"formal": False}):
+        (tmp_path / "summary.json").write_text(json.dumps(record | change))
+        with pytest.raises(ValueError):
+            analysis.load_near([tmp_path])
+
+
+def test_near_deployments_count_starvation_and_the_distance_subsets_decide_nothing():
+    layers = lambda c: [{str(n): f"marl:{c}{s}.pt" for n in (6, 8, 10, 12, 16)}  # noqa: E731
+                        for s in range(5)]  # fmt: skip
+    plan = driver.plan(
+        {c: layers(c) for c in driver.KEYS.values()}
+        | {"best_local": "best_local", "cg_opt": "configured_grant_opt", "edf": "central_edf"}
+    )
+    instances = list(range(16))
+    near = _episodes(plan, [20, 21], W, starve=("U", 1, 12, 21))
+    distances = {n: {i: 3.0 if i < 4 else 7.0 if i < 8 else 50.0 for i in instances}
+                 for n in driver.GRID}  # fmt: skip
+    result = analysis.analyze(_episodes(plan, instances, W), plan, instances, 200, near=near,
+                              distances=distances)  # fmt: skip
+    assert result["starvation_cells_by_set"]["exp011b-eval128"]["U"][12] == 0
+    assert result["starvation_cells_by_set"]["exp011b-near"]["U"][12] == 1
+    assert result["starvation_cells"]["U"][12] == 1
+    assert not result["proposed_method"]["U_is_the_proposed_method"]
+    subsets = result["min_distance"]
+    assert subsets["5.0"]["instances"] == {n: 12 for n in driver.GRID}
+    assert subsets["10.0"]["instances"] == {n: 8 for n in driver.GRID}
+    assert set(subsets["10.0"]) == set(analysis.SUBSET_KEYS)
+    assert "proposed_method" not in subsets["5.0"] and result["decision"] == "effective"
+
+
 # --------------------------------------------------------------------------- driver
 def test_stages_need_their_gate(tmp_path, monkeypatch):
     monkeypatch.setattr(driver, "OUT", tmp_path)
@@ -363,6 +420,25 @@ def test_the_driver_queues_and_selects_only_the_amended_candidates(monkeypatch):
     assert not driver.is_candidate("u-seed404-base-step-002001664")
     with pytest.raises(ValueError):
         driver.is_candidate("u-seed404")
+
+
+def test_stage_4_runs_as_amended(tmp_path, monkeypatch):
+    monkeypatch.setattr(driver, "OUT", tmp_path)
+    (tmp_path / "gates.json").write_text(json.dumps({"0": {}, "A": {"branch": "G"}, "B": {},
+                                                     "C": {}}))  # fmt: skip
+    with pytest.raises(SystemExit, match="amendment"):
+        driver.check_gate("stage4")
+    pairs = [("best_local", 6), ("marl:a.pt", 8), ("yield[theta=-10]@marl:a.pt", 8), ("x", 16)]
+    chunks = driver.near_chunks(pairs)
+    assert [c[0] for c in chunks] == ["near-n6", "near-n8", "near-n16"]
+    for (_, command, output, _), n in zip(chunks, (6, 8, 16)):
+        assert command[command.index("--set") + 1] == "exp011b-near"
+        assert command[command.index("--grid") + 1] == str(n)
+        assert output == tmp_path / "near" / f"n{n}"
+        specs = command[command.index("--specs") + 1 : command.index("--formal")]
+        assert specs == [spec for spec, m in pairs if m == n]
+    command = driver.eval_chunk("best_local", 6)[1]
+    assert command[command.index("--screen") + 1] == "exp011b-eval128"
 
 
 def test_the_driver_refuses_unknown_arguments(monkeypatch):

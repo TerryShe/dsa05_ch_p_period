@@ -8,7 +8,9 @@
     run_exp011b.py stage3   the new candidate checkpoints (amendment 1, §13: 3M, 4M,
                             5M, 6M, 8M, 10M) on exp009-screen256 and the stress set,
                             the guarded selection, the methods file and the plan
-    run_exp011b.py stage4   evaluation on exp011b-eval512, diagnostics, analysis
+    run_exp011b.py stage4   evaluation on exp011b-eval128 and the starvation count on
+                            the near-UE deployments exp011b-near (amendment 2, §15),
+                            diagnostics, analysis
 
 A stage runs only if ``outputs/exp011b/gates.json`` records the user's approval
 of the gate before it (0, A, B, C; gate A also records branch "G") and the
@@ -32,6 +34,7 @@ ROOT = Path(__file__).parents[1]
 OUT = ROOT / "outputs" / "exp011b"
 PY = str(ROOT / ".venv" / "bin" / "python")
 GRID, CORE = (6, 8, 10, 12, 16), (8, 10, 12)
+EVAL_SET, NEAR_SET = "exp011b-eval128", "exp011b-near"  # amendment 2 (design §15)
 KEYS = {"m": "M", "u": "U", "o": "O", "l": "L", "u0": "U0"}
 GRIDS = {"m": GRID, "u": GRID, "o": GRID, "l": GRID, "u0": CORE}
 OLD_SEEDS, NEW_SEEDS = (101, 202, 303), (404, 505)
@@ -149,13 +152,25 @@ def screen_chunk(key: str, path: Path) -> tuple[str, list[str], Path, int]:
 
 def eval_chunk(spec: str, n: int) -> tuple[str, list[str], Path, int]:
     name = label_of(spec, n)
-    output = OUT / "eval" / name
+    output = OUT / "eval128" / name
     command = [
         PY, "-m", "dsa_period.experiments.evaluate_capacity", "--config",
-        "configs/scenario-v2.toml", "--split", "dev", "--screen", "exp011b-eval512",
+        "configs/scenario-v2.toml", "--split", "dev", "--screen", EVAL_SET,
         "--grid", str(n), "--policies", spec, "--formal", "--output", str(output),
     ]  # fmt: skip
     return name, command, output, MAX_WORKERS
+
+
+def near_chunks(pairs: list[tuple[str, int]]) -> list[tuple[str, list[str], Path, int]]:
+    """One chunk per N: every evaluated spec at that N on the near-UE deployments."""
+    chunks = []
+    for n in sorted({n for _, n in pairs}):
+        specs = [spec for spec, m in pairs if m == n]
+        output = OUT / "near" / f"n{n}"
+        command = [PY, "scripts/stress_exp011b.py", "--set", NEAR_SET, "--grid", str(n),
+                   "--specs", *specs, "--formal", "--output", str(output)]  # fmt: skip
+        chunks.append((f"near-n{n}", command, output, MAX_WORKERS))
+    return chunks
 
 
 def screen_dirs_existing() -> list[str]:
@@ -199,6 +214,8 @@ def check_gate(stage: str) -> None:
         sys.exit(f"{stage} needs the user's approval of gate {gate} in {gates_file}")
     if stage == "stage2" and gates["A"].get("branch") != "G":
         sys.exit("gate A did not choose branch G; the design must be amended first (§6)")
+    if stage == "stage4" and "amendment-2" not in gates:
+        sys.exit("stage 4 runs as amended (§15); the amendment needs the user's approval")
 
 
 def stage1(dry: bool) -> None:
@@ -320,22 +337,26 @@ def stage4(dry: bool) -> None:
     labels = [label_of(spec, n) for spec, n in pairs]
     if len(set(labels)) != len(labels):
         sys.exit("two evaluation chunks share a label")
+    near = near_chunks(pairs)
     if dry:
-        print(f"{len(pairs)} evaluation chunks on exp011b-eval512, diagnostics, analysis")
+        print(f"{len(near)} near-UE chunks on {NEAR_SET}, {len(pairs)} evaluation chunks on "
+              f"{EVAL_SET}, diagnostics, analysis")  # fmt: skip
         return
-    run_queue([eval_chunk(spec, n) for spec, n in pairs], OUT / "eval")
-    outputs = [str(OUT / "eval" / name) for name in labels]
-    if any(not (Path(o) / "summary.json").exists() for o in outputs):
+    run_queue(near + [eval_chunk(spec, n) for spec, n in pairs], OUT / "eval128")
+    outputs = [str(OUT / "eval128" / name) for name in labels]
+    near_outputs = [str(chunk[2]) for chunk in near]
+    if any(not (Path(o) / "summary.json").exists() for o in outputs + near_outputs):
         sys.exit("evaluations missing")
     log("evaluation done")
     if not (OUT / "diagnostics.json").exists():
         items = [f"{layer[str(n)]}@{n}" for name in ("U", "M", "M+Y")
                  for layer in evaluation_plan["groups"][name] for n in CORE]  # fmt: skip
-        subprocess.run([PY, "scripts/diagnose_exp011.py", "--set", "exp011b-eval512", "--specs",
+        subprocess.run([PY, "scripts/diagnose_exp011.py", "--set", EVAL_SET, "--specs",
                         *items, "--formal", "--workers", str(CORES), "--check", *outputs,
                         "--output", str(OUT / "diagnostics.json")], cwd=ROOT, check=True)  # fmt: skip
         log("diagnostics done")
-    subprocess.run([PY, "scripts/analyze_exp011b.py", "--evaluations", *outputs, "--plan",
+    subprocess.run([PY, "scripts/analyze_exp011b.py", "--evaluations", *outputs, "--near",
+                    *near_outputs, "--plan",
                     str(OUT / "plan-exp011b.json"), "--output", str(OUT / "analysis.json")],
                    cwd=ROOT, check=True)  # fmt: skip
     log("stage 4 done")

@@ -2,7 +2,9 @@
 
 Every (spec, N, deployment) of ``exp011b-stress`` (``starvation.stress_instances``
 at N = 8, 12, 16) runs one protocol episode with the seeds of
-``evaluate_capacity`` (dev, repeat 0). The output directory holds summary.json
+``evaluate_capacity`` (dev, repeat 0). ``--set exp011b-near`` reads, the same way,
+the near-UE deployments of dev 6128-6511 that amendment 2 adds to the starvation
+count of the evaluation (design §15; N = 6-16). The output directory holds summary.json
 (provenance, the instance lists, and per spec and N the starvation cells:
 a UE with mean SNR >= 20 dB and violation rate >= 0.5) and episodes.json (the
 per-UE records). The stress set is read only with ``--formal`` on a clean
@@ -23,6 +25,7 @@ from dsa_period.experiments.central_reference import git_provenance
 from dsa_period.rules_v2 import make_policy_v2
 
 CONFIG = starvation.CONFIG
+NEAR_SETS = (starvation.STRESS_SET, "exp011b-near")
 KEEP = ("instance", "packets", "violations", "violation_rate", "worst_violation_rate",
         "distance_m", "shadowing_db", "class_index")  # fmt: skip
 
@@ -44,6 +47,7 @@ def _episode(job: tuple) -> tuple:
 def main(argv: list[str] | None = None) -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--specs", nargs="+", required=True)
+    parser.add_argument("--set", choices=NEAR_SETS, default=starvation.STRESS_SET)
     parser.add_argument("--grid", type=int, nargs="+", default=[8, 12, 16])
     parser.add_argument("--instances", type=int, nargs=2, metavar=("FIRST", "COUNT"),
                         help="informal smoke runs on unregistered dev instances")  # fmt: skip
@@ -54,14 +58,15 @@ def main(argv: list[str] | None = None) -> None:
     if args.output.exists():
         parser.error(f"output {args.output} already exists")
     provenance = git_provenance()
-    registered = splits_v2.SCREENING_SETS[starvation.STRESS_SET]["grid"]
+    registered = splits_v2.SCREENING_SETS[args.set]["grid"]
     if not set(args.grid) <= set(registered):
-        parser.error(f"{starvation.STRESS_SET} is registered at N = {list(registered)}")
+        parser.error(f"{args.set} is registered at N = {list(registered)}")
     if args.instances is None:
         if not args.formal or provenance["dirty"]:
-            parser.error("the stress set is read only with --formal on a clean committed tree")
+            parser.error(f"{args.set} is read only with --formal on a clean committed tree")
         chosen = {
-            n: starvation.stress_instances(load_scenario(CONFIG, n)) for n in sorted(args.grid)
+            n: starvation.stress_instances(load_scenario(CONFIG, n), args.set)
+            for n in sorted(args.grid)
         }
     else:
         if args.formal:
@@ -93,7 +98,7 @@ def main(argv: list[str] | None = None) -> None:
     args.output.mkdir(parents=True)
     record = {
         "protocol_id": splits_v2.PROTOCOL_ID,
-        "set": starvation.STRESS_SET if args.instances is None else "smoke",
+        "set": args.set if args.instances is None else "smoke",
         "formal": args.formal,
         "provenance": provenance,
         "definition": {

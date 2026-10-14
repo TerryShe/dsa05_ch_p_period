@@ -1,7 +1,9 @@
 """EXP-DSA05-011B analysis exactly as pre-registered (design §5).
 
-Inputs: formal ``evaluate_capacity --screen exp011b-eval512`` outputs and the
-evaluation plan written by ``scripts/run_exp011b.py`` (same format as EXP-011:
+Inputs (amendment 2, design §15): formal ``evaluate_capacity --screen
+exp011b-eval128`` outputs, formal ``stress_exp011b.py --set exp011b-near``
+outputs (the near-UE deployments of dev 6128-6511, used for the starvation count
+only) and the evaluation plan written by ``scripts/run_exp011b.py`` (same format as EXP-011:
 {"groups": {name: [layer, ...] | spec}, "grids": {name: [N, ...]}}). Groups: U,
 M, M+Y, O, L, U-hide-all, U-hide-nonurgent, best_local, CG-opt, N_EDF at every
 N; U0 and U@0 (U evaluated at a 0 dB reading threshold) at N = 8, 10, 12. Each
@@ -15,10 +17,13 @@ two-level bootstrap with 10,000 draws and seed 20,260,930.
   < 0 at two or more of N = 8, 10, 12; content supported: better than both);
   E_N = P2(U) - P2(M+Y) (learned response better at two or more N; M+Y
   significantly better where the lower bound > 0); starvation cells of every
-  group (``starvation.cells``); H-M1, H-M2; U0 - M and U0 - U@0; D_N over all
+  group (``starvation.cells``) on exp011b-eval128 and exp011b-near; H-M1, H-M2; U0 - M and U0 - U@0; D_N over all
   N; budget effect (from the selection) and the EXP-011 slice (descriptive).
 * Proposed method (§5.4): U if the main rule is at least "partly effective", U
   has no starvation cell and M+Y is not significantly better at two or more N.
+* Minimum distance (amendment 2, descriptive, decides nothing): P2, D_N and the
+  secondary comparisons again on the deployments whose UEs are all at least 5 m
+  and 10 m from the AP at that N (scenario geometry only).
 """
 
 import argparse
@@ -31,7 +36,11 @@ import numpy as np
 from dsa_period import starvation
 from dsa_period.capacity import BOOTSTRAP_RESAMPLES
 
-SET = "exp011b-eval512"
+SET = "exp011b-eval128"
+NEAR_SET = "exp011b-near"
+MIN_DISTANCES_M = (5.0, 10.0)
+SUBSET_KEYS = ("instances", "P2", "D_N", "decision", "harmful_N", "content", "coordination",
+               "mechanism")  # fmt: skip
 GRID = (6, 8, 10, 12, 16)
 CORE = (8, 10, 12)
 HIDES = ("all", "nonurgent")
@@ -59,18 +68,55 @@ def starvation_cells(episodes: dict, group, n: int) -> int:
     return total
 
 
+def load_near(paths: list[Path], formal: bool = True) -> dict:
+    """spec -> {N: episodes} over formal exp011b-near outputs (``stress_exp011b.py``)."""
+    near: dict = {}
+    for path in paths:
+        record = json.loads((path / "summary.json").read_text())
+        if record.get("set") != NEAR_SET or (formal and not record["formal"]):
+            raise ValueError(f"{path}: not a formal {NEAR_SET} output")
+        for n, listed in record["instances"].items():
+            if listed != starvation.stress_instances(starvation._scenario(int(n)), NEAR_SET):
+                raise ValueError(f"{path}: not the registered {NEAR_SET} deployments at N = {n}")
+        for spec, by_n in json.loads((path / "episodes.json").read_text()).items():
+            for n, rows in by_n.items():
+                if int(n) in near.get(spec, {}):
+                    raise ValueError(f"{spec} at N = {n} appears twice in the {NEAR_SET} outputs")
+                near.setdefault(spec, {})[int(n)] = rows
+    return near
+
+
+def min_distances(instances: list[int], grid=GRID) -> dict[int, dict[int, float]]:
+    """N -> instance -> distance of the deployment's nearest UE to the AP (geometry only)."""
+    return {
+        n: {
+            i: float(starvation._scenario(n).instance(i)[0].ue_ap_distances_m.min())
+            for i in instances
+        }
+        for n in grid
+    }
+
+
 def analyze(
-    episodes: dict, plan: dict, instances: list[int], draws: int, exp011: dict | None = None
+    episodes: dict,
+    plan: dict,
+    instances: list[int] | dict[int, list[int]],
+    draws: int,
+    exp011: dict | None = None,
+    near: dict | None = None,
+    distances: dict[int, dict[int, float]] | None = None,
 ) -> dict:
+    """The pre-registered analysis; ``instances`` may differ per N (a subset analysis)."""
     groups, grids = plan["groups"], {k: tuple(v) for k, v in plan["grids"].items()}
+    every = {n: instances[n] if isinstance(instances, dict) else instances for n in GRID}
 
     def mat(name: str, n: int, field: str = "w") -> np.ndarray:
-        return base.matrix(episodes, groups[name], n, field, instances)
+        return base.matrix(episodes, groups[name], n, field, every[n])
 
     def compare(a: np.ndarray, b: np.ndarray) -> dict:
         return base.compare(a, b, draws)
 
-    out: dict = {"plan": plan, "instances": len(instances), "delta": base.DELTA}
+    out: dict = {"plan": plan, "instances": {n: len(every[n]) for n in GRID}, "delta": base.DELTA}
     out["P2"] = {g: {n: float(mat(g, n).mean()) for n in grids[g]} for g in groups}
     out["P1"] = {g: {n: float(mat(g, n, "feasible").mean()) for n in grids[g]} for g in groups}
     out["N_star_on_grid"] = {
@@ -84,8 +130,15 @@ def analyze(
     out["p90_w"] = {
         g: {n: float(np.percentile(mat(g, n), 90, axis=1).mean()) for n in grids[g]} for g in groups
     }
+    by_set = {SET: {g: {n: starvation_cells(episodes, groups[g], n) for n in grids[g]}
+                    for g in groups}}  # fmt: skip
+    if near is not None:
+        by_set[NEAR_SET] = {
+            g: {n: starvation_cells(near, groups[g], n) for n in grids[g]} for g in groups
+        }
+    out["starvation_cells_by_set"] = by_set
     out["starvation_cells"] = {
-        g: {n: starvation_cells(episodes, groups[g], n) for n in grids[g]} for g in groups
+        g: {n: sum(cells[g][n] for cells in by_set.values()) for n in grids[g]} for g in groups
     }
 
     # Main rule (§5.2) and the load profile (§5.3 item 6).
@@ -171,12 +224,21 @@ def analyze(
         out["exp011_slice"] = {
             n: {"exp011_D_N": exp011["D_N"][str(n)], "exp011b_D_N": d[n]} for n in GRID
         }
+
+    # Minimum UE-AP distance (amendment 2, descriptive; decides nothing).
+    if distances is not None:
+        out["min_distance"] = {}
+        for d_min in MIN_DISTANCES_M:
+            kept = {n: [i for i in every[n] if distances[n][i] >= d_min] for n in GRID}
+            subset = analyze(episodes, plan, kept, draws)
+            out["min_distance"][str(d_min)] = {key: subset[key] for key in SUBSET_KEYS}
     return out
 
 
 def main(argv: list[str] | None = None) -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--evaluations", type=Path, nargs="+", required=True)
+    parser.add_argument("--near", type=Path, nargs="+", required=True)
     parser.add_argument("--plan", type=Path, required=True)
     parser.add_argument("--exp011", type=Path, default=EXP011_ANALYSIS)
     parser.add_argument("--output", type=Path, required=True)
@@ -188,8 +250,10 @@ def main(argv: list[str] | None = None) -> None:
     if args.resamples != BOOTSTRAP_RESAMPLES and not args.allow_informal:
         parser.error("the formal analysis uses the protocol's bootstrap size")
     episodes, instances = base.load(args.evaluations, not args.allow_informal, SET)
+    near = load_near(args.near, not args.allow_informal)
     exp011 = json.loads(args.exp011.read_text()) if args.exp011.exists() else None
-    result = analyze(episodes, json.loads(args.plan.read_text()), instances, args.resamples, exp011)
+    result = analyze(episodes, json.loads(args.plan.read_text()), instances, args.resamples,
+                     exp011, near, min_distances(instances))  # fmt: skip
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(result, indent=2))
     for n, row in result["D_N"].items():

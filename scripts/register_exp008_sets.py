@@ -9,7 +9,10 @@ EXP-008 (docs/research/exp008-sets.json): the screening set exp008-screen256
 evaluation slice exp011-eval512 (dev 5000-5511, N = 6, 8, 10, 12, 16). EXP-011B
 (docs/research/exp011b-sets.json): the evaluation slice exp011b-eval512 (dev
 6000-6511) and the near-UE stress set exp011b-stress (block 7000-9999; at N = 8,
-12, 16 the deployments with a UE within 5 m of the AP, listed per N). Each set
+12, 16 the deployments with a UE within 5 m of the AP, listed per N). EXP-011B
+amendment 2 (docs/research/exp011b-a2-sets.json): exp011b-eval128 (dev 6000-6127)
+and exp011b-near (the deployments of dev 6128-6511 with a UE within 5 m of the AP
+at N = 6-16, listed per N). Each set
 carries its instance and fading digests (``splits_v2.instance_digest``:
 topology, shadowing, traffic and the fading of slots 0-7) at every N it is read
 at; confirmation sets at every N of the protocol-v2 grid and of N_EDF. No policy
@@ -94,6 +97,32 @@ REGISTRY = {
             [3000, 3256],
             [4000, 4512],
             [5000, 5512],
+        ],  # fmt: skip
+    },
+    "EXP-DSA05-011B-A2": {
+        "output": "docs/research/exp011b-a2-sets.json",
+        "design": "docs/experiment-designs/011b-guarded-selection-extended-training_20261012.md",
+        "document": "docs/research/exp011b-registration.md",
+        "registered_on": "2026-10-14",
+        "screening": ["exp011b-eval128", "exp011b-near"],
+        "confirmation": [],
+        "score": {
+            "exp011b-eval128": "P2; D_N = P2(U) - P2(M); U - O, U - L, U - M+Y (design §5, §15)",
+            "exp011b-near": "starvation cells only, added to those on exp011b-eval128",
+        },
+        "selection": {
+            "exp011b-eval128": "none: evaluation only",
+            "exp011b-near": "none: evaluation only",
+        },
+        "dev_used": [
+            [0, 64],
+            [1000, 1400],
+            [2000, 2256],
+            [3000, 3256],
+            [4000, 4512],
+            [5000, 5512],
+            [6000, 6512],
+            [7000, 10000],
         ],  # fmt: skip
     },
 }
@@ -202,7 +231,9 @@ def filtered_set(name: str, entry: dict, score: str, selection: str) -> dict:
         "seed_code": splits_v2.SPLIT_CODES["dev"],
         "score": score,
         "selection": selection,
-        "entry_point": "scripts/stress_exp011b.py --formal",
+        "entry_point": "scripts/stress_exp011b.py "
+        + ("" if name == starvation.STRESS_SET else f"--set {name} ")
+        + "--formal",
         "digests": {
             str(n): splits_v2.instance_digest(load_scenario(ROOT / CONFIG, n), lists[n], "dev")
             for n in entry["grid"]

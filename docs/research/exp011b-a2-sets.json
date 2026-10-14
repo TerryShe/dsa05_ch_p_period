@@ -1,0 +1,193 @@
+{
+  "schema_version": 1,
+  "experiment": "EXP-DSA05-011B-A2",
+  "design": "docs/experiment-designs/011b-guarded-selection-extended-training_20261012.md",
+  "document": "docs/research/exp011b-registration.md",
+  "protocol_id": "marl-protocol-v2",
+  "registered_on": "2026-10-14",
+  "scenario_config": "configs/scenario-v2.toml",
+  "scenario_config_sha256": "74e3fadc6626abebe681ed43c487a8e3781e0dfb65494ace72db730f58550afc",
+  "horizon_slots": 20200,
+  "warmup_slots": 200,
+  "execution_seeds": {
+    "base": 20260930,
+    "scheme": "SeedSequence([base, seed_code, instance, repeat]).spawn(N)[j]"
+  },
+  "fading_seeds": {
+    "base": 20261001,
+    "scheme": "SeedSequence([base, seed_code, instance, repeat]).spawn(N)[j]"
+  },
+  "screening": {
+    "exp011b-eval128": {
+      "split": "dev",
+      "start": 6000,
+      "stop": 6128,
+      "count": 128,
+      "grid": [
+        6,
+        8,
+        10,
+        12,
+        16
+      ],
+      "repeats": 1,
+      "seed_code": 0,
+      "score": "P2; D_N = P2(U) - P2(M); U - O, U - L, U - M+Y (design \u00a75, \u00a715)",
+      "selection": "none: evaluation only",
+      "entry_point": "evaluate_capacity --split dev --screen exp011b-eval128 --formal",
+      "digests": {
+        "6": "2389d627ba3deac94c827d555495adf36b6167f9f96347992a938399cbd16bf6",
+        "8": "c433ec395852060b85395523ed4bfcc20a3d76763351b2717ff65cce5fe23e45",
+        "10": "7e78c85ad8878445c9d87d4bb2d7b84939c115d9f0c17208b6d09db4dec67486",
+        "12": "4d9c794aa43c1a0ce976bc49a7b788c4a486381a2229766daf7ae523642b2724",
+        "16": "9f56d64f6f44e1508723f1e4bad8d17b94c58d4377ec7464a804ce90a806f902"
+      }
+    },
+    "exp011b-near": {
+      "split": "dev",
+      "start": 6128,
+      "stop": 6512,
+      "reserved": 384,
+      "filter": "the first N UEs include one within 5.0 m of the AP",
+      "grid": [
+        6,
+        8,
+        10,
+        12,
+        16
+      ],
+      "count": {
+        "6": 8,
+        "8": 10,
+        "10": 11,
+        "12": 14,
+        "16": 20
+      },
+      "instances": {
+        "6": [
+          6331,
+          6360,
+          6406,
+          6419,
+          6435,
+          6448,
+          6480,
+          6500
+        ],
+        "8": [
+          6160,
+          6331,
+          6360,
+          6387,
+          6406,
+          6419,
+          6435,
+          6448,
+          6480,
+          6500
+        ],
+        "10": [
+          6146,
+          6160,
+          6331,
+          6360,
+          6387,
+          6406,
+          6419,
+          6435,
+          6448,
+          6480,
+          6500
+        ],
+        "12": [
+          6146,
+          6160,
+          6236,
+          6331,
+          6360,
+          6384,
+          6387,
+          6406,
+          6419,
+          6432,
+          6435,
+          6448,
+          6480,
+          6500
+        ],
+        "16": [
+          6143,
+          6146,
+          6160,
+          6185,
+          6236,
+          6258,
+          6270,
+          6307,
+          6331,
+          6360,
+          6384,
+          6387,
+          6405,
+          6406,
+          6419,
+          6432,
+          6435,
+          6448,
+          6480,
+          6500
+        ]
+      },
+      "repeats": 1,
+      "seed_code": 0,
+      "score": "starvation cells only, added to those on exp011b-eval128",
+      "selection": "none: evaluation only",
+      "entry_point": "scripts/stress_exp011b.py --set exp011b-near --formal",
+      "digests": {
+        "6": "04cf14fed772cd1cd3ca994b7d9470e3ad52ae08f34a35b39719694e61cb948d",
+        "8": "31d075b1337b927de87c481e9296816c305da60c24276220672cabe2d404bcbc",
+        "10": "494097e02eb9d6c42782dbf005dde2aadf4cff3d36c56a511fba952fdd0a9639",
+        "12": "9fb390c33350e1bd0d2826b6a4dee4e22ecfcd3d9ec170a7862609dfe5218516",
+        "16": "903ec8c81348fe64c3c315558ba37a4128df408fb13eb4eec38df88b23eb877d"
+      }
+    }
+  },
+  "confirmation": {},
+  "usage_checked_on_registration": {
+    "v2_dev_ranges_used": [
+      [
+        0,
+        64
+      ],
+      [
+        1000,
+        1400
+      ],
+      [
+        2000,
+        2256
+      ],
+      [
+        3000,
+        3256
+      ],
+      [
+        4000,
+        4512
+      ],
+      [
+        5000,
+        5512
+      ],
+      [
+        6000,
+        6512
+      ],
+      [
+        7000,
+        10000
+      ]
+    ],
+    "v2_reserve_ranges_read": []
+  }
+}
