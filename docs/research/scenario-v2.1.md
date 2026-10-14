@@ -2,15 +2,16 @@
 doc_id: DES-DSA05-PERIODIC
 type: scenario-specification
 version: "2.1"
-status: approved
+status: frozen
 date: 2026-10-14
 approved: 2026-10-14
+frozen: 2026-10-14
 previous: "2.0 (frozen 2026-10-01, unchanged)"
 ---
 
 # 场景规范 v2.1：最小 UE–AP 距离
 
-状态：**已批准（2026-10-14），第 0 阶段进行中**。量级检查的结果经用户确认后冻结（§6）。§8 记录批准时用户的决定。
+状态：**冻结（2026-10-14）**。第 0 阶段的量级检查（[报告](../results/v21-phase0_20261014/report.md)）经用户确认后冻结（用户确认："1）可以接受 2）同意冻结"）。冻结清单为 [scenario-v2.1-freeze.json](scenario-v2.1-freeze.json)，由 `tests/test_frozen_scenario_v21.py` 守护。§8 记录批准时用户的决定。
 
 - 本文件只写 v2.1 相对 v2.0 的修改。其余全部沿用 [场景规范 v2.0](scenario-v2.md)（第 6 版及其补充：L1 紧迫状态摘要、CG-opt）。
 - v2.0 的文件、配置与冻结清单都不改动；v2.1 使用新的配置文件与冻结清单。

@@ -1,0 +1,219 @@
+{
+  "schema_version": 1,
+  "scenario_id": "DES-DSA05-PERIODIC",
+  "scenario_version": "2.1",
+  "status": "frozen",
+  "frozen_on": "2026-10-14",
+  "confirmed_by": "user",
+  "specification": "docs/research/scenario-v2.1.md",
+  "phase0_report": "docs/results/v21-phase0_20261014/report.md",
+  "previous": {
+    "scenario_version": "2.0",
+    "config_path": "configs/scenario-v2.toml",
+    "config_sha256": "74e3fadc6626abebe681ed43c487a8e3781e0dfb65494ace72db730f58550afc"
+  },
+  "config_path": "configs/scenario-v2.1.toml",
+  "config_sha256": "61218a2f3ecc1db5c8ef1e3e59c4709ddfcc2b665043e4a6cb9c1549d748de0e",
+  "parameters": {
+    "experiment": {
+      "id": "scenario-v2.1",
+      "scenario_id": "DES-DSA05-PERIODIC",
+      "scenario_version": "2.1"
+    },
+    "physical": {
+      "num_subchannels": 4,
+      "slot_duration_s": 0.001,
+      "subchannel_bandwidth_hz": 1000000.0,
+      "noise_psd_dbm_per_hz": -174.0,
+      "noise_figure_db": 7.0,
+      "max_tx_power_dbm": 23.0
+    },
+    "spatial": {
+      "radius_m": 100.0,
+      "reference_distance_m": 1.0,
+      "reference_path_loss_db": 40.0,
+      "path_loss_exponent": 4.0,
+      "topology_seed": 40000000,
+      "min_distance_m": 10.0
+    },
+    "shadowing": {
+      "sigma_db": 6.0,
+      "coverage_window_fraction": 0.5
+    },
+    "fading": {
+      "model": "jakes-sos",
+      "doppler_hz": 10.0,
+      "sinusoids": 32,
+      "carrier_hz": 2400000000.0
+    },
+    "power": {
+      "power_dbm": [
+        "OFF",
+        5.0,
+        10.0,
+        15.0,
+        19.0,
+        23.0
+      ]
+    },
+    "traffic": {
+      "assignment": "round-robin",
+      "phase_seed": 60000000,
+      "classes": [
+        {
+          "name": "fast",
+          "period_slots": 10,
+          "packet_bits": 6144.0
+        },
+        {
+          "name": "medium",
+          "period_slots": 20,
+          "packet_bits": 12288.0
+        },
+        {
+          "name": "slow",
+          "period_slots": 40,
+          "packet_bits": 24576.0
+        }
+      ]
+    },
+    "run": {
+      "horizon_slots": 20200,
+      "warmup_slots": 200
+    },
+    "objective": {
+      "kind": "max-ues-subject-to-per-ue-reliability",
+      "max_violation_rate": 0.01,
+      "comparison_violation_rates": [
+        0.05
+      ],
+      "feasible_episode_share": 0.95
+    },
+    "capacity": {
+      "grid": [
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        16,
+        20,
+        24,
+        28,
+        32
+      ],
+      "reference_extra": [
+        36,
+        40
+      ]
+    }
+  },
+  "derived": {
+    "noise_power_dbm": -107.0,
+    "num_joint_actions": 21,
+    "per_ue_offered_bits_per_slot": 614.4,
+    "evaluation_slots": 20000,
+    "packets_per_ue": {
+      "fast": 2000,
+      "medium": 1000,
+      "slow": 500
+    },
+    "allowance": {
+      "0.01": {
+        "fast": 20,
+        "medium": 10,
+        "slow": 5
+      },
+      "0.05": {
+        "fast": 100,
+        "medium": 50,
+        "slow": 25
+      }
+    },
+    "min_distance_m": 10.0
+  },
+  "decisions": [
+    "only change from v2.0: minimum 2D UE-AP distance 10 m",
+    "a UE closer than 10 m is redrawn in the same topology stream, like the coverage rule; seed bases unchanged, so deployments with every UE accepted at >= 10 m equal v2.0",
+    "justification: validity range of the 3GPP TR 38.901 UMa/UMi path loss (d2D >= 10 m), not InF",
+    "main scenario keeps periodic traffic; Bernoulli arrivals or jitter only as a later, separately registered robustness scenario",
+    "CG-opt calibration (optimizer search budget) not redone; best_local recalibrated per N on the v2.1 validation split later"
+  ],
+  "dev_instances": [
+    0,
+    64
+  ],
+  "train_probe_indices": [
+    1000000,
+    1000001,
+    1000002,
+    1000003,
+    1000004,
+    1000005,
+    1000006,
+    1000007,
+    1999992,
+    1999993,
+    1999994,
+    1999995,
+    1999996,
+    1999997,
+    1999998,
+    1999999
+  ],
+  "digests": {
+    "2": {
+      "dev_0_63": "ae25425b735be5de408381b9af20810cf09c9eb9ea8e8a1b0ce76f52ff0ac58c",
+      "train_probe": "92c429d440575b9afa88792e5312003cd60dcec22ce8aa42e7fe4ff07202acfc"
+    },
+    "4": {
+      "dev_0_63": "c5bc304133c159ac0d08a7ae99460422c229b9bb5d2b841d79b8c2d6af857d71",
+      "train_probe": "2f19e2d79a757f30d53268cdf3b49de83d4617c2d708cea97e058e801ad79dd6"
+    },
+    "6": {
+      "dev_0_63": "f9dcb29e3c2452a2c1094476c2639ce596242dafa2e879ed8fbb6e0461981145",
+      "train_probe": "7601ed42a24c0b58bdb9dab21aff7c52144f07771acc31e5d992fe22ab123bdf"
+    },
+    "8": {
+      "dev_0_63": "d0f5c96ce0bb2f53e4883721870aaae73cd0f12249ac138ce918b006da3b0638",
+      "train_probe": "8f3bdee12d2a27efd798c5f79eaa3cbe8b6cfd4f737da27f860ee76ddb764ad8"
+    },
+    "10": {
+      "dev_0_63": "a5c488543f471e53896cbf7e22334534e0640d30489e654b95884bfeebbca47e",
+      "train_probe": "714f1d9de25d8739fdc79a33dea1c98f469eef9c7315abc72bff5288358295ab"
+    },
+    "12": {
+      "dev_0_63": "6daddecce4bb3347c5224c4e2006449f530f2f113b8ea3df5400f524811448a8",
+      "train_probe": "6e5170aff741bd2c8c64a475ad5dacd3d5970a4c1daaa612012166e406ef1c41"
+    },
+    "16": {
+      "dev_0_63": "681795f5b4ec448b3875074e73cffa0b902b4e391c3e2d33be63746c4a5b7552",
+      "train_probe": "d4ade2f908677a28e25455779cb34046b67da9db8f28e534fea47b7f41734956"
+    },
+    "20": {
+      "dev_0_63": "0dea5e6e994e84a8cb2fd0760e00e4fef938bbb0939afd91298223c659d4faa6",
+      "train_probe": "5fbf167256ac440d1b8ffcedb1415c1c23780ced5a0d6299da32b984eecd2bce"
+    },
+    "24": {
+      "dev_0_63": "e8d53d718bed91a990565f18f5f1f4d1d0dd5a476908309f70016948e0f21d91",
+      "train_probe": "d66d1ae3300194988fcf78508dae828295e897e434c491fff910d51b4bdadacb"
+    },
+    "28": {
+      "dev_0_63": "793df3850cbd199dcd233820e4e368e1256b8ae4b47b1d2d2adfc9ed8d144890",
+      "train_probe": "9afa0845e9328412c7b87c9a55bf7e6fb807fd7da37436e9b58039a50321416c"
+    },
+    "32": {
+      "dev_0_63": "887d69b6f6ad7f9f45ad9700385ec3f9be499f6705fdb856bff5eea5f47a49e5",
+      "train_probe": "a6fd5e17fd60fcace03284ee56efdc3787fc0b198e45fa9fd6849ab4f660ea82"
+    },
+    "36": {
+      "dev_0_63": "5c8513cd012f7674b6222cc1128ff989f08b3d0a29ff9cc999e33f116fb4f50c",
+      "train_probe": "6125189baa3a5bf5c27b76bbf45f8e9ffc29e82787e01f44253564fa286378bd"
+    },
+    "40": {
+      "dev_0_63": "0f645270803687a33255fb187af2e310bdf38b4a7c0794ae052afc82982a8c60",
+      "train_probe": "d628c726cc54f6f02968672cec512332c942a4e35a711eeb5227182100fe8a40"
+    }
+  }
+}
