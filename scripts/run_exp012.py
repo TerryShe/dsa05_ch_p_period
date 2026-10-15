@@ -15,7 +15,9 @@
     run_exp012.py stage1c  design revision 4 (§11.4): SP and SP-B, seeds 101, 202, 303, 404,
                            5M slots each on the frozen pilot M (seeds 101/303 on M seed 101,
                            202/404 on M seed 202); the last checkpoints, M, M+S, M+Y,
-                           R17-like and SC-B on exp012-pilot2-256 at N = 8, 10, 12; gate A2
+                           R17-like and SC-B on exp012-pilot2-256 at N = 8, 10, 12; gate A2.
+                           SP0 (design §11.10): the untrained SP on M seeds 101 and 202,
+                           evaluated alongside
 
 A stage runs only if ``outputs/exp012/gates.json`` records the user's approval of
 the gate before it (stage 1 needs gate 0, stage 1b gate A, stage 1c gate 0'). Gate records are written by hand after
@@ -85,10 +87,12 @@ def run_parallel(jobs: list[tuple[str, list[str], Path]], cores: int, per_job: i
         time.sleep(20)
 
 
-def train_job(config: str, seed: int, output: Path) -> tuple[str, list[str], Path]:
+def train_job(
+    config: str, seed: int, output: Path, extra: tuple[str, ...] = ()
+) -> tuple[str, list[str], Path]:
     command = [PY, "-m", "dsa_period.experiments.train_capacity_mappo", "--config", config,
                "--scenario", SCENARIO, "--variant", "fixed", "--seed", str(seed), "--formal",
-               "--output", str(output)]  # fmt: skip
+               "--output", str(output), *extra]  # fmt: skip
     return output.name, command, output
 
 
@@ -255,9 +259,20 @@ def stage1c(dry: bool) -> None:
         for key in STAGE1C
         for seed in SEEDS_1C
     ]
+    # SP0: the SP checkpoint before any update; it depends only on the base M (§11.10)
+    train += [
+        train_job(
+            "configs/exp012-pilot1c-sp.toml",
+            seed,
+            OUT / "pilot1c" / f"sp0-seed{seed}",
+            ("--initial-checkpoint",),
+        )  # fmt: skip
+        for seed in SEEDS
+    ]
     if dry:
-        print(f"{len(train)} runs ({', '.join(STAGE1C.values())} x seeds {SEEDS_1C}), then "
-              f"{PILOT2_SET} at N = {PILOT_GRID}, then gate A2")  # fmt: skip
+        print(f"{len(train) - len(SEEDS)} runs ({', '.join(STAGE1C.values())} x seeds "
+              f"{SEEDS_1C}) and SP0 on seeds {SEEDS}, then {PILOT2_SET} at N = {PILOT_GRID}, "
+              "then gate A2")  # fmt: skip
         return
     run_parallel(train, len(train), 1)  # one core per training run
     log("stage 1c training done")
@@ -272,6 +287,9 @@ def stage1c(dry: bool) -> None:
         for seed in SEEDS_1C:
             checkpoint = last_checkpoint(OUT / "pilot1c" / f"{key}-seed{seed}").relative_to(ROOT)
             add(name, f"{key}-seed{seed}", f"marl:{checkpoint}")
+    for seed in SEEDS:
+        checkpoint = last_checkpoint(OUT / "pilot1c" / f"sp0-seed{seed}").relative_to(ROOT)
+        add("SP0", f"sp0-seed{seed}", f"marl:{checkpoint}")
     for seed in SEEDS:
         m = f"marl:{last_checkpoint(OUT / 'pilot' / f'm-seed{seed}').relative_to(ROOT)}"
         add("M", f"M-seed{seed}", m)

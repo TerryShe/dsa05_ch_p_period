@@ -14,6 +14,9 @@ declares ``experiment.scenario`` runs only on that scenario file.
 EXP-DSA05-012 design revision 4 adds the optional ``[protection]`` section (SP,
 ``marl.protection.ProtectionSettings``): ``base`` and ``base_sha256`` map each seed
 to its frozen base checkpoint; a formal SP run needs a formal base run.
+``--initial-checkpoint`` writes the manifest and the untrained checkpoint
+``checkpoints/step-000000000.pt`` and stops: for an SP config this is SP0, the
+complete SP before any update (design §11.10), evaluated without training.
 ``--resume CHECKPOINT`` continues that checkpoint's run (EXP-DSA05-011B design
 §2.2) into a new output directory: the config must equal the run's except a
 larger budget with the same entropy decay length; a formal resume needs a formal
@@ -134,6 +137,9 @@ def main(argv: list[str] | None = None) -> None:
     parser.add_argument("--num-ues", type=int, help="N of a per-N config")
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--resume", type=Path, metavar="CHECKPOINT", help="continue its run")
+    parser.add_argument(
+        "--initial-checkpoint", action="store_true", help="write the untrained checkpoint only"
+    )
     parser.add_argument("--formal", action="store_true")
     parser.add_argument("--budget-slots", type=int, help="non-formal override")
     parser.add_argument(
@@ -146,6 +152,8 @@ def main(argv: list[str] | None = None) -> None:
     args = parser.parse_args(argv)
     if args.output.exists():
         parser.error(f"output {args.output} already exists")
+    if args.initial_checkpoint and args.resume is not None:
+        parser.error("--initial-checkpoint starts a run; it cannot resume one")
     provenance = git_provenance()
     if args.formal and (provenance["dirty"] or args.budget_slots is not None or args.set):
         parser.error("--formal requires a clean tree and no overrides")
@@ -241,6 +249,7 @@ def main(argv: list[str] | None = None) -> None:
         "num_ues": args.num_ues,
         "overrides": changes,
         "resume": resume,
+        "initial_checkpoint_only": args.initial_checkpoint,
         "resolved": {
             "training": resolve_training(raw, args.num_ues),
             "model": raw["model"],
@@ -264,6 +273,11 @@ def main(argv: list[str] | None = None) -> None:
         "python": platform.python_version(),
     }
     (args.output / "manifest.json").write_text(json.dumps(manifest, indent=2))
+    if args.initial_checkpoint:
+        (args.output / "checkpoints").mkdir()
+        torch.save(trainer.checkpoint(0, 0), args.output / "checkpoints" / "step-000000000.pt")
+        print(f"wrote {args.output / 'checkpoints' / 'step-000000000.pt'}")
+        return
     result = trainer.run(args.output, start=start)
     print(json.dumps(result, indent=2))
 

@@ -24,10 +24,11 @@ count misses, isolated misses and misses in runs of two or more.
 
 ``pilot1c``: stage 1c on exp012-pilot2-256 (dev 1656-1911; design revision 4,
 §11.4): SP and SP-B (four seeds each) against M, M+S, M+Y, R17-like (on the
-pilot's M seeds 101 and 202) and SC-B (descriptive). Gate A2 (N = 10, point
-estimates), per variant: Q_U <= 0.8 x the best rule, P2 <= 1.10 x P2(M+S) and every
-seed's P2 <= 1.25 x P2(M+S). Continue with the passing variant of lower Q_U; stop
-iff both variants have Q_U >= Q_U(M+S); otherwise adjust.
+pilot's M seeds 101 and 202), SP0 (the untrained SP, design §11.10) and SC-B
+(descriptive). Gate A2 (N = 10, point estimates), per variant: Q_U <= 0.8 x the best
+reference (M+S, M+Y, R17-like, SP0), P2 <= 1.10 x P2(M+S) and every seed's P2 <=
+1.25 x P2(M+S). Continue with the passing variant of lower Q_U; stop iff both
+variants have Q_U >= min(Q_U(M+S), Q_U(SP0)); otherwise adjust.
 
 Gate A (design §4.1, point estimates at N = 10): continue iff Q_U(SC) is at least
 20% below the best rule (lowest Q_U of M+S, M+Y, R17-like) and below M-S, and
@@ -53,7 +54,8 @@ EXTRA = ("M-S+S",)  # descriptive only (design §10.4)
 CANDIDATES = ("SC-B[0.1]", "SC-B[0.3]")  # stage 1b (design §10.5)
 COUNTS = ("misses", "isolated_misses", "misses_in_runs")
 SP_VARIANTS = ("SP", "SP-B")  # stage 1c (design §11.4)
-ORDER_1C = ("SP", "SP-B", "M", "M+S", "M+Y", "R17-like", "SC-B")
+ORDER_1C = ("SP", "SP-B", "SP0", "M", "M+S", "M+Y", "R17-like", "SC-B")
+REFERENCES_1C = (*RULES, "SP0")  # gate A2: the rules and the untrained SP (design §11.10)
 
 
 def _exp011():
@@ -213,19 +215,20 @@ def select_1b(methods: dict, n: str = "10") -> dict:
 def gate_a2(methods: dict, n: str = "10") -> dict:
     """Gate A2 of stage 1c (design §11.4; point estimates at N = 10)."""
     q = {name: methods[name][n]["worst_unavailability"] for name in methods}
-    best_rule = min(RULES, key=lambda name: q[name])
+    best = min(REFERENCES_1C, key=lambda name: q[name])
     p2_ref = methods["M+S"][n]["w"]
     variants = {}
     for name in SP_VARIANTS:
         row = methods[name][n]
         variants[name] = {
             "Q_U": q[name],
-            "ratio_to_best_rule": q[name] / q[best_rule] if q[best_rule] else None,
+            "ratio_to_best_reference": q[name] / q[best] if q[best] else None,
             "ratio_to_M+S": q[name] / q["M+S"] if q["M+S"] else None,
+            "ratio_to_SP0": q[name] / q["SP0"] if q["SP0"] else None,
             "ratio_P2_to_M+S": row["w"] / p2_ref if p2_ref else None,
             "ratio_P2_by_seed": [w / p2_ref for w in row["by_seed_w"]] if p2_ref else None,
             "checks": {
-                "Q_U_vs_best_rule": q[name] <= 0.8 * q[best_rule],
+                "Q_U_vs_best_reference": q[name] <= 0.8 * q[best],
                 "P2_vs_M+S": row["w"] <= 1.10 * p2_ref,
                 "P2_every_seed": all(w <= 1.25 * p2_ref for w in row["by_seed_w"]),
             },
@@ -233,13 +236,13 @@ def gate_a2(methods: dict, n: str = "10") -> dict:
     passing = [name for name in SP_VARIANTS if all(variants[name]["checks"].values())]
     if passing:
         decision, carried = "continue", min(passing, key=lambda name: q[name])
-    elif all(q[name] >= q["M+S"] for name in SP_VARIANTS):
+    elif all(q[name] >= min(q["M+S"], q["SP0"]) for name in SP_VARIANTS):
         decision, carried = "stop", None
     else:
         decision, carried = "adjust", None
     return {
         "n": int(n),
-        "best_rule": best_rule,
+        "best_reference": best,
         "variants": variants,
         "passing": passing,
         "carried": carried,
@@ -282,9 +285,10 @@ def main(argv: list[str] | None = None) -> None:
     elif args.mode == "pilot1c":
         gate = result["gate_A2"]
         print(f"gate A2 (N = {gate['n']}): {gate['decision']}, carried {gate['carried']}; "
-              f"best rule {gate['best_rule']}")  # fmt: skip
+              f"best reference {gate['best_reference']}")  # fmt: skip
         for name, row in gate["variants"].items():
-            print(f"{name}: Q_U {row['Q_U']:.6f}, x best rule {row['ratio_to_best_rule']:.3f}, "
+            print(f"{name}: Q_U {row['Q_U']:.6f}, x best reference "
+                  f"{row['ratio_to_best_reference']:.3f}, "
                   f"P2 x M+S {row['ratio_P2_to_M+S']:.3f}, checks {row['checks']}")  # fmt: skip
     else:
         selection = result["selection_1b"]

@@ -7,6 +7,7 @@ training decisions; the configs and the checkpoint guards.
 """
 
 import copy
+import json
 import tomllib
 from pathlib import Path
 
@@ -348,8 +349,6 @@ def test_pilot_2_configs_add_only_the_protection_base():
 
 
 def test_the_pilot_2_slice_is_registered_apart_from_every_other_set():
-    import json
-
     manifest = json.loads((ROOT / "docs/research/exp012-r4-sets.json").read_text())
     assert manifest["scenario_config"] == "configs/scenario-v2.1.toml"
     assert list(manifest["screening"]) == ["exp012-pilot2-256"]
@@ -381,17 +380,48 @@ def test_gate_a2_rule():
             for name, value in q.items()
         }  # fmt: skip
 
-    q = {"SP": 0.006, "SP-B": 0.007, "M": 0.020, "M+S": 0.012, "M+Y": 0.011, "R17-like": 0.015,
-         "SC-B": 0.009}  # fmt: skip
+    q = {"SP": 0.006, "SP-B": 0.007, "SP0": 0.010, "M": 0.020, "M+S": 0.012, "M+Y": 0.011,
+         "R17-like": 0.015, "SC-B": 0.009}  # fmt: skip
     gate = a.gate_a2(methods(q, {}))
-    assert gate["best_rule"] == "M+Y" and gate["decision"] == "continue"
+    assert gate["best_reference"] == "SP0" and gate["decision"] == "continue"
     assert gate["passing"] == ["SP", "SP-B"] and gate["carried"] == "SP"
+    # SP0 is a reference like the rules: 20% below it is required
+    gate = a.gate_a2(methods({**q, "SP0": 0.008}, {}))
+    assert gate["passing"] == ["SP"]
     # one SP seed fails the reliability bound: SP-B is carried
     gate = a.gate_a2(methods(q, {}, {"SP": [0.009, 0.0126, 0.009, 0.009]}))
     assert gate["passing"] == ["SP-B"] and gate["carried"] == "SP-B"
     # the mean P2 bound
     gate = a.gate_a2(methods(q, {"SP": 0.0111, "SP-B": 0.0111}))
     assert gate["decision"] == "adjust" and gate["carried"] is None
-    # learned protection no better than the rule M+S: stop
-    gate = a.gate_a2(methods({**q, "SP": 0.012, "SP-B": 0.013}, {}))
-    assert gate["decision"] == "stop"
+    # learning no better than M+S, or no better than the untrained SP0: stop
+    assert a.gate_a2(methods({**q, "SP": 0.012, "SP-B": 0.013}, {}))["decision"] == "stop"
+    assert a.gate_a2(methods({**q, "SP0": 0.005}, {}))["decision"] == "stop"
+
+
+M101 = ROOT / "outputs/exp012/pilot/m-seed101/checkpoints/step-005001472.pt"
+
+
+@pytest.mark.skipif(not M101.exists(), reason="needs the pilot's M checkpoint")
+def test_sp0_is_the_untrained_sp_checkpoint(tmp_path):
+    from dsa_period.experiments.train_capacity_mappo import main
+
+    output = tmp_path / "sp0"
+    main(["--config", "configs/exp012-pilot1c-sp.toml", "--scenario", str(V21.relative_to(ROOT)),
+          "--variant", "fixed", "--seed", "303", "--output", str(output),
+          "--initial-checkpoint"])  # fmt: skip
+    assert [p.name for p in (output / "checkpoints").iterdir()] == ["step-000000000.pt"]
+    checkpoint = torch.load(output / "checkpoints/step-000000000.pt", weights_only=False)
+    assert checkpoint["slots"] == 0 and checkpoint["protection"]["base"].endswith(
+        "m-seed101/checkpoints/step-005001472.pt"
+    )
+    base = torch.load(M101, weights_only=False)
+    expanded = expand_actor_state(
+        base["ppo"]["actor"],
+        (base["model"]["token_dim"], base["model"]["context_dim"]),
+        (checkpoint["model"]["token_dim"], checkpoint["model"]["context_dim"]),
+        base["model"]["hidden"],
+    )
+    actor = checkpoint["ppo"]["actor"]
+    assert all(torch.equal(actor[name], expanded[name]) for name in actor)
+    assert json.loads((output / "manifest.json").read_text())["initial_checkpoint_only"]
