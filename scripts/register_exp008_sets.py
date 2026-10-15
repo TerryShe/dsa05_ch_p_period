@@ -14,7 +14,9 @@ amendment 2 (docs/research/exp011b-a2-sets.json): exp011b-eval128 (dev 6000-6127
 and exp011b-near (the deployments of dev 6128-6511 with a UE within 5 m of the AP
 at N = 6-16, listed per N). EXP-DSA05-012 (docs/research/exp012-sets.json, scenario
 v2.1): the pilot slice exp012-pilot256 (dev 1400-1655, N = 8, 10, 12) and the
-evaluation slice exp012-eval512 (dev 2256-2767, N = 6-16). Each set
+evaluation slice exp012-eval512 (dev 2256-2767, N = 6-16). EXP-DSA05-012 design
+revision 4 (docs/research/exp012-r4-sets.json): the stage-1c pilot slice
+exp012-pilot2-256 (dev 1656-1911, N = 8, 10, 12). Each set
 carries its instance and fading digests (``splits_v2.instance_digest``:
 topology, shadowing, traffic and the fading of slots 0-7) at every N it is read
 at; confirmation sets at every N of the protocol-v2 grid and of N_EDF. No policy
@@ -147,6 +149,29 @@ REGISTRY = {
             [0, 64],
             [1000, 1400],
             [2000, 2256],
+            [3000, 3256],
+            [4000, 4512],
+            [5000, 6512],
+            [7000, 10000],
+        ],  # fmt: skip
+    },
+    "EXP-DSA05-012-R4": {
+        "output": "docs/research/exp012-r4-sets.json",
+        "design": "docs/experiment-designs/012-survival-time-critical-state-marl_20261014.md",
+        "document": "docs/research/exp012-registration.md",
+        "registered_on": "2026-10-15",
+        "scenario_config": "configs/scenario-v2.1.toml",
+        "screening": ["exp012-pilot2-256"],
+        "confirmation": [],
+        "score": "gate A2 of stage 1c: Q_U (worst UE's unavailability, s = 1), P2 and the "
+        "per-seed P2 (design §11.4)",
+        "selection": "none: the pilot evaluates the last checkpoint",
+        "dev_used": [
+            [0, 64],
+            [1000, 1400],
+            [1400, 1656],
+            [2000, 2256],
+            [2256, 2768],
             [3000, 3256],
             [4000, 4512],
             [5000, 6512],

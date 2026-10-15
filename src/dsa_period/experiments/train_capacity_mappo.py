@@ -11,6 +11,9 @@ summary (``urgency.SummarySettings``); without it the actor sees L0 only.
 EXP-DSA05-012 adds the optional ``[survival]`` (``survival.SurvivalSettings``)
 and ``[branching]`` (``trainer_v2.BranchSettings``) sections. A config that
 declares ``experiment.scenario`` runs only on that scenario file.
+EXP-DSA05-012 design revision 4 adds the optional ``[protection]`` section (SP,
+``marl.protection.ProtectionSettings``): ``base`` and ``base_sha256`` map each seed
+to its frozen base checkpoint; a formal SP run needs a formal base run.
 ``--resume CHECKPOINT`` continues that checkpoint's run (EXP-DSA05-011B design
 §2.2) into a new output directory: the config must equal the run's except a
 larger budget with the same entropy decay length; a formal resume needs a formal
@@ -37,6 +40,7 @@ from dsa_period.config import load_scenario
 from dsa_period.experiments.central_reference import git_provenance
 from dsa_period.marl.level_sampler import SamplerSettings
 from dsa_period.marl.ppo import PPOSettings
+from dsa_period.marl.protection import ProtectionSettings
 from dsa_period.marl.trainer_v2 import (
     BranchSettings,
     CapacityConstraint,
@@ -102,6 +106,16 @@ def survival_from(raw: dict) -> tuple[SurvivalSettings | None, BranchSettings | 
     )
 
 
+def protection_from(raw: dict, seed: int) -> ProtectionSettings | None:
+    """The SP base of ``seed`` from the config's [protection] table (None when absent)."""
+    table = raw.get("protection")
+    if table is None:
+        return None
+    if str(seed) not in table["base"] or str(seed) not in table["base_sha256"]:
+        raise ValueError(f"[protection] lists no base for seed {seed}")
+    return ProtectionSettings(table["base"][str(seed)], table["base_sha256"][str(seed)])
+
+
 def parse_value(text: str) -> int | float | str:
     for kind in (int, float):
         try:
@@ -151,6 +165,8 @@ def main(argv: list[str] | None = None) -> None:
         changes[key] = parse_value(value)
     for key, value in changes.items():
         section, _, name = key.partition(".")
+        if section == "protection":
+            parser.error("the SP base is fixed by the config; no override")
         if section == "update":
             if name not in UpdateSettings.__dataclass_fields__:
                 parser.error(f"unknown override {key}")
@@ -175,8 +191,14 @@ def main(argv: list[str] | None = None) -> None:
         training, ppo, constraint, update, sampler = settings_from(raw, args.variant, args.num_ues)
         information = information_from(raw)
         survival, branching = survival_from(raw)
+        protection = protection_from(raw, args.seed)
     except ValueError as exc:
         parser.error(str(exc))
+    base_run = None
+    if protection is not None:
+        base_run = json.loads((Path(protection.base).parent.parent / "manifest.json").read_text())
+        if args.formal and not base_run["formal"]:
+            parser.error(f"{protection.base} comes from an informal run")
     resume = None
     if args.resume is not None:
         source = json.loads((args.resume.parent.parent / "manifest.json").read_text())
@@ -190,10 +212,13 @@ def main(argv: list[str] | None = None) -> None:
         }
     # Any N works: the trainer derives one scenario per environment from it.
     scenario = load_scenario(args.scenario, max(training.env_ues))
-    trainer = CapacityTrainer(
-        scenario, training, ppo, constraint, args.seed, update, sampler, information,
-        survival, branching,
-    )  # fmt: skip
+    try:
+        trainer = CapacityTrainer(
+            scenario, training, ppo, constraint, args.seed, update, sampler, information,
+            survival, branching, protection,
+        )  # fmt: skip
+    except ValueError as exc:
+        parser.error(str(exc))
     start = (0, 0)
     if args.resume is not None:
         try:
@@ -226,6 +251,14 @@ def main(argv: list[str] | None = None) -> None:
             "information": None if information is None else asdict(information),
             "survival": None if survival is None else asdict(survival),
             "branching": None if branching is None else asdict(branching),
+            "protection": None if protection is None else asdict(protection),
+        },
+        "protection_base_run": None
+        if base_run is None
+        else {
+            "config": base_run["config"],
+            "seed": base_run["seed"],
+            "provenance": base_run["provenance"],
         },
         "torch": torch.__version__,
         "python": platform.python_version(),

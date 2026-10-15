@@ -41,6 +41,13 @@ UE enters the survival state and lets a share of the resets resume a snapshot
 for a few periods; the PPO replay restores the snapshot's recurrent state. Without
 these options the trainer is the EXP-011B trainer, bit for bit.
 
+EXP-DSA05-012 design revision 4 (SP, ``marl.protection``) adds ``ProtectionSettings``:
+a frozen L0 base checkpoint (M) proposes every UE's action; the UEs in the survival
+state and those the M+S rule would force to yield take the action of the trained
+actor instead. Actor and critic start from M (zero weights on the inputs M lacks),
+the actor loss and entropy use gated decisions only (``RaggedRollout.active``), and
+snapshots keep M's recurrent state too. Without it the trainer is unchanged.
+
 EXP-DSA05-011B continues a run from a checkpoint (``CapacityTrainer.resume``):
 networks, optimizers, ValueNorm, random states and deployment samplers are
 restored, every environment starts a fresh episode, and ``run`` goes on from the
@@ -49,6 +56,7 @@ slots.
 """
 
 import copy
+import hashlib
 import json
 import resource
 import time
@@ -86,6 +94,13 @@ from dsa_period.marl.networks import (
 )
 from dsa_period.marl.policy import MarlPolicy, SummaryPolicy
 from dsa_period.marl.ppo import PPOSettings, discounted_gae
+from dsa_period.marl.protection import (
+    ProtectionPolicy,
+    ProtectionSettings,
+    expand_actor_state,
+    expand_critic_state,
+    protection_gate,
+)
 from dsa_period.physics import PhysicalConfig, PowerMenu
 from dsa_period.survival import STATE_DIM, SurvivalSettings, SurvivalTracker
 from dsa_period.urgency import SummaryLink, SummarySettings, with_summary
@@ -285,6 +300,7 @@ class RaggedRollout:
     initial_hidden: Tensor  # [U, K, h] before obs[0]
     messages: np.ndarray | None = None  # [T, U] message bits (EXP-011 content L), 0 when OFF
     restart_hidden: Tensor | None = None  # [T, U, K, h] hidden state at episode starts (C4)
+    base_actions: np.ndarray | None = None  # [T, U] M's proposals (SP); ``active`` = gated
 
 
 class RaggedMAPPO:
@@ -651,6 +667,38 @@ def build_actor(
     return cls(tokens, context, config.num_subchannels, menu.num_levels - 1, hidden)
 
 
+def load_protection_base(
+    protection: ProtectionSettings, config: PhysicalConfig, menu: PowerMenu, settings
+) -> tuple[ChannelSetActor, dict, dict]:
+    """The frozen base actor of SP, its checkpoint and its (token, context) dims."""
+    path = Path(protection.base)
+    if protection.base_sha256 is not None:
+        digest = hashlib.sha256(path.read_bytes()).hexdigest()
+        if digest != protection.base_sha256:
+            raise ValueError(f"{path}: SHA-256 {digest} is not the declared one")
+    base = _load_checkpoint(str(path))
+    if base.get("kind") != CHECKPOINT_KIND or base["schema"] != CHECKPOINT_SCHEMA:
+        raise ValueError(f"{path} is not a capacity MAPPO checkpoint")
+    if base.get("information") is not None or base.get("survival") is not None:
+        raise ValueError(f"{path}: the base must be an L0 run (no summary, no survival)")
+    if base["constraint"]["variant"] != "fixed":
+        raise ValueError(f"{path}: the base must be a fixed-weight run")
+    model = base["model"]
+    tokens, context, critic = model_dims(config, menu, None, None)
+    expected = {"token_dim": tokens, "context_dim": context, "critic_ue_dim": critic,
+                "hidden": settings.hidden, "critic_hidden": settings.critic_hidden}  # fmt: skip
+    if any(model[k] != v for k, v in expected.items()):
+        raise ValueError(f"{path}: model {model} does not match {expected}")
+    actor = ChannelSetActor(
+        tokens, context, model["num_channels"], model["num_levels"], model["hidden"]
+    )
+    actor.load_state_dict(base["ppo"]["actor"])
+    actor.eval()
+    for parameter in actor.parameters():
+        parameter.requires_grad_(False)
+    return actor, base, {"token_dim": tokens, "context_dim": context}
+
+
 class CapacityTrainer:
     def __init__(
         self,
@@ -664,6 +712,7 @@ class CapacityTrainer:
         information: SummarySettings | None = None,
         survival: SurvivalSettings | None = None,
         branching: BranchSettings | None = None,
+        protection: ProtectionSettings | None = None,
     ) -> None:
         if not scenario.is_v2:
             raise ValueError("EXP-DSA05-006 trains on scenario v2.0")
@@ -671,6 +720,13 @@ class CapacityTrainer:
             raise ValueError("branch episodes start at survival-state entries: need survival")
         if information is not None and information.content == "survival" and survival is None:
             raise ValueError("the survival content needs the survival settings")
+        if protection is not None and not (
+            survival is not None
+            and survival.features
+            and information is not None
+            and information.content == "survival"
+        ):
+            raise ValueError("SP reads the survival state and the survival broadcast")
         torch.set_num_threads(settings.torch_threads)
         self.scenario, self.settings, self.constraint, self.seed = (
             scenario,
@@ -690,6 +746,20 @@ class CapacityTrainer:
         dims = model_dims(self.config, self.menu, information, survival)
         actor = build_actor(self.config, self.menu, settings.hidden, information, survival)
         critic = SetCritic(dims[2], settings.critic_hidden)
+        self.protection, self.base_actor, self.base_model = protection, None, None
+        if protection is not None:
+            self.base_actor, base, self.base_model = load_protection_base(
+                protection, self.config, self.menu, settings
+            )
+            base_dims = (self.base_model["token_dim"], self.base_model["context_dim"])
+            actor.load_state_dict(
+                expand_actor_state(base["ppo"]["actor"], base_dims, dims[:2], settings.hidden)
+            )
+            critic.load_state_dict(
+                expand_critic_state(
+                    base["ppo"]["critic"], base_dims, dims[:2], self.config.num_subchannels
+                )
+            )
         self.update_settings = update or UpdateSettings()
         self.ppo = RaggedMAPPO(
             actor, critic, ppo_settings, seed, self.env_of_ue, self.update_settings
@@ -715,6 +785,12 @@ class CapacityTrainer:
                   for sc in self.scenarios]
         )  # fmt: skip
         self.summary_counts = {"sent": 0, "read": 0, "marked": 0, "subchannel_slots": 0}
+        self.marked = [np.zeros(k, np.bool_) for _ in self.scenarios]  # broadcast in force
+        if protection is not None:
+            base_dims = (self.base_model["token_dim"], self.base_model["context_dim"])
+            self.base_tokens = np.zeros((ues, k, base_dims[0]), np.float32)
+            self.base_context = np.zeros((ues, base_dims[1]), np.float32)
+            self.base_hidden = self.base_actor.initial_hidden(ues)
         self.trackers = (
             None
             if survival is None
@@ -764,12 +840,15 @@ class CapacityTrainer:
         """Features of a new observation; with a summary, the AP broadcast it carries."""
         rows, memory, obs = self._rows(env), self.memories[env], self.obs[env]
         tokens, context = memory.features(obs)
+        if self.protection is not None:
+            self.base_tokens[rows], self.base_context[rows] = tokens, context
         if self.survival is not None and self.survival.features:
             context = np.concatenate((context, self.trackers[env].features()), axis=1)
         if self.links is not None:
             link = self.links[env]
             sent, read = link.bits_sent, link.bits_read
             marked = link.broadcast(obs)
+            self.marked[env] = marked
             seen = np.broadcast_to(marked, (int(self.env_ues[env]), marked.size)).copy()
             tokens, context = with_summary(tokens, context, seen, link.own_previous)
             counts = self.summary_counts
@@ -821,6 +900,8 @@ class CapacityTrainer:
             self.trackers[env].reset()
         self._refresh(env)
         self.hidden[self._rows(env)] = 0.0
+        if self.protection is not None:
+            self.base_hidden[self._rows(env)] = 0.0
         self.starts[env] = True
 
     # ------------------------------------------------------ branch episodes (C4)
@@ -845,7 +926,14 @@ class CapacityTrainer:
                 self.critic_ue[rows],
             ),
             "length": self.branching.periods * int(self.traffic[env].period_slots[trigger]),
+            "marked": self.marked[env],
         }
+        if self.protection is not None:
+            state["base"] = (
+                self.base_hidden[rows].clone(),
+                self.base_tokens[rows],
+                self.base_context[rows],
+            )
         n = int(self.env_ues[env])
         self.snapshots.setdefault(n, deque(maxlen=self.branching.buffer)).append(
             copy.deepcopy(state)
@@ -874,6 +962,9 @@ class CapacityTrainer:
             "features"
         ]
         self.hidden[rows] = state["hidden"]
+        self.marked[env] = state["marked"]
+        if self.protection is not None:
+            self.base_hidden[rows], self.base_tokens[rows], self.base_context[rows] = state["base"]
         self.starts[env] = True
         self.branch_counts["branches"] += 1
 
@@ -910,6 +1001,13 @@ class CapacityTrainer:
         message = self.information is not None and self.information.message
         if message:
             buf["messages"] = np.zeros((steps, ues), np.int64)
+        protect = self.protection is not None
+        protection_stats = dict.fromkeys(
+            ("gated_state", "gated_yield", "changed_state", "changed_yield", "off_yield"), 0
+        )
+        if protect:
+            buf["base_actions"] = np.zeros((steps, ues), np.int64)
+        packet_decisions = 0
         restart = None
         if self.branching is not None:
             restart = torch.zeros((steps, *self.hidden.shape), dtype=self.hidden.dtype)
@@ -933,7 +1031,9 @@ class CapacityTrainer:
                 self.legal,
             )
             buf["critic_ue"][t], buf["starts"][t] = self.critic_ue, self.starts
-            buf["active"][t] = self.legal[:, 1:].any(axis=-1)
+            has_packet = self.legal[:, 1:].any(axis=-1)
+            buf["active"][t] = has_packet
+            packet_decisions += int(has_packet.sum())
             if restart is not None:
                 for env in np.flatnonzero(self.starts):
                     restart[t, self._rows(int(env))] = self.hidden[self._rows(int(env))]
@@ -956,6 +1056,8 @@ class CapacityTrainer:
                 buf["log_probs"][t] = joint.numpy()
             buf["values"][t] = self._values()
             chosen = chosen.numpy()
+            if protect:
+                chosen = self._protect(chosen, log_probs, buf, t, protection_stats)
             buf["actions"][t] = chosen
             self.starts[:] = False
             for env in range(envs):
@@ -1017,14 +1119,14 @@ class CapacityTrainer:
                 settled[env] += int(settlement.settled.sum())
                 violations[env] += int(settlement.violated.sum())
                 tx += int(step.physical.active.sum())
-                active_decisions += int(buf["active"][t, rows].sum())
+                active_decisions += int(has_packet[rows].sum())
             buf["next_values"][t] = self._values()
             self.rollout_episodes[t] = self.episode_ids
             for env in np.flatnonzero(buf["truncated"][t]):
                 self._finish_episode(int(env))
                 self._reset_env(int(env))
         rollout = RaggedRollout(**buf, initial_hidden=initial_hidden, restart_hidden=restart)
-        self.ue_samples += int(buf["active"].sum())
+        self.ue_samples += packet_decisions
         by_n, settled_by_n, violations_by_n = {}, {}, {}
         for n in np.unique(self.env_ues):
             group = self.env_ues == n
@@ -1048,7 +1150,17 @@ class CapacityTrainer:
             stats["survival"] = {
                 **survival_stats,
                 "state_share_of_active": survival_stats["state_decisions"]
-                / max(int(buf["active"].sum()), 1),
+                / max(packet_decisions, 1),
+            }
+        if protect:
+            gated = protection_stats["gated_state"] + protection_stats["gated_yield"]
+            changed = protection_stats["changed_state"] + protection_stats["changed_yield"]
+            stats["protection"] = {
+                **protection_stats,
+                "gated_share_of_active": gated / max(packet_decisions, 1),
+                "changed_share_of_gated": changed / max(gated, 1),
+                "off_share_of_yield": protection_stats["off_yield"]
+                / max(protection_stats["gated_yield"], 1),
             }
         if self.branching is not None:
             stats["branching"] = {
@@ -1072,6 +1184,48 @@ class CapacityTrainer:
                 "count": mu_stats[1].astype(int).tolist(),
             }
         return rollout, stats
+
+    def _protect(
+        self, chosen: np.ndarray, log_probs: Tensor, buf: dict, t: int, counts: dict
+    ) -> np.ndarray:
+        """SP: M proposes, gated UEs keep the trained actor's sample (design §11.2).
+
+        M samples after the actor, from the same generator. Rewrites the slot's log
+        probabilities (the actor's, of the executed action) and ``active`` (gated).
+        """
+        with torch.no_grad():
+            logits, self.base_hidden = self.base_actor.step(
+                torch.from_numpy(self.base_tokens),
+                torch.from_numpy(self.base_context),
+                self.base_hidden,
+            )
+            base = masked_log_probs(logits, torch.from_numpy(self.legal))
+            proposed = torch.multinomial(base.exp(), 1, generator=self.sampler).squeeze(-1).numpy()
+        gate = np.zeros(chosen.size, np.bool_)
+        for env in range(self.env_ues.size):
+            rows, obs = self._rows(env), self.obs[env]
+            active = obs.remaining > 0
+            rows_proposed = decode_actions(proposed[rows], self.menu)
+            own = self.links[env].own_previous & (obs.prev_power > 0)
+            state = self.trackers[env].in_state & active
+            by_state, by_yield = protection_gate(
+                active, state, rows_proposed, self.marked[env], own, obs.prev_channel
+            )
+            gate[rows] = by_state | by_yield
+            final = np.where(gate[rows], chosen[rows], proposed[rows])
+            changed = final != proposed[rows]
+            counts["gated_state"] += int(by_state.sum())
+            counts["gated_yield"] += int(by_yield.sum())
+            counts["changed_state"] += int((changed & by_state).sum())
+            counts["changed_yield"] += int((changed & by_yield).sum())
+            counts["off_yield"] += int((by_yield & (final == 0)).sum())
+        final = np.where(gate, chosen, proposed)
+        buf["log_probs"][t] = (
+            log_probs.gather(-1, torch.from_numpy(final)[:, None]).squeeze(-1).numpy()
+        )
+        buf["active"][t] = gate
+        buf["base_actions"][t] = proposed
+        return final
 
     # ---------------------------------------------------------- level scoring
     def _finish_episode(self, env: int) -> None:
@@ -1137,6 +1291,15 @@ class CapacityTrainer:
             extra["survival"] = asdict(self.survival)
         if self.branching is not None:
             extra["branching"] = asdict(self.branching)
+        if self.protection is not None:
+            extra["protection"] = asdict(self.protection)
+            extra["base_model"] = {
+                **self.base_model,
+                "num_channels": self.config.num_subchannels,
+                "num_levels": self.menu.num_levels - 1,
+                "hidden": self.settings.hidden,
+            }
+            extra["base_actor"] = self.base_actor.state_dict()
         return {
             **extra,
             "kind": CHECKPOINT_KIND,
@@ -1178,6 +1341,8 @@ class CapacityTrainer:
         """
         if checkpoint.get("kind") != CHECKPOINT_KIND or checkpoint["schema"] != CHECKPOINT_SCHEMA:
             raise ValueError("not a capacity MAPPO checkpoint")
+        if self.protection is not None or "protection" in checkpoint:
+            raise ValueError("SP runs cannot be resumed")
         old, new = checkpoint["settings"], asdict(self.settings)
         fixed = [k for k in new if k not in RESUME_FREE and _plain(old[k]) != _plain(new[k])]
         horizon = old["entropy_decay_fraction"] * old["budget_slots"]
@@ -1301,7 +1466,8 @@ def load_capacity_policy(
     (``marl.imitation``), whose actor is the same network. An EXP-011 summary
     checkpoint (it records ``information``) loads as a ``SummaryPolicy``; there
     ``theta_db`` may replace the reading threshold and ``hide`` sets the
-    evaluation-time hiding mask (design §3.3, §3.5).
+    evaluation-time hiding mask (design §3.3, §3.5). An EXP-012 SP checkpoint (it
+    records ``protection``) loads as a ``ProtectionPolicy`` on the base actor it carries.
     """
     checkpoint = _load_checkpoint(str(path))
     kind = checkpoint.get("kind")
@@ -1313,6 +1479,8 @@ def load_capacity_policy(
     survival = None if survival is None else SurvivalSettings(**survival)
     if information is None and (theta_db is not KEEP or hide != "none"):
         raise ValueError(f"{path} carries no urgency summary to modify")
+    if "protection" in checkpoint and (theta_db is not KEEP or hide != "none"):
+        raise ValueError(f"{path}: an SP checkpoint runs with its own reading threshold")
     settings = None
     if information is not None:
         settings = SummarySettings(**information)
@@ -1333,6 +1501,21 @@ def load_capacity_policy(
     duals = DualSettings(**checkpoint["duals"])
     constraint = CapacityConstraint(**checkpoint["constraint"])
     start = constraint.mu0 if mu0 is None else mu0
+    if "protection" in checkpoint:
+        base_model = checkpoint["base_model"]
+        base_actor = ChannelSetActor(
+            base_model["token_dim"],
+            base_model["context_dim"],
+            base_model["num_channels"],
+            base_model["num_levels"],
+            base_model["hidden"],
+        )
+        base_actor.load_state_dict(checkpoint["base_actor"])
+        base_actor.eval()
+        base = MarlPolicy(base_actor, config, menu, duals, start, name="base")
+        return ProtectionPolicy(
+            base, actor, config, menu, duals, settings, survival, name=f"marl:{path}"
+        )
     if settings is None:
         return MarlPolicy(actor, config, menu, duals, start, name=f"marl:{path}", survival=survival)
     return SummaryPolicy(

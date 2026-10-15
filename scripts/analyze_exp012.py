@@ -22,6 +22,13 @@ lambda_d carried forward is, among the candidates with Q_U <= 0.8 x the best rul
 the one with the lowest Q_U; if none qualifies, none is chosen. Both modes also
 count misses, isolated misses and misses in runs of two or more.
 
+``pilot1c``: stage 1c on exp012-pilot2-256 (dev 1656-1911; design revision 4,
+§11.4): SP and SP-B (four seeds each) against M, M+S, M+Y, R17-like (on the
+pilot's M seeds 101 and 202) and SC-B (descriptive). Gate A2 (N = 10, point
+estimates), per variant: Q_U <= 0.8 x the best rule, P2 <= 1.10 x P2(M+S) and every
+seed's P2 <= 1.25 x P2(M+S). Continue with the passing variant of lower Q_U; stop
+iff both variants have Q_U >= Q_U(M+S); otherwise adjust.
+
 Gate A (design §4.1, point estimates at N = 10): continue iff Q_U(SC) is at least
 20% below the best rule (lowest Q_U of M+S, M+Y, R17-like) and below M-S, and
 P2(SC) <= 1.10 P2(M+S); stop iff Q_U(SC) >= Q_U(M); otherwise adjust.
@@ -38,12 +45,15 @@ from dsa_period import splits_v2
 
 ROOT = Path(__file__).parents[1]
 PILOT_SET = "exp012-pilot256"
+PILOT2_SET = "exp012-pilot2-256"
 DRAWS = 10_000
 RULES = ("M+S", "M+Y", "R17-like")
 ORDER = ("SC", "SC-B", "M-S", "M", "M+S", "M+Y", "R17-like")
 EXTRA = ("M-S+S",)  # descriptive only (design §10.4)
 CANDIDATES = ("SC-B[0.1]", "SC-B[0.3]")  # stage 1b (design §10.5)
 COUNTS = ("misses", "isolated_misses", "misses_in_runs")
+SP_VARIANTS = ("SP", "SP-B")  # stage 1c (design §11.4)
+ORDER_1C = ("SP", "SP-B", "M", "M+S", "M+Y", "R17-like", "SC-B")
 
 
 def _exp011():
@@ -98,11 +108,17 @@ def matrix(episodes: dict, layers: list[dict], n: int, field: str, instances, s:
     return np.array(rows)
 
 
-def pilot(paths: list[Path], plan: dict, focus: tuple[str, ...] = ("SC",)) -> dict:
+def pilot(
+    paths: list[Path],
+    plan: dict,
+    focus: tuple[str, ...] = ("SC",),
+    screen: str = PILOT_SET,
+    order: tuple[str, ...] | None = None,
+) -> dict:
     """Per-method quantities, and each method in ``focus`` against every other one."""
-    episodes, instances = base.load(paths, screen=PILOT_SET)
+    episodes, instances = base.load(paths, screen=screen)
     groups, grid = plan["groups"], plan["grid"]
-    names = ORDER + tuple(name for name in EXTRA + CANDIDATES if name in groups)
+    names = order or ORDER + tuple(name for name in EXTRA + CANDIDATES if name in groups)
     out: dict = {"instances": len(instances), "grid": grid, "methods": {}}
     out |= {f"versus_{name}": {} for name in focus}
     for s in (1, 2):
@@ -122,6 +138,7 @@ def pilot(paths: list[Path], plan: dict, focus: tuple[str, ...] = ("SC",)) -> di
                 row["by_seed_worst_unavailability"] = (
                     values["worst_unavailability"].mean(1).tolist()
                 )
+                row["by_seed_w"] = values["w"].mean(1).tolist()
                 out["methods"].setdefault(f"s={s}", {}).setdefault(name, {})[str(n)] = row
         for target in focus:
             for name in names:
@@ -193,9 +210,46 @@ def select_1b(methods: dict, n: str = "10") -> dict:
     }
 
 
+def gate_a2(methods: dict, n: str = "10") -> dict:
+    """Gate A2 of stage 1c (design §11.4; point estimates at N = 10)."""
+    q = {name: methods[name][n]["worst_unavailability"] for name in methods}
+    best_rule = min(RULES, key=lambda name: q[name])
+    p2_ref = methods["M+S"][n]["w"]
+    variants = {}
+    for name in SP_VARIANTS:
+        row = methods[name][n]
+        variants[name] = {
+            "Q_U": q[name],
+            "ratio_to_best_rule": q[name] / q[best_rule] if q[best_rule] else None,
+            "ratio_to_M+S": q[name] / q["M+S"] if q["M+S"] else None,
+            "ratio_P2_to_M+S": row["w"] / p2_ref if p2_ref else None,
+            "ratio_P2_by_seed": [w / p2_ref for w in row["by_seed_w"]] if p2_ref else None,
+            "checks": {
+                "Q_U_vs_best_rule": q[name] <= 0.8 * q[best_rule],
+                "P2_vs_M+S": row["w"] <= 1.10 * p2_ref,
+                "P2_every_seed": all(w <= 1.25 * p2_ref for w in row["by_seed_w"]),
+            },
+        }
+    passing = [name for name in SP_VARIANTS if all(variants[name]["checks"].values())]
+    if passing:
+        decision, carried = "continue", min(passing, key=lambda name: q[name])
+    elif all(q[name] >= q["M+S"] for name in SP_VARIANTS):
+        decision, carried = "stop", None
+    else:
+        decision, carried = "adjust", None
+    return {
+        "n": int(n),
+        "best_rule": best_rule,
+        "variants": variants,
+        "passing": passing,
+        "carried": carried,
+        "decision": decision,
+    }
+
+
 def main(argv: list[str] | None = None) -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("mode", choices=("pilot", "pilot1b"))
+    parser.add_argument("mode", choices=("pilot", "pilot1b", "pilot1c"))
     parser.add_argument("--evaluations", type=Path, nargs="+", required=True)
     parser.add_argument("--plan", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
@@ -212,9 +266,12 @@ def main(argv: list[str] | None = None) -> None:
     if args.mode == "pilot":
         result = pilot(args.evaluations, plan)
         result["gate_A"] = gate_a(result["methods"]["s=1"])
-    else:
+    elif args.mode == "pilot1b":
         result = pilot(args.evaluations, plan, CANDIDATES)
         result["selection_1b"] = select_1b(result["methods"]["s=1"])
+    else:
+        result = pilot(args.evaluations, plan, SP_VARIANTS, PILOT2_SET, ORDER_1C)
+        result["gate_A2"] = gate_a2(result["methods"]["s=1"])
     result["protocol_id"] = splits_v2.PROTOCOL_ID
     args.output.write_text(json.dumps(result, indent=2))
     if args.mode == "pilot":
@@ -222,6 +279,13 @@ def main(argv: list[str] | None = None) -> None:
         print(f"gate A (N = {gate['n']}): {gate['decision']}; Q_U {gate['Q_U']}; "
               f"best rule {gate['best_rule']}")  # fmt: skip
         print(f"checks {gate['checks']}")
+    elif args.mode == "pilot1c":
+        gate = result["gate_A2"]
+        print(f"gate A2 (N = {gate['n']}): {gate['decision']}, carried {gate['carried']}; "
+              f"best rule {gate['best_rule']}")  # fmt: skip
+        for name, row in gate["variants"].items():
+            print(f"{name}: Q_U {row['Q_U']:.6f}, x best rule {row['ratio_to_best_rule']:.3f}, "
+                  f"P2 x M+S {row['ratio_P2_to_M+S']:.3f}, checks {row['checks']}")  # fmt: skip
     else:
         selection = result["selection_1b"]
         print(f"stage 1b (N = {selection['n']}): {selection['decision']}, chosen "

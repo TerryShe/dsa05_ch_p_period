@@ -12,9 +12,13 @@
                            seeds 101 and 202, 5M slots each; the last checkpoints on
                            exp012-pilot256 at N = 8, 10, 12; the stage-1b analysis, which
                            picks the lambda_d to carry forward
+    run_exp012.py stage1c  design revision 4 (§11.4): SP and SP-B, seeds 101, 202, 303, 404,
+                           5M slots each on the frozen pilot M (seeds 101/303 on M seed 101,
+                           202/404 on M seed 202); the last checkpoints, M, M+S, M+Y,
+                           R17-like and SC-B on exp012-pilot2-256 at N = 8, 10, 12; gate A2
 
 A stage runs only if ``outputs/exp012/gates.json`` records the user's approval of
-the gate before it (stage 1 needs gate 0, stage 1b gate A). Gate records are written by hand after
+the gate before it (stage 1 needs gate 0, stage 1b gate A, stage 1c gate 0'). Gate records are written by hand after
 the user agrees. Everything is --formal on a clean committed tree; a training run
 is never restarted and finished evaluation chunks are skipped on a restart.
 ``--dry-run`` prints the stage's work; any other argument is refused.
@@ -39,8 +43,12 @@ RULES = {
     "R17-like": "boost[]@{m}",
 }
 STAGE1B = {"scb-ld01": "SC-B[0.1]", "scb-ld03": "SC-B[0.3]"}
+PILOT2_SET = "exp012-pilot2-256"
+STAGE1C = {"sp": "SP", "spb": "SP-B"}
+SEEDS_1C = (101, 202, 303, 404)
+BASE_SEED = {101: 101, 202: 202, 303: 101, 404: 202}  # the pilot M under each SP seed
 CORES, WORKERS = 28, 7
-GATES = {"stage1": "0", "stage1-extra": "0", "stage1b": "A"}
+GATES = {"stage1": "0", "stage1-extra": "0", "stage1b": "A", "stage1c": "0'"}
 
 
 def log(message: str) -> None:
@@ -84,9 +92,11 @@ def train_job(config: str, seed: int, output: Path) -> tuple[str, list[str], Pat
     return output.name, command, output
 
 
-def eval_job(label: str, spec: str, output: Path) -> tuple[str, list[str], Path]:
+def eval_job(
+    label: str, spec: str, output: Path, screen: str = PILOT_SET
+) -> tuple[str, list[str], Path]:
     command = [PY, "-m", "dsa_period.experiments.evaluate_capacity", "--config", SCENARIO,
-               "--split", "dev", "--screen", PILOT_SET, "--grid", *map(str, PILOT_GRID),
+               "--split", "dev", "--screen", screen, "--grid", *map(str, PILOT_GRID),
                "--policies", spec, "--formal", "--workers", str(WORKERS),
                "--output", str(output)]  # fmt: skip
     return label, command, output
@@ -238,9 +248,54 @@ def stage1b(dry: bool) -> None:
     log("stage 1b done")
 
 
+def stage1c(dry: bool) -> None:
+    """SP and SP-B on the frozen pilot M, evaluated on exp012-pilot2-256 (design §11.4)."""
+    train = [
+        train_job(f"configs/exp012-pilot1c-{key}.toml", seed, OUT / "pilot1c" / f"{key}-seed{seed}")
+        for key in STAGE1C
+        for seed in SEEDS_1C
+    ]
+    if dry:
+        print(f"{len(train)} runs ({', '.join(STAGE1C.values())} x seeds {SEEDS_1C}), then "
+              f"{PILOT2_SET} at N = {PILOT_GRID}, then gate A2")  # fmt: skip
+        return
+    run_parallel(train, len(train), 1)  # one core per training run
+    log("stage 1c training done")
+    groups: dict[str, list[dict]] = {}
+    chunks = []
+
+    def add(name: str, label: str, spec: str) -> None:
+        groups.setdefault(name, []).append({str(n): spec for n in PILOT_GRID})
+        chunks.append(eval_job(label, spec, OUT / "pilot1c-eval" / label, PILOT2_SET))
+
+    for key, name in STAGE1C.items():
+        for seed in SEEDS_1C:
+            checkpoint = last_checkpoint(OUT / "pilot1c" / f"{key}-seed{seed}").relative_to(ROOT)
+            add(name, f"{key}-seed{seed}", f"marl:{checkpoint}")
+    for seed in SEEDS:
+        m = f"marl:{last_checkpoint(OUT / 'pilot' / f'm-seed{seed}').relative_to(ROOT)}"
+        add("M", f"M-seed{seed}", m)
+        for name, rule in RULES.items():
+            add(name, f"{name.replace('+', 'p')}-seed{seed}", rule.format(m=m))
+        scb = last_checkpoint(OUT / "pilot" / f"scb-seed{seed}").relative_to(ROOT)
+        add("SC-B", f"SC-B-seed{seed}", f"marl:{scb}")
+    plan = {"grid": list(PILOT_GRID), "groups": groups, "base_seed": BASE_SEED}
+    (OUT / "pilot1c-plan.json").write_text(json.dumps(plan, indent=2))
+    run_parallel(chunks, CORES, WORKERS)
+    log("stage 1c evaluation done")
+    analysis = OUT / "pilot1c-analysis.json"
+    if not analysis.exists():
+        command = [PY, "scripts/analyze_exp012.py", "pilot1c",
+                   "--plan", str(OUT / "pilot1c-plan.json"),
+                   "--evaluations", *[str(c[2]) for c in chunks], "--output", str(analysis)]  # fmt: skip
+        subprocess.run(command, cwd=ROOT, check=True)
+    log("stage 1c done")
+
+
 def main() -> None:
     args = sys.argv[1:]
-    stages = {"stage1": stage1, "stage1-extra": stage1_extra, "stage1b": stage1b}
+    stages = {"stage1": stage1, "stage1-extra": stage1_extra, "stage1b": stage1b,
+              "stage1c": stage1c}  # fmt: skip
     if not args or args[0] not in stages:
         sys.exit(f"usage: run_exp012.py {{{','.join(stages)}}} [--dry-run]")
     if any(flag != "--dry-run" for flag in args[1:]):

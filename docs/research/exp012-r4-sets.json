@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "experiment": "EXP-DSA05-012-R4",
+  "design": "docs/experiment-designs/012-survival-time-critical-state-marl_20261014.md",
+  "document": "docs/research/exp012-registration.md",
+  "protocol_id": "marl-protocol-v2",
+  "registered_on": "2026-10-15",
+  "scenario_config": "configs/scenario-v2.1.toml",
+  "scenario_config_sha256": "61218a2f3ecc1db5c8ef1e3e59c4709ddfcc2b665043e4a6cb9c1549d748de0e",
+  "horizon_slots": 20200,
+  "warmup_slots": 200,
+  "execution_seeds": {
+    "base": 20260930,
+    "scheme": "SeedSequence([base, seed_code, instance, repeat]).spawn(N)[j]"
+  },
+  "fading_seeds": {
+    "base": 20261001,
+    "scheme": "SeedSequence([base, seed_code, instance, repeat]).spawn(N)[j]"
+  },
+  "screening": {
+    "exp012-pilot2-256": {
+      "split": "dev",
+      "start": 1656,
+      "stop": 1912,
+      "count": 256,
+      "grid": [
+        8,
+        10,
+        12
+      ],
+      "repeats": 1,
+      "seed_code": 0,
+      "score": "gate A2 of stage 1c: Q_U (worst UE's unavailability, s = 1), P2 and the per-seed P2 (design \u00a711.4)",
+      "selection": "none: the pilot evaluates the last checkpoint",
+      "entry_point": "evaluate_capacity --split dev --screen exp012-pilot2-256 --formal",
+      "digests": {
+        "8": "24ee602bd4629ce84779f8e35f28d1e838f5f30a53ab3a61fad9bc24cc4ea8a2",
+        "10": "a47db21a7867d24fa5d768d579e3d0ccdf8cf99ac91b7e9d5c35c16bd18dd796",
+        "12": "e6fbaefb89c4927307eb87c97dfe6c7130153aa5bf3a83ab3839a1c1d6d89e9b"
+      }
+    }
+  },
+  "confirmation": {},
+  "usage_checked_on_registration": {
+    "v2_dev_ranges_used": [
+      [
+        0,
+        64
+      ],
+      [
+        1000,
+        1400
+      ],
+      [
+        1400,
+        1656
+      ],
+      [
+        2000,
+        2256
+      ],
+      [
+        2256,
+        2768
+      ],
+      [
+        3000,
+        3256
+      ],
+      [
+        4000,
+        4512
+      ],
+      [
+        5000,
+        6512
+      ],
+      [
+        7000,
+        10000
+      ]
+    ],
+    "v2_reserve_ranges_read": []
+  }
+}
