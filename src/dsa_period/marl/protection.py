@@ -12,8 +12,12 @@ decision. A UE with a packet hands its decision to the protection actor iff
 The protection actor is the SC-B actor (L0 features, the survival state and the
 K-bit survival broadcast). It starts as a copy of M: the weights of the inputs
 M lacks are zero (``expand_actor_state``), and the critic likewise
-(``expand_critic_state``). Training (``trainer_v2``) updates the actor on gated
-decisions only; ``ProtectionPolicy`` executes the same split at evaluation.
+(``expand_critic_state``). Only the sub-network equals M: the untrained complete
+policy (SP0) already differs, because gate (b) follows M's draw with an independent
+redraw (design §11.10). In training (``trainer_v2``) the actor loss and entropy use
+gated decisions only; ungated slots still advance the actor's recurrent state, so
+gradients can reach them through later gated decisions. ``ProtectionPolicy``
+executes the same split at evaluation.
 """
 
 from collections.abc import Sequence

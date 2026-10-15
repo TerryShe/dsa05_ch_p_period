@@ -27,8 +27,13 @@ count misses, isolated misses and misses in runs of two or more.
 pilot's M seeds 101 and 202), SP0 (the untrained SP, design §11.10) and SC-B
 (descriptive). Gate A2 (N = 10, point estimates), per variant: Q_U <= 0.8 x the best
 reference (M+S, M+Y, R17-like, SP0), P2 <= 1.10 x P2(M+S) and every seed's P2 <=
-1.25 x P2(M+S). Continue with the passing variant of lower Q_U; stop iff both
-variants have Q_U >= min(Q_U(M+S), Q_U(SP0)); otherwise adjust.
+1.25 x P2(M+S), plus all-UE mean violation rate <= 1.10 x that of M+S. Reliability
+references are the overall means of both M+S base policy layers. Continue with
+the passing variant of lower Q_U (exact tie: SP-B); stop iff both variants have
+Q_U >= min(Q_U(M+S), Q_U(SP0)); otherwise adjust. A zero best-reference Q_U or a
+zero M+S reliability reference takes precedence as insufficient_evidence.
+Intervals condition on the fitted policies: average layers equally per deployment,
+then bootstrap paired deployments only, without training-seed uncertainty.
 
 Gate A (design §4.1, point estimates at N = 10): continue iff Q_U(SC) is at least
 20% below the best rule (lowest Q_U of M+S, M+Y, R17-like) and below M-S, and
@@ -116,6 +121,8 @@ def pilot(
     focus: tuple[str, ...] = ("SC",),
     screen: str = PILOT_SET,
     order: tuple[str, ...] | None = None,
+    *,
+    conditional_on_fitted_policies: bool = False,
 ) -> dict:
     """Per-method quantities, and each method in ``focus`` against every other one."""
     episodes, instances = base.load(paths, screen=screen)
@@ -123,6 +130,17 @@ def pilot(
     names = order or ORDER + tuple(name for name in EXTRA + CANDIDATES if name in groups)
     out: dict = {"instances": len(instances), "grid": grid, "methods": {}}
     out |= {f"versus_{name}": {} for name in focus}
+    if conditional_on_fitted_policies:
+        out["base_seed"] = plan["base_seed"]
+        out["bootstrap"] = {
+            "conditional_on_fitted_policies": True,
+            "no_training_seed_uncertainty": True,
+            "resampling_unit": "paired_deployment",
+            "layer_weighting": "equal_per_method_before_resampling",
+            "fixed_policy_layers": {name: len(groups[name]) for name in names},
+            "draws": DRAWS,
+            "seed": base.BOOTSTRAP_SEED,
+        }
     for s in (1, 2):
         for name in names:
             for n in grid:
@@ -141,6 +159,8 @@ def pilot(
                     values["worst_unavailability"].mean(1).tolist()
                 )
                 row["by_seed_w"] = values["w"].mean(1).tolist()
+                if conditional_on_fitted_policies:
+                    row["by_seed_mean_rate"] = values["mean_rate"].mean(1).tolist()
                 out["methods"].setdefault(f"s={s}", {}).setdefault(name, {})[str(n)] = row
         for target in focus:
             for name in names:
@@ -148,10 +168,25 @@ def pilot(
                     continue
                 for n in grid:
                     comparison = {}
-                    for field in ("worst_unavailability", "worst_outages", "w"):
+                    fields = ("worst_unavailability", "worst_outages", "w")
+                    if conditional_on_fitted_policies:
+                        fields += ("mean_rate",)
+                    for field in fields:
                         a = matrix(episodes, groups[target], n, field, instances, s)
                         b = matrix(episodes, groups[name], n, field, instances, s)
-                        comparison[field] = base.compare(a, b, DRAWS)
+                        if conditional_on_fitted_policies:
+                            # Keep fitted policies fixed; only paired deployments vary.
+                            result = base.compare(
+                                a.mean(axis=0, keepdims=True),
+                                b.mean(axis=0, keepdims=True),
+                                DRAWS,
+                            )
+                            # Preserve the original equal-layer point estimates exactly.
+                            result["difference"] = float(a.mean() - b.mean())
+                            result["ratio"] = float(a.mean() / b.mean()) if b.mean() else None
+                            comparison[field] = result
+                        else:
+                            comparison[field] = base.compare(a, b, DRAWS)
                     versus = out[f"versus_{target}"].setdefault(f"s={s}", {})
                     versus.setdefault(name, {})[str(n)] = comparison
     return out
@@ -217,6 +252,7 @@ def gate_a2(methods: dict, n: str = "10") -> dict:
     q = {name: methods[name][n]["worst_unavailability"] for name in methods}
     best = min(REFERENCES_1C, key=lambda name: q[name])
     p2_ref = methods["M+S"][n]["w"]
+    mean_ref = methods["M+S"][n]["mean_rate"]
     variants = {}
     for name in SP_VARIANTS:
         row = methods[name][n]
@@ -227,15 +263,30 @@ def gate_a2(methods: dict, n: str = "10") -> dict:
             "ratio_to_SP0": q[name] / q["SP0"] if q["SP0"] else None,
             "ratio_P2_to_M+S": row["w"] / p2_ref if p2_ref else None,
             "ratio_P2_by_seed": [w / p2_ref for w in row["by_seed_w"]] if p2_ref else None,
+            "ratio_mean_rate_to_M+S": row["mean_rate"] / mean_ref if mean_ref else None,
             "checks": {
-                "Q_U_vs_best_reference": q[name] <= 0.8 * q[best],
-                "P2_vs_M+S": row["w"] <= 1.10 * p2_ref,
-                "P2_every_seed": all(w <= 1.25 * p2_ref for w in row["by_seed_w"]),
+                "Q_U_vs_best_reference": q[best] > 0 and q[name] <= 0.8 * q[best],
+                "P2_vs_M+S": p2_ref > 0 and row["w"] <= 1.10 * p2_ref,
+                "mean_rate_vs_M+S": mean_ref > 0 and row["mean_rate"] <= 1.10 * mean_ref,
+                "P2_every_seed": p2_ref > 0 and all(w <= 1.25 * p2_ref for w in row["by_seed_w"]),
             },
         }
     passing = [name for name in SP_VARIANTS if all(variants[name]["checks"].values())]
-    if passing:
-        decision, carried = "continue", min(passing, key=lambda name: q[name])
+    reason = None
+    if q[best] == 0:
+        decision, carried = "insufficient_evidence", None
+        reason = "The best reference Q_U is zero; relative improvement cannot be established."
+    elif p2_ref == 0 or mean_ref == 0:
+        decision, carried = "insufficient_evidence", None
+        zero_references = [
+            metric for metric, value in (("P2", p2_ref), ("mean_rate", mean_ref)) if value == 0
+        ]
+        reason = (
+            f"M+S reliability reference {', '.join(zero_references)} is zero; "
+            "relative reliability noninferiority cannot be established."
+        )
+    elif passing:
+        decision, carried = "continue", min(passing, key=lambda name: (q[name], name != "SP-B"))
     elif all(q[name] >= min(q["M+S"], q["SP0"]) for name in SP_VARIANTS):
         decision, carried = "stop", None
     else:
@@ -243,11 +294,27 @@ def gate_a2(methods: dict, n: str = "10") -> dict:
     return {
         "n": int(n),
         "best_reference": best,
+        "reliability_reference": {
+            "method": "M+S",
+            "aggregation": "equal_weight_mean_over_both_base_policy_layers",
+            "P2": p2_ref,
+            "mean_rate": mean_ref,
+            "per_seed_P2_denominator": "overall_M+S_mean",
+            "P2_max_ratio": 1.10,
+            "mean_rate_max_ratio": 1.10,
+            "per_seed_P2_max_ratio": 1.25,
+        },
+        "tie_break": "SP-B",
         "variants": variants,
         "passing": passing,
         "carried": carried,
         "decision": decision,
+        "reason": reason,
     }
+
+
+def format_ratio(value: float | None) -> str:
+    return "N/A" if value is None else f"{value:.3f}"
 
 
 def main(argv: list[str] | None = None) -> None:
@@ -273,7 +340,14 @@ def main(argv: list[str] | None = None) -> None:
         result = pilot(args.evaluations, plan, CANDIDATES)
         result["selection_1b"] = select_1b(result["methods"]["s=1"])
     else:
-        result = pilot(args.evaluations, plan, SP_VARIANTS, PILOT2_SET, ORDER_1C)
+        result = pilot(
+            args.evaluations,
+            plan,
+            SP_VARIANTS,
+            PILOT2_SET,
+            ORDER_1C,
+            conditional_on_fitted_policies=True,
+        )
         result["gate_A2"] = gate_a2(result["methods"]["s=1"])
     result["protocol_id"] = splits_v2.PROTOCOL_ID
     args.output.write_text(json.dumps(result, indent=2))
@@ -288,15 +362,19 @@ def main(argv: list[str] | None = None) -> None:
               f"best reference {gate['best_reference']}")  # fmt: skip
         for name, row in gate["variants"].items():
             print(f"{name}: Q_U {row['Q_U']:.6f}, x best reference "
-                  f"{row['ratio_to_best_reference']:.3f}, "
-                  f"P2 x M+S {row['ratio_P2_to_M+S']:.3f}, checks {row['checks']}")  # fmt: skip
+                  f"{format_ratio(row['ratio_to_best_reference'])}, "
+                  f"P2 x M+S {format_ratio(row['ratio_P2_to_M+S'])}, "
+                  f"mean rate x M+S {format_ratio(row['ratio_mean_rate_to_M+S'])}, "
+                  f"checks {row['checks']}")  # fmt: skip
     else:
         selection = result["selection_1b"]
         print(f"stage 1b (N = {selection['n']}): {selection['decision']}, chosen "
               f"{selection['chosen']}; best rule {selection['best_rule']}")  # fmt: skip
         for name, row in selection["candidates"].items():
-            print(f"{name}: Q_U {row['Q_U']:.6f}, x best rule {row['ratio_to_best_rule']:.3f}, "
-                  f"P2 x M+S {row['ratio_P2_to_M+S']:.3f}, checks {row['checks']}")  # fmt: skip
+            print(f"{name}: Q_U {row['Q_U']:.6f}, x best rule "
+                  f"{format_ratio(row['ratio_to_best_rule'])}, "
+                  f"P2 x M+S {format_ratio(row['ratio_P2_to_M+S'])}, "
+                  f"checks {row['checks']}")  # fmt: skip
 
 
 if __name__ == "__main__":

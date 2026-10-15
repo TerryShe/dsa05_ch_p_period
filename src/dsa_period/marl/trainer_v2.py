@@ -798,7 +798,14 @@ class CapacityTrainer:
         )
         self.snapshots: dict[int, deque] = {}
         self.branch_end = np.zeros(self.env_ues.size, np.int64)  # 0: not a branch episode
+        self.branch_start = np.zeros(self.env_ues.size, np.int64)  # slot a branch resumed at
         self.branch_counts = {"snapshots": 0, "branches": 0}
+        # Per rollout (C4 exposure, design §11.2): age in PPO updates of each resumed
+        # snapshot, nominal and actual length of each branch that ended. No randomness.
+        self.branch_log: dict[str, list[int]] = {
+            "started_age": [], "ended_length": [], "ended_nominal": []
+        }  # fmt: skip
+        self.update_count = 0
         self.starts = np.zeros(self.env_ues.size, np.bool_)
         self.hidden = actor.initial_hidden(ues)
         self.instances_drawn: list[int] = []
@@ -927,6 +934,7 @@ class CapacityTrainer:
             ),
             "length": self.branching.periods * int(self.traffic[env].period_slots[trigger]),
             "marked": self.marked[env],
+            "update": self.update_count,
         }
         if self.protection is not None:
             state["base"] = (
@@ -955,7 +963,9 @@ class CapacityTrainer:
         self.traffic[env], self.level[env] = state["traffic"], state["level"]
         self.class_index[env] = state["class_index"]
         self.episode_slot[env] = state["episode_slot"]
+        self.branch_start[env] = state["episode_slot"]
         self.branch_end[env] = state["episode_slot"] + state["length"]
+        self.branch_log["started_age"].append(self.update_count - state["update"])
         self.episode_ids[env] = self.next_episode_id
         self.next_episode_id += 1
         (self.tokens[rows], self.context[rows], self.legal[rows], self.critic_ue[rows]) = state[
@@ -1003,8 +1013,9 @@ class CapacityTrainer:
             buf["messages"] = np.zeros((steps, ues), np.int64)
         protect = self.protection is not None
         protection_stats = dict.fromkeys(
-            ("gated_state", "gated_yield", "changed_state", "changed_yield", "off_yield"), 0
-        )
+            ("gated_state", "gated_yield", "changed_state", "changed_yield", "off_yield",
+             "gated_in_branches"), 0,
+        )  # fmt: skip
         if protect:
             buf["base_actions"] = np.zeros((steps, ues), np.int64)
         packet_decisions = 0
@@ -1013,6 +1024,8 @@ class CapacityTrainer:
             restart = torch.zeros((steps, *self.hidden.shape), dtype=self.hidden.dtype)
         survival_stats = {"outage_ue_slots": 0, "entries": 0, "state_decisions": 0}
         branch_ue_slots = 0
+        for values in self.branch_log.values():
+            values.clear()
         for key in self.summary_counts:
             self.summary_counts[key] = 0
         initial_hidden = self.hidden.clone()
@@ -1108,6 +1121,10 @@ class CapacityTrainer:
                 ended = step.truncated or (
                     self.branch_end[env] > 0 and self.episode_slot[env] >= self.branch_end[env]
                 )
+                if ended and self.branch_end[env] > 0:
+                    start = int(self.branch_start[env])
+                    self.branch_log["ended_length"].append(int(self.episode_slot[env]) - start)
+                    self.branch_log["ended_nominal"].append(int(self.branch_end[env]) - start)
                 if (
                     self.branching is not None
                     and entered.any()
@@ -1161,12 +1178,20 @@ class CapacityTrainer:
                 "changed_share_of_gated": changed / max(gated, 1),
                 "off_share_of_yield": protection_stats["off_yield"]
                 / max(protection_stats["gated_yield"], 1),
+                "branch_share_of_gated": protection_stats["gated_in_branches"] / max(gated, 1),
             }
         if self.branching is not None:
             stats["branching"] = {
                 **self.branch_counts,
                 "stored": {str(n): len(q) for n, q in sorted(self.snapshots.items())},
                 "branch_ue_slot_share": branch_ue_slots / (steps * int(self.offsets[-1])),
+                **{key: list(values) for key, values in self.branch_log.items()},
+                "ended_short": sum(
+                    a < b
+                    for a, b in zip(
+                        self.branch_log["ended_length"], self.branch_log["ended_nominal"]
+                    )
+                ),
             }
         if self.links is not None:
             counts = self.summary_counts
@@ -1219,6 +1244,8 @@ class CapacityTrainer:
             counts["changed_state"] += int((changed & by_state).sum())
             counts["changed_yield"] += int((changed & by_yield).sum())
             counts["off_yield"] += int((by_yield & (final == 0)).sum())
+            if self.branch_end[env] > 0:  # this environment runs a branch episode (C4)
+                counts["gated_in_branches"] += int(gate[rows].sum())
         final = np.where(gate, chosen, proposed)
         buf["log_probs"][t] = (
             log_probs.gather(-1, torch.from_numpy(final)[:, None]).squeeze(-1).numpy()
@@ -1263,6 +1290,7 @@ class CapacityTrainer:
     def train_step(self, rollout: RaggedRollout, entropy_coef: float) -> dict:
         """PPO update, then the GAE-magnitude scores of episodes that ended (PLR, P1)."""
         metrics = self.ppo.update(rollout, entropy_coef)
+        self.update_count += 1
         if self.level_samplers and self.sampler_settings.score == "gae":
             magnitude = self.ppo.last_advantages.abs().numpy()
             for env in range(self.env_ues.size):

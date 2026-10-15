@@ -1,12 +1,15 @@
 """EXP-DSA05-012 stage 0' (design §11.5): SP, learned protection on a frozen base M.
 
 Checks: the expanded actor and critic reproduce M; the gate's yield part is the M+S
-yield set; ungated UEs act as M; ungated decisions do not move the actor; branch
-episodes restore both recurrent states; the evaluation policy reproduces the
-training decisions; the configs and the checkpoint guards.
+yield set; ungated UEs take M's proposal; the actions and old log probabilities of
+ungated decisions do not enter the update (the direct loss mask; ungated slots still
+shape the recurrent state); branch episodes restore both recurrent states and log
+their ages and lengths; the evaluation path, fed the recorded training draws, follows
+the training episode; the configs, the checkpoint guards and gate A2.
 """
 
 import copy
+import importlib.util
 import json
 import tomllib
 from pathlib import Path
@@ -215,7 +218,7 @@ def _load(trainer, path, scenario):
     return policy
 
 
-def test_ungated_decisions_do_not_move_the_actor(base_path):
+def test_ungated_actions_and_log_probs_do_not_enter_the_update(base_path):
     trainer = _sp(base_path, env_ues=(12, 16), slots=60, branching=BranchSettings(1.0, 1, 8))
     rollout = None
     for _ in range(6):  # until a rollout holds gated decisions
@@ -260,7 +263,33 @@ def test_branches_restore_both_recurrent_states(base_path):
     assert np.array_equal(trainer.marked[0], snapshot["marked"])
 
 
-def test_the_evaluation_policy_reproduces_the_training_decisions(base_path, tmp_path):
+def test_branch_logs_record_snapshot_ages_lengths_and_gated_exposure(base_path):
+    trainer = _sp(base_path, env_ues=(16, 20), slots=60, branching=BranchSettings(1.0, 1, 8))
+    logs = []
+    for _ in range(5):
+        rollout, stats = trainer.collect()
+        trainer.train_step(rollout, 0.01)
+        logs.append(stats)
+    ages = [age for stats in logs for age in stats["branching"]["started_age"]]
+    ended = [
+        (length, nominal)
+        for stats in logs
+        for length, nominal in zip(
+            stats["branching"]["ended_length"], stats["branching"]["ended_nominal"]
+        )
+    ]
+    assert len(ages) == trainer.branch_counts["branches"] and min(ages) >= 0
+    assert max(ages) > 0  # snapshots outlive PPO updates
+    assert ended and all(0 < length <= nominal for length, nominal in ended)
+    short = sum(stats["branching"]["ended_short"] for stats in logs)
+    assert short == sum(length < nominal for length, nominal in ended)
+    gated = sum(stats["protection"]["gated_state"] + stats["protection"]["gated_yield"]
+                for stats in logs)  # fmt: skip
+    inside = sum(stats["protection"]["gated_in_branches"] for stats in logs)
+    assert 0 < inside <= gated
+
+
+def test_the_evaluation_path_follows_a_training_episode_given_its_draws(base_path, tmp_path):
     trainer = _sp(base_path, env_ues=(12,), slots=40, seed=9)
     for _ in range(3):  # move the actor away from M first
         trainer.train_step(trainer.collect()[0], 0.01)
@@ -365,38 +394,181 @@ def test_the_pilot_2_slice_is_registered_apart_from_every_other_set():
     assert entry["digests"]["10"] == digest
 
 
-def test_gate_a2_rule():
-    import importlib.util
-
+@pytest.fixture
+def analysis():
     spec = importlib.util.spec_from_file_location("a12", ROOT / "scripts/analyze_exp012.py")
     a = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(a)
+    return a
 
-    def methods(q, p2, seeds=None):
-        seeds = seeds or {}
-        return {
-            name: {"10": {"worst_unavailability": value, "w": p2.get(name, 0.010),
-                          "by_seed_w": seeds.get(name, [p2.get(name, 0.010)] * 2)}}
-            for name, value in q.items()
-        }  # fmt: skip
 
+def gate_methods(q=None, p2=None, seeds=None, mean_rate=None):
     q = {"SP": 0.006, "SP-B": 0.007, "SP0": 0.010, "M": 0.020, "M+S": 0.012, "M+Y": 0.011,
-         "R17-like": 0.015, "SC-B": 0.009}  # fmt: skip
-    gate = a.gate_a2(methods(q, {}))
+         "R17-like": 0.015, "SC-B": 0.009, **(q or {})}  # fmt: skip
+    p2, seeds, mean_rate = p2 or {}, seeds or {}, mean_rate or {}
+    return {
+        name: {"10": {"worst_unavailability": value, "w": p2.get(name, 0.010),
+                      "mean_rate": mean_rate.get(name, 0.005),
+                      "by_seed_w": seeds.get(name, [p2.get(name, 0.010)] * 2)}}
+        for name, value in q.items()
+    }  # fmt: skip
+
+
+def test_gate_a2_rule(analysis):
+    gate = analysis.gate_a2(gate_methods())
     assert gate["best_reference"] == "SP0" and gate["decision"] == "continue"
     assert gate["passing"] == ["SP", "SP-B"] and gate["carried"] == "SP"
     # SP0 is a reference like the rules: 20% below it is required
-    gate = a.gate_a2(methods({**q, "SP0": 0.008}, {}))
+    gate = analysis.gate_a2(gate_methods(q={"SP0": 0.008}))
     assert gate["passing"] == ["SP"]
     # one SP seed fails the reliability bound: SP-B is carried
-    gate = a.gate_a2(methods(q, {}, {"SP": [0.009, 0.0126, 0.009, 0.009]}))
+    gate = analysis.gate_a2(gate_methods(seeds={"SP": [0.009, 0.0126, 0.009, 0.009]}))
     assert gate["passing"] == ["SP-B"] and gate["carried"] == "SP-B"
     # the mean P2 bound
-    gate = a.gate_a2(methods(q, {"SP": 0.0111, "SP-B": 0.0111}))
+    gate = analysis.gate_a2(gate_methods(p2={"SP": 0.0111, "SP-B": 0.0111}))
     assert gate["decision"] == "adjust" and gate["carried"] is None
     # learning no better than M+S, or no better than the untrained SP0: stop
-    assert a.gate_a2(methods({**q, "SP": 0.012, "SP-B": 0.013}, {}))["decision"] == "stop"
-    assert a.gate_a2(methods({**q, "SP0": 0.005}, {}))["decision"] == "stop"
+    assert analysis.gate_a2(gate_methods(q={"SP": 0.012, "SP-B": 0.013}))["decision"] == "stop"
+    assert analysis.gate_a2(gate_methods(q={"SP0": 0.005}))["decision"] == "stop"
+
+
+@pytest.mark.parametrize("variant_q", [0.0, 0.006])
+def test_gate_a2_zero_best_reference_is_insufficient_evidence(analysis, variant_q):
+    gate = analysis.gate_a2(gate_methods(q={"SP0": 0.0, "SP": variant_q, "SP-B": variant_q}))
+    assert gate["decision"] == "insufficient_evidence"
+    assert gate["carried"] is None and gate["passing"] == []
+    assert "zero" in gate["reason"] and "relative improvement" in gate["reason"]
+    for row in gate["variants"].values():
+        assert row["ratio_to_best_reference"] is None and row["ratio_to_SP0"] is None
+        assert row["checks"]["Q_U_vs_best_reference"] is False
+
+
+@pytest.mark.parametrize("field", ["p2", "mean_rate"])
+@pytest.mark.parametrize("variant_rate", [0.0, 0.001])
+def test_gate_a2_zero_reliability_reference_cannot_establish_noninferiority(
+    analysis, field, variant_rate
+):
+    rates = {"M+S": 0.0, "SP": variant_rate, "SP-B": variant_rate}
+    gate = analysis.gate_a2(gate_methods(**{field: rates}))
+    assert gate["decision"] == "insufficient_evidence" and gate["passing"] == []
+    assert gate["carried"] is None
+    metric = "P2" if field == "p2" else "mean_rate"
+    assert metric in gate["reason"] and "noninferiority cannot be established" in gate["reason"]
+    for row in gate["variants"].values():
+        assert row[f"ratio_{metric}_to_M+S"] is None
+        assert row["checks"][f"{metric}_vs_M+S"] is False
+        if field == "p2":
+            assert row["ratio_P2_by_seed"] is None
+            assert row["checks"]["P2_every_seed"] is False
+    # Missing reliability evidence also takes priority over the ordinary stop branch.
+    stopped = analysis.gate_a2(gate_methods(q={"SP": 0.012, "SP-B": 0.013}, **{field: rates}))
+    assert stopped["decision"] == "insufficient_evidence" and stopped["carried"] is None
+
+
+def test_gate_a2_mean_rate_guard_and_exact_tie(analysis):
+    gate = analysis.gate_a2(gate_methods(mean_rate={"SP": 0.00551}))
+    assert gate["variants"]["SP"]["checks"]["P2_vs_M+S"] is True
+    assert gate["variants"]["SP"]["checks"]["mean_rate_vs_M+S"] is False
+    assert gate["passing"] == ["SP-B"] and gate["carried"] == "SP-B"
+    gate = analysis.gate_a2(gate_methods(mean_rate={"SP": 0.00551, "SP-B": 0.00551}))
+    assert gate["decision"] == "adjust" and gate["carried"] is None
+    gate = analysis.gate_a2(gate_methods(q={"SP": 0.007}))
+    assert gate["passing"] == ["SP", "SP-B"] and gate["carried"] == "SP-B"
+    assert gate["tie_break"] == "SP-B"
+
+
+def test_gate_a2_per_seed_bound_uses_overall_m_plus_s_mean(analysis):
+    gate = analysis.gate_a2(
+        gate_methods(seeds={"M+S": [0.009, 0.011], "SP": [0.0124, 0.009, 0.009, 0.009]})
+    )
+    assert gate["variants"]["SP"]["checks"]["P2_every_seed"] is True
+    assert gate["variants"]["SP"]["ratio_P2_by_seed"][0] == pytest.approx(1.24)
+    reference = gate["reliability_reference"]
+    assert reference["P2"] == 0.010 and reference["mean_rate"] == 0.005
+    assert reference["aggregation"] == "equal_weight_mean_over_both_base_policy_layers"
+    assert reference["per_seed_P2_denominator"] == "overall_M+S_mean"
+
+
+def test_pilot1c_cli_zero_ratios_render_na(analysis, monkeypatch, tmp_path, capsys):
+    evaluation = tmp_path / "synthetic-evaluation"
+    evaluation.mkdir()
+    (evaluation / "summary.json").write_text(
+        json.dumps(
+            {"formal": True, "provenance": {"dirty": False}, "config": "configs/scenario-v2.1.toml"}
+        )
+    )
+    plan, output = tmp_path / "plan.json", tmp_path / "analysis.json"
+    plan.write_text("{}")
+    methods = gate_methods(q={"SP0": 0.0}, p2={"M+S": 0.0}, mean_rate={"M+S": 0.0})
+
+    def synthetic_pilot(*args, **kwargs):
+        assert kwargs["conditional_on_fitted_policies"] is True
+        return {"methods": {"s=1": methods}}
+
+    monkeypatch.setattr(analysis, "pilot", synthetic_pilot)
+    analysis.main(
+        ["pilot1c", "--evaluations", str(evaluation), "--plan", str(plan), "--output", str(output)]
+    )
+    stdout = capsys.readouterr().out
+    assert stdout.count("N/A") == 6
+    assert "insufficient_evidence" in stdout
+    assert json.loads(output.read_text())["gate_A2"]["carried"] is None
+
+
+@pytest.mark.parametrize("conditional", [False, True])
+def test_pilot_bootstrap_keeps_fitted_policy_layers_fixed_only_when_requested(
+    analysis, monkeypatch, conditional
+):
+    # Layer variation must remain fixed, while paired deployment effects cancel.
+    instances = [0, 1, 2]
+    plan = {
+        "grid": [10],
+        "groups": {"SP": [{"10": f"SP-{i}"} for i in range(4)],
+                   "M+S": [{"10": f"M+S-{i}"} for i in range(2)]},
+        "base_seed": {"101": 101, "202": 202, "303": 101, "404": 202},
+    }  # fmt: skip
+    monkeypatch.setattr(analysis.base, "load", lambda *args, **kwargs: ({}, instances))
+    monkeypatch.setattr(analysis, "DRAWS", 1000)
+
+    def synthetic_matrix(episodes, layers, n, field, instances, s):
+        values = np.arange(1, len(layers) + 1)[:, None] + np.array([0, 10, 20])[None, :]
+        return values * (0.001 if field == "mean_rate" else 1.0)
+
+    monkeypatch.setattr(analysis, "matrix", synthetic_matrix)
+    compare = analysis.base.compare
+    seen_shapes = []
+
+    def record_compare(a, b, draws):
+        seen_shapes.append((a.shape, b.shape))
+        return compare(a, b, draws)
+
+    monkeypatch.setattr(analysis.base, "compare", record_compare)
+    result = analysis.pilot(
+        [], plan, ("SP",), order=("SP", "M+S"), conditional_on_fitted_policies=conditional
+    )
+    a = synthetic_matrix({}, plan["groups"]["SP"], 10, "w", instances, 1)
+    b = synthetic_matrix({}, plan["groups"]["M+S"], 10, "w", instances, 1)
+    legacy = compare(a, b, analysis.DRAWS)
+    row = result["methods"]["s=1"]["SP"]["10"]
+    comparison = result["versus_SP"]["s=1"]["M+S"]["10"]
+    assert comparison["w"]["difference"] == legacy["difference"]
+    assert comparison["w"]["ratio"] == legacy["ratio"]
+    assert legacy["ci95"][0] < legacy["ci95"][1]
+    if conditional:
+        assert all(shapes == ((1, 3), (1, 3)) for shapes in seen_shapes)
+        assert comparison["w"]["ci95"] == [1.0, 1.0]
+        assert comparison["mean_rate"]["ci95"] == pytest.approx([0.001, 0.001])
+        assert row["by_seed_mean_rate"] == pytest.approx([0.011, 0.012, 0.013, 0.014])
+        assert result["base_seed"] == plan["base_seed"]
+        assert result["bootstrap"]["conditional_on_fitted_policies"] is True
+        assert result["bootstrap"]["no_training_seed_uncertainty"] is True
+        assert result["bootstrap"]["resampling_unit"] == "paired_deployment"
+        assert result["bootstrap"]["fixed_policy_layers"] == {"SP": 4, "M+S": 2}
+    else:
+        assert all(shapes == ((4, 3), (2, 3)) for shapes in seen_shapes)
+        assert comparison["w"] == legacy
+        assert "mean_rate" not in comparison and "by_seed_mean_rate" not in row
+        assert "bootstrap" not in result and "base_seed" not in result
 
 
 M101 = ROOT / "outputs/exp012/pilot/m-seed101/checkpoints/step-005001472.pt"
