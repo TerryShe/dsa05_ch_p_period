@@ -1,0 +1,78 @@
+# EXP-DSA05-012 stage 1b (gate A = adjust, design §10.5), condition SC-B[0.3]: SC-B with lambda_d = 0.3.
+# Apart from [experiment] and the EXP-012 sections, the file equals configs/exp009-step2-s1.toml
+# (tests/test_exp012.py checks this). Scenario v2.1; seeds 101 and 202; 5M slots each.
+[experiment]
+id = "exp012-survival-pilot"
+design = "docs/experiment-designs/012-survival-time-critical-state-marl_20261014.md"
+condition = "SC-B[0.3]"
+stage = "pilot-1b"
+variant = "fixed"
+seeds = [101, 202]
+base = "S1"
+inherits = "configs/exp009-step2-s1.toml"
+scenario = "configs/scenario-v2.1.toml"
+
+# C2: the uplink bit says "I am in the survival state" (EXP-011 link model).
+[information]
+content = "survival"
+theta_db = -10.0
+
+# C1 and C3 (design §3.2, §10.5; revision 3): survival time s = 1 interval, lambda_d = 0.3
+# per UE-slot in an outage.
+[survival]
+tolerance = 1
+features = true
+outage_slot_weight = 0.3
+
+[training]
+budget_slots = 5000000
+episode_slots = 600
+env_ues = [4, 4, 6, 6, 8, 8, 10, 10, 12, 12, 16, 16, 20, 20]
+rollout_slots = 128
+entropy_start = 0.01
+entropy_decay_fraction = 0.5
+checkpoint_every_slots = 1000000
+torch_threads = 1
+
+[model]
+hidden = 64
+critic_hidden = 256
+
+[ppo]
+actor_lr = 3e-4
+critic_lr = 1e-3
+gamma = 0.99
+gae_lambda = 0.95
+clip = 0.2
+max_grad_norm = 0.5
+ppo_epochs = 4
+minibatch_envs = 4
+
+[update]
+advantage_norm = "global"
+actor_loss_weighting = "ue"
+value_norm = "none"
+
+# Reliability-only reward: -(1/N) sum_i mu_i c_i (EXP-006 variant A).
+[constraint.fixed]
+weight = 1.0
+
+[constraint.local]
+eta = 2.0
+mu_max = 50.0
+mu0 = 5.0
+
+[sampler]
+kind = "stratified"
+hard_share = 0.5
+
+# configs/exp009-tau.toml (frozen; tests check the copy)
+[sampler.tau]
+"2" = 3.5470138046803963
+"4" = 2.9212198525440263
+"6" = 2.6487739515504347
+"8" = 2.519029717893554
+"10" = 2.4315962174293846
+"12" = 2.372875297249997
+"16" = 2.2831118347237895
+"20" = 2.2349918632173504

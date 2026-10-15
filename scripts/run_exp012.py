@@ -8,9 +8,13 @@
                            after stage 1: M-S+S (the M+S yield rule on the pilot's M-S,
                            design §10.4) on exp012-pilot256, and the analysis with it
                            (descriptive; gate A is the stage-1 analysis)
+    run_exp012.py stage1b  gate A = adjust (design §10.5): SC-B with lambda_d = 0.1 and 0.3,
+                           seeds 101 and 202, 5M slots each; the last checkpoints on
+                           exp012-pilot256 at N = 8, 10, 12; the stage-1b analysis, which
+                           picks the lambda_d to carry forward
 
 A stage runs only if ``outputs/exp012/gates.json`` records the user's approval of
-the gate before it (stage 1 needs gate 0). Gate records are written by hand after
+the gate before it (stage 1 needs gate 0, stage 1b gate A). Gate records are written by hand after
 the user agrees. Everything is --formal on a clean committed tree; a training run
 is never restarted and finished evaluation chunks are skipped on a restart.
 ``--dry-run`` prints the stage's work; any other argument is refused.
@@ -34,8 +38,9 @@ RULES = {
     "M+Y": "yield[theta=-10]@{m}",
     "R17-like": "boost[]@{m}",
 }
+STAGE1B = {"scb-ld01": "SC-B[0.1]", "scb-ld03": "SC-B[0.3]"}
 CORES, WORKERS = 28, 7
-GATES = {"stage1": "0", "stage1-extra": "0"}
+GATES = {"stage1": "0", "stage1-extra": "0", "stage1b": "A"}
 
 
 def log(message: str) -> None:
@@ -70,6 +75,21 @@ def run_parallel(jobs: list[tuple[str, list[str], Path]], cores: int, per_job: i
             running[name] = subprocess.Popen(command, cwd=ROOT, stdout=handle, stderr=handle)
             log(f"started {name}")
         time.sleep(20)
+
+
+def train_job(config: str, seed: int, output: Path) -> tuple[str, list[str], Path]:
+    command = [PY, "-m", "dsa_period.experiments.train_capacity_mappo", "--config", config,
+               "--scenario", SCENARIO, "--variant", "fixed", "--seed", str(seed), "--formal",
+               "--output", str(output)]  # fmt: skip
+    return output.name, command, output
+
+
+def eval_job(label: str, spec: str, output: Path) -> tuple[str, list[str], Path]:
+    command = [PY, "-m", "dsa_period.experiments.evaluate_capacity", "--config", SCENARIO,
+               "--split", "dev", "--screen", PILOT_SET, "--grid", *map(str, PILOT_GRID),
+               "--policies", spec, "--formal", "--workers", str(WORKERS),
+               "--output", str(output)]  # fmt: skip
+    return label, command, output
 
 
 def last_checkpoint(run: Path) -> Path:
@@ -176,9 +196,51 @@ def stage1_extra(dry: bool) -> None:
     log("stage 1 extra (M-S+S) done")
 
 
+def stage1b(dry: bool) -> None:
+    """SC-B at lambda_d = 0.1 and 0.3 on the pilot after gate A = adjust (design §10.5)."""
+    base_plan = OUT / "pilot-plan-extra.json"
+    if not dry and not base_plan.exists():
+        sys.exit("stage 1 and its M-S+S extra have not finished (no pilot-plan-extra.json)")
+    if dry:
+        print(f"{len(STAGE1B) * len(SEEDS)} runs ({', '.join(STAGE1B.values())} x seeds {SEEDS}),"
+              f" then {PILOT_SET} at N = {PILOT_GRID}, then the stage-1b analysis")  # fmt: skip
+        return
+    train = [
+        train_job(f"configs/exp012-pilot1b-{key}.toml", seed, OUT / "pilot1b" / f"{key}-seed{seed}")
+        for key in STAGE1B
+        for seed in SEEDS
+    ]
+    run_parallel(train, len(train), 1)  # one core per training run
+    log("stage 1b training done")
+    plan = json.loads(base_plan.read_text())
+    chunks = []
+    for key, name in STAGE1B.items():
+        layers = []
+        for seed in SEEDS:
+            checkpoint = last_checkpoint(OUT / "pilot1b" / f"{key}-seed{seed}").relative_to(ROOT)
+            spec = f"marl:{checkpoint}"
+            layers.append({str(n): spec for n in PILOT_GRID})
+            label = f"{key}-seed{seed}"
+            chunks.append(eval_job(label, spec, OUT / "pilot1b-eval" / label))
+        plan["groups"][name] = layers
+    (OUT / "pilot1b-plan.json").write_text(json.dumps(plan, indent=2))
+    run_parallel(chunks, CORES, WORKERS)
+    log("stage 1b evaluation done")
+    evaluations = sorted(
+        p.parent for d in ("pilot-eval", "pilot1b-eval") for p in (OUT / d).glob("*/summary.json")
+    )
+    analysis = OUT / "pilot1b-analysis.json"
+    if not analysis.exists():
+        command = [PY, "scripts/analyze_exp012.py", "pilot1b",
+                   "--plan", str(OUT / "pilot1b-plan.json"),
+                   "--evaluations", *map(str, evaluations), "--output", str(analysis)]  # fmt: skip
+        subprocess.run(command, cwd=ROOT, check=True)
+    log("stage 1b done")
+
+
 def main() -> None:
     args = sys.argv[1:]
-    stages = {"stage1": stage1, "stage1-extra": stage1_extra}
+    stages = {"stage1": stage1, "stage1-extra": stage1_extra, "stage1b": stage1b}
     if not args or args[0] not in stages:
         sys.exit(f"usage: run_exp012.py {{{','.join(stages)}}} [--dry-run]")
     if any(flag != "--dry-run" for flag in args[1:]):

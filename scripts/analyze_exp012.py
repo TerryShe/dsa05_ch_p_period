@@ -15,6 +15,13 @@ layers):
 An optional group M-S+S (M-S with the M+S yield rule; design §10.4, descriptive)
 is analysed when the plan lists it; it never enters gate A.
 
+``pilot1b``: stage 1b after gate A = adjust (design §10.5): the same quantities with
+SC-B at lambda_d = 0.1 and 0.3 added, each compared with every other method. The
+lambda_d carried forward is, among the candidates with Q_U <= 0.8 x the best rule
+(the three rules of gate A) and P2 <= 1.10 x P2(M+S) at N = 10 (point estimates),
+the one with the lowest Q_U; if none qualifies, none is chosen. Both modes also
+count misses, isolated misses and misses in runs of two or more.
+
 Gate A (design §4.1, point estimates at N = 10): continue iff Q_U(SC) is at least
 20% below the best rule (lowest Q_U of M+S, M+Y, R17-like) and below M-S, and
 P2(SC) <= 1.10 P2(M+S); stop iff Q_U(SC) >= Q_U(M); otherwise adjust.
@@ -35,6 +42,8 @@ DRAWS = 10_000
 RULES = ("M+S", "M+Y", "R17-like")
 ORDER = ("SC", "SC-B", "M-S", "M", "M+S", "M+Y", "R17-like")
 EXTRA = ("M-S+S",)  # descriptive only (design §10.4)
+CANDIDATES = ("SC-B[0.1]", "SC-B[0.3]")  # stage 1b (design §10.5)
+COUNTS = ("misses", "isolated_misses", "misses_in_runs")
 
 
 def _exp011():
@@ -54,12 +63,17 @@ def per_deployment(episode: dict, s: int) -> dict[str, float]:
     record = episode["survival"][str(s)]
     unavailable = np.asarray(record["unavailable_slots"], dtype=float) / episode["survival_window"]
     outages = np.asarray(record["outages"], dtype=float)
-    pairs = after = 0
+    pairs = after = misses = isolated = in_runs = 0
     for missed, total in zip(episode["missed_packets"], episode["packets"]):
         seq = np.zeros(total, dtype=np.bool_)
         seq[np.asarray(missed, dtype=np.int64)] = True
         pairs += int(np.sum(seq[1:] & seq[:-1]))
         after += int(seq[:-1].sum())
+        edges = np.diff(np.concatenate(([0], seq.astype(np.int8), [0])))
+        lengths = np.flatnonzero(edges == -1) - np.flatnonzero(edges == 1)
+        misses += int(seq.sum())
+        isolated += int(np.sum(lengths == 1))
+        in_runs += int(lengths[lengths >= 2].sum())
     return {
         "worst_unavailability": float(unavailable.max()),
         "worst_outages": float(outages.max()),
@@ -69,6 +83,9 @@ def per_deployment(episode: dict, s: int) -> dict[str, float]:
         "mean_rate": float(np.mean(episode["violation_rate"])),
         "pairs": float(pairs),
         "after_miss": float(after),
+        "misses": float(misses),
+        "isolated_misses": float(isolated),
+        "misses_in_runs": float(in_runs),
     }
 
 
@@ -81,35 +98,43 @@ def matrix(episodes: dict, layers: list[dict], n: int, field: str, instances, s:
     return np.array(rows)
 
 
-def pilot(paths: list[Path], plan: dict) -> dict:
+def pilot(paths: list[Path], plan: dict, focus: tuple[str, ...] = ("SC",)) -> dict:
+    """Per-method quantities, and each method in ``focus`` against every other one."""
     episodes, instances = base.load(paths, screen=PILOT_SET)
     groups, grid = plan["groups"], plan["grid"]
-    names = ORDER + tuple(name for name in EXTRA if name in groups)
-    out: dict = {"instances": len(instances), "grid": grid, "methods": {}, "versus_SC": {}}
+    names = ORDER + tuple(name for name in EXTRA + CANDIDATES if name in groups)
+    out: dict = {"instances": len(instances), "grid": grid, "methods": {}}
+    out |= {f"versus_{name}": {} for name in focus}
     for s in (1, 2):
         for name in names:
             for n in grid:
                 values = {
                     field: matrix(episodes, groups[name], n, field, instances, s)
                     for field in ("worst_unavailability", "worst_outages", "mean_unavailability",
-                                  "any_outage", "w", "mean_rate", "pairs", "after_miss")
+                                  "any_outage", "w", "mean_rate", "pairs", "after_miss", *COUNTS)
                 }  # fmt: skip
                 pairs, after = values.pop("pairs").sum(), values.pop("after_miss").sum()
+                counts = {field: values.pop(field) for field in COUNTS}
                 row = {k: float(v.mean()) for k, v in values.items()}
                 row["p_miss_after_miss"] = float(pairs / after) if after else None
+                # totals over the deployments, averaged over the seed layers
+                row |= {field: float(v.sum(1).mean()) for field, v in counts.items()}
                 row["by_seed_worst_unavailability"] = (
                     values["worst_unavailability"].mean(1).tolist()
                 )
                 out["methods"].setdefault(f"s={s}", {}).setdefault(name, {})[str(n)] = row
-        for name in names[1:]:
-            for n in grid:
-                comparison = {}
-                for field in ("worst_unavailability", "worst_outages", "w"):
-                    a = matrix(episodes, groups["SC"], n, field, instances, s)
-                    b = matrix(episodes, groups[name], n, field, instances, s)
-                    comparison[field] = base.compare(a, b, DRAWS)
-                out["versus_SC"].setdefault(f"s={s}", {}).setdefault(name, {})[str(n)] = comparison
-    out["gate_A"] = gate_a(out["methods"]["s=1"])
+        for target in focus:
+            for name in names:
+                if name == target:
+                    continue
+                for n in grid:
+                    comparison = {}
+                    for field in ("worst_unavailability", "worst_outages", "w"):
+                        a = matrix(episodes, groups[target], n, field, instances, s)
+                        b = matrix(episodes, groups[name], n, field, instances, s)
+                        comparison[field] = base.compare(a, b, DRAWS)
+                    versus = out[f"versus_{target}"].setdefault(f"s={s}", {})
+                    versus.setdefault(name, {})[str(n)] = comparison
     return out
 
 
@@ -140,9 +165,37 @@ def gate_a(methods: dict, n: str = "10") -> dict:
     }
 
 
+def select_1b(methods: dict, n: str = "10") -> dict:
+    """Stage 1b (design §10.5): the lambda_d carried forward (point estimates at N = 10)."""
+    q = {name: methods[name][n]["worst_unavailability"] for name in methods}
+    best_rule = min(RULES, key=lambda name: q[name])
+    p2_ref = methods["M+S"][n]["w"]
+    candidates = {}
+    for name in CANDIDATES:
+        p2 = methods[name][n]["w"]
+        candidates[name] = {
+            "Q_U": q[name],
+            "ratio_to_best_rule": q[name] / q[best_rule] if q[best_rule] else None,
+            "ratio_P2_to_M+S": p2 / p2_ref if p2_ref else None,
+            "ratio_to_M-S": q[name] / q["M-S"] if q["M-S"] else None,  # descriptive
+            "checks": {"Q_U_vs_best_rule": q[name] <= 0.8 * q[best_rule],
+                       "P2_vs_M+S": p2 <= 1.10 * p2_ref},
+        }  # fmt: skip
+    eligible = [name for name in CANDIDATES if all(candidates[name]["checks"].values())]
+    chosen = min(eligible, key=lambda name: q[name]) if eligible else None
+    return {
+        "n": int(n),
+        "best_rule": best_rule,
+        "candidates": candidates,
+        "eligible": eligible,
+        "chosen": chosen,
+        "decision": "carry forward" if chosen else "none eligible",
+    }
+
+
 def main(argv: list[str] | None = None) -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("mode", choices=("pilot",))
+    parser.add_argument("mode", choices=("pilot", "pilot1b"))
     parser.add_argument("--evaluations", type=Path, nargs="+", required=True)
     parser.add_argument("--plan", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
@@ -155,14 +208,27 @@ def main(argv: list[str] | None = None) -> None:
             parser.error(f"{path} is not a formal evaluation on a clean tree")
         if record["config"] != "configs/scenario-v2.1.toml":
             parser.error(f"{path} did not run on scenario v2.1")
-    result = pilot(args.evaluations, json.loads(args.plan.read_text()))
+    plan = json.loads(args.plan.read_text())
+    if args.mode == "pilot":
+        result = pilot(args.evaluations, plan)
+        result["gate_A"] = gate_a(result["methods"]["s=1"])
+    else:
+        result = pilot(args.evaluations, plan, CANDIDATES)
+        result["selection_1b"] = select_1b(result["methods"]["s=1"])
     result["protocol_id"] = splits_v2.PROTOCOL_ID
     args.output.write_text(json.dumps(result, indent=2))
-    gate = result["gate_A"]
-    print(
-        f"gate A (N = {gate['n']}): {gate['decision']}; Q_U {gate['Q_U']}; best rule {gate['best_rule']}"
-    )
-    print(f"checks {gate['checks']}")
+    if args.mode == "pilot":
+        gate = result["gate_A"]
+        print(f"gate A (N = {gate['n']}): {gate['decision']}; Q_U {gate['Q_U']}; "
+              f"best rule {gate['best_rule']}")  # fmt: skip
+        print(f"checks {gate['checks']}")
+    else:
+        selection = result["selection_1b"]
+        print(f"stage 1b (N = {selection['n']}): {selection['decision']}, chosen "
+              f"{selection['chosen']}; best rule {selection['best_rule']}")  # fmt: skip
+        for name, row in selection["candidates"].items():
+            print(f"{name}: Q_U {row['Q_U']:.6f}, x best rule {row['ratio_to_best_rule']:.3f}, "
+                  f"P2 x M+S {row['ratio_P2_to_M+S']:.3f}, checks {row['checks']}")  # fmt: skip
 
 
 if __name__ == "__main__":

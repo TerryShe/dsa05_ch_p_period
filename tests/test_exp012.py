@@ -297,10 +297,13 @@ def test_survival_settings_are_checked_and_saved(tmp_path):
 
 def test_pilot_configs_equal_the_m_recipe_apart_from_the_exp012_sections():
     base = tomllib.loads((ROOT / "configs/exp009-step2-s1.toml").read_text())
-    extra = {"m": set(), "ms": {"survival"}, "scb": {"survival", "information"},
-             "sc": {"survival", "information", "branching"}}  # fmt: skip
+    extra = {"pilot-m": set(), "pilot-ms": {"survival"}, "pilot-scb": {"survival", "information"},
+             "pilot-sc": {"survival", "information", "branching"},
+             "pilot1b-scb-ld01": {"survival", "information"},
+             "pilot1b-scb-ld03": {"survival", "information"}}  # fmt: skip
+    weight = {"pilot1b-scb-ld01": 0.1, "pilot1b-scb-ld03": 0.3}  # stage 1b (design §10.5)
     for key, sections in extra.items():
-        raw = tomllib.loads((ROOT / f"configs/exp012-pilot-{key}.toml").read_text())
+        raw = tomllib.loads((ROOT / f"configs/exp012-{key}.toml").read_text())
         assert set(raw) == set(base) | sections
         for section in set(base) - {"experiment"}:
             assert raw[section] == base[section], (key, section)
@@ -308,8 +311,8 @@ def test_pilot_configs_equal_the_m_recipe_apart_from_the_exp012_sections():
         assert raw["experiment"]["seeds"] == [101, 202]
         if "survival" in raw:
             assert raw["survival"]["tolerance"] == 1
-            assert raw["survival"]["outage_slot_weight"] == 1.0
-            assert raw["survival"]["features"] == (key != "ms")
+            assert raw["survival"]["outage_slot_weight"] == weight.get(key, 1.0)
+            assert raw["survival"]["features"] == (key != "pilot-ms")
         if "branching" in raw:
             assert raw["branching"] == {"fraction": 0.25, "periods": 3, "buffer": 64,
                                         "snapshot_probability": 1.0}  # fmt: skip
@@ -353,6 +356,7 @@ def test_per_deployment_quantities_and_the_gate_a_rule():
     assert row["worst_unavailability"] == 0.02 and row["worst_outages"] == 2
     assert row["mean_unavailability"] == 0.01 and row["any_outage"] == 1.0
     assert (row["pairs"], row["after_miss"]) == (1.0, 3.0)
+    assert (row["misses"], row["isolated_misses"], row["misses_in_runs"]) == (3.0, 1.0, 2.0)
     assert a.per_deployment(episode, 2)["worst_unavailability"] == 0.005
 
     def methods(q, p2_sc=0.010, p2_ms=0.010):
@@ -368,3 +372,22 @@ def test_per_deployment_quantities_and_the_gate_a_rule():
     assert a.gate_a(methods({**base, "M-S": 0.009}))["decision"] == "adjust"  # reward alone
     assert a.gate_a(methods(base, p2_sc=0.012))["decision"] == "adjust"  # P2 > 1.10 M+S
     assert a.gate_a(methods({**base, "SC": 0.021}))["decision"] == "stop"
+
+
+def test_stage_1b_carries_forward_the_eligible_lambda_with_the_lowest_q_u():
+    a = _analysis()
+
+    def methods(q, p2):
+        return {name: {"10": {"worst_unavailability": value, "w": p2.get(name, 0.010)}}
+                for name, value in q.items()}  # fmt: skip
+
+    q = {"SC": 0.008, "SC-B": 0.007, "M-S": 0.03, "M": 0.020, "M+S": 0.012, "M+Y": 0.011,
+         "R17-like": 0.015, "SC-B[0.1]": 0.006, "SC-B[0.3]": 0.008}  # fmt: skip
+    selection = a.select_1b(methods(q, {}))
+    assert selection["best_rule"] == "M+Y" and selection["chosen"] == "SC-B[0.1]"
+    # the lower Q_U fails the P2 guard: the other candidate is carried forward
+    selection = a.select_1b(methods(q, {"SC-B[0.1]": 0.0111}))
+    assert selection["eligible"] == ["SC-B[0.3]"] and selection["chosen"] == "SC-B[0.3]"
+    # neither is 20% below the best rule: none is chosen
+    selection = a.select_1b(methods({**q, "SC-B[0.1]": 0.0089, "SC-B[0.3]": 0.0095}, {}))
+    assert selection["chosen"] is None and selection["decision"] == "none eligible"
